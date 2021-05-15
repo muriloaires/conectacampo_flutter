@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "990054144807",
+    "project_id": "conectacampo-16a33",
+    "storage_bucket": "conectacampo-16a33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990054144807:android:a139a4875d05d544e86702",
+        "android_client_info": {
+          "package_name": "br.com.conectacampo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "990054144807-gf0n5pi3oa9jdj7q80hd2aoi90r7qail.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDfj86bN4_KONE09OLMAv6EJ8m-V_uI1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990054144807-gf0n5pi3oa9jdj7q80hd2aoi90r7qail.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
