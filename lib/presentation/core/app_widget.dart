@@ -1,6 +1,6 @@
 import 'package:conectacampo/domain/auth/auth_failure.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
-import 'package:conectacampo/presentation/sign_in/phone_number_page.dart';
+import 'package:conectacampo/presentation/onboarding/onboarding.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +11,15 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Conecta Campo',
-      theme: ThemeData.light().copyWith(
+      theme: ThemeData(
+        fontFamily: 'Montserrat',
         primaryColor: ColorSet.colorPrimaryGreenButton,
       ),
       home: Stack(children: [
         SplashScreen(
-            seconds: 3,
+            seconds: 1,
             useLoader: false,
-            navigateAfterSeconds: PhoneNumberPage(),
+            navigateAfterSeconds: Tutorial(),
             image: Image.asset('assets/logo.png'),
             // imageBackground: MemoryImage(data),
             backgroundColor: ColorSet.colorPrimaryGreen,

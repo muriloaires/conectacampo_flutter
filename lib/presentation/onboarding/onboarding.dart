@@ -210,11 +210,11 @@ class _TutorialState extends State<Tutorial> {
                                         )),
                               TextButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                UserType('')));
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             UserType('')));
                                   },
                                   child: const Text(
                                     'Pular',
@@ -242,10 +242,10 @@ class _TutorialState extends State<Tutorial> {
                           visible: _showBtnRegister,
                           child: MaterialButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => UserType('')));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => UserType('')));
                             },
                             color: ColorSet.colorPrimaryGreen,
                             child: const Text(

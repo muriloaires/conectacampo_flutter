@@ -1,5 +1,6 @@
 import 'package:conectacampo/application/auth/sign_up_form/bloc/sign_up_form_bloc.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,7 +57,10 @@ class SignUpForm extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       }, (_) {
-                        //navigate to main page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => PlacesPage()),
+                        );
                       }));
             }, builder: (context, state) {
               return Form(
@@ -70,7 +74,7 @@ class SignUpForm extends StatelessWidget {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: ColorSet.colorPrimaryGreen,
-                            fontSize: 40),
+                            fontSize: 28),
                       ),
                     ),
                     const SizedBox(
@@ -101,7 +105,8 @@ class SignUpForm extends StatelessWidget {
                       keyboardType: TextInputType.name,
                       decoration:
                           const InputDecoration(hintText: 'Nome completo'),
-                      style: const TextStyle(fontSize: 24),
+                      style:
+                          const TextStyle(fontSize: 24, fontFamily: 'Roboto'),
                     ),
                     const SizedBox(
                       height: 8,
@@ -132,9 +137,11 @@ class SignUpForm extends StatelessWidget {
                               (_) => null),
                       keyboardType: TextInputType.name,
                       decoration: const InputDecoration(
-                          hintStyle: TextStyle(fontSize: 24),
+                          hintStyle:
+                              TextStyle(fontSize: 24, fontFamily: 'Roboto'),
                           hintText: 'Nome ou apelido'),
-                      style: const TextStyle(fontSize: 24),
+                      style:
+                          const TextStyle(fontSize: 24, fontFamily: 'Roboto'),
                     ),
                     const SizedBox(
                       height: 8,

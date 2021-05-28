@@ -36,3 +36,43 @@ Either<ValueFailure<String>, String> validateNickname(String input) {
     return right(input);
   }
 }
+
+Either<ValueFailure<String>, String> validateAvatar(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidAvatar(failedValue: input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validateStatePlace(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidStatePlaceName(failedValue: input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validatePlaceName(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidPlaceName(failedValue: input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validatePlaceCity(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidCity(failedValue: input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validatePlaceAddress(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidAddress(failedValue: input));
+  } else {
+    return right(input);
+  }
+}

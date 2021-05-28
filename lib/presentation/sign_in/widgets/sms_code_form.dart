@@ -86,7 +86,7 @@ class SmsCodeForm extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: ColorSet.colorPrimaryGreen,
-                              fontSize: 40),
+                              fontSize: 28),
                         ),
                       ),
                       const SizedBox(
@@ -235,7 +235,7 @@ class SmsCodeForm extends StatelessWidget {
       textInputAction: TextInputAction.next,
       onEditingComplete: _node.nextFocus,
       maxLength: 1,
-      style: const TextStyle(fontSize: 24),
+      style: const TextStyle(fontSize: 24, fontFamily: 'Roboto'),
       textAlign: TextAlign.center,
       onChanged: onChanged ??
           (value) {

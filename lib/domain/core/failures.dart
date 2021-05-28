@@ -23,4 +23,24 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidNickname({
     @required String failedValue,
   }) = InvalidNickname<T>;
+
+  const factory ValueFailure.invalidAvatar({
+    @required String failedValue,
+  }) = InvalidAvatar<T>;
+
+  const factory ValueFailure.invalidStatePlaceName({
+    @required String failedValue,
+  }) = InvalidStatePlaceName<T>;
+
+  const factory ValueFailure.invalidPlaceName({
+    @required String failedValue,
+  }) = InvalidPlaceName<T>;
+
+  const factory ValueFailure.invalidCity({
+    @required String failedValue,
+  }) = InvalidCity<T>;
+
+  const factory ValueFailure.invalidAddress({
+    @required String failedValue,
+  }) = InvalidAddress<T>;
 }
