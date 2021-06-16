@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'auth_failure.dart';
 
@@ -9,121 +9,118 @@ part of 'auth_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AuthFailureTearOff {
   const _$AuthFailureTearOff();
 
-// ignore: unused_element
   ServerError serverError() {
     return const ServerError();
   }
 
-// ignore: unused_element
   InvalidSmsCode invalidSmsCode() {
     return const InvalidSmsCode();
   }
 
-// ignore: unused_element
   InvalidPhoneNumber invalidPhoneNumber() {
     return const InvalidPhoneNumber();
   }
 
-// ignore: unused_element
   InvalidFullName invalidFullName() {
     return const InvalidFullName();
   }
 
-// ignore: unused_element
   InvalidNickname invalidNickname() {
     return const InvalidNickname();
   }
 
-// ignore: unused_element
   InvalidVerificationId invalidVerificationId() {
     return const InvalidVerificationId();
   }
 
-// ignore: unused_element
   UserNotFound userNotFound() {
     return const UserNotFound();
   }
 
-// ignore: unused_element
   Unauthorized unauthorized() {
     return const Unauthorized();
   }
 
-// ignore: unused_element
   ApplicationError applicationError() {
     return const ApplicationError();
   }
 
-// ignore: unused_element
   PhoneAlreadyUsed phoneAlreadyUsed() {
     return const PhoneAlreadyUsed();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AuthFailure = _$AuthFailureTearOff();
 
 /// @nodoc
 mixin _$AuthFailure {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -161,6 +158,7 @@ class _$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ServerError implements ServerError {
   const _$ServerError();
 
@@ -179,47 +177,36 @@ class _$ServerError implements ServerError {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return serverError();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (serverError != null) {
       return serverError();
     }
@@ -228,47 +215,37 @@ class _$ServerError implements ServerError {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return serverError(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (serverError != null) {
       return serverError(this);
     }
@@ -299,6 +276,7 @@ class _$InvalidSmsCodeCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InvalidSmsCode implements InvalidSmsCode {
   const _$InvalidSmsCode();
 
@@ -317,47 +295,36 @@ class _$InvalidSmsCode implements InvalidSmsCode {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidSmsCode();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidSmsCode != null) {
       return invalidSmsCode();
     }
@@ -366,47 +333,37 @@ class _$InvalidSmsCode implements InvalidSmsCode {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidSmsCode(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidSmsCode != null) {
       return invalidSmsCode(this);
     }
@@ -438,6 +395,7 @@ class _$InvalidPhoneNumberCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InvalidPhoneNumber implements InvalidPhoneNumber {
   const _$InvalidPhoneNumber();
 
@@ -456,47 +414,36 @@ class _$InvalidPhoneNumber implements InvalidPhoneNumber {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidPhoneNumber();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidPhoneNumber != null) {
       return invalidPhoneNumber();
     }
@@ -505,47 +452,37 @@ class _$InvalidPhoneNumber implements InvalidPhoneNumber {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidPhoneNumber(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidPhoneNumber != null) {
       return invalidPhoneNumber(this);
     }
@@ -577,6 +514,7 @@ class _$InvalidFullNameCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InvalidFullName implements InvalidFullName {
   const _$InvalidFullName();
 
@@ -595,47 +533,36 @@ class _$InvalidFullName implements InvalidFullName {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidFullName();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidFullName != null) {
       return invalidFullName();
     }
@@ -644,47 +571,37 @@ class _$InvalidFullName implements InvalidFullName {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidFullName(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidFullName != null) {
       return invalidFullName(this);
     }
@@ -716,6 +633,7 @@ class _$InvalidNicknameCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InvalidNickname implements InvalidNickname {
   const _$InvalidNickname();
 
@@ -734,47 +652,36 @@ class _$InvalidNickname implements InvalidNickname {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidNickname();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidNickname != null) {
       return invalidNickname();
     }
@@ -783,47 +690,37 @@ class _$InvalidNickname implements InvalidNickname {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidNickname(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidNickname != null) {
       return invalidNickname(this);
     }
@@ -855,6 +752,7 @@ class _$InvalidVerificationIdCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InvalidVerificationId implements InvalidVerificationId {
   const _$InvalidVerificationId();
 
@@ -873,47 +771,36 @@ class _$InvalidVerificationId implements InvalidVerificationId {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidVerificationId();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidVerificationId != null) {
       return invalidVerificationId();
     }
@@ -922,47 +809,37 @@ class _$InvalidVerificationId implements InvalidVerificationId {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return invalidVerificationId(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidVerificationId != null) {
       return invalidVerificationId(this);
     }
@@ -993,6 +870,7 @@ class _$UserNotFoundCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UserNotFound implements UserNotFound {
   const _$UserNotFound();
 
@@ -1011,47 +889,36 @@ class _$UserNotFound implements UserNotFound {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return userNotFound();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (userNotFound != null) {
       return userNotFound();
     }
@@ -1060,47 +927,37 @@ class _$UserNotFound implements UserNotFound {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return userNotFound(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (userNotFound != null) {
       return userNotFound(this);
     }
@@ -1131,6 +988,7 @@ class _$UnauthorizedCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Unauthorized implements Unauthorized {
   const _$Unauthorized();
 
@@ -1149,47 +1007,36 @@ class _$Unauthorized implements Unauthorized {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return unauthorized();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unauthorized != null) {
       return unauthorized();
     }
@@ -1198,47 +1045,37 @@ class _$Unauthorized implements Unauthorized {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return unauthorized(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unauthorized != null) {
       return unauthorized(this);
     }
@@ -1270,6 +1107,7 @@ class _$ApplicationErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ApplicationError implements ApplicationError {
   const _$ApplicationError();
 
@@ -1288,47 +1126,36 @@ class _$ApplicationError implements ApplicationError {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return applicationError();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (applicationError != null) {
       return applicationError();
     }
@@ -1337,47 +1164,37 @@ class _$ApplicationError implements ApplicationError {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return applicationError(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (applicationError != null) {
       return applicationError(this);
     }
@@ -1409,6 +1226,7 @@ class _$PhoneAlreadyUsedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$PhoneAlreadyUsed implements PhoneAlreadyUsed {
   const _$PhoneAlreadyUsed();
 
@@ -1427,47 +1245,36 @@ class _$PhoneAlreadyUsed implements PhoneAlreadyUsed {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverError(),
-    @required TResult invalidSmsCode(),
-    @required TResult invalidPhoneNumber(),
-    @required TResult invalidFullName(),
-    @required TResult invalidNickname(),
-    @required TResult invalidVerificationId(),
-    @required TResult userNotFound(),
-    @required TResult unauthorized(),
-    @required TResult applicationError(),
-    @required TResult phoneAlreadyUsed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return phoneAlreadyUsed();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverError(),
-    TResult invalidSmsCode(),
-    TResult invalidPhoneNumber(),
-    TResult invalidFullName(),
-    TResult invalidNickname(),
-    TResult invalidVerificationId(),
-    TResult userNotFound(),
-    TResult unauthorized(),
-    TResult applicationError(),
-    TResult phoneAlreadyUsed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (phoneAlreadyUsed != null) {
       return phoneAlreadyUsed();
     }
@@ -1476,47 +1283,37 @@ class _$PhoneAlreadyUsed implements PhoneAlreadyUsed {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverError(ServerError value),
-    @required TResult invalidSmsCode(InvalidSmsCode value),
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    @required TResult invalidFullName(InvalidFullName value),
-    @required TResult invalidNickname(InvalidNickname value),
-    @required TResult invalidVerificationId(InvalidVerificationId value),
-    @required TResult userNotFound(UserNotFound value),
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult applicationError(ApplicationError value),
-    @required TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
   }) {
-    assert(serverError != null);
-    assert(invalidSmsCode != null);
-    assert(invalidPhoneNumber != null);
-    assert(invalidFullName != null);
-    assert(invalidNickname != null);
-    assert(invalidVerificationId != null);
-    assert(userNotFound != null);
-    assert(unauthorized != null);
-    assert(applicationError != null);
-    assert(phoneAlreadyUsed != null);
     return phoneAlreadyUsed(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverError(ServerError value),
-    TResult invalidSmsCode(InvalidSmsCode value),
-    TResult invalidPhoneNumber(InvalidPhoneNumber value),
-    TResult invalidFullName(InvalidFullName value),
-    TResult invalidNickname(InvalidNickname value),
-    TResult invalidVerificationId(InvalidVerificationId value),
-    TResult userNotFound(UserNotFound value),
-    TResult unauthorized(Unauthorized value),
-    TResult applicationError(ApplicationError value),
-    TResult phoneAlreadyUsed(PhoneAlreadyUsed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (phoneAlreadyUsed != null) {
       return phoneAlreadyUsed(this);
     }

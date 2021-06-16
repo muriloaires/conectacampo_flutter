@@ -1,4 +1,5 @@
 import 'package:conectacampo/application/auth/sms_code_form/sms_code_form_bloc.dart';
+import 'package:conectacampo/presentation/buyer/buyer_main_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,15 +50,16 @@ class SmsCodeForm extends StatelessWidget {
               state.authFailureOrSuccessOption.fold(
                   () => {},
                   (either) => either.fold((failure) {
-                        failure.maybeMap(
-                            userNotFound: (_) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignUpPage()),
-                              );
-                            },
-                            orElse: () {});
+                        failure.maybeMap(userNotFound: (_) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUpPage()),
+                          );
+                        }, orElse: () {
+                          MaterialPageRoute(
+                              builder: (context) => BuyerMainPage());
+                        });
                         final String errorText = failure.maybeMap(
                             serverError: (_) => 'Erro interno',
                             invalidSmsCode: (_) =>
@@ -228,7 +230,7 @@ class SmsCodeForm extends StatelessWidget {
   }
 
   Widget _getSmsCodeTextField(TextEditingController controller,
-      [void Function(String value) onChanged]) {
+      void Function(String value)? onChanged) {
     return TextField(
       controller: controller,
       keyboardType: TextInputType.number,

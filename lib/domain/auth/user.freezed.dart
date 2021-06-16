@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'user.dart';
 
@@ -9,47 +9,48 @@ part of 'user.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$UserTearOff {
   const _$UserTearOff();
 
-// ignore: unused_element
   _User call(
-      {@required UniqueId id,
-      @required FullName name,
-      @required Nickname nickname,
-      @required PhoneNumber phoneNumber,
-      @required ThumbAvatar thumbAvatar,
-      @required MediumAvatar mediumAvatar,
-      @required OriginalAvatar originalAvatar}) {
+      UniqueId id,
+      FullName name,
+      Nickname nickname,
+      PhoneNumber phoneNumber,
+      ThumbAvatar? thumbAvatar,
+      MediumAvatar? mediumAvatar,
+      OriginalAvatar? originalAvatar) {
     return _User(
-      id: id,
-      name: name,
-      nickname: nickname,
-      phoneNumber: phoneNumber,
-      thumbAvatar: thumbAvatar,
-      mediumAvatar: mediumAvatar,
-      originalAvatar: originalAvatar,
+      id,
+      name,
+      nickname,
+      phoneNumber,
+      thumbAvatar,
+      mediumAvatar,
+      originalAvatar,
     );
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
-  UniqueId get id;
-  FullName get name;
-  Nickname get nickname;
-  PhoneNumber get phoneNumber;
-  ThumbAvatar get thumbAvatar;
-  MediumAvatar get mediumAvatar;
-  OriginalAvatar get originalAvatar;
+  UniqueId get id => throw _privateConstructorUsedError;
+  FullName get name => throw _privateConstructorUsedError;
+  Nickname get nickname => throw _privateConstructorUsedError;
+  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
+  ThumbAvatar? get thumbAvatar => throw _privateConstructorUsedError;
+  MediumAvatar? get mediumAvatar => throw _privateConstructorUsedError;
+  OriginalAvatar? get originalAvatar => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith;
+  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -61,9 +62,9 @@ abstract class $UserCopyWith<$Res> {
       FullName name,
       Nickname nickname,
       PhoneNumber phoneNumber,
-      ThumbAvatar thumbAvatar,
-      MediumAvatar mediumAvatar,
-      OriginalAvatar originalAvatar});
+      ThumbAvatar? thumbAvatar,
+      MediumAvatar? mediumAvatar,
+      OriginalAvatar? originalAvatar});
 }
 
 /// @nodoc
@@ -76,30 +77,43 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object nickname = freezed,
-    Object phoneNumber = freezed,
-    Object thumbAvatar = freezed,
-    Object mediumAvatar = freezed,
-    Object originalAvatar = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? nickname = freezed,
+    Object? phoneNumber = freezed,
+    Object? thumbAvatar = freezed,
+    Object? mediumAvatar = freezed,
+    Object? originalAvatar = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as UniqueId,
-      name: name == freezed ? _value.name : name as FullName,
-      nickname: nickname == freezed ? _value.nickname : nickname as Nickname,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as FullName,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as Nickname,
       phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
-          : phoneNumber as PhoneNumber,
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber,
       thumbAvatar: thumbAvatar == freezed
           ? _value.thumbAvatar
-          : thumbAvatar as ThumbAvatar,
+          : thumbAvatar // ignore: cast_nullable_to_non_nullable
+              as ThumbAvatar?,
       mediumAvatar: mediumAvatar == freezed
           ? _value.mediumAvatar
-          : mediumAvatar as MediumAvatar,
+          : mediumAvatar // ignore: cast_nullable_to_non_nullable
+              as MediumAvatar?,
       originalAvatar: originalAvatar == freezed
           ? _value.originalAvatar
-          : originalAvatar as OriginalAvatar,
+          : originalAvatar // ignore: cast_nullable_to_non_nullable
+              as OriginalAvatar?,
     ));
   }
 }
@@ -114,9 +128,9 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       FullName name,
       Nickname nickname,
       PhoneNumber phoneNumber,
-      ThumbAvatar thumbAvatar,
-      MediumAvatar mediumAvatar,
-      OriginalAvatar originalAvatar});
+      ThumbAvatar? thumbAvatar,
+      MediumAvatar? mediumAvatar,
+      OriginalAvatar? originalAvatar});
 }
 
 /// @nodoc
@@ -130,51 +144,52 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object nickname = freezed,
-    Object phoneNumber = freezed,
-    Object thumbAvatar = freezed,
-    Object mediumAvatar = freezed,
-    Object originalAvatar = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? nickname = freezed,
+    Object? phoneNumber = freezed,
+    Object? thumbAvatar = freezed,
+    Object? mediumAvatar = freezed,
+    Object? originalAvatar = freezed,
   }) {
     return _then(_User(
-      id: id == freezed ? _value.id : id as UniqueId,
-      name: name == freezed ? _value.name : name as FullName,
-      nickname: nickname == freezed ? _value.nickname : nickname as Nickname,
-      phoneNumber: phoneNumber == freezed
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as FullName,
+      nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as Nickname,
+      phoneNumber == freezed
           ? _value.phoneNumber
-          : phoneNumber as PhoneNumber,
-      thumbAvatar: thumbAvatar == freezed
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber,
+      thumbAvatar == freezed
           ? _value.thumbAvatar
-          : thumbAvatar as ThumbAvatar,
-      mediumAvatar: mediumAvatar == freezed
+          : thumbAvatar // ignore: cast_nullable_to_non_nullable
+              as ThumbAvatar?,
+      mediumAvatar == freezed
           ? _value.mediumAvatar
-          : mediumAvatar as MediumAvatar,
-      originalAvatar: originalAvatar == freezed
+          : mediumAvatar // ignore: cast_nullable_to_non_nullable
+              as MediumAvatar?,
+      originalAvatar == freezed
           ? _value.originalAvatar
-          : originalAvatar as OriginalAvatar,
+          : originalAvatar // ignore: cast_nullable_to_non_nullable
+              as OriginalAvatar?,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_User implements _User {
-  const _$_User(
-      {@required this.id,
-      @required this.name,
-      @required this.nickname,
-      @required this.phoneNumber,
-      @required this.thumbAvatar,
-      @required this.mediumAvatar,
-      @required this.originalAvatar})
-      : assert(id != null),
-        assert(name != null),
-        assert(nickname != null),
-        assert(phoneNumber != null),
-        assert(thumbAvatar != null),
-        assert(mediumAvatar != null),
-        assert(originalAvatar != null);
+  const _$_User(this.id, this.name, this.nickname, this.phoneNumber,
+      this.thumbAvatar, this.mediumAvatar, this.originalAvatar);
 
   @override
   final UniqueId id;
@@ -185,11 +200,11 @@ class _$_User implements _User {
   @override
   final PhoneNumber phoneNumber;
   @override
-  final ThumbAvatar thumbAvatar;
+  final ThumbAvatar? thumbAvatar;
   @override
-  final MediumAvatar mediumAvatar;
+  final MediumAvatar? mediumAvatar;
   @override
-  final OriginalAvatar originalAvatar;
+  final OriginalAvatar? originalAvatar;
 
   @override
   String toString() {
@@ -240,29 +255,29 @@ class _$_User implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      {@required UniqueId id,
-      @required FullName name,
-      @required Nickname nickname,
-      @required PhoneNumber phoneNumber,
-      @required ThumbAvatar thumbAvatar,
-      @required MediumAvatar mediumAvatar,
-      @required OriginalAvatar originalAvatar}) = _$_User;
+      UniqueId id,
+      FullName name,
+      Nickname nickname,
+      PhoneNumber phoneNumber,
+      ThumbAvatar? thumbAvatar,
+      MediumAvatar? mediumAvatar,
+      OriginalAvatar? originalAvatar) = _$_User;
 
   @override
-  UniqueId get id;
+  UniqueId get id => throw _privateConstructorUsedError;
   @override
-  FullName get name;
+  FullName get name => throw _privateConstructorUsedError;
   @override
-  Nickname get nickname;
+  Nickname get nickname => throw _privateConstructorUsedError;
   @override
-  PhoneNumber get phoneNumber;
+  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
   @override
-  ThumbAvatar get thumbAvatar;
+  ThumbAvatar? get thumbAvatar => throw _privateConstructorUsedError;
   @override
-  MediumAvatar get mediumAvatar;
+  MediumAvatar? get mediumAvatar => throw _privateConstructorUsedError;
   @override
-  OriginalAvatar get originalAvatar;
+  OriginalAvatar? get originalAvatar => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserCopyWith<_User> get copyWith;
+  _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
 }

@@ -17,8 +17,8 @@ Map<String, String> getApiHeader() {
   };
 }
 
-Future<Response> getAuthenticatedRequest(Uri url,
-    {Map<String, String> headers}) async {
+Future<Response> getAuthenticatedRequest(
+    Uri url, Map<String, String>? headers) async {
   final accessTokenHeader = {
     'Authorization': 'Bearer ${await getCurrentAcessToken()}'
   };
@@ -30,7 +30,7 @@ Future<Response> getAuthenticatedRequest(Uri url,
   final code = response.statusCode;
   if (code == 401) {
     final refreshToken = await getCurrentRefreshToken();
-    if (await getNewToken(refreshToken)) {
+    if (await getNewToken(refreshToken ?? '')) {
       final newToken = await getCurrentAcessToken();
       headers.addAll({'Authorization': 'Bearer $newToken'});
       final newReponse = await http.get(url, headers: headers);

@@ -28,13 +28,14 @@ class SignUpFormBloc extends Bloc<SignUpFormBlocEvent, SignUpFormBlocState> {
       yield state.copyWith(
           nickname: Nickname(e.nickname), authFailureOrSuccessOption: none());
     }, btnSignUpPressed: (e) async* {
-      Either<AuthFailure, Unit> failureOrSuccess;
+      Either<AuthFailure, Unit> failureOrSuccess =
+          left(const AuthFailure.applicationError());
+
       if (state.fullName.isValid() && state.nickname.isValid()) {
         yield state.copyWith(
             isSubmitting: true, authFailureOrSuccessOption: none());
-
-        failureOrSuccess = await _authFacade.signUp(
-            fullName: state.fullName, nickname: state.nickname);
+        failureOrSuccess =
+            await _authFacade.signUp(state.fullName, state.nickname);
       }
 
       yield state.copyWith(

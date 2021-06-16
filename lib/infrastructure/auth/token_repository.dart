@@ -9,13 +9,13 @@ Future<Unit> saveTokens(String accessToken, String refreshToken) async {
   return unit;
 }
 
-Future<String> getCurrentAcessToken() async {
+Future<String?> getCurrentAcessToken() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
   return sharedPreferences.getString('access_token');
 }
 
-Future<String> getCurrentRefreshToken() async {
+Future<String?> getCurrentRefreshToken() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
   return sharedPreferences.getString('refresh_token');
@@ -24,7 +24,7 @@ Future<String> getCurrentRefreshToken() async {
 Future<Unit> resetTokens() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
-  await sharedPreferences.setString('access_token', null);
-  await sharedPreferences.setString('refresh_token', null);
+  await sharedPreferences.remove('access_token');
+  await sharedPreferences.remove('refresh_token');
   return unit;
 }

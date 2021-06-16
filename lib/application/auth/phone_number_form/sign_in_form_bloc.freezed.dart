@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'sign_in_form_bloc.dart';
 
@@ -9,51 +9,56 @@ part of 'sign_in_form_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$SignInFormEventTearOff {
   const _$SignInFormEventTearOff();
 
-// ignore: unused_element
   PhoneNumberChanged phoneNumberChanged(String phoneString) {
     return PhoneNumberChanged(
       phoneString,
     );
   }
 
-// ignore: unused_element
   VerifyPhoneNumberPressed verifyPhoneNumberPressed() {
     return const VerifyPhoneNumberPressed();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $SignInFormEvent = _$SignInFormEventTearOff();
 
 /// @nodoc
 mixin _$SignInFormEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult phoneNumberChanged(String phoneString),
-    @required TResult verifyPhoneNumberPressed(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneString) phoneNumberChanged,
+    required TResult Function() verifyPhoneNumberPressed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult phoneNumberChanged(String phoneString),
-    TResult verifyPhoneNumberPressed(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneString)? phoneNumberChanged,
+    TResult Function()? verifyPhoneNumberPressed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult phoneNumberChanged(PhoneNumberChanged value),
-    @required TResult verifyPhoneNumberPressed(VerifyPhoneNumberPressed value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(VerifyPhoneNumberPressed value)
+        verifyPhoneNumberPressed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult phoneNumberChanged(PhoneNumberChanged value),
-    TResult verifyPhoneNumberPressed(VerifyPhoneNumberPressed value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(VerifyPhoneNumberPressed value)? verifyPhoneNumberPressed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -94,17 +99,21 @@ class _$PhoneNumberChangedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object phoneString = freezed,
+    Object? phoneString = freezed,
   }) {
     return _then(PhoneNumberChanged(
-      phoneString == freezed ? _value.phoneString : phoneString as String,
+      phoneString == freezed
+          ? _value.phoneString
+          : phoneString // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$PhoneNumberChanged implements PhoneNumberChanged {
-  const _$PhoneNumberChanged(this.phoneString) : assert(phoneString != null);
+  const _$PhoneNumberChanged(this.phoneString);
 
   @override
   final String phoneString;
@@ -134,23 +143,20 @@ class _$PhoneNumberChanged implements PhoneNumberChanged {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult phoneNumberChanged(String phoneString),
-    @required TResult verifyPhoneNumberPressed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneString) phoneNumberChanged,
+    required TResult Function() verifyPhoneNumberPressed,
   }) {
-    assert(phoneNumberChanged != null);
-    assert(verifyPhoneNumberPressed != null);
     return phoneNumberChanged(phoneString);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult phoneNumberChanged(String phoneString),
-    TResult verifyPhoneNumberPressed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneString)? phoneNumberChanged,
+    TResult Function()? verifyPhoneNumberPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (phoneNumberChanged != null) {
       return phoneNumberChanged(phoneString);
     }
@@ -159,23 +165,21 @@ class _$PhoneNumberChanged implements PhoneNumberChanged {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult phoneNumberChanged(PhoneNumberChanged value),
-    @required TResult verifyPhoneNumberPressed(VerifyPhoneNumberPressed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(VerifyPhoneNumberPressed value)
+        verifyPhoneNumberPressed,
   }) {
-    assert(phoneNumberChanged != null);
-    assert(verifyPhoneNumberPressed != null);
     return phoneNumberChanged(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult phoneNumberChanged(PhoneNumberChanged value),
-    TResult verifyPhoneNumberPressed(VerifyPhoneNumberPressed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(VerifyPhoneNumberPressed value)? verifyPhoneNumberPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (phoneNumberChanged != null) {
       return phoneNumberChanged(this);
     }
@@ -186,9 +190,10 @@ class _$PhoneNumberChanged implements PhoneNumberChanged {
 abstract class PhoneNumberChanged implements SignInFormEvent {
   const factory PhoneNumberChanged(String phoneString) = _$PhoneNumberChanged;
 
-  String get phoneString;
+  String get phoneString => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PhoneNumberChangedCopyWith<PhoneNumberChanged> get copyWith;
+  $PhoneNumberChangedCopyWith<PhoneNumberChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -212,6 +217,7 @@ class _$VerifyPhoneNumberPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$VerifyPhoneNumberPressed implements VerifyPhoneNumberPressed {
   const _$VerifyPhoneNumberPressed();
 
@@ -230,23 +236,20 @@ class _$VerifyPhoneNumberPressed implements VerifyPhoneNumberPressed {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult phoneNumberChanged(String phoneString),
-    @required TResult verifyPhoneNumberPressed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneString) phoneNumberChanged,
+    required TResult Function() verifyPhoneNumberPressed,
   }) {
-    assert(phoneNumberChanged != null);
-    assert(verifyPhoneNumberPressed != null);
     return verifyPhoneNumberPressed();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult phoneNumberChanged(String phoneString),
-    TResult verifyPhoneNumberPressed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneString)? phoneNumberChanged,
+    TResult Function()? verifyPhoneNumberPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (verifyPhoneNumberPressed != null) {
       return verifyPhoneNumberPressed();
     }
@@ -255,23 +258,21 @@ class _$VerifyPhoneNumberPressed implements VerifyPhoneNumberPressed {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult phoneNumberChanged(PhoneNumberChanged value),
-    @required TResult verifyPhoneNumberPressed(VerifyPhoneNumberPressed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(VerifyPhoneNumberPressed value)
+        verifyPhoneNumberPressed,
   }) {
-    assert(phoneNumberChanged != null);
-    assert(verifyPhoneNumberPressed != null);
     return verifyPhoneNumberPressed(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult phoneNumberChanged(PhoneNumberChanged value),
-    TResult verifyPhoneNumberPressed(VerifyPhoneNumberPressed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(VerifyPhoneNumberPressed value)? verifyPhoneNumberPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (verifyPhoneNumberPressed != null) {
       return verifyPhoneNumberPressed(this);
     }
@@ -287,34 +288,34 @@ abstract class VerifyPhoneNumberPressed implements SignInFormEvent {
 class _$SignInFormStateTearOff {
   const _$SignInFormStateTearOff();
 
-// ignore: unused_element
   _SignInFormState call(
-      {@required PhoneNumber phoneNumber,
-      @required bool isSubmitting,
-      @required bool showErrorMessages,
-      @required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
+      PhoneNumber phoneNumber,
+      bool isSubmitting,
+      bool showErrorMessages,
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) {
     return _SignInFormState(
-      phoneNumber: phoneNumber,
-      isSubmitting: isSubmitting,
-      showErrorMessages: showErrorMessages,
-      authFailureOrSuccessOption: authFailureOrSuccessOption,
+      phoneNumber,
+      isSubmitting,
+      showErrorMessages,
+      authFailureOrSuccessOption,
     );
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $SignInFormState = _$SignInFormStateTearOff();
 
 /// @nodoc
 mixin _$SignInFormState {
-  PhoneNumber get phoneNumber;
-  bool get isSubmitting;
-  bool get showErrorMessages;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SignInFormStateCopyWith<SignInFormState> get copyWith;
+  $SignInFormStateCopyWith<SignInFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -340,23 +341,28 @@ class _$SignInFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object phoneNumber = freezed,
-    Object isSubmitting = freezed,
-    Object showErrorMessages = freezed,
-    Object authFailureOrSuccessOption = freezed,
+    Object? phoneNumber = freezed,
+    Object? isSubmitting = freezed,
+    Object? showErrorMessages = freezed,
+    Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
-          : phoneNumber as PhoneNumber,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
@@ -388,38 +394,37 @@ class __$SignInFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object phoneNumber = freezed,
-    Object isSubmitting = freezed,
-    Object showErrorMessages = freezed,
-    Object authFailureOrSuccessOption = freezed,
+    Object? phoneNumber = freezed,
+    Object? isSubmitting = freezed,
+    Object? showErrorMessages = freezed,
+    Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_SignInFormState(
-      phoneNumber: phoneNumber == freezed
+      phoneNumber == freezed
           ? _value.phoneNumber
-          : phoneNumber as PhoneNumber,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
-      showErrorMessages: showErrorMessages == freezed
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber,
+      isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
-      authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_SignInFormState implements _SignInFormState {
-  const _$_SignInFormState(
-      {@required this.phoneNumber,
-      @required this.isSubmitting,
-      @required this.showErrorMessages,
-      @required this.authFailureOrSuccessOption})
-      : assert(phoneNumber != null),
-        assert(isSubmitting != null),
-        assert(showErrorMessages != null),
-        assert(authFailureOrSuccessOption != null);
+  const _$_SignInFormState(this.phoneNumber, this.isSubmitting,
+      this.showErrorMessages, this.authFailureOrSuccessOption);
 
   @override
   final PhoneNumber phoneNumber;
@@ -471,25 +476,23 @@ class _$_SignInFormState implements _SignInFormState {
 
 abstract class _SignInFormState implements SignInFormState {
   const factory _SignInFormState(
-          {@required
-              PhoneNumber phoneNumber,
-          @required
-              bool isSubmitting,
-          @required
-              bool showErrorMessages,
-          @required
-              Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) =
+          PhoneNumber phoneNumber,
+          bool isSubmitting,
+          bool showErrorMessages,
+          Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) =
       _$_SignInFormState;
 
   @override
-  PhoneNumber get phoneNumber;
+  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
   @override
-  bool get isSubmitting;
+  bool get isSubmitting => throw _privateConstructorUsedError;
   @override
-  bool get showErrorMessages;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SignInFormStateCopyWith<_SignInFormState> get copyWith;
+  _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

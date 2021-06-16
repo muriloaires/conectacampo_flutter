@@ -8,14 +8,12 @@ part of 'model.dart';
 
 _$_PlaceResponse _$_$_PlaceResponseFromJson(Map<String, dynamic> json) {
   return _$_PlaceResponse(
-    id: json['id'] as int,
-    name: json['name'] as String,
-    state: json['state'] as String,
-    city: json['city'] as String,
-    address: json['address'] as String,
-    createdAt: json['created_at'] == null
-        ? null
-        : DateTime.parse(json['created_at'] as String),
+    json['id'] as int,
+    json['name'] as String,
+    json['state'] as String,
+    json['city'] as String,
+    json['address'] as String,
+    DateTime.parse(json['created_at'] as String),
   );
 }
 
@@ -26,5 +24,5 @@ Map<String, dynamic> _$_$_PlaceResponseToJson(_$_PlaceResponse instance) =>
       'state': instance.state,
       'city': instance.city,
       'address': instance.address,
-      'created_at': instance.createdAt?.toIso8601String(),
+      'created_at': instance.createdAt.toIso8601String(),
     };

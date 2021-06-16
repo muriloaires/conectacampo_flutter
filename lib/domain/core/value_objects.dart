@@ -11,8 +11,7 @@ abstract class ValueObject<T> {
   Either<ValueFailure<T>, T> get value;
 
   T getOrCrash() {
-    return value.fold(
-        (failure) => throw UnexpectedValueError(failure), id);
+    return value.fold((failure) => throw UnexpectedValueError(failure), id);
   }
 
   bool isValid() {

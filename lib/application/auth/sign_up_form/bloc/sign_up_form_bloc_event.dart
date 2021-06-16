@@ -1,7 +1,7 @@
 part of 'sign_up_form_bloc.dart';
 
 @freezed
-abstract class SignUpFormBlocEvent with _$SignUpFormBlocEvent {
+class SignUpFormBlocEvent with _$SignUpFormBlocEvent {
   const factory SignUpFormBlocEvent.fullNameChanged(String fullName) =
       FullNameChanged;
 

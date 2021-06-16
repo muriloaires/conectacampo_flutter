@@ -20,8 +20,7 @@ class PlacesFacade implements IPlacesFacade {
   @override
   Future<Either<PlacesFailure, List<Place>>> getAllPlaces() async {
     final url = Uri.parse('${getCurrentApiUrl()}$routePlaces');
-    final response =
-        await getAuthenticatedRequest(url, headers: getApiHeader());
+    final response = await getAuthenticatedRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
       final Iterable iterable = jsonDecode(response.body) as Iterable;
@@ -41,8 +40,7 @@ class PlacesFacade implements IPlacesFacade {
   @override
   Future<Either<PlacesFailure, List<StatePlace>>> getAllStates() async {
     final url = Uri.https(baseUrl, '$apiVersion$routeStatesPlaces');
-    final response =
-        await await getAuthenticatedRequest(url, headers: getApiHeader());
+    final response = await await getAuthenticatedRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
       final states = List<String>.from(jsonDecode(response.body) as Iterable);
@@ -60,8 +58,7 @@ class PlacesFacade implements IPlacesFacade {
   Future<Either<PlacesFailure, List<Place>>> getAllPlacesByStateName(
       String state) async {
     final url = Uri.https(baseUrl, '$apiVersion$routePlaces', {'state': state});
-    final response =
-        await getAuthenticatedRequest(url, headers: getApiHeader());
+    final response = await getAuthenticatedRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
       final Iterable iterable = jsonDecode(response.body) as Iterable;

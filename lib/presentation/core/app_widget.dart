@@ -1,60 +1,33 @@
-import 'package:conectacampo/domain/auth/auth_failure.dart';
+import 'package:conectacampo/presentation/buyer/buyer_main_page.dart';
+import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/onboarding/onboarding.dart';
-import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:conectacampo/presentation/sign_in/phone_number_page.dart';
 import 'package:flutter/material.dart';
-import 'package:splashscreen/splashscreen.dart';
 
 class AppWidget extends StatelessWidget {
+  final String initialRoute;
+
+  const AppWidget(this.initialRoute);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/onboarding': (context) => Tutorial(),
+        '/sign_in': (context) => PhoneNumberPage(),
+        '/buyer_main': (context) => BuyerMainPage(),
+      },
+      initialRoute: initialRoute,
       title: 'Conecta Campo',
       theme: ThemeData(
-        fontFamily: 'Montserrat',
-        primaryColor: ColorSet.colorPrimaryGreenButton,
-      ),
-      home: Stack(children: [
-        SplashScreen(
-            seconds: 1,
-            useLoader: false,
-            navigateAfterSeconds: Tutorial(),
-            image: Image.asset('assets/logo.png'),
-            // imageBackground: MemoryImage(data),
-            backgroundColor: ColorSet.colorPrimaryGreen,
-            photoSize: 100.0),
-        Image.asset(
-          'assets/dots.png',
-          width: double.infinity,
-          height: double.infinity,
-        )
-      ]),
+          fontFamily: 'Montserrat',
+          primaryColor: ColorSet.colorPrimaryGreenButton,
+          hintColor: Colors.white,
+          textTheme: const TextTheme(
+              headline6: TextStyle(color: Colors.red, fontFamily: 'Roboto')),
+          appBarTheme: const AppBarTheme(
+            color: ColorSet.colorPrimaryGreen,
+          )),
     );
-  }
-
-  Future<Either<AuthFailure, Unit>> requestSmsCode(
-      {@required String phoneNumber}) async {
-    AuthFailure error;
-    await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: phoneNumber,
-        verificationCompleted:
-            (PhoneAuthCredential phoneAuthCredential) async {},
-        verificationFailed: (FirebaseAuthException authException) {
-          if (authException.code == 'invalid-phone-number') {
-            error = const AuthFailure.invalidPhoneNumber();
-          }
-          // showSnackbar('Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
-        },
-        codeSent: (String verificationId, [int forceResendingToken]) async {
-          // showSnackbar('Please check your phone for the verification code.');
-          // _verificationId = verificationId;
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-          // showSnackbar("verification code: " + verificationId);
-          // _verificationID = verificationId;
-        });
-
-    return error == null ? right(unit) : left(error);
   }
 }

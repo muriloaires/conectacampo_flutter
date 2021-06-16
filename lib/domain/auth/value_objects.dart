@@ -1,6 +1,6 @@
-import 'package:conectacampo/domain/core/failures.dart';
-import 'package:conectacampo/domain/core/value_objects.dart';
 import 'package:conectacampo/domain/core/value_validators.dart';
+import 'package:conectacampo/domain/core/value_objects.dart';
+import 'package:conectacampo/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
 
 class PhoneNumber extends ValueObject<String> {

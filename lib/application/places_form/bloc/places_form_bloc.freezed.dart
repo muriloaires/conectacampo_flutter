@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'places_form_bloc.dart';
 
@@ -9,23 +9,23 @@ part of 'places_form_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$PlacesFormEventTearOff {
   const _$PlacesFormEventTearOff();
 
-// ignore: unused_element
   Started started() {
     return const Started();
   }
 
-// ignore: unused_element
   StateSelected stateSelected(String state) {
     return StateSelected(
       state,
     );
   }
 
-// ignore: unused_element
   PlaceSelected placeSelected(String place) {
     return PlaceSelected(
       place,
@@ -34,37 +34,40 @@ class _$PlacesFormEventTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $PlacesFormEvent = _$PlacesFormEventTearOff();
 
 /// @nodoc
 mixin _$PlacesFormEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult started(),
-    @required TResult stateSelected(String state),
-    @required TResult placeSelected(String place),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String state) stateSelected,
+    required TResult Function(String place) placeSelected,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult started(),
-    TResult stateSelected(String state),
-    TResult placeSelected(String place),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String state)? stateSelected,
+    TResult Function(String place)? placeSelected,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult started(Started value),
-    @required TResult stateSelected(StateSelected value),
-    @required TResult placeSelected(PlaceSelected value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(StateSelected value) stateSelected,
+    required TResult Function(PlaceSelected value) placeSelected,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult started(Started value),
-    TResult stateSelected(StateSelected value),
-    TResult placeSelected(PlaceSelected value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(StateSelected value)? stateSelected,
+    TResult Function(PlaceSelected value)? placeSelected,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -101,6 +104,7 @@ class _$StartedCopyWithImpl<$Res> extends _$PlacesFormEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Started implements Started {
   const _$Started();
 
@@ -119,26 +123,22 @@ class _$Started implements Started {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult started(),
-    @required TResult stateSelected(String state),
-    @required TResult placeSelected(String place),
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String state) stateSelected,
+    required TResult Function(String place) placeSelected,
   }) {
-    assert(started != null);
-    assert(stateSelected != null);
-    assert(placeSelected != null);
     return started();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult started(),
-    TResult stateSelected(String state),
-    TResult placeSelected(String place),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String state)? stateSelected,
+    TResult Function(String place)? placeSelected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (started != null) {
       return started();
     }
@@ -147,26 +147,22 @@ class _$Started implements Started {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult started(Started value),
-    @required TResult stateSelected(StateSelected value),
-    @required TResult placeSelected(PlaceSelected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(StateSelected value) stateSelected,
+    required TResult Function(PlaceSelected value) placeSelected,
   }) {
-    assert(started != null);
-    assert(stateSelected != null);
-    assert(placeSelected != null);
     return started(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult started(Started value),
-    TResult stateSelected(StateSelected value),
-    TResult placeSelected(PlaceSelected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(StateSelected value)? stateSelected,
+    TResult Function(PlaceSelected value)? placeSelected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (started != null) {
       return started(this);
     }
@@ -199,17 +195,21 @@ class _$StateSelectedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object state = freezed,
+    Object? state = freezed,
   }) {
     return _then(StateSelected(
-      state == freezed ? _value.state : state as String,
+      state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$StateSelected implements StateSelected {
-  const _$StateSelected(this.state) : assert(state != null);
+  const _$StateSelected(this.state);
 
   @override
   final String state;
@@ -238,26 +238,22 @@ class _$StateSelected implements StateSelected {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult started(),
-    @required TResult stateSelected(String state),
-    @required TResult placeSelected(String place),
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String state) stateSelected,
+    required TResult Function(String place) placeSelected,
   }) {
-    assert(started != null);
-    assert(stateSelected != null);
-    assert(placeSelected != null);
     return stateSelected(state);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult started(),
-    TResult stateSelected(String state),
-    TResult placeSelected(String place),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String state)? stateSelected,
+    TResult Function(String place)? placeSelected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (stateSelected != null) {
       return stateSelected(state);
     }
@@ -266,26 +262,22 @@ class _$StateSelected implements StateSelected {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult started(Started value),
-    @required TResult stateSelected(StateSelected value),
-    @required TResult placeSelected(PlaceSelected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(StateSelected value) stateSelected,
+    required TResult Function(PlaceSelected value) placeSelected,
   }) {
-    assert(started != null);
-    assert(stateSelected != null);
-    assert(placeSelected != null);
     return stateSelected(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult started(Started value),
-    TResult stateSelected(StateSelected value),
-    TResult placeSelected(PlaceSelected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(StateSelected value)? stateSelected,
+    TResult Function(PlaceSelected value)? placeSelected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (stateSelected != null) {
       return stateSelected(this);
     }
@@ -296,9 +288,10 @@ class _$StateSelected implements StateSelected {
 abstract class StateSelected implements PlacesFormEvent {
   const factory StateSelected(String state) = _$StateSelected;
 
-  String get state;
+  String get state => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StateSelectedCopyWith<StateSelected> get copyWith;
+  $StateSelectedCopyWith<StateSelected> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -322,17 +315,21 @@ class _$PlaceSelectedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object place = freezed,
+    Object? place = freezed,
   }) {
     return _then(PlaceSelected(
-      place == freezed ? _value.place : place as String,
+      place == freezed
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$PlaceSelected implements PlaceSelected {
-  const _$PlaceSelected(this.place) : assert(place != null);
+  const _$PlaceSelected(this.place);
 
   @override
   final String place;
@@ -361,26 +358,22 @@ class _$PlaceSelected implements PlaceSelected {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult started(),
-    @required TResult stateSelected(String state),
-    @required TResult placeSelected(String place),
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String state) stateSelected,
+    required TResult Function(String place) placeSelected,
   }) {
-    assert(started != null);
-    assert(stateSelected != null);
-    assert(placeSelected != null);
     return placeSelected(place);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult started(),
-    TResult stateSelected(String state),
-    TResult placeSelected(String place),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String state)? stateSelected,
+    TResult Function(String place)? placeSelected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (placeSelected != null) {
       return placeSelected(place);
     }
@@ -389,26 +382,22 @@ class _$PlaceSelected implements PlaceSelected {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult started(Started value),
-    @required TResult stateSelected(StateSelected value),
-    @required TResult placeSelected(PlaceSelected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(StateSelected value) stateSelected,
+    required TResult Function(PlaceSelected value) placeSelected,
   }) {
-    assert(started != null);
-    assert(stateSelected != null);
-    assert(placeSelected != null);
     return placeSelected(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult started(Started value),
-    TResult stateSelected(StateSelected value),
-    TResult placeSelected(PlaceSelected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(StateSelected value)? stateSelected,
+    TResult Function(PlaceSelected value)? placeSelected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (placeSelected != null) {
       return placeSelected(this);
     }
@@ -419,69 +408,64 @@ class _$PlaceSelected implements PlaceSelected {
 abstract class PlaceSelected implements PlacesFormEvent {
   const factory PlaceSelected(String place) = _$PlaceSelected;
 
-  String get place;
+  String get place => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PlaceSelectedCopyWith<PlaceSelected> get copyWith;
+  $PlaceSelectedCopyWith<PlaceSelected> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$PlacesFormStateTearOff {
   const _$PlacesFormStateTearOff();
 
-// ignore: unused_element
   _PlacesFormState call(
-      {@required
-          Option<Either<PlacesFailure, List<StatePlace>>> states,
-      @required
-          Option<Either<PlacesFailure, List<Place>>> places,
-      String selectedState,
-      String placeSelected,
-      @required
-          bool isLoadingStatePlaces,
-      @required
-          bool loadStatePlacesFinish,
-      @required
-          bool isLoadingPlaces,
-      @required
-          bool loadPlacesFinish,
-      @required
-          bool isSubmitting,
-      @required
-          Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption}) {
+      Option<Either<PlacesFailure, List<StatePlace>>> states,
+      Option<Either<PlacesFailure, List<Place>>> places,
+      String? selectedState,
+      String? placeSelected,
+      bool isLoadingStatePlaces,
+      bool loadStatePlacesFinish,
+      bool isLoadingPlaces,
+      bool loadPlacesFinish,
+      bool isSubmitting,
+      Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption) {
     return _PlacesFormState(
-      states: states,
-      places: places,
-      selectedState: selectedState,
-      placeSelected: placeSelected,
-      isLoadingStatePlaces: isLoadingStatePlaces,
-      loadStatePlacesFinish: loadStatePlacesFinish,
-      isLoadingPlaces: isLoadingPlaces,
-      loadPlacesFinish: loadPlacesFinish,
-      isSubmitting: isSubmitting,
-      placesFailureOrSuccessOption: placesFailureOrSuccessOption,
+      states,
+      places,
+      selectedState,
+      placeSelected,
+      isLoadingStatePlaces,
+      loadStatePlacesFinish,
+      isLoadingPlaces,
+      loadPlacesFinish,
+      isSubmitting,
+      placesFailureOrSuccessOption,
     );
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $PlacesFormState = _$PlacesFormStateTearOff();
 
 /// @nodoc
 mixin _$PlacesFormState {
-  Option<Either<PlacesFailure, List<StatePlace>>> get states;
-  Option<Either<PlacesFailure, List<Place>>> get places;
-  String get selectedState;
-  String get placeSelected;
-  bool get isLoadingStatePlaces;
-  bool get loadStatePlacesFinish;
-  bool get isLoadingPlaces;
-  bool get loadPlacesFinish;
-  bool get isSubmitting;
-  Option<Either<PlacesFailure, Unit>> get placesFailureOrSuccessOption;
+  Option<Either<PlacesFailure, List<StatePlace>>> get states =>
+      throw _privateConstructorUsedError;
+  Option<Either<PlacesFailure, List<Place>>> get places =>
+      throw _privateConstructorUsedError;
+  String? get selectedState => throw _privateConstructorUsedError;
+  String? get placeSelected => throw _privateConstructorUsedError;
+  bool get isLoadingStatePlaces => throw _privateConstructorUsedError;
+  bool get loadStatePlacesFinish => throw _privateConstructorUsedError;
+  bool get isLoadingPlaces => throw _privateConstructorUsedError;
+  bool get loadPlacesFinish => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
+  Option<Either<PlacesFailure, Unit>> get placesFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PlacesFormStateCopyWith<PlacesFormState> get copyWith;
+  $PlacesFormStateCopyWith<PlacesFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -492,8 +476,8 @@ abstract class $PlacesFormStateCopyWith<$Res> {
   $Res call(
       {Option<Either<PlacesFailure, List<StatePlace>>> states,
       Option<Either<PlacesFailure, List<Place>>> places,
-      String selectedState,
-      String placeSelected,
+      String? selectedState,
+      String? placeSelected,
       bool isLoadingStatePlaces,
       bool loadStatePlacesFinish,
       bool isLoadingPlaces,
@@ -513,47 +497,58 @@ class _$PlacesFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object states = freezed,
-    Object places = freezed,
-    Object selectedState = freezed,
-    Object placeSelected = freezed,
-    Object isLoadingStatePlaces = freezed,
-    Object loadStatePlacesFinish = freezed,
-    Object isLoadingPlaces = freezed,
-    Object loadPlacesFinish = freezed,
-    Object isSubmitting = freezed,
-    Object placesFailureOrSuccessOption = freezed,
+    Object? states = freezed,
+    Object? places = freezed,
+    Object? selectedState = freezed,
+    Object? placeSelected = freezed,
+    Object? isLoadingStatePlaces = freezed,
+    Object? loadStatePlacesFinish = freezed,
+    Object? isLoadingPlaces = freezed,
+    Object? loadPlacesFinish = freezed,
+    Object? isSubmitting = freezed,
+    Object? placesFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       states: states == freezed
           ? _value.states
-          : states as Option<Either<PlacesFailure, List<StatePlace>>>,
+          : states // ignore: cast_nullable_to_non_nullable
+              as Option<Either<PlacesFailure, List<StatePlace>>>,
       places: places == freezed
           ? _value.places
-          : places as Option<Either<PlacesFailure, List<Place>>>,
+          : places // ignore: cast_nullable_to_non_nullable
+              as Option<Either<PlacesFailure, List<Place>>>,
       selectedState: selectedState == freezed
           ? _value.selectedState
-          : selectedState as String,
+          : selectedState // ignore: cast_nullable_to_non_nullable
+              as String?,
       placeSelected: placeSelected == freezed
           ? _value.placeSelected
-          : placeSelected as String,
+          : placeSelected // ignore: cast_nullable_to_non_nullable
+              as String?,
       isLoadingStatePlaces: isLoadingStatePlaces == freezed
           ? _value.isLoadingStatePlaces
-          : isLoadingStatePlaces as bool,
+          : isLoadingStatePlaces // ignore: cast_nullable_to_non_nullable
+              as bool,
       loadStatePlacesFinish: loadStatePlacesFinish == freezed
           ? _value.loadStatePlacesFinish
-          : loadStatePlacesFinish as bool,
+          : loadStatePlacesFinish // ignore: cast_nullable_to_non_nullable
+              as bool,
       isLoadingPlaces: isLoadingPlaces == freezed
           ? _value.isLoadingPlaces
-          : isLoadingPlaces as bool,
+          : isLoadingPlaces // ignore: cast_nullable_to_non_nullable
+              as bool,
       loadPlacesFinish: loadPlacesFinish == freezed
           ? _value.loadPlacesFinish
-          : loadPlacesFinish as bool,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+          : loadPlacesFinish // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
       placesFailureOrSuccessOption: placesFailureOrSuccessOption == freezed
           ? _value.placesFailureOrSuccessOption
-          : placesFailureOrSuccessOption as Option<Either<PlacesFailure, Unit>>,
+          : placesFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<PlacesFailure, Unit>>,
     ));
   }
 }
@@ -568,8 +563,8 @@ abstract class _$PlacesFormStateCopyWith<$Res>
   $Res call(
       {Option<Either<PlacesFailure, List<StatePlace>>> states,
       Option<Either<PlacesFailure, List<Place>>> places,
-      String selectedState,
-      String placeSelected,
+      String? selectedState,
+      String? placeSelected,
       bool isLoadingStatePlaces,
       bool loadStatePlacesFinish,
       bool isLoadingPlaces,
@@ -591,81 +586,85 @@ class __$PlacesFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object states = freezed,
-    Object places = freezed,
-    Object selectedState = freezed,
-    Object placeSelected = freezed,
-    Object isLoadingStatePlaces = freezed,
-    Object loadStatePlacesFinish = freezed,
-    Object isLoadingPlaces = freezed,
-    Object loadPlacesFinish = freezed,
-    Object isSubmitting = freezed,
-    Object placesFailureOrSuccessOption = freezed,
+    Object? states = freezed,
+    Object? places = freezed,
+    Object? selectedState = freezed,
+    Object? placeSelected = freezed,
+    Object? isLoadingStatePlaces = freezed,
+    Object? loadStatePlacesFinish = freezed,
+    Object? isLoadingPlaces = freezed,
+    Object? loadPlacesFinish = freezed,
+    Object? isSubmitting = freezed,
+    Object? placesFailureOrSuccessOption = freezed,
   }) {
     return _then(_PlacesFormState(
-      states: states == freezed
+      states == freezed
           ? _value.states
-          : states as Option<Either<PlacesFailure, List<StatePlace>>>,
-      places: places == freezed
+          : states // ignore: cast_nullable_to_non_nullable
+              as Option<Either<PlacesFailure, List<StatePlace>>>,
+      places == freezed
           ? _value.places
-          : places as Option<Either<PlacesFailure, List<Place>>>,
-      selectedState: selectedState == freezed
+          : places // ignore: cast_nullable_to_non_nullable
+              as Option<Either<PlacesFailure, List<Place>>>,
+      selectedState == freezed
           ? _value.selectedState
-          : selectedState as String,
-      placeSelected: placeSelected == freezed
+          : selectedState // ignore: cast_nullable_to_non_nullable
+              as String?,
+      placeSelected == freezed
           ? _value.placeSelected
-          : placeSelected as String,
-      isLoadingStatePlaces: isLoadingStatePlaces == freezed
+          : placeSelected // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoadingStatePlaces == freezed
           ? _value.isLoadingStatePlaces
-          : isLoadingStatePlaces as bool,
-      loadStatePlacesFinish: loadStatePlacesFinish == freezed
+          : isLoadingStatePlaces // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadStatePlacesFinish == freezed
           ? _value.loadStatePlacesFinish
-          : loadStatePlacesFinish as bool,
-      isLoadingPlaces: isLoadingPlaces == freezed
+          : loadStatePlacesFinish // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingPlaces == freezed
           ? _value.isLoadingPlaces
-          : isLoadingPlaces as bool,
-      loadPlacesFinish: loadPlacesFinish == freezed
+          : isLoadingPlaces // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadPlacesFinish == freezed
           ? _value.loadPlacesFinish
-          : loadPlacesFinish as bool,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
-      placesFailureOrSuccessOption: placesFailureOrSuccessOption == freezed
+          : loadPlacesFinish // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      placesFailureOrSuccessOption == freezed
           ? _value.placesFailureOrSuccessOption
-          : placesFailureOrSuccessOption as Option<Either<PlacesFailure, Unit>>,
+          : placesFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<PlacesFailure, Unit>>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_PlacesFormState implements _PlacesFormState {
   const _$_PlacesFormState(
-      {@required this.states,
-      @required this.places,
+      this.states,
+      this.places,
       this.selectedState,
       this.placeSelected,
-      @required this.isLoadingStatePlaces,
-      @required this.loadStatePlacesFinish,
-      @required this.isLoadingPlaces,
-      @required this.loadPlacesFinish,
-      @required this.isSubmitting,
-      @required this.placesFailureOrSuccessOption})
-      : assert(states != null),
-        assert(places != null),
-        assert(isLoadingStatePlaces != null),
-        assert(loadStatePlacesFinish != null),
-        assert(isLoadingPlaces != null),
-        assert(loadPlacesFinish != null),
-        assert(isSubmitting != null),
-        assert(placesFailureOrSuccessOption != null);
+      this.isLoadingStatePlaces,
+      this.loadStatePlacesFinish,
+      this.isLoadingPlaces,
+      this.loadPlacesFinish,
+      this.isSubmitting,
+      this.placesFailureOrSuccessOption);
 
   @override
   final Option<Either<PlacesFailure, List<StatePlace>>> states;
   @override
   final Option<Either<PlacesFailure, List<Place>>> places;
   @override
-  final String selectedState;
+  final String? selectedState;
   @override
-  final String placeSelected;
+  final String? placeSelected;
   @override
   final bool isLoadingStatePlaces;
   @override
@@ -742,47 +741,43 @@ class _$_PlacesFormState implements _PlacesFormState {
 
 abstract class _PlacesFormState implements PlacesFormState {
   const factory _PlacesFormState(
-      {@required
           Option<Either<PlacesFailure, List<StatePlace>>> states,
-      @required
           Option<Either<PlacesFailure, List<Place>>> places,
-      String selectedState,
-      String placeSelected,
-      @required
+          String? selectedState,
+          String? placeSelected,
           bool isLoadingStatePlaces,
-      @required
           bool loadStatePlacesFinish,
-      @required
           bool isLoadingPlaces,
-      @required
           bool loadPlacesFinish,
-      @required
           bool isSubmitting,
-      @required
-          Option<Either<PlacesFailure, Unit>>
-              placesFailureOrSuccessOption}) = _$_PlacesFormState;
+          Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption) =
+      _$_PlacesFormState;
 
   @override
-  Option<Either<PlacesFailure, List<StatePlace>>> get states;
+  Option<Either<PlacesFailure, List<StatePlace>>> get states =>
+      throw _privateConstructorUsedError;
   @override
-  Option<Either<PlacesFailure, List<Place>>> get places;
+  Option<Either<PlacesFailure, List<Place>>> get places =>
+      throw _privateConstructorUsedError;
   @override
-  String get selectedState;
+  String? get selectedState => throw _privateConstructorUsedError;
   @override
-  String get placeSelected;
+  String? get placeSelected => throw _privateConstructorUsedError;
   @override
-  bool get isLoadingStatePlaces;
+  bool get isLoadingStatePlaces => throw _privateConstructorUsedError;
   @override
-  bool get loadStatePlacesFinish;
+  bool get loadStatePlacesFinish => throw _privateConstructorUsedError;
   @override
-  bool get isLoadingPlaces;
+  bool get isLoadingPlaces => throw _privateConstructorUsedError;
   @override
-  bool get loadPlacesFinish;
+  bool get loadPlacesFinish => throw _privateConstructorUsedError;
   @override
-  bool get isSubmitting;
+  bool get isSubmitting => throw _privateConstructorUsedError;
   @override
-  Option<Either<PlacesFailure, Unit>> get placesFailureOrSuccessOption;
+  Option<Either<PlacesFailure, Unit>> get placesFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlacesFormStateCopyWith<_PlacesFormState> get copyWith;
+  _$PlacesFormStateCopyWith<_PlacesFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

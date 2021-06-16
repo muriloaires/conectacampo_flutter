@@ -11,8 +11,8 @@ import 'package:conectacampo/infrastructure/core/http_constants.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:flutter/foundation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
 import 'user_mapper.dart';
 
@@ -23,15 +23,15 @@ class AuthFacade implements IAuthFacade {
 
   final FirebaseAuth _firebaseAuth;
 
-  String _verificationId;
+  String _verificationId = '';
 
-  String _phoneNumber;
+  String _phoneNumber = '';
 
   AuthFacade(this._firebaseAuth);
 
   @override
   Future<Either<AuthFailure, Unit>> requestSmsCode(
-      {@required PhoneNumber phoneNumber}) async {
+      PhoneNumber phoneNumber) async {
     final Completer<Either<AuthFailure, Unit>> completer = Completer();
 
     final phoneNumberString = phoneNumber.getOrCrash();
@@ -45,7 +45,7 @@ class AuthFacade implements IAuthFacade {
                 .completeError(left(const AuthFailure.invalidPhoneNumber()));
           }
         },
-        codeSent: (String verificationId, [int forceResendingToken]) async {
+        codeSent: (String verificationId, int? forceResendingToken) async {
           _verificationId = verificationId;
           _phoneNumber = phoneNumber.getOrCrash();
           completer.complete(right(unit));
@@ -56,7 +56,7 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signIn({@required SmsCode smsCode}) async {
+  Future<Either<AuthFailure, Unit>> signIn(SmsCode smsCode) async {
     final smsCodeString = smsCode.getOrCrash();
 
     final AuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
@@ -81,8 +81,7 @@ class AuthFacade implements IAuthFacade {
       String phoneNumber) async {
     final url = Uri.https(baseUrl, '$apiVersion$routeSessions');
     final response = await http.post(url,
-        body: UserRequest(
-                phoneNumber: '+55${phoneNumber.replaceAll(RegExp(r'-'), '')}')
+        body: UserRequest('+55${phoneNumber.replaceAll(RegExp(r'-'), '')}')
             .toJson(),
         headers: getApiHeader());
     final code = response.statusCode;
@@ -115,20 +114,20 @@ class AuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> signUp(
-      {@required FullName fullName, @required Nickname nickname}) async {
-    final firstName = fullName.getOrCrash().split('')[0];
-    final lastName = fullName.getOrCrash().split('')[1];
-    final url = Uri.parse('${getCurrentApiUrl()}$routeSessions');
+      FullName fullName, Nickname nickname) async {
+    final firstName = fullName.getOrCrash().split(' ')[0];
+    final lastName = fullName.getOrCrash().split(' ')[1];
+    final url = Uri.https(baseUrl, '$apiVersion$routeUsers');
     final response = await http.post(url,
-        body: UserRegister(
-                firstName: firstName,
-                lastName: lastName,
-                nickname: nickname.getOrCrash(),
-                phoneNumber: _phoneNumber)
+        body: UserRegister(firstName, lastName, nickname.getOrCrash(),
+                '+55${_phoneNumber.replaceAll(RegExp(r'-'), '')}')
             .toJson(),
         headers: getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
+      final user = UserResponse.fromJson(
+          json.decode(response.body) as Map<String, dynamic>);
+      await persistUser(user);
       return right(unit);
     } else if (code == 401) {
       return left(const AuthFailure.unauthorized());

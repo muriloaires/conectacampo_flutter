@@ -149,9 +149,11 @@ class SignUpForm extends StatelessWidget {
                     Visibility(
                         visible:
                             context.read<SignUpFormBloc>().state.isSubmitting,
-                        child: const CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                              ColorSet.colorPrimaryGreenButton),
+                        child: Center(
+                          child: const CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                ColorSet.colorPrimaryGreenButton),
+                          ),
                         )),
                   ],
                 ),

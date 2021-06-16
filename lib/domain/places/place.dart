@@ -5,10 +5,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'place.freezed.dart';
 
 @freezed
-abstract class Place with _$Place {
+class Place with _$Place {
   const factory Place(
-      {@required UniqueId id,
+      @required UniqueId id,
       @required PlaceName name,
       @required StatePlace state,
-      @required PlaceAddress address}) = _Place;
+      @required PlaceAddress address) = _Place;
 }

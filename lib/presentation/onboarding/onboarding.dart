@@ -1,3 +1,4 @@
+import 'package:conectacampo/infrastructure/onboarding/onboarding_repository.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/sign_in/user_type.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,6 @@ class _TutorialState extends State<Tutorial> {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset('assets/dots.png'),
           PageView(
             onPageChanged: (page) {
               setState(() {
@@ -209,12 +209,12 @@ class _TutorialState extends State<Tutorial> {
                                           width: 33,
                                         )),
                               TextButton(
-                                  onPressed: () {
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) =>
-                                    //             UserType('')));
+                                  onPressed: () async {
+                                    await saveOnboardingCheck();
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => UserType()));
                                   },
                                   child: const Text(
                                     'Pular',
@@ -242,10 +242,10 @@ class _TutorialState extends State<Tutorial> {
                           visible: _showBtnRegister,
                           child: MaterialButton(
                             onPressed: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => UserType('')));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserType()));
                             },
                             color: ColorSet.colorPrimaryGreen,
                             child: const Text(

@@ -1,13 +1,13 @@
 class LoginResponse {
-  String _firstName;
-  String _lastName;
-  String _nickName;
-  String _phoneNumber;
-  String _vehicleLicensePlate;
-  String _state;
-  int _ceasaId;
-  String _accessToken;
-  String _refreshToken;
+  String _firstName = '';
+  String _lastName = '';
+  String _nickName = '';
+  String _phoneNumber = '';
+  String _vehicleLicensePlate = '';
+  String _state = '';
+  int _ceasaId = -1;
+  String _accessToken = '';
+  String _refreshToken = '';
 
   LoginResponse.fromJson(dynamic decode) {
     _firstName = decode['first_name'] as String;

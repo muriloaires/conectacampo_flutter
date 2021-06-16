@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'model.dart';
 
@@ -8,6 +8,10 @@ part of 'model.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 PlaceResponse _$PlaceResponseFromJson(Map<String, dynamic> json) {
   return _PlaceResponse.fromJson(json);
 }
@@ -16,52 +20,50 @@ PlaceResponse _$PlaceResponseFromJson(Map<String, dynamic> json) {
 class _$PlaceResponseTearOff {
   const _$PlaceResponseTearOff();
 
-// ignore: unused_element
   _PlaceResponse call(
-      {@required @JsonKey(name: 'id') int id,
-      @required @JsonKey(name: 'name') String name,
-      @required @JsonKey(name: 'state') String state,
-      @required @JsonKey(name: 'city') String city,
-      @required @JsonKey(name: 'address') String address,
-      @required @JsonKey(name: 'created_at') DateTime createdAt}) {
+      @JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'state') String state,
+      @JsonKey(name: 'city') String city,
+      @JsonKey(name: 'address') String address,
+      @JsonKey(name: 'created_at') DateTime createdAt) {
     return _PlaceResponse(
-      id: id,
-      name: name,
-      state: state,
-      city: city,
-      address: address,
-      createdAt: createdAt,
+      id,
+      name,
+      state,
+      city,
+      address,
+      createdAt,
     );
   }
 
-// ignore: unused_element
   PlaceResponse fromJson(Map<String, Object> json) {
     return PlaceResponse.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $PlaceResponse = _$PlaceResponseTearOff();
 
 /// @nodoc
 mixin _$PlaceResponse {
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'state')
-  String get state;
+  String get state => throw _privateConstructorUsedError;
   @JsonKey(name: 'city')
-  String get city;
+  String get city => throw _privateConstructorUsedError;
   @JsonKey(name: 'address')
-  String get address;
+  String get address => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
-  DateTime get createdAt;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PlaceResponseCopyWith<PlaceResponse> get copyWith;
+  $PlaceResponseCopyWith<PlaceResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -89,21 +91,38 @@ class _$PlaceResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object state = freezed,
-    Object city = freezed,
-    Object address = freezed,
-    Object createdAt = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? state = freezed,
+    Object? city = freezed,
+    Object? address = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as int,
-      name: name == freezed ? _value.name : name as String,
-      state: state == freezed ? _value.state : state as String,
-      city: city == freezed ? _value.city : city as String,
-      address: address == freezed ? _value.address : address as String,
-      createdAt:
-          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -137,42 +156,52 @@ class __$PlaceResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object state = freezed,
-    Object city = freezed,
-    Object address = freezed,
-    Object createdAt = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? state = freezed,
+    Object? city = freezed,
+    Object? address = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_PlaceResponse(
-      id: id == freezed ? _value.id : id as int,
-      name: name == freezed ? _value.name : name as String,
-      state: state == freezed ? _value.state : state as String,
-      city: city == freezed ? _value.city : city as String,
-      address: address == freezed ? _value.address : address as String,
-      createdAt:
-          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PlaceResponse implements _PlaceResponse {
   const _$_PlaceResponse(
-      {@required @JsonKey(name: 'id') this.id,
-      @required @JsonKey(name: 'name') this.name,
-      @required @JsonKey(name: 'state') this.state,
-      @required @JsonKey(name: 'city') this.city,
-      @required @JsonKey(name: 'address') this.address,
-      @required @JsonKey(name: 'created_at') this.createdAt})
-      : assert(id != null),
-        assert(name != null),
-        assert(state != null),
-        assert(city != null),
-        assert(address != null),
-        assert(createdAt != null);
+      @JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'name') this.name,
+      @JsonKey(name: 'state') this.state,
+      @JsonKey(name: 'city') this.city,
+      @JsonKey(name: 'address') this.address,
+      @JsonKey(name: 'created_at') this.createdAt);
 
   factory _$_PlaceResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_PlaceResponseFromJson(json);
@@ -244,36 +273,36 @@ class _$_PlaceResponse implements _PlaceResponse {
 
 abstract class _PlaceResponse implements PlaceResponse {
   const factory _PlaceResponse(
-          {@required @JsonKey(name: 'id') int id,
-          @required @JsonKey(name: 'name') String name,
-          @required @JsonKey(name: 'state') String state,
-          @required @JsonKey(name: 'city') String city,
-          @required @JsonKey(name: 'address') String address,
-          @required @JsonKey(name: 'created_at') DateTime createdAt}) =
-      _$_PlaceResponse;
+      @JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'state') String state,
+      @JsonKey(name: 'city') String city,
+      @JsonKey(name: 'address') String address,
+      @JsonKey(name: 'created_at') DateTime createdAt) = _$_PlaceResponse;
 
   factory _PlaceResponse.fromJson(Map<String, dynamic> json) =
       _$_PlaceResponse.fromJson;
 
   @override
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'name')
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'state')
-  String get state;
+  String get state => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'city')
-  String get city;
+  String get city => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'address')
-  String get address;
+  String get address => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'created_at')
-  DateTime get createdAt;
+  DateTime get createdAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlaceResponseCopyWith<_PlaceResponse> get copyWith;
+  _$PlaceResponseCopyWith<_PlaceResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }

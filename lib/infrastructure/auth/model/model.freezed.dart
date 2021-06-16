@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'model.dart';
 
@@ -8,6 +8,10 @@ part of 'model.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 UserResponse _$UserResponseFromJson(Map<String, dynamic> json) {
   return _UserResponse.fromJson(json);
 }
@@ -16,81 +20,62 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) {
 class _$UserResponseTearOff {
   const _$UserResponseTearOff();
 
-// ignore: unused_element
   _UserResponse call(
-      {@required
-      @JsonKey(name: 'id')
-          int id,
-      @required
-      @JsonKey(name: 'first_name')
-          String firstName,
-      @required
-      @JsonKey(name: 'last_name')
-          String lastName,
-      @required
-      @JsonKey(name: 'nickname')
-          String nickname,
-      @required
-      @JsonKey(name: 'phone_number')
-          String phoneNumber,
-      @required
-      @JsonKey(name: 'vehicle_license_plate')
-          String vehicleLicensePlate,
-      @JsonKey(name: 'avatar')
-          AvatarResponse avatar,
-      @required
-      @JsonKey(name: 'access_token')
-          String accessToken,
-      @required
-      @JsonKey(name: 'refresh_token')
-          String refreshToken}) {
+      @JsonKey(name: 'id') int id,
+      @JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      @JsonKey(name: 'nickname') String nickname,
+      @JsonKey(name: 'phone_number') String phoneNumber,
+      @JsonKey(name: 'vehicle_license_plate') String? vehicleLicensePlate,
+      @JsonKey(name: 'avatar') AvatarResponse? avatar,
+      @JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'refresh_token') String refreshToken) {
     return _UserResponse(
-      id: id,
-      firstName: firstName,
-      lastName: lastName,
-      nickname: nickname,
-      phoneNumber: phoneNumber,
-      vehicleLicensePlate: vehicleLicensePlate,
-      avatar: avatar,
-      accessToken: accessToken,
-      refreshToken: refreshToken,
+      id,
+      firstName,
+      lastName,
+      nickname,
+      phoneNumber,
+      vehicleLicensePlate,
+      avatar,
+      accessToken,
+      refreshToken,
     );
   }
 
-// ignore: unused_element
   UserResponse fromJson(Map<String, Object> json) {
     return UserResponse.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $UserResponse = _$UserResponseTearOff();
 
 /// @nodoc
 mixin _$UserResponse {
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
-  String get firstName;
+  String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
-  String get lastName;
+  String get lastName => throw _privateConstructorUsedError;
   @JsonKey(name: 'nickname')
-  String get nickname;
+  String get nickname => throw _privateConstructorUsedError;
   @JsonKey(name: 'phone_number')
-  String get phoneNumber;
+  String get phoneNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'vehicle_license_plate')
-  String get vehicleLicensePlate;
+  String? get vehicleLicensePlate => throw _privateConstructorUsedError;
   @JsonKey(name: 'avatar')
-  AvatarResponse get avatar;
+  AvatarResponse? get avatar => throw _privateConstructorUsedError;
   @JsonKey(name: 'access_token')
-  String get accessToken;
+  String get accessToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'refresh_token')
-  String get refreshToken;
+  String get refreshToken => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserResponseCopyWith<UserResponse> get copyWith;
+  $UserResponseCopyWith<UserResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -104,12 +89,12 @@ abstract class $UserResponseCopyWith<$Res> {
       @JsonKey(name: 'last_name') String lastName,
       @JsonKey(name: 'nickname') String nickname,
       @JsonKey(name: 'phone_number') String phoneNumber,
-      @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
-      @JsonKey(name: 'avatar') AvatarResponse avatar,
+      @JsonKey(name: 'vehicle_license_plate') String? vehicleLicensePlate,
+      @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String accessToken,
       @JsonKey(name: 'refresh_token') String refreshToken});
 
-  $AvatarResponseCopyWith<$Res> get avatar;
+  $AvatarResponseCopyWith<$Res>? get avatar;
 }
 
 /// @nodoc
@@ -122,41 +107,63 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object firstName = freezed,
-    Object lastName = freezed,
-    Object nickname = freezed,
-    Object phoneNumber = freezed,
-    Object vehicleLicensePlate = freezed,
-    Object avatar = freezed,
-    Object accessToken = freezed,
-    Object refreshToken = freezed,
+    Object? id = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
+    Object? nickname = freezed,
+    Object? phoneNumber = freezed,
+    Object? vehicleLicensePlate = freezed,
+    Object? avatar = freezed,
+    Object? accessToken = freezed,
+    Object? refreshToken = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as int,
-      firstName: firstName == freezed ? _value.firstName : firstName as String,
-      lastName: lastName == freezed ? _value.lastName : lastName as String,
-      nickname: nickname == freezed ? _value.nickname : nickname as String,
-      phoneNumber:
-          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      firstName: firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: lastName == freezed
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       vehicleLicensePlate: vehicleLicensePlate == freezed
           ? _value.vehicleLicensePlate
-          : vehicleLicensePlate as String,
-      avatar: avatar == freezed ? _value.avatar : avatar as AvatarResponse,
-      accessToken:
-          accessToken == freezed ? _value.accessToken : accessToken as String,
+          : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: avatar == freezed
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as AvatarResponse?,
+      accessToken: accessToken == freezed
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
       refreshToken: refreshToken == freezed
           ? _value.refreshToken
-          : refreshToken as String,
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
   @override
-  $AvatarResponseCopyWith<$Res> get avatar {
+  $AvatarResponseCopyWith<$Res>? get avatar {
     if (_value.avatar == null) {
       return null;
     }
-    return $AvatarResponseCopyWith<$Res>(_value.avatar, (value) {
+
+    return $AvatarResponseCopyWith<$Res>(_value.avatar!, (value) {
       return _then(_value.copyWith(avatar: value));
     });
   }
@@ -175,13 +182,13 @@ abstract class _$UserResponseCopyWith<$Res>
       @JsonKey(name: 'last_name') String lastName,
       @JsonKey(name: 'nickname') String nickname,
       @JsonKey(name: 'phone_number') String phoneNumber,
-      @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
-      @JsonKey(name: 'avatar') AvatarResponse avatar,
+      @JsonKey(name: 'vehicle_license_plate') String? vehicleLicensePlate,
+      @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String accessToken,
       @JsonKey(name: 'refresh_token') String refreshToken});
 
   @override
-  $AvatarResponseCopyWith<$Res> get avatar;
+  $AvatarResponseCopyWith<$Res>? get avatar;
 }
 
 /// @nodoc
@@ -196,75 +203,70 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object firstName = freezed,
-    Object lastName = freezed,
-    Object nickname = freezed,
-    Object phoneNumber = freezed,
-    Object vehicleLicensePlate = freezed,
-    Object avatar = freezed,
-    Object accessToken = freezed,
-    Object refreshToken = freezed,
+    Object? id = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
+    Object? nickname = freezed,
+    Object? phoneNumber = freezed,
+    Object? vehicleLicensePlate = freezed,
+    Object? avatar = freezed,
+    Object? accessToken = freezed,
+    Object? refreshToken = freezed,
   }) {
     return _then(_UserResponse(
-      id: id == freezed ? _value.id : id as int,
-      firstName: firstName == freezed ? _value.firstName : firstName as String,
-      lastName: lastName == freezed ? _value.lastName : lastName as String,
-      nickname: nickname == freezed ? _value.nickname : nickname as String,
-      phoneNumber:
-          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
-      vehicleLicensePlate: vehicleLicensePlate == freezed
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName == freezed
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      vehicleLicensePlate == freezed
           ? _value.vehicleLicensePlate
-          : vehicleLicensePlate as String,
-      avatar: avatar == freezed ? _value.avatar : avatar as AvatarResponse,
-      accessToken:
-          accessToken == freezed ? _value.accessToken : accessToken as String,
-      refreshToken: refreshToken == freezed
+          : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar == freezed
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as AvatarResponse?,
+      accessToken == freezed
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken == freezed
           ? _value.refreshToken
-          : refreshToken as String,
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_UserResponse implements _UserResponse {
   const _$_UserResponse(
-      {@required
-      @JsonKey(name: 'id')
-          this.id,
-      @required
-      @JsonKey(name: 'first_name')
-          this.firstName,
-      @required
-      @JsonKey(name: 'last_name')
-          this.lastName,
-      @required
-      @JsonKey(name: 'nickname')
-          this.nickname,
-      @required
-      @JsonKey(name: 'phone_number')
-          this.phoneNumber,
-      @required
-      @JsonKey(name: 'vehicle_license_plate')
-          this.vehicleLicensePlate,
-      @JsonKey(name: 'avatar')
-          this.avatar,
-      @required
-      @JsonKey(name: 'access_token')
-          this.accessToken,
-      @required
-      @JsonKey(name: 'refresh_token')
-          this.refreshToken})
-      : assert(id != null),
-        assert(firstName != null),
-        assert(lastName != null),
-        assert(nickname != null),
-        assert(phoneNumber != null),
-        assert(vehicleLicensePlate != null),
-        assert(accessToken != null),
-        assert(refreshToken != null);
+      @JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'first_name') this.firstName,
+      @JsonKey(name: 'last_name') this.lastName,
+      @JsonKey(name: 'nickname') this.nickname,
+      @JsonKey(name: 'phone_number') this.phoneNumber,
+      @JsonKey(name: 'vehicle_license_plate') this.vehicleLicensePlate,
+      @JsonKey(name: 'avatar') this.avatar,
+      @JsonKey(name: 'access_token') this.accessToken,
+      @JsonKey(name: 'refresh_token') this.refreshToken);
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_UserResponseFromJson(json);
@@ -286,10 +288,10 @@ class _$_UserResponse implements _UserResponse {
   final String phoneNumber;
   @override
   @JsonKey(name: 'vehicle_license_plate')
-  final String vehicleLicensePlate;
+  final String? vehicleLicensePlate;
   @override
   @JsonKey(name: 'avatar')
-  final AvatarResponse avatar;
+  final AvatarResponse? avatar;
   @override
   @JsonKey(name: 'access_token')
   final String accessToken;
@@ -359,66 +361,50 @@ class _$_UserResponse implements _UserResponse {
 
 abstract class _UserResponse implements UserResponse {
   const factory _UserResponse(
-      {@required
-      @JsonKey(name: 'id')
-          int id,
-      @required
-      @JsonKey(name: 'first_name')
-          String firstName,
-      @required
-      @JsonKey(name: 'last_name')
-          String lastName,
-      @required
-      @JsonKey(name: 'nickname')
-          String nickname,
-      @required
-      @JsonKey(name: 'phone_number')
-          String phoneNumber,
-      @required
-      @JsonKey(name: 'vehicle_license_plate')
-          String vehicleLicensePlate,
-      @JsonKey(name: 'avatar')
-          AvatarResponse avatar,
-      @required
-      @JsonKey(name: 'access_token')
-          String accessToken,
-      @required
-      @JsonKey(name: 'refresh_token')
-          String refreshToken}) = _$_UserResponse;
+      @JsonKey(name: 'id') int id,
+      @JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      @JsonKey(name: 'nickname') String nickname,
+      @JsonKey(name: 'phone_number') String phoneNumber,
+      @JsonKey(name: 'vehicle_license_plate') String? vehicleLicensePlate,
+      @JsonKey(name: 'avatar') AvatarResponse? avatar,
+      @JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'refresh_token') String refreshToken) = _$_UserResponse;
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
       _$_UserResponse.fromJson;
 
   @override
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'first_name')
-  String get firstName;
+  String get firstName => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'last_name')
-  String get lastName;
+  String get lastName => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'nickname')
-  String get nickname;
+  String get nickname => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'phone_number')
-  String get phoneNumber;
+  String get phoneNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'vehicle_license_plate')
-  String get vehicleLicensePlate;
+  String? get vehicleLicensePlate => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'avatar')
-  AvatarResponse get avatar;
+  AvatarResponse? get avatar => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'access_token')
-  String get accessToken;
+  String get accessToken => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'refresh_token')
-  String get refreshToken;
+  String get refreshToken => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserResponseCopyWith<_UserResponse> get copyWith;
+  _$UserResponseCopyWith<_UserResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 AvatarResponse _$AvatarResponseFromJson(Map<String, dynamic> json) {
@@ -429,40 +415,38 @@ AvatarResponse _$AvatarResponseFromJson(Map<String, dynamic> json) {
 class _$AvatarResponseTearOff {
   const _$AvatarResponseTearOff();
 
-// ignore: unused_element
   _AvatarResponse call(
-      {@required @JsonKey(name: 'thumbnail') ThumbnailResponse thumbnail,
-      @required @JsonKey(name: 'medium') MediumResponse medium,
-      @required @JsonKey(name: 'original') ThumbnailResponse original}) {
+      @JsonKey(name: 'thumbnail') ThumbnailResponse thumbnail,
+      @JsonKey(name: 'medium') MediumResponse medium,
+      @JsonKey(name: 'original') ThumbnailResponse original) {
     return _AvatarResponse(
-      thumbnail: thumbnail,
-      medium: medium,
-      original: original,
+      thumbnail,
+      medium,
+      original,
     );
   }
 
-// ignore: unused_element
   AvatarResponse fromJson(Map<String, Object> json) {
     return AvatarResponse.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AvatarResponse = _$AvatarResponseTearOff();
 
 /// @nodoc
 mixin _$AvatarResponse {
   @JsonKey(name: 'thumbnail')
-  ThumbnailResponse get thumbnail;
+  ThumbnailResponse get thumbnail => throw _privateConstructorUsedError;
   @JsonKey(name: 'medium')
-  MediumResponse get medium;
+  MediumResponse get medium => throw _privateConstructorUsedError;
   @JsonKey(name: 'original')
-  ThumbnailResponse get original;
+  ThumbnailResponse get original => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AvatarResponseCopyWith<AvatarResponse> get copyWith;
+  $AvatarResponseCopyWith<AvatarResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -491,25 +475,28 @@ class _$AvatarResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object thumbnail = freezed,
-    Object medium = freezed,
-    Object original = freezed,
+    Object? thumbnail = freezed,
+    Object? medium = freezed,
+    Object? original = freezed,
   }) {
     return _then(_value.copyWith(
       thumbnail: thumbnail == freezed
           ? _value.thumbnail
-          : thumbnail as ThumbnailResponse,
-      medium: medium == freezed ? _value.medium : medium as MediumResponse,
-      original:
-          original == freezed ? _value.original : original as ThumbnailResponse,
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as ThumbnailResponse,
+      medium: medium == freezed
+          ? _value.medium
+          : medium // ignore: cast_nullable_to_non_nullable
+              as MediumResponse,
+      original: original == freezed
+          ? _value.original
+          : original // ignore: cast_nullable_to_non_nullable
+              as ThumbnailResponse,
     ));
   }
 
   @override
   $ThumbnailResponseCopyWith<$Res> get thumbnail {
-    if (_value.thumbnail == null) {
-      return null;
-    }
     return $ThumbnailResponseCopyWith<$Res>(_value.thumbnail, (value) {
       return _then(_value.copyWith(thumbnail: value));
     });
@@ -517,9 +504,6 @@ class _$AvatarResponseCopyWithImpl<$Res>
 
   @override
   $MediumResponseCopyWith<$Res> get medium {
-    if (_value.medium == null) {
-      return null;
-    }
     return $MediumResponseCopyWith<$Res>(_value.medium, (value) {
       return _then(_value.copyWith(medium: value));
     });
@@ -527,9 +511,6 @@ class _$AvatarResponseCopyWithImpl<$Res>
 
   @override
   $ThumbnailResponseCopyWith<$Res> get original {
-    if (_value.original == null) {
-      return null;
-    }
     return $ThumbnailResponseCopyWith<$Res>(_value.original, (value) {
       return _then(_value.copyWith(original: value));
     });
@@ -569,32 +550,34 @@ class __$AvatarResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object thumbnail = freezed,
-    Object medium = freezed,
-    Object original = freezed,
+    Object? thumbnail = freezed,
+    Object? medium = freezed,
+    Object? original = freezed,
   }) {
     return _then(_AvatarResponse(
-      thumbnail: thumbnail == freezed
+      thumbnail == freezed
           ? _value.thumbnail
-          : thumbnail as ThumbnailResponse,
-      medium: medium == freezed ? _value.medium : medium as MediumResponse,
-      original:
-          original == freezed ? _value.original : original as ThumbnailResponse,
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as ThumbnailResponse,
+      medium == freezed
+          ? _value.medium
+          : medium // ignore: cast_nullable_to_non_nullable
+              as MediumResponse,
+      original == freezed
+          ? _value.original
+          : original // ignore: cast_nullable_to_non_nullable
+              as ThumbnailResponse,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_AvatarResponse implements _AvatarResponse {
   const _$_AvatarResponse(
-      {@required @JsonKey(name: 'thumbnail') this.thumbnail,
-      @required @JsonKey(name: 'medium') this.medium,
-      @required @JsonKey(name: 'original') this.original})
-      : assert(thumbnail != null),
-        assert(medium != null),
-        assert(original != null);
+      @JsonKey(name: 'thumbnail') this.thumbnail,
+      @JsonKey(name: 'medium') this.medium,
+      @JsonKey(name: 'original') this.original);
 
   factory _$_AvatarResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_AvatarResponseFromJson(json);
@@ -648,9 +631,9 @@ class _$_AvatarResponse implements _AvatarResponse {
 
 abstract class _AvatarResponse implements AvatarResponse {
   const factory _AvatarResponse(
-          {@required @JsonKey(name: 'thumbnail') ThumbnailResponse thumbnail,
-          @required @JsonKey(name: 'medium') MediumResponse medium,
-          @required @JsonKey(name: 'original') ThumbnailResponse original}) =
+          @JsonKey(name: 'thumbnail') ThumbnailResponse thumbnail,
+          @JsonKey(name: 'medium') MediumResponse medium,
+          @JsonKey(name: 'original') ThumbnailResponse original) =
       _$_AvatarResponse;
 
   factory _AvatarResponse.fromJson(Map<String, dynamic> json) =
@@ -658,16 +641,17 @@ abstract class _AvatarResponse implements AvatarResponse {
 
   @override
   @JsonKey(name: 'thumbnail')
-  ThumbnailResponse get thumbnail;
+  ThumbnailResponse get thumbnail => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'medium')
-  MediumResponse get medium;
+  MediumResponse get medium => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'original')
-  ThumbnailResponse get original;
+  ThumbnailResponse get original => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AvatarResponseCopyWith<_AvatarResponse> get copyWith;
+  _$AvatarResponseCopyWith<_AvatarResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 ThumbnailResponse _$ThumbnailResponseFromJson(Map<String, dynamic> json) {
@@ -678,36 +662,33 @@ ThumbnailResponse _$ThumbnailResponseFromJson(Map<String, dynamic> json) {
 class _$ThumbnailResponseTearOff {
   const _$ThumbnailResponseTearOff();
 
-// ignore: unused_element
   _ThumbnailResponse call(
-      {@required @JsonKey(name: 'id') int id,
-      @required @JsonKey(name: 'url') String url}) {
+      @JsonKey(name: 'id') int id, @JsonKey(name: 'url') String url) {
     return _ThumbnailResponse(
-      id: id,
-      url: url,
+      id,
+      url,
     );
   }
 
-// ignore: unused_element
   ThumbnailResponse fromJson(Map<String, Object> json) {
     return ThumbnailResponse.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ThumbnailResponse = _$ThumbnailResponseTearOff();
 
 /// @nodoc
 mixin _$ThumbnailResponse {
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'url')
-  String get url;
+  String get url => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ThumbnailResponseCopyWith<ThumbnailResponse> get copyWith;
+  $ThumbnailResponseCopyWith<ThumbnailResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -729,12 +710,18 @@ class _$ThumbnailResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object url = freezed,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as int,
-      url: url == freezed ? _value.url : url as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -762,25 +749,27 @@ class __$ThumbnailResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object url = freezed,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
     return _then(_ThumbnailResponse(
-      id: id == freezed ? _value.id : id as int,
-      url: url == freezed ? _value.url : url as String,
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ThumbnailResponse implements _ThumbnailResponse {
   const _$_ThumbnailResponse(
-      {@required @JsonKey(name: 'id') this.id,
-      @required @JsonKey(name: 'url') this.url})
-      : assert(id != null),
-        assert(url != null);
+      @JsonKey(name: 'id') this.id, @JsonKey(name: 'url') this.url);
 
   factory _$_ThumbnailResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_ThumbnailResponseFromJson(json);
@@ -826,21 +815,22 @@ class _$_ThumbnailResponse implements _ThumbnailResponse {
 
 abstract class _ThumbnailResponse implements ThumbnailResponse {
   const factory _ThumbnailResponse(
-      {@required @JsonKey(name: 'id') int id,
-      @required @JsonKey(name: 'url') String url}) = _$_ThumbnailResponse;
+          @JsonKey(name: 'id') int id, @JsonKey(name: 'url') String url) =
+      _$_ThumbnailResponse;
 
   factory _ThumbnailResponse.fromJson(Map<String, dynamic> json) =
       _$_ThumbnailResponse.fromJson;
 
   @override
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'url')
-  String get url;
+  String get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ThumbnailResponseCopyWith<_ThumbnailResponse> get copyWith;
+  _$ThumbnailResponseCopyWith<_ThumbnailResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 MediumResponse _$MediumResponseFromJson(Map<String, dynamic> json) {
@@ -851,36 +841,33 @@ MediumResponse _$MediumResponseFromJson(Map<String, dynamic> json) {
 class _$MediumResponseTearOff {
   const _$MediumResponseTearOff();
 
-// ignore: unused_element
   _MediumResponse call(
-      {@required @JsonKey(name: 'id') int id,
-      @required @JsonKey(name: 'url') String url}) {
+      @JsonKey(name: 'id') int id, @JsonKey(name: 'url') String url) {
     return _MediumResponse(
-      id: id,
-      url: url,
+      id,
+      url,
     );
   }
 
-// ignore: unused_element
   MediumResponse fromJson(Map<String, Object> json) {
     return MediumResponse.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $MediumResponse = _$MediumResponseTearOff();
 
 /// @nodoc
 mixin _$MediumResponse {
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'url')
-  String get url;
+  String get url => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MediumResponseCopyWith<MediumResponse> get copyWith;
+  $MediumResponseCopyWith<MediumResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -902,12 +889,18 @@ class _$MediumResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object url = freezed,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as int,
-      url: url == freezed ? _value.url : url as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -935,25 +928,27 @@ class __$MediumResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object url = freezed,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
     return _then(_MediumResponse(
-      id: id == freezed ? _value.id : id as int,
-      url: url == freezed ? _value.url : url as String,
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_MediumResponse implements _MediumResponse {
   const _$_MediumResponse(
-      {@required @JsonKey(name: 'id') this.id,
-      @required @JsonKey(name: 'url') this.url})
-      : assert(id != null),
-        assert(url != null);
+      @JsonKey(name: 'id') this.id, @JsonKey(name: 'url') this.url);
 
   factory _$_MediumResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_MediumResponseFromJson(json);
@@ -999,21 +994,22 @@ class _$_MediumResponse implements _MediumResponse {
 
 abstract class _MediumResponse implements MediumResponse {
   const factory _MediumResponse(
-      {@required @JsonKey(name: 'id') int id,
-      @required @JsonKey(name: 'url') String url}) = _$_MediumResponse;
+          @JsonKey(name: 'id') int id, @JsonKey(name: 'url') String url) =
+      _$_MediumResponse;
 
   factory _MediumResponse.fromJson(Map<String, dynamic> json) =
       _$_MediumResponse.fromJson;
 
   @override
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'url')
-  String get url;
+  String get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MediumResponseCopyWith<_MediumResponse> get copyWith;
+  _$MediumResponseCopyWith<_MediumResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 OriginalResponse _$OriginalResponseFromJson(Map<String, dynamic> json) {
@@ -1024,36 +1020,33 @@ OriginalResponse _$OriginalResponseFromJson(Map<String, dynamic> json) {
 class _$OriginalResponseTearOff {
   const _$OriginalResponseTearOff();
 
-// ignore: unused_element
   _OriginalResponse call(
-      {@required @JsonKey(name: 'id') int id,
-      @required @JsonKey(name: 'url') String url}) {
+      @JsonKey(name: 'id') int id, @JsonKey(name: 'url') String url) {
     return _OriginalResponse(
-      id: id,
-      url: url,
+      id,
+      url,
     );
   }
 
-// ignore: unused_element
   OriginalResponse fromJson(Map<String, Object> json) {
     return OriginalResponse.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $OriginalResponse = _$OriginalResponseTearOff();
 
 /// @nodoc
 mixin _$OriginalResponse {
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'url')
-  String get url;
+  String get url => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $OriginalResponseCopyWith<OriginalResponse> get copyWith;
+  $OriginalResponseCopyWith<OriginalResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1075,12 +1068,18 @@ class _$OriginalResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object url = freezed,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as int,
-      url: url == freezed ? _value.url : url as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1108,25 +1107,27 @@ class __$OriginalResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object url = freezed,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
     return _then(_OriginalResponse(
-      id: id == freezed ? _value.id : id as int,
-      url: url == freezed ? _value.url : url as String,
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_OriginalResponse implements _OriginalResponse {
   const _$_OriginalResponse(
-      {@required @JsonKey(name: 'id') this.id,
-      @required @JsonKey(name: 'url') this.url})
-      : assert(id != null),
-        assert(url != null);
+      @JsonKey(name: 'id') this.id, @JsonKey(name: 'url') this.url);
 
   factory _$_OriginalResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_OriginalResponseFromJson(json);
@@ -1172,21 +1173,22 @@ class _$_OriginalResponse implements _OriginalResponse {
 
 abstract class _OriginalResponse implements OriginalResponse {
   const factory _OriginalResponse(
-      {@required @JsonKey(name: 'id') int id,
-      @required @JsonKey(name: 'url') String url}) = _$_OriginalResponse;
+          @JsonKey(name: 'id') int id, @JsonKey(name: 'url') String url) =
+      _$_OriginalResponse;
 
   factory _OriginalResponse.fromJson(Map<String, dynamic> json) =
       _$_OriginalResponse.fromJson;
 
   @override
   @JsonKey(name: 'id')
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'url')
-  String get url;
+  String get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$OriginalResponseCopyWith<_OriginalResponse> get copyWith;
+  _$OriginalResponseCopyWith<_OriginalResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 UserRequest _$UserRequestFromJson(Map<String, dynamic> json) {
@@ -1197,32 +1199,29 @@ UserRequest _$UserRequestFromJson(Map<String, dynamic> json) {
 class _$UserRequestTearOff {
   const _$UserRequestTearOff();
 
-// ignore: unused_element
-  _UserRequest call(
-      {@required @JsonKey(name: 'phone_number') String phoneNumber}) {
+  _UserRequest call(@JsonKey(name: 'phone_number') String phoneNumber) {
     return _UserRequest(
-      phoneNumber: phoneNumber,
+      phoneNumber,
     );
   }
 
-// ignore: unused_element
   UserRequest fromJson(Map<String, Object> json) {
     return UserRequest.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $UserRequest = _$UserRequestTearOff();
 
 /// @nodoc
 mixin _$UserRequest {
   @JsonKey(name: 'phone_number')
-  String get phoneNumber;
+  String get phoneNumber => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserRequestCopyWith<UserRequest> get copyWith;
+  $UserRequestCopyWith<UserRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1243,11 +1242,13 @@ class _$UserRequestCopyWithImpl<$Res> implements $UserRequestCopyWith<$Res> {
 
   @override
   $Res call({
-    Object phoneNumber = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      phoneNumber:
-          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1274,22 +1275,21 @@ class __$UserRequestCopyWithImpl<$Res> extends _$UserRequestCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object phoneNumber = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_UserRequest(
-      phoneNumber:
-          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_UserRequest implements _UserRequest {
-  const _$_UserRequest(
-      {@required @JsonKey(name: 'phone_number') this.phoneNumber})
-      : assert(phoneNumber != null);
+  const _$_UserRequest(@JsonKey(name: 'phone_number') this.phoneNumber);
 
   factory _$_UserRequest.fromJson(Map<String, dynamic> json) =>
       _$_$_UserRequestFromJson(json);
@@ -1329,18 +1329,18 @@ class _$_UserRequest implements _UserRequest {
 
 abstract class _UserRequest implements UserRequest {
   const factory _UserRequest(
-          {@required @JsonKey(name: 'phone_number') String phoneNumber}) =
-      _$_UserRequest;
+      @JsonKey(name: 'phone_number') String phoneNumber) = _$_UserRequest;
 
   factory _UserRequest.fromJson(Map<String, dynamic> json) =
       _$_UserRequest.fromJson;
 
   @override
   @JsonKey(name: 'phone_number')
-  String get phoneNumber;
+  String get phoneNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserRequestCopyWith<_UserRequest> get copyWith;
+  _$UserRequestCopyWith<_UserRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 UserRegister _$UserRegisterFromJson(Map<String, dynamic> json) {
@@ -1351,44 +1351,42 @@ UserRegister _$UserRegisterFromJson(Map<String, dynamic> json) {
 class _$UserRegisterTearOff {
   const _$UserRegisterTearOff();
 
-// ignore: unused_element
   _UserRegister call(
-      {@required @JsonKey(name: 'first_name') String firstName,
-      @required @JsonKey(name: 'last_name') String lastName,
-      @required @JsonKey(name: 'nickname') String nickname,
-      @required @JsonKey(name: 'phone_number') String phoneNumber}) {
+      @JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      @JsonKey(name: 'nickname') String nickname,
+      @JsonKey(name: 'phone_number') String phoneNumber) {
     return _UserRegister(
-      firstName: firstName,
-      lastName: lastName,
-      nickname: nickname,
-      phoneNumber: phoneNumber,
+      firstName,
+      lastName,
+      nickname,
+      phoneNumber,
     );
   }
 
-// ignore: unused_element
   UserRegister fromJson(Map<String, Object> json) {
     return UserRegister.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $UserRegister = _$UserRegisterTearOff();
 
 /// @nodoc
 mixin _$UserRegister {
   @JsonKey(name: 'first_name')
-  String get firstName;
+  String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
-  String get lastName;
+  String get lastName => throw _privateConstructorUsedError;
   @JsonKey(name: 'nickname')
-  String get nickname;
+  String get nickname => throw _privateConstructorUsedError;
   @JsonKey(name: 'phone_number')
-  String get phoneNumber;
+  String get phoneNumber => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserRegisterCopyWith<UserRegister> get copyWith;
+  $UserRegisterCopyWith<UserRegister> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1413,17 +1411,28 @@ class _$UserRegisterCopyWithImpl<$Res> implements $UserRegisterCopyWith<$Res> {
 
   @override
   $Res call({
-    Object firstName = freezed,
-    Object lastName = freezed,
-    Object nickname = freezed,
-    Object phoneNumber = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
+    Object? nickname = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      firstName: firstName == freezed ? _value.firstName : firstName as String,
-      lastName: lastName == freezed ? _value.lastName : lastName as String,
-      nickname: nickname == freezed ? _value.nickname : nickname as String,
-      phoneNumber:
-          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      firstName: firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: lastName == freezed
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1454,34 +1463,40 @@ class __$UserRegisterCopyWithImpl<$Res> extends _$UserRegisterCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object firstName = freezed,
-    Object lastName = freezed,
-    Object nickname = freezed,
-    Object phoneNumber = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
+    Object? nickname = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_UserRegister(
-      firstName: firstName == freezed ? _value.firstName : firstName as String,
-      lastName: lastName == freezed ? _value.lastName : lastName as String,
-      nickname: nickname == freezed ? _value.nickname : nickname as String,
-      phoneNumber:
-          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      firstName == freezed
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName == freezed
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_UserRegister implements _UserRegister {
   const _$_UserRegister(
-      {@required @JsonKey(name: 'first_name') this.firstName,
-      @required @JsonKey(name: 'last_name') this.lastName,
-      @required @JsonKey(name: 'nickname') this.nickname,
-      @required @JsonKey(name: 'phone_number') this.phoneNumber})
-      : assert(firstName != null),
-        assert(lastName != null),
-        assert(nickname != null),
-        assert(phoneNumber != null);
+      @JsonKey(name: 'first_name') this.firstName,
+      @JsonKey(name: 'last_name') this.lastName,
+      @JsonKey(name: 'nickname') this.nickname,
+      @JsonKey(name: 'phone_number') this.phoneNumber);
 
   factory _$_UserRegister.fromJson(Map<String, dynamic> json) =>
       _$_$_UserRegisterFromJson(json);
@@ -1543,30 +1558,30 @@ class _$_UserRegister implements _UserRegister {
 
 abstract class _UserRegister implements UserRegister {
   const factory _UserRegister(
-          {@required @JsonKey(name: 'first_name') String firstName,
-          @required @JsonKey(name: 'last_name') String lastName,
-          @required @JsonKey(name: 'nickname') String nickname,
-          @required @JsonKey(name: 'phone_number') String phoneNumber}) =
-      _$_UserRegister;
+      @JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      @JsonKey(name: 'nickname') String nickname,
+      @JsonKey(name: 'phone_number') String phoneNumber) = _$_UserRegister;
 
   factory _UserRegister.fromJson(Map<String, dynamic> json) =
       _$_UserRegister.fromJson;
 
   @override
   @JsonKey(name: 'first_name')
-  String get firstName;
+  String get firstName => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'last_name')
-  String get lastName;
+  String get lastName => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'nickname')
-  String get nickname;
+  String get nickname => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'phone_number')
-  String get phoneNumber;
+  String get phoneNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserRegisterCopyWith<_UserRegister> get copyWith;
+  _$UserRegisterCopyWith<_UserRegister> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Errors _$ErrorsFromJson(Map<String, dynamic> json) {
@@ -1577,31 +1592,28 @@ Errors _$ErrorsFromJson(Map<String, dynamic> json) {
 class _$ErrorsTearOff {
   const _$ErrorsTearOff();
 
-// ignore: unused_element
-  _Errors call({@JsonKey(name: 'errors') List<String> errors}) {
+  _Errors call(@JsonKey(name: 'errors') List<String> errors) {
     return _Errors(
-      errors: errors,
+      errors,
     );
   }
 
-// ignore: unused_element
   Errors fromJson(Map<String, Object> json) {
     return Errors.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Errors = _$ErrorsTearOff();
 
 /// @nodoc
 mixin _$Errors {
   @JsonKey(name: 'errors')
-  List<String> get errors;
+  List<String> get errors => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ErrorsCopyWith<Errors> get copyWith;
+  $ErrorsCopyWith<Errors> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1621,10 +1633,13 @@ class _$ErrorsCopyWithImpl<$Res> implements $ErrorsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object errors = freezed,
+    Object? errors = freezed,
   }) {
     return _then(_value.copyWith(
-      errors: errors == freezed ? _value.errors : errors as List<String>,
+      errors: errors == freezed
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -1648,19 +1663,21 @@ class __$ErrorsCopyWithImpl<$Res> extends _$ErrorsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object errors = freezed,
+    Object? errors = freezed,
   }) {
     return _then(_Errors(
-      errors: errors == freezed ? _value.errors : errors as List<String>,
+      errors == freezed
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Errors implements _Errors {
-  const _$_Errors({@JsonKey(name: 'errors') this.errors});
+  const _$_Errors(@JsonKey(name: 'errors') this.errors);
 
   factory _$_Errors.fromJson(Map<String, dynamic> json) =>
       _$_$_ErrorsFromJson(json);
@@ -1698,15 +1715,15 @@ class _$_Errors implements _Errors {
 }
 
 abstract class _Errors implements Errors {
-  const factory _Errors({@JsonKey(name: 'errors') List<String> errors}) =
+  const factory _Errors(@JsonKey(name: 'errors') List<String> errors) =
       _$_Errors;
 
   factory _Errors.fromJson(Map<String, dynamic> json) = _$_Errors.fromJson;
 
   @override
   @JsonKey(name: 'errors')
-  List<String> get errors;
+  List<String> get errors => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ErrorsCopyWith<_Errors> get copyWith;
+  _$ErrorsCopyWith<_Errors> get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'sms_code_form_bloc.dart';
 
@@ -9,60 +9,63 @@ part of 'sms_code_form_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$SmsCodeFormEventTearOff {
   const _$SmsCodeFormEventTearOff();
 
-// ignore: unused_element
   SmsCodeChanged smsCodeChanged(String smsCode) {
     return SmsCodeChanged(
       smsCode,
     );
   }
 
-// ignore: unused_element
   ResendCode resendCode() {
     return const ResendCode();
   }
 
-// ignore: unused_element
   VerifyCode verifyCodePressed() {
     return const VerifyCode();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $SmsCodeFormEvent = _$SmsCodeFormEventTearOff();
 
 /// @nodoc
 mixin _$SmsCodeFormEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult smsCodeChanged(String smsCode),
-    @required TResult resendCode(),
-    @required TResult verifyCodePressed(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(String smsCode) smsCodeChanged,
+    required TResult Function() resendCode,
+    required TResult Function() verifyCodePressed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult smsCodeChanged(String smsCode),
-    TResult resendCode(),
-    TResult verifyCodePressed(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String smsCode)? smsCodeChanged,
+    TResult Function()? resendCode,
+    TResult Function()? verifyCodePressed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult smsCodeChanged(SmsCodeChanged value),
-    @required TResult resendCode(ResendCode value),
-    @required TResult verifyCodePressed(VerifyCode value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(SmsCodeChanged value) smsCodeChanged,
+    required TResult Function(ResendCode value) resendCode,
+    required TResult Function(VerifyCode value) verifyCodePressed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult smsCodeChanged(SmsCodeChanged value),
-    TResult resendCode(ResendCode value),
-    TResult verifyCodePressed(VerifyCode value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SmsCodeChanged value)? smsCodeChanged,
+    TResult Function(ResendCode value)? resendCode,
+    TResult Function(VerifyCode value)? verifyCodePressed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -103,17 +106,21 @@ class _$SmsCodeChangedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object smsCode = freezed,
+    Object? smsCode = freezed,
   }) {
     return _then(SmsCodeChanged(
-      smsCode == freezed ? _value.smsCode : smsCode as String,
+      smsCode == freezed
+          ? _value.smsCode
+          : smsCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$SmsCodeChanged implements SmsCodeChanged {
-  const _$SmsCodeChanged(this.smsCode) : assert(smsCode != null);
+  const _$SmsCodeChanged(this.smsCode);
 
   @override
   final String smsCode;
@@ -142,26 +149,22 @@ class _$SmsCodeChanged implements SmsCodeChanged {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult smsCodeChanged(String smsCode),
-    @required TResult resendCode(),
-    @required TResult verifyCodePressed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String smsCode) smsCodeChanged,
+    required TResult Function() resendCode,
+    required TResult Function() verifyCodePressed,
   }) {
-    assert(smsCodeChanged != null);
-    assert(resendCode != null);
-    assert(verifyCodePressed != null);
     return smsCodeChanged(smsCode);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult smsCodeChanged(String smsCode),
-    TResult resendCode(),
-    TResult verifyCodePressed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String smsCode)? smsCodeChanged,
+    TResult Function()? resendCode,
+    TResult Function()? verifyCodePressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (smsCodeChanged != null) {
       return smsCodeChanged(smsCode);
     }
@@ -170,26 +173,22 @@ class _$SmsCodeChanged implements SmsCodeChanged {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult smsCodeChanged(SmsCodeChanged value),
-    @required TResult resendCode(ResendCode value),
-    @required TResult verifyCodePressed(VerifyCode value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SmsCodeChanged value) smsCodeChanged,
+    required TResult Function(ResendCode value) resendCode,
+    required TResult Function(VerifyCode value) verifyCodePressed,
   }) {
-    assert(smsCodeChanged != null);
-    assert(resendCode != null);
-    assert(verifyCodePressed != null);
     return smsCodeChanged(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult smsCodeChanged(SmsCodeChanged value),
-    TResult resendCode(ResendCode value),
-    TResult verifyCodePressed(VerifyCode value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SmsCodeChanged value)? smsCodeChanged,
+    TResult Function(ResendCode value)? resendCode,
+    TResult Function(VerifyCode value)? verifyCodePressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (smsCodeChanged != null) {
       return smsCodeChanged(this);
     }
@@ -200,9 +199,10 @@ class _$SmsCodeChanged implements SmsCodeChanged {
 abstract class SmsCodeChanged implements SmsCodeFormEvent {
   const factory SmsCodeChanged(String smsCode) = _$SmsCodeChanged;
 
-  String get smsCode;
+  String get smsCode => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SmsCodeChangedCopyWith<SmsCodeChanged> get copyWith;
+  $SmsCodeChangedCopyWith<SmsCodeChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -224,6 +224,7 @@ class _$ResendCodeCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ResendCode implements ResendCode {
   const _$ResendCode();
 
@@ -242,26 +243,22 @@ class _$ResendCode implements ResendCode {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult smsCodeChanged(String smsCode),
-    @required TResult resendCode(),
-    @required TResult verifyCodePressed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String smsCode) smsCodeChanged,
+    required TResult Function() resendCode,
+    required TResult Function() verifyCodePressed,
   }) {
-    assert(smsCodeChanged != null);
-    assert(resendCode != null);
-    assert(verifyCodePressed != null);
     return resendCode();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult smsCodeChanged(String smsCode),
-    TResult resendCode(),
-    TResult verifyCodePressed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String smsCode)? smsCodeChanged,
+    TResult Function()? resendCode,
+    TResult Function()? verifyCodePressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (resendCode != null) {
       return resendCode();
     }
@@ -270,26 +267,22 @@ class _$ResendCode implements ResendCode {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult smsCodeChanged(SmsCodeChanged value),
-    @required TResult resendCode(ResendCode value),
-    @required TResult verifyCodePressed(VerifyCode value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SmsCodeChanged value) smsCodeChanged,
+    required TResult Function(ResendCode value) resendCode,
+    required TResult Function(VerifyCode value) verifyCodePressed,
   }) {
-    assert(smsCodeChanged != null);
-    assert(resendCode != null);
-    assert(verifyCodePressed != null);
     return resendCode(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult smsCodeChanged(SmsCodeChanged value),
-    TResult resendCode(ResendCode value),
-    TResult verifyCodePressed(VerifyCode value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SmsCodeChanged value)? smsCodeChanged,
+    TResult Function(ResendCode value)? resendCode,
+    TResult Function(VerifyCode value)? verifyCodePressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (resendCode != null) {
       return resendCode(this);
     }
@@ -320,6 +313,7 @@ class _$VerifyCodeCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$VerifyCode implements VerifyCode {
   const _$VerifyCode();
 
@@ -338,26 +332,22 @@ class _$VerifyCode implements VerifyCode {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult smsCodeChanged(String smsCode),
-    @required TResult resendCode(),
-    @required TResult verifyCodePressed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String smsCode) smsCodeChanged,
+    required TResult Function() resendCode,
+    required TResult Function() verifyCodePressed,
   }) {
-    assert(smsCodeChanged != null);
-    assert(resendCode != null);
-    assert(verifyCodePressed != null);
     return verifyCodePressed();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult smsCodeChanged(String smsCode),
-    TResult resendCode(),
-    TResult verifyCodePressed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String smsCode)? smsCodeChanged,
+    TResult Function()? resendCode,
+    TResult Function()? verifyCodePressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (verifyCodePressed != null) {
       return verifyCodePressed();
     }
@@ -366,26 +356,22 @@ class _$VerifyCode implements VerifyCode {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult smsCodeChanged(SmsCodeChanged value),
-    @required TResult resendCode(ResendCode value),
-    @required TResult verifyCodePressed(VerifyCode value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SmsCodeChanged value) smsCodeChanged,
+    required TResult Function(ResendCode value) resendCode,
+    required TResult Function(VerifyCode value) verifyCodePressed,
   }) {
-    assert(smsCodeChanged != null);
-    assert(resendCode != null);
-    assert(verifyCodePressed != null);
     return verifyCodePressed(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult smsCodeChanged(SmsCodeChanged value),
-    TResult resendCode(ResendCode value),
-    TResult verifyCodePressed(VerifyCode value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SmsCodeChanged value)? smsCodeChanged,
+    TResult Function(ResendCode value)? resendCode,
+    TResult Function(VerifyCode value)? verifyCodePressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (verifyCodePressed != null) {
       return verifyCodePressed(this);
     }
@@ -401,34 +387,34 @@ abstract class VerifyCode implements SmsCodeFormEvent {
 class _$SmsCodeFormStateTearOff {
   const _$SmsCodeFormStateTearOff();
 
-// ignore: unused_element
   _SmsCodeFormState call(
-      {@required SmsCode smsCode,
-      @required bool isSubmitting,
-      @required bool showErrorMessages,
-      @required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
+      SmsCode smsCode,
+      bool isSubmitting,
+      bool showErrorMessages,
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) {
     return _SmsCodeFormState(
-      smsCode: smsCode,
-      isSubmitting: isSubmitting,
-      showErrorMessages: showErrorMessages,
-      authFailureOrSuccessOption: authFailureOrSuccessOption,
+      smsCode,
+      isSubmitting,
+      showErrorMessages,
+      authFailureOrSuccessOption,
     );
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $SmsCodeFormState = _$SmsCodeFormStateTearOff();
 
 /// @nodoc
 mixin _$SmsCodeFormState {
-  SmsCode get smsCode;
-  bool get isSubmitting;
-  bool get showErrorMessages;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  SmsCode get smsCode => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SmsCodeFormStateCopyWith<SmsCodeFormState> get copyWith;
+  $SmsCodeFormStateCopyWith<SmsCodeFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -454,21 +440,28 @@ class _$SmsCodeFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object smsCode = freezed,
-    Object isSubmitting = freezed,
-    Object showErrorMessages = freezed,
-    Object authFailureOrSuccessOption = freezed,
+    Object? smsCode = freezed,
+    Object? isSubmitting = freezed,
+    Object? showErrorMessages = freezed,
+    Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
-      smsCode: smsCode == freezed ? _value.smsCode : smsCode as SmsCode,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      smsCode: smsCode == freezed
+          ? _value.smsCode
+          : smsCode // ignore: cast_nullable_to_non_nullable
+              as SmsCode,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
@@ -500,36 +493,37 @@ class __$SmsCodeFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object smsCode = freezed,
-    Object isSubmitting = freezed,
-    Object showErrorMessages = freezed,
-    Object authFailureOrSuccessOption = freezed,
+    Object? smsCode = freezed,
+    Object? isSubmitting = freezed,
+    Object? showErrorMessages = freezed,
+    Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_SmsCodeFormState(
-      smsCode: smsCode == freezed ? _value.smsCode : smsCode as SmsCode,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
-      showErrorMessages: showErrorMessages == freezed
+      smsCode == freezed
+          ? _value.smsCode
+          : smsCode // ignore: cast_nullable_to_non_nullable
+              as SmsCode,
+      isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
-      authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_SmsCodeFormState implements _SmsCodeFormState {
-  const _$_SmsCodeFormState(
-      {@required this.smsCode,
-      @required this.isSubmitting,
-      @required this.showErrorMessages,
-      @required this.authFailureOrSuccessOption})
-      : assert(smsCode != null),
-        assert(isSubmitting != null),
-        assert(showErrorMessages != null),
-        assert(authFailureOrSuccessOption != null);
+  const _$_SmsCodeFormState(this.smsCode, this.isSubmitting,
+      this.showErrorMessages, this.authFailureOrSuccessOption);
 
   @override
   final SmsCode smsCode;
@@ -581,25 +575,23 @@ class _$_SmsCodeFormState implements _SmsCodeFormState {
 
 abstract class _SmsCodeFormState implements SmsCodeFormState {
   const factory _SmsCodeFormState(
-          {@required
-              SmsCode smsCode,
-          @required
-              bool isSubmitting,
-          @required
-              bool showErrorMessages,
-          @required
-              Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) =
+          SmsCode smsCode,
+          bool isSubmitting,
+          bool showErrorMessages,
+          Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) =
       _$_SmsCodeFormState;
 
   @override
-  SmsCode get smsCode;
+  SmsCode get smsCode => throw _privateConstructorUsedError;
   @override
-  bool get isSubmitting;
+  bool get isSubmitting => throw _privateConstructorUsedError;
   @override
-  bool get showErrorMessages;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SmsCodeFormStateCopyWith<_SmsCodeFormState> get copyWith;
+  _$SmsCodeFormStateCopyWith<_SmsCodeFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

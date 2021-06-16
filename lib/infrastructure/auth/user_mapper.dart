@@ -5,14 +5,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 extension LocalUserDomainX on UserResponse {
   LocalUser.User toDomain() {
+    ThumbAvatar? thumb;
+    MediumAvatar? medium;
+    OriginalAvatar? original;
+
+    if (avatar != null) {
+      thumb = ThumbAvatar(avatar!.thumbnail.url);
+      medium = MediumAvatar(avatar!.thumbnail.url);
+      original = OriginalAvatar(avatar!.thumbnail.url);
+    }
+
     return LocalUser.User(
-      id: UniqueId.fromUniqueString(id.toString()),
-      name: FullName('$firstName $lastName'),
-      nickname: Nickname(nickname),
-      phoneNumber: PhoneNumber(phoneNumber),
-      thumbAvatar: ThumbAvatar(avatar.thumbnail.url),
-      mediumAvatar: MediumAvatar(avatar.medium.url),
-      originalAvatar: OriginalAvatar(avatar.original.url),
+      UniqueId.fromUniqueString(id.toString()),
+      FullName('$firstName $lastName'),
+      Nickname(nickname),
+      PhoneNumber(phoneNumber),
+      thumb,
+      medium,
+      original,
     );
   }
 }

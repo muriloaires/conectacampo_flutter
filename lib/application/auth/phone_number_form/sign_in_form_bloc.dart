@@ -10,9 +10,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 part 'sign_in_form_bloc.freezed.dart';
-
 part 'sign_in_form_event.dart';
-
 part 'sign_in_form_state.dart';
 
 @injectable
@@ -30,14 +28,13 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           phoneNumber: PhoneNumber(e.phoneString),
           authFailureOrSuccessOption: none());
     }, verifyPhoneNumberPressed: (e) async* {
-      Either<AuthFailure, Unit> failureOrSuccess;
+      Either<AuthFailure, Unit> failureOrSuccess = right(unit);
       if (state.phoneNumber.isValid()) {
         yield state.copyWith(
           isSubmitting: true,
           authFailureOrSuccessOption: none(),
         );
-        failureOrSuccess =
-            await _authFacade.requestSmsCode(phoneNumber: state.phoneNumber);
+        failureOrSuccess = await _authFacade.requestSmsCode(state.phoneNumber);
       }
       yield state.copyWith(
         isSubmitting: false,

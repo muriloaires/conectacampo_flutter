@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'place.dart';
 
@@ -9,38 +9,36 @@ part of 'place.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$PlaceTearOff {
   const _$PlaceTearOff();
 
-// ignore: unused_element
   _Place call(
-      {@required UniqueId id,
-      @required PlaceName name,
-      @required StatePlace state,
-      @required PlaceAddress address}) {
+      UniqueId id, PlaceName name, StatePlace state, PlaceAddress address) {
     return _Place(
-      id: id,
-      name: name,
-      state: state,
-      address: address,
+      id,
+      name,
+      state,
+      address,
     );
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Place = _$PlaceTearOff();
 
 /// @nodoc
 mixin _$Place {
-  UniqueId get id;
-  PlaceName get name;
-  StatePlace get state;
-  PlaceAddress get address;
+  UniqueId get id => throw _privateConstructorUsedError;
+  PlaceName get name => throw _privateConstructorUsedError;
+  StatePlace get state => throw _privateConstructorUsedError;
+  PlaceAddress get address => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PlaceCopyWith<Place> get copyWith;
+  $PlaceCopyWith<Place> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -61,16 +59,28 @@ class _$PlaceCopyWithImpl<$Res> implements $PlaceCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object state = freezed,
-    Object address = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? state = freezed,
+    Object? address = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as UniqueId,
-      name: name == freezed ? _value.name : name as PlaceName,
-      state: state == freezed ? _value.state : state as StatePlace,
-      address: address == freezed ? _value.address : address as PlaceAddress,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as PlaceName,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as StatePlace,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as PlaceAddress,
     ));
   }
 }
@@ -95,31 +105,36 @@ class __$PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object state = freezed,
-    Object address = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? state = freezed,
+    Object? address = freezed,
   }) {
     return _then(_Place(
-      id: id == freezed ? _value.id : id as UniqueId,
-      name: name == freezed ? _value.name : name as PlaceName,
-      state: state == freezed ? _value.state : state as StatePlace,
-      address: address == freezed ? _value.address : address as PlaceAddress,
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as PlaceName,
+      state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as StatePlace,
+      address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as PlaceAddress,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_Place implements _Place {
-  const _$_Place(
-      {@required this.id,
-      @required this.name,
-      @required this.state,
-      @required this.address})
-      : assert(id != null),
-        assert(name != null),
-        assert(state != null),
-        assert(address != null);
+  const _$_Place(this.id, this.name, this.state, this.address);
 
   @override
   final UniqueId id;
@@ -165,20 +180,18 @@ class _$_Place implements _Place {
 
 abstract class _Place implements Place {
   const factory _Place(
-      {@required UniqueId id,
-      @required PlaceName name,
-      @required StatePlace state,
-      @required PlaceAddress address}) = _$_Place;
+          UniqueId id, PlaceName name, StatePlace state, PlaceAddress address) =
+      _$_Place;
 
   @override
-  UniqueId get id;
+  UniqueId get id => throw _privateConstructorUsedError;
   @override
-  PlaceName get name;
+  PlaceName get name => throw _privateConstructorUsedError;
   @override
-  StatePlace get state;
+  StatePlace get state => throw _privateConstructorUsedError;
   @override
-  PlaceAddress get address;
+  PlaceAddress get address => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlaceCopyWith<_Place> get copyWith;
+  _$PlaceCopyWith<_Place> get copyWith => throw _privateConstructorUsedError;
 }

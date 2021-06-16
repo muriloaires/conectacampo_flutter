@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'places_failure.dart';
 
@@ -9,58 +9,61 @@ part of 'places_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$PlacesFailureTearOff {
   const _$PlacesFailureTearOff();
 
-// ignore: unused_element
   Unauthorized unauthorized() {
     return const Unauthorized();
   }
 
-// ignore: unused_element
   ServerError serverError() {
     return const ServerError();
   }
 
-// ignore: unused_element
   RequestError requestError() {
     return const RequestError();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $PlacesFailure = _$PlacesFailureTearOff();
 
 /// @nodoc
 mixin _$PlacesFailure {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult unauthorized(),
-    @required TResult serverError(),
-    @required TResult requestError(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() unauthorized,
+    required TResult Function() serverError,
+    required TResult Function() requestError,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult unauthorized(),
-    TResult serverError(),
-    TResult requestError(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unauthorized,
+    TResult Function()? serverError,
+    TResult Function()? requestError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult serverError(ServerError value),
-    @required TResult requestError(RequestError value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(RequestError value) requestError,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult unauthorized(Unauthorized value),
-    TResult serverError(ServerError value),
-    TResult requestError(RequestError value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(RequestError value)? requestError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -99,6 +102,7 @@ class _$UnauthorizedCopyWithImpl<$Res> extends _$PlacesFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Unauthorized implements Unauthorized {
   const _$Unauthorized();
 
@@ -117,26 +121,22 @@ class _$Unauthorized implements Unauthorized {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult unauthorized(),
-    @required TResult serverError(),
-    @required TResult requestError(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() unauthorized,
+    required TResult Function() serverError,
+    required TResult Function() requestError,
   }) {
-    assert(unauthorized != null);
-    assert(serverError != null);
-    assert(requestError != null);
     return unauthorized();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult unauthorized(),
-    TResult serverError(),
-    TResult requestError(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unauthorized,
+    TResult Function()? serverError,
+    TResult Function()? requestError,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unauthorized != null) {
       return unauthorized();
     }
@@ -145,26 +145,22 @@ class _$Unauthorized implements Unauthorized {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult serverError(ServerError value),
-    @required TResult requestError(RequestError value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(RequestError value) requestError,
   }) {
-    assert(unauthorized != null);
-    assert(serverError != null);
-    assert(requestError != null);
     return unauthorized(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult unauthorized(Unauthorized value),
-    TResult serverError(ServerError value),
-    TResult requestError(RequestError value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(RequestError value)? requestError,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unauthorized != null) {
       return unauthorized(this);
     }
@@ -195,6 +191,7 @@ class _$ServerErrorCopyWithImpl<$Res> extends _$PlacesFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ServerError implements ServerError {
   const _$ServerError();
 
@@ -213,26 +210,22 @@ class _$ServerError implements ServerError {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult unauthorized(),
-    @required TResult serverError(),
-    @required TResult requestError(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() unauthorized,
+    required TResult Function() serverError,
+    required TResult Function() requestError,
   }) {
-    assert(unauthorized != null);
-    assert(serverError != null);
-    assert(requestError != null);
     return serverError();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult unauthorized(),
-    TResult serverError(),
-    TResult requestError(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unauthorized,
+    TResult Function()? serverError,
+    TResult Function()? requestError,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (serverError != null) {
       return serverError();
     }
@@ -241,26 +234,22 @@ class _$ServerError implements ServerError {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult serverError(ServerError value),
-    @required TResult requestError(RequestError value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(RequestError value) requestError,
   }) {
-    assert(unauthorized != null);
-    assert(serverError != null);
-    assert(requestError != null);
     return serverError(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult unauthorized(Unauthorized value),
-    TResult serverError(ServerError value),
-    TResult requestError(RequestError value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(RequestError value)? requestError,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (serverError != null) {
       return serverError(this);
     }
@@ -291,6 +280,7 @@ class _$RequestErrorCopyWithImpl<$Res> extends _$PlacesFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$RequestError implements RequestError {
   const _$RequestError();
 
@@ -309,26 +299,22 @@ class _$RequestError implements RequestError {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult unauthorized(),
-    @required TResult serverError(),
-    @required TResult requestError(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() unauthorized,
+    required TResult Function() serverError,
+    required TResult Function() requestError,
   }) {
-    assert(unauthorized != null);
-    assert(serverError != null);
-    assert(requestError != null);
     return requestError();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult unauthorized(),
-    TResult serverError(),
-    TResult requestError(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unauthorized,
+    TResult Function()? serverError,
+    TResult Function()? requestError,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (requestError != null) {
       return requestError();
     }
@@ -337,26 +323,22 @@ class _$RequestError implements RequestError {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult unauthorized(Unauthorized value),
-    @required TResult serverError(ServerError value),
-    @required TResult requestError(RequestError value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(RequestError value) requestError,
   }) {
-    assert(unauthorized != null);
-    assert(serverError != null);
-    assert(requestError != null);
     return requestError(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult unauthorized(Unauthorized value),
-    TResult serverError(ServerError value),
-    TResult requestError(RequestError value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(RequestError value)? requestError,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (requestError != null) {
       return requestError(this);
     }

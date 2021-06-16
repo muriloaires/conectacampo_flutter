@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'sign_up_form_bloc.dart';
 
@@ -9,62 +9,65 @@ part of 'sign_up_form_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$SignUpFormBlocEventTearOff {
   const _$SignUpFormBlocEventTearOff();
 
-// ignore: unused_element
   FullNameChanged fullNameChanged(String fullName) {
     return FullNameChanged(
       fullName,
     );
   }
 
-// ignore: unused_element
   NicknameChanged nicknameChanged(String nickname) {
     return NicknameChanged(
       nickname,
     );
   }
 
-// ignore: unused_element
   BtnSignUpPressed btnSignUpPressed() {
     return const BtnSignUpPressed();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $SignUpFormBlocEvent = _$SignUpFormBlocEventTearOff();
 
 /// @nodoc
 mixin _$SignUpFormBlocEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult fullNameChanged(String fullName),
-    @required TResult nicknameChanged(String nickname),
-    @required TResult btnSignUpPressed(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fullName) fullNameChanged,
+    required TResult Function(String nickname) nicknameChanged,
+    required TResult Function() btnSignUpPressed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult fullNameChanged(String fullName),
-    TResult nicknameChanged(String nickname),
-    TResult btnSignUpPressed(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fullName)? fullNameChanged,
+    TResult Function(String nickname)? nicknameChanged,
+    TResult Function()? btnSignUpPressed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult fullNameChanged(FullNameChanged value),
-    @required TResult nicknameChanged(NicknameChanged value),
-    @required TResult btnSignUpPressed(BtnSignUpPressed value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(FullNameChanged value) fullNameChanged,
+    required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult fullNameChanged(FullNameChanged value),
-    TResult nicknameChanged(NicknameChanged value),
-    TResult btnSignUpPressed(BtnSignUpPressed value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FullNameChanged value)? fullNameChanged,
+    TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -105,17 +108,21 @@ class _$FullNameChangedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object fullName = freezed,
+    Object? fullName = freezed,
   }) {
     return _then(FullNameChanged(
-      fullName == freezed ? _value.fullName : fullName as String,
+      fullName == freezed
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$FullNameChanged implements FullNameChanged {
-  const _$FullNameChanged(this.fullName) : assert(fullName != null);
+  const _$FullNameChanged(this.fullName);
 
   @override
   final String fullName;
@@ -145,26 +152,22 @@ class _$FullNameChanged implements FullNameChanged {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult fullNameChanged(String fullName),
-    @required TResult nicknameChanged(String nickname),
-    @required TResult btnSignUpPressed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fullName) fullNameChanged,
+    required TResult Function(String nickname) nicknameChanged,
+    required TResult Function() btnSignUpPressed,
   }) {
-    assert(fullNameChanged != null);
-    assert(nicknameChanged != null);
-    assert(btnSignUpPressed != null);
     return fullNameChanged(fullName);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult fullNameChanged(String fullName),
-    TResult nicknameChanged(String nickname),
-    TResult btnSignUpPressed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fullName)? fullNameChanged,
+    TResult Function(String nickname)? nicknameChanged,
+    TResult Function()? btnSignUpPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (fullNameChanged != null) {
       return fullNameChanged(fullName);
     }
@@ -173,26 +176,22 @@ class _$FullNameChanged implements FullNameChanged {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult fullNameChanged(FullNameChanged value),
-    @required TResult nicknameChanged(NicknameChanged value),
-    @required TResult btnSignUpPressed(BtnSignUpPressed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(FullNameChanged value) fullNameChanged,
+    required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) {
-    assert(fullNameChanged != null);
-    assert(nicknameChanged != null);
-    assert(btnSignUpPressed != null);
     return fullNameChanged(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult fullNameChanged(FullNameChanged value),
-    TResult nicknameChanged(NicknameChanged value),
-    TResult btnSignUpPressed(BtnSignUpPressed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FullNameChanged value)? fullNameChanged,
+    TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (fullNameChanged != null) {
       return fullNameChanged(this);
     }
@@ -203,9 +202,10 @@ class _$FullNameChanged implements FullNameChanged {
 abstract class FullNameChanged implements SignUpFormBlocEvent {
   const factory FullNameChanged(String fullName) = _$FullNameChanged;
 
-  String get fullName;
+  String get fullName => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FullNameChangedCopyWith<FullNameChanged> get copyWith;
+  $FullNameChangedCopyWith<FullNameChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -229,17 +229,21 @@ class _$NicknameChangedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object nickname = freezed,
+    Object? nickname = freezed,
   }) {
     return _then(NicknameChanged(
-      nickname == freezed ? _value.nickname : nickname as String,
+      nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$NicknameChanged implements NicknameChanged {
-  const _$NicknameChanged(this.nickname) : assert(nickname != null);
+  const _$NicknameChanged(this.nickname);
 
   @override
   final String nickname;
@@ -269,26 +273,22 @@ class _$NicknameChanged implements NicknameChanged {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult fullNameChanged(String fullName),
-    @required TResult nicknameChanged(String nickname),
-    @required TResult btnSignUpPressed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fullName) fullNameChanged,
+    required TResult Function(String nickname) nicknameChanged,
+    required TResult Function() btnSignUpPressed,
   }) {
-    assert(fullNameChanged != null);
-    assert(nicknameChanged != null);
-    assert(btnSignUpPressed != null);
     return nicknameChanged(nickname);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult fullNameChanged(String fullName),
-    TResult nicknameChanged(String nickname),
-    TResult btnSignUpPressed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fullName)? fullNameChanged,
+    TResult Function(String nickname)? nicknameChanged,
+    TResult Function()? btnSignUpPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (nicknameChanged != null) {
       return nicknameChanged(nickname);
     }
@@ -297,26 +297,22 @@ class _$NicknameChanged implements NicknameChanged {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult fullNameChanged(FullNameChanged value),
-    @required TResult nicknameChanged(NicknameChanged value),
-    @required TResult btnSignUpPressed(BtnSignUpPressed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(FullNameChanged value) fullNameChanged,
+    required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) {
-    assert(fullNameChanged != null);
-    assert(nicknameChanged != null);
-    assert(btnSignUpPressed != null);
     return nicknameChanged(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult fullNameChanged(FullNameChanged value),
-    TResult nicknameChanged(NicknameChanged value),
-    TResult btnSignUpPressed(BtnSignUpPressed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FullNameChanged value)? fullNameChanged,
+    TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (nicknameChanged != null) {
       return nicknameChanged(this);
     }
@@ -327,9 +323,10 @@ class _$NicknameChanged implements NicknameChanged {
 abstract class NicknameChanged implements SignUpFormBlocEvent {
   const factory NicknameChanged(String nickname) = _$NicknameChanged;
 
-  String get nickname;
+  String get nickname => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NicknameChangedCopyWith<NicknameChanged> get copyWith;
+  $NicknameChangedCopyWith<NicknameChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -352,6 +349,7 @@ class _$BtnSignUpPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$BtnSignUpPressed implements BtnSignUpPressed {
   const _$BtnSignUpPressed();
 
@@ -370,26 +368,22 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult fullNameChanged(String fullName),
-    @required TResult nicknameChanged(String nickname),
-    @required TResult btnSignUpPressed(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fullName) fullNameChanged,
+    required TResult Function(String nickname) nicknameChanged,
+    required TResult Function() btnSignUpPressed,
   }) {
-    assert(fullNameChanged != null);
-    assert(nicknameChanged != null);
-    assert(btnSignUpPressed != null);
     return btnSignUpPressed();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult fullNameChanged(String fullName),
-    TResult nicknameChanged(String nickname),
-    TResult btnSignUpPressed(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fullName)? fullNameChanged,
+    TResult Function(String nickname)? nicknameChanged,
+    TResult Function()? btnSignUpPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (btnSignUpPressed != null) {
       return btnSignUpPressed();
     }
@@ -398,26 +392,22 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult fullNameChanged(FullNameChanged value),
-    @required TResult nicknameChanged(NicknameChanged value),
-    @required TResult btnSignUpPressed(BtnSignUpPressed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(FullNameChanged value) fullNameChanged,
+    required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) {
-    assert(fullNameChanged != null);
-    assert(nicknameChanged != null);
-    assert(btnSignUpPressed != null);
     return btnSignUpPressed(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult fullNameChanged(FullNameChanged value),
-    TResult nicknameChanged(NicknameChanged value),
-    TResult btnSignUpPressed(BtnSignUpPressed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FullNameChanged value)? fullNameChanged,
+    TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (btnSignUpPressed != null) {
       return btnSignUpPressed(this);
     }
@@ -433,37 +423,37 @@ abstract class BtnSignUpPressed implements SignUpFormBlocEvent {
 class _$SignUpFormBlocStateTearOff {
   const _$SignUpFormBlocStateTearOff();
 
-// ignore: unused_element
   _SignUpFormBlocState call(
-      {@required bool isSubmitting,
-      @required FullName fullName,
-      @required Nickname nickname,
-      @required bool showErrorMessages,
-      @required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
+      bool isSubmitting,
+      FullName fullName,
+      Nickname nickname,
+      bool showErrorMessages,
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) {
     return _SignUpFormBlocState(
-      isSubmitting: isSubmitting,
-      fullName: fullName,
-      nickname: nickname,
-      showErrorMessages: showErrorMessages,
-      authFailureOrSuccessOption: authFailureOrSuccessOption,
+      isSubmitting,
+      fullName,
+      nickname,
+      showErrorMessages,
+      authFailureOrSuccessOption,
     );
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $SignUpFormBlocState = _$SignUpFormBlocStateTearOff();
 
 /// @nodoc
 mixin _$SignUpFormBlocState {
-  bool get isSubmitting;
-  FullName get fullName;
-  Nickname get nickname;
-  bool get showErrorMessages;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  bool get isSubmitting => throw _privateConstructorUsedError;
+  FullName get fullName => throw _privateConstructorUsedError;
+  Nickname get nickname => throw _privateConstructorUsedError;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SignUpFormBlocStateCopyWith<SignUpFormBlocState> get copyWith;
+  $SignUpFormBlocStateCopyWith<SignUpFormBlocState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -490,23 +480,33 @@ class _$SignUpFormBlocStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isSubmitting = freezed,
-    Object fullName = freezed,
-    Object nickname = freezed,
-    Object showErrorMessages = freezed,
-    Object authFailureOrSuccessOption = freezed,
+    Object? isSubmitting = freezed,
+    Object? fullName = freezed,
+    Object? nickname = freezed,
+    Object? showErrorMessages = freezed,
+    Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
-      fullName: fullName == freezed ? _value.fullName : fullName as FullName,
-      nickname: nickname == freezed ? _value.nickname : nickname as Nickname,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fullName: fullName == freezed
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as FullName,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as Nickname,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
@@ -539,40 +539,42 @@ class __$SignUpFormBlocStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isSubmitting = freezed,
-    Object fullName = freezed,
-    Object nickname = freezed,
-    Object showErrorMessages = freezed,
-    Object authFailureOrSuccessOption = freezed,
+    Object? isSubmitting = freezed,
+    Object? fullName = freezed,
+    Object? nickname = freezed,
+    Object? showErrorMessages = freezed,
+    Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_SignUpFormBlocState(
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
-      fullName: fullName == freezed ? _value.fullName : fullName as FullName,
-      nickname: nickname == freezed ? _value.nickname : nickname as Nickname,
-      showErrorMessages: showErrorMessages == freezed
+      isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fullName == freezed
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as FullName,
+      nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as Nickname,
+      showErrorMessages == freezed
           ? _value.showErrorMessages
-          : showErrorMessages as bool,
-      authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
-          : authFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_SignUpFormBlocState implements _SignUpFormBlocState {
-  const _$_SignUpFormBlocState(
-      {@required this.isSubmitting,
-      @required this.fullName,
-      @required this.nickname,
-      @required this.showErrorMessages,
-      @required this.authFailureOrSuccessOption})
-      : assert(isSubmitting != null),
-        assert(fullName != null),
-        assert(nickname != null),
-        assert(showErrorMessages != null),
-        assert(authFailureOrSuccessOption != null);
+  const _$_SignUpFormBlocState(this.isSubmitting, this.fullName, this.nickname,
+      this.showErrorMessages, this.authFailureOrSuccessOption);
 
   @override
   final bool isSubmitting;
@@ -631,29 +633,26 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
 
 abstract class _SignUpFormBlocState implements SignUpFormBlocState {
   const factory _SignUpFormBlocState(
-          {@required
-              bool isSubmitting,
-          @required
-              FullName fullName,
-          @required
-              Nickname nickname,
-          @required
-              bool showErrorMessages,
-          @required
-              Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) =
+          bool isSubmitting,
+          FullName fullName,
+          Nickname nickname,
+          bool showErrorMessages,
+          Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) =
       _$_SignUpFormBlocState;
 
   @override
-  bool get isSubmitting;
+  bool get isSubmitting => throw _privateConstructorUsedError;
   @override
-  FullName get fullName;
+  FullName get fullName => throw _privateConstructorUsedError;
   @override
-  Nickname get nickname;
+  Nickname get nickname => throw _privateConstructorUsedError;
   @override
-  bool get showErrorMessages;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SignUpFormBlocStateCopyWith<_SignUpFormBlocState> get copyWith;
+  _$SignUpFormBlocStateCopyWith<_SignUpFormBlocState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

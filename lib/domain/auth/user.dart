@@ -4,13 +4,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user.freezed.dart';
 
 @freezed
-abstract class User with _$User {
+class User with _$User {
   const factory User(
-      {@required UniqueId id,
-      @required FullName name,
-      @required Nickname nickname,
-      @required PhoneNumber phoneNumber,
-      @required ThumbAvatar thumbAvatar,
-      @required MediumAvatar mediumAvatar,
-      @required OriginalAvatar originalAvatar}) = _User;
+      UniqueId id,
+      FullName name,
+      Nickname nickname,
+      PhoneNumber phoneNumber,
+      ThumbAvatar? thumbAvatar,
+      MediumAvatar? mediumAvatar,
+      OriginalAvatar? originalAvatar) = _User;
 }

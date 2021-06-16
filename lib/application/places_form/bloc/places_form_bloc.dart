@@ -1,12 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/places/i_places_facade.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/domain/places/places_failure.dart';
 import 'package:conectacampo/domain/places/value_objects.dart';
-import 'package:conectacampo/infrastructure/places/model/model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

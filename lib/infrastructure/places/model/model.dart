@@ -6,14 +6,14 @@ part 'model.freezed.dart';
 part 'model.g.dart';
 
 @freezed
-abstract class PlaceResponse with _$PlaceResponse {
+class PlaceResponse with _$PlaceResponse {
   const factory PlaceResponse(
-          {@required @JsonKey(name: 'id') int id,
-          @required @JsonKey(name: 'name') String name,
-          @required @JsonKey(name: 'state') String state,
-          @required @JsonKey(name: 'city') String city,
-          @required @JsonKey(name: 'address') String address,
-          @required @JsonKey(name: 'created_at') DateTime createdAt}) =
+           @JsonKey(name: 'id') int id,
+           @JsonKey(name: 'name') String name,
+           @JsonKey(name: 'state') String state,
+           @JsonKey(name: 'city') String city,
+           @JsonKey(name: 'address') String address,
+           @JsonKey(name: 'created_at') DateTime createdAt) =
       _PlaceResponse;
 
   factory PlaceResponse.fromJson(Map<String, dynamic> json) =>

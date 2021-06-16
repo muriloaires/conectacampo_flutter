@@ -1,4 +1,4 @@
-import 'package:conectacampo/application/auth/places_form/bloc/places_form_bloc.dart';
+import 'package:conectacampo/application/places_form/bloc/places_form_bloc.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/domain/places/value_objects.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
@@ -127,7 +127,7 @@ class PlacesForm extends StatelessWidget {
                     onChanged: (newValue) {
                       context
                           .read<PlacesFormBloc>()
-                          .add(PlacesFormEvent.stateSelected(newValue));
+                          .add(PlacesFormEvent.stateSelected(newValue ?? ''));
                     },
                     icon: const Icon(Icons.arrow_drop_down),
                     style: const TextStyle(
@@ -172,7 +172,7 @@ class PlacesForm extends StatelessWidget {
                     onChanged: (newValue) {
                       context
                           .read<PlacesFormBloc>()
-                          .add(PlacesFormEvent.placeSelected(newValue));
+                          .add(PlacesFormEvent.placeSelected(newValue ?? ''));
                     },
                     icon: const Icon(Icons.arrow_drop_down),
                     style: const TextStyle(
@@ -238,7 +238,7 @@ class PlacesForm extends StatelessWidget {
                     onChanged: (newValue) {
                       context
                           .read<PlacesFormBloc>()
-                          .add(PlacesFormEvent.placeSelected(newValue));
+                          .add(PlacesFormEvent.placeSelected(newValue ?? ''));
                     },
                     icon: const Icon(Icons.arrow_drop_down),
                     style: const TextStyle(
@@ -279,7 +279,7 @@ class PlacesForm extends StatelessWidget {
                     onChanged: (newValue) {
                       context
                           .read<PlacesFormBloc>()
-                          .add(PlacesFormEvent.placeSelected(newValue));
+                          .add(PlacesFormEvent.placeSelected(newValue ?? ''));
                     },
                     icon: const Icon(Icons.arrow_drop_down),
                     style: const TextStyle(

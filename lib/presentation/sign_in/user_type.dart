@@ -1,12 +1,9 @@
+import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/sign_in/phone_number_page.dart';
 import 'package:flutter/material.dart';
 
 class UserType extends StatelessWidget {
-  final String _phoneNumber;
-
-  const UserType(this._phoneNumber);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +46,8 @@ class UserType extends StatelessWidget {
                     width: double.infinity,
                     height: 48,
                     child: TextButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        await persistUserType('buyer');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -78,7 +76,8 @@ class UserType extends StatelessWidget {
                     width: double.infinity,
                     height: 48,
                     child: TextButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        await persistUserType('seller');
                         Navigator.push(
                             context,
                             MaterialPageRoute(

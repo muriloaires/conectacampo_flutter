@@ -13,11 +13,34 @@ Future<Unit> persistUser(UserResponse user) async {
   return unit;
 }
 
-Future<UserResponse> loadLoggedUser() async {
+Future<UserResponse?> loadLoggedUser() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
 
   final json = sharedPreferences.getString('logged_user');
+  if (json == null) {
+    return null;
+  }
 
   return UserResponse.fromJson(jsonDecode(json) as Map<String, dynamic>);
+}
+
+Future<Unit> persistUserType(String userType) async {
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
+
+  sharedPreferences.setString('logged_user_type', userType);
+  return unit;
+}
+
+Future<String?> loadLoggedUserType() async {
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
+
+  final userType = sharedPreferences.getString('logged_user_type');
+  if (json == null) {
+    return null;
+  }
+
+  return userType;
 }

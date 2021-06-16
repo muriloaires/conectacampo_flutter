@@ -8,17 +8,17 @@ part of 'model.dart';
 
 _$_UserResponse _$_$_UserResponseFromJson(Map<String, dynamic> json) {
   return _$_UserResponse(
-    id: json['id'] as int,
-    firstName: json['first_name'] as String,
-    lastName: json['last_name'] as String,
-    nickname: json['nickname'] as String,
-    phoneNumber: json['phone_number'] as String,
-    vehicleLicensePlate: json['vehicle_license_plate'] as String,
-    avatar: json['avatar'] == null
+    json['id'] as int,
+    json['first_name'] as String,
+    json['last_name'] as String,
+    json['nickname'] as String,
+    json['phone_number'] as String,
+    json['vehicle_license_plate'] as String?,
+    json['avatar'] == null
         ? null
         : AvatarResponse.fromJson(json['avatar'] as Map<String, dynamic>),
-    accessToken: json['access_token'] as String,
-    refreshToken: json['refresh_token'] as String,
+    json['access_token'] as String,
+    json['refresh_token'] as String,
   );
 }
 
@@ -37,15 +37,9 @@ Map<String, dynamic> _$_$_UserResponseToJson(_$_UserResponse instance) =>
 
 _$_AvatarResponse _$_$_AvatarResponseFromJson(Map<String, dynamic> json) {
   return _$_AvatarResponse(
-    thumbnail: json['thumbnail'] == null
-        ? null
-        : ThumbnailResponse.fromJson(json['thumbnail'] as Map<String, dynamic>),
-    medium: json['medium'] == null
-        ? null
-        : MediumResponse.fromJson(json['medium'] as Map<String, dynamic>),
-    original: json['original'] == null
-        ? null
-        : ThumbnailResponse.fromJson(json['original'] as Map<String, dynamic>),
+    ThumbnailResponse.fromJson(json['thumbnail'] as Map<String, dynamic>),
+    MediumResponse.fromJson(json['medium'] as Map<String, dynamic>),
+    ThumbnailResponse.fromJson(json['original'] as Map<String, dynamic>),
   );
 }
 
@@ -58,8 +52,8 @@ Map<String, dynamic> _$_$_AvatarResponseToJson(_$_AvatarResponse instance) =>
 
 _$_ThumbnailResponse _$_$_ThumbnailResponseFromJson(Map<String, dynamic> json) {
   return _$_ThumbnailResponse(
-    id: json['id'] as int,
-    url: json['url'] as String,
+    json['id'] as int,
+    json['url'] as String,
   );
 }
 
@@ -72,8 +66,8 @@ Map<String, dynamic> _$_$_ThumbnailResponseToJson(
 
 _$_MediumResponse _$_$_MediumResponseFromJson(Map<String, dynamic> json) {
   return _$_MediumResponse(
-    id: json['id'] as int,
-    url: json['url'] as String,
+    json['id'] as int,
+    json['url'] as String,
   );
 }
 
@@ -85,8 +79,8 @@ Map<String, dynamic> _$_$_MediumResponseToJson(_$_MediumResponse instance) =>
 
 _$_OriginalResponse _$_$_OriginalResponseFromJson(Map<String, dynamic> json) {
   return _$_OriginalResponse(
-    id: json['id'] as int,
-    url: json['url'] as String,
+    json['id'] as int,
+    json['url'] as String,
   );
 }
 
@@ -99,7 +93,7 @@ Map<String, dynamic> _$_$_OriginalResponseToJson(
 
 _$_UserRequest _$_$_UserRequestFromJson(Map<String, dynamic> json) {
   return _$_UserRequest(
-    phoneNumber: json['phone_number'] as String,
+    json['phone_number'] as String,
   );
 }
 
@@ -110,10 +104,10 @@ Map<String, dynamic> _$_$_UserRequestToJson(_$_UserRequest instance) =>
 
 _$_UserRegister _$_$_UserRegisterFromJson(Map<String, dynamic> json) {
   return _$_UserRegister(
-    firstName: json['first_name'] as String,
-    lastName: json['last_name'] as String,
-    nickname: json['nickname'] as String,
-    phoneNumber: json['phone_number'] as String,
+    json['first_name'] as String,
+    json['last_name'] as String,
+    json['nickname'] as String,
+    json['phone_number'] as String,
   );
 }
 
@@ -127,7 +121,7 @@ Map<String, dynamic> _$_$_UserRegisterToJson(_$_UserRegister instance) =>
 
 _$_Errors _$_$_ErrorsFromJson(Map<String, dynamic> json) {
   return _$_Errors(
-    errors: (json['errors'] as List)?.map((e) => e as String)?.toList(),
+    (json['errors'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 

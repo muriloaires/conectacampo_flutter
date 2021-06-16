@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'failures.dart';
 
@@ -9,147 +9,144 @@ part of 'failures.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
-// ignore: unused_element
-  InvalidPhoneNumber<T> invalidPhoneNumber<T>({@required String failedValue}) {
+  InvalidPhoneNumber<T> invalidPhoneNumber<T>(String failedValue) {
     return InvalidPhoneNumber<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 
-// ignore: unused_element
-  InvalidCodeLength<T> invalidCodeLength<T>({@required String failedValue}) {
+  InvalidCodeLength<T> invalidCodeLength<T>(String failedValue) {
     return InvalidCodeLength<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 
-// ignore: unused_element
-  InvalidFullName<T> invalidFullName<T>({@required String failedValue}) {
+  InvalidFullName<T> invalidFullName<T>(String failedValue) {
     return InvalidFullName<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 
-// ignore: unused_element
-  MissingSurname<T> missingSurname<T>({@required String failedValue}) {
+  MissingSurname<T> missingSurname<T>(String failedValue) {
     return MissingSurname<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 
-// ignore: unused_element
-  InvalidNickname<T> invalidNickname<T>({@required String failedValue}) {
+  InvalidNickname<T> invalidNickname<T>(String failedValue) {
     return InvalidNickname<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 
-// ignore: unused_element
-  InvalidAvatar<T> invalidAvatar<T>({@required String failedValue}) {
+  InvalidAvatar<T> invalidAvatar<T>(String failedValue) {
     return InvalidAvatar<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 
-// ignore: unused_element
-  InvalidStatePlaceName<T> invalidStatePlaceName<T>(
-      {@required String failedValue}) {
+  InvalidStatePlaceName<T> invalidStatePlaceName<T>(String failedValue) {
     return InvalidStatePlaceName<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 
-// ignore: unused_element
-  InvalidPlaceName<T> invalidPlaceName<T>({@required String failedValue}) {
+  InvalidPlaceName<T> invalidPlaceName<T>(String failedValue) {
     return InvalidPlaceName<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 
-// ignore: unused_element
-  InvalidCity<T> invalidCity<T>({@required String failedValue}) {
+  InvalidCity<T> invalidCity<T>(String failedValue) {
     return InvalidCity<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 
-// ignore: unused_element
-  InvalidAddress<T> invalidAddress<T>({@required String failedValue}) {
+  InvalidAddress<T> invalidAddress<T>(String failedValue) {
     return InvalidAddress<T>(
-      failedValue: failedValue,
+      failedValue,
     );
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ValueFailure = _$ValueFailureTearOff();
 
 /// @nodoc
 mixin _$ValueFailure<T> {
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith;
+  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -171,11 +168,13 @@ class _$ValueFailureCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(_value.copyWith(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -203,19 +202,21 @@ class _$InvalidPhoneNumberCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(InvalidPhoneNumber<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
-  const _$InvalidPhoneNumber({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$InvalidPhoneNumber(this.failedValue);
 
   @override
   final String failedValue;
@@ -246,47 +247,36 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidPhoneNumber(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidPhoneNumber != null) {
       return invalidPhoneNumber(failedValue);
     }
@@ -295,47 +285,37 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidPhoneNumber(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidPhoneNumber != null) {
       return invalidPhoneNumber(this);
     }
@@ -344,14 +324,15 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
 }
 
 abstract class InvalidPhoneNumber<T> implements ValueFailure<T> {
-  const factory InvalidPhoneNumber({@required String failedValue}) =
+  const factory InvalidPhoneNumber(String failedValue) =
       _$InvalidPhoneNumber<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InvalidPhoneNumberCopyWith<T, InvalidPhoneNumber<T>> get copyWith;
+  $InvalidPhoneNumberCopyWith<T, InvalidPhoneNumber<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -377,19 +358,21 @@ class _$InvalidCodeLengthCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(InvalidCodeLength<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
-  const _$InvalidCodeLength({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$InvalidCodeLength(this.failedValue);
 
   @override
   final String failedValue;
@@ -420,47 +403,36 @@ class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidCodeLength(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidCodeLength != null) {
       return invalidCodeLength(failedValue);
     }
@@ -469,47 +441,37 @@ class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidCodeLength(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidCodeLength != null) {
       return invalidCodeLength(this);
     }
@@ -518,14 +480,14 @@ class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
 }
 
 abstract class InvalidCodeLength<T> implements ValueFailure<T> {
-  const factory InvalidCodeLength({@required String failedValue}) =
-      _$InvalidCodeLength<T>;
+  const factory InvalidCodeLength(String failedValue) = _$InvalidCodeLength<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InvalidCodeLengthCopyWith<T, InvalidCodeLength<T>> get copyWith;
+  $InvalidCodeLengthCopyWith<T, InvalidCodeLength<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -551,19 +513,21 @@ class _$InvalidFullNameCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(InvalidFullName<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$InvalidFullName<T> implements InvalidFullName<T> {
-  const _$InvalidFullName({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$InvalidFullName(this.failedValue);
 
   @override
   final String failedValue;
@@ -593,47 +557,36 @@ class _$InvalidFullName<T> implements InvalidFullName<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidFullName(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidFullName != null) {
       return invalidFullName(failedValue);
     }
@@ -642,47 +595,37 @@ class _$InvalidFullName<T> implements InvalidFullName<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidFullName(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidFullName != null) {
       return invalidFullName(this);
     }
@@ -691,14 +634,14 @@ class _$InvalidFullName<T> implements InvalidFullName<T> {
 }
 
 abstract class InvalidFullName<T> implements ValueFailure<T> {
-  const factory InvalidFullName({@required String failedValue}) =
-      _$InvalidFullName<T>;
+  const factory InvalidFullName(String failedValue) = _$InvalidFullName<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InvalidFullNameCopyWith<T, InvalidFullName<T>> get copyWith;
+  $InvalidFullNameCopyWith<T, InvalidFullName<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -724,19 +667,21 @@ class _$MissingSurnameCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(MissingSurname<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$MissingSurname<T> implements MissingSurname<T> {
-  const _$MissingSurname({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$MissingSurname(this.failedValue);
 
   @override
   final String failedValue;
@@ -766,47 +711,36 @@ class _$MissingSurname<T> implements MissingSurname<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return missingSurname(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (missingSurname != null) {
       return missingSurname(failedValue);
     }
@@ -815,47 +749,37 @@ class _$MissingSurname<T> implements MissingSurname<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return missingSurname(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (missingSurname != null) {
       return missingSurname(this);
     }
@@ -864,14 +788,14 @@ class _$MissingSurname<T> implements MissingSurname<T> {
 }
 
 abstract class MissingSurname<T> implements ValueFailure<T> {
-  const factory MissingSurname({@required String failedValue}) =
-      _$MissingSurname<T>;
+  const factory MissingSurname(String failedValue) = _$MissingSurname<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $MissingSurnameCopyWith<T, MissingSurname<T>> get copyWith;
+  $MissingSurnameCopyWith<T, MissingSurname<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -897,19 +821,21 @@ class _$InvalidNicknameCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(InvalidNickname<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$InvalidNickname<T> implements InvalidNickname<T> {
-  const _$InvalidNickname({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$InvalidNickname(this.failedValue);
 
   @override
   final String failedValue;
@@ -939,47 +865,36 @@ class _$InvalidNickname<T> implements InvalidNickname<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidNickname(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidNickname != null) {
       return invalidNickname(failedValue);
     }
@@ -988,47 +903,37 @@ class _$InvalidNickname<T> implements InvalidNickname<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidNickname(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidNickname != null) {
       return invalidNickname(this);
     }
@@ -1037,14 +942,14 @@ class _$InvalidNickname<T> implements InvalidNickname<T> {
 }
 
 abstract class InvalidNickname<T> implements ValueFailure<T> {
-  const factory InvalidNickname({@required String failedValue}) =
-      _$InvalidNickname<T>;
+  const factory InvalidNickname(String failedValue) = _$InvalidNickname<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InvalidNicknameCopyWith<T, InvalidNickname<T>> get copyWith;
+  $InvalidNicknameCopyWith<T, InvalidNickname<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1070,19 +975,21 @@ class _$InvalidAvatarCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(InvalidAvatar<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$InvalidAvatar<T> implements InvalidAvatar<T> {
-  const _$InvalidAvatar({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$InvalidAvatar(this.failedValue);
 
   @override
   final String failedValue;
@@ -1112,47 +1019,36 @@ class _$InvalidAvatar<T> implements InvalidAvatar<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidAvatar(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidAvatar != null) {
       return invalidAvatar(failedValue);
     }
@@ -1161,47 +1057,37 @@ class _$InvalidAvatar<T> implements InvalidAvatar<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidAvatar(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidAvatar != null) {
       return invalidAvatar(this);
     }
@@ -1210,14 +1096,14 @@ class _$InvalidAvatar<T> implements InvalidAvatar<T> {
 }
 
 abstract class InvalidAvatar<T> implements ValueFailure<T> {
-  const factory InvalidAvatar({@required String failedValue}) =
-      _$InvalidAvatar<T>;
+  const factory InvalidAvatar(String failedValue) = _$InvalidAvatar<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InvalidAvatarCopyWith<T, InvalidAvatar<T>> get copyWith;
+  $InvalidAvatarCopyWith<T, InvalidAvatar<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1244,19 +1130,21 @@ class _$InvalidStatePlaceNameCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(InvalidStatePlaceName<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
-  const _$InvalidStatePlaceName({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$InvalidStatePlaceName(this.failedValue);
 
   @override
   final String failedValue;
@@ -1287,47 +1175,36 @@ class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidStatePlaceName(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidStatePlaceName != null) {
       return invalidStatePlaceName(failedValue);
     }
@@ -1336,47 +1213,37 @@ class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidStatePlaceName(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidStatePlaceName != null) {
       return invalidStatePlaceName(this);
     }
@@ -1385,14 +1252,15 @@ class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
 }
 
 abstract class InvalidStatePlaceName<T> implements ValueFailure<T> {
-  const factory InvalidStatePlaceName({@required String failedValue}) =
+  const factory InvalidStatePlaceName(String failedValue) =
       _$InvalidStatePlaceName<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InvalidStatePlaceNameCopyWith<T, InvalidStatePlaceName<T>> get copyWith;
+  $InvalidStatePlaceNameCopyWith<T, InvalidStatePlaceName<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1418,19 +1286,21 @@ class _$InvalidPlaceNameCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(InvalidPlaceName<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
-  const _$InvalidPlaceName({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$InvalidPlaceName(this.failedValue);
 
   @override
   final String failedValue;
@@ -1460,47 +1330,36 @@ class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidPlaceName(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidPlaceName != null) {
       return invalidPlaceName(failedValue);
     }
@@ -1509,47 +1368,37 @@ class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidPlaceName(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidPlaceName != null) {
       return invalidPlaceName(this);
     }
@@ -1558,14 +1407,14 @@ class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
 }
 
 abstract class InvalidPlaceName<T> implements ValueFailure<T> {
-  const factory InvalidPlaceName({@required String failedValue}) =
-      _$InvalidPlaceName<T>;
+  const factory InvalidPlaceName(String failedValue) = _$InvalidPlaceName<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InvalidPlaceNameCopyWith<T, InvalidPlaceName<T>> get copyWith;
+  $InvalidPlaceNameCopyWith<T, InvalidPlaceName<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1591,19 +1440,21 @@ class _$InvalidCityCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(InvalidCity<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$InvalidCity<T> implements InvalidCity<T> {
-  const _$InvalidCity({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$InvalidCity(this.failedValue);
 
   @override
   final String failedValue;
@@ -1633,47 +1484,36 @@ class _$InvalidCity<T> implements InvalidCity<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidCity(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidCity != null) {
       return invalidCity(failedValue);
     }
@@ -1682,47 +1522,37 @@ class _$InvalidCity<T> implements InvalidCity<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidCity(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidCity != null) {
       return invalidCity(this);
     }
@@ -1731,13 +1561,14 @@ class _$InvalidCity<T> implements InvalidCity<T> {
 }
 
 abstract class InvalidCity<T> implements ValueFailure<T> {
-  const factory InvalidCity({@required String failedValue}) = _$InvalidCity<T>;
+  const factory InvalidCity(String failedValue) = _$InvalidCity<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InvalidCityCopyWith<T, InvalidCity<T>> get copyWith;
+  $InvalidCityCopyWith<T, InvalidCity<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1763,19 +1594,21 @@ class _$InvalidAddressCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(InvalidAddress<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$InvalidAddress<T> implements InvalidAddress<T> {
-  const _$InvalidAddress({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$InvalidAddress(this.failedValue);
 
   @override
   final String failedValue;
@@ -1805,47 +1638,36 @@ class _$InvalidAddress<T> implements InvalidAddress<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult invalidPhoneNumber(String failedValue),
-    @required TResult invalidCodeLength(String failedValue),
-    @required TResult invalidFullName(String failedValue),
-    @required TResult missingSurname(String failedValue),
-    @required TResult invalidNickname(String failedValue),
-    @required TResult invalidAvatar(String failedValue),
-    @required TResult invalidStatePlaceName(String failedValue),
-    @required TResult invalidPlaceName(String failedValue),
-    @required TResult invalidCity(String failedValue),
-    @required TResult invalidAddress(String failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidAddress(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult invalidPhoneNumber(String failedValue),
-    TResult invalidCodeLength(String failedValue),
-    TResult invalidFullName(String failedValue),
-    TResult missingSurname(String failedValue),
-    TResult invalidNickname(String failedValue),
-    TResult invalidAvatar(String failedValue),
-    TResult invalidStatePlaceName(String failedValue),
-    TResult invalidPlaceName(String failedValue),
-    TResult invalidCity(String failedValue),
-    TResult invalidAddress(String failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidAddress != null) {
       return invalidAddress(failedValue);
     }
@@ -1854,47 +1676,37 @@ class _$InvalidAddress<T> implements InvalidAddress<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    @required TResult invalidCodeLength(InvalidCodeLength<T> value),
-    @required TResult invalidFullName(InvalidFullName<T> value),
-    @required TResult missingSurname(MissingSurname<T> value),
-    @required TResult invalidNickname(InvalidNickname<T> value),
-    @required TResult invalidAvatar(InvalidAvatar<T> value),
-    @required TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    @required TResult invalidPlaceName(InvalidPlaceName<T> value),
-    @required TResult invalidCity(InvalidCity<T> value),
-    @required TResult invalidAddress(InvalidAddress<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
   }) {
-    assert(invalidPhoneNumber != null);
-    assert(invalidCodeLength != null);
-    assert(invalidFullName != null);
-    assert(missingSurname != null);
-    assert(invalidNickname != null);
-    assert(invalidAvatar != null);
-    assert(invalidStatePlaceName != null);
-    assert(invalidPlaceName != null);
-    assert(invalidCity != null);
-    assert(invalidAddress != null);
     return invalidAddress(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult invalidPhoneNumber(InvalidPhoneNumber<T> value),
-    TResult invalidCodeLength(InvalidCodeLength<T> value),
-    TResult invalidFullName(InvalidFullName<T> value),
-    TResult missingSurname(MissingSurname<T> value),
-    TResult invalidNickname(InvalidNickname<T> value),
-    TResult invalidAvatar(InvalidAvatar<T> value),
-    TResult invalidStatePlaceName(InvalidStatePlaceName<T> value),
-    TResult invalidPlaceName(InvalidPlaceName<T> value),
-    TResult invalidCity(InvalidCity<T> value),
-    TResult invalidAddress(InvalidAddress<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (invalidAddress != null) {
       return invalidAddress(this);
     }
@@ -1903,12 +1715,12 @@ class _$InvalidAddress<T> implements InvalidAddress<T> {
 }
 
 abstract class InvalidAddress<T> implements ValueFailure<T> {
-  const factory InvalidAddress({@required String failedValue}) =
-      _$InvalidAddress<T>;
+  const factory InvalidAddress(String failedValue) = _$InvalidAddress<T>;
 
   @override
-  String get failedValue;
+  String get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InvalidAddressCopyWith<T, InvalidAddress<T>> get copyWith;
+  $InvalidAddressCopyWith<T, InvalidAddress<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -6,20 +6,20 @@ import 'package:conectacampo/infrastructure/places/model/model.dart';
 extension PlaceExtension on PlaceResponse {
   LocalPlace.Place toDomain() {
     return LocalPlace.Place(
-        id: UniqueId.fromUniqueString(id.toString()),
-        name: PlaceName(name),
-        state: StatePlace(state),
-        address: PlaceAddress(address));
+        UniqueId.fromUniqueString(id.toString()),
+        PlaceName(name),
+        StatePlace(state),
+        PlaceAddress(address));
   }
 }
 
 bla() {
   var e = PlaceResponse(
-      id: 1,
-      name: 'name',
-      state: 'state',
-      city: 'city',
-      address: 'address',
-      createdAt: DateTime.now());
+      1,
+      'name',
+      'state',
+      'city',
+      'address',
+      DateTime.now());
   e.toDomain();
 }

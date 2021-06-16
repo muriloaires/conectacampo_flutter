@@ -31,11 +31,12 @@ class SmsCodeFormBloc extends Bloc<SmsCodeFormEvent, SmsCodeFormState> {
         },
         resendCode: (e) async* {},
         verifyCodePressed: (VerifyCode value) async* {
-          Either<AuthFailure, Unit> failureOrSuccess;
+          Either<AuthFailure, Unit> failureOrSuccess =
+              left(const AuthFailure.applicationError());
           if (state.smsCode.isValid()) {
             yield state.copyWith(
                 isSubmitting: true, authFailureOrSuccessOption: none());
-            failureOrSuccess = await _authFacade.signIn(smsCode: state.smsCode);
+            failureOrSuccess = await _authFacade.signIn(state.smsCode);
           }
 
           yield state.copyWith(
