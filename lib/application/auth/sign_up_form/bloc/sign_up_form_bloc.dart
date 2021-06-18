@@ -43,6 +43,10 @@ class SignUpFormBloc extends Bloc<SignUpFormBlocEvent, SignUpFormBlocState> {
         showErrorMessages: true,
         authFailureOrSuccessOption: optionOf(failureOrSuccess),
       );
+    }, placeChosen: (PlaceChosen value) async* {
+      if (value.success != null) {
+        yield state.copyWith(navigateNext: true);
+      }
     });
   }
 }

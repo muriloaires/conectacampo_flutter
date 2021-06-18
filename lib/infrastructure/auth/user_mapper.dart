@@ -1,7 +1,6 @@
 import 'package:conectacampo/domain/auth/user.dart' as LocalUser;
 import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/infrastructure/auth/model/model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 extension LocalUserDomainX on UserResponse {
   LocalUser.User toDomain() {

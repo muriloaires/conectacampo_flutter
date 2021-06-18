@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'places_failure.dart';
+part of 'advertisement_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,8 +13,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$PlacesFailureTearOff {
-  const _$PlacesFailureTearOff();
+class _$AdvertisementFailureTearOff {
+  const _$AdvertisementFailureTearOff();
 
   Unauthorized unauthorized() {
     return const Unauthorized();
@@ -27,23 +27,18 @@ class _$PlacesFailureTearOff {
   RequestError requestError() {
     return const RequestError();
   }
-
-  PlaceNotFound placeNotFound() {
-    return const PlaceNotFound();
-  }
 }
 
 /// @nodoc
-const $PlacesFailure = _$PlacesFailureTearOff();
+const $AdvertisementFailure = _$AdvertisementFailureTearOff();
 
 /// @nodoc
-mixin _$PlacesFailure {
+mixin _$AdvertisementFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unauthorized,
     required TResult Function() serverError,
     required TResult Function() requestError,
-    required TResult Function() placeNotFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,7 +46,6 @@ mixin _$PlacesFailure {
     TResult Function()? unauthorized,
     TResult Function()? serverError,
     TResult Function()? requestError,
-    TResult Function()? placeNotFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +54,6 @@ mixin _$PlacesFailure {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ServerError value) serverError,
     required TResult Function(RequestError value) requestError,
-    required TResult Function(PlaceNotFound value) placeNotFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,27 +61,26 @@ mixin _$PlacesFailure {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ServerError value)? serverError,
     TResult Function(RequestError value)? requestError,
-    TResult Function(PlaceNotFound value)? placeNotFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PlacesFailureCopyWith<$Res> {
-  factory $PlacesFailureCopyWith(
-          PlacesFailure value, $Res Function(PlacesFailure) then) =
-      _$PlacesFailureCopyWithImpl<$Res>;
+abstract class $AdvertisementFailureCopyWith<$Res> {
+  factory $AdvertisementFailureCopyWith(AdvertisementFailure value,
+          $Res Function(AdvertisementFailure) then) =
+      _$AdvertisementFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PlacesFailureCopyWithImpl<$Res>
-    implements $PlacesFailureCopyWith<$Res> {
-  _$PlacesFailureCopyWithImpl(this._value, this._then);
+class _$AdvertisementFailureCopyWithImpl<$Res>
+    implements $AdvertisementFailureCopyWith<$Res> {
+  _$AdvertisementFailureCopyWithImpl(this._value, this._then);
 
-  final PlacesFailure _value;
+  final AdvertisementFailure _value;
   // ignore: unused_field
-  final $Res Function(PlacesFailure) _then;
+  final $Res Function(AdvertisementFailure) _then;
 }
 
 /// @nodoc
@@ -99,7 +91,8 @@ abstract class $UnauthorizedCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UnauthorizedCopyWithImpl<$Res> extends _$PlacesFailureCopyWithImpl<$Res>
+class _$UnauthorizedCopyWithImpl<$Res>
+    extends _$AdvertisementFailureCopyWithImpl<$Res>
     implements $UnauthorizedCopyWith<$Res> {
   _$UnauthorizedCopyWithImpl(
       Unauthorized _value, $Res Function(Unauthorized) _then)
@@ -116,7 +109,7 @@ class _$Unauthorized implements Unauthorized {
 
   @override
   String toString() {
-    return 'PlacesFailure.unauthorized()';
+    return 'AdvertisementFailure.unauthorized()';
   }
 
   @override
@@ -133,7 +126,6 @@ class _$Unauthorized implements Unauthorized {
     required TResult Function() unauthorized,
     required TResult Function() serverError,
     required TResult Function() requestError,
-    required TResult Function() placeNotFound,
   }) {
     return unauthorized();
   }
@@ -144,7 +136,6 @@ class _$Unauthorized implements Unauthorized {
     TResult Function()? unauthorized,
     TResult Function()? serverError,
     TResult Function()? requestError,
-    TResult Function()? placeNotFound,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -159,7 +150,6 @@ class _$Unauthorized implements Unauthorized {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ServerError value) serverError,
     required TResult Function(RequestError value) requestError,
-    required TResult Function(PlaceNotFound value) placeNotFound,
   }) {
     return unauthorized(this);
   }
@@ -170,7 +160,6 @@ class _$Unauthorized implements Unauthorized {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ServerError value)? serverError,
     TResult Function(RequestError value)? requestError,
-    TResult Function(PlaceNotFound value)? placeNotFound,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -180,7 +169,7 @@ class _$Unauthorized implements Unauthorized {
   }
 }
 
-abstract class Unauthorized implements PlacesFailure {
+abstract class Unauthorized implements AdvertisementFailure {
   const factory Unauthorized() = _$Unauthorized;
 }
 
@@ -192,7 +181,8 @@ abstract class $ServerErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ServerErrorCopyWithImpl<$Res> extends _$PlacesFailureCopyWithImpl<$Res>
+class _$ServerErrorCopyWithImpl<$Res>
+    extends _$AdvertisementFailureCopyWithImpl<$Res>
     implements $ServerErrorCopyWith<$Res> {
   _$ServerErrorCopyWithImpl(
       ServerError _value, $Res Function(ServerError) _then)
@@ -209,7 +199,7 @@ class _$ServerError implements ServerError {
 
   @override
   String toString() {
-    return 'PlacesFailure.serverError()';
+    return 'AdvertisementFailure.serverError()';
   }
 
   @override
@@ -226,7 +216,6 @@ class _$ServerError implements ServerError {
     required TResult Function() unauthorized,
     required TResult Function() serverError,
     required TResult Function() requestError,
-    required TResult Function() placeNotFound,
   }) {
     return serverError();
   }
@@ -237,7 +226,6 @@ class _$ServerError implements ServerError {
     TResult Function()? unauthorized,
     TResult Function()? serverError,
     TResult Function()? requestError,
-    TResult Function()? placeNotFound,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -252,7 +240,6 @@ class _$ServerError implements ServerError {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ServerError value) serverError,
     required TResult Function(RequestError value) requestError,
-    required TResult Function(PlaceNotFound value) placeNotFound,
   }) {
     return serverError(this);
   }
@@ -263,7 +250,6 @@ class _$ServerError implements ServerError {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ServerError value)? serverError,
     TResult Function(RequestError value)? requestError,
-    TResult Function(PlaceNotFound value)? placeNotFound,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -273,7 +259,7 @@ class _$ServerError implements ServerError {
   }
 }
 
-abstract class ServerError implements PlacesFailure {
+abstract class ServerError implements AdvertisementFailure {
   const factory ServerError() = _$ServerError;
 }
 
@@ -285,7 +271,8 @@ abstract class $RequestErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RequestErrorCopyWithImpl<$Res> extends _$PlacesFailureCopyWithImpl<$Res>
+class _$RequestErrorCopyWithImpl<$Res>
+    extends _$AdvertisementFailureCopyWithImpl<$Res>
     implements $RequestErrorCopyWith<$Res> {
   _$RequestErrorCopyWithImpl(
       RequestError _value, $Res Function(RequestError) _then)
@@ -302,7 +289,7 @@ class _$RequestError implements RequestError {
 
   @override
   String toString() {
-    return 'PlacesFailure.requestError()';
+    return 'AdvertisementFailure.requestError()';
   }
 
   @override
@@ -319,7 +306,6 @@ class _$RequestError implements RequestError {
     required TResult Function() unauthorized,
     required TResult Function() serverError,
     required TResult Function() requestError,
-    required TResult Function() placeNotFound,
   }) {
     return requestError();
   }
@@ -330,7 +316,6 @@ class _$RequestError implements RequestError {
     TResult Function()? unauthorized,
     TResult Function()? serverError,
     TResult Function()? requestError,
-    TResult Function()? placeNotFound,
     required TResult orElse(),
   }) {
     if (requestError != null) {
@@ -345,7 +330,6 @@ class _$RequestError implements RequestError {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ServerError value) serverError,
     required TResult Function(RequestError value) requestError,
-    required TResult Function(PlaceNotFound value) placeNotFound,
   }) {
     return requestError(this);
   }
@@ -356,7 +340,6 @@ class _$RequestError implements RequestError {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ServerError value)? serverError,
     TResult Function(RequestError value)? requestError,
-    TResult Function(PlaceNotFound value)? placeNotFound,
     required TResult orElse(),
   }) {
     if (requestError != null) {
@@ -366,100 +349,6 @@ class _$RequestError implements RequestError {
   }
 }
 
-abstract class RequestError implements PlacesFailure {
+abstract class RequestError implements AdvertisementFailure {
   const factory RequestError() = _$RequestError;
-}
-
-/// @nodoc
-abstract class $PlaceNotFoundCopyWith<$Res> {
-  factory $PlaceNotFoundCopyWith(
-          PlaceNotFound value, $Res Function(PlaceNotFound) then) =
-      _$PlaceNotFoundCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$PlaceNotFoundCopyWithImpl<$Res>
-    extends _$PlacesFailureCopyWithImpl<$Res>
-    implements $PlaceNotFoundCopyWith<$Res> {
-  _$PlaceNotFoundCopyWithImpl(
-      PlaceNotFound _value, $Res Function(PlaceNotFound) _then)
-      : super(_value, (v) => _then(v as PlaceNotFound));
-
-  @override
-  PlaceNotFound get _value => super._value as PlaceNotFound;
-}
-
-/// @nodoc
-
-class _$PlaceNotFound implements PlaceNotFound {
-  const _$PlaceNotFound();
-
-  @override
-  String toString() {
-    return 'PlacesFailure.placeNotFound()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is PlaceNotFound);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() unauthorized,
-    required TResult Function() serverError,
-    required TResult Function() requestError,
-    required TResult Function() placeNotFound,
-  }) {
-    return placeNotFound();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unauthorized,
-    TResult Function()? serverError,
-    TResult Function()? requestError,
-    TResult Function()? placeNotFound,
-    required TResult orElse(),
-  }) {
-    if (placeNotFound != null) {
-      return placeNotFound();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Unauthorized value) unauthorized,
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(RequestError value) requestError,
-    required TResult Function(PlaceNotFound value) placeNotFound,
-  }) {
-    return placeNotFound(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Unauthorized value)? unauthorized,
-    TResult Function(ServerError value)? serverError,
-    TResult Function(RequestError value)? requestError,
-    TResult Function(PlaceNotFound value)? placeNotFound,
-    required TResult orElse(),
-  }) {
-    if (placeNotFound != null) {
-      return placeNotFound(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class PlaceNotFound implements PlacesFailure {
-  const factory PlaceNotFound() = _$PlaceNotFound;
 }

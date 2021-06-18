@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:conectacampo/application/places_form/bloc/places_form_bloc.dart';
+import 'package:conectacampo/domain/reservation/i_advertisements_facade.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -13,7 +13,10 @@ part 'adivertisements_bloc.freezed.dart';
 @injectable
 class AdivertisementsBloc
     extends Bloc<AdivertisementsEvent, AdivertisementsState> {
-  AdivertisementsBloc() : super(AdivertisementsState.demo());
+  AdivertisementsBloc(this._advertisementsFacade)
+      : super(AdivertisementsState.demo());
+
+  final IAdvertisementsFacade _advertisementsFacade;
 
   @override
   Stream<AdivertisementsState> mapEventToState(

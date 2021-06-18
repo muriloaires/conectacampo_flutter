@@ -12,18 +12,29 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Place _$PlaceFromJson(Map<String, dynamic> json) {
+  return _Place.fromJson(json);
+}
+
 /// @nodoc
 class _$PlaceTearOff {
   const _$PlaceTearOff();
 
   _Place call(
-      UniqueId id, PlaceName name, StatePlace state, PlaceAddress address) {
+      {required String id,
+      required String name,
+      required String state,
+      required String address}) {
     return _Place(
-      id,
-      name,
-      state,
-      address,
+      id: id,
+      name: name,
+      state: state,
+      address: address,
     );
+  }
+
+  Place fromJson(Map<String, Object> json) {
+    return Place.fromJson(json);
   }
 }
 
@@ -32,11 +43,12 @@ const $Place = _$PlaceTearOff();
 
 /// @nodoc
 mixin _$Place {
-  UniqueId get id => throw _privateConstructorUsedError;
-  PlaceName get name => throw _privateConstructorUsedError;
-  StatePlace get state => throw _privateConstructorUsedError;
-  PlaceAddress get address => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PlaceCopyWith<Place> get copyWith => throw _privateConstructorUsedError;
 }
@@ -45,8 +57,7 @@ mixin _$Place {
 abstract class $PlaceCopyWith<$Res> {
   factory $PlaceCopyWith(Place value, $Res Function(Place) then) =
       _$PlaceCopyWithImpl<$Res>;
-  $Res call(
-      {UniqueId id, PlaceName name, StatePlace state, PlaceAddress address});
+  $Res call({String id, String name, String state, String address});
 }
 
 /// @nodoc
@@ -68,19 +79,19 @@ class _$PlaceCopyWithImpl<$Res> implements $PlaceCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as PlaceName,
+              as String,
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as StatePlace,
+              as String,
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as PlaceAddress,
+              as String,
     ));
   }
 }
@@ -90,8 +101,7 @@ abstract class _$PlaceCopyWith<$Res> implements $PlaceCopyWith<$Res> {
   factory _$PlaceCopyWith(_Place value, $Res Function(_Place) then) =
       __$PlaceCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {UniqueId id, PlaceName name, StatePlace state, PlaceAddress address});
+  $Res call({String id, String name, String state, String address});
 }
 
 /// @nodoc
@@ -111,39 +121,46 @@ class __$PlaceCopyWithImpl<$Res> extends _$PlaceCopyWithImpl<$Res>
     Object? address = freezed,
   }) {
     return _then(_Place(
-      id == freezed
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
-      name == freezed
+              as String,
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as PlaceName,
-      state == freezed
+              as String,
+      state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as StatePlace,
-      address == freezed
+              as String,
+      address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as PlaceAddress,
+              as String,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Place implements _Place {
-  const _$_Place(this.id, this.name, this.state, this.address);
+  const _$_Place(
+      {required this.id,
+      required this.name,
+      required this.state,
+      required this.address});
+
+  factory _$_Place.fromJson(Map<String, dynamic> json) =>
+      _$_$_PlaceFromJson(json);
 
   @override
-  final UniqueId id;
+  final String id;
   @override
-  final PlaceName name;
+  final String name;
   @override
-  final StatePlace state;
+  final String state;
   @override
-  final PlaceAddress address;
+  final String address;
 
   @override
   String toString() {
@@ -176,21 +193,30 @@ class _$_Place implements _Place {
   @override
   _$PlaceCopyWith<_Place> get copyWith =>
       __$PlaceCopyWithImpl<_Place>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PlaceToJson(this);
+  }
 }
 
 abstract class _Place implements Place {
   const factory _Place(
-          UniqueId id, PlaceName name, StatePlace state, PlaceAddress address) =
-      _$_Place;
+      {required String id,
+      required String name,
+      required String state,
+      required String address}) = _$_Place;
+
+  factory _Place.fromJson(Map<String, dynamic> json) = _$_Place.fromJson;
 
   @override
-  UniqueId get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
-  PlaceName get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @override
-  StatePlace get state => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
   @override
-  PlaceAddress get address => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PlaceCopyWith<_Place> get copyWith => throw _privateConstructorUsedError;

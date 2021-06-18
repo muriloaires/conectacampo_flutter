@@ -1,4 +1,6 @@
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
+import 'package:conectacampo/application/buyer/reservation/bloc/reservation_bloc.dart';
+import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
 import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
@@ -21,23 +23,14 @@ class BuyerSummary extends StatelessWidget {
             settings: settings,
             builder: (context) {
               return Scaffold(
-                body: Column(
-                  children: [
-                    Expanded(
-                      child: ListView(
-                        padding: const EdgeInsets.all(0),
+                body: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Column(
                         children: [
                           _getSearchWidget(context),
-                          Padding(
-                            padding: const EdgeInsets.all(40.0),
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                Reservation(ReservationStatus.confirmed),
-                                Reservation(ReservationStatus.confirmed)
-                              ],
-                            ),
-                          ),
+                          _getReservationsWidget(),
                           const SizedBox(
                             height: 32,
                           ),
@@ -145,14 +138,33 @@ class BuyerSummary extends StatelessWidget {
                             height: 32,
                           )
                         ],
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               );
             });
       },
     );
+  }
+
+  Padding _getReservationsWidget() {
+    return Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ListView.separated(
+          separatorBuilder: (context, index) => SizedBox(
+            height: 10,
+          ),
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: 3,
+          itemBuilder: (context, index) {
+            return BlocProvider(
+              create: (context) => getIt<ReservationBloc>(),
+              child: Reservation(),
+            );
+          },
+        ));
   }
 
   Card _getNoItemsAddedWidget() {

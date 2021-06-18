@@ -107,9 +107,9 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Option<User>> getSignedUser() async {
+  Future<Option<Either<AuthFailure, User>>> getSignedUser() async {
     final localUser = await loadLoggedUser();
-    return Future.value(optionOf(localUser?.toDomain()));
+    return Future.value(optionOf(localUser));
   }
 
   @override

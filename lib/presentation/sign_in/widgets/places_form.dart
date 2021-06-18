@@ -2,6 +2,7 @@ import 'package:conectacampo/application/places_form/bloc/places_form_bloc.dart'
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/domain/places/value_objects.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,75 +10,82 @@ import 'package:flutter_svg/svg.dart';
 class PlacesForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.chevron_left,
-            color: ColorSet.colorPrimaryGreenButton,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorSet.colorPrimaryGreenButton,
-        onPressed: () {
-          // context
-          //     .read<SignInFormBloc>()
-          //     .add(const SignInFormEvent.verifyPhoneNumberPressed());
-        },
-        child: const Icon(Icons.chevron_right),
-      ),
-      body: Stack(
-        children: [
-          Image.asset(
-            'assets/dots.png',
-            width: double.infinity,
-            height: double.infinity,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: BlocBuilder<PlacesFormBloc, PlacesFormState>(
-                builder: (context, state) {
-              return ListView(
+    return BlocConsumer<PlacesFormBloc, PlacesFormState>(
+        listener: (context, state) {},
+        builder: (context, state) => Scaffold(
+              backgroundColor: Colors.white,
+              appBar: AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                leading: IconButton(
+                  icon: const Icon(
+                    Icons.chevron_left,
+                    color: ColorSet.colorPrimaryGreenButton,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              floatingActionButton: Visibility(
+                visible: state.placeSaved,
+                child: FloatingActionButton(
+                  backgroundColor: ColorSet.colorPrimaryGreenButton,
+                  onPressed: () {
+                    Navigator.pop(context, unit);
+                  },
+                  child: const Icon(Icons.chevron_right),
+                ),
+              ),
+              body: Stack(
                 children: [
-                  const SizedBox(
+                  Image.asset(
+                    'assets/dots.png',
                     width: double.infinity,
-                    child: Text(
-                      'Qual seu número?',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: ColorSet.colorPrimaryGreen,
-                          fontSize: 28),
+                    height: double.infinity,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(32.0),
+                    child: ListView(
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            context
+                                .read<PlacesFormBloc>()
+                                .state
+                                .loggedUser
+                                .fold(
+                                    () => '',
+                                    (a) => a.fold((l) => '',
+                                        (r) => r.nickname.getOrCrash())),
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorSet.colorPrimaryGreen,
+                                fontSize: 28),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        const Text(
+                          'Qual local você quer retirar os produtos? Fique tranquilo que você pod alterar a qualquer momento!',
+                          style: TextStyle(height: 2),
+                        ),
+                        const SizedBox(
+                          height: 48,
+                        ),
+                        _getStatePlaceWidget(context, state),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        _getPlaceWidget(context, state)
+                      ],
                     ),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  const Text(
-                    'Qual local você quer retirar os produtos? Fique tranquilo que você alterar a qualquer momento!',
-                    style: TextStyle(height: 2),
-                  ),
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  _getStatePlaceWidget(context, state),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  _getPlaceWidget(context, state)
+                  )
                 ],
-              );
-            }),
-          )
-        ],
-      ),
-    );
+              ),
+            ));
   }
 
   Widget _getStatePlaceWidget(BuildContext context, PlacesFormState state) {
@@ -89,7 +97,7 @@ class PlacesForm extends StatelessWidget {
         ),
       );
     } else if (state.loadStatePlacesFinish) {
-      List<StatePlace> items = state.states
+      final items = state.states
           .fold(() => List<StatePlace>.empty(),
               (a) => a.fold((l) => List<StatePlace>.empty(), (r) => r))
           .toList();
@@ -114,11 +122,11 @@ class PlacesForm extends StatelessWidget {
                   width: 8,
                 ),
                 Expanded(
-                  child: DropdownButton<String>(
+                  child: DropdownButton<StatePlace>(
                     value: state.selectedState,
-                    items: items.map<DropdownMenuItem<String>>((e) {
-                      return DropdownMenuItem<String>(
-                          value: e.getOrCrash(),
+                    items: items.map<DropdownMenuItem<StatePlace>>((e) {
+                      return DropdownMenuItem<StatePlace>(
+                          value: e,
                           child: Text(
                             e.getOrCrash(),
                           ));
@@ -127,7 +135,7 @@ class PlacesForm extends StatelessWidget {
                     onChanged: (newValue) {
                       context
                           .read<PlacesFormBloc>()
-                          .add(PlacesFormEvent.stateSelected(newValue ?? ''));
+                          .add(PlacesFormEvent.stateSelected(newValue));
                     },
                     icon: const Icon(Icons.arrow_drop_down),
                     style: const TextStyle(
@@ -165,14 +173,14 @@ class PlacesForm extends StatelessWidget {
                   width: 8,
                 ),
                 Expanded(
-                  child: DropdownButton<String>(
-                    value: state.placeSelected,
+                  child: DropdownButton<StatePlace>(
+                    value: state.selectedState,
                     items: [],
                     underline: Container(height: 1, color: Colors.transparent),
                     onChanged: (newValue) {
                       context
                           .read<PlacesFormBloc>()
-                          .add(PlacesFormEvent.placeSelected(newValue ?? ''));
+                          .add(PlacesFormEvent.stateSelected(newValue));
                     },
                     icon: const Icon(Icons.arrow_drop_down),
                     style: const TextStyle(
@@ -201,7 +209,7 @@ class PlacesForm extends StatelessWidget {
         ),
       );
     } else if (state.loadPlacesFinish) {
-      List<Place> items = state.places
+      final items = state.places
           .fold(() => List<Place>.empty(),
               (a) => a.fold((l) => List<Place>.empty(), (r) => r))
           .toList();
@@ -226,19 +234,19 @@ class PlacesForm extends StatelessWidget {
                   width: 8,
                 ),
                 Expanded(
-                  child: DropdownButton<String>(
+                  child: DropdownButton<Place>(
                     value: state.placeSelected,
-                    items: items.map<DropdownMenuItem<String>>((e) {
-                      return DropdownMenuItem<String>(
-                          value: e.name.getOrCrash(),
+                    items: items.map<DropdownMenuItem<Place>>((e) {
+                      return DropdownMenuItem<Place>(
+                          value: e,
                           child: Text(
-                            e.name.getOrCrash(),
+                            e.name,
                           ));
                     }).toList(),
                     onChanged: (newValue) {
                       context
                           .read<PlacesFormBloc>()
-                          .add(PlacesFormEvent.placeSelected(newValue ?? ''));
+                          .add(PlacesFormEvent.placeSelected(newValue));
                     },
                     icon: const Icon(Icons.arrow_drop_down),
                     style: const TextStyle(
@@ -272,14 +280,14 @@ class PlacesForm extends StatelessWidget {
                   width: 8,
                 ),
                 Expanded(
-                  child: DropdownButton<String>(
+                  child: DropdownButton<Place>(
                     value: state.placeSelected,
                     items: [],
                     underline: Container(height: 1, color: Colors.transparent),
                     onChanged: (newValue) {
                       context
                           .read<PlacesFormBloc>()
-                          .add(PlacesFormEvent.placeSelected(newValue ?? ''));
+                          .add(PlacesFormEvent.placeSelected(newValue));
                     },
                     icon: const Icon(Icons.arrow_drop_down),
                     style: const TextStyle(

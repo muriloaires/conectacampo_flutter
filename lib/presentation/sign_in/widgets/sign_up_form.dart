@@ -1,6 +1,7 @@
 import 'package:conectacampo/application/auth/sign_up_form/bloc/sign_up_form_bloc.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,6 +42,10 @@ class SignUpForm extends StatelessWidget {
             padding: const EdgeInsets.all(32.0),
             child: BlocConsumer<SignUpFormBloc, SignUpFormBlocState>(
                 listener: (context, state) {
+              if (state.navigateNext) {
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/buyer_main', (route) => false);
+              }
               state.authFailureOrSuccessOption.fold(
                   () => {},
                   (either) => either.fold((failure) {
@@ -56,11 +61,14 @@ class SignUpForm extends StatelessWidget {
                           final snackBar = SnackBar(content: Text(errorText));
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
-                      }, (_) {
-                        Navigator.push(
+                      }, (_) async {
+                        Unit? success = await Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => PlacesPage()),
                         );
+                        context
+                            .read<SignUpFormBloc>()
+                            .add(SignUpFormBlocEvent.placeChosen(success));
                       }));
             }, builder: (context, state) {
               return Form(

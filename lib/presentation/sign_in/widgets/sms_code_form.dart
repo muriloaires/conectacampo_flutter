@@ -50,16 +50,15 @@ class SmsCodeForm extends StatelessWidget {
               state.authFailureOrSuccessOption.fold(
                   () => {},
                   (either) => either.fold((failure) {
-                        failure.maybeMap(userNotFound: (_) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpPage()),
-                          );
-                        }, orElse: () {
-                          MaterialPageRoute(
-                              builder: (context) => BuyerMainPage());
-                        });
+                        failure.maybeMap(
+                            userNotFound: (_) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignUpPage()),
+                              );
+                            },
+                            orElse: () {});
                         final String errorText = failure.maybeMap(
                             serverError: (_) => 'Erro interno',
                             invalidSmsCode: (_) =>
@@ -74,7 +73,8 @@ class SmsCodeForm extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       }, (_) {
-                        //navigate to home
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => BuyerMainPage()));
                       }));
             }, builder: (context, state) {
               return Padding(

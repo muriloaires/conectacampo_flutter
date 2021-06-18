@@ -4,7 +4,7 @@ import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class IAuthFacade {
-  Future<Option<User>> getSignedUser();
+  Future<Option<Either<AuthFailure, User>>> getSignedUser();
   Future<void> signOut();
 
   Future<Either<AuthFailure, Unit>> requestSmsCode(

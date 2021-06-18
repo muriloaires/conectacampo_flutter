@@ -28,6 +28,12 @@ class _$SignUpFormBlocEventTearOff {
     );
   }
 
+  PlaceChosen placeChosen(Unit? success) {
+    return PlaceChosen(
+      success,
+    );
+  }
+
   BtnSignUpPressed btnSignUpPressed() {
     return const BtnSignUpPressed();
   }
@@ -42,6 +48,7 @@ mixin _$SignUpFormBlocEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
+    required TResult Function(Unit? success) placeChosen,
     required TResult Function() btnSignUpPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +56,7 @@ mixin _$SignUpFormBlocEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
+    TResult Function(Unit? success)? placeChosen,
     TResult Function()? btnSignUpPressed,
     required TResult orElse(),
   }) =>
@@ -57,6 +65,7 @@ mixin _$SignUpFormBlocEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(PlaceChosen value) placeChosen,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +73,7 @@ mixin _$SignUpFormBlocEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(PlaceChosen value)? placeChosen,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
     required TResult orElse(),
   }) =>
@@ -155,6 +165,7 @@ class _$FullNameChanged implements FullNameChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
+    required TResult Function(Unit? success) placeChosen,
     required TResult Function() btnSignUpPressed,
   }) {
     return fullNameChanged(fullName);
@@ -165,6 +176,7 @@ class _$FullNameChanged implements FullNameChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
+    TResult Function(Unit? success)? placeChosen,
     TResult Function()? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -179,6 +191,7 @@ class _$FullNameChanged implements FullNameChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(PlaceChosen value) placeChosen,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) {
     return fullNameChanged(this);
@@ -189,6 +202,7 @@ class _$FullNameChanged implements FullNameChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(PlaceChosen value)? placeChosen,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -276,6 +290,7 @@ class _$NicknameChanged implements NicknameChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
+    required TResult Function(Unit? success) placeChosen,
     required TResult Function() btnSignUpPressed,
   }) {
     return nicknameChanged(nickname);
@@ -286,6 +301,7 @@ class _$NicknameChanged implements NicknameChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
+    TResult Function(Unit? success)? placeChosen,
     TResult Function()? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -300,6 +316,7 @@ class _$NicknameChanged implements NicknameChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(PlaceChosen value) placeChosen,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) {
     return nicknameChanged(this);
@@ -310,6 +327,7 @@ class _$NicknameChanged implements NicknameChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(PlaceChosen value)? placeChosen,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -326,6 +344,130 @@ abstract class NicknameChanged implements SignUpFormBlocEvent {
   String get nickname => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $NicknameChangedCopyWith<NicknameChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PlaceChosenCopyWith<$Res> {
+  factory $PlaceChosenCopyWith(
+          PlaceChosen value, $Res Function(PlaceChosen) then) =
+      _$PlaceChosenCopyWithImpl<$Res>;
+  $Res call({Unit? success});
+}
+
+/// @nodoc
+class _$PlaceChosenCopyWithImpl<$Res>
+    extends _$SignUpFormBlocEventCopyWithImpl<$Res>
+    implements $PlaceChosenCopyWith<$Res> {
+  _$PlaceChosenCopyWithImpl(
+      PlaceChosen _value, $Res Function(PlaceChosen) _then)
+      : super(_value, (v) => _then(v as PlaceChosen));
+
+  @override
+  PlaceChosen get _value => super._value as PlaceChosen;
+
+  @override
+  $Res call({
+    Object? success = freezed,
+  }) {
+    return _then(PlaceChosen(
+      success == freezed
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as Unit?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PlaceChosen implements PlaceChosen {
+  const _$PlaceChosen(this.success);
+
+  @override
+  final Unit? success;
+
+  @override
+  String toString() {
+    return 'SignUpFormBlocEvent.placeChosen(success: $success)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is PlaceChosen &&
+            (identical(other.success, success) ||
+                const DeepCollectionEquality().equals(other.success, success)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(success);
+
+  @JsonKey(ignore: true)
+  @override
+  $PlaceChosenCopyWith<PlaceChosen> get copyWith =>
+      _$PlaceChosenCopyWithImpl<PlaceChosen>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fullName) fullNameChanged,
+    required TResult Function(String nickname) nicknameChanged,
+    required TResult Function(Unit? success) placeChosen,
+    required TResult Function() btnSignUpPressed,
+  }) {
+    return placeChosen(success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fullName)? fullNameChanged,
+    TResult Function(String nickname)? nicknameChanged,
+    TResult Function(Unit? success)? placeChosen,
+    TResult Function()? btnSignUpPressed,
+    required TResult orElse(),
+  }) {
+    if (placeChosen != null) {
+      return placeChosen(success);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FullNameChanged value) fullNameChanged,
+    required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(PlaceChosen value) placeChosen,
+    required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
+  }) {
+    return placeChosen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FullNameChanged value)? fullNameChanged,
+    TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(PlaceChosen value)? placeChosen,
+    TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    required TResult orElse(),
+  }) {
+    if (placeChosen != null) {
+      return placeChosen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PlaceChosen implements SignUpFormBlocEvent {
+  const factory PlaceChosen(Unit? success) = _$PlaceChosen;
+
+  Unit? get success => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PlaceChosenCopyWith<PlaceChosen> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -371,6 +513,7 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
   TResult when<TResult extends Object?>({
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
+    required TResult Function(Unit? success) placeChosen,
     required TResult Function() btnSignUpPressed,
   }) {
     return btnSignUpPressed();
@@ -381,6 +524,7 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
+    TResult Function(Unit? success)? placeChosen,
     TResult Function()? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -395,6 +539,7 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
   TResult map<TResult extends Object?>({
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(PlaceChosen value) placeChosen,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) {
     return btnSignUpPressed(this);
@@ -405,6 +550,7 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(PlaceChosen value)? placeChosen,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -428,12 +574,14 @@ class _$SignUpFormBlocStateTearOff {
       FullName fullName,
       Nickname nickname,
       bool showErrorMessages,
+      bool navigateNext,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) {
     return _SignUpFormBlocState(
       isSubmitting,
       fullName,
       nickname,
       showErrorMessages,
+      navigateNext,
       authFailureOrSuccessOption,
     );
   }
@@ -448,6 +596,7 @@ mixin _$SignUpFormBlocState {
   FullName get fullName => throw _privateConstructorUsedError;
   Nickname get nickname => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
+  bool get navigateNext => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -466,6 +615,7 @@ abstract class $SignUpFormBlocStateCopyWith<$Res> {
       FullName fullName,
       Nickname nickname,
       bool showErrorMessages,
+      bool navigateNext,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
 }
 
@@ -484,6 +634,7 @@ class _$SignUpFormBlocStateCopyWithImpl<$Res>
     Object? fullName = freezed,
     Object? nickname = freezed,
     Object? showErrorMessages = freezed,
+    Object? navigateNext = freezed,
     Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -502,6 +653,10 @@ class _$SignUpFormBlocStateCopyWithImpl<$Res>
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      navigateNext: navigateNext == freezed
+          ? _value.navigateNext
+          : navigateNext // ignore: cast_nullable_to_non_nullable
               as bool,
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
@@ -523,6 +678,7 @@ abstract class _$SignUpFormBlocStateCopyWith<$Res>
       FullName fullName,
       Nickname nickname,
       bool showErrorMessages,
+      bool navigateNext,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
 }
 
@@ -543,6 +699,7 @@ class __$SignUpFormBlocStateCopyWithImpl<$Res>
     Object? fullName = freezed,
     Object? nickname = freezed,
     Object? showErrorMessages = freezed,
+    Object? navigateNext = freezed,
     Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_SignUpFormBlocState(
@@ -562,6 +719,10 @@ class __$SignUpFormBlocStateCopyWithImpl<$Res>
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
+      navigateNext == freezed
+          ? _value.navigateNext
+          : navigateNext // ignore: cast_nullable_to_non_nullable
+              as bool,
       authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -573,8 +734,13 @@ class __$SignUpFormBlocStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SignUpFormBlocState implements _SignUpFormBlocState {
-  const _$_SignUpFormBlocState(this.isSubmitting, this.fullName, this.nickname,
-      this.showErrorMessages, this.authFailureOrSuccessOption);
+  const _$_SignUpFormBlocState(
+      this.isSubmitting,
+      this.fullName,
+      this.nickname,
+      this.showErrorMessages,
+      this.navigateNext,
+      this.authFailureOrSuccessOption);
 
   @override
   final bool isSubmitting;
@@ -585,11 +751,13 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
   @override
   final bool showErrorMessages;
   @override
+  final bool navigateNext;
+  @override
   final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'SignUpFormBlocState(isSubmitting: $isSubmitting, fullName: $fullName, nickname: $nickname, showErrorMessages: $showErrorMessages, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'SignUpFormBlocState(isSubmitting: $isSubmitting, fullName: $fullName, nickname: $nickname, showErrorMessages: $showErrorMessages, navigateNext: $navigateNext, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -608,6 +776,9 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
+            (identical(other.navigateNext, navigateNext) ||
+                const DeepCollectionEquality()
+                    .equals(other.navigateNext, navigateNext)) &&
             (identical(other.authFailureOrSuccessOption,
                     authFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
@@ -622,6 +793,7 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
       const DeepCollectionEquality().hash(fullName) ^
       const DeepCollectionEquality().hash(nickname) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
+      const DeepCollectionEquality().hash(navigateNext) ^
       const DeepCollectionEquality().hash(authFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -637,6 +809,7 @@ abstract class _SignUpFormBlocState implements SignUpFormBlocState {
           FullName fullName,
           Nickname nickname,
           bool showErrorMessages,
+          bool navigateNext,
           Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) =
       _$_SignUpFormBlocState;
 
@@ -648,6 +821,8 @@ abstract class _SignUpFormBlocState implements SignUpFormBlocState {
   Nickname get nickname => throw _privateConstructorUsedError;
   @override
   bool get showErrorMessages => throw _privateConstructorUsedError;
+  @override
+  bool get navigateNext => throw _privateConstructorUsedError;
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;

@@ -20,13 +20,13 @@ class _$PlacesFormEventTearOff {
     return const Started();
   }
 
-  StateSelected stateSelected(String state) {
+  StateSelected stateSelected(StatePlace? state) {
     return StateSelected(
       state,
     );
   }
 
-  PlaceSelected placeSelected(String place) {
+  PlaceSelected placeSelected(Place? place) {
     return PlaceSelected(
       place,
     );
@@ -41,15 +41,15 @@ mixin _$PlacesFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String state) stateSelected,
-    required TResult Function(String place) placeSelected,
+    required TResult Function(StatePlace? state) stateSelected,
+    required TResult Function(Place? place) placeSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String state)? stateSelected,
-    TResult Function(String place)? placeSelected,
+    TResult Function(StatePlace? state)? stateSelected,
+    TResult Function(Place? place)? placeSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,8 +125,8 @@ class _$Started implements Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String state) stateSelected,
-    required TResult Function(String place) placeSelected,
+    required TResult Function(StatePlace? state) stateSelected,
+    required TResult Function(Place? place) placeSelected,
   }) {
     return started();
   }
@@ -135,8 +135,8 @@ class _$Started implements Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String state)? stateSelected,
-    TResult Function(String place)? placeSelected,
+    TResult Function(StatePlace? state)? stateSelected,
+    TResult Function(Place? place)? placeSelected,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -179,7 +179,7 @@ abstract class $StateSelectedCopyWith<$Res> {
   factory $StateSelectedCopyWith(
           StateSelected value, $Res Function(StateSelected) then) =
       _$StateSelectedCopyWithImpl<$Res>;
-  $Res call({String state});
+  $Res call({StatePlace? state});
 }
 
 /// @nodoc
@@ -201,7 +201,7 @@ class _$StateSelectedCopyWithImpl<$Res>
       state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as String,
+              as StatePlace?,
     ));
   }
 }
@@ -212,7 +212,7 @@ class _$StateSelected implements StateSelected {
   const _$StateSelected(this.state);
 
   @override
-  final String state;
+  final StatePlace? state;
 
   @override
   String toString() {
@@ -240,8 +240,8 @@ class _$StateSelected implements StateSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String state) stateSelected,
-    required TResult Function(String place) placeSelected,
+    required TResult Function(StatePlace? state) stateSelected,
+    required TResult Function(Place? place) placeSelected,
   }) {
     return stateSelected(state);
   }
@@ -250,8 +250,8 @@ class _$StateSelected implements StateSelected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String state)? stateSelected,
-    TResult Function(String place)? placeSelected,
+    TResult Function(StatePlace? state)? stateSelected,
+    TResult Function(Place? place)? placeSelected,
     required TResult orElse(),
   }) {
     if (stateSelected != null) {
@@ -286,9 +286,9 @@ class _$StateSelected implements StateSelected {
 }
 
 abstract class StateSelected implements PlacesFormEvent {
-  const factory StateSelected(String state) = _$StateSelected;
+  const factory StateSelected(StatePlace? state) = _$StateSelected;
 
-  String get state => throw _privateConstructorUsedError;
+  StatePlace? get state => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $StateSelectedCopyWith<StateSelected> get copyWith =>
       throw _privateConstructorUsedError;
@@ -299,7 +299,9 @@ abstract class $PlaceSelectedCopyWith<$Res> {
   factory $PlaceSelectedCopyWith(
           PlaceSelected value, $Res Function(PlaceSelected) then) =
       _$PlaceSelectedCopyWithImpl<$Res>;
-  $Res call({String place});
+  $Res call({Place? place});
+
+  $PlaceCopyWith<$Res>? get place;
 }
 
 /// @nodoc
@@ -321,8 +323,19 @@ class _$PlaceSelectedCopyWithImpl<$Res>
       place == freezed
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Place?,
     ));
+  }
+
+  @override
+  $PlaceCopyWith<$Res>? get place {
+    if (_value.place == null) {
+      return null;
+    }
+
+    return $PlaceCopyWith<$Res>(_value.place!, (value) {
+      return _then(_value.copyWith(place: value));
+    });
   }
 }
 
@@ -332,7 +345,7 @@ class _$PlaceSelected implements PlaceSelected {
   const _$PlaceSelected(this.place);
 
   @override
-  final String place;
+  final Place? place;
 
   @override
   String toString() {
@@ -360,8 +373,8 @@ class _$PlaceSelected implements PlaceSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String state) stateSelected,
-    required TResult Function(String place) placeSelected,
+    required TResult Function(StatePlace? state) stateSelected,
+    required TResult Function(Place? place) placeSelected,
   }) {
     return placeSelected(place);
   }
@@ -370,8 +383,8 @@ class _$PlaceSelected implements PlaceSelected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String state)? stateSelected,
-    TResult Function(String place)? placeSelected,
+    TResult Function(StatePlace? state)? stateSelected,
+    TResult Function(Place? place)? placeSelected,
     required TResult orElse(),
   }) {
     if (placeSelected != null) {
@@ -406,9 +419,9 @@ class _$PlaceSelected implements PlaceSelected {
 }
 
 abstract class PlaceSelected implements PlacesFormEvent {
-  const factory PlaceSelected(String place) = _$PlaceSelected;
+  const factory PlaceSelected(Place? place) = _$PlaceSelected;
 
-  String get place => throw _privateConstructorUsedError;
+  Place? get place => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PlaceSelectedCopyWith<PlaceSelected> get copyWith =>
       throw _privateConstructorUsedError;
@@ -419,27 +432,32 @@ class _$PlacesFormStateTearOff {
   const _$PlacesFormStateTearOff();
 
   _PlacesFormState call(
-      Option<Either<PlacesFailure, List<StatePlace>>> states,
-      Option<Either<PlacesFailure, List<Place>>> places,
-      String? selectedState,
-      String? placeSelected,
-      bool isLoadingStatePlaces,
-      bool loadStatePlacesFinish,
-      bool isLoadingPlaces,
-      bool loadPlacesFinish,
-      bool isSubmitting,
-      Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption) {
+      {required Option<Either<AuthFailure, User>> loggedUser,
+      required Option<Either<PlacesFailure, List<StatePlace>>> states,
+      required Option<Either<PlacesFailure, List<Place>>> places,
+      required StatePlace? selectedState,
+      required Place? placeSelected,
+      required bool isLoadingStatePlaces,
+      required bool loadStatePlacesFinish,
+      required bool isLoadingPlaces,
+      required bool loadPlacesFinish,
+      required bool isSubmitting,
+      required bool placeSaved,
+      required Option<Either<PlacesFailure, Unit>>
+          placesFailureOrSuccessOption}) {
     return _PlacesFormState(
-      states,
-      places,
-      selectedState,
-      placeSelected,
-      isLoadingStatePlaces,
-      loadStatePlacesFinish,
-      isLoadingPlaces,
-      loadPlacesFinish,
-      isSubmitting,
-      placesFailureOrSuccessOption,
+      loggedUser: loggedUser,
+      states: states,
+      places: places,
+      selectedState: selectedState,
+      placeSelected: placeSelected,
+      isLoadingStatePlaces: isLoadingStatePlaces,
+      loadStatePlacesFinish: loadStatePlacesFinish,
+      isLoadingPlaces: isLoadingPlaces,
+      loadPlacesFinish: loadPlacesFinish,
+      isSubmitting: isSubmitting,
+      placeSaved: placeSaved,
+      placesFailureOrSuccessOption: placesFailureOrSuccessOption,
     );
   }
 }
@@ -449,17 +467,20 @@ const $PlacesFormState = _$PlacesFormStateTearOff();
 
 /// @nodoc
 mixin _$PlacesFormState {
+  Option<Either<AuthFailure, User>> get loggedUser =>
+      throw _privateConstructorUsedError;
   Option<Either<PlacesFailure, List<StatePlace>>> get states =>
       throw _privateConstructorUsedError;
   Option<Either<PlacesFailure, List<Place>>> get places =>
       throw _privateConstructorUsedError;
-  String? get selectedState => throw _privateConstructorUsedError;
-  String? get placeSelected => throw _privateConstructorUsedError;
+  StatePlace? get selectedState => throw _privateConstructorUsedError;
+  Place? get placeSelected => throw _privateConstructorUsedError;
   bool get isLoadingStatePlaces => throw _privateConstructorUsedError;
   bool get loadStatePlacesFinish => throw _privateConstructorUsedError;
   bool get isLoadingPlaces => throw _privateConstructorUsedError;
   bool get loadPlacesFinish => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get placeSaved => throw _privateConstructorUsedError;
   Option<Either<PlacesFailure, Unit>> get placesFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -474,16 +495,20 @@ abstract class $PlacesFormStateCopyWith<$Res> {
           PlacesFormState value, $Res Function(PlacesFormState) then) =
       _$PlacesFormStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<PlacesFailure, List<StatePlace>>> states,
+      {Option<Either<AuthFailure, User>> loggedUser,
+      Option<Either<PlacesFailure, List<StatePlace>>> states,
       Option<Either<PlacesFailure, List<Place>>> places,
-      String? selectedState,
-      String? placeSelected,
+      StatePlace? selectedState,
+      Place? placeSelected,
       bool isLoadingStatePlaces,
       bool loadStatePlacesFinish,
       bool isLoadingPlaces,
       bool loadPlacesFinish,
       bool isSubmitting,
+      bool placeSaved,
       Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption});
+
+  $PlaceCopyWith<$Res>? get placeSelected;
 }
 
 /// @nodoc
@@ -497,6 +522,7 @@ class _$PlacesFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? loggedUser = freezed,
     Object? states = freezed,
     Object? places = freezed,
     Object? selectedState = freezed,
@@ -506,9 +532,14 @@ class _$PlacesFormStateCopyWithImpl<$Res>
     Object? isLoadingPlaces = freezed,
     Object? loadPlacesFinish = freezed,
     Object? isSubmitting = freezed,
+    Object? placeSaved = freezed,
     Object? placesFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
+      loggedUser: loggedUser == freezed
+          ? _value.loggedUser
+          : loggedUser // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, User>>,
       states: states == freezed
           ? _value.states
           : states // ignore: cast_nullable_to_non_nullable
@@ -520,11 +551,11 @@ class _$PlacesFormStateCopyWithImpl<$Res>
       selectedState: selectedState == freezed
           ? _value.selectedState
           : selectedState // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as StatePlace?,
       placeSelected: placeSelected == freezed
           ? _value.placeSelected
           : placeSelected // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Place?,
       isLoadingStatePlaces: isLoadingStatePlaces == freezed
           ? _value.isLoadingStatePlaces
           : isLoadingStatePlaces // ignore: cast_nullable_to_non_nullable
@@ -545,11 +576,26 @@ class _$PlacesFormStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      placeSaved: placeSaved == freezed
+          ? _value.placeSaved
+          : placeSaved // ignore: cast_nullable_to_non_nullable
+              as bool,
       placesFailureOrSuccessOption: placesFailureOrSuccessOption == freezed
           ? _value.placesFailureOrSuccessOption
           : placesFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<PlacesFailure, Unit>>,
     ));
+  }
+
+  @override
+  $PlaceCopyWith<$Res>? get placeSelected {
+    if (_value.placeSelected == null) {
+      return null;
+    }
+
+    return $PlaceCopyWith<$Res>(_value.placeSelected!, (value) {
+      return _then(_value.copyWith(placeSelected: value));
+    });
   }
 }
 
@@ -561,16 +607,21 @@ abstract class _$PlacesFormStateCopyWith<$Res>
       __$PlacesFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<PlacesFailure, List<StatePlace>>> states,
+      {Option<Either<AuthFailure, User>> loggedUser,
+      Option<Either<PlacesFailure, List<StatePlace>>> states,
       Option<Either<PlacesFailure, List<Place>>> places,
-      String? selectedState,
-      String? placeSelected,
+      StatePlace? selectedState,
+      Place? placeSelected,
       bool isLoadingStatePlaces,
       bool loadStatePlacesFinish,
       bool isLoadingPlaces,
       bool loadPlacesFinish,
       bool isSubmitting,
+      bool placeSaved,
       Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption});
+
+  @override
+  $PlaceCopyWith<$Res>? get placeSelected;
 }
 
 /// @nodoc
@@ -586,6 +637,7 @@ class __$PlacesFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? loggedUser = freezed,
     Object? states = freezed,
     Object? places = freezed,
     Object? selectedState = freezed,
@@ -595,46 +647,55 @@ class __$PlacesFormStateCopyWithImpl<$Res>
     Object? isLoadingPlaces = freezed,
     Object? loadPlacesFinish = freezed,
     Object? isSubmitting = freezed,
+    Object? placeSaved = freezed,
     Object? placesFailureOrSuccessOption = freezed,
   }) {
     return _then(_PlacesFormState(
-      states == freezed
+      loggedUser: loggedUser == freezed
+          ? _value.loggedUser
+          : loggedUser // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, User>>,
+      states: states == freezed
           ? _value.states
           : states // ignore: cast_nullable_to_non_nullable
               as Option<Either<PlacesFailure, List<StatePlace>>>,
-      places == freezed
+      places: places == freezed
           ? _value.places
           : places // ignore: cast_nullable_to_non_nullable
               as Option<Either<PlacesFailure, List<Place>>>,
-      selectedState == freezed
+      selectedState: selectedState == freezed
           ? _value.selectedState
           : selectedState // ignore: cast_nullable_to_non_nullable
-              as String?,
-      placeSelected == freezed
+              as StatePlace?,
+      placeSelected: placeSelected == freezed
           ? _value.placeSelected
           : placeSelected // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isLoadingStatePlaces == freezed
+              as Place?,
+      isLoadingStatePlaces: isLoadingStatePlaces == freezed
           ? _value.isLoadingStatePlaces
           : isLoadingStatePlaces // ignore: cast_nullable_to_non_nullable
               as bool,
-      loadStatePlacesFinish == freezed
+      loadStatePlacesFinish: loadStatePlacesFinish == freezed
           ? _value.loadStatePlacesFinish
           : loadStatePlacesFinish // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoadingPlaces == freezed
+      isLoadingPlaces: isLoadingPlaces == freezed
           ? _value.isLoadingPlaces
           : isLoadingPlaces // ignore: cast_nullable_to_non_nullable
               as bool,
-      loadPlacesFinish == freezed
+      loadPlacesFinish: loadPlacesFinish == freezed
           ? _value.loadPlacesFinish
           : loadPlacesFinish // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSubmitting == freezed
+      isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      placesFailureOrSuccessOption == freezed
+      placeSaved: placeSaved == freezed
+          ? _value.placeSaved
+          : placeSaved // ignore: cast_nullable_to_non_nullable
+              as bool,
+      placesFailureOrSuccessOption: placesFailureOrSuccessOption == freezed
           ? _value.placesFailureOrSuccessOption
           : placesFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<PlacesFailure, Unit>>,
@@ -646,25 +707,29 @@ class __$PlacesFormStateCopyWithImpl<$Res>
 
 class _$_PlacesFormState implements _PlacesFormState {
   const _$_PlacesFormState(
-      this.states,
-      this.places,
-      this.selectedState,
-      this.placeSelected,
-      this.isLoadingStatePlaces,
-      this.loadStatePlacesFinish,
-      this.isLoadingPlaces,
-      this.loadPlacesFinish,
-      this.isSubmitting,
-      this.placesFailureOrSuccessOption);
+      {required this.loggedUser,
+      required this.states,
+      required this.places,
+      required this.selectedState,
+      required this.placeSelected,
+      required this.isLoadingStatePlaces,
+      required this.loadStatePlacesFinish,
+      required this.isLoadingPlaces,
+      required this.loadPlacesFinish,
+      required this.isSubmitting,
+      required this.placeSaved,
+      required this.placesFailureOrSuccessOption});
 
+  @override
+  final Option<Either<AuthFailure, User>> loggedUser;
   @override
   final Option<Either<PlacesFailure, List<StatePlace>>> states;
   @override
   final Option<Either<PlacesFailure, List<Place>>> places;
   @override
-  final String? selectedState;
+  final StatePlace? selectedState;
   @override
-  final String? placeSelected;
+  final Place? placeSelected;
   @override
   final bool isLoadingStatePlaces;
   @override
@@ -676,17 +741,22 @@ class _$_PlacesFormState implements _PlacesFormState {
   @override
   final bool isSubmitting;
   @override
+  final bool placeSaved;
+  @override
   final Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'PlacesFormState(states: $states, places: $places, selectedState: $selectedState, placeSelected: $placeSelected, isLoadingStatePlaces: $isLoadingStatePlaces, loadStatePlacesFinish: $loadStatePlacesFinish, isLoadingPlaces: $isLoadingPlaces, loadPlacesFinish: $loadPlacesFinish, isSubmitting: $isSubmitting, placesFailureOrSuccessOption: $placesFailureOrSuccessOption)';
+    return 'PlacesFormState(loggedUser: $loggedUser, states: $states, places: $places, selectedState: $selectedState, placeSelected: $placeSelected, isLoadingStatePlaces: $isLoadingStatePlaces, loadStatePlacesFinish: $loadStatePlacesFinish, isLoadingPlaces: $isLoadingPlaces, loadPlacesFinish: $loadPlacesFinish, isSubmitting: $isSubmitting, placeSaved: $placeSaved, placesFailureOrSuccessOption: $placesFailureOrSuccessOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PlacesFormState &&
+            (identical(other.loggedUser, loggedUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.loggedUser, loggedUser)) &&
             (identical(other.states, states) ||
                 const DeepCollectionEquality().equals(other.states, states)) &&
             (identical(other.places, places) ||
@@ -712,6 +782,9 @@ class _$_PlacesFormState implements _PlacesFormState {
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.placeSaved, placeSaved) ||
+                const DeepCollectionEquality()
+                    .equals(other.placeSaved, placeSaved)) &&
             (identical(other.placesFailureOrSuccessOption,
                     placesFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
@@ -722,6 +795,7 @@ class _$_PlacesFormState implements _PlacesFormState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(loggedUser) ^
       const DeepCollectionEquality().hash(states) ^
       const DeepCollectionEquality().hash(places) ^
       const DeepCollectionEquality().hash(selectedState) ^
@@ -731,6 +805,7 @@ class _$_PlacesFormState implements _PlacesFormState {
       const DeepCollectionEquality().hash(isLoadingPlaces) ^
       const DeepCollectionEquality().hash(loadPlacesFinish) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(placeSaved) ^
       const DeepCollectionEquality().hash(placesFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -741,18 +816,23 @@ class _$_PlacesFormState implements _PlacesFormState {
 
 abstract class _PlacesFormState implements PlacesFormState {
   const factory _PlacesFormState(
-          Option<Either<PlacesFailure, List<StatePlace>>> states,
-          Option<Either<PlacesFailure, List<Place>>> places,
-          String? selectedState,
-          String? placeSelected,
-          bool isLoadingStatePlaces,
-          bool loadStatePlacesFinish,
-          bool isLoadingPlaces,
-          bool loadPlacesFinish,
-          bool isSubmitting,
-          Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption) =
-      _$_PlacesFormState;
+      {required Option<Either<AuthFailure, User>> loggedUser,
+      required Option<Either<PlacesFailure, List<StatePlace>>> states,
+      required Option<Either<PlacesFailure, List<Place>>> places,
+      required StatePlace? selectedState,
+      required Place? placeSelected,
+      required bool isLoadingStatePlaces,
+      required bool loadStatePlacesFinish,
+      required bool isLoadingPlaces,
+      required bool loadPlacesFinish,
+      required bool isSubmitting,
+      required bool placeSaved,
+      required Option<Either<PlacesFailure, Unit>>
+          placesFailureOrSuccessOption}) = _$_PlacesFormState;
 
+  @override
+  Option<Either<AuthFailure, User>> get loggedUser =>
+      throw _privateConstructorUsedError;
   @override
   Option<Either<PlacesFailure, List<StatePlace>>> get states =>
       throw _privateConstructorUsedError;
@@ -760,9 +840,9 @@ abstract class _PlacesFormState implements PlacesFormState {
   Option<Either<PlacesFailure, List<Place>>> get places =>
       throw _privateConstructorUsedError;
   @override
-  String? get selectedState => throw _privateConstructorUsedError;
+  StatePlace? get selectedState => throw _privateConstructorUsedError;
   @override
-  String? get placeSelected => throw _privateConstructorUsedError;
+  Place? get placeSelected => throw _privateConstructorUsedError;
   @override
   bool get isLoadingStatePlaces => throw _privateConstructorUsedError;
   @override
@@ -773,6 +853,8 @@ abstract class _PlacesFormState implements PlacesFormState {
   bool get loadPlacesFinish => throw _privateConstructorUsedError;
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
+  @override
+  bool get placeSaved => throw _privateConstructorUsedError;
   @override
   Option<Either<PlacesFailure, Unit>> get placesFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
