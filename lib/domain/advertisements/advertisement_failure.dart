@@ -7,4 +7,6 @@ class AdvertisementFailure with _$AdvertisementFailure {
   const factory AdvertisementFailure.unauthorized() = Unauthorized;
   const factory AdvertisementFailure.serverError() = ServerError;
   const factory AdvertisementFailure.requestError() = RequestError;
+  const factory AdvertisementFailure.productsNotFound() = ProductsNotFound;
+  const factory AdvertisementFailure.placeNotFound() = PlaceNotFound;
 }

@@ -348,6 +348,7 @@ class _$ProductTearOff {
 
   _Product call(
       int id,
+      String name,
       String unitMeasure,
       int quantity,
       String unitPrice,
@@ -355,9 +356,11 @@ class _$ProductTearOff {
       String kind,
       String observation,
       List<ProductImages> images,
-      String createdAt) {
+      String createdAt,
+      Advertisement? advertisement) {
     return _Product(
       id,
+      name,
       unitMeasure,
       quantity,
       unitPrice,
@@ -366,6 +369,7 @@ class _$ProductTearOff {
       observation,
       images,
       createdAt,
+      advertisement,
     );
   }
 }
@@ -376,6 +380,7 @@ const $Product = _$ProductTearOff();
 /// @nodoc
 mixin _$Product {
   int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String get unitMeasure => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   String get unitPrice => throw _privateConstructorUsedError;
@@ -384,6 +389,7 @@ mixin _$Product {
   String get observation => throw _privateConstructorUsedError;
   List<ProductImages> get images => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
+  Advertisement? get advertisement => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
@@ -395,6 +401,7 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res>;
   $Res call(
       {int id,
+      String name,
       String unitMeasure,
       int quantity,
       String unitPrice,
@@ -402,7 +409,10 @@ abstract class $ProductCopyWith<$Res> {
       String kind,
       String observation,
       List<ProductImages> images,
-      String createdAt});
+      String createdAt,
+      Advertisement? advertisement});
+
+  $AdvertisementCopyWith<$Res>? get advertisement;
 }
 
 /// @nodoc
@@ -416,6 +426,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? unitMeasure = freezed,
     Object? quantity = freezed,
     Object? unitPrice = freezed,
@@ -424,12 +435,17 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? observation = freezed,
     Object? images = freezed,
     Object? createdAt = freezed,
+    Object? advertisement = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       unitMeasure: unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
@@ -462,7 +478,22 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      advertisement: advertisement == freezed
+          ? _value.advertisement
+          : advertisement // ignore: cast_nullable_to_non_nullable
+              as Advertisement?,
     ));
+  }
+
+  @override
+  $AdvertisementCopyWith<$Res>? get advertisement {
+    if (_value.advertisement == null) {
+      return null;
+    }
+
+    return $AdvertisementCopyWith<$Res>(_value.advertisement!, (value) {
+      return _then(_value.copyWith(advertisement: value));
+    });
   }
 }
 
@@ -473,6 +504,7 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   $Res call(
       {int id,
+      String name,
       String unitMeasure,
       int quantity,
       String unitPrice,
@@ -480,7 +512,11 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String kind,
       String observation,
       List<ProductImages> images,
-      String createdAt});
+      String createdAt,
+      Advertisement? advertisement});
+
+  @override
+  $AdvertisementCopyWith<$Res>? get advertisement;
 }
 
 /// @nodoc
@@ -495,6 +531,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? unitMeasure = freezed,
     Object? quantity = freezed,
     Object? unitPrice = freezed,
@@ -503,12 +540,17 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? observation = freezed,
     Object? images = freezed,
     Object? createdAt = freezed,
+    Object? advertisement = freezed,
   }) {
     return _then(_Product(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
@@ -541,6 +583,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      advertisement == freezed
+          ? _value.advertisement
+          : advertisement // ignore: cast_nullable_to_non_nullable
+              as Advertisement?,
     ));
   }
 }
@@ -548,11 +594,23 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Product implements _Product {
-  const _$_Product(this.id, this.unitMeasure, this.quantity, this.unitPrice,
-      this.rating, this.kind, this.observation, this.images, this.createdAt);
+  const _$_Product(
+      this.id,
+      this.name,
+      this.unitMeasure,
+      this.quantity,
+      this.unitPrice,
+      this.rating,
+      this.kind,
+      this.observation,
+      this.images,
+      this.createdAt,
+      this.advertisement);
 
   @override
   final int id;
+  @override
+  final String name;
   @override
   final String unitMeasure;
   @override
@@ -569,10 +627,12 @@ class _$_Product implements _Product {
   final List<ProductImages> images;
   @override
   final String createdAt;
+  @override
+  final Advertisement? advertisement;
 
   @override
   String toString() {
-    return 'Product(id: $id, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt)';
+    return 'Product(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt, advertisement: $advertisement)';
   }
 
   @override
@@ -581,6 +641,8 @@ class _$_Product implements _Product {
         (other is _Product &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.unitMeasure, unitMeasure) ||
                 const DeepCollectionEquality()
                     .equals(other.unitMeasure, unitMeasure)) &&
@@ -601,13 +663,17 @@ class _$_Product implements _Product {
                 const DeepCollectionEquality().equals(other.images, images)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)));
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.advertisement, advertisement) ||
+                const DeepCollectionEquality()
+                    .equals(other.advertisement, advertisement)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(unitMeasure) ^
       const DeepCollectionEquality().hash(quantity) ^
       const DeepCollectionEquality().hash(unitPrice) ^
@@ -615,7 +681,8 @@ class _$_Product implements _Product {
       const DeepCollectionEquality().hash(kind) ^
       const DeepCollectionEquality().hash(observation) ^
       const DeepCollectionEquality().hash(images) ^
-      const DeepCollectionEquality().hash(createdAt);
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(advertisement);
 
   @JsonKey(ignore: true)
   @override
@@ -626,6 +693,7 @@ class _$_Product implements _Product {
 abstract class _Product implements Product {
   const factory _Product(
       int id,
+      String name,
       String unitMeasure,
       int quantity,
       String unitPrice,
@@ -633,10 +701,13 @@ abstract class _Product implements Product {
       String kind,
       String observation,
       List<ProductImages> images,
-      String createdAt) = _$_Product;
+      String createdAt,
+      Advertisement? advertisement) = _$_Product;
 
   @override
   int get id => throw _privateConstructorUsedError;
+  @override
+  String get name => throw _privateConstructorUsedError;
   @override
   String get unitMeasure => throw _privateConstructorUsedError;
   @override
@@ -653,6 +724,8 @@ abstract class _Product implements Product {
   List<ProductImages> get images => throw _privateConstructorUsedError;
   @override
   String get createdAt => throw _privateConstructorUsedError;
+  @override
+  Advertisement? get advertisement => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductCopyWith<_Product> get copyWith =>

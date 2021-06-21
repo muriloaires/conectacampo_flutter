@@ -1,9 +1,12 @@
 part of 'adivertisements_bloc.dart';
 
 @freezed
-class AdivertisementsEvent with _$AdivertisementsEvent {
-  const factory AdivertisementsEvent.expandedChanged({
+class AdvertisementsEvent with _$AdvertisementsEvent {
+  const factory AdvertisementsEvent.expandedChanged({
     required int index,
     required bool isExpanded,
   }) = ExpandedChanged;
+
+  const factory AdvertisementsEvent.started() = _Started;
+  const factory AdvertisementsEvent.placeChanged() = PlaceChanged;
 }

@@ -5,6 +5,7 @@ import 'package:conectacampo/presentation/onboarding/onboarding.dart';
 import 'package:conectacampo/presentation/sign_in/phone_number_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class AppWidget extends StatelessWidget {
   final String initialRoute;
@@ -19,7 +20,7 @@ class AppWidget extends StatelessWidget {
         '/buyer_main': (context) => BuyerMainPage(),
         '/places': (context) => PlacesPage(),
       },
-      initialRoute: '/places',
+      initialRoute: initialRoute,
       title: 'Conecta Campo',
       theme: ThemeData(
           fontFamily: 'Montserrat',
@@ -30,6 +31,7 @@ class AppWidget extends StatelessWidget {
           appBarTheme: const AppBarTheme(
             color: ColorSet.colorPrimaryGreen,
           )),
+      builder: EasyLoading.init(),
     );
   }
 }

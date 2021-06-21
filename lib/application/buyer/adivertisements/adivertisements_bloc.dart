@@ -1,8 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:conectacampo/domain/reservation/i_advertisements_facade.dart';
-import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/advertisements/advertisement_failure.dart';
+import 'package:conectacampo/domain/advertisements/i_advertisements_facade.dart';
+import 'package:conectacampo/domain/places/place.dart';
+import 'package:conectacampo/infrastructure/places/place_repository.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,21 +15,41 @@ part 'adivertisements_state.dart';
 part 'adivertisements_bloc.freezed.dart';
 
 @injectable
-class AdivertisementsBloc
-    extends Bloc<AdivertisementsEvent, AdivertisementsState> {
-  AdivertisementsBloc(this._advertisementsFacade)
-      : super(AdivertisementsState.demo());
+class AdvertisementsBloc
+    extends Bloc<AdvertisementsEvent, AdvertisementsState> {
+  AdvertisementsBloc(this._advertisementsFacade)
+      : super(AdvertisementsState.initial());
 
   final IAdvertisementsFacade _advertisementsFacade;
 
   @override
-  Stream<AdivertisementsState> mapEventToState(
-    AdivertisementsEvent event,
+  Stream<AdvertisementsState> mapEventToState(
+    AdvertisementsEvent event,
   ) async* {
     yield* event.map(expandedChanged: (expandedChanged) async* {
-      state.ads[expandedChanged.index].isExpanded = expandedChanged.isExpanded;
-      var newList = List<Advertising>.from(state.ads);
-      yield state.copyWith(ads: newList);
+      yield state.copyWith();
+    }, started: (_Started value) async* {
+      yield state.copyWith(loading: true);
+      final selectedPlace = await loadSelectedPlace();
+      yield state.copyWith(fromPlace: selectedPlace);
+      if (selectedPlace != null) {
+        final advertisementsFailureOrSuccess =
+            await _advertisementsFacade.getAdvertisements(selectedPlace);
+        yield state.copyWith(
+            loading: false,
+            adsFailureOrSuccess: advertisementsFailureOrSuccess);
+      }
+    }, placeChanged: (PlaceChanged value) async* {
+      yield state.copyWith(loading: true);
+      final selectedPlace = await loadSelectedPlace();
+      if (selectedPlace != null) {
+        final advertisementsFailureOrSuccess =
+            await _advertisementsFacade.getAdvertisements(selectedPlace);
+        yield state.copyWith(
+            loading: false,
+            adsFailureOrSuccess: advertisementsFailureOrSuccess);
+      }
     });
   }
 }
+// [expandedChanged.index].isExpanded = expandedChanged.isExpanded;

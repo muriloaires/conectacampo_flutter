@@ -1,7 +1,7 @@
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/domain/places/value_objects.dart';
-import 'package:conectacampo/domain/reservation/advertisement.dart';
 import 'package:conectacampo/infrastructure/advertisement/model/model.dart';
 import 'package:conectacampo/infrastructure/auth/user_mapper.dart';
 import 'package:conectacampo/infrastructure/places/model/model.dart';
@@ -25,6 +25,7 @@ extension ProductExtension on ProductResponse {
   Product toDomain() {
     return Product(
         id,
+        name,
         unitMeasure,
         quantity,
         unitPrice,
@@ -37,7 +38,8 @@ extension ProductExtension on ProductResponse {
                 MediumAvatar(element.medium.url),
                 OriginalAvatar(element.original.url)))
             .toList(),
-        createdAt);
+        createdAt,
+        null);
   }
 }
 

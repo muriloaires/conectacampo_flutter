@@ -13,8 +13,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$AdivertisementsEventTearOff {
-  const _$AdivertisementsEventTearOff();
+class _$AdvertisementsEventTearOff {
+  const _$AdvertisementsEventTearOff();
 
   ExpandedChanged expandedChanged(
       {required int index, required bool isExpanded}) {
@@ -23,92 +23,81 @@ class _$AdivertisementsEventTearOff {
       isExpanded: isExpanded,
     );
   }
+
+  _Started started() {
+    return const _Started();
+  }
+
+  PlaceChanged placeChanged() {
+    return const PlaceChanged();
+  }
 }
 
 /// @nodoc
-const $AdivertisementsEvent = _$AdivertisementsEventTearOff();
+const $AdvertisementsEvent = _$AdvertisementsEventTearOff();
 
 /// @nodoc
-mixin _$AdivertisementsEvent {
-  int get index => throw _privateConstructorUsedError;
-  bool get isExpanded => throw _privateConstructorUsedError;
-
+mixin _$AdvertisementsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index, bool isExpanded) expandedChanged,
+    required TResult Function() started,
+    required TResult Function() placeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index, bool isExpanded)? expandedChanged,
+    TResult Function()? started,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExpandedChanged value) expandedChanged,
+    required TResult Function(_Started value) started,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExpandedChanged value)? expandedChanged,
+    TResult Function(_Started value)? started,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AdivertisementsEventCopyWith<AdivertisementsEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AdivertisementsEventCopyWith<$Res> {
-  factory $AdivertisementsEventCopyWith(AdivertisementsEvent value,
-          $Res Function(AdivertisementsEvent) then) =
-      _$AdivertisementsEventCopyWithImpl<$Res>;
-  $Res call({int index, bool isExpanded});
+abstract class $AdvertisementsEventCopyWith<$Res> {
+  factory $AdvertisementsEventCopyWith(
+          AdvertisementsEvent value, $Res Function(AdvertisementsEvent) then) =
+      _$AdvertisementsEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AdivertisementsEventCopyWithImpl<$Res>
-    implements $AdivertisementsEventCopyWith<$Res> {
-  _$AdivertisementsEventCopyWithImpl(this._value, this._then);
+class _$AdvertisementsEventCopyWithImpl<$Res>
+    implements $AdvertisementsEventCopyWith<$Res> {
+  _$AdvertisementsEventCopyWithImpl(this._value, this._then);
 
-  final AdivertisementsEvent _value;
+  final AdvertisementsEvent _value;
   // ignore: unused_field
-  final $Res Function(AdivertisementsEvent) _then;
-
-  @override
-  $Res call({
-    Object? index = freezed,
-    Object? isExpanded = freezed,
-  }) {
-    return _then(_value.copyWith(
-      index: index == freezed
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      isExpanded: isExpanded == freezed
-          ? _value.isExpanded
-          : isExpanded // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+  final $Res Function(AdvertisementsEvent) _then;
 }
 
 /// @nodoc
-abstract class $ExpandedChangedCopyWith<$Res>
-    implements $AdivertisementsEventCopyWith<$Res> {
+abstract class $ExpandedChangedCopyWith<$Res> {
   factory $ExpandedChangedCopyWith(
           ExpandedChanged value, $Res Function(ExpandedChanged) then) =
       _$ExpandedChangedCopyWithImpl<$Res>;
-  @override
   $Res call({int index, bool isExpanded});
 }
 
 /// @nodoc
 class _$ExpandedChangedCopyWithImpl<$Res>
-    extends _$AdivertisementsEventCopyWithImpl<$Res>
+    extends _$AdvertisementsEventCopyWithImpl<$Res>
     implements $ExpandedChangedCopyWith<$Res> {
   _$ExpandedChangedCopyWithImpl(
       ExpandedChanged _value, $Res Function(ExpandedChanged) _then)
@@ -147,7 +136,7 @@ class _$ExpandedChanged implements ExpandedChanged {
 
   @override
   String toString() {
-    return 'AdivertisementsEvent.expandedChanged(index: $index, isExpanded: $isExpanded)';
+    return 'AdvertisementsEvent.expandedChanged(index: $index, isExpanded: $isExpanded)';
   }
 
   @override
@@ -176,6 +165,8 @@ class _$ExpandedChanged implements ExpandedChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index, bool isExpanded) expandedChanged,
+    required TResult Function() started,
+    required TResult Function() placeChanged,
   }) {
     return expandedChanged(index, isExpanded);
   }
@@ -184,6 +175,8 @@ class _$ExpandedChanged implements ExpandedChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index, bool isExpanded)? expandedChanged,
+    TResult Function()? started,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (expandedChanged != null) {
@@ -196,6 +189,8 @@ class _$ExpandedChanged implements ExpandedChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExpandedChanged value) expandedChanged,
+    required TResult Function(_Started value) started,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return expandedChanged(this);
   }
@@ -204,6 +199,8 @@ class _$ExpandedChanged implements ExpandedChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExpandedChanged value)? expandedChanged,
+    TResult Function(_Started value)? started,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (expandedChanged != null) {
@@ -213,86 +210,302 @@ class _$ExpandedChanged implements ExpandedChanged {
   }
 }
 
-abstract class ExpandedChanged implements AdivertisementsEvent {
+abstract class ExpandedChanged implements AdvertisementsEvent {
   const factory ExpandedChanged(
       {required int index, required bool isExpanded}) = _$ExpandedChanged;
 
-  @override
   int get index => throw _privateConstructorUsedError;
-  @override
   bool get isExpanded => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   $ExpandedChangedCopyWith<ExpandedChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$AdivertisementsStateTearOff {
-  const _$AdivertisementsStateTearOff();
+abstract class _$StartedCopyWith<$Res> {
+  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
+      __$StartedCopyWithImpl<$Res>;
+}
 
-  _AdivertisementsState call({required List<Advertising> ads}) {
+/// @nodoc
+class __$StartedCopyWithImpl<$Res>
+    extends _$AdvertisementsEventCopyWithImpl<$Res>
+    implements _$StartedCopyWith<$Res> {
+  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
+      : super(_value, (v) => _then(v as _Started));
+
+  @override
+  _Started get _value => super._value as _Started;
+}
+
+/// @nodoc
+
+class _$_Started implements _Started {
+  const _$_Started();
+
+  @override
+  String toString() {
+    return 'AdvertisementsEvent.started()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Started);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index, bool isExpanded) expandedChanged,
+    required TResult Function() started,
+    required TResult Function() placeChanged,
+  }) {
+    return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index, bool isExpanded)? expandedChanged,
+    TResult Function()? started,
+    TResult Function()? placeChanged,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ExpandedChanged value) expandedChanged,
+    required TResult Function(_Started value) started,
+    required TResult Function(PlaceChanged value) placeChanged,
+  }) {
+    return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ExpandedChanged value)? expandedChanged,
+    TResult Function(_Started value)? started,
+    TResult Function(PlaceChanged value)? placeChanged,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Started implements AdvertisementsEvent {
+  const factory _Started() = _$_Started;
+}
+
+/// @nodoc
+abstract class $PlaceChangedCopyWith<$Res> {
+  factory $PlaceChangedCopyWith(
+          PlaceChanged value, $Res Function(PlaceChanged) then) =
+      _$PlaceChangedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PlaceChangedCopyWithImpl<$Res>
+    extends _$AdvertisementsEventCopyWithImpl<$Res>
+    implements $PlaceChangedCopyWith<$Res> {
+  _$PlaceChangedCopyWithImpl(
+      PlaceChanged _value, $Res Function(PlaceChanged) _then)
+      : super(_value, (v) => _then(v as PlaceChanged));
+
+  @override
+  PlaceChanged get _value => super._value as PlaceChanged;
+}
+
+/// @nodoc
+
+class _$PlaceChanged implements PlaceChanged {
+  const _$PlaceChanged();
+
+  @override
+  String toString() {
+    return 'AdvertisementsEvent.placeChanged()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is PlaceChanged);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index, bool isExpanded) expandedChanged,
+    required TResult Function() started,
+    required TResult Function() placeChanged,
+  }) {
+    return placeChanged();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index, bool isExpanded)? expandedChanged,
+    TResult Function()? started,
+    TResult Function()? placeChanged,
+    required TResult orElse(),
+  }) {
+    if (placeChanged != null) {
+      return placeChanged();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ExpandedChanged value) expandedChanged,
+    required TResult Function(_Started value) started,
+    required TResult Function(PlaceChanged value) placeChanged,
+  }) {
+    return placeChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ExpandedChanged value)? expandedChanged,
+    TResult Function(_Started value)? started,
+    TResult Function(PlaceChanged value)? placeChanged,
+    required TResult orElse(),
+  }) {
+    if (placeChanged != null) {
+      return placeChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PlaceChanged implements AdvertisementsEvent {
+  const factory PlaceChanged() = _$PlaceChanged;
+}
+
+/// @nodoc
+class _$AdvertisementsStateTearOff {
+  const _$AdvertisementsStateTearOff();
+
+  _AdivertisementsState call(
+      {required Either<AdvertisementFailure, List<Advertisement>>
+          adsFailureOrSuccess,
+      required bool loading,
+      required Place? fromPlace}) {
     return _AdivertisementsState(
-      ads: ads,
+      adsFailureOrSuccess: adsFailureOrSuccess,
+      loading: loading,
+      fromPlace: fromPlace,
     );
   }
 }
 
 /// @nodoc
-const $AdivertisementsState = _$AdivertisementsStateTearOff();
+const $AdvertisementsState = _$AdvertisementsStateTearOff();
 
 /// @nodoc
-mixin _$AdivertisementsState {
-  List<Advertising> get ads => throw _privateConstructorUsedError;
+mixin _$AdvertisementsState {
+  Either<AdvertisementFailure, List<Advertisement>> get adsFailureOrSuccess =>
+      throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
+  Place? get fromPlace => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AdivertisementsStateCopyWith<AdivertisementsState> get copyWith =>
+  $AdvertisementsStateCopyWith<AdvertisementsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AdivertisementsStateCopyWith<$Res> {
-  factory $AdivertisementsStateCopyWith(AdivertisementsState value,
-          $Res Function(AdivertisementsState) then) =
-      _$AdivertisementsStateCopyWithImpl<$Res>;
-  $Res call({List<Advertising> ads});
+abstract class $AdvertisementsStateCopyWith<$Res> {
+  factory $AdvertisementsStateCopyWith(
+          AdvertisementsState value, $Res Function(AdvertisementsState) then) =
+      _$AdvertisementsStateCopyWithImpl<$Res>;
+  $Res call(
+      {Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess,
+      bool loading,
+      Place? fromPlace});
+
+  $PlaceCopyWith<$Res>? get fromPlace;
 }
 
 /// @nodoc
-class _$AdivertisementsStateCopyWithImpl<$Res>
-    implements $AdivertisementsStateCopyWith<$Res> {
-  _$AdivertisementsStateCopyWithImpl(this._value, this._then);
+class _$AdvertisementsStateCopyWithImpl<$Res>
+    implements $AdvertisementsStateCopyWith<$Res> {
+  _$AdvertisementsStateCopyWithImpl(this._value, this._then);
 
-  final AdivertisementsState _value;
+  final AdvertisementsState _value;
   // ignore: unused_field
-  final $Res Function(AdivertisementsState) _then;
+  final $Res Function(AdvertisementsState) _then;
 
   @override
   $Res call({
-    Object? ads = freezed,
+    Object? adsFailureOrSuccess = freezed,
+    Object? loading = freezed,
+    Object? fromPlace = freezed,
   }) {
     return _then(_value.copyWith(
-      ads: ads == freezed
-          ? _value.ads
-          : ads // ignore: cast_nullable_to_non_nullable
-              as List<Advertising>,
+      adsFailureOrSuccess: adsFailureOrSuccess == freezed
+          ? _value.adsFailureOrSuccess
+          : adsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, List<Advertisement>>,
+      loading: loading == freezed
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fromPlace: fromPlace == freezed
+          ? _value.fromPlace
+          : fromPlace // ignore: cast_nullable_to_non_nullable
+              as Place?,
     ));
+  }
+
+  @override
+  $PlaceCopyWith<$Res>? get fromPlace {
+    if (_value.fromPlace == null) {
+      return null;
+    }
+
+    return $PlaceCopyWith<$Res>(_value.fromPlace!, (value) {
+      return _then(_value.copyWith(fromPlace: value));
+    });
   }
 }
 
 /// @nodoc
 abstract class _$AdivertisementsStateCopyWith<$Res>
-    implements $AdivertisementsStateCopyWith<$Res> {
+    implements $AdvertisementsStateCopyWith<$Res> {
   factory _$AdivertisementsStateCopyWith(_AdivertisementsState value,
           $Res Function(_AdivertisementsState) then) =
       __$AdivertisementsStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<Advertising> ads});
+  $Res call(
+      {Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess,
+      bool loading,
+      Place? fromPlace});
+
+  @override
+  $PlaceCopyWith<$Res>? get fromPlace;
 }
 
 /// @nodoc
 class __$AdivertisementsStateCopyWithImpl<$Res>
-    extends _$AdivertisementsStateCopyWithImpl<$Res>
+    extends _$AdvertisementsStateCopyWithImpl<$Res>
     implements _$AdivertisementsStateCopyWith<$Res> {
   __$AdivertisementsStateCopyWithImpl(
       _AdivertisementsState _value, $Res Function(_AdivertisementsState) _then)
@@ -303,13 +516,23 @@ class __$AdivertisementsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? ads = freezed,
+    Object? adsFailureOrSuccess = freezed,
+    Object? loading = freezed,
+    Object? fromPlace = freezed,
   }) {
     return _then(_AdivertisementsState(
-      ads: ads == freezed
-          ? _value.ads
-          : ads // ignore: cast_nullable_to_non_nullable
-              as List<Advertising>,
+      adsFailureOrSuccess: adsFailureOrSuccess == freezed
+          ? _value.adsFailureOrSuccess
+          : adsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, List<Advertisement>>,
+      loading: loading == freezed
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fromPlace: fromPlace == freezed
+          ? _value.fromPlace
+          : fromPlace // ignore: cast_nullable_to_non_nullable
+              as Place?,
     ));
   }
 }
@@ -317,27 +540,44 @@ class __$AdivertisementsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AdivertisementsState implements _AdivertisementsState {
-  const _$_AdivertisementsState({required this.ads});
+  const _$_AdivertisementsState(
+      {required this.adsFailureOrSuccess,
+      required this.loading,
+      required this.fromPlace});
 
   @override
-  final List<Advertising> ads;
+  final Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess;
+  @override
+  final bool loading;
+  @override
+  final Place? fromPlace;
 
   @override
   String toString() {
-    return 'AdivertisementsState(ads: $ads)';
+    return 'AdvertisementsState(adsFailureOrSuccess: $adsFailureOrSuccess, loading: $loading, fromPlace: $fromPlace)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _AdivertisementsState &&
-            (identical(other.ads, ads) ||
-                const DeepCollectionEquality().equals(other.ads, ads)));
+            (identical(other.adsFailureOrSuccess, adsFailureOrSuccess) ||
+                const DeepCollectionEquality()
+                    .equals(other.adsFailureOrSuccess, adsFailureOrSuccess)) &&
+            (identical(other.loading, loading) ||
+                const DeepCollectionEquality()
+                    .equals(other.loading, loading)) &&
+            (identical(other.fromPlace, fromPlace) ||
+                const DeepCollectionEquality()
+                    .equals(other.fromPlace, fromPlace)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(ads);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(adsFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(loading) ^
+      const DeepCollectionEquality().hash(fromPlace);
 
   @JsonKey(ignore: true)
   @override
@@ -346,12 +586,20 @@ class _$_AdivertisementsState implements _AdivertisementsState {
           this, _$identity);
 }
 
-abstract class _AdivertisementsState implements AdivertisementsState {
-  const factory _AdivertisementsState({required List<Advertising> ads}) =
-      _$_AdivertisementsState;
+abstract class _AdivertisementsState implements AdvertisementsState {
+  const factory _AdivertisementsState(
+      {required Either<AdvertisementFailure, List<Advertisement>>
+          adsFailureOrSuccess,
+      required bool loading,
+      required Place? fromPlace}) = _$_AdivertisementsState;
 
   @override
-  List<Advertising> get ads => throw _privateConstructorUsedError;
+  Either<AdvertisementFailure, List<Advertisement>> get adsFailureOrSuccess =>
+      throw _privateConstructorUsedError;
+  @override
+  bool get loading => throw _privateConstructorUsedError;
+  @override
+  Place? get fromPlace => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AdivertisementsStateCopyWith<_AdivertisementsState> get copyWith =>

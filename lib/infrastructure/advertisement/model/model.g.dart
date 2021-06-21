@@ -38,6 +38,7 @@ Map<String, dynamic> _$_$_AdvertisementResponseToJson(
 _$_ProductResponse _$_$_ProductResponseFromJson(Map<String, dynamic> json) {
   return _$_ProductResponse(
     json['id'] as int,
+    json['name'] as String,
     json['measurement_unit'] as String,
     json['quantity'] as int,
     json['unit_price'] as String,
@@ -54,6 +55,7 @@ _$_ProductResponse _$_$_ProductResponseFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_ProductResponseToJson(_$_ProductResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
       'measurement_unit': instance.unitMeasure,
       'quantity': instance.quantity,
       'unit_price': instance.unitPrice,

@@ -398,6 +398,7 @@ class _$ProductResponseTearOff {
 
   _ProductResponse call(
       @JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String unitPrice,
@@ -408,6 +409,7 @@ class _$ProductResponseTearOff {
       @JsonKey(name: 'created_at') String createdAt) {
     return _ProductResponse(
       id,
+      name,
       unitMeasure,
       quantity,
       unitPrice,
@@ -431,6 +433,8 @@ const $ProductResponse = _$ProductResponseTearOff();
 mixin _$ProductResponse {
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'measurement_unit')
   String get unitMeasure => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity')
@@ -461,6 +465,7 @@ abstract class $ProductResponseCopyWith<$Res> {
       _$ProductResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String unitPrice,
@@ -483,6 +488,7 @@ class _$ProductResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? unitMeasure = freezed,
     Object? quantity = freezed,
     Object? unitPrice = freezed,
@@ -497,6 +503,10 @@ class _$ProductResponseCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       unitMeasure: unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
@@ -542,6 +552,7 @@ abstract class _$ProductResponseCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String unitPrice,
@@ -566,6 +577,7 @@ class __$ProductResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? unitMeasure = freezed,
     Object? quantity = freezed,
     Object? unitPrice = freezed,
@@ -580,6 +592,10 @@ class __$ProductResponseCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
@@ -621,6 +637,7 @@ class __$ProductResponseCopyWithImpl<$Res>
 class _$_ProductResponse implements _ProductResponse {
   const _$_ProductResponse(
       @JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'name') this.name,
       @JsonKey(name: 'measurement_unit') this.unitMeasure,
       @JsonKey(name: 'quantity') this.quantity,
       @JsonKey(name: 'unit_price') this.unitPrice,
@@ -636,6 +653,9 @@ class _$_ProductResponse implements _ProductResponse {
   @override
   @JsonKey(name: 'id')
   final int id;
+  @override
+  @JsonKey(name: 'name')
+  final String name;
   @override
   @JsonKey(name: 'measurement_unit')
   final String unitMeasure;
@@ -663,7 +683,7 @@ class _$_ProductResponse implements _ProductResponse {
 
   @override
   String toString() {
-    return 'ProductResponse(id: $id, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt)';
+    return 'ProductResponse(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt)';
   }
 
   @override
@@ -672,6 +692,8 @@ class _$_ProductResponse implements _ProductResponse {
         (other is _ProductResponse &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.unitMeasure, unitMeasure) ||
                 const DeepCollectionEquality()
                     .equals(other.unitMeasure, unitMeasure)) &&
@@ -699,6 +721,7 @@ class _$_ProductResponse implements _ProductResponse {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(unitMeasure) ^
       const DeepCollectionEquality().hash(quantity) ^
       const DeepCollectionEquality().hash(unitPrice) ^
@@ -722,6 +745,7 @@ class _$_ProductResponse implements _ProductResponse {
 abstract class _ProductResponse implements ProductResponse {
   const factory _ProductResponse(
       @JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String unitPrice,
@@ -737,6 +761,9 @@ abstract class _ProductResponse implements ProductResponse {
   @override
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'name')
+  String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'measurement_unit')
   String get unitMeasure => throw _privateConstructorUsedError;

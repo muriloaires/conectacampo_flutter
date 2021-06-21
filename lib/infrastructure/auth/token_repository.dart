@@ -1,11 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-Future<Unit> saveTokens(String accessToken, String refreshToken) async {
+Future<Unit> saveTokens(String? accessToken, String? refreshToken) async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
-  await sharedPreferences.setString('access_token', accessToken);
-  await sharedPreferences.setString('refresh_token', refreshToken);
+  if (accessToken != null) {
+    await sharedPreferences.setString('access_token', accessToken);
+  }
+
+  if (accessToken != null) {
+    await sharedPreferences.setString('refresh_token', accessToken);
+  }
+
   return unit;
 }
 

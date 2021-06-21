@@ -16,9 +16,9 @@ import 'application/buyer/menu/buyer_menu_bloc.dart' as _i3;
 import 'application/buyer/reservation/bloc/reservation_bloc.dart' as _i12;
 import 'application/buyer/search/search_form_bloc.dart' as _i14;
 import 'application/places_form/bloc/places_form_bloc.dart' as _i11;
+import 'domain/advertisements/i_advertisements_facade.dart' as _i5;
 import 'domain/auth/i_auth_facade.dart' as _i7;
 import 'domain/places/i_places_facade.dart' as _i9;
-import 'domain/reservation/i_advertisements_facade.dart' as _i5;
 import 'infrastructure/advertisement/advertisement_facade.dart' as _i6;
 import 'infrastructure/auth/auth_facade.dart' as _i8;
 import 'infrastructure/auth/rest_auth_facade.dart' as _i13;
@@ -44,15 +44,16 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i11.PlacesFormBloc(get<_i9.IPlacesFacade>()));
   gh.factory<_i12.ReservationBloc>(() => _i12.ReservationBloc());
   gh.lazySingleton<_i13.RestAuthFacade>(() => _i13.RestAuthFacade());
-  gh.factory<_i14.SearchFormBloc>(() => _i14.SearchFormBloc());
+  gh.factory<_i14.SearchFormBloc>(
+      () => _i14.SearchFormBloc(get<_i5.IAdvertisementsFacade>()));
   gh.factory<_i15.SignInFormBloc>(
       () => _i15.SignInFormBloc(get<_i7.IAuthFacade>()));
   gh.factory<_i16.SignUpFormBloc>(
       () => _i16.SignUpFormBloc(get<_i7.IAuthFacade>()));
   gh.factory<_i17.SmsCodeFormBloc>(
       () => _i17.SmsCodeFormBloc(get<_i7.IAuthFacade>()));
-  gh.factory<_i18.AdivertisementsBloc>(
-      () => _i18.AdivertisementsBloc(get<_i5.IAdvertisementsFacade>()));
+  gh.factory<_i18.AdvertisementsBloc>(
+      () => _i18.AdvertisementsBloc(get<_i5.IAdvertisementsFacade>()));
   return get;
 }
 

@@ -1,11 +1,12 @@
-import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
-import 'package:conectacampo/presentation/buyer/widgets/advertiser.dart';
-import 'package:conectacampo/presentation/buyer/widgets/single_advertisement.dart';
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatelessWidget {
+  final Product _product;
+
+  const ProductPage(this._product);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,23 +37,7 @@ class ProductPage extends StatelessWidget {
                         Expanded(
                           child: Container(
                             padding: const EdgeInsets.all(8),
-                            decoration: const BoxDecoration(
-                              color: ColorSet.grayRoundedBackground,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(32),
-                              ),
-                            ),
-                            child: const TextField(
-                              cursorColor: ColorSet.colorPrimaryGreen,
-                              style: TextStyle(fontFamily: 'Roboto'),
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                suffixIcon: Icon(
-                                  Icons.search,
-                                  color: ColorSet.colorPrimaryGreen,
-                                ),
-                              ),
-                            ),
+                            child: Center(child: Text(_product.name)),
                           ),
                         ),
                       ],
@@ -104,8 +89,8 @@ class ProductPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Tomate',
+                    Text(
+                      _product.name,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
@@ -115,8 +100,8 @@ class ProductPage extends StatelessWidget {
                     Container(
                       color: ColorSet.gray10,
                       padding: const EdgeInsets.all(2),
-                      child: const Text(
-                        'Italiano Saco - 30kg',
+                      child: Text(
+                        '${_product.kind} ${_product.unitMeasure}',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 12,
@@ -127,10 +112,9 @@ class ProductPage extends StatelessWidget {
                       height: 15,
                     ),
                     ClipRRect(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(8)),
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
                       child: Image.network(
-                        'https://revistaatletismo.com/wp-content/uploads/2017/12/tomate.jpg',
+                        _product.images.first.originalAvatar.getOrCrash(),
                         fit: BoxFit.cover,
                         height: 170,
                         width: double.infinity,
@@ -139,21 +123,24 @@ class ProductPage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text.rich(TextSpan(
+                    Text.rich(TextSpan(
                         text: 'Confirmado: ',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                         children: [
                           TextSpan(
-                              text: '15 sacos',
-                              style: TextStyle(fontWeight: FontWeight.normal))
+                              text:
+                                  '${_product.quantity} ${_product.unitMeasure}',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.normal))
                         ])),
-                    const Text.rich(TextSpan(
+                    Text.rich(TextSpan(
                         text: 'Embalagem: ',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                         children: [
                           TextSpan(
-                              text: 'Sacos de 30kg',
-                              style: TextStyle(fontWeight: FontWeight.normal))
+                              text: _product.unitMeasure,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.normal))
                         ])),
                   ],
                 ),
@@ -298,9 +285,11 @@ class ProductPage extends StatelessWidget {
               const SizedBox(height: 32),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: Advertiser(
+                child:
+                    /*Advertiser(
                   isSearch: true,
-                ),
+                )*/
+                    Text('Advertiser'),
               ),
               const SizedBox(
                 height: 25,
@@ -366,7 +355,7 @@ class ProductPage extends StatelessWidget {
                     const SizedBox(
                       height: 30,
                     ),
-                    SingleAdvertisement()
+                    // SingleAdvertisement(product.advertisement!)
                   ],
                 ),
               )

@@ -1,7 +1,12 @@
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 
 class ProductAdvertisement extends StatelessWidget {
+  final Product _product;
+
+  const ProductAdvertisement(this._product);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,7 +17,7 @@ class ProductAdvertisement extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
             child: Image.network(
-              'https://revistaatletismo.com/wp-content/uploads/2017/12/tomate.jpg',
+              _product.images.first.mediumAvatar.getOrCrash(),
               height: 134.0,
               width: 166.0,
               fit: BoxFit.cover,
@@ -21,9 +26,9 @@ class ProductAdvertisement extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          const Text(
-            'Tomate',
-            style: TextStyle(fontWeight: FontWeight.bold),
+          Text(
+            _product.name,
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 2,
@@ -37,9 +42,9 @@ class ProductAdvertisement extends StatelessWidget {
                     borderRadius: BorderRadius.all(
                       Radius.circular(2.0),
                     )),
-                child: const Text(
-                  'Baroa',
-                  style: TextStyle(
+                child: Text(
+                  _product.kind,
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                       color: ColorSet.gray2),
@@ -55,8 +60,8 @@ class ProductAdvertisement extends StatelessWidget {
                     borderRadius: BorderRadius.all(
                       Radius.circular(2.0),
                     )),
-                child: const Text(
-                  'Saco - 30kg',
+                child: Text(
+                  _product.unitMeasure,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,

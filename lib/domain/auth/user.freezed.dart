@@ -20,6 +20,7 @@ class _$UserTearOff {
       UniqueId id,
       FullName name,
       Nickname nickname,
+      String? vehicleLicensePlate,
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
@@ -28,6 +29,7 @@ class _$UserTearOff {
       id,
       name,
       nickname,
+      vehicleLicensePlate,
       phoneNumber,
       thumbAvatar,
       mediumAvatar,
@@ -44,6 +46,7 @@ mixin _$User {
   UniqueId get id => throw _privateConstructorUsedError;
   FullName get name => throw _privateConstructorUsedError;
   Nickname get nickname => throw _privateConstructorUsedError;
+  String? get vehicleLicensePlate => throw _privateConstructorUsedError;
   PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
   ThumbAvatar? get thumbAvatar => throw _privateConstructorUsedError;
   MediumAvatar? get mediumAvatar => throw _privateConstructorUsedError;
@@ -61,6 +64,7 @@ abstract class $UserCopyWith<$Res> {
       {UniqueId id,
       FullName name,
       Nickname nickname,
+      String? vehicleLicensePlate,
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
@@ -80,6 +84,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? nickname = freezed,
+    Object? vehicleLicensePlate = freezed,
     Object? phoneNumber = freezed,
     Object? thumbAvatar = freezed,
     Object? mediumAvatar = freezed,
@@ -98,6 +103,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as Nickname,
+      vehicleLicensePlate: vehicleLicensePlate == freezed
+          ? _value.vehicleLicensePlate
+          : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
+              as String?,
       phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -127,6 +136,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       {UniqueId id,
       FullName name,
       Nickname nickname,
+      String? vehicleLicensePlate,
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
@@ -147,6 +157,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? nickname = freezed,
+    Object? vehicleLicensePlate = freezed,
     Object? phoneNumber = freezed,
     Object? thumbAvatar = freezed,
     Object? mediumAvatar = freezed,
@@ -165,6 +176,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as Nickname,
+      vehicleLicensePlate == freezed
+          ? _value.vehicleLicensePlate
+          : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
+              as String?,
       phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -188,8 +203,15 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_User implements _User {
-  const _$_User(this.id, this.name, this.nickname, this.phoneNumber,
-      this.thumbAvatar, this.mediumAvatar, this.originalAvatar);
+  const _$_User(
+      this.id,
+      this.name,
+      this.nickname,
+      this.vehicleLicensePlate,
+      this.phoneNumber,
+      this.thumbAvatar,
+      this.mediumAvatar,
+      this.originalAvatar);
 
   @override
   final UniqueId id;
@@ -197,6 +219,8 @@ class _$_User implements _User {
   final FullName name;
   @override
   final Nickname nickname;
+  @override
+  final String? vehicleLicensePlate;
   @override
   final PhoneNumber phoneNumber;
   @override
@@ -208,7 +232,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, nickname: $nickname, phoneNumber: $phoneNumber, thumbAvatar: $thumbAvatar, mediumAvatar: $mediumAvatar, originalAvatar: $originalAvatar)';
+    return 'User(id: $id, name: $name, nickname: $nickname, vehicleLicensePlate: $vehicleLicensePlate, phoneNumber: $phoneNumber, thumbAvatar: $thumbAvatar, mediumAvatar: $mediumAvatar, originalAvatar: $originalAvatar)';
   }
 
   @override
@@ -222,6 +246,9 @@ class _$_User implements _User {
             (identical(other.nickname, nickname) ||
                 const DeepCollectionEquality()
                     .equals(other.nickname, nickname)) &&
+            (identical(other.vehicleLicensePlate, vehicleLicensePlate) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicleLicensePlate, vehicleLicensePlate)) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 const DeepCollectionEquality()
                     .equals(other.phoneNumber, phoneNumber)) &&
@@ -242,6 +269,7 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(nickname) ^
+      const DeepCollectionEquality().hash(vehicleLicensePlate) ^
       const DeepCollectionEquality().hash(phoneNumber) ^
       const DeepCollectionEquality().hash(thumbAvatar) ^
       const DeepCollectionEquality().hash(mediumAvatar) ^
@@ -258,6 +286,7 @@ abstract class _User implements User {
       UniqueId id,
       FullName name,
       Nickname nickname,
+      String? vehicleLicensePlate,
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
@@ -269,6 +298,8 @@ abstract class _User implements User {
   FullName get name => throw _privateConstructorUsedError;
   @override
   Nickname get nickname => throw _privateConstructorUsedError;
+  @override
+  String? get vehicleLicensePlate => throw _privateConstructorUsedError;
   @override
   PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
   @override

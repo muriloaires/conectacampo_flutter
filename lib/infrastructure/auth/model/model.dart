@@ -13,8 +13,8 @@ class UserResponse with _$UserResponse {
     @JsonKey(name: 'phone_number') String phoneNumber,
     @JsonKey(name: 'vehicle_license_plate') String? vehicleLicensePlate,
     @JsonKey(name: 'avatar') AvatarResponse? avatar,
-    @JsonKey(name: 'access_token') String accessToken,
-    @JsonKey(name: 'refresh_token') String refreshToken,
+    @JsonKey(name: 'access_token') String? accessToken,
+    @JsonKey(name: 'refresh_token') String? refreshToken,
   ) = _UserResponse;
   factory UserResponse.fromJson(Map<String, dynamic> json) =>
       _$UserResponseFromJson(json);

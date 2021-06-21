@@ -1,9 +1,12 @@
-import 'package:conectacampo/presentation/buyer/widgets/advertiser.dart';
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/presentation/buyer/product/product_page.dart';
 import 'package:conectacampo/presentation/buyer/widgets/product_advertisement.dart';
-import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 
 class SingleAdvertisement extends StatelessWidget {
+  final Advertisement _advertisement;
+
+  const SingleAdvertisement(this._advertisement);
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -29,10 +32,18 @@ class SingleAdvertisement extends StatelessWidget {
           child: ListView.builder(
               physics: const ClampingScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 3,
+              itemCount: _advertisement.products.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return ProductAdvertisement();
+                return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            ProductPage(_advertisement.products[index]),
+                      ));
+                    },
+                    child:
+                        ProductAdvertisement(_advertisement.products[index]));
               }),
         )
       ],

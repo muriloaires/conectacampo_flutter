@@ -27,6 +27,14 @@ class _$AdvertisementFailureTearOff {
   RequestError requestError() {
     return const RequestError();
   }
+
+  ProductsNotFound productsNotFound() {
+    return const ProductsNotFound();
+  }
+
+  PlaceNotFound placeNotFound() {
+    return const PlaceNotFound();
+  }
 }
 
 /// @nodoc
@@ -39,6 +47,8 @@ mixin _$AdvertisementFailure {
     required TResult Function() unauthorized,
     required TResult Function() serverError,
     required TResult Function() requestError,
+    required TResult Function() productsNotFound,
+    required TResult Function() placeNotFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +56,8 @@ mixin _$AdvertisementFailure {
     TResult Function()? unauthorized,
     TResult Function()? serverError,
     TResult Function()? requestError,
+    TResult Function()? productsNotFound,
+    TResult Function()? placeNotFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +66,8 @@ mixin _$AdvertisementFailure {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ServerError value) serverError,
     required TResult Function(RequestError value) requestError,
+    required TResult Function(ProductsNotFound value) productsNotFound,
+    required TResult Function(PlaceNotFound value) placeNotFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +75,8 @@ mixin _$AdvertisementFailure {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ServerError value)? serverError,
     TResult Function(RequestError value)? requestError,
+    TResult Function(ProductsNotFound value)? productsNotFound,
+    TResult Function(PlaceNotFound value)? placeNotFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +142,8 @@ class _$Unauthorized implements Unauthorized {
     required TResult Function() unauthorized,
     required TResult Function() serverError,
     required TResult Function() requestError,
+    required TResult Function() productsNotFound,
+    required TResult Function() placeNotFound,
   }) {
     return unauthorized();
   }
@@ -136,6 +154,8 @@ class _$Unauthorized implements Unauthorized {
     TResult Function()? unauthorized,
     TResult Function()? serverError,
     TResult Function()? requestError,
+    TResult Function()? productsNotFound,
+    TResult Function()? placeNotFound,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -150,6 +170,8 @@ class _$Unauthorized implements Unauthorized {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ServerError value) serverError,
     required TResult Function(RequestError value) requestError,
+    required TResult Function(ProductsNotFound value) productsNotFound,
+    required TResult Function(PlaceNotFound value) placeNotFound,
   }) {
     return unauthorized(this);
   }
@@ -160,6 +182,8 @@ class _$Unauthorized implements Unauthorized {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ServerError value)? serverError,
     TResult Function(RequestError value)? requestError,
+    TResult Function(ProductsNotFound value)? productsNotFound,
+    TResult Function(PlaceNotFound value)? placeNotFound,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -216,6 +240,8 @@ class _$ServerError implements ServerError {
     required TResult Function() unauthorized,
     required TResult Function() serverError,
     required TResult Function() requestError,
+    required TResult Function() productsNotFound,
+    required TResult Function() placeNotFound,
   }) {
     return serverError();
   }
@@ -226,6 +252,8 @@ class _$ServerError implements ServerError {
     TResult Function()? unauthorized,
     TResult Function()? serverError,
     TResult Function()? requestError,
+    TResult Function()? productsNotFound,
+    TResult Function()? placeNotFound,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -240,6 +268,8 @@ class _$ServerError implements ServerError {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ServerError value) serverError,
     required TResult Function(RequestError value) requestError,
+    required TResult Function(ProductsNotFound value) productsNotFound,
+    required TResult Function(PlaceNotFound value) placeNotFound,
   }) {
     return serverError(this);
   }
@@ -250,6 +280,8 @@ class _$ServerError implements ServerError {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ServerError value)? serverError,
     TResult Function(RequestError value)? requestError,
+    TResult Function(ProductsNotFound value)? productsNotFound,
+    TResult Function(PlaceNotFound value)? placeNotFound,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -306,6 +338,8 @@ class _$RequestError implements RequestError {
     required TResult Function() unauthorized,
     required TResult Function() serverError,
     required TResult Function() requestError,
+    required TResult Function() productsNotFound,
+    required TResult Function() placeNotFound,
   }) {
     return requestError();
   }
@@ -316,6 +350,8 @@ class _$RequestError implements RequestError {
     TResult Function()? unauthorized,
     TResult Function()? serverError,
     TResult Function()? requestError,
+    TResult Function()? productsNotFound,
+    TResult Function()? placeNotFound,
     required TResult orElse(),
   }) {
     if (requestError != null) {
@@ -330,6 +366,8 @@ class _$RequestError implements RequestError {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ServerError value) serverError,
     required TResult Function(RequestError value) requestError,
+    required TResult Function(ProductsNotFound value) productsNotFound,
+    required TResult Function(PlaceNotFound value) placeNotFound,
   }) {
     return requestError(this);
   }
@@ -340,6 +378,8 @@ class _$RequestError implements RequestError {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ServerError value)? serverError,
     TResult Function(RequestError value)? requestError,
+    TResult Function(ProductsNotFound value)? productsNotFound,
+    TResult Function(PlaceNotFound value)? placeNotFound,
     required TResult orElse(),
   }) {
     if (requestError != null) {
@@ -351,4 +391,200 @@ class _$RequestError implements RequestError {
 
 abstract class RequestError implements AdvertisementFailure {
   const factory RequestError() = _$RequestError;
+}
+
+/// @nodoc
+abstract class $ProductsNotFoundCopyWith<$Res> {
+  factory $ProductsNotFoundCopyWith(
+          ProductsNotFound value, $Res Function(ProductsNotFound) then) =
+      _$ProductsNotFoundCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ProductsNotFoundCopyWithImpl<$Res>
+    extends _$AdvertisementFailureCopyWithImpl<$Res>
+    implements $ProductsNotFoundCopyWith<$Res> {
+  _$ProductsNotFoundCopyWithImpl(
+      ProductsNotFound _value, $Res Function(ProductsNotFound) _then)
+      : super(_value, (v) => _then(v as ProductsNotFound));
+
+  @override
+  ProductsNotFound get _value => super._value as ProductsNotFound;
+}
+
+/// @nodoc
+
+class _$ProductsNotFound implements ProductsNotFound {
+  const _$ProductsNotFound();
+
+  @override
+  String toString() {
+    return 'AdvertisementFailure.productsNotFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ProductsNotFound);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unauthorized,
+    required TResult Function() serverError,
+    required TResult Function() requestError,
+    required TResult Function() productsNotFound,
+    required TResult Function() placeNotFound,
+  }) {
+    return productsNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unauthorized,
+    TResult Function()? serverError,
+    TResult Function()? requestError,
+    TResult Function()? productsNotFound,
+    TResult Function()? placeNotFound,
+    required TResult orElse(),
+  }) {
+    if (productsNotFound != null) {
+      return productsNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(RequestError value) requestError,
+    required TResult Function(ProductsNotFound value) productsNotFound,
+    required TResult Function(PlaceNotFound value) placeNotFound,
+  }) {
+    return productsNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(RequestError value)? requestError,
+    TResult Function(ProductsNotFound value)? productsNotFound,
+    TResult Function(PlaceNotFound value)? placeNotFound,
+    required TResult orElse(),
+  }) {
+    if (productsNotFound != null) {
+      return productsNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ProductsNotFound implements AdvertisementFailure {
+  const factory ProductsNotFound() = _$ProductsNotFound;
+}
+
+/// @nodoc
+abstract class $PlaceNotFoundCopyWith<$Res> {
+  factory $PlaceNotFoundCopyWith(
+          PlaceNotFound value, $Res Function(PlaceNotFound) then) =
+      _$PlaceNotFoundCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PlaceNotFoundCopyWithImpl<$Res>
+    extends _$AdvertisementFailureCopyWithImpl<$Res>
+    implements $PlaceNotFoundCopyWith<$Res> {
+  _$PlaceNotFoundCopyWithImpl(
+      PlaceNotFound _value, $Res Function(PlaceNotFound) _then)
+      : super(_value, (v) => _then(v as PlaceNotFound));
+
+  @override
+  PlaceNotFound get _value => super._value as PlaceNotFound;
+}
+
+/// @nodoc
+
+class _$PlaceNotFound implements PlaceNotFound {
+  const _$PlaceNotFound();
+
+  @override
+  String toString() {
+    return 'AdvertisementFailure.placeNotFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is PlaceNotFound);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unauthorized,
+    required TResult Function() serverError,
+    required TResult Function() requestError,
+    required TResult Function() productsNotFound,
+    required TResult Function() placeNotFound,
+  }) {
+    return placeNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unauthorized,
+    TResult Function()? serverError,
+    TResult Function()? requestError,
+    TResult Function()? productsNotFound,
+    TResult Function()? placeNotFound,
+    required TResult orElse(),
+  }) {
+    if (placeNotFound != null) {
+      return placeNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(RequestError value) requestError,
+    required TResult Function(ProductsNotFound value) productsNotFound,
+    required TResult Function(PlaceNotFound value) placeNotFound,
+  }) {
+    return placeNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(RequestError value)? requestError,
+    TResult Function(ProductsNotFound value)? productsNotFound,
+    TResult Function(PlaceNotFound value)? placeNotFound,
+    required TResult orElse(),
+  }) {
+    if (placeNotFound != null) {
+      return placeNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PlaceNotFound implements AdvertisementFailure {
+  const factory PlaceNotFound() = _$PlaceNotFound;
 }

@@ -15,14 +15,14 @@ Future<Unit> persistSelectedPlace(Place place) async {
   return unit;
 }
 
-Future<Either<PlacesFailure, Place>> loadSelectedPlace() async {
+Future<Place?> loadSelectedPlace() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
 
   final json = sharedPreferences.getString('selected_place');
   if (json == null) {
-    return left(const PlacesFailure.placeNotFound());
+    return null;
   }
 
-  return right(Place.fromJson(jsonDecode(json) as Map<String, dynamic>));
+  return Place.fromJson(jsonDecode(json) as Map<String, dynamic>);
 }

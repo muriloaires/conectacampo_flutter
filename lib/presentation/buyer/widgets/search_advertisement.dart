@@ -1,8 +1,16 @@
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:flutter/material.dart';
 
 class SearchAdvertisement extends StatelessWidget {
+  final Product _product;
+  const SearchAdvertisement(this._product);
   @override
   Widget build(BuildContext context) {
+    final textStyle = TextStyle(
+      fontSize: 16,
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+    );
     return Padding(
       padding: const EdgeInsets.fromLTRB(32, 18, 32, 18),
       child: Row(
@@ -13,7 +21,7 @@ class SearchAdvertisement extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4.0),
               child: Image.network(
-                'https://revistaatletismo.com/wp-content/uploads/2017/12/tomate.jpg',
+                _product.images.first.mediumAvatar.getOrCrash(),
                 fit: BoxFit.fill,
               ),
             ),
@@ -24,16 +32,10 @@ class SearchAdvertisement extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text.rich(
+              Text.rich(
                 TextSpan(children: [
-                  TextSpan(
-                      text: 'Tomate ',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      )),
-                  TextSpan(text: 'Italia')
+                  TextSpan(text: '${_product.name} ', style: textStyle),
+                  TextSpan(text: _product.kind)
                 ]),
               ),
               SizedBox(
@@ -44,22 +46,24 @@ class SearchAdvertisement extends StatelessWidget {
                   Container(
                       width: 33.0,
                       height: 33.0,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: NetworkImage(
-                                  "https://i.imgur.com/BoN9kdC.png")))),
+                              image: NetworkImage(_product
+                                      .advertisement?.seller.thumbAvatar
+                                      ?.getOrCrash() ??
+                                  '')))),
                   SizedBox(
                     width: 8,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Vendedor'),
+                      const Text('Vendedor'),
                       Text(
-                        'João Roberto',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        _product.advertisement?.seller.name.getOrCrash() ?? '',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
                   )

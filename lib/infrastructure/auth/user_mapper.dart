@@ -18,6 +18,7 @@ extension LocalUserDomainX on UserResponse {
       UniqueId.fromUniqueString(id.toString()),
       FullName('$firstName $lastName'),
       Nickname(nickname),
+      vehicleLicensePlate,
       PhoneNumber(phoneNumber),
       thumb,
       medium,

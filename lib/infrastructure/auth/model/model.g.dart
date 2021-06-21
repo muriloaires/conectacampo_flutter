@@ -17,8 +17,8 @@ _$_UserResponse _$_$_UserResponseFromJson(Map<String, dynamic> json) {
     json['avatar'] == null
         ? null
         : AvatarResponse.fromJson(json['avatar'] as Map<String, dynamic>),
-    json['access_token'] as String,
-    json['refresh_token'] as String,
+    json['access_token'] as String?,
+    json['refresh_token'] as String?,
   );
 }
 

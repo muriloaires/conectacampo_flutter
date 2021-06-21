@@ -9,6 +9,7 @@ class User with _$User {
       UniqueId id,
       FullName name,
       Nickname nickname,
+      String? vehicleLicensePlate,
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,

@@ -2,8 +2,6 @@ import 'package:conectacampo/application/buyer/adivertisements/adivertisements_b
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/menu/buyer_summary.dart';
-import 'package:conectacampo/presentation/buyer/product/product_page.dart';
-import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,8 +20,9 @@ class BuyerMainPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<BuyerMenuBloc>(create: (BuildContext context) => getIt()),
-        BlocProvider<AdivertisementsBloc>(
-            create: (BuildContext context) => getIt())
+        BlocProvider<AdvertisementsBloc>(
+            create: (BuildContext context) =>
+                getIt()..add(const AdvertisementsEvent.started())),
       ],
       child: BlocConsumer<BuyerMenuBloc, BuyerMenuState>(
         listener: (context, state) {},

@@ -45,31 +45,34 @@ class SignUpForm extends StatelessWidget {
               if (state.navigateNext) {
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil('/buyer_main', (route) => false);
+              } else {
+                state.authFailureOrSuccessOption.fold(
+                    () => {},
+                    (either) => either.fold((failure) {
+                          final String errorText = failure.maybeMap(
+                              serverError: (_) => 'Erro interno',
+                              invalidPhoneNumber: (_) =>
+                                  'Número de telefone inválido',
+                              invalidVerificationId: (_) =>
+                                  'A verificação falhou. Tente novamente',
+                              applicationError: (_) => 'A aplicação falhou',
+                              orElse: () => '');
+                          if (errorText.isEmpty == false) {
+                            final snackBar = SnackBar(content: Text(errorText));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
+                        }, (_) async {
+                          Unit? success = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PlacesPage()),
+                          );
+                          context
+                              .read<SignUpFormBloc>()
+                              .add(SignUpFormBlocEvent.placeChosen(success));
+                        }));
               }
-              state.authFailureOrSuccessOption.fold(
-                  () => {},
-                  (either) => either.fold((failure) {
-                        final String errorText = failure.maybeMap(
-                            serverError: (_) => 'Erro interno',
-                            invalidPhoneNumber: (_) =>
-                                'Número de telefone inválido',
-                            invalidVerificationId: (_) =>
-                                'A verificação falhou. Tente novamente',
-                            applicationError: (_) => 'A aplicação falhou',
-                            orElse: () => '');
-                        if (errorText.isEmpty == false) {
-                          final snackBar = SnackBar(content: Text(errorText));
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        }
-                      }, (_) async {
-                        Unit? success = await Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => PlacesPage()),
-                        );
-                        context
-                            .read<SignUpFormBloc>()
-                            .add(SignUpFormBlocEvent.placeChosen(success));
-                      }));
             }, builder: (context, state) {
               return Form(
                 autovalidate: state.showErrorMessages,

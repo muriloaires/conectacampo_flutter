@@ -49,10 +49,8 @@ class PlacesFormBloc extends Bloc<PlacesFormEvent, PlacesFormState> {
     }, placeSelected: (PlaceSelected value) async* {
       if (value.place != null) {
         await persistSelectedPlace(value.place!);
-        yield state.copyWith(placeSaved: true);
+        yield state.copyWith(placeSaved: true, placeSelected: value.place);
       }
-
-      yield state.copyWith(placeSelected: value.place);
     });
   }
 }

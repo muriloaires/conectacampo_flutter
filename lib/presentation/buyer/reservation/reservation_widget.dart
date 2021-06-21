@@ -23,7 +23,7 @@ class Reservation extends StatelessWidget {
                     height: 40,
                     color: _getStatusColor(state),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(54, 8, 54, 8),
+                      padding: const EdgeInsets.fromLTRB(40, 8, 40, 8),
                       child: Center(
                         child: _getStatusText(state),
                       ),
@@ -339,7 +339,7 @@ class Reservation extends StatelessWidget {
   Color _getStatusColor(ReservationState state) {
     switch (state.status) {
       case ReservationStatus.pending:
-        return ColorSet.gray10;
+        return ColorSet.gray2;
 
       case ReservationStatus.canceledByUser:
         return ColorSet.orange2;

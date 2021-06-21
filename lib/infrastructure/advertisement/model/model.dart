@@ -28,6 +28,7 @@ class AdvertisementResponse with _$AdvertisementResponse {
 class ProductResponse with _$ProductResponse {
   const factory ProductResponse(
     @JsonKey(name: 'id') int id,
+    @JsonKey(name: 'name') String name,
     @JsonKey(name: 'measurement_unit') String unitMeasure,
     @JsonKey(name: 'quantity') int quantity,
     @JsonKey(name: 'unit_price') String unitPrice,

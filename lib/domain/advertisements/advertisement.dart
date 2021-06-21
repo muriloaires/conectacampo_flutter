@@ -23,6 +23,7 @@ class Advertisement with _$Advertisement {
 class Product with _$Product {
   const factory Product(
     int id,
+    String name,
     String unitMeasure,
     int quantity,
     String unitPrice,
@@ -31,6 +32,7 @@ class Product with _$Product {
     String observation,
     List<ProductImages> images,
     String createdAt,
+    Advertisement? advertisement,
   ) = _Product;
 }
 

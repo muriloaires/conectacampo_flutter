@@ -8,7 +8,7 @@ class ReservationState with _$ReservationState {
   }) = _ReservationState;
 
   factory ReservationState.initial() => const ReservationState(
-      status: ReservationStatus.pending, isItemsVisible: false);
+      status: ReservationStatus.confirmed, isItemsVisible: false);
 }
 // const factory SearchFormState({required bool productSelected}) =
 //       _SearchFormState;

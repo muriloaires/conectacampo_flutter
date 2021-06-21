@@ -1,13 +1,15 @@
 part of 'adivertisements_bloc.dart';
 
 @freezed
-class AdivertisementsState with _$AdivertisementsState {
-  const factory AdivertisementsState({required List<Advertising> ads}) =
-      _AdivertisementsState;
+class AdvertisementsState with _$AdvertisementsState {
+  const factory AdvertisementsState(
+      {required Either<AdvertisementFailure, List<Advertisement>>
+          adsFailureOrSuccess,
+      required bool loading,
+      required Place? fromPlace}) = _AdivertisementsState;
 
-  factory AdivertisementsState.initial() =>
-      AdivertisementsState(ads: List<Advertising>.empty());
-
-  factory AdivertisementsState.demo() => AdivertisementsState(
-      ads: [Advertising(true), Advertising(true), Advertising(true)]);
+  factory AdvertisementsState.initial() => AdvertisementsState(
+      adsFailureOrSuccess: right(List<Advertisement>.empty()),
+      loading: true,
+      fromPlace: null);
 }
