@@ -21,9 +21,9 @@ extension AdvertisementExtension on AdvertisementResponse {
   }
 }
 
-extension ProductExtension on ProductResponse {
-  Product toDomain() {
-    return Product(
+extension ProductExtension on AdProductResponse {
+  AdProduct toDomain() {
+    return AdProduct(
         id,
         name,
         unitMeasure,

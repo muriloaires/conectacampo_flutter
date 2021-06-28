@@ -10,7 +10,7 @@ abstract class IAdvertisementsFacade {
   Future<Either<AdvertisementFailure, List<Advertisement>>> getAdvertisements(
       Place place);
 
-  Future<Either<AdvertisementFailure, List<Product>>> getProduct({
+  Future<Either<AdvertisementFailure, List<AdProduct>>> getProduct({
     required Place place,
     String? productName,
     String? kind,

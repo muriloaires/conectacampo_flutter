@@ -19,8 +19,8 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   @override
   Future<Either<AdvertisementFailure, List<Advertisement>>> getAdvertisements(
       Place place) async {
-    final url = Uri.https(
-        baseUrl, '$apiVersion$routeAdvertisements', {'place_id': '1'});
+    final url = Uri.https(baseUrl, '$apiVersion$routeAdvertisements',
+        {'place_id': place.id.toString()});
     final response = await getAuthenticatedRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
@@ -44,7 +44,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   }
 
   @override
-  Future<Either<AdvertisementFailure, List<Product>>> getProduct({
+  Future<Either<AdvertisementFailure, List<AdProduct>>> getProduct({
     required Place place,
     String? productName,
     String? kind,
@@ -77,7 +77,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
     if (code >= 200 && code < 300) {
       final Iterable iterable = jsonDecode(response.body) as Iterable;
       final productsResponse = iterable.map((e) =>
-          ProductResponse.fromJson(e as Map<String, dynamic>).toDomain());
+          AdProductResponse.fromJson(e as Map<String, dynamic>).toDomain());
 
       return right(productsResponse.toList());
     } else if (code == 401) {

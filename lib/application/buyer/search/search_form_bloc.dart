@@ -40,7 +40,7 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
           productSelected: false, searching: true, showHistory: false);
       final place = await loadSelectedPlace();
       if (place != null) {
-        final Either<AdvertisementFailure, List<Product>>
+        final Either<AdvertisementFailure, List<AdProduct>>
             adsProductFailureOrSuccess = await _advertisementsFacade.getProduct(
                 place: place, productName: value.query);
         yield state.copyWith(
@@ -61,7 +61,7 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
           productSelected: false, searching: true, showHistory: false);
       final place = await loadSelectedPlace();
       if (place != null) {
-        final Either<AdvertisementFailure, List<Product>>
+        final Either<AdvertisementFailure, List<AdProduct>>
             adsProductFailureOrSuccess = await _advertisementsFacade.getProduct(
                 place: place, productName: value.query);
         yield state.copyWith(

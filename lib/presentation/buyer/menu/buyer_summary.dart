@@ -74,7 +74,18 @@ class BuyerSummary extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                              child: _getNoGroupsAddedWidget(),
+                              child: state.groupsAdsFailureOrSuccess
+                                  .fold((l) => Text('Erro'), (r) {
+                                if (r.isEmpty) {
+                                  return _getNoGroupsAddedWidget();
+                                } else {
+                                  return AdvertisementList(
+                                      false,
+                                      r
+                                          .map((e) => UIAdvertisement(false, e))
+                                          .toList());
+                                }
+                              }),
                             ),
                             const SizedBox(
                               height: 32,

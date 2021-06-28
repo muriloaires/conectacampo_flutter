@@ -28,12 +28,6 @@ class _$SignUpFormBlocEventTearOff {
     );
   }
 
-  PlaceChosen placeChosen(Unit? success) {
-    return PlaceChosen(
-      success,
-    );
-  }
-
   BtnSignUpPressed btnSignUpPressed() {
     return const BtnSignUpPressed();
   }
@@ -48,7 +42,6 @@ mixin _$SignUpFormBlocEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
-    required TResult Function(Unit? success) placeChosen,
     required TResult Function() btnSignUpPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,7 +49,6 @@ mixin _$SignUpFormBlocEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
-    TResult Function(Unit? success)? placeChosen,
     TResult Function()? btnSignUpPressed,
     required TResult orElse(),
   }) =>
@@ -65,7 +57,6 @@ mixin _$SignUpFormBlocEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
-    required TResult Function(PlaceChosen value) placeChosen,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -73,7 +64,6 @@ mixin _$SignUpFormBlocEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
-    TResult Function(PlaceChosen value)? placeChosen,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
     required TResult orElse(),
   }) =>
@@ -165,7 +155,6 @@ class _$FullNameChanged implements FullNameChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
-    required TResult Function(Unit? success) placeChosen,
     required TResult Function() btnSignUpPressed,
   }) {
     return fullNameChanged(fullName);
@@ -176,7 +165,6 @@ class _$FullNameChanged implements FullNameChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
-    TResult Function(Unit? success)? placeChosen,
     TResult Function()? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -191,7 +179,6 @@ class _$FullNameChanged implements FullNameChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
-    required TResult Function(PlaceChosen value) placeChosen,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) {
     return fullNameChanged(this);
@@ -202,7 +189,6 @@ class _$FullNameChanged implements FullNameChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
-    TResult Function(PlaceChosen value)? placeChosen,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -290,7 +276,6 @@ class _$NicknameChanged implements NicknameChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
-    required TResult Function(Unit? success) placeChosen,
     required TResult Function() btnSignUpPressed,
   }) {
     return nicknameChanged(nickname);
@@ -301,7 +286,6 @@ class _$NicknameChanged implements NicknameChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
-    TResult Function(Unit? success)? placeChosen,
     TResult Function()? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -316,7 +300,6 @@ class _$NicknameChanged implements NicknameChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
-    required TResult Function(PlaceChosen value) placeChosen,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) {
     return nicknameChanged(this);
@@ -327,7 +310,6 @@ class _$NicknameChanged implements NicknameChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
-    TResult Function(PlaceChosen value)? placeChosen,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -344,130 +326,6 @@ abstract class NicknameChanged implements SignUpFormBlocEvent {
   String get nickname => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $NicknameChangedCopyWith<NicknameChanged> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PlaceChosenCopyWith<$Res> {
-  factory $PlaceChosenCopyWith(
-          PlaceChosen value, $Res Function(PlaceChosen) then) =
-      _$PlaceChosenCopyWithImpl<$Res>;
-  $Res call({Unit? success});
-}
-
-/// @nodoc
-class _$PlaceChosenCopyWithImpl<$Res>
-    extends _$SignUpFormBlocEventCopyWithImpl<$Res>
-    implements $PlaceChosenCopyWith<$Res> {
-  _$PlaceChosenCopyWithImpl(
-      PlaceChosen _value, $Res Function(PlaceChosen) _then)
-      : super(_value, (v) => _then(v as PlaceChosen));
-
-  @override
-  PlaceChosen get _value => super._value as PlaceChosen;
-
-  @override
-  $Res call({
-    Object? success = freezed,
-  }) {
-    return _then(PlaceChosen(
-      success == freezed
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as Unit?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$PlaceChosen implements PlaceChosen {
-  const _$PlaceChosen(this.success);
-
-  @override
-  final Unit? success;
-
-  @override
-  String toString() {
-    return 'SignUpFormBlocEvent.placeChosen(success: $success)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is PlaceChosen &&
-            (identical(other.success, success) ||
-                const DeepCollectionEquality().equals(other.success, success)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(success);
-
-  @JsonKey(ignore: true)
-  @override
-  $PlaceChosenCopyWith<PlaceChosen> get copyWith =>
-      _$PlaceChosenCopyWithImpl<PlaceChosen>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String fullName) fullNameChanged,
-    required TResult Function(String nickname) nicknameChanged,
-    required TResult Function(Unit? success) placeChosen,
-    required TResult Function() btnSignUpPressed,
-  }) {
-    return placeChosen(success);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String fullName)? fullNameChanged,
-    TResult Function(String nickname)? nicknameChanged,
-    TResult Function(Unit? success)? placeChosen,
-    TResult Function()? btnSignUpPressed,
-    required TResult orElse(),
-  }) {
-    if (placeChosen != null) {
-      return placeChosen(success);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(FullNameChanged value) fullNameChanged,
-    required TResult Function(NicknameChanged value) nicknameChanged,
-    required TResult Function(PlaceChosen value) placeChosen,
-    required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
-  }) {
-    return placeChosen(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(FullNameChanged value)? fullNameChanged,
-    TResult Function(NicknameChanged value)? nicknameChanged,
-    TResult Function(PlaceChosen value)? placeChosen,
-    TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
-    required TResult orElse(),
-  }) {
-    if (placeChosen != null) {
-      return placeChosen(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class PlaceChosen implements SignUpFormBlocEvent {
-  const factory PlaceChosen(Unit? success) = _$PlaceChosen;
-
-  Unit? get success => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $PlaceChosenCopyWith<PlaceChosen> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -513,7 +371,6 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
   TResult when<TResult extends Object?>({
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
-    required TResult Function(Unit? success) placeChosen,
     required TResult Function() btnSignUpPressed,
   }) {
     return btnSignUpPressed();
@@ -524,7 +381,6 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
-    TResult Function(Unit? success)? placeChosen,
     TResult Function()? btnSignUpPressed,
     required TResult orElse(),
   }) {
@@ -539,7 +395,6 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
   TResult map<TResult extends Object?>({
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
-    required TResult Function(PlaceChosen value) placeChosen,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
   }) {
     return btnSignUpPressed(this);
@@ -550,7 +405,6 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
-    TResult Function(PlaceChosen value)? placeChosen,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
     required TResult orElse(),
   }) {

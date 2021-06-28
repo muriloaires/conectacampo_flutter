@@ -1,4 +1,5 @@
 import 'package:conectacampo/application/auth/sign_up_form/bloc/sign_up_form_bloc.dart';
+import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:dartz/dartz.dart';
@@ -63,14 +64,16 @@ class SignUpForm extends StatelessWidget {
                                 .showSnackBar(snackBar);
                           }
                         }, (_) async {
-                          Unit? success = await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PlacesPage()),
-                          );
-                          context
-                              .read<SignUpFormBloc>()
-                              .add(SignUpFormBlocEvent.placeChosen(success));
+                          final userType = await loadLoggedUserType();
+                          if (userType != null) {
+                            if (userType == 'buyer') {
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  '/buyer_main', (route) => false);
+                            } else {
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  '/seller_main', (route) => false);
+                            }
+                          }
                         }));
               }
             }, builder: (context, state) {

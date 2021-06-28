@@ -406,10 +406,13 @@ class _$AdvertisementsStateTearOff {
   _AdivertisementsState call(
       {required Either<AdvertisementFailure, List<Advertisement>>
           adsFailureOrSuccess,
+      required Either<AdvertisementFailure, List<Advertisement>>
+          groupsAdsFailureOrSuccess,
       required bool loading,
       required Place? fromPlace}) {
     return _AdivertisementsState(
       adsFailureOrSuccess: adsFailureOrSuccess,
+      groupsAdsFailureOrSuccess: groupsAdsFailureOrSuccess,
       loading: loading,
       fromPlace: fromPlace,
     );
@@ -423,6 +426,8 @@ const $AdvertisementsState = _$AdvertisementsStateTearOff();
 mixin _$AdvertisementsState {
   Either<AdvertisementFailure, List<Advertisement>> get adsFailureOrSuccess =>
       throw _privateConstructorUsedError;
+  Either<AdvertisementFailure, List<Advertisement>>
+      get groupsAdsFailureOrSuccess => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   Place? get fromPlace => throw _privateConstructorUsedError;
 
@@ -438,6 +443,8 @@ abstract class $AdvertisementsStateCopyWith<$Res> {
       _$AdvertisementsStateCopyWithImpl<$Res>;
   $Res call(
       {Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess,
+      Either<AdvertisementFailure, List<Advertisement>>
+          groupsAdsFailureOrSuccess,
       bool loading,
       Place? fromPlace});
 
@@ -456,6 +463,7 @@ class _$AdvertisementsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? adsFailureOrSuccess = freezed,
+    Object? groupsAdsFailureOrSuccess = freezed,
     Object? loading = freezed,
     Object? fromPlace = freezed,
   }) {
@@ -463,6 +471,10 @@ class _$AdvertisementsStateCopyWithImpl<$Res>
       adsFailureOrSuccess: adsFailureOrSuccess == freezed
           ? _value.adsFailureOrSuccess
           : adsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, List<Advertisement>>,
+      groupsAdsFailureOrSuccess: groupsAdsFailureOrSuccess == freezed
+          ? _value.groupsAdsFailureOrSuccess
+          : groupsAdsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Either<AdvertisementFailure, List<Advertisement>>,
       loading: loading == freezed
           ? _value.loading
@@ -496,6 +508,8 @@ abstract class _$AdivertisementsStateCopyWith<$Res>
   @override
   $Res call(
       {Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess,
+      Either<AdvertisementFailure, List<Advertisement>>
+          groupsAdsFailureOrSuccess,
       bool loading,
       Place? fromPlace});
 
@@ -517,6 +531,7 @@ class __$AdivertisementsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? adsFailureOrSuccess = freezed,
+    Object? groupsAdsFailureOrSuccess = freezed,
     Object? loading = freezed,
     Object? fromPlace = freezed,
   }) {
@@ -524,6 +539,10 @@ class __$AdivertisementsStateCopyWithImpl<$Res>
       adsFailureOrSuccess: adsFailureOrSuccess == freezed
           ? _value.adsFailureOrSuccess
           : adsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, List<Advertisement>>,
+      groupsAdsFailureOrSuccess: groupsAdsFailureOrSuccess == freezed
+          ? _value.groupsAdsFailureOrSuccess
+          : groupsAdsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Either<AdvertisementFailure, List<Advertisement>>,
       loading: loading == freezed
           ? _value.loading
@@ -542,11 +561,15 @@ class __$AdivertisementsStateCopyWithImpl<$Res>
 class _$_AdivertisementsState implements _AdivertisementsState {
   const _$_AdivertisementsState(
       {required this.adsFailureOrSuccess,
+      required this.groupsAdsFailureOrSuccess,
       required this.loading,
       required this.fromPlace});
 
   @override
   final Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess;
+  @override
+  final Either<AdvertisementFailure, List<Advertisement>>
+      groupsAdsFailureOrSuccess;
   @override
   final bool loading;
   @override
@@ -554,7 +577,7 @@ class _$_AdivertisementsState implements _AdivertisementsState {
 
   @override
   String toString() {
-    return 'AdvertisementsState(adsFailureOrSuccess: $adsFailureOrSuccess, loading: $loading, fromPlace: $fromPlace)';
+    return 'AdvertisementsState(adsFailureOrSuccess: $adsFailureOrSuccess, groupsAdsFailureOrSuccess: $groupsAdsFailureOrSuccess, loading: $loading, fromPlace: $fromPlace)';
   }
 
   @override
@@ -564,6 +587,11 @@ class _$_AdivertisementsState implements _AdivertisementsState {
             (identical(other.adsFailureOrSuccess, adsFailureOrSuccess) ||
                 const DeepCollectionEquality()
                     .equals(other.adsFailureOrSuccess, adsFailureOrSuccess)) &&
+            (identical(other.groupsAdsFailureOrSuccess,
+                    groupsAdsFailureOrSuccess) ||
+                const DeepCollectionEquality().equals(
+                    other.groupsAdsFailureOrSuccess,
+                    groupsAdsFailureOrSuccess)) &&
             (identical(other.loading, loading) ||
                 const DeepCollectionEquality()
                     .equals(other.loading, loading)) &&
@@ -576,6 +604,7 @@ class _$_AdivertisementsState implements _AdivertisementsState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(adsFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(groupsAdsFailureOrSuccess) ^
       const DeepCollectionEquality().hash(loading) ^
       const DeepCollectionEquality().hash(fromPlace);
 
@@ -590,12 +619,17 @@ abstract class _AdivertisementsState implements AdvertisementsState {
   const factory _AdivertisementsState(
       {required Either<AdvertisementFailure, List<Advertisement>>
           adsFailureOrSuccess,
+      required Either<AdvertisementFailure, List<Advertisement>>
+          groupsAdsFailureOrSuccess,
       required bool loading,
       required Place? fromPlace}) = _$_AdivertisementsState;
 
   @override
   Either<AdvertisementFailure, List<Advertisement>> get adsFailureOrSuccess =>
       throw _privateConstructorUsedError;
+  @override
+  Either<AdvertisementFailure, List<Advertisement>>
+      get groupsAdsFailureOrSuccess => throw _privateConstructorUsedError;
   @override
   bool get loading => throw _privateConstructorUsedError;
   @override

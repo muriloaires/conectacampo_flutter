@@ -8,6 +8,6 @@ class UnexpectedValueError extends Error {
   @override
   String toString() {
     return Error.safeToString(
-        'Um ValueFailure foi encontrado em um ponto não recupoerável. Finalizando. Error: $valueFailure');
+        'Um ValueFailure foi encontrado em um ponto não recuperável. Finalizando. Error: $valueFailure');
   }
 }

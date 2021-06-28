@@ -23,7 +23,7 @@ class _$AdvertisementResponseTearOff {
 
   _AdvertisementResponse call(
       @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'products') List<ProductResponse> products,
+      @JsonKey(name: 'products') List<AdProductResponse> products,
       @JsonKey(name: 'delivery_at') String deliveryAt,
       @JsonKey(name: 'available_for_groups_at') String availableForGroupsAt,
       @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
@@ -55,7 +55,7 @@ mixin _$AdvertisementResponse {
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'products')
-  List<ProductResponse> get products => throw _privateConstructorUsedError;
+  List<AdProductResponse> get products => throw _privateConstructorUsedError;
   @JsonKey(name: 'delivery_at')
   String get deliveryAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'available_for_groups_at')
@@ -82,7 +82,7 @@ abstract class $AdvertisementResponseCopyWith<$Res> {
       _$AdvertisementResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'products') List<ProductResponse> products,
+      @JsonKey(name: 'products') List<AdProductResponse> products,
       @JsonKey(name: 'delivery_at') String deliveryAt,
       @JsonKey(name: 'available_for_groups_at') String availableForGroupsAt,
       @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
@@ -122,7 +122,7 @@ class _$AdvertisementResponseCopyWithImpl<$Res>
       products: products == freezed
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductResponse>,
+              as List<AdProductResponse>,
       deliveryAt: deliveryAt == freezed
           ? _value.deliveryAt
           : deliveryAt // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ abstract class _$AdvertisementResponseCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'products') List<ProductResponse> products,
+      @JsonKey(name: 'products') List<AdProductResponse> products,
       @JsonKey(name: 'delivery_at') String deliveryAt,
       @JsonKey(name: 'available_for_groups_at') String availableForGroupsAt,
       @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
@@ -218,7 +218,7 @@ class __$AdvertisementResponseCopyWithImpl<$Res>
       products == freezed
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductResponse>,
+              as List<AdProductResponse>,
       deliveryAt == freezed
           ? _value.deliveryAt
           : deliveryAt // ignore: cast_nullable_to_non_nullable
@@ -268,7 +268,7 @@ class _$_AdvertisementResponse implements _AdvertisementResponse {
   final int id;
   @override
   @JsonKey(name: 'products')
-  final List<ProductResponse> products;
+  final List<AdProductResponse> products;
   @override
   @JsonKey(name: 'delivery_at')
   final String deliveryAt;
@@ -347,7 +347,7 @@ class _$_AdvertisementResponse implements _AdvertisementResponse {
 abstract class _AdvertisementResponse implements AdvertisementResponse {
   const factory _AdvertisementResponse(
       @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'products') List<ProductResponse> products,
+      @JsonKey(name: 'products') List<AdProductResponse> products,
       @JsonKey(name: 'delivery_at') String deliveryAt,
       @JsonKey(name: 'available_for_groups_at') String availableForGroupsAt,
       @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
@@ -363,7 +363,7 @@ abstract class _AdvertisementResponse implements AdvertisementResponse {
   int get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'products')
-  List<ProductResponse> get products => throw _privateConstructorUsedError;
+  List<AdProductResponse> get products => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'delivery_at')
   String get deliveryAt => throw _privateConstructorUsedError;
@@ -388,15 +388,15 @@ abstract class _AdvertisementResponse implements AdvertisementResponse {
       throw _privateConstructorUsedError;
 }
 
-ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) {
-  return _ProductResponse.fromJson(json);
+AdProductResponse _$AdProductResponseFromJson(Map<String, dynamic> json) {
+  return _AdProductResponse.fromJson(json);
 }
 
 /// @nodoc
-class _$ProductResponseTearOff {
-  const _$ProductResponseTearOff();
+class _$AdProductResponseTearOff {
+  const _$AdProductResponseTearOff();
 
-  _ProductResponse call(
+  _AdProductResponse call(
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'name') String name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
@@ -407,7 +407,7 @@ class _$ProductResponseTearOff {
       @JsonKey(name: 'observation') String observation,
       @JsonKey(name: 'images') List<AvatarResponse> images,
       @JsonKey(name: 'created_at') String createdAt) {
-    return _ProductResponse(
+    return _AdProductResponse(
       id,
       name,
       unitMeasure,
@@ -421,16 +421,16 @@ class _$ProductResponseTearOff {
     );
   }
 
-  ProductResponse fromJson(Map<String, Object> json) {
-    return ProductResponse.fromJson(json);
+  AdProductResponse fromJson(Map<String, Object> json) {
+    return AdProductResponse.fromJson(json);
   }
 }
 
 /// @nodoc
-const $ProductResponse = _$ProductResponseTearOff();
+const $AdProductResponse = _$AdProductResponseTearOff();
 
 /// @nodoc
-mixin _$ProductResponse {
+mixin _$AdProductResponse {
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
@@ -454,15 +454,15 @@ mixin _$ProductResponse {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ProductResponseCopyWith<ProductResponse> get copyWith =>
+  $AdProductResponseCopyWith<AdProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductResponseCopyWith<$Res> {
-  factory $ProductResponseCopyWith(
-          ProductResponse value, $Res Function(ProductResponse) then) =
-      _$ProductResponseCopyWithImpl<$Res>;
+abstract class $AdProductResponseCopyWith<$Res> {
+  factory $AdProductResponseCopyWith(
+          AdProductResponse value, $Res Function(AdProductResponse) then) =
+      _$AdProductResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'name') String name,
@@ -477,13 +477,13 @@ abstract class $ProductResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductResponseCopyWithImpl<$Res>
-    implements $ProductResponseCopyWith<$Res> {
-  _$ProductResponseCopyWithImpl(this._value, this._then);
+class _$AdProductResponseCopyWithImpl<$Res>
+    implements $AdProductResponseCopyWith<$Res> {
+  _$AdProductResponseCopyWithImpl(this._value, this._then);
 
-  final ProductResponse _value;
+  final AdProductResponse _value;
   // ignore: unused_field
-  final $Res Function(ProductResponse) _then;
+  final $Res Function(AdProductResponse) _then;
 
   @override
   $Res call({
@@ -544,11 +544,11 @@ class _$ProductResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProductResponseCopyWith<$Res>
-    implements $ProductResponseCopyWith<$Res> {
-  factory _$ProductResponseCopyWith(
-          _ProductResponse value, $Res Function(_ProductResponse) then) =
-      __$ProductResponseCopyWithImpl<$Res>;
+abstract class _$AdProductResponseCopyWith<$Res>
+    implements $AdProductResponseCopyWith<$Res> {
+  factory _$AdProductResponseCopyWith(
+          _AdProductResponse value, $Res Function(_AdProductResponse) then) =
+      __$AdProductResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
@@ -564,15 +564,15 @@ abstract class _$ProductResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProductResponseCopyWithImpl<$Res>
-    extends _$ProductResponseCopyWithImpl<$Res>
-    implements _$ProductResponseCopyWith<$Res> {
-  __$ProductResponseCopyWithImpl(
-      _ProductResponse _value, $Res Function(_ProductResponse) _then)
-      : super(_value, (v) => _then(v as _ProductResponse));
+class __$AdProductResponseCopyWithImpl<$Res>
+    extends _$AdProductResponseCopyWithImpl<$Res>
+    implements _$AdProductResponseCopyWith<$Res> {
+  __$AdProductResponseCopyWithImpl(
+      _AdProductResponse _value, $Res Function(_AdProductResponse) _then)
+      : super(_value, (v) => _then(v as _AdProductResponse));
 
   @override
-  _ProductResponse get _value => super._value as _ProductResponse;
+  _AdProductResponse get _value => super._value as _AdProductResponse;
 
   @override
   $Res call({
@@ -587,7 +587,7 @@ class __$ProductResponseCopyWithImpl<$Res>
     Object? images = freezed,
     Object? createdAt = freezed,
   }) {
-    return _then(_ProductResponse(
+    return _then(_AdProductResponse(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -634,8 +634,8 @@ class __$ProductResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductResponse implements _ProductResponse {
-  const _$_ProductResponse(
+class _$_AdProductResponse implements _AdProductResponse {
+  const _$_AdProductResponse(
       @JsonKey(name: 'id') this.id,
       @JsonKey(name: 'name') this.name,
       @JsonKey(name: 'measurement_unit') this.unitMeasure,
@@ -647,8 +647,8 @@ class _$_ProductResponse implements _ProductResponse {
       @JsonKey(name: 'images') this.images,
       @JsonKey(name: 'created_at') this.createdAt);
 
-  factory _$_ProductResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_ProductResponseFromJson(json);
+  factory _$_AdProductResponse.fromJson(Map<String, dynamic> json) =>
+      _$_$_AdProductResponseFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -683,13 +683,13 @@ class _$_ProductResponse implements _ProductResponse {
 
   @override
   String toString() {
-    return 'ProductResponse(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt)';
+    return 'AdProductResponse(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ProductResponse &&
+        (other is _AdProductResponse &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
@@ -733,17 +733,17 @@ class _$_ProductResponse implements _ProductResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductResponseCopyWith<_ProductResponse> get copyWith =>
-      __$ProductResponseCopyWithImpl<_ProductResponse>(this, _$identity);
+  _$AdProductResponseCopyWith<_AdProductResponse> get copyWith =>
+      __$AdProductResponseCopyWithImpl<_AdProductResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ProductResponseToJson(this);
+    return _$_$_AdProductResponseToJson(this);
   }
 }
 
-abstract class _ProductResponse implements ProductResponse {
-  const factory _ProductResponse(
+abstract class _AdProductResponse implements AdProductResponse {
+  const factory _AdProductResponse(
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'name') String name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
@@ -753,10 +753,10 @@ abstract class _ProductResponse implements ProductResponse {
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'observation') String observation,
       @JsonKey(name: 'images') List<AvatarResponse> images,
-      @JsonKey(name: 'created_at') String createdAt) = _$_ProductResponse;
+      @JsonKey(name: 'created_at') String createdAt) = _$_AdProductResponse;
 
-  factory _ProductResponse.fromJson(Map<String, dynamic> json) =
-      _$_ProductResponse.fromJson;
+  factory _AdProductResponse.fromJson(Map<String, dynamic> json) =
+      _$_AdProductResponse.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -790,160 +790,6 @@ abstract class _ProductResponse implements ProductResponse {
   String get createdAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductResponseCopyWith<_ProductResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-UnitMeasureResponse _$UnitMeasureResponseFromJson(Map<String, dynamic> json) {
-  return _UnitMeasureResponse.fromJson(json);
-}
-
-/// @nodoc
-class _$UnitMeasureResponseTearOff {
-  const _$UnitMeasureResponseTearOff();
-
-  _UnitMeasureResponse call(@JsonKey(name: 'id') int id) {
-    return _UnitMeasureResponse(
-      id,
-    );
-  }
-
-  UnitMeasureResponse fromJson(Map<String, Object> json) {
-    return UnitMeasureResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UnitMeasureResponse = _$UnitMeasureResponseTearOff();
-
-/// @nodoc
-mixin _$UnitMeasureResponse {
-  @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $UnitMeasureResponseCopyWith<UnitMeasureResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UnitMeasureResponseCopyWith<$Res> {
-  factory $UnitMeasureResponseCopyWith(
-          UnitMeasureResponse value, $Res Function(UnitMeasureResponse) then) =
-      _$UnitMeasureResponseCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'id') int id});
-}
-
-/// @nodoc
-class _$UnitMeasureResponseCopyWithImpl<$Res>
-    implements $UnitMeasureResponseCopyWith<$Res> {
-  _$UnitMeasureResponseCopyWithImpl(this._value, this._then);
-
-  final UnitMeasureResponse _value;
-  // ignore: unused_field
-  final $Res Function(UnitMeasureResponse) _then;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$UnitMeasureResponseCopyWith<$Res>
-    implements $UnitMeasureResponseCopyWith<$Res> {
-  factory _$UnitMeasureResponseCopyWith(_UnitMeasureResponse value,
-          $Res Function(_UnitMeasureResponse) then) =
-      __$UnitMeasureResponseCopyWithImpl<$Res>;
-  @override
-  $Res call({@JsonKey(name: 'id') int id});
-}
-
-/// @nodoc
-class __$UnitMeasureResponseCopyWithImpl<$Res>
-    extends _$UnitMeasureResponseCopyWithImpl<$Res>
-    implements _$UnitMeasureResponseCopyWith<$Res> {
-  __$UnitMeasureResponseCopyWithImpl(
-      _UnitMeasureResponse _value, $Res Function(_UnitMeasureResponse) _then)
-      : super(_value, (v) => _then(v as _UnitMeasureResponse));
-
-  @override
-  _UnitMeasureResponse get _value => super._value as _UnitMeasureResponse;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-  }) {
-    return _then(_UnitMeasureResponse(
-      id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_UnitMeasureResponse implements _UnitMeasureResponse {
-  const _$_UnitMeasureResponse(@JsonKey(name: 'id') this.id);
-
-  factory _$_UnitMeasureResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_UnitMeasureResponseFromJson(json);
-
-  @override
-  @JsonKey(name: 'id')
-  final int id;
-
-  @override
-  String toString() {
-    return 'UnitMeasureResponse(id: $id)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _UnitMeasureResponse &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
-
-  @JsonKey(ignore: true)
-  @override
-  _$UnitMeasureResponseCopyWith<_UnitMeasureResponse> get copyWith =>
-      __$UnitMeasureResponseCopyWithImpl<_UnitMeasureResponse>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$_UnitMeasureResponseToJson(this);
-  }
-}
-
-abstract class _UnitMeasureResponse implements UnitMeasureResponse {
-  const factory _UnitMeasureResponse(@JsonKey(name: 'id') int id) =
-      _$_UnitMeasureResponse;
-
-  factory _UnitMeasureResponse.fromJson(Map<String, dynamic> json) =
-      _$_UnitMeasureResponse.fromJson;
-
-  @override
-  @JsonKey(name: 'id')
-  int get id => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$UnitMeasureResponseCopyWith<_UnitMeasureResponse> get copyWith =>
+  _$AdProductResponseCopyWith<_AdProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -40,6 +40,8 @@ class PlacesFormBloc extends Bloc<PlacesFormEvent, PlacesFormState> {
       yield state.copyWith(
           selectedState: value.state,
           isLoadingPlaces: true,
+          places: some(right(List.empty())),
+          placeSelected: null,
           loadPlacesFinish: false);
       final places = await _placesFacade
           .getAllPlacesByStateName(value.state?.getOrCrash() ?? '');

@@ -535,7 +535,7 @@ class _$SearchFormStateTearOff {
   _SearchFormState call(
       {required bool productSelected,
       required bool searching,
-      required Either<AdvertisementFailure, List<Product>>
+      required Either<AdvertisementFailure, List<AdProduct>>
           adsProductsFailureOrSuccess,
       required bool showFilters,
       required Place? place,
@@ -560,8 +560,8 @@ const $SearchFormState = _$SearchFormStateTearOff();
 mixin _$SearchFormState {
   bool get productSelected => throw _privateConstructorUsedError;
   bool get searching => throw _privateConstructorUsedError;
-  Either<AdvertisementFailure, List<Product>> get adsProductsFailureOrSuccess =>
-      throw _privateConstructorUsedError;
+  Either<AdvertisementFailure, List<AdProduct>>
+      get adsProductsFailureOrSuccess => throw _privateConstructorUsedError;
   bool get showFilters => throw _privateConstructorUsedError;
   Place? get place => throw _privateConstructorUsedError;
   bool get showHistory => throw _privateConstructorUsedError;
@@ -580,7 +580,7 @@ abstract class $SearchFormStateCopyWith<$Res> {
   $Res call(
       {bool productSelected,
       bool searching,
-      Either<AdvertisementFailure, List<Product>> adsProductsFailureOrSuccess,
+      Either<AdvertisementFailure, List<AdProduct>> adsProductsFailureOrSuccess,
       bool showFilters,
       Place? place,
       bool showHistory,
@@ -620,7 +620,7 @@ class _$SearchFormStateCopyWithImpl<$Res>
       adsProductsFailureOrSuccess: adsProductsFailureOrSuccess == freezed
           ? _value.adsProductsFailureOrSuccess
           : adsProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Either<AdvertisementFailure, List<Product>>,
+              as Either<AdvertisementFailure, List<AdProduct>>,
       showFilters: showFilters == freezed
           ? _value.showFilters
           : showFilters // ignore: cast_nullable_to_non_nullable
@@ -662,7 +662,7 @@ abstract class _$SearchFormStateCopyWith<$Res>
   $Res call(
       {bool productSelected,
       bool searching,
-      Either<AdvertisementFailure, List<Product>> adsProductsFailureOrSuccess,
+      Either<AdvertisementFailure, List<AdProduct>> adsProductsFailureOrSuccess,
       bool showFilters,
       Place? place,
       bool showHistory,
@@ -705,7 +705,7 @@ class __$SearchFormStateCopyWithImpl<$Res>
       adsProductsFailureOrSuccess: adsProductsFailureOrSuccess == freezed
           ? _value.adsProductsFailureOrSuccess
           : adsProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Either<AdvertisementFailure, List<Product>>,
+              as Either<AdvertisementFailure, List<AdProduct>>,
       showFilters: showFilters == freezed
           ? _value.showFilters
           : showFilters // ignore: cast_nullable_to_non_nullable
@@ -743,7 +743,8 @@ class _$_SearchFormState implements _SearchFormState {
   @override
   final bool searching;
   @override
-  final Either<AdvertisementFailure, List<Product>> adsProductsFailureOrSuccess;
+  final Either<AdvertisementFailure, List<AdProduct>>
+      adsProductsFailureOrSuccess;
   @override
   final bool showFilters;
   @override
@@ -806,7 +807,7 @@ abstract class _SearchFormState implements SearchFormState {
   const factory _SearchFormState(
       {required bool productSelected,
       required bool searching,
-      required Either<AdvertisementFailure, List<Product>>
+      required Either<AdvertisementFailure, List<AdProduct>>
           adsProductsFailureOrSuccess,
       required bool showFilters,
       required Place? place,
@@ -818,8 +819,8 @@ abstract class _SearchFormState implements SearchFormState {
   @override
   bool get searching => throw _privateConstructorUsedError;
   @override
-  Either<AdvertisementFailure, List<Product>> get adsProductsFailureOrSuccess =>
-      throw _privateConstructorUsedError;
+  Either<AdvertisementFailure, List<AdProduct>>
+      get adsProductsFailureOrSuccess => throw _privateConstructorUsedError;
   @override
   bool get showFilters => throw _privateConstructorUsedError;
   @override

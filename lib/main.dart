@@ -48,7 +48,7 @@ void configLoading() {
     ..radius = 10.0
     ..indicatorColor = ColorSet.green1
     ..progressColor = ColorSet.green1
-    ..backgroundColor = ColorSet.green1
+    ..backgroundColor = ColorSet.grayDark
     ..indicatorColor = Colors.white
     ..textColor = Colors.white
     ..maskColor = Colors.blue.withOpacity(0.5)

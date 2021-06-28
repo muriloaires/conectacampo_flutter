@@ -37,53 +37,40 @@ class PlacesForm extends StatelessWidget {
                   child: const Icon(Icons.chevron_right),
                 ),
               ),
-              body: Stack(
-                children: [
-                  Image.asset(
-                    'assets/dots.png',
-                    width: double.infinity,
-                    height: double.infinity,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(32.0),
-                    child: ListView(
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            context
-                                .read<PlacesFormBloc>()
-                                .state
-                                .loggedUser
-                                .fold(
-                                    () => '',
-                                    (a) => a.fold((l) => '',
-                                        (r) => r.nickname.getOrCrash())),
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorSet.colorPrimaryGreen,
-                                fontSize: 28),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        const Text(
-                          'Qual local você quer retirar os produtos? Fique tranquilo que você pod alterar a qualquer momento!',
-                          style: TextStyle(height: 2),
-                        ),
-                        const SizedBox(
-                          height: 48,
-                        ),
-                        _getStatePlaceWidget(context, state),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        _getPlaceWidget(context, state)
-                      ],
+              body: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: ListView(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        context.read<PlacesFormBloc>().state.loggedUser.fold(
+                            () => '',
+                            (a) => a.fold(
+                                (l) => '', (r) => r.nickname.getOrCrash())),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: ColorSet.colorPrimaryGreen,
+                            fontSize: 28),
+                      ),
                     ),
-                  )
-                ],
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const Text(
+                      'Qual local você quer retirar os produtos? Fique tranquilo que você pod alterar a qualquer momento!',
+                      style: TextStyle(height: 2),
+                    ),
+                    const SizedBox(
+                      height: 48,
+                    ),
+                    _getStatePlaceWidget(context, state),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    _getPlaceWidget(context, state)
+                  ],
+                ),
               ),
             ));
   }

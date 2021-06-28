@@ -3,7 +3,7 @@ import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 
 class ProductAdvertisement extends StatelessWidget {
-  final Product _product;
+  final AdProduct _product;
 
   const ProductAdvertisement(this._product);
 

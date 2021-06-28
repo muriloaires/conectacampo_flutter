@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class Advertiser extends StatelessWidget {
   final bool isSearch;
   final User user;
-  final List<Product> lastAdvertisements;
+  final List<AdProduct> lastAdvertisements;
   const Advertiser({
     required this.isSearch,
     required this.user,

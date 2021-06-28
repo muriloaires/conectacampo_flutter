@@ -8,7 +8,5 @@ class SignUpFormBlocEvent with _$SignUpFormBlocEvent {
   const factory SignUpFormBlocEvent.nicknameChanged(String nickname) =
       NicknameChanged;
 
-  const factory SignUpFormBlocEvent.placeChosen(Unit? success) = PlaceChosen;
-
   const factory SignUpFormBlocEvent.btnSignUpPressed() = BtnSignUpPressed;
 }

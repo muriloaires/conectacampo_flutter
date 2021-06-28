@@ -17,10 +17,9 @@ part 'adivertisements_bloc.freezed.dart';
 @injectable
 class AdvertisementsBloc
     extends Bloc<AdvertisementsEvent, AdvertisementsState> {
-  AdvertisementsBloc(this._advertisementsFacade)
-      : super(AdvertisementsState.initial());
+  AdvertisementsBloc(this._adsFacade) : super(AdvertisementsState.initial());
 
-  final IAdvertisementsFacade _advertisementsFacade;
+  final IAdvertisementsFacade _adsFacade;
 
   @override
   Stream<AdvertisementsState> mapEventToState(
@@ -33,18 +32,21 @@ class AdvertisementsBloc
       final selectedPlace = await loadSelectedPlace();
       yield state.copyWith(fromPlace: selectedPlace);
       if (selectedPlace != null) {
-        final advertisementsFailureOrSuccess =
-            await _advertisementsFacade.getAdvertisements(selectedPlace);
+        final adsFailureOrSuccess =
+            await _adsFacade.getAdvertisements(selectedPlace);
+        final groupAdsFailureOrSuccess =
+            await _adsFacade.getAdvertisements(selectedPlace);
         yield state.copyWith(
             loading: false,
-            adsFailureOrSuccess: advertisementsFailureOrSuccess);
+            adsFailureOrSuccess: adsFailureOrSuccess,
+            groupsAdsFailureOrSuccess: groupAdsFailureOrSuccess);
       }
     }, placeChanged: (PlaceChanged value) async* {
       yield state.copyWith(loading: true);
       final selectedPlace = await loadSelectedPlace();
       if (selectedPlace != null) {
         final advertisementsFailureOrSuccess =
-            await _advertisementsFacade.getAdvertisements(selectedPlace);
+            await _adsFacade.getAdvertisements(selectedPlace);
         yield state.copyWith(
             loading: false,
             adsFailureOrSuccess: advertisementsFailureOrSuccess);

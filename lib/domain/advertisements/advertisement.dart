@@ -9,7 +9,7 @@ part 'advertisement.freezed.dart';
 class Advertisement with _$Advertisement {
   const factory Advertisement(
     int id,
-    List<Product> products,
+    List<AdProduct> products,
     String deliveryAt,
     String availableForGroupsAt,
     String vehicleLicensePlate,
@@ -20,8 +20,8 @@ class Advertisement with _$Advertisement {
 }
 
 @freezed
-class Product with _$Product {
-  const factory Product(
+class AdProduct with _$AdProduct {
+  const factory AdProduct(
     int id,
     String name,
     String unitMeasure,
@@ -33,7 +33,7 @@ class Product with _$Product {
     List<ProductImages> images,
     String createdAt,
     Advertisement? advertisement,
-  ) = _Product;
+  ) = _AdProduct;
 }
 
 @freezed
@@ -46,5 +46,10 @@ class ProductImages with _$ProductImages {
 
 @freezed
 class UnitMeasure with _$UnitMeasure {
-  const factory UnitMeasure(int id) = _UnitMeasure;
+  const factory UnitMeasure({
+    required int id,
+    required String name,
+    required String createdAt,
+    required String updatedAt,
+  }) = _UnitMeasure;
 }

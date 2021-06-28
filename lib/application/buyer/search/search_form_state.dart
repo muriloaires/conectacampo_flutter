@@ -5,7 +5,7 @@ class SearchFormState with _$SearchFormState {
   const factory SearchFormState(
       {required bool productSelected,
       required bool searching,
-      required Either<AdvertisementFailure, List<Product>>
+      required Either<AdvertisementFailure, List<AdProduct>>
           adsProductsFailureOrSuccess,
       required bool showFilters,
       required Place? place,

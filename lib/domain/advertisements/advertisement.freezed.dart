@@ -18,7 +18,7 @@ class _$AdvertisementTearOff {
 
   _Advertisement call(
       int id,
-      List<Product> products,
+      List<AdProduct> products,
       String deliveryAt,
       String availableForGroupsAt,
       String vehicleLicensePlate,
@@ -44,7 +44,7 @@ const $Advertisement = _$AdvertisementTearOff();
 /// @nodoc
 mixin _$Advertisement {
   int get id => throw _privateConstructorUsedError;
-  List<Product> get products => throw _privateConstructorUsedError;
+  List<AdProduct> get products => throw _privateConstructorUsedError;
   String get deliveryAt => throw _privateConstructorUsedError;
   String get availableForGroupsAt => throw _privateConstructorUsedError;
   String get vehicleLicensePlate => throw _privateConstructorUsedError;
@@ -64,7 +64,7 @@ abstract class $AdvertisementCopyWith<$Res> {
       _$AdvertisementCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      List<Product> products,
+      List<AdProduct> products,
       String deliveryAt,
       String availableForGroupsAt,
       String vehicleLicensePlate,
@@ -104,7 +104,7 @@ class _$AdvertisementCopyWithImpl<$Res>
       products: products == freezed
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+              as List<AdProduct>,
       deliveryAt: deliveryAt == freezed
           ? _value.deliveryAt
           : deliveryAt // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ abstract class _$AdvertisementCopyWith<$Res>
   @override
   $Res call(
       {int id,
-      List<Product> products,
+      List<AdProduct> products,
       String deliveryAt,
       String availableForGroupsAt,
       String vehicleLicensePlate,
@@ -200,7 +200,7 @@ class __$AdvertisementCopyWithImpl<$Res>
       products == freezed
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+              as List<AdProduct>,
       deliveryAt == freezed
           ? _value.deliveryAt
           : deliveryAt // ignore: cast_nullable_to_non_nullable
@@ -245,7 +245,7 @@ class _$_Advertisement implements _Advertisement {
   @override
   final int id;
   @override
-  final List<Product> products;
+  final List<AdProduct> products;
   @override
   final String deliveryAt;
   @override
@@ -312,7 +312,7 @@ class _$_Advertisement implements _Advertisement {
 abstract class _Advertisement implements Advertisement {
   const factory _Advertisement(
       int id,
-      List<Product> products,
+      List<AdProduct> products,
       String deliveryAt,
       String availableForGroupsAt,
       String vehicleLicensePlate,
@@ -323,7 +323,7 @@ abstract class _Advertisement implements Advertisement {
   @override
   int get id => throw _privateConstructorUsedError;
   @override
-  List<Product> get products => throw _privateConstructorUsedError;
+  List<AdProduct> get products => throw _privateConstructorUsedError;
   @override
   String get deliveryAt => throw _privateConstructorUsedError;
   @override
@@ -343,10 +343,10 @@ abstract class _Advertisement implements Advertisement {
 }
 
 /// @nodoc
-class _$ProductTearOff {
-  const _$ProductTearOff();
+class _$AdProductTearOff {
+  const _$AdProductTearOff();
 
-  _Product call(
+  _AdProduct call(
       int id,
       String name,
       String unitMeasure,
@@ -358,7 +358,7 @@ class _$ProductTearOff {
       List<ProductImages> images,
       String createdAt,
       Advertisement? advertisement) {
-    return _Product(
+    return _AdProduct(
       id,
       name,
       unitMeasure,
@@ -375,10 +375,10 @@ class _$ProductTearOff {
 }
 
 /// @nodoc
-const $Product = _$ProductTearOff();
+const $AdProduct = _$AdProductTearOff();
 
 /// @nodoc
-mixin _$Product {
+mixin _$AdProduct {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get unitMeasure => throw _privateConstructorUsedError;
@@ -392,13 +392,14 @@ mixin _$Product {
   Advertisement? get advertisement => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
+  $AdProductCopyWith<AdProduct> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductCopyWith<$Res> {
-  factory $ProductCopyWith(Product value, $Res Function(Product) then) =
-      _$ProductCopyWithImpl<$Res>;
+abstract class $AdProductCopyWith<$Res> {
+  factory $AdProductCopyWith(AdProduct value, $Res Function(AdProduct) then) =
+      _$AdProductCopyWithImpl<$Res>;
   $Res call(
       {int id,
       String name,
@@ -416,12 +417,12 @@ abstract class $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
-  _$ProductCopyWithImpl(this._value, this._then);
+class _$AdProductCopyWithImpl<$Res> implements $AdProductCopyWith<$Res> {
+  _$AdProductCopyWithImpl(this._value, this._then);
 
-  final Product _value;
+  final AdProduct _value;
   // ignore: unused_field
-  final $Res Function(Product) _then;
+  final $Res Function(AdProduct) _then;
 
   @override
   $Res call({
@@ -498,9 +499,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$ProductCopyWith(_Product value, $Res Function(_Product) then) =
-      __$ProductCopyWithImpl<$Res>;
+abstract class _$AdProductCopyWith<$Res> implements $AdProductCopyWith<$Res> {
+  factory _$AdProductCopyWith(
+          _AdProduct value, $Res Function(_AdProduct) then) =
+      __$AdProductCopyWithImpl<$Res>;
   @override
   $Res call(
       {int id,
@@ -520,13 +522,13 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
-    implements _$ProductCopyWith<$Res> {
-  __$ProductCopyWithImpl(_Product _value, $Res Function(_Product) _then)
-      : super(_value, (v) => _then(v as _Product));
+class __$AdProductCopyWithImpl<$Res> extends _$AdProductCopyWithImpl<$Res>
+    implements _$AdProductCopyWith<$Res> {
+  __$AdProductCopyWithImpl(_AdProduct _value, $Res Function(_AdProduct) _then)
+      : super(_value, (v) => _then(v as _AdProduct));
 
   @override
-  _Product get _value => super._value as _Product;
+  _AdProduct get _value => super._value as _AdProduct;
 
   @override
   $Res call({
@@ -542,7 +544,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? advertisement = freezed,
   }) {
-    return _then(_Product(
+    return _then(_AdProduct(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -593,8 +595,8 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Product implements _Product {
-  const _$_Product(
+class _$_AdProduct implements _AdProduct {
+  const _$_AdProduct(
       this.id,
       this.name,
       this.unitMeasure,
@@ -632,13 +634,13 @@ class _$_Product implements _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt, advertisement: $advertisement)';
+    return 'AdProduct(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt, advertisement: $advertisement)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Product &&
+        (other is _AdProduct &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
@@ -686,12 +688,12 @@ class _$_Product implements _Product {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductCopyWith<_Product> get copyWith =>
-      __$ProductCopyWithImpl<_Product>(this, _$identity);
+  _$AdProductCopyWith<_AdProduct> get copyWith =>
+      __$AdProductCopyWithImpl<_AdProduct>(this, _$identity);
 }
 
-abstract class _Product implements Product {
-  const factory _Product(
+abstract class _AdProduct implements AdProduct {
+  const factory _AdProduct(
       int id,
       String name,
       String unitMeasure,
@@ -702,7 +704,7 @@ abstract class _Product implements Product {
       String observation,
       List<ProductImages> images,
       String createdAt,
-      Advertisement? advertisement) = _$_Product;
+      Advertisement? advertisement) = _$_AdProduct;
 
   @override
   int get id => throw _privateConstructorUsedError;
@@ -728,7 +730,7 @@ abstract class _Product implements Product {
   Advertisement? get advertisement => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductCopyWith<_Product> get copyWith =>
+  _$AdProductCopyWith<_AdProduct> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -918,9 +920,16 @@ abstract class _ProductImages implements ProductImages {
 class _$UnitMeasureTearOff {
   const _$UnitMeasureTearOff();
 
-  _UnitMeasure call(int id) {
+  _UnitMeasure call(
+      {required int id,
+      required String name,
+      required String createdAt,
+      required String updatedAt}) {
     return _UnitMeasure(
-      id,
+      id: id,
+      name: name,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 }
@@ -931,6 +940,9 @@ const $UnitMeasure = _$UnitMeasureTearOff();
 /// @nodoc
 mixin _$UnitMeasure {
   int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get createdAt => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UnitMeasureCopyWith<UnitMeasure> get copyWith =>
@@ -942,7 +954,7 @@ abstract class $UnitMeasureCopyWith<$Res> {
   factory $UnitMeasureCopyWith(
           UnitMeasure value, $Res Function(UnitMeasure) then) =
       _$UnitMeasureCopyWithImpl<$Res>;
-  $Res call({int id});
+  $Res call({int id, String name, String createdAt, String updatedAt});
 }
 
 /// @nodoc
@@ -956,12 +968,27 @@ class _$UnitMeasureCopyWithImpl<$Res> implements $UnitMeasureCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -973,7 +1000,7 @@ abstract class _$UnitMeasureCopyWith<$Res>
           _UnitMeasure value, $Res Function(_UnitMeasure) then) =
       __$UnitMeasureCopyWithImpl<$Res>;
   @override
-  $Res call({int id});
+  $Res call({int id, String name, String createdAt, String updatedAt});
 }
 
 /// @nodoc
@@ -989,12 +1016,27 @@ class __$UnitMeasureCopyWithImpl<$Res> extends _$UnitMeasureCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_UnitMeasure(
-      id == freezed
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1002,14 +1044,24 @@ class __$UnitMeasureCopyWithImpl<$Res> extends _$UnitMeasureCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UnitMeasure implements _UnitMeasure {
-  const _$_UnitMeasure(this.id);
+  const _$_UnitMeasure(
+      {required this.id,
+      required this.name,
+      required this.createdAt,
+      required this.updatedAt});
 
   @override
   final int id;
+  @override
+  final String name;
+  @override
+  final String createdAt;
+  @override
+  final String updatedAt;
 
   @override
   String toString() {
-    return 'UnitMeasure(id: $id)';
+    return 'UnitMeasure(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -1017,12 +1069,24 @@ class _$_UnitMeasure implements _UnitMeasure {
     return identical(this, other) ||
         (other is _UnitMeasure &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.updatedAt, updatedAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.updatedAt, updatedAt)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -1031,10 +1095,20 @@ class _$_UnitMeasure implements _UnitMeasure {
 }
 
 abstract class _UnitMeasure implements UnitMeasure {
-  const factory _UnitMeasure(int id) = _$_UnitMeasure;
+  const factory _UnitMeasure(
+      {required int id,
+      required String name,
+      required String createdAt,
+      required String updatedAt}) = _$_UnitMeasure;
 
   @override
   int get id => throw _privateConstructorUsedError;
+  @override
+  String get name => throw _privateConstructorUsedError;
+  @override
+  String get createdAt => throw _privateConstructorUsedError;
+  @override
+  String get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UnitMeasureCopyWith<_UnitMeasure> get copyWith =>

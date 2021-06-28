@@ -11,7 +11,7 @@ _$_AdvertisementResponse _$_$_AdvertisementResponseFromJson(
   return _$_AdvertisementResponse(
     json['id'] as int,
     (json['products'] as List<dynamic>)
-        .map((e) => ProductResponse.fromJson(e as Map<String, dynamic>))
+        .map((e) => AdProductResponse.fromJson(e as Map<String, dynamic>))
         .toList(),
     json['delivery_at'] as String,
     json['available_for_groups_at'] as String,
@@ -35,8 +35,8 @@ Map<String, dynamic> _$_$_AdvertisementResponseToJson(
       'created_at': instance.createdAt,
     };
 
-_$_ProductResponse _$_$_ProductResponseFromJson(Map<String, dynamic> json) {
-  return _$_ProductResponse(
+_$_AdProductResponse _$_$_AdProductResponseFromJson(Map<String, dynamic> json) {
+  return _$_AdProductResponse(
     json['id'] as int,
     json['name'] as String,
     json['measurement_unit'] as String,
@@ -52,7 +52,8 @@ _$_ProductResponse _$_$_ProductResponseFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_ProductResponseToJson(_$_ProductResponse instance) =>
+Map<String, dynamic> _$_$_AdProductResponseToJson(
+        _$_AdProductResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -64,17 +65,4 @@ Map<String, dynamic> _$_$_ProductResponseToJson(_$_ProductResponse instance) =>
       'observation': instance.observation,
       'images': instance.images,
       'created_at': instance.createdAt,
-    };
-
-_$_UnitMeasureResponse _$_$_UnitMeasureResponseFromJson(
-    Map<String, dynamic> json) {
-  return _$_UnitMeasureResponse(
-    json['id'] as int,
-  );
-}
-
-Map<String, dynamic> _$_$_UnitMeasureResponseToJson(
-        _$_UnitMeasureResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
     };

@@ -43,4 +43,44 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidAddress(
     String failedValue,
   ) = InvalidAddress<T>;
+
+  const factory ValueFailure.invalidNewAdDate(
+    String failedValue,
+  ) = InvalidNewAdDate<T>;
+
+  const factory ValueFailure.invalidNewAdPlace(
+    String failedValue,
+  ) = InvalidNewAdPlace<T>;
+
+  const factory ValueFailure.invalidNewAdDeliveryPlace(
+    String failedValue,
+  ) = InvalidNewAdDeliveryPlace<T>;
+
+  const factory ValueFailure.invalidNewAdDeliveryDescription(
+    String failedValue,
+  ) = InvalidNewAdDeliveryDescription<T>;
+
+  const factory ValueFailure.invalidNewAdProductId(
+    int failedValue,
+  ) = InvalidNewAdProductId<T>;
+
+  const factory ValueFailure.invalidNewAdProductKind(
+    String failedValue,
+  ) = InvalidNewAdProductKind<T>;
+
+  const factory ValueFailure.invalidNewAdProductRating(
+    String failedValue,
+  ) = InvalidNewAdProductRating<T>;
+
+  const factory ValueFailure.invalidNewAdProductUnitMeasureId(
+    int failedValue,
+  ) = InvalidNewAdProductUnitMeasureId<T>;
+
+  const factory ValueFailure.invalidNewAdProductQuantity(
+    int failedValue,
+  ) = InvalidNewAdProductQuantity<T>;
+
+  const factory ValueFailure.invalidNewAdProductObservation(
+    String failedValue,
+  ) = InvalidNewAdProductObservation<T>;
 }

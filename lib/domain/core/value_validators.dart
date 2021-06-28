@@ -76,3 +76,36 @@ Either<ValueFailure<String>, String> validatePlaceAddress(String input) {
     return right(input);
   }
 }
+
+Either<ValueFailure<String>, String> validateNewAdDate(String input) {
+  if (input.length != 10) {
+    return left(ValueFailure.invalidNewAdDate(input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validateNewAdPlace(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidNewAdPlace(input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validateNewAdDeliveryPlace(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidNewAdDeliveryPlace(input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validateNewAdDeliveryDescription(
+    String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidNewAdDeliveryDescription(input));
+  } else {
+    return right(input);
+  }
+}

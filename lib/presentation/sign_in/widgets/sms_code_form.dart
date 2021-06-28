@@ -1,6 +1,8 @@
 import 'package:conectacampo/application/auth/sms_code_form/sms_code_form_bloc.dart';
+import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/presentation/buyer/buyer_main_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:conectacampo/presentation/sign_in/sign_up_page.dart';
@@ -42,189 +44,212 @@ class SmsCodeForm extends StatelessWidget {
       ),
       body: FocusScope(
         node: _node,
-        child: Stack(
-          children: [
-            Image.asset('assets/dots.png'),
-            BlocConsumer<SmsCodeFormBloc, SmsCodeFormState>(
-                listener: (context, state) {
-              state.authFailureOrSuccessOption.fold(
-                  () => {},
-                  (either) => either.fold((failure) {
-                        failure.maybeMap(
-                            userNotFound: (_) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignUpPage()),
-                              );
-                            },
-                            orElse: () {});
-                        final String errorText = failure.maybeMap(
-                            serverError: (_) => 'Erro interno',
-                            invalidSmsCode: (_) =>
-                                'Código inválido. Tente novamente',
-                            invalidVerificationId: (_) =>
-                                'A verificação falhou. Tente novamente',
-                            applicationError: (_) => 'A aplicação falhou',
-                            unauthorized: (_) => 'A aplicação falhou',
-                            orElse: () => '');
-                        if (errorText.isEmpty == false) {
-                          final snackBar = SnackBar(content: Text(errorText));
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        }
-                      }, (_) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => BuyerMainPage()));
-                      }));
-            }, builder: (context, state) {
-              return Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          'Qual o código?',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: ColorSet.colorPrimaryGreen,
-                              fontSize: 28),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      const Text(
-                        'Digite o código de 6 digitos que enviamos via SMS para o seu número.',
-                        style: TextStyle(height: 2),
-                      ),
-                      const SizedBox(
-                        height: 48,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 48,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 48,
-                              height: 48,
-                              child: _getSmsCodeTextField(
-                                  _textSmsCodeController1, (value) {
-                                context.read<SmsCodeFormBloc>().add(
-                                    SmsCodeFormEvent.smsCodeChanged(
-                                        _textSmsCodeController1.text));
-                              }),
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            SizedBox(
-                              width: 48,
-                              height: 48,
-                              child: _getSmsCodeTextField(
-                                  _textSmsCodeController2, (value) {
-                                context.read<SmsCodeFormBloc>().add(
-                                    SmsCodeFormEvent.smsCodeChanged(
-                                        _textSmsCodeController2.text));
-                              }),
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            SizedBox(
-                              width: 48,
-                              height: 48,
-                              child: _getSmsCodeTextField(
-                                  _textSmsCodeController3, (value) {
-                                context.read<SmsCodeFormBloc>().add(
-                                    SmsCodeFormEvent.smsCodeChanged(
-                                        _textSmsCodeController3.text));
-                              }),
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            SizedBox(
-                              width: 48,
-                              height: 48,
-                              child: _getSmsCodeTextField(
-                                  _textSmsCodeController4, (value) {
-                                context.read<SmsCodeFormBloc>().add(
-                                    SmsCodeFormEvent.smsCodeChanged(
-                                        _textSmsCodeController4.text));
-                              }),
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            SizedBox(
-                              width: 48,
-                              height: 48,
-                              child: _getSmsCodeTextField(
-                                  _textSmsCodeController5, (value) {
-                                context.read<SmsCodeFormBloc>().add(
-                                    SmsCodeFormEvent.smsCodeChanged(
-                                        _textSmsCodeController5.text));
-                              }),
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            SizedBox(
-                              width: 48,
-                              height: 48,
-                              child: _getSmsCodeTextField(
-                                  _textSmsCodeController6, (value) {
-                                String smsCodeValue =
-                                    _textSmsCodeController1.text +
-                                        _textSmsCodeController2.text +
-                                        _textSmsCodeController3.text +
-                                        _textSmsCodeController4.text +
-                                        _textSmsCodeController5.text +
-                                        value;
+        child: BlocConsumer<SmsCodeFormBloc, SmsCodeFormState>(
+            listener: (context, state) {
+          state.authFailureOrSuccessOption.fold(
+              () => {},
+              (either) => either.fold((failure) {
+                    failure.maybeMap(
+                        userNotFound: (_) async {
+                          final success = await Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => PlacesPage()));
+                          if (success != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpPage()),
+                            );
+                          }
+                        },
+                        orElse: () {});
+                    final String errorText = failure.maybeMap(
+                        serverError: (_) => 'Erro interno',
+                        invalidSmsCode: (_) =>
+                            'Código inválido. Tente novamente',
+                        invalidVerificationId: (_) =>
+                            'A verificação falhou. Tente novamente',
+                        applicationError: (_) => 'A aplicação falhou',
+                        unauthorized: (_) => 'A aplicação falhou',
+                        orElse: () => '');
+                    if (errorText.isEmpty == false) {
+                      final snackBar = SnackBar(content: Text(errorText));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                  }, (_) async {
+                    final success = await Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => PlacesPage()));
 
-                                context.read<SmsCodeFormBloc>().add(
-                                    SmsCodeFormEvent.smsCodeChanged(
-                                        smsCodeValue));
-                              }),
-                            )
-                          ],
+                    if (success != null) {
+                      final userType = await loadLoggedUserType();
+                      if (userType != null) {
+                        if (userType == 'buyer') {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              '/buyer_main', (route) => false);
+                        } else {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              '/seller_main', (route) => false);
+                        }
+                      }
+                    }
+                  }));
+        }, builder: (context, state) {
+          return Padding(
+              padding: const EdgeInsets.all(32),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    width: double.infinity,
+                    child: Text(
+                      'Qual o código?',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: ColorSet.colorPrimaryGreen,
+                          fontSize: 28),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  const Text(
+                    'Digite o código de 6 digitos que enviamos via SMS para o seu número.',
+                    style: TextStyle(height: 2),
+                  ),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 42,
+                          height: 42,
+                          child: _getSmsCodeTextField(_textSmsCodeController1,
+                              (value) {
+                            context.read<SmsCodeFormBloc>().add(
+                                SmsCodeFormEvent.smsCodeChanged(
+                                    _textSmsCodeController1.text));
+                            if (_textSmsCodeController1.text.length == 1) {
+                              _node.nextFocus();
+                            }
+                          }),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Visibility(
-                        visible: context
-                            .read<SmsCodeFormBloc>()
-                            .state
-                            .showErrorMessages,
-                        child: Text(context
-                            .read<SmsCodeFormBloc>()
-                            .state
-                            .smsCode
-                            .value
-                            .fold(
-                                (l) => l.maybeMap(
-                                    invalidCodeLength: (_) => 'Código Inválido',
-                                    orElse: () => ''),
-                                (_) => '')),
-                      ),
-                      Visibility(
-                        visible:
-                            context.read<SmsCodeFormBloc>().state.isSubmitting,
-                        child: const CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                              ColorSet.colorPrimaryGreenButton),
+                        const SizedBox(
+                          width: 8,
                         ),
-                      )
-                    ],
-                  ));
-            })
-          ],
-        ),
+                        SizedBox(
+                          width: 42,
+                          height: 42,
+                          child: _getSmsCodeTextField(_textSmsCodeController2,
+                              (value) {
+                            context.read<SmsCodeFormBloc>().add(
+                                SmsCodeFormEvent.smsCodeChanged(
+                                    _textSmsCodeController2.text));
+                            if (_textSmsCodeController2.text.length == 1) {
+                              _node.nextFocus();
+                            }
+                          }),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        SizedBox(
+                          width: 42,
+                          height: 42,
+                          child: _getSmsCodeTextField(_textSmsCodeController3,
+                              (value) {
+                            context.read<SmsCodeFormBloc>().add(
+                                SmsCodeFormEvent.smsCodeChanged(
+                                    _textSmsCodeController3.text));
+                            if (_textSmsCodeController3.text.length == 1) {
+                              _node.nextFocus();
+                            }
+                          }),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        SizedBox(
+                          width: 42,
+                          height: 42,
+                          child: _getSmsCodeTextField(_textSmsCodeController4,
+                              (value) {
+                            context.read<SmsCodeFormBloc>().add(
+                                SmsCodeFormEvent.smsCodeChanged(
+                                    _textSmsCodeController4.text));
+                            if (_textSmsCodeController4.text.length == 1) {
+                              _node.nextFocus();
+                            }
+                          }),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        SizedBox(
+                          width: 42,
+                          height: 42,
+                          child: _getSmsCodeTextField(_textSmsCodeController5,
+                              (value) {
+                            context.read<SmsCodeFormBloc>().add(
+                                SmsCodeFormEvent.smsCodeChanged(
+                                    _textSmsCodeController5.text));
+                            if (_textSmsCodeController5.text.length == 1) {
+                              _node.nextFocus();
+                            }
+                          }),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        SizedBox(
+                          width: 42,
+                          height: 42,
+                          child: _getSmsCodeTextField(_textSmsCodeController6,
+                              (value) {
+                            String smsCodeValue = _textSmsCodeController1.text +
+                                _textSmsCodeController2.text +
+                                _textSmsCodeController3.text +
+                                _textSmsCodeController4.text +
+                                _textSmsCodeController5.text +
+                                value;
+
+                            context.read<SmsCodeFormBloc>().add(
+                                SmsCodeFormEvent.smsCodeChanged(smsCodeValue));
+                          }),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Visibility(
+                    visible:
+                        context.read<SmsCodeFormBloc>().state.showErrorMessages,
+                    child: Text(context
+                        .read<SmsCodeFormBloc>()
+                        .state
+                        .smsCode
+                        .value
+                        .fold(
+                            (l) => l.maybeMap(
+                                invalidCodeLength: (_) => 'Código Inválido',
+                                orElse: () => ''),
+                            (_) => '')),
+                  ),
+                  Visibility(
+                    visible: context.read<SmsCodeFormBloc>().state.isSubmitting,
+                    child: const CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                          ColorSet.colorPrimaryGreenButton),
+                    ),
+                  )
+                ],
+              ));
+        }),
       ),
     );
   }

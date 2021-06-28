@@ -2,7 +2,7 @@ import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:flutter/material.dart';
 
 class SearchAdvertisement extends StatelessWidget {
-  final Product _product;
+  final AdProduct _product;
   const SearchAdvertisement(this._product);
   @override
   Widget build(BuildContext context) {

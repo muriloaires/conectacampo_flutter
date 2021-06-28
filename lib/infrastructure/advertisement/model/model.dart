@@ -1,8 +1,6 @@
 import 'package:conectacampo/infrastructure/auth/model/model.dart';
 import 'package:conectacampo/infrastructure/places/model/model.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
 
 part 'model.freezed.dart';
 part 'model.g.dart';
@@ -11,7 +9,7 @@ part 'model.g.dart';
 class AdvertisementResponse with _$AdvertisementResponse {
   const factory AdvertisementResponse(
     @JsonKey(name: 'id') int id,
-    @JsonKey(name: 'products') List<ProductResponse> products,
+    @JsonKey(name: 'products') List<AdProductResponse> products,
     @JsonKey(name: 'delivery_at') String deliveryAt,
     @JsonKey(name: 'available_for_groups_at') String availableForGroupsAt,
     @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
@@ -25,8 +23,8 @@ class AdvertisementResponse with _$AdvertisementResponse {
 }
 
 @freezed
-class ProductResponse with _$ProductResponse {
-  const factory ProductResponse(
+class AdProductResponse with _$AdProductResponse {
+  const factory AdProductResponse(
     @JsonKey(name: 'id') int id,
     @JsonKey(name: 'name') String name,
     @JsonKey(name: 'measurement_unit') String unitMeasure,
@@ -37,18 +35,8 @@ class ProductResponse with _$ProductResponse {
     @JsonKey(name: 'observation') String observation,
     @JsonKey(name: 'images') List<AvatarResponse> images,
     @JsonKey(name: 'created_at') String createdAt,
-  ) = _ProductResponse;
+  ) = _AdProductResponse;
 
-  factory ProductResponse.fromJson(Map<String, dynamic> json) =>
-      _$ProductResponseFromJson(json);
-}
-
-@freezed
-class UnitMeasureResponse with _$UnitMeasureResponse {
-  const factory UnitMeasureResponse(
-    @JsonKey(name: 'id') int id,
-  ) = _UnitMeasureResponse;
-
-  factory UnitMeasureResponse.fromJson(Map<String, dynamic> json) =>
-      _$UnitMeasureResponseFromJson(json);
+  factory AdProductResponse.fromJson(Map<String, dynamic> json) =>
+      _$AdProductResponseFromJson(json);
 }
