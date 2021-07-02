@@ -1,9 +1,11 @@
 import 'package:conectacampo/application/seller/new_advertisement/add_product/add_product_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/advertisements/seller/new_ad_product.dart';
 import 'package:conectacampo/domain/products/product.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/base_input_widget.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/seller/new_advertisement/add_photos_summary.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +13,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AddProductPage extends StatelessWidget {
-  const AddProductPage({Key? key}) : super(key: key);
+  final NewAdProduct? edited;
+  const AddProductPage({required this.edited});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +34,14 @@ class AddProductForm extends StatelessWidget {
         EasyLoading.show(status: 'Carregando');
       } else {
         EasyLoading.dismiss();
+      }
+
+      if (state.proceed) {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => AddPhotosSummaryPage(
+            products: state.products,
+          ),
+        ));
       }
     }, builder: (context, state) {
       return Scaffold(
@@ -59,15 +70,26 @@ class AddProductForm extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  ListView.builder(
-                    itemCount: 2,
-                    itemBuilder: (context, index) => const NewProductWidget(),
+                  ListView.separated(
+                    separatorBuilder: (context, index) => SizedBox(
+                      height: 40,
+                    ),
+                    itemCount: state.products.length,
+                    itemBuilder: (context, index) =>
+                        NewProductWidget(index: index),
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                   ),
+                  SizedBox(
+                    height: 60,
+                  ),
                   TextButton(
-                      onPressed: () {},
-                      child: const Center(
+                      onPressed: () {
+                        context
+                            .read<AddProductBloc>()
+                            .add(const AddProductEvent.addMoreTap());
+                      },
+                      child: Center(
                         child: Text(
                           'Adicionar mais produtos',
                           style: TextStyle(
@@ -75,7 +97,31 @@ class AddProductForm extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline),
                         ),
-                      ))
+                      )),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  MaterialButton(
+                    onPressed: () {
+                      if (!state.showBtnProceed) {
+                        return;
+                      }
+
+                      context
+                          .read<AddProductBloc>()
+                          .add(const AddProductEvent.btnProceedTap());
+                    },
+                    child: Center(
+                      child: Text(
+                        'Já adicionei tudo',
+                        style: TextStyle(
+                            color: state.showBtnProceed
+                                ? ColorSet.brown1
+                                : ColorSet.gray10,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -87,7 +133,8 @@ class AddProductForm extends StatelessWidget {
 }
 
 class NewProductWidget extends StatelessWidget {
-  const NewProductWidget({Key? key}) : super(key: key);
+  final int index;
+  const NewProductWidget({required this.index, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +147,22 @@ class NewProductWidget extends StatelessWidget {
             .fold(() => List<Product>.empty(),
                 (a) => a.fold((l) => List<Product>.empty(), (r) => r))
             .toList();
+
+        final whereList = items
+            .where((element) =>
+                element.id == state.products[index].newAdProduct?.id)
+            .toList();
+
+        Product? product = whereList.isEmpty ? null : whereList.first;
+
+        final selectedUnitMeasures = product?.unitMeasures.where((element) =>
+            element.id == state.products[index].newAdProductUnitMeasure?.id);
+
+        UnitMeasure? unitMeasureSelected =
+            (selectedUnitMeasures?.isEmpty ?? true)
+                ? null
+                : selectedUnitMeasures?.first;
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -108,7 +171,7 @@ class NewProductWidget extends StatelessWidget {
                   dropdownBuilder: (context, selectedItem, itemAsString) => Row(
                         children: [
                           SvgPicture.asset('assets/tag-outline.svg'),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(itemAsString.isEmpty ? 'Produto*' : itemAsString)
@@ -119,14 +182,19 @@ class NewProductWidget extends StatelessWidget {
                   searchBoxDecoration:
                       InputDecoration(hintText: 'Digite o nome do produto'),
                   showSearchBox: true,
+                  validator: (value) =>
+                      value == null ? 'Campo obrigatório' : null,
+                  errorBuilder: (context, searchEntry, exception) => const Text(
+                        'Campo obrigatório',
+                        style: TextStyle(color: Colors.red),
+                      ),
                   itemAsString: (item) => item.name,
-                  selectedItem: state.optionOfProductSelected
-                      .foldRight(null, (a, previous) => a),
+                  selectedItem: product,
                   items: items,
                   onChanged: (newValue) {
                     context
                         .read<AddProductBloc>()
-                        .add(AddProductEvent.productSelected(newValue));
+                        .add(AddProductEvent.productSelected(index, newValue));
                   },
                   hint: 'Produto*'),
             ),
@@ -146,14 +214,13 @@ class NewProductWidget extends StatelessWidget {
                 ),
                 dropdownSearchDecoration:
                     const InputDecoration(border: InputBorder.none),
-                selectedItem: state.optionOfKindSelected
-                    .foldRight(null, (a, previous) => a),
-                items: state.optionOfProductSelected
-                    .fold(() => List<String>.empty(), (a) => a.kinds),
+                selectedItem: state.products[index].newAdProductKind?.value
+                    .fold((l) => null, (r) => r),
+                items: product?.kinds,
                 onChanged: (newValue) {
                   context
                       .read<AddProductBloc>()
-                      .add(AddProductEvent.kindSelected(newValue));
+                      .add(AddProductEvent.kindSelected(index, newValue));
                 },
                 hint: 'Tipo*',
               ),
@@ -174,14 +241,13 @@ class NewProductWidget extends StatelessWidget {
                 ),
                 dropdownSearchDecoration:
                     const InputDecoration(border: InputBorder.none),
-                selectedItem: state.optionOfRatingSelected
-                    .foldRight(null, (a, previous) => a),
-                items: state.optionOfProductSelected
-                    .fold(() => List<String>.empty(), (a) => a.ratings),
+                selectedItem: state.products[index].newAdProductRating?.value
+                    .fold((l) => null, (r) => r),
+                items: product?.ratings,
                 onChanged: (newValue) {
                   context
                       .read<AddProductBloc>()
-                      .add(AddProductEvent.ratingSelected(newValue));
+                      .add(AddProductEvent.ratingSelected(index, newValue));
                 },
                 hint: 'Classificação*',
               ),
@@ -205,14 +271,13 @@ class NewProductWidget extends StatelessWidget {
                 dropdownSearchDecoration:
                     const InputDecoration(border: InputBorder.none),
                 itemAsString: (item) => item.name,
-                selectedItem: state.optionOfUnitMeasureSelected
-                    .foldRight(null, (a, previous) => a),
-                items: state.optionOfProductSelected.fold(
-                    () => List<UnitMeasure>.empty(), (a) => a.unitMeasures),
+                selectedItem: unitMeasureSelected,
+                items: whereList.isEmpty
+                    ? List.empty()
+                    : whereList.first.unitMeasures,
                 onChanged: (newValue) {
-                  context
-                      .read<AddProductBloc>()
-                      .add(AddProductEvent.unitMeasureSelected(newValue));
+                  context.read<AddProductBloc>().add(
+                      AddProductEvent.unitMeasureSelected(index, newValue));
                 },
                 hint: 'Embalagem / Medida*',
               ),
@@ -232,6 +297,9 @@ class NewProductWidget extends StatelessWidget {
                   ),
                   Expanded(
                     child: TextFormField(
+                      onChanged: (value) => context
+                          .read<AddProductBloc>()
+                          .add(AddProductEvent.quantityChanged(index, value)),
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           border: InputBorder.none, hintText: 'Quantidade*'),

@@ -40,7 +40,7 @@ class SellerBottomMenu extends StatelessWidget {
                   icon: Icon(
                     Icons.home_outlined,
                   ),
-                  label: 'Comprar',
+                  label: 'Anunciar',
                 ),
                 BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage('assets/reservas.png')),

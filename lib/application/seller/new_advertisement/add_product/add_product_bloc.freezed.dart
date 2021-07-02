@@ -20,28 +20,48 @@ class _$AddProductEventTearOff {
     return const _Started();
   }
 
-  ProductSelected productSelected(Product? product) {
+  ProductSelected productSelected(int index, Product? product) {
     return ProductSelected(
+      index,
       product,
     );
   }
 
-  KindSelected kindSelected(String? kindSelected) {
+  KindSelected kindSelected(int index, String? kindSelected) {
     return KindSelected(
+      index,
       kindSelected,
     );
   }
 
-  RatingSelected ratingSelected(String? ratingSelected) {
+  RatingSelected ratingSelected(int index, String? ratingSelected) {
     return RatingSelected(
+      index,
       ratingSelected,
     );
   }
 
-  UnitMeasureSelected unitMeasureSelected(UnitMeasure? unitMeasureSelected) {
+  UnitMeasureSelected unitMeasureSelected(
+      int index, UnitMeasure? unitMeasureSelected) {
     return UnitMeasureSelected(
+      index,
       unitMeasureSelected,
     );
+  }
+
+  QuantityChanged quantityChanged(int index, String quantity) {
+    return QuantityChanged(
+      index,
+      quantity,
+    );
+  }
+
+  AddMoreTap addMoreTap() {
+    return const AddMoreTap();
+  }
+
+  BtnProceedTap btnProceedTap() {
+    return const BtnProceedTap();
   }
 }
 
@@ -53,20 +73,27 @@ mixin _$AddProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Product? product) productSelected,
-    required TResult Function(String? kindSelected) kindSelected,
-    required TResult Function(String? ratingSelected) ratingSelected,
-    required TResult Function(UnitMeasure? unitMeasureSelected)
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Product? product)? productSelected,
-    TResult Function(String? kindSelected)? kindSelected,
-    TResult Function(String? ratingSelected)? ratingSelected,
-    TResult Function(UnitMeasure? unitMeasureSelected)? unitMeasureSelected,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -77,6 +104,9 @@ mixin _$AddProductEvent {
     required TResult Function(KindSelected value) kindSelected,
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +116,9 @@ mixin _$AddProductEvent {
     TResult Function(KindSelected value)? kindSelected,
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,11 +179,14 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Product? product) productSelected,
-    required TResult Function(String? kindSelected) kindSelected,
-    required TResult Function(String? ratingSelected) ratingSelected,
-    required TResult Function(UnitMeasure? unitMeasureSelected)
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
   }) {
     return started();
   }
@@ -159,10 +195,14 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Product? product)? productSelected,
-    TResult Function(String? kindSelected)? kindSelected,
-    TResult Function(String? ratingSelected)? ratingSelected,
-    TResult Function(UnitMeasure? unitMeasureSelected)? unitMeasureSelected,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -179,6 +219,9 @@ class _$_Started implements _Started {
     required TResult Function(KindSelected value) kindSelected,
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
     return started(this);
   }
@@ -191,6 +234,9 @@ class _$_Started implements _Started {
     TResult Function(KindSelected value)? kindSelected,
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -209,7 +255,7 @@ abstract class $ProductSelectedCopyWith<$Res> {
   factory $ProductSelectedCopyWith(
           ProductSelected value, $Res Function(ProductSelected) then) =
       _$ProductSelectedCopyWithImpl<$Res>;
-  $Res call({Product? product});
+  $Res call({int index, Product? product});
 
   $ProductCopyWith<$Res>? get product;
 }
@@ -227,9 +273,14 @@ class _$ProductSelectedCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? index = freezed,
     Object? product = freezed,
   }) {
     return _then(ProductSelected(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
       product == freezed
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
@@ -252,27 +303,33 @@ class _$ProductSelectedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductSelected implements ProductSelected {
-  const _$ProductSelected(this.product);
+  const _$ProductSelected(this.index, this.product);
 
+  @override
+  final int index;
   @override
   final Product? product;
 
   @override
   String toString() {
-    return 'AddProductEvent.productSelected(product: $product)';
+    return 'AddProductEvent.productSelected(index: $index, product: $product)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ProductSelected &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)) &&
             (identical(other.product, product) ||
                 const DeepCollectionEquality().equals(other.product, product)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(product);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(index) ^
+      const DeepCollectionEquality().hash(product);
 
   @JsonKey(ignore: true)
   @override
@@ -283,27 +340,34 @@ class _$ProductSelected implements ProductSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Product? product) productSelected,
-    required TResult Function(String? kindSelected) kindSelected,
-    required TResult Function(String? ratingSelected) ratingSelected,
-    required TResult Function(UnitMeasure? unitMeasureSelected)
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
   }) {
-    return productSelected(product);
+    return productSelected(index, product);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Product? product)? productSelected,
-    TResult Function(String? kindSelected)? kindSelected,
-    TResult Function(String? ratingSelected)? ratingSelected,
-    TResult Function(UnitMeasure? unitMeasureSelected)? unitMeasureSelected,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
     required TResult orElse(),
   }) {
     if (productSelected != null) {
-      return productSelected(product);
+      return productSelected(index, product);
     }
     return orElse();
   }
@@ -316,6 +380,9 @@ class _$ProductSelected implements ProductSelected {
     required TResult Function(KindSelected value) kindSelected,
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
     return productSelected(this);
   }
@@ -328,6 +395,9 @@ class _$ProductSelected implements ProductSelected {
     TResult Function(KindSelected value)? kindSelected,
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
   }) {
     if (productSelected != null) {
@@ -338,8 +408,10 @@ class _$ProductSelected implements ProductSelected {
 }
 
 abstract class ProductSelected implements AddProductEvent {
-  const factory ProductSelected(Product? product) = _$ProductSelected;
+  const factory ProductSelected(int index, Product? product) =
+      _$ProductSelected;
 
+  int get index => throw _privateConstructorUsedError;
   Product? get product => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProductSelectedCopyWith<ProductSelected> get copyWith =>
@@ -351,7 +423,7 @@ abstract class $KindSelectedCopyWith<$Res> {
   factory $KindSelectedCopyWith(
           KindSelected value, $Res Function(KindSelected) then) =
       _$KindSelectedCopyWithImpl<$Res>;
-  $Res call({String? kindSelected});
+  $Res call({int index, String? kindSelected});
 }
 
 /// @nodoc
@@ -367,9 +439,14 @@ class _$KindSelectedCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? index = freezed,
     Object? kindSelected = freezed,
   }) {
     return _then(KindSelected(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
       kindSelected == freezed
           ? _value.kindSelected
           : kindSelected // ignore: cast_nullable_to_non_nullable
@@ -381,20 +458,24 @@ class _$KindSelectedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KindSelected implements KindSelected {
-  const _$KindSelected(this.kindSelected);
+  const _$KindSelected(this.index, this.kindSelected);
 
+  @override
+  final int index;
   @override
   final String? kindSelected;
 
   @override
   String toString() {
-    return 'AddProductEvent.kindSelected(kindSelected: $kindSelected)';
+    return 'AddProductEvent.kindSelected(index: $index, kindSelected: $kindSelected)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is KindSelected &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)) &&
             (identical(other.kindSelected, kindSelected) ||
                 const DeepCollectionEquality()
                     .equals(other.kindSelected, kindSelected)));
@@ -402,7 +483,9 @@ class _$KindSelected implements KindSelected {
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(kindSelected);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(index) ^
+      const DeepCollectionEquality().hash(kindSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -413,27 +496,34 @@ class _$KindSelected implements KindSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Product? product) productSelected,
-    required TResult Function(String? kindSelected) kindSelected,
-    required TResult Function(String? ratingSelected) ratingSelected,
-    required TResult Function(UnitMeasure? unitMeasureSelected)
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
   }) {
-    return kindSelected(this.kindSelected);
+    return kindSelected(index, this.kindSelected);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Product? product)? productSelected,
-    TResult Function(String? kindSelected)? kindSelected,
-    TResult Function(String? ratingSelected)? ratingSelected,
-    TResult Function(UnitMeasure? unitMeasureSelected)? unitMeasureSelected,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
     required TResult orElse(),
   }) {
     if (kindSelected != null) {
-      return kindSelected(this.kindSelected);
+      return kindSelected(index, this.kindSelected);
     }
     return orElse();
   }
@@ -446,6 +536,9 @@ class _$KindSelected implements KindSelected {
     required TResult Function(KindSelected value) kindSelected,
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
     return kindSelected(this);
   }
@@ -458,6 +551,9 @@ class _$KindSelected implements KindSelected {
     TResult Function(KindSelected value)? kindSelected,
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
   }) {
     if (kindSelected != null) {
@@ -468,8 +564,9 @@ class _$KindSelected implements KindSelected {
 }
 
 abstract class KindSelected implements AddProductEvent {
-  const factory KindSelected(String? kindSelected) = _$KindSelected;
+  const factory KindSelected(int index, String? kindSelected) = _$KindSelected;
 
+  int get index => throw _privateConstructorUsedError;
   String? get kindSelected => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $KindSelectedCopyWith<KindSelected> get copyWith =>
@@ -481,7 +578,7 @@ abstract class $RatingSelectedCopyWith<$Res> {
   factory $RatingSelectedCopyWith(
           RatingSelected value, $Res Function(RatingSelected) then) =
       _$RatingSelectedCopyWithImpl<$Res>;
-  $Res call({String? ratingSelected});
+  $Res call({int index, String? ratingSelected});
 }
 
 /// @nodoc
@@ -497,9 +594,14 @@ class _$RatingSelectedCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? index = freezed,
     Object? ratingSelected = freezed,
   }) {
     return _then(RatingSelected(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
       ratingSelected == freezed
           ? _value.ratingSelected
           : ratingSelected // ignore: cast_nullable_to_non_nullable
@@ -511,20 +613,24 @@ class _$RatingSelectedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RatingSelected implements RatingSelected {
-  const _$RatingSelected(this.ratingSelected);
+  const _$RatingSelected(this.index, this.ratingSelected);
 
+  @override
+  final int index;
   @override
   final String? ratingSelected;
 
   @override
   String toString() {
-    return 'AddProductEvent.ratingSelected(ratingSelected: $ratingSelected)';
+    return 'AddProductEvent.ratingSelected(index: $index, ratingSelected: $ratingSelected)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is RatingSelected &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)) &&
             (identical(other.ratingSelected, ratingSelected) ||
                 const DeepCollectionEquality()
                     .equals(other.ratingSelected, ratingSelected)));
@@ -533,6 +639,7 @@ class _$RatingSelected implements RatingSelected {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(index) ^
       const DeepCollectionEquality().hash(ratingSelected);
 
   @JsonKey(ignore: true)
@@ -544,27 +651,34 @@ class _$RatingSelected implements RatingSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Product? product) productSelected,
-    required TResult Function(String? kindSelected) kindSelected,
-    required TResult Function(String? ratingSelected) ratingSelected,
-    required TResult Function(UnitMeasure? unitMeasureSelected)
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
   }) {
-    return ratingSelected(this.ratingSelected);
+    return ratingSelected(index, this.ratingSelected);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Product? product)? productSelected,
-    TResult Function(String? kindSelected)? kindSelected,
-    TResult Function(String? ratingSelected)? ratingSelected,
-    TResult Function(UnitMeasure? unitMeasureSelected)? unitMeasureSelected,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
     required TResult orElse(),
   }) {
     if (ratingSelected != null) {
-      return ratingSelected(this.ratingSelected);
+      return ratingSelected(index, this.ratingSelected);
     }
     return orElse();
   }
@@ -577,6 +691,9 @@ class _$RatingSelected implements RatingSelected {
     required TResult Function(KindSelected value) kindSelected,
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
     return ratingSelected(this);
   }
@@ -589,6 +706,9 @@ class _$RatingSelected implements RatingSelected {
     TResult Function(KindSelected value)? kindSelected,
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
   }) {
     if (ratingSelected != null) {
@@ -599,8 +719,10 @@ class _$RatingSelected implements RatingSelected {
 }
 
 abstract class RatingSelected implements AddProductEvent {
-  const factory RatingSelected(String? ratingSelected) = _$RatingSelected;
+  const factory RatingSelected(int index, String? ratingSelected) =
+      _$RatingSelected;
 
+  int get index => throw _privateConstructorUsedError;
   String? get ratingSelected => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RatingSelectedCopyWith<RatingSelected> get copyWith =>
@@ -612,7 +734,7 @@ abstract class $UnitMeasureSelectedCopyWith<$Res> {
   factory $UnitMeasureSelectedCopyWith(
           UnitMeasureSelected value, $Res Function(UnitMeasureSelected) then) =
       _$UnitMeasureSelectedCopyWithImpl<$Res>;
-  $Res call({UnitMeasure? unitMeasureSelected});
+  $Res call({int index, UnitMeasure? unitMeasureSelected});
 
   $UnitMeasureCopyWith<$Res>? get unitMeasureSelected;
 }
@@ -630,9 +752,14 @@ class _$UnitMeasureSelectedCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? index = freezed,
     Object? unitMeasureSelected = freezed,
   }) {
     return _then(UnitMeasureSelected(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
       unitMeasureSelected == freezed
           ? _value.unitMeasureSelected
           : unitMeasureSelected // ignore: cast_nullable_to_non_nullable
@@ -655,20 +782,24 @@ class _$UnitMeasureSelectedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UnitMeasureSelected implements UnitMeasureSelected {
-  const _$UnitMeasureSelected(this.unitMeasureSelected);
+  const _$UnitMeasureSelected(this.index, this.unitMeasureSelected);
 
+  @override
+  final int index;
   @override
   final UnitMeasure? unitMeasureSelected;
 
   @override
   String toString() {
-    return 'AddProductEvent.unitMeasureSelected(unitMeasureSelected: $unitMeasureSelected)';
+    return 'AddProductEvent.unitMeasureSelected(index: $index, unitMeasureSelected: $unitMeasureSelected)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is UnitMeasureSelected &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)) &&
             (identical(other.unitMeasureSelected, unitMeasureSelected) ||
                 const DeepCollectionEquality()
                     .equals(other.unitMeasureSelected, unitMeasureSelected)));
@@ -677,6 +808,7 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(index) ^
       const DeepCollectionEquality().hash(unitMeasureSelected);
 
   @JsonKey(ignore: true)
@@ -688,27 +820,34 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Product? product) productSelected,
-    required TResult Function(String? kindSelected) kindSelected,
-    required TResult Function(String? ratingSelected) ratingSelected,
-    required TResult Function(UnitMeasure? unitMeasureSelected)
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
   }) {
-    return unitMeasureSelected(this.unitMeasureSelected);
+    return unitMeasureSelected(index, this.unitMeasureSelected);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Product? product)? productSelected,
-    TResult Function(String? kindSelected)? kindSelected,
-    TResult Function(String? ratingSelected)? ratingSelected,
-    TResult Function(UnitMeasure? unitMeasureSelected)? unitMeasureSelected,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
     required TResult orElse(),
   }) {
     if (unitMeasureSelected != null) {
-      return unitMeasureSelected(this.unitMeasureSelected);
+      return unitMeasureSelected(index, this.unitMeasureSelected);
     }
     return orElse();
   }
@@ -721,6 +860,9 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
     required TResult Function(KindSelected value) kindSelected,
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
     return unitMeasureSelected(this);
   }
@@ -733,6 +875,9 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
     TResult Function(KindSelected value)? kindSelected,
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
   }) {
     if (unitMeasureSelected != null) {
@@ -743,9 +888,10 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
 }
 
 abstract class UnitMeasureSelected implements AddProductEvent {
-  const factory UnitMeasureSelected(UnitMeasure? unitMeasureSelected) =
-      _$UnitMeasureSelected;
+  const factory UnitMeasureSelected(
+      int index, UnitMeasure? unitMeasureSelected) = _$UnitMeasureSelected;
 
+  int get index => throw _privateConstructorUsedError;
   UnitMeasure? get unitMeasureSelected => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UnitMeasureSelectedCopyWith<UnitMeasureSelected> get copyWith =>
@@ -753,26 +899,401 @@ abstract class UnitMeasureSelected implements AddProductEvent {
 }
 
 /// @nodoc
+abstract class $QuantityChangedCopyWith<$Res> {
+  factory $QuantityChangedCopyWith(
+          QuantityChanged value, $Res Function(QuantityChanged) then) =
+      _$QuantityChangedCopyWithImpl<$Res>;
+  $Res call({int index, String quantity});
+}
+
+/// @nodoc
+class _$QuantityChangedCopyWithImpl<$Res>
+    extends _$AddProductEventCopyWithImpl<$Res>
+    implements $QuantityChangedCopyWith<$Res> {
+  _$QuantityChangedCopyWithImpl(
+      QuantityChanged _value, $Res Function(QuantityChanged) _then)
+      : super(_value, (v) => _then(v as QuantityChanged));
+
+  @override
+  QuantityChanged get _value => super._value as QuantityChanged;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+    Object? quantity = freezed,
+  }) {
+    return _then(QuantityChanged(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$QuantityChanged implements QuantityChanged {
+  const _$QuantityChanged(this.index, this.quantity);
+
+  @override
+  final int index;
+  @override
+  final String quantity;
+
+  @override
+  String toString() {
+    return 'AddProductEvent.quantityChanged(index: $index, quantity: $quantity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is QuantityChanged &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)) &&
+            (identical(other.quantity, quantity) ||
+                const DeepCollectionEquality()
+                    .equals(other.quantity, quantity)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(index) ^
+      const DeepCollectionEquality().hash(quantity);
+
+  @JsonKey(ignore: true)
+  @override
+  $QuantityChangedCopyWith<QuantityChanged> get copyWith =>
+      _$QuantityChangedCopyWithImpl<QuantityChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
+        unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
+  }) {
+    return quantityChanged(index, quantity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
+    required TResult orElse(),
+  }) {
+    if (quantityChanged != null) {
+      return quantityChanged(index, quantity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ProductSelected value) productSelected,
+    required TResult Function(KindSelected value) kindSelected,
+    required TResult Function(RatingSelected value) ratingSelected,
+    required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
+  }) {
+    return quantityChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ProductSelected value)? productSelected,
+    TResult Function(KindSelected value)? kindSelected,
+    TResult Function(RatingSelected value)? ratingSelected,
+    TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
+    required TResult orElse(),
+  }) {
+    if (quantityChanged != null) {
+      return quantityChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class QuantityChanged implements AddProductEvent {
+  const factory QuantityChanged(int index, String quantity) = _$QuantityChanged;
+
+  int get index => throw _privateConstructorUsedError;
+  String get quantity => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $QuantityChangedCopyWith<QuantityChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AddMoreTapCopyWith<$Res> {
+  factory $AddMoreTapCopyWith(
+          AddMoreTap value, $Res Function(AddMoreTap) then) =
+      _$AddMoreTapCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AddMoreTapCopyWithImpl<$Res> extends _$AddProductEventCopyWithImpl<$Res>
+    implements $AddMoreTapCopyWith<$Res> {
+  _$AddMoreTapCopyWithImpl(AddMoreTap _value, $Res Function(AddMoreTap) _then)
+      : super(_value, (v) => _then(v as AddMoreTap));
+
+  @override
+  AddMoreTap get _value => super._value as AddMoreTap;
+}
+
+/// @nodoc
+
+class _$AddMoreTap implements AddMoreTap {
+  const _$AddMoreTap();
+
+  @override
+  String toString() {
+    return 'AddProductEvent.addMoreTap()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is AddMoreTap);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
+        unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
+  }) {
+    return addMoreTap();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
+    required TResult orElse(),
+  }) {
+    if (addMoreTap != null) {
+      return addMoreTap();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ProductSelected value) productSelected,
+    required TResult Function(KindSelected value) kindSelected,
+    required TResult Function(RatingSelected value) ratingSelected,
+    required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
+  }) {
+    return addMoreTap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ProductSelected value)? productSelected,
+    TResult Function(KindSelected value)? kindSelected,
+    TResult Function(RatingSelected value)? ratingSelected,
+    TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
+    required TResult orElse(),
+  }) {
+    if (addMoreTap != null) {
+      return addMoreTap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddMoreTap implements AddProductEvent {
+  const factory AddMoreTap() = _$AddMoreTap;
+}
+
+/// @nodoc
+abstract class $BtnProceedTapCopyWith<$Res> {
+  factory $BtnProceedTapCopyWith(
+          BtnProceedTap value, $Res Function(BtnProceedTap) then) =
+      _$BtnProceedTapCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$BtnProceedTapCopyWithImpl<$Res>
+    extends _$AddProductEventCopyWithImpl<$Res>
+    implements $BtnProceedTapCopyWith<$Res> {
+  _$BtnProceedTapCopyWithImpl(
+      BtnProceedTap _value, $Res Function(BtnProceedTap) _then)
+      : super(_value, (v) => _then(v as BtnProceedTap));
+
+  @override
+  BtnProceedTap get _value => super._value as BtnProceedTap;
+}
+
+/// @nodoc
+
+class _$BtnProceedTap implements BtnProceedTap {
+  const _$BtnProceedTap();
+
+  @override
+  String toString() {
+    return 'AddProductEvent.btnProceedTap()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is BtnProceedTap);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
+        unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
+  }) {
+    return btnProceedTap();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
+    required TResult orElse(),
+  }) {
+    if (btnProceedTap != null) {
+      return btnProceedTap();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ProductSelected value) productSelected,
+    required TResult Function(KindSelected value) kindSelected,
+    required TResult Function(RatingSelected value) ratingSelected,
+    required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
+  }) {
+    return btnProceedTap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ProductSelected value)? productSelected,
+    TResult Function(KindSelected value)? kindSelected,
+    TResult Function(RatingSelected value)? ratingSelected,
+    TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
+    required TResult orElse(),
+  }) {
+    if (btnProceedTap != null) {
+      return btnProceedTap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BtnProceedTap implements AddProductEvent {
+  const factory BtnProceedTap() = _$BtnProceedTap;
+}
+
+/// @nodoc
 class _$AddProductStateTearOff {
   const _$AddProductStateTearOff();
 
   _AddProductState call(
-      {required bool isLoading,
+      {required List<NewAdProduct> products,
+      required bool isLoading,
       required Option<Either<ProductFailure, List<Product>>>
           optionProductsFailureOrSuccess,
-      required Option<Product> optionOfProductSelected,
-      required Option<String> optionOfKindSelected,
-      required Option<String> optionOfRatingSelected,
-      required Option<UnitMeasure> optionOfUnitMeasureSelected,
-      required Option<int> optionOfQuantity}) {
+      required bool showErrors,
+      required bool showBtnProceed,
+      required bool proceed}) {
     return _AddProductState(
+      products: products,
       isLoading: isLoading,
       optionProductsFailureOrSuccess: optionProductsFailureOrSuccess,
-      optionOfProductSelected: optionOfProductSelected,
-      optionOfKindSelected: optionOfKindSelected,
-      optionOfRatingSelected: optionOfRatingSelected,
-      optionOfUnitMeasureSelected: optionOfUnitMeasureSelected,
-      optionOfQuantity: optionOfQuantity,
+      showErrors: showErrors,
+      showBtnProceed: showBtnProceed,
+      proceed: proceed,
     );
   }
 }
@@ -782,17 +1303,13 @@ const $AddProductState = _$AddProductStateTearOff();
 
 /// @nodoc
 mixin _$AddProductState {
+  List<NewAdProduct> get products => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Option<Either<ProductFailure, List<Product>>>
       get optionProductsFailureOrSuccess => throw _privateConstructorUsedError;
-  Option<Product> get optionOfProductSelected =>
-      throw _privateConstructorUsedError;
-  Option<String> get optionOfKindSelected => throw _privateConstructorUsedError;
-  Option<String> get optionOfRatingSelected =>
-      throw _privateConstructorUsedError;
-  Option<UnitMeasure> get optionOfUnitMeasureSelected =>
-      throw _privateConstructorUsedError;
-  Option<int> get optionOfQuantity => throw _privateConstructorUsedError;
+  bool get showErrors => throw _privateConstructorUsedError;
+  bool get showBtnProceed => throw _privateConstructorUsedError;
+  bool get proceed => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddProductStateCopyWith<AddProductState> get copyWith =>
@@ -805,14 +1322,13 @@ abstract class $AddProductStateCopyWith<$Res> {
           AddProductState value, $Res Function(AddProductState) then) =
       _$AddProductStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isLoading,
+      {List<NewAdProduct> products,
+      bool isLoading,
       Option<Either<ProductFailure, List<Product>>>
           optionProductsFailureOrSuccess,
-      Option<Product> optionOfProductSelected,
-      Option<String> optionOfKindSelected,
-      Option<String> optionOfRatingSelected,
-      Option<UnitMeasure> optionOfUnitMeasureSelected,
-      Option<int> optionOfQuantity});
+      bool showErrors,
+      bool showBtnProceed,
+      bool proceed});
 }
 
 /// @nodoc
@@ -826,15 +1342,18 @@ class _$AddProductStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? products = freezed,
     Object? isLoading = freezed,
     Object? optionProductsFailureOrSuccess = freezed,
-    Object? optionOfProductSelected = freezed,
-    Object? optionOfKindSelected = freezed,
-    Object? optionOfRatingSelected = freezed,
-    Object? optionOfUnitMeasureSelected = freezed,
-    Object? optionOfQuantity = freezed,
+    Object? showErrors = freezed,
+    Object? showBtnProceed = freezed,
+    Object? proceed = freezed,
   }) {
     return _then(_value.copyWith(
+      products: products == freezed
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<NewAdProduct>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -843,26 +1362,18 @@ class _$AddProductStateCopyWithImpl<$Res>
           ? _value.optionProductsFailureOrSuccess
           : optionProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<ProductFailure, List<Product>>>,
-      optionOfProductSelected: optionOfProductSelected == freezed
-          ? _value.optionOfProductSelected
-          : optionOfProductSelected // ignore: cast_nullable_to_non_nullable
-              as Option<Product>,
-      optionOfKindSelected: optionOfKindSelected == freezed
-          ? _value.optionOfKindSelected
-          : optionOfKindSelected // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
-      optionOfRatingSelected: optionOfRatingSelected == freezed
-          ? _value.optionOfRatingSelected
-          : optionOfRatingSelected // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
-      optionOfUnitMeasureSelected: optionOfUnitMeasureSelected == freezed
-          ? _value.optionOfUnitMeasureSelected
-          : optionOfUnitMeasureSelected // ignore: cast_nullable_to_non_nullable
-              as Option<UnitMeasure>,
-      optionOfQuantity: optionOfQuantity == freezed
-          ? _value.optionOfQuantity
-          : optionOfQuantity // ignore: cast_nullable_to_non_nullable
-              as Option<int>,
+      showErrors: showErrors == freezed
+          ? _value.showErrors
+          : showErrors // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showBtnProceed: showBtnProceed == freezed
+          ? _value.showBtnProceed
+          : showBtnProceed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      proceed: proceed == freezed
+          ? _value.proceed
+          : proceed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -875,14 +1386,13 @@ abstract class _$AddProductStateCopyWith<$Res>
       __$AddProductStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isLoading,
+      {List<NewAdProduct> products,
+      bool isLoading,
       Option<Either<ProductFailure, List<Product>>>
           optionProductsFailureOrSuccess,
-      Option<Product> optionOfProductSelected,
-      Option<String> optionOfKindSelected,
-      Option<String> optionOfRatingSelected,
-      Option<UnitMeasure> optionOfUnitMeasureSelected,
-      Option<int> optionOfQuantity});
+      bool showErrors,
+      bool showBtnProceed,
+      bool proceed});
 }
 
 /// @nodoc
@@ -898,15 +1408,18 @@ class __$AddProductStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? products = freezed,
     Object? isLoading = freezed,
     Object? optionProductsFailureOrSuccess = freezed,
-    Object? optionOfProductSelected = freezed,
-    Object? optionOfKindSelected = freezed,
-    Object? optionOfRatingSelected = freezed,
-    Object? optionOfUnitMeasureSelected = freezed,
-    Object? optionOfQuantity = freezed,
+    Object? showErrors = freezed,
+    Object? showBtnProceed = freezed,
+    Object? proceed = freezed,
   }) {
     return _then(_AddProductState(
+      products: products == freezed
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<NewAdProduct>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -915,26 +1428,18 @@ class __$AddProductStateCopyWithImpl<$Res>
           ? _value.optionProductsFailureOrSuccess
           : optionProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<ProductFailure, List<Product>>>,
-      optionOfProductSelected: optionOfProductSelected == freezed
-          ? _value.optionOfProductSelected
-          : optionOfProductSelected // ignore: cast_nullable_to_non_nullable
-              as Option<Product>,
-      optionOfKindSelected: optionOfKindSelected == freezed
-          ? _value.optionOfKindSelected
-          : optionOfKindSelected // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
-      optionOfRatingSelected: optionOfRatingSelected == freezed
-          ? _value.optionOfRatingSelected
-          : optionOfRatingSelected // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
-      optionOfUnitMeasureSelected: optionOfUnitMeasureSelected == freezed
-          ? _value.optionOfUnitMeasureSelected
-          : optionOfUnitMeasureSelected // ignore: cast_nullable_to_non_nullable
-              as Option<UnitMeasure>,
-      optionOfQuantity: optionOfQuantity == freezed
-          ? _value.optionOfQuantity
-          : optionOfQuantity // ignore: cast_nullable_to_non_nullable
-              as Option<int>,
+      showErrors: showErrors == freezed
+          ? _value.showErrors
+          : showErrors // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showBtnProceed: showBtnProceed == freezed
+          ? _value.showBtnProceed
+          : showBtnProceed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      proceed: proceed == freezed
+          ? _value.proceed
+          : proceed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -943,39 +1448,39 @@ class __$AddProductStateCopyWithImpl<$Res>
 
 class _$_AddProductState implements _AddProductState {
   const _$_AddProductState(
-      {required this.isLoading,
+      {required this.products,
+      required this.isLoading,
       required this.optionProductsFailureOrSuccess,
-      required this.optionOfProductSelected,
-      required this.optionOfKindSelected,
-      required this.optionOfRatingSelected,
-      required this.optionOfUnitMeasureSelected,
-      required this.optionOfQuantity});
+      required this.showErrors,
+      required this.showBtnProceed,
+      required this.proceed});
 
+  @override
+  final List<NewAdProduct> products;
   @override
   final bool isLoading;
   @override
   final Option<Either<ProductFailure, List<Product>>>
       optionProductsFailureOrSuccess;
   @override
-  final Option<Product> optionOfProductSelected;
+  final bool showErrors;
   @override
-  final Option<String> optionOfKindSelected;
+  final bool showBtnProceed;
   @override
-  final Option<String> optionOfRatingSelected;
-  @override
-  final Option<UnitMeasure> optionOfUnitMeasureSelected;
-  @override
-  final Option<int> optionOfQuantity;
+  final bool proceed;
 
   @override
   String toString() {
-    return 'AddProductState(isLoading: $isLoading, optionProductsFailureOrSuccess: $optionProductsFailureOrSuccess, optionOfProductSelected: $optionOfProductSelected, optionOfKindSelected: $optionOfKindSelected, optionOfRatingSelected: $optionOfRatingSelected, optionOfUnitMeasureSelected: $optionOfUnitMeasureSelected, optionOfQuantity: $optionOfQuantity)';
+    return 'AddProductState(products: $products, isLoading: $isLoading, optionProductsFailureOrSuccess: $optionProductsFailureOrSuccess, showErrors: $showErrors, showBtnProceed: $showBtnProceed, proceed: $proceed)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _AddProductState &&
+            (identical(other.products, products) ||
+                const DeepCollectionEquality()
+                    .equals(other.products, products)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
@@ -984,36 +1489,25 @@ class _$_AddProductState implements _AddProductState {
                 const DeepCollectionEquality().equals(
                     other.optionProductsFailureOrSuccess,
                     optionProductsFailureOrSuccess)) &&
-            (identical(
-                    other.optionOfProductSelected, optionOfProductSelected) ||
-                const DeepCollectionEquality().equals(
-                    other.optionOfProductSelected, optionOfProductSelected)) &&
-            (identical(other.optionOfKindSelected, optionOfKindSelected) ||
-                const DeepCollectionEquality().equals(
-                    other.optionOfKindSelected, optionOfKindSelected)) &&
-            (identical(other.optionOfRatingSelected, optionOfRatingSelected) ||
-                const DeepCollectionEquality().equals(
-                    other.optionOfRatingSelected, optionOfRatingSelected)) &&
-            (identical(other.optionOfUnitMeasureSelected,
-                    optionOfUnitMeasureSelected) ||
-                const DeepCollectionEquality().equals(
-                    other.optionOfUnitMeasureSelected,
-                    optionOfUnitMeasureSelected)) &&
-            (identical(other.optionOfQuantity, optionOfQuantity) ||
+            (identical(other.showErrors, showErrors) ||
                 const DeepCollectionEquality()
-                    .equals(other.optionOfQuantity, optionOfQuantity)));
+                    .equals(other.showErrors, showErrors)) &&
+            (identical(other.showBtnProceed, showBtnProceed) ||
+                const DeepCollectionEquality()
+                    .equals(other.showBtnProceed, showBtnProceed)) &&
+            (identical(other.proceed, proceed) ||
+                const DeepCollectionEquality().equals(other.proceed, proceed)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(products) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(optionProductsFailureOrSuccess) ^
-      const DeepCollectionEquality().hash(optionOfProductSelected) ^
-      const DeepCollectionEquality().hash(optionOfKindSelected) ^
-      const DeepCollectionEquality().hash(optionOfRatingSelected) ^
-      const DeepCollectionEquality().hash(optionOfUnitMeasureSelected) ^
-      const DeepCollectionEquality().hash(optionOfQuantity);
+      const DeepCollectionEquality().hash(showErrors) ^
+      const DeepCollectionEquality().hash(showBtnProceed) ^
+      const DeepCollectionEquality().hash(proceed);
 
   @JsonKey(ignore: true)
   @override
@@ -1023,33 +1517,27 @@ class _$_AddProductState implements _AddProductState {
 
 abstract class _AddProductState implements AddProductState {
   const factory _AddProductState(
-      {required bool isLoading,
+      {required List<NewAdProduct> products,
+      required bool isLoading,
       required Option<Either<ProductFailure, List<Product>>>
           optionProductsFailureOrSuccess,
-      required Option<Product> optionOfProductSelected,
-      required Option<String> optionOfKindSelected,
-      required Option<String> optionOfRatingSelected,
-      required Option<UnitMeasure> optionOfUnitMeasureSelected,
-      required Option<int> optionOfQuantity}) = _$_AddProductState;
+      required bool showErrors,
+      required bool showBtnProceed,
+      required bool proceed}) = _$_AddProductState;
 
+  @override
+  List<NewAdProduct> get products => throw _privateConstructorUsedError;
   @override
   bool get isLoading => throw _privateConstructorUsedError;
   @override
   Option<Either<ProductFailure, List<Product>>>
       get optionProductsFailureOrSuccess => throw _privateConstructorUsedError;
   @override
-  Option<Product> get optionOfProductSelected =>
-      throw _privateConstructorUsedError;
+  bool get showErrors => throw _privateConstructorUsedError;
   @override
-  Option<String> get optionOfKindSelected => throw _privateConstructorUsedError;
+  bool get showBtnProceed => throw _privateConstructorUsedError;
   @override
-  Option<String> get optionOfRatingSelected =>
-      throw _privateConstructorUsedError;
-  @override
-  Option<UnitMeasure> get optionOfUnitMeasureSelected =>
-      throw _privateConstructorUsedError;
-  @override
-  Option<int> get optionOfQuantity => throw _privateConstructorUsedError;
+  bool get proceed => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AddProductStateCopyWith<_AddProductState> get copyWith =>

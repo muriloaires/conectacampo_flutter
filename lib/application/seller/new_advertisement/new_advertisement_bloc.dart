@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:conectacampo/domain/advertisements/seller/new_ad_product.dart';
+import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
 import 'package:conectacampo/domain/advertisements/seller/value_objects.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/infrastructure/core/core_extensions.dart';
@@ -26,7 +28,9 @@ class NewAdvertisementBloc
         started: (started) async* {
           final place = await loadSelectedPlace();
           if (place != null) {
-            yield state.copyWith(place: place);
+            yield state.copyWith(
+                newAdvertisement:
+                    state.newAdvertisement.copyWith(newAdDeliveryPlace: place));
           }
         },
         onPlaceTap: (onPlaceTap) async* {
@@ -37,7 +41,8 @@ class NewAdvertisementBloc
           final place = await loadSelectedPlace();
           if (place != null) {
             yield state.copyWith(
-                place: place,
+                newAdvertisement:
+                    state.newAdvertisement.copyWith(newAdDeliveryPlace: place),
                 openPlace: false,
                 isBtnContinueEnabled: setIsBtnConinueEnabled(state));
           }
@@ -45,8 +50,9 @@ class NewAdvertisementBloc
         onDateSelected: (OnDateSelected value) async* {
           if (value.dateTime != null) {
             yield state.copyWith(
-                dateSelected:
-                    NewAdvertisementDate(value.dateTime!.getDayMonthYear()),
+                newAdvertisement: state.newAdvertisement.copyWith(
+                    date: NewAdvertisementDate(
+                        value.dateTime!.getDayMonthYear())),
                 isBtnContinueEnabled: setIsBtnConinueEnabled(state));
           }
         },
@@ -61,16 +67,15 @@ class NewAdvertisementBloc
         onDeliveryDescriptionChanged:
             (OnDeliveryDescriptionChanged value) async* {
           yield state.copyWith(
-              deliveryDescription:
-                  NewAdvertisementDeliveryDescription(value.where),
+              newAdvertisement: state.newAdvertisement.copyWith(
+                  newAdDeliveryDescription:
+                      NewAdvertisementDeliveryDescription(value.where)),
               isBtnContinueEnabled: setIsBtnConinueEnabled(state));
         },
         onContinueTap: (OnContinueTap value) async* {});
   }
 
   bool setIsBtnConinueEnabled(NewAdvertisementState state) {
-    return (state.dateSelected?.isValid() ?? false) &&
-        state.place != null &&
-        state.deliveryDescription.isValid();
+    return state.newAdvertisement.isValidHeader();
   }
 }

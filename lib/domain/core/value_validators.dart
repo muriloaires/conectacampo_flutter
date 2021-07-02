@@ -109,3 +109,52 @@ Either<ValueFailure<String>, String> validateNewAdDeliveryDescription(
     return right(input);
   }
 }
+
+Either<ValueFailure<int>, int> validateNewAdProductId(int input) {
+  if (input < 0) {
+    return left(ValueFailure.invalidNewAdProductId(input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validateNewAdProductKind(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidNewAdProductKind(input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validateNewAdProductRating(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidNewAdProductRating(input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<int>, int> validateNewAdProductUnitMeasureId(int input) {
+  if (input < 0) {
+    return left(ValueFailure.invalidNewAdProductUnitMeasureId(input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<int>, int> validateNewAdProductQuantity(int input) {
+  if (input <= 0) {
+    return left(ValueFailure.invalidNewAdProductQuantity(input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<String>, String> validateNewAdProductObservation(
+    String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.invalidNewAdProductObservation(input));
+  } else {
+    return right(input);
+  }
+}

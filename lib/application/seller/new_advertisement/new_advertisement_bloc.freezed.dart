@@ -987,20 +987,16 @@ class _$NewAdvertisementStateTearOff {
   const _$NewAdvertisementStateTearOff();
 
   _NewAdvertisementState call(
-      {required Place? place,
+      {required NewAdvertisement newAdvertisement,
       required bool openPlace,
-      required NewAdvertisementDate? dateSelected,
       required String? deliveryPlace,
       required bool requestDeliveryPlaceFocus,
-      required NewAdvertisementDeliveryDescription deliveryDescription,
       required bool isBtnContinueEnabled}) {
     return _NewAdvertisementState(
-      place: place,
+      newAdvertisement: newAdvertisement,
       openPlace: openPlace,
-      dateSelected: dateSelected,
       deliveryPlace: deliveryPlace,
       requestDeliveryPlaceFocus: requestDeliveryPlaceFocus,
-      deliveryDescription: deliveryDescription,
       isBtnContinueEnabled: isBtnContinueEnabled,
     );
   }
@@ -1011,13 +1007,10 @@ const $NewAdvertisementState = _$NewAdvertisementStateTearOff();
 
 /// @nodoc
 mixin _$NewAdvertisementState {
-  Place? get place => throw _privateConstructorUsedError;
+  NewAdvertisement get newAdvertisement => throw _privateConstructorUsedError;
   bool get openPlace => throw _privateConstructorUsedError;
-  NewAdvertisementDate? get dateSelected => throw _privateConstructorUsedError;
   String? get deliveryPlace => throw _privateConstructorUsedError;
   bool get requestDeliveryPlaceFocus => throw _privateConstructorUsedError;
-  NewAdvertisementDeliveryDescription get deliveryDescription =>
-      throw _privateConstructorUsedError;
   bool get isBtnContinueEnabled => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1031,15 +1024,13 @@ abstract class $NewAdvertisementStateCopyWith<$Res> {
           $Res Function(NewAdvertisementState) then) =
       _$NewAdvertisementStateCopyWithImpl<$Res>;
   $Res call(
-      {Place? place,
+      {NewAdvertisement newAdvertisement,
       bool openPlace,
-      NewAdvertisementDate? dateSelected,
       String? deliveryPlace,
       bool requestDeliveryPlaceFocus,
-      NewAdvertisementDeliveryDescription deliveryDescription,
       bool isBtnContinueEnabled});
 
-  $PlaceCopyWith<$Res>? get place;
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement;
 }
 
 /// @nodoc
@@ -1053,27 +1044,21 @@ class _$NewAdvertisementStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? place = freezed,
+    Object? newAdvertisement = freezed,
     Object? openPlace = freezed,
-    Object? dateSelected = freezed,
     Object? deliveryPlace = freezed,
     Object? requestDeliveryPlaceFocus = freezed,
-    Object? deliveryDescription = freezed,
     Object? isBtnContinueEnabled = freezed,
   }) {
     return _then(_value.copyWith(
-      place: place == freezed
-          ? _value.place
-          : place // ignore: cast_nullable_to_non_nullable
-              as Place?,
+      newAdvertisement: newAdvertisement == freezed
+          ? _value.newAdvertisement
+          : newAdvertisement // ignore: cast_nullable_to_non_nullable
+              as NewAdvertisement,
       openPlace: openPlace == freezed
           ? _value.openPlace
           : openPlace // ignore: cast_nullable_to_non_nullable
               as bool,
-      dateSelected: dateSelected == freezed
-          ? _value.dateSelected
-          : dateSelected // ignore: cast_nullable_to_non_nullable
-              as NewAdvertisementDate?,
       deliveryPlace: deliveryPlace == freezed
           ? _value.deliveryPlace
           : deliveryPlace // ignore: cast_nullable_to_non_nullable
@@ -1082,10 +1067,6 @@ class _$NewAdvertisementStateCopyWithImpl<$Res>
           ? _value.requestDeliveryPlaceFocus
           : requestDeliveryPlaceFocus // ignore: cast_nullable_to_non_nullable
               as bool,
-      deliveryDescription: deliveryDescription == freezed
-          ? _value.deliveryDescription
-          : deliveryDescription // ignore: cast_nullable_to_non_nullable
-              as NewAdvertisementDeliveryDescription,
       isBtnContinueEnabled: isBtnContinueEnabled == freezed
           ? _value.isBtnContinueEnabled
           : isBtnContinueEnabled // ignore: cast_nullable_to_non_nullable
@@ -1094,13 +1075,9 @@ class _$NewAdvertisementStateCopyWithImpl<$Res>
   }
 
   @override
-  $PlaceCopyWith<$Res>? get place {
-    if (_value.place == null) {
-      return null;
-    }
-
-    return $PlaceCopyWith<$Res>(_value.place!, (value) {
-      return _then(_value.copyWith(place: value));
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement {
+    return $NewAdvertisementCopyWith<$Res>(_value.newAdvertisement, (value) {
+      return _then(_value.copyWith(newAdvertisement: value));
     });
   }
 }
@@ -1113,16 +1090,14 @@ abstract class _$NewAdvertisementStateCopyWith<$Res>
       __$NewAdvertisementStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Place? place,
+      {NewAdvertisement newAdvertisement,
       bool openPlace,
-      NewAdvertisementDate? dateSelected,
       String? deliveryPlace,
       bool requestDeliveryPlaceFocus,
-      NewAdvertisementDeliveryDescription deliveryDescription,
       bool isBtnContinueEnabled});
 
   @override
-  $PlaceCopyWith<$Res>? get place;
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement;
 }
 
 /// @nodoc
@@ -1138,27 +1113,21 @@ class __$NewAdvertisementStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? place = freezed,
+    Object? newAdvertisement = freezed,
     Object? openPlace = freezed,
-    Object? dateSelected = freezed,
     Object? deliveryPlace = freezed,
     Object? requestDeliveryPlaceFocus = freezed,
-    Object? deliveryDescription = freezed,
     Object? isBtnContinueEnabled = freezed,
   }) {
     return _then(_NewAdvertisementState(
-      place: place == freezed
-          ? _value.place
-          : place // ignore: cast_nullable_to_non_nullable
-              as Place?,
+      newAdvertisement: newAdvertisement == freezed
+          ? _value.newAdvertisement
+          : newAdvertisement // ignore: cast_nullable_to_non_nullable
+              as NewAdvertisement,
       openPlace: openPlace == freezed
           ? _value.openPlace
           : openPlace // ignore: cast_nullable_to_non_nullable
               as bool,
-      dateSelected: dateSelected == freezed
-          ? _value.dateSelected
-          : dateSelected // ignore: cast_nullable_to_non_nullable
-              as NewAdvertisementDate?,
       deliveryPlace: deliveryPlace == freezed
           ? _value.deliveryPlace
           : deliveryPlace // ignore: cast_nullable_to_non_nullable
@@ -1167,10 +1136,6 @@ class __$NewAdvertisementStateCopyWithImpl<$Res>
           ? _value.requestDeliveryPlaceFocus
           : requestDeliveryPlaceFocus // ignore: cast_nullable_to_non_nullable
               as bool,
-      deliveryDescription: deliveryDescription == freezed
-          ? _value.deliveryDescription
-          : deliveryDescription // ignore: cast_nullable_to_non_nullable
-              as NewAdvertisementDeliveryDescription,
       isBtnContinueEnabled: isBtnContinueEnabled == freezed
           ? _value.isBtnContinueEnabled
           : isBtnContinueEnabled // ignore: cast_nullable_to_non_nullable
@@ -1183,46 +1148,38 @@ class __$NewAdvertisementStateCopyWithImpl<$Res>
 
 class _$_NewAdvertisementState implements _NewAdvertisementState {
   const _$_NewAdvertisementState(
-      {required this.place,
+      {required this.newAdvertisement,
       required this.openPlace,
-      required this.dateSelected,
       required this.deliveryPlace,
       required this.requestDeliveryPlaceFocus,
-      required this.deliveryDescription,
       required this.isBtnContinueEnabled});
 
   @override
-  final Place? place;
+  final NewAdvertisement newAdvertisement;
   @override
   final bool openPlace;
-  @override
-  final NewAdvertisementDate? dateSelected;
   @override
   final String? deliveryPlace;
   @override
   final bool requestDeliveryPlaceFocus;
   @override
-  final NewAdvertisementDeliveryDescription deliveryDescription;
-  @override
   final bool isBtnContinueEnabled;
 
   @override
   String toString() {
-    return 'NewAdvertisementState(place: $place, openPlace: $openPlace, dateSelected: $dateSelected, deliveryPlace: $deliveryPlace, requestDeliveryPlaceFocus: $requestDeliveryPlaceFocus, deliveryDescription: $deliveryDescription, isBtnContinueEnabled: $isBtnContinueEnabled)';
+    return 'NewAdvertisementState(newAdvertisement: $newAdvertisement, openPlace: $openPlace, deliveryPlace: $deliveryPlace, requestDeliveryPlaceFocus: $requestDeliveryPlaceFocus, isBtnContinueEnabled: $isBtnContinueEnabled)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _NewAdvertisementState &&
-            (identical(other.place, place) ||
-                const DeepCollectionEquality().equals(other.place, place)) &&
+            (identical(other.newAdvertisement, newAdvertisement) ||
+                const DeepCollectionEquality()
+                    .equals(other.newAdvertisement, newAdvertisement)) &&
             (identical(other.openPlace, openPlace) ||
                 const DeepCollectionEquality()
                     .equals(other.openPlace, openPlace)) &&
-            (identical(other.dateSelected, dateSelected) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateSelected, dateSelected)) &&
             (identical(other.deliveryPlace, deliveryPlace) ||
                 const DeepCollectionEquality()
                     .equals(other.deliveryPlace, deliveryPlace)) &&
@@ -1231,9 +1188,6 @@ class _$_NewAdvertisementState implements _NewAdvertisementState {
                 const DeepCollectionEquality().equals(
                     other.requestDeliveryPlaceFocus,
                     requestDeliveryPlaceFocus)) &&
-            (identical(other.deliveryDescription, deliveryDescription) ||
-                const DeepCollectionEquality()
-                    .equals(other.deliveryDescription, deliveryDescription)) &&
             (identical(other.isBtnContinueEnabled, isBtnContinueEnabled) ||
                 const DeepCollectionEquality()
                     .equals(other.isBtnContinueEnabled, isBtnContinueEnabled)));
@@ -1242,12 +1196,10 @@ class _$_NewAdvertisementState implements _NewAdvertisementState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(place) ^
+      const DeepCollectionEquality().hash(newAdvertisement) ^
       const DeepCollectionEquality().hash(openPlace) ^
-      const DeepCollectionEquality().hash(dateSelected) ^
       const DeepCollectionEquality().hash(deliveryPlace) ^
       const DeepCollectionEquality().hash(requestDeliveryPlaceFocus) ^
-      const DeepCollectionEquality().hash(deliveryDescription) ^
       const DeepCollectionEquality().hash(isBtnContinueEnabled);
 
   @JsonKey(ignore: true)
@@ -1259,27 +1211,20 @@ class _$_NewAdvertisementState implements _NewAdvertisementState {
 
 abstract class _NewAdvertisementState implements NewAdvertisementState {
   const factory _NewAdvertisementState(
-      {required Place? place,
+      {required NewAdvertisement newAdvertisement,
       required bool openPlace,
-      required NewAdvertisementDate? dateSelected,
       required String? deliveryPlace,
       required bool requestDeliveryPlaceFocus,
-      required NewAdvertisementDeliveryDescription deliveryDescription,
       required bool isBtnContinueEnabled}) = _$_NewAdvertisementState;
 
   @override
-  Place? get place => throw _privateConstructorUsedError;
+  NewAdvertisement get newAdvertisement => throw _privateConstructorUsedError;
   @override
   bool get openPlace => throw _privateConstructorUsedError;
-  @override
-  NewAdvertisementDate? get dateSelected => throw _privateConstructorUsedError;
   @override
   String? get deliveryPlace => throw _privateConstructorUsedError;
   @override
   bool get requestDeliveryPlaceFocus => throw _privateConstructorUsedError;
-  @override
-  NewAdvertisementDeliveryDescription get deliveryDescription =>
-      throw _privateConstructorUsedError;
   @override
   bool get isBtnContinueEnabled => throw _privateConstructorUsedError;
   @override

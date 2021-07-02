@@ -38,7 +38,7 @@ class NewAdvertisementForm extends StatelessWidget {
       builder: (context, state) => Scaffold(
         appBar: AppBar(
             backgroundColor: ColorSet.brown1,
-            title: Text(
+            title: const Text(
               'Anunciar',
               style: TextStyle(
                 color: Colors.white,
@@ -56,7 +56,6 @@ class NewAdvertisementForm extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       GestureDetector(
-                          child: NewAdDate(),
                           onTap: () async {
                             final date = await showDatePicker(
                               context: context,
@@ -85,7 +84,8 @@ class NewAdvertisementForm extends StatelessWidget {
                             );
                             context.read<NewAdvertisementBloc>().add(
                                 NewAdvertisementEvent.onDateSelected(date));
-                          }),
+                          },
+                          child: NewAdDate()),
                       const SizedBox(
                         height: 20,
                       ),
@@ -106,7 +106,9 @@ class NewAdvertisementForm extends StatelessWidget {
                             return;
                           }
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const AddProductPage(),
+                            builder: (context) => const AddProductPage(
+                              edited: null,
+                            ),
                           ));
                         },
                         child: ClipRRect(
@@ -173,20 +175,21 @@ class NewAdCustomAppBar extends StatelessWidget {
 class NewAdDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var textController = TextEditingController(
+    final textController = TextEditingController(
         text: context
             .read<NewAdvertisementBloc>()
             .state
-            .dateSelected
+            .newAdvertisement
+            .date
             ?.getOrCrash());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Qual a data de entrega dos produtos?',
           style: TextStyle(color: ColorSet.brown1, fontWeight: FontWeight.bold),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
@@ -200,7 +203,7 @@ class NewAdDate extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(20.0, 5, 20, 5),
             child: Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.calendar_today_rounded,
                   size: 24,
                 ),
@@ -211,7 +214,7 @@ class NewAdDate extends StatelessWidget {
                     child: TextField(
                   enabled: false,
                   controller: textController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: InputBorder.none,
                       labelText: 'Escolha a data',
                       labelStyle: TextStyle(color: ColorSet.grayDark)),
@@ -233,7 +236,12 @@ class NewAdPlace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = TextEditingController(
-        text: context.read<NewAdvertisementBloc>().state.place?.name);
+        text: context
+            .read<NewAdvertisementBloc>()
+            .state
+            .newAdvertisement
+            .newAdDeliveryPlace
+            ?.name);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -255,7 +263,7 @@ class NewAdPlace extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(20.0, 5, 20.0, 5),
             child: Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.location_on_outlined,
                   size: 24,
                 ),
@@ -272,7 +280,7 @@ class NewAdPlace extends StatelessWidget {
                   child: TextField(
                     enabled: false,
                     controller: controller,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Local de entrega',
                       labelStyle: TextStyle(color: ColorSet.grayDark),
                       border: InputBorder.none,
@@ -340,7 +348,8 @@ class NewAdMeetPlace extends StatelessWidget {
                     validator: (_) => context
                         .read<NewAdvertisementBloc>()
                         .state
-                        .deliveryDescription
+                        .newAdvertisement
+                        .newAdDeliveryDescription
                         .value
                         .fold(
                             (l) => l.maybeMap(
@@ -375,7 +384,6 @@ class NewAdMeetPlace extends StatelessWidget {
                   ),
                 )),
                 MaterialButton(
-                  child: Icon(Icons.arrow_drop_down),
                   onPressed: () async {
                     final place = await showDialog<String>(
                       context: context,
@@ -387,6 +395,7 @@ class NewAdMeetPlace extends StatelessWidget {
                     context.read<NewAdvertisementBloc>().add(
                         NewAdvertisementEvent.onDeliveryPlaceSelected(place));
                   },
+                  child: Icon(Icons.arrow_drop_down),
                 )
               ],
             ),
