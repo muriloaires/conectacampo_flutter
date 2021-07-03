@@ -1,6 +1,7 @@
 import 'package:conectacampo/application/seller/new_advertisement/add_product/add_product_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_ad_product.dart';
+import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
 import 'package:conectacampo/domain/products/product.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/base_input_widget.dart';
@@ -13,14 +14,15 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AddProductPage extends StatelessWidget {
-  final NewAdProduct? edited;
-  const AddProductPage({required this.edited});
+  final NewAdvertisement newAdvertisement;
+
+  const AddProductPage({required this.newAdvertisement});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) =>
-            getIt<AddProductBloc>()..add(const AddProductEvent.started()),
+        create: (context) => getIt<AddProductBloc>()
+          ..add(AddProductEvent.started(newAdvertisement)),
         child: AddProductForm());
   }
 }
@@ -39,7 +41,7 @@ class AddProductForm extends StatelessWidget {
       if (state.proceed) {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => AddPhotosSummaryPage(
-            products: state.products,
+            newAdvertisement: state.newAdvertisement,
           ),
         ));
       }
@@ -48,7 +50,7 @@ class AddProductForm extends StatelessWidget {
         backgroundColor: ColorSet.backgroundInput,
         appBar: AppBar(
             backgroundColor: ColorSet.brown1,
-            title: Text(
+            title: const Text(
               'Anunciar',
               style: TextStyle(
                 color: Colors.white,
@@ -62,25 +64,25 @@ class AddProductForm extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'O que você quer anunciar hoje?',
                     style: TextStyle(
                         color: ColorSet.brown1, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(
+                    separatorBuilder: (context, index) => const SizedBox(
                       height: 40,
                     ),
-                    itemCount: state.products.length,
+                    itemCount: state.newAdvertisement.products.length,
                     itemBuilder: (context, index) =>
                         NewProductWidget(index: index),
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 60,
                   ),
                   TextButton(
@@ -89,7 +91,7 @@ class AddProductForm extends StatelessWidget {
                             .read<AddProductBloc>()
                             .add(const AddProductEvent.addMoreTap());
                       },
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Adicionar mais produtos',
                           style: TextStyle(
@@ -98,7 +100,7 @@ class AddProductForm extends StatelessWidget {
                               decoration: TextDecoration.underline),
                         ),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   MaterialButton(
@@ -150,13 +152,15 @@ class NewProductWidget extends StatelessWidget {
 
         final whereList = items
             .where((element) =>
-                element.id == state.products[index].newAdProduct?.id)
+                element.id ==
+                state.newAdvertisement.products[index].newAdProduct?.id)
             .toList();
 
-        Product? product = whereList.isEmpty ? null : whereList.first;
+        final Product? product = whereList.isEmpty ? null : whereList.first;
 
         final selectedUnitMeasures = product?.unitMeasures.where((element) =>
-            element.id == state.products[index].newAdProductUnitMeasure?.id);
+            element.id ==
+            state.newAdvertisement.products[index].newAdProductUnitMeasure?.id);
 
         UnitMeasure? unitMeasureSelected =
             (selectedUnitMeasures?.isEmpty ?? true)
@@ -198,7 +202,7 @@ class NewProductWidget extends StatelessWidget {
                   },
                   hint: 'Produto*'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             BaseInputContainer(
@@ -206,7 +210,7 @@ class NewProductWidget extends StatelessWidget {
                 dropdownBuilder: (context, selectedItem, itemAsString) => Row(
                   children: [
                     SvgPicture.asset('assets/server.svg'),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(itemAsString.isEmpty ? 'Tipo*' : itemAsString)
@@ -214,7 +218,8 @@ class NewProductWidget extends StatelessWidget {
                 ),
                 dropdownSearchDecoration:
                     const InputDecoration(border: InputBorder.none),
-                selectedItem: state.products[index].newAdProductKind?.value
+                selectedItem: state
+                    .newAdvertisement.products[index].newAdProductKind?.value
                     .fold((l) => null, (r) => r),
                 items: product?.kinds,
                 onChanged: (newValue) {
@@ -225,15 +230,15 @@ class NewProductWidget extends StatelessWidget {
                 hint: 'Tipo*',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             BaseInputContainer(
               child: DropdownSearch<String>(
                 dropdownBuilder: (context, selectedItem, itemAsString) => Row(
                   children: [
-                    Icon(Icons.list),
-                    SizedBox(
+                    const Icon(Icons.list),
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(itemAsString.isEmpty ? 'Classificação*' : itemAsString)
@@ -241,7 +246,8 @@ class NewProductWidget extends StatelessWidget {
                 ),
                 dropdownSearchDecoration:
                     const InputDecoration(border: InputBorder.none),
-                selectedItem: state.products[index].newAdProductRating?.value
+                selectedItem: state
+                    .newAdvertisement.products[index].newAdProductRating?.value
                     .fold((l) => null, (r) => r),
                 items: product?.ratings,
                 onChanged: (newValue) {
@@ -252,7 +258,7 @@ class NewProductWidget extends StatelessWidget {
                 hint: 'Classificação*',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             BaseInputContainer(
@@ -260,7 +266,7 @@ class NewProductWidget extends StatelessWidget {
                 dropdownBuilder: (context, selectedItem, itemAsString) => Row(
                   children: [
                     SvgPicture.asset('assets/box.svg'),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(itemAsString.isEmpty
@@ -282,7 +288,7 @@ class NewProductWidget extends StatelessWidget {
                 hint: 'Embalagem / Medida*',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             BaseInputContainer(
@@ -292,7 +298,7 @@ class NewProductWidget extends StatelessWidget {
               child: Row(
                 children: [
                   SvgPicture.asset('assets/table_add.svg'),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Expanded(
@@ -308,7 +314,7 @@ class NewProductWidget extends StatelessWidget {
                 ],
               ),
             )),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             BaseInputContainer(
@@ -317,7 +323,7 @@ class NewProductWidget extends StatelessWidget {
               child: TextFormField(
                   minLines: 5,
                   maxLines: 10,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       hintText:
                           'Descreva aqui informações complementares e relevantes que não constam nos campos acima”')),
             ))

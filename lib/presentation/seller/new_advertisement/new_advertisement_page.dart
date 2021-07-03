@@ -6,6 +6,7 @@ import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 
 class NewAdvertisementPage extends StatelessWidget {
   @override
@@ -18,6 +19,7 @@ class NewAdvertisementPage extends StatelessWidget {
 }
 
 class NewAdvertisementForm extends StatelessWidget {
+  final TextEditingController dateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<NewAdvertisementBloc, NewAdvertisementState>(
@@ -65,27 +67,22 @@ class NewAdvertisementForm extends StatelessWidget {
                               builder: (context, child) => Theme(
                                 data: Theme.of(context).copyWith(
                                   colorScheme: const ColorScheme.light(
-                                    primary: ColorSet
-                                        .brown1, // header background color
-                                    onPrimary:
-                                        Colors.black, // header text color
-                                    onSurface: Colors.black,
-                                    // body text color
-                                  ),
+                                      primary: ColorSet.brown1,
+                                      onPrimary: Colors.black),
                                   textButtonTheme: TextButtonThemeData(
-                                    style: TextButton.styleFrom(
-                                      primary:
-                                          Colors.black, // button text color
-                                    ),
-                                  ),
+                                      style: TextButton.styleFrom(
+                                          primary: Colors.black)),
                                 ),
                                 child: child!,
                               ),
                             );
                             context.read<NewAdvertisementBloc>().add(
                                 NewAdvertisementEvent.onDateSelected(date));
+                            dateController.text = date!.getDayMonthYear();
                           },
-                          child: NewAdDate()),
+                          child: NewAdDate(
+                            dateController: dateController,
+                          )),
                       const SizedBox(
                         height: 20,
                       ),
@@ -106,8 +103,8 @@ class NewAdvertisementForm extends StatelessWidget {
                             return;
                           }
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const AddProductPage(
-                              edited: null,
+                            builder: (context) => AddProductPage(
+                              newAdvertisement: state.newAdvertisement,
                             ),
                           ));
                         },
@@ -173,15 +170,11 @@ class NewAdCustomAppBar extends StatelessWidget {
 }
 
 class NewAdDate extends StatelessWidget {
+  final TextEditingController dateController;
+
+  const NewAdDate({Key? key, required this.dateController}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final textController = TextEditingController(
-        text: context
-            .read<NewAdvertisementBloc>()
-            .state
-            .newAdvertisement
-            .date
-            ?.getOrCrash());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -213,7 +206,7 @@ class NewAdDate extends StatelessWidget {
                 Expanded(
                     child: TextField(
                   enabled: false,
-                  controller: textController,
+                  controller: dateController,
                   decoration: const InputDecoration(
                       border: InputBorder.none,
                       labelText: 'Escolha a data',

@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AddPhotosSummaryEventTearOff {
   const _$AddPhotosSummaryEventTearOff();
 
-  _Started started(List<NewAdProduct> products) {
+  _Started started(NewAdvertisement newAdvertisement) {
     return _Started(
-      products,
+      newAdvertisement,
     );
   }
 
@@ -47,7 +47,7 @@ const $AddPhotosSummaryEvent = _$AddPhotosSummaryEventTearOff();
 mixin _$AddPhotosSummaryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<NewAdProduct> products) started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index) itemSelected,
     required TResult Function() btnProceedTap,
     required TResult Function(int index, List<String> photos) photosSelected,
@@ -55,7 +55,7 @@ mixin _$AddPhotosSummaryEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<NewAdProduct> products)? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index)? itemSelected,
     TResult Function()? btnProceedTap,
     TResult Function(int index, List<String> photos)? photosSelected,
@@ -102,7 +102,9 @@ class _$AddPhotosSummaryEventCopyWithImpl<$Res>
 abstract class _$StartedCopyWith<$Res> {
   factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
       __$StartedCopyWithImpl<$Res>;
-  $Res call({List<NewAdProduct> products});
+  $Res call({NewAdvertisement newAdvertisement});
+
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement;
 }
 
 /// @nodoc
@@ -117,42 +119,50 @@ class __$StartedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? products = freezed,
+    Object? newAdvertisement = freezed,
   }) {
     return _then(_Started(
-      products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<NewAdProduct>,
+      newAdvertisement == freezed
+          ? _value.newAdvertisement
+          : newAdvertisement // ignore: cast_nullable_to_non_nullable
+              as NewAdvertisement,
     ));
+  }
+
+  @override
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement {
+    return $NewAdvertisementCopyWith<$Res>(_value.newAdvertisement, (value) {
+      return _then(_value.copyWith(newAdvertisement: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_Started implements _Started {
-  const _$_Started(this.products);
+  const _$_Started(this.newAdvertisement);
 
   @override
-  final List<NewAdProduct> products;
+  final NewAdvertisement newAdvertisement;
 
   @override
   String toString() {
-    return 'AddPhotosSummaryEvent.started(products: $products)';
+    return 'AddPhotosSummaryEvent.started(newAdvertisement: $newAdvertisement)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Started &&
-            (identical(other.products, products) ||
+            (identical(other.newAdvertisement, newAdvertisement) ||
                 const DeepCollectionEquality()
-                    .equals(other.products, products)));
+                    .equals(other.newAdvertisement, newAdvertisement)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(products);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(newAdvertisement);
 
   @JsonKey(ignore: true)
   @override
@@ -162,25 +172,25 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<NewAdProduct> products) started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index) itemSelected,
     required TResult Function() btnProceedTap,
     required TResult Function(int index, List<String> photos) photosSelected,
   }) {
-    return started(products);
+    return started(newAdvertisement);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<NewAdProduct> products)? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index)? itemSelected,
     TResult Function()? btnProceedTap,
     TResult Function(int index, List<String> photos)? photosSelected,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(products);
+      return started(newAdvertisement);
     }
     return orElse();
   }
@@ -213,9 +223,9 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements AddPhotosSummaryEvent {
-  const factory _Started(List<NewAdProduct> products) = _$_Started;
+  const factory _Started(NewAdvertisement newAdvertisement) = _$_Started;
 
-  List<NewAdProduct> get products => throw _privateConstructorUsedError;
+  NewAdvertisement get newAdvertisement => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$StartedCopyWith<_Started> get copyWith =>
       throw _privateConstructorUsedError;
@@ -286,7 +296,7 @@ class _$ItemSelected implements ItemSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<NewAdProduct> products) started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index) itemSelected,
     required TResult Function() btnProceedTap,
     required TResult Function(int index, List<String> photos) photosSelected,
@@ -297,7 +307,7 @@ class _$ItemSelected implements ItemSelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<NewAdProduct> products)? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index)? itemSelected,
     TResult Function()? btnProceedTap,
     TResult Function(int index, List<String> photos)? photosSelected,
@@ -385,7 +395,7 @@ class _$BtnProceedTap implements BtnProceedTap {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<NewAdProduct> products) started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index) itemSelected,
     required TResult Function() btnProceedTap,
     required TResult Function(int index, List<String> photos) photosSelected,
@@ -396,7 +406,7 @@ class _$BtnProceedTap implements BtnProceedTap {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<NewAdProduct> products)? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index)? itemSelected,
     TResult Function()? btnProceedTap,
     TResult Function(int index, List<String> photos)? photosSelected,
@@ -515,7 +525,7 @@ class _$PhotosSelected implements PhotosSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<NewAdProduct> products) started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index) itemSelected,
     required TResult Function() btnProceedTap,
     required TResult Function(int index, List<String> photos) photosSelected,
@@ -526,7 +536,7 @@ class _$PhotosSelected implements PhotosSelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<NewAdProduct> products)? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index)? itemSelected,
     TResult Function()? btnProceedTap,
     TResult Function(int index, List<String> photos)? photosSelected,
@@ -581,15 +591,17 @@ class _$AddPhotosSummaryStateTearOff {
   const _$AddPhotosSummaryStateTearOff();
 
   _AddPhotosSummaryState call(
-      {required List<NewAdProduct> products,
+      {required NewAdvertisement newAdvertisement,
       required bool showBtnProceed,
       required bool openPhotoSelection,
-      required int openPhotoIndex}) {
+      required int openPhotoIndex,
+      required bool proceed}) {
     return _AddPhotosSummaryState(
-      products: products,
+      newAdvertisement: newAdvertisement,
       showBtnProceed: showBtnProceed,
       openPhotoSelection: openPhotoSelection,
       openPhotoIndex: openPhotoIndex,
+      proceed: proceed,
     );
   }
 }
@@ -599,10 +611,11 @@ const $AddPhotosSummaryState = _$AddPhotosSummaryStateTearOff();
 
 /// @nodoc
 mixin _$AddPhotosSummaryState {
-  List<NewAdProduct> get products => throw _privateConstructorUsedError;
+  NewAdvertisement get newAdvertisement => throw _privateConstructorUsedError;
   bool get showBtnProceed => throw _privateConstructorUsedError;
   bool get openPhotoSelection => throw _privateConstructorUsedError;
   int get openPhotoIndex => throw _privateConstructorUsedError;
+  bool get proceed => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddPhotosSummaryStateCopyWith<AddPhotosSummaryState> get copyWith =>
@@ -615,10 +628,13 @@ abstract class $AddPhotosSummaryStateCopyWith<$Res> {
           $Res Function(AddPhotosSummaryState) then) =
       _$AddPhotosSummaryStateCopyWithImpl<$Res>;
   $Res call(
-      {List<NewAdProduct> products,
+      {NewAdvertisement newAdvertisement,
       bool showBtnProceed,
       bool openPhotoSelection,
-      int openPhotoIndex});
+      int openPhotoIndex,
+      bool proceed});
+
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement;
 }
 
 /// @nodoc
@@ -632,16 +648,17 @@ class _$AddPhotosSummaryStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? products = freezed,
+    Object? newAdvertisement = freezed,
     Object? showBtnProceed = freezed,
     Object? openPhotoSelection = freezed,
     Object? openPhotoIndex = freezed,
+    Object? proceed = freezed,
   }) {
     return _then(_value.copyWith(
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<NewAdProduct>,
+      newAdvertisement: newAdvertisement == freezed
+          ? _value.newAdvertisement
+          : newAdvertisement // ignore: cast_nullable_to_non_nullable
+              as NewAdvertisement,
       showBtnProceed: showBtnProceed == freezed
           ? _value.showBtnProceed
           : showBtnProceed // ignore: cast_nullable_to_non_nullable
@@ -654,7 +671,18 @@ class _$AddPhotosSummaryStateCopyWithImpl<$Res>
           ? _value.openPhotoIndex
           : openPhotoIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      proceed: proceed == freezed
+          ? _value.proceed
+          : proceed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
+  }
+
+  @override
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement {
+    return $NewAdvertisementCopyWith<$Res>(_value.newAdvertisement, (value) {
+      return _then(_value.copyWith(newAdvertisement: value));
+    });
   }
 }
 
@@ -666,10 +694,14 @@ abstract class _$AddPhotosSummaryStateCopyWith<$Res>
       __$AddPhotosSummaryStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<NewAdProduct> products,
+      {NewAdvertisement newAdvertisement,
       bool showBtnProceed,
       bool openPhotoSelection,
-      int openPhotoIndex});
+      int openPhotoIndex,
+      bool proceed});
+
+  @override
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement;
 }
 
 /// @nodoc
@@ -685,16 +717,17 @@ class __$AddPhotosSummaryStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? products = freezed,
+    Object? newAdvertisement = freezed,
     Object? showBtnProceed = freezed,
     Object? openPhotoSelection = freezed,
     Object? openPhotoIndex = freezed,
+    Object? proceed = freezed,
   }) {
     return _then(_AddPhotosSummaryState(
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<NewAdProduct>,
+      newAdvertisement: newAdvertisement == freezed
+          ? _value.newAdvertisement
+          : newAdvertisement // ignore: cast_nullable_to_non_nullable
+              as NewAdvertisement,
       showBtnProceed: showBtnProceed == freezed
           ? _value.showBtnProceed
           : showBtnProceed // ignore: cast_nullable_to_non_nullable
@@ -707,6 +740,10 @@ class __$AddPhotosSummaryStateCopyWithImpl<$Res>
           ? _value.openPhotoIndex
           : openPhotoIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      proceed: proceed == freezed
+          ? _value.proceed
+          : proceed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -715,32 +752,35 @@ class __$AddPhotosSummaryStateCopyWithImpl<$Res>
 
 class _$_AddPhotosSummaryState implements _AddPhotosSummaryState {
   const _$_AddPhotosSummaryState(
-      {required this.products,
+      {required this.newAdvertisement,
       required this.showBtnProceed,
       required this.openPhotoSelection,
-      required this.openPhotoIndex});
+      required this.openPhotoIndex,
+      required this.proceed});
 
   @override
-  final List<NewAdProduct> products;
+  final NewAdvertisement newAdvertisement;
   @override
   final bool showBtnProceed;
   @override
   final bool openPhotoSelection;
   @override
   final int openPhotoIndex;
+  @override
+  final bool proceed;
 
   @override
   String toString() {
-    return 'AddPhotosSummaryState(products: $products, showBtnProceed: $showBtnProceed, openPhotoSelection: $openPhotoSelection, openPhotoIndex: $openPhotoIndex)';
+    return 'AddPhotosSummaryState(newAdvertisement: $newAdvertisement, showBtnProceed: $showBtnProceed, openPhotoSelection: $openPhotoSelection, openPhotoIndex: $openPhotoIndex, proceed: $proceed)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _AddPhotosSummaryState &&
-            (identical(other.products, products) ||
+            (identical(other.newAdvertisement, newAdvertisement) ||
                 const DeepCollectionEquality()
-                    .equals(other.products, products)) &&
+                    .equals(other.newAdvertisement, newAdvertisement)) &&
             (identical(other.showBtnProceed, showBtnProceed) ||
                 const DeepCollectionEquality()
                     .equals(other.showBtnProceed, showBtnProceed)) &&
@@ -749,16 +789,19 @@ class _$_AddPhotosSummaryState implements _AddPhotosSummaryState {
                     .equals(other.openPhotoSelection, openPhotoSelection)) &&
             (identical(other.openPhotoIndex, openPhotoIndex) ||
                 const DeepCollectionEquality()
-                    .equals(other.openPhotoIndex, openPhotoIndex)));
+                    .equals(other.openPhotoIndex, openPhotoIndex)) &&
+            (identical(other.proceed, proceed) ||
+                const DeepCollectionEquality().equals(other.proceed, proceed)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(products) ^
+      const DeepCollectionEquality().hash(newAdvertisement) ^
       const DeepCollectionEquality().hash(showBtnProceed) ^
       const DeepCollectionEquality().hash(openPhotoSelection) ^
-      const DeepCollectionEquality().hash(openPhotoIndex);
+      const DeepCollectionEquality().hash(openPhotoIndex) ^
+      const DeepCollectionEquality().hash(proceed);
 
   @JsonKey(ignore: true)
   @override
@@ -769,19 +812,22 @@ class _$_AddPhotosSummaryState implements _AddPhotosSummaryState {
 
 abstract class _AddPhotosSummaryState implements AddPhotosSummaryState {
   const factory _AddPhotosSummaryState(
-      {required List<NewAdProduct> products,
+      {required NewAdvertisement newAdvertisement,
       required bool showBtnProceed,
       required bool openPhotoSelection,
-      required int openPhotoIndex}) = _$_AddPhotosSummaryState;
+      required int openPhotoIndex,
+      required bool proceed}) = _$_AddPhotosSummaryState;
 
   @override
-  List<NewAdProduct> get products => throw _privateConstructorUsedError;
+  NewAdvertisement get newAdvertisement => throw _privateConstructorUsedError;
   @override
   bool get showBtnProceed => throw _privateConstructorUsedError;
   @override
   bool get openPhotoSelection => throw _privateConstructorUsedError;
   @override
   int get openPhotoIndex => throw _privateConstructorUsedError;
+  @override
+  bool get proceed => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AddPhotosSummaryStateCopyWith<_AddPhotosSummaryState> get copyWith =>

@@ -12,8 +12,8 @@ class NewAdSummaryState with _$NewAdSummaryState {
 
   factory NewAdSummaryState.initial() => NewAdSummaryState(
       newAdvertisement: NewAdvertisement(
-          date: NewAdvertisementDate(''),
-          newAdDeliveryDescription: NewAdvertisementDeliveryDescription(''),
+          date: NewAdvertisementDate('01/01/2000'),
+          newAdDeliveryDescription: NewAdvertisementDeliveryDescription('Des'),
           newAdDeliveryPlace: null,
           products: List.empty()),
       openEdit: false,

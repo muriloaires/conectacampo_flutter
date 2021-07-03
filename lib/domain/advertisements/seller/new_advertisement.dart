@@ -12,9 +12,9 @@ class NewAdvertisement with _$NewAdvertisement {
       required Place? newAdDeliveryPlace,
       required NewAdvertisementDeliveryDescription newAdDeliveryDescription,
       required List<NewAdProduct> products}) = _NewAdvertisement;
-
-  bool isValidHeader() =>
-      (date != null && date!.isValid()) &&
-      newAdDeliveryPlace != null &&
-      (newAdDeliveryDescription != null && newAdDeliveryDescription!.isValid());
 }
+
+bool isValidHeader(NewAdvertisement newAdvertisement) =>
+    newAdvertisement.date.isValid() &&
+    newAdvertisement.newAdDeliveryPlace != null &&
+    newAdvertisement.newAdDeliveryDescription.isValid();

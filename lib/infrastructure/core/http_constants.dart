@@ -45,8 +45,9 @@ Future<Response> getAuthenticatedRequest(
 Future<bool> getNewToken(String refreshToken) async {
   final url = Uri.https(baseUrl, '$apiVersion/refresh_tokens');
 
-  final responseToken =
-      await http.post(url, headers: {'refresh_token': refreshToken});
+  final responseToken = await http.post(url,
+      headers: getApiHeader(),
+      body: jsonEncode({'refresh_token': refreshToken}));
   if (responseToken.statusCode != 200) {
     return false;
   }

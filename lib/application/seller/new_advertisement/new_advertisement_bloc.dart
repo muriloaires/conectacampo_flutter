@@ -76,6 +76,6 @@ class NewAdvertisementBloc
   }
 
   bool setIsBtnConinueEnabled(NewAdvertisementState state) {
-    return state.newAdvertisement.isValidHeader();
+    return isValidHeader(state.newAdvertisement);
   }
 }

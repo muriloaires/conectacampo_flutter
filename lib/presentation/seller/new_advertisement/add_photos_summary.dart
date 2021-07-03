@@ -2,23 +2,25 @@ import 'dart:io';
 
 import 'package:conectacampo/application/seller/new_advertisement/add_photos_summary/add_photos_summary_bloc.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_ad_product.dart';
+import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/new_advertisement/add_photo_page.dart';
+import 'package:conectacampo/presentation/seller/new_advertisement/new_ad_summary_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class AddPhotosSummaryPage extends StatelessWidget {
-  final List<NewAdProduct> products;
+  final NewAdvertisement newAdvertisement;
 
-  const AddPhotosSummaryPage({required this.products});
+  const AddPhotosSummaryPage({required this.newAdvertisement});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => getIt<AddPhotosSummaryBloc>()
-          ..add(AddPhotosSummaryEvent.started(products)),
+          ..add(AddPhotosSummaryEvent.started(newAdvertisement)),
         child: AddPhotosSummaryForm());
   }
 }
@@ -28,11 +30,17 @@ class AddPhotosSummaryForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AddPhotosSummaryBloc, AddPhotosSummaryState>(
         listener: (context, state) async {
+          if (state.proceed) {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => NewAdSummaryPage(state.newAdvertisement),
+            ));
+          }
+
           if (state.openPhotoSelection) {
             final result = await Navigator.of(context)
                 .push<List<String>?>(MaterialPageRoute(
-              builder: (context) =>
-                  AddPhotoPage(state.products[state.openPhotoIndex]),
+              builder: (context) => AddPhotoPage(
+                  state.newAdvertisement.products[state.openPhotoIndex]),
             ));
 
             if (result != null) {
@@ -79,20 +87,26 @@ class AddPhotosSummaryForm extends StatelessWidget {
                                                 .itemSelected(index));
                                       },
                                       child: NewProduct(
-                                          product: state.products[index]),
+                                          product: state.newAdvertisement
+                                              .products[index]),
                                     ),
                                 separatorBuilder: (context, index) => Container(
                                       height: 1,
                                       color: ColorSet.grayLine,
                                     ),
-                                itemCount: state.products.length,
+                                itemCount:
+                                    state.newAdvertisement.products.length,
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics()),
                             const SizedBox(
                               height: 40,
                             ),
                             MaterialButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  context.read<AddPhotosSummaryBloc>().add(
+                                      const AddPhotosSummaryEvent
+                                          .btnProceedTap());
+                                },
                                 child: Container(
                                   height: 40,
                                   decoration: BoxDecoration(

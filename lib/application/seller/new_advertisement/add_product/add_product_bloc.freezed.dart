@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AddProductEventTearOff {
   const _$AddProductEventTearOff();
 
-  _Started started() {
-    return const _Started();
+  _Started started(NewAdvertisement newAdvertisement) {
+    return _Started(
+      newAdvertisement,
+    );
   }
 
   ProductSelected productSelected(int index, Product? product) {
@@ -72,7 +74,7 @@ const $AddProductEvent = _$AddProductEventTearOff();
 mixin _$AddProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index, Product? product) productSelected,
     required TResult Function(int index, String? kindSelected) kindSelected,
     required TResult Function(int index, String? ratingSelected) ratingSelected,
@@ -85,7 +87,7 @@ mixin _$AddProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index, Product? product)? productSelected,
     TResult Function(int index, String? kindSelected)? kindSelected,
     TResult Function(int index, String? ratingSelected)? ratingSelected,
@@ -145,6 +147,9 @@ class _$AddProductEventCopyWithImpl<$Res>
 abstract class _$StartedCopyWith<$Res> {
   factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
       __$StartedCopyWithImpl<$Res>;
+  $Res call({NewAdvertisement newAdvertisement});
+
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement;
 }
 
 /// @nodoc
@@ -155,30 +160,63 @@ class __$StartedCopyWithImpl<$Res> extends _$AddProductEventCopyWithImpl<$Res>
 
   @override
   _Started get _value => super._value as _Started;
+
+  @override
+  $Res call({
+    Object? newAdvertisement = freezed,
+  }) {
+    return _then(_Started(
+      newAdvertisement == freezed
+          ? _value.newAdvertisement
+          : newAdvertisement // ignore: cast_nullable_to_non_nullable
+              as NewAdvertisement,
+    ));
+  }
+
+  @override
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement {
+    return $NewAdvertisementCopyWith<$Res>(_value.newAdvertisement, (value) {
+      return _then(_value.copyWith(newAdvertisement: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_Started implements _Started {
-  const _$_Started();
+  const _$_Started(this.newAdvertisement);
+
+  @override
+  final NewAdvertisement newAdvertisement;
 
   @override
   String toString() {
-    return 'AddProductEvent.started()';
+    return 'AddProductEvent.started(newAdvertisement: $newAdvertisement)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other is _Started &&
+            (identical(other.newAdvertisement, newAdvertisement) ||
+                const DeepCollectionEquality()
+                    .equals(other.newAdvertisement, newAdvertisement)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(newAdvertisement);
+
+  @JsonKey(ignore: true)
+  @override
+  _$StartedCopyWith<_Started> get copyWith =>
+      __$StartedCopyWithImpl<_Started>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index, Product? product) productSelected,
     required TResult Function(int index, String? kindSelected) kindSelected,
     required TResult Function(int index, String? ratingSelected) ratingSelected,
@@ -188,13 +226,13 @@ class _$_Started implements _Started {
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) {
-    return started();
+    return started(newAdvertisement);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index, Product? product)? productSelected,
     TResult Function(int index, String? kindSelected)? kindSelected,
     TResult Function(int index, String? ratingSelected)? ratingSelected,
@@ -206,7 +244,7 @@ class _$_Started implements _Started {
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started();
+      return started(newAdvertisement);
     }
     return orElse();
   }
@@ -247,7 +285,12 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements AddProductEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started(NewAdvertisement newAdvertisement) = _$_Started;
+
+  NewAdvertisement get newAdvertisement => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$StartedCopyWith<_Started> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -339,7 +382,7 @@ class _$ProductSelected implements ProductSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index, Product? product) productSelected,
     required TResult Function(int index, String? kindSelected) kindSelected,
     required TResult Function(int index, String? ratingSelected) ratingSelected,
@@ -355,7 +398,7 @@ class _$ProductSelected implements ProductSelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index, Product? product)? productSelected,
     TResult Function(int index, String? kindSelected)? kindSelected,
     TResult Function(int index, String? ratingSelected)? ratingSelected,
@@ -495,7 +538,7 @@ class _$KindSelected implements KindSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index, Product? product) productSelected,
     required TResult Function(int index, String? kindSelected) kindSelected,
     required TResult Function(int index, String? ratingSelected) ratingSelected,
@@ -511,7 +554,7 @@ class _$KindSelected implements KindSelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index, Product? product)? productSelected,
     TResult Function(int index, String? kindSelected)? kindSelected,
     TResult Function(int index, String? ratingSelected)? ratingSelected,
@@ -650,7 +693,7 @@ class _$RatingSelected implements RatingSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index, Product? product) productSelected,
     required TResult Function(int index, String? kindSelected) kindSelected,
     required TResult Function(int index, String? ratingSelected) ratingSelected,
@@ -666,7 +709,7 @@ class _$RatingSelected implements RatingSelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index, Product? product)? productSelected,
     TResult Function(int index, String? kindSelected)? kindSelected,
     TResult Function(int index, String? ratingSelected)? ratingSelected,
@@ -819,7 +862,7 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index, Product? product) productSelected,
     required TResult Function(int index, String? kindSelected) kindSelected,
     required TResult Function(int index, String? ratingSelected) ratingSelected,
@@ -835,7 +878,7 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index, Product? product)? productSelected,
     TResult Function(int index, String? kindSelected)? kindSelected,
     TResult Function(int index, String? ratingSelected)? ratingSelected,
@@ -975,7 +1018,7 @@ class _$QuantityChanged implements QuantityChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index, Product? product) productSelected,
     required TResult Function(int index, String? kindSelected) kindSelected,
     required TResult Function(int index, String? ratingSelected) ratingSelected,
@@ -991,7 +1034,7 @@ class _$QuantityChanged implements QuantityChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index, Product? product)? productSelected,
     TResult Function(int index, String? kindSelected)? kindSelected,
     TResult Function(int index, String? ratingSelected)? ratingSelected,
@@ -1091,7 +1134,7 @@ class _$AddMoreTap implements AddMoreTap {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index, Product? product) productSelected,
     required TResult Function(int index, String? kindSelected) kindSelected,
     required TResult Function(int index, String? ratingSelected) ratingSelected,
@@ -1107,7 +1150,7 @@ class _$AddMoreTap implements AddMoreTap {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index, Product? product)? productSelected,
     TResult Function(int index, String? kindSelected)? kindSelected,
     TResult Function(int index, String? ratingSelected)? ratingSelected,
@@ -1203,7 +1246,7 @@ class _$BtnProceedTap implements BtnProceedTap {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(NewAdvertisement newAdvertisement) started,
     required TResult Function(int index, Product? product) productSelected,
     required TResult Function(int index, String? kindSelected) kindSelected,
     required TResult Function(int index, String? ratingSelected) ratingSelected,
@@ -1219,7 +1262,7 @@ class _$BtnProceedTap implements BtnProceedTap {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(NewAdvertisement newAdvertisement)? started,
     TResult Function(int index, Product? product)? productSelected,
     TResult Function(int index, String? kindSelected)? kindSelected,
     TResult Function(int index, String? ratingSelected)? ratingSelected,
@@ -1280,7 +1323,7 @@ class _$AddProductStateTearOff {
   const _$AddProductStateTearOff();
 
   _AddProductState call(
-      {required List<NewAdProduct> products,
+      {required NewAdvertisement newAdvertisement,
       required bool isLoading,
       required Option<Either<ProductFailure, List<Product>>>
           optionProductsFailureOrSuccess,
@@ -1288,7 +1331,7 @@ class _$AddProductStateTearOff {
       required bool showBtnProceed,
       required bool proceed}) {
     return _AddProductState(
-      products: products,
+      newAdvertisement: newAdvertisement,
       isLoading: isLoading,
       optionProductsFailureOrSuccess: optionProductsFailureOrSuccess,
       showErrors: showErrors,
@@ -1303,7 +1346,7 @@ const $AddProductState = _$AddProductStateTearOff();
 
 /// @nodoc
 mixin _$AddProductState {
-  List<NewAdProduct> get products => throw _privateConstructorUsedError;
+  NewAdvertisement get newAdvertisement => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Option<Either<ProductFailure, List<Product>>>
       get optionProductsFailureOrSuccess => throw _privateConstructorUsedError;
@@ -1322,13 +1365,15 @@ abstract class $AddProductStateCopyWith<$Res> {
           AddProductState value, $Res Function(AddProductState) then) =
       _$AddProductStateCopyWithImpl<$Res>;
   $Res call(
-      {List<NewAdProduct> products,
+      {NewAdvertisement newAdvertisement,
       bool isLoading,
       Option<Either<ProductFailure, List<Product>>>
           optionProductsFailureOrSuccess,
       bool showErrors,
       bool showBtnProceed,
       bool proceed});
+
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement;
 }
 
 /// @nodoc
@@ -1342,7 +1387,7 @@ class _$AddProductStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? products = freezed,
+    Object? newAdvertisement = freezed,
     Object? isLoading = freezed,
     Object? optionProductsFailureOrSuccess = freezed,
     Object? showErrors = freezed,
@@ -1350,10 +1395,10 @@ class _$AddProductStateCopyWithImpl<$Res>
     Object? proceed = freezed,
   }) {
     return _then(_value.copyWith(
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<NewAdProduct>,
+      newAdvertisement: newAdvertisement == freezed
+          ? _value.newAdvertisement
+          : newAdvertisement // ignore: cast_nullable_to_non_nullable
+              as NewAdvertisement,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -1376,6 +1421,13 @@ class _$AddProductStateCopyWithImpl<$Res>
               as bool,
     ));
   }
+
+  @override
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement {
+    return $NewAdvertisementCopyWith<$Res>(_value.newAdvertisement, (value) {
+      return _then(_value.copyWith(newAdvertisement: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -1386,13 +1438,16 @@ abstract class _$AddProductStateCopyWith<$Res>
       __$AddProductStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<NewAdProduct> products,
+      {NewAdvertisement newAdvertisement,
       bool isLoading,
       Option<Either<ProductFailure, List<Product>>>
           optionProductsFailureOrSuccess,
       bool showErrors,
       bool showBtnProceed,
       bool proceed});
+
+  @override
+  $NewAdvertisementCopyWith<$Res> get newAdvertisement;
 }
 
 /// @nodoc
@@ -1408,7 +1463,7 @@ class __$AddProductStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? products = freezed,
+    Object? newAdvertisement = freezed,
     Object? isLoading = freezed,
     Object? optionProductsFailureOrSuccess = freezed,
     Object? showErrors = freezed,
@@ -1416,10 +1471,10 @@ class __$AddProductStateCopyWithImpl<$Res>
     Object? proceed = freezed,
   }) {
     return _then(_AddProductState(
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<NewAdProduct>,
+      newAdvertisement: newAdvertisement == freezed
+          ? _value.newAdvertisement
+          : newAdvertisement // ignore: cast_nullable_to_non_nullable
+              as NewAdvertisement,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -1448,7 +1503,7 @@ class __$AddProductStateCopyWithImpl<$Res>
 
 class _$_AddProductState implements _AddProductState {
   const _$_AddProductState(
-      {required this.products,
+      {required this.newAdvertisement,
       required this.isLoading,
       required this.optionProductsFailureOrSuccess,
       required this.showErrors,
@@ -1456,7 +1511,7 @@ class _$_AddProductState implements _AddProductState {
       required this.proceed});
 
   @override
-  final List<NewAdProduct> products;
+  final NewAdvertisement newAdvertisement;
   @override
   final bool isLoading;
   @override
@@ -1471,16 +1526,16 @@ class _$_AddProductState implements _AddProductState {
 
   @override
   String toString() {
-    return 'AddProductState(products: $products, isLoading: $isLoading, optionProductsFailureOrSuccess: $optionProductsFailureOrSuccess, showErrors: $showErrors, showBtnProceed: $showBtnProceed, proceed: $proceed)';
+    return 'AddProductState(newAdvertisement: $newAdvertisement, isLoading: $isLoading, optionProductsFailureOrSuccess: $optionProductsFailureOrSuccess, showErrors: $showErrors, showBtnProceed: $showBtnProceed, proceed: $proceed)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _AddProductState &&
-            (identical(other.products, products) ||
+            (identical(other.newAdvertisement, newAdvertisement) ||
                 const DeepCollectionEquality()
-                    .equals(other.products, products)) &&
+                    .equals(other.newAdvertisement, newAdvertisement)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
@@ -1502,7 +1557,7 @@ class _$_AddProductState implements _AddProductState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(products) ^
+      const DeepCollectionEquality().hash(newAdvertisement) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(optionProductsFailureOrSuccess) ^
       const DeepCollectionEquality().hash(showErrors) ^
@@ -1517,7 +1572,7 @@ class _$_AddProductState implements _AddProductState {
 
 abstract class _AddProductState implements AddProductState {
   const factory _AddProductState(
-      {required List<NewAdProduct> products,
+      {required NewAdvertisement newAdvertisement,
       required bool isLoading,
       required Option<Either<ProductFailure, List<Product>>>
           optionProductsFailureOrSuccess,
@@ -1526,7 +1581,7 @@ abstract class _AddProductState implements AddProductState {
       required bool proceed}) = _$_AddProductState;
 
   @override
-  List<NewAdProduct> get products => throw _privateConstructorUsedError;
+  NewAdvertisement get newAdvertisement => throw _privateConstructorUsedError;
   @override
   bool get isLoading => throw _privateConstructorUsedError;
   @override

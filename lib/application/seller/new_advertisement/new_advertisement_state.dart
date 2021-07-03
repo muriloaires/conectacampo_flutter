@@ -14,7 +14,7 @@ class NewAdvertisementState with _$NewAdvertisementState {
           date: NewAdvertisementDate(''),
           newAdDeliveryPlace: null,
           newAdDeliveryDescription: NewAdvertisementDeliveryDescription(''),
-          products: List.empty(),
+          products: [NewAdProduct()],
         ),
         openPlace: false,
         deliveryPlace: null,

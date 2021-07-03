@@ -8,8 +8,8 @@ Future<Unit> saveTokens(String? accessToken, String? refreshToken) async {
     await sharedPreferences.setString('access_token', accessToken);
   }
 
-  if (accessToken != null) {
-    await sharedPreferences.setString('refresh_token', accessToken);
+  if (refreshToken != null) {
+    await sharedPreferences.setString('refresh_token', refreshToken);
   }
 
   return unit;
