@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>990054144807-6thbohepihjqv5kgvgq3688iqbhvai8e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.990054144807-6thbohepihjqv5kgvgq3688iqbhvai8e</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDw-ilBCRNX3nRC_Y9QTv6Oi--J1YXdYgI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>990054144807</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.conectacampo.conectacampo</string>
+	<key>PROJECT_ID</key>
+	<string>conectacampo-16a33</string>
+	<key>STORAGE_BUCKET</key>
+	<string>conectacampo-16a33.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:990054144807:ios:c664f330c42928a9e86702</string>
+</dict>
+</plist>

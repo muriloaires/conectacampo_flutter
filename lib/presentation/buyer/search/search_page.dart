@@ -118,7 +118,6 @@ class SearchForm extends StatelessWidget {
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,
-                                            overflow: TextOverflow.ellipsis,
                                             fontSize: 13),
                                       ),
                                     ]),

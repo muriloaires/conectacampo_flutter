@@ -340,9 +340,9 @@ class BuyerSummary extends StatelessWidget {
                           text:
                               '${context.read<AdvertisementsBloc>().state.fromPlace?.state} ${context.read<AdvertisementsBloc>().state.fromPlace?.name}',
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: ColorSet.gray2,
-                              overflow: TextOverflow.ellipsis),
+                            fontWeight: FontWeight.bold,
+                            color: ColorSet.gray2,
+                          ),
                         ),
                       ]),
                       overflow: TextOverflow.ellipsis,
