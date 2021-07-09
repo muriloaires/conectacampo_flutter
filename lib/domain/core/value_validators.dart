@@ -77,8 +77,8 @@ Either<ValueFailure<String>, String> validatePlaceAddress(String input) {
   }
 }
 
-Either<ValueFailure<String>, String> validateNewAdDate(String input) {
-  if (input.length != 10) {
+Either<ValueFailure<DateTime>, DateTime> validateNewAdDate(DateTime input) {
+  if (input.isAfter(DateTime.now())) {
     return left(ValueFailure.invalidNewAdDate(input));
   } else {
     return right(input);

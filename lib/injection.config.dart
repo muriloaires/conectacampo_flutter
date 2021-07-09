@@ -58,7 +58,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i11.IPlacesFacade>(
       () => _i12.PlacesFacade(get<_i6.FirebaseAuth>()));
   gh.lazySingleton<_i13.IProductFacade>(() => _i14.ProductFacade());
-  gh.factory<_i15.NewAdSummaryBloc>(() => _i15.NewAdSummaryBloc());
+  gh.factory<_i15.NewAdSummaryBloc>(
+      () => _i15.NewAdSummaryBloc(get<_i7.IAdvertisementsFacade>()));
   gh.factory<_i16.NewAdvertisementBloc>(() => _i16.NewAdvertisementBloc());
   gh.factory<_i17.PlacesFormBloc>(
       () => _i17.PlacesFormBloc(get<_i11.IPlacesFacade>()));

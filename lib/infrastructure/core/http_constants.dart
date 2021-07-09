@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:conectacampo/infrastructure/auth/model/model.dart';
 import 'package:conectacampo/infrastructure/auth/token_repository.dart';
+import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
@@ -29,8 +30,7 @@ Future<Response> getAuthenticatedRequest(
   final response = await http.get(url, headers: headers);
   final code = response.statusCode;
   if (code == 401) {
-    final refreshToken = await getCurrentRefreshToken();
-    if (await getNewToken(refreshToken ?? '')) {
+    if (await getNewToken()) {
       final newToken = await getCurrentAcessToken();
       headers.addAll({'Authorization': 'Bearer $newToken'});
       final newReponse = await http.get(url, headers: headers);
@@ -42,18 +42,21 @@ Future<Response> getAuthenticatedRequest(
   return response;
 }
 
-Future<bool> getNewToken(String refreshToken) async {
-  final url = Uri.https(baseUrl, '$apiVersion/refresh_tokens');
+Future<bool> getNewToken() async {
+  final refreshToken = await getCurrentRefreshToken();
+  final url = Uri.https(
+    baseUrl,
+    '$apiVersion/refresh_tokens',
+  );
 
   final responseToken = await http.post(url,
-      headers: getApiHeader(),
-      body: jsonEncode({'refresh_token': refreshToken}));
+      headers: getApiHeader(), body: {'refresh_token': refreshToken});
   if (responseToken.statusCode != 200) {
     return false;
   }
   final user = UserResponse.fromJson(
       json.decode(responseToken.body) as Map<String, dynamic>);
-  final token = jsonDecode(responseToken.body) as Map<String, String>;
+  await persistUser(user);
   await saveTokens(user.accessToken, user.refreshToken);
   return true;
 }

@@ -5,8 +5,11 @@ import 'package:conectacampo/domain/advertisements/seller/new_ad_product.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/seller/seller_main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class NewAdSummaryPage extends StatelessWidget {
   final NewAdvertisement newAdvertisement;
@@ -19,7 +22,49 @@ class NewAdSummaryPage extends StatelessWidget {
       create: (context) => getIt<NewAdSummaryBloc>()
         ..add(NewAdSummaryEvent.started(newAdvertisement: newAdvertisement)),
       child: BlocConsumer<NewAdSummaryBloc, NewAdSummaryState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state.loading) {
+              EasyLoading.show();
+            } else {
+              EasyLoading.dismiss();
+            }
+
+            state.optionOfAdvertisementFailureOrSucess.fold(
+              () => null,
+              (a) => a.fold(
+                  (l) => l.map(
+                        unauthorized: (value) {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                builder: (context) => SellerMainPage(),
+                              ),
+                              (route) => false);
+                        },
+                        serverError: (value) {
+                          EasyLoading.showError('Server error');
+                        },
+                        requestError: (value) {
+                          EasyLoading.showError('request error');
+                        },
+                        productsNotFound: (value) {
+                          EasyLoading.showError('Products not found');
+                        },
+                        placeNotFound: (value) {
+                          EasyLoading.showError('Place not found');
+                        },
+                      ), (r) {
+                EasyLoading.showSuccess(
+                  'Anúncio cadastrado com sucesso!',
+                  duration: const Duration(seconds: 2),
+                );
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => SellerMainPage(),
+                    ),
+                    (route) => false);
+              }),
+            );
+          },
           builder: (context, state) => Scaffold(
                 appBar: AppBar(
                     backgroundColor: ColorSet.brown1,
@@ -38,7 +83,7 @@ class NewAdSummaryPage extends StatelessWidget {
                         const Padding(
                           padding: EdgeInsets.all(20.0),
                           child: Text(
-                            'Escolha as fotos dos seus produtos',
+                            'Resumo do anúncio',
                             style: TextStyle(
                                 color: ColorSet.brown1,
                                 fontWeight: FontWeight.bold),
@@ -58,11 +103,53 @@ class NewAdSummaryPage extends StatelessWidget {
                             itemCount: state.newAdvertisement.products.length,
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics()),
-                        const SizedBox(
-                          height: 20,
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 4),
+                          child: Text.rich(
+                              TextSpan(text: 'Entrega dia: ', children: [
+                            TextSpan(
+                                text:
+                                    '${state.newAdvertisement.date.getOrCrash().getDayMonthYear()}',
+                                style: const TextStyle(
+                                    color: ColorSet.brown1,
+                                    fontWeight: FontWeight.bold))
+                          ])),
                         ),
-                        Text(
-                            'Entrega dia - ${state.newAdvertisement.date.getOrCrash()}')
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 4, 0, 0),
+                          child: Text.rich(
+                              TextSpan(text: 'Local de entrega: ', children: [
+                            TextSpan(
+                                text: state
+                                    .newAdvertisement.newAdDeliveryPlace?.name,
+                                style: const TextStyle(
+                                    color: ColorSet.brown1,
+                                    fontWeight: FontWeight.bold))
+                          ])),
+                        ),
+                        const SizedBox(height: 20),
+                        MaterialButton(
+                            onPressed: () {
+                              context
+                                  .read<NewAdSummaryBloc>()
+                                  .add(const NewAdSummaryEvent.finish());
+                            },
+                            child: Container(
+                              height: 40,
+                              decoration: const BoxDecoration(
+                                  color: ColorSet.brown1,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: const Center(
+                                child: Text(
+                                  'Finalizar anúncio',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ))
                       ],
                     ),
                   ),

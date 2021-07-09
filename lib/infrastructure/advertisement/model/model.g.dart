@@ -41,10 +41,10 @@ _$_AdProductResponse _$_$_AdProductResponseFromJson(Map<String, dynamic> json) {
     json['name'] as String,
     json['measurement_unit'] as String,
     json['quantity'] as int,
-    json['unit_price'] as String,
+    json['unit_price'] as String?,
     json['rating'] as String,
     json['kind'] as String,
-    json['observation'] as String,
+    json['observation'] as String?,
     (json['images'] as List<dynamic>)
         .map((e) => AvatarResponse.fromJson(e as Map<String, dynamic>))
         .toList(),

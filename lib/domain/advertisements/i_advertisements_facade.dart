@@ -1,5 +1,6 @@
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/advertisements/advertisement_failure.dart';
+import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/domain/places/value_objects.dart';
 
@@ -22,4 +23,7 @@ abstract class IAdvertisementsFacade {
   Future<Unit> saveSearchedName(String productName);
 
   Future<List<String>> getSearchedNames();
+
+  Future<Either<AdvertisementFailure, Advertisement>> publishAdvertisement(
+      NewAdvertisement newAdvertisement);
 }

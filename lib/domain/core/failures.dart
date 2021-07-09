@@ -45,7 +45,7 @@ class ValueFailure<T> with _$ValueFailure<T> {
   ) = InvalidAddress<T>;
 
   const factory ValueFailure.invalidNewAdDate(
-    String failedValue,
+    DateTime failedValue,
   ) = InvalidNewAdDate<T>;
 
   const factory ValueFailure.invalidNewAdPlace(

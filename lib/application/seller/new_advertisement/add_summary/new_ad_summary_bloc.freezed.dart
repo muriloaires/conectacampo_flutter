@@ -541,13 +541,17 @@ class _$NewAdSummaryStateTearOff {
       required bool openEdit,
       required int editIndex,
       required bool addItems,
-      required bool finish}) {
+      required bool loading,
+      required Option<Either<AdvertisementFailure, Advertisement>>
+          optionOfAdvertisementFailureOrSucess}) {
     return _NewAdSummaryState(
       newAdvertisement: newAdvertisement,
       openEdit: openEdit,
       editIndex: editIndex,
       addItems: addItems,
-      finish: finish,
+      loading: loading,
+      optionOfAdvertisementFailureOrSucess:
+          optionOfAdvertisementFailureOrSucess,
     );
   }
 }
@@ -561,7 +565,10 @@ mixin _$NewAdSummaryState {
   bool get openEdit => throw _privateConstructorUsedError;
   int get editIndex => throw _privateConstructorUsedError;
   bool get addItems => throw _privateConstructorUsedError;
-  bool get finish => throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
+  Option<Either<AdvertisementFailure, Advertisement>>
+      get optionOfAdvertisementFailureOrSucess =>
+          throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewAdSummaryStateCopyWith<NewAdSummaryState> get copyWith =>
@@ -578,7 +585,9 @@ abstract class $NewAdSummaryStateCopyWith<$Res> {
       bool openEdit,
       int editIndex,
       bool addItems,
-      bool finish});
+      bool loading,
+      Option<Either<AdvertisementFailure, Advertisement>>
+          optionOfAdvertisementFailureOrSucess});
 
   $NewAdvertisementCopyWith<$Res> get newAdvertisement;
 }
@@ -598,7 +607,8 @@ class _$NewAdSummaryStateCopyWithImpl<$Res>
     Object? openEdit = freezed,
     Object? editIndex = freezed,
     Object? addItems = freezed,
-    Object? finish = freezed,
+    Object? loading = freezed,
+    Object? optionOfAdvertisementFailureOrSucess = freezed,
   }) {
     return _then(_value.copyWith(
       newAdvertisement: newAdvertisement == freezed
@@ -617,10 +627,15 @@ class _$NewAdSummaryStateCopyWithImpl<$Res>
           ? _value.addItems
           : addItems // ignore: cast_nullable_to_non_nullable
               as bool,
-      finish: finish == freezed
-          ? _value.finish
-          : finish // ignore: cast_nullable_to_non_nullable
+      loading: loading == freezed
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
               as bool,
+      optionOfAdvertisementFailureOrSucess: optionOfAdvertisementFailureOrSucess ==
+              freezed
+          ? _value.optionOfAdvertisementFailureOrSucess
+          : optionOfAdvertisementFailureOrSucess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AdvertisementFailure, Advertisement>>,
     ));
   }
 
@@ -644,7 +659,9 @@ abstract class _$NewAdSummaryStateCopyWith<$Res>
       bool openEdit,
       int editIndex,
       bool addItems,
-      bool finish});
+      bool loading,
+      Option<Either<AdvertisementFailure, Advertisement>>
+          optionOfAdvertisementFailureOrSucess});
 
   @override
   $NewAdvertisementCopyWith<$Res> get newAdvertisement;
@@ -667,7 +684,8 @@ class __$NewAdSummaryStateCopyWithImpl<$Res>
     Object? openEdit = freezed,
     Object? editIndex = freezed,
     Object? addItems = freezed,
-    Object? finish = freezed,
+    Object? loading = freezed,
+    Object? optionOfAdvertisementFailureOrSucess = freezed,
   }) {
     return _then(_NewAdSummaryState(
       newAdvertisement: newAdvertisement == freezed
@@ -686,10 +704,15 @@ class __$NewAdSummaryStateCopyWithImpl<$Res>
           ? _value.addItems
           : addItems // ignore: cast_nullable_to_non_nullable
               as bool,
-      finish: finish == freezed
-          ? _value.finish
-          : finish // ignore: cast_nullable_to_non_nullable
+      loading: loading == freezed
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
               as bool,
+      optionOfAdvertisementFailureOrSucess: optionOfAdvertisementFailureOrSucess ==
+              freezed
+          ? _value.optionOfAdvertisementFailureOrSucess
+          : optionOfAdvertisementFailureOrSucess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AdvertisementFailure, Advertisement>>,
     ));
   }
 }
@@ -702,7 +725,8 @@ class _$_NewAdSummaryState implements _NewAdSummaryState {
       required this.openEdit,
       required this.editIndex,
       required this.addItems,
-      required this.finish});
+      required this.loading,
+      required this.optionOfAdvertisementFailureOrSucess});
 
   @override
   final NewAdvertisement newAdvertisement;
@@ -713,11 +737,14 @@ class _$_NewAdSummaryState implements _NewAdSummaryState {
   @override
   final bool addItems;
   @override
-  final bool finish;
+  final bool loading;
+  @override
+  final Option<Either<AdvertisementFailure, Advertisement>>
+      optionOfAdvertisementFailureOrSucess;
 
   @override
   String toString() {
-    return 'NewAdSummaryState(newAdvertisement: $newAdvertisement, openEdit: $openEdit, editIndex: $editIndex, addItems: $addItems, finish: $finish)';
+    return 'NewAdSummaryState(newAdvertisement: $newAdvertisement, openEdit: $openEdit, editIndex: $editIndex, addItems: $addItems, loading: $loading, optionOfAdvertisementFailureOrSucess: $optionOfAdvertisementFailureOrSucess)';
   }
 
   @override
@@ -736,8 +763,14 @@ class _$_NewAdSummaryState implements _NewAdSummaryState {
             (identical(other.addItems, addItems) ||
                 const DeepCollectionEquality()
                     .equals(other.addItems, addItems)) &&
-            (identical(other.finish, finish) ||
-                const DeepCollectionEquality().equals(other.finish, finish)));
+            (identical(other.loading, loading) ||
+                const DeepCollectionEquality()
+                    .equals(other.loading, loading)) &&
+            (identical(other.optionOfAdvertisementFailureOrSucess,
+                    optionOfAdvertisementFailureOrSucess) ||
+                const DeepCollectionEquality().equals(
+                    other.optionOfAdvertisementFailureOrSucess,
+                    optionOfAdvertisementFailureOrSucess)));
   }
 
   @override
@@ -747,7 +780,8 @@ class _$_NewAdSummaryState implements _NewAdSummaryState {
       const DeepCollectionEquality().hash(openEdit) ^
       const DeepCollectionEquality().hash(editIndex) ^
       const DeepCollectionEquality().hash(addItems) ^
-      const DeepCollectionEquality().hash(finish);
+      const DeepCollectionEquality().hash(loading) ^
+      const DeepCollectionEquality().hash(optionOfAdvertisementFailureOrSucess);
 
   @JsonKey(ignore: true)
   @override
@@ -761,7 +795,9 @@ abstract class _NewAdSummaryState implements NewAdSummaryState {
       required bool openEdit,
       required int editIndex,
       required bool addItems,
-      required bool finish}) = _$_NewAdSummaryState;
+      required bool loading,
+      required Option<Either<AdvertisementFailure, Advertisement>>
+          optionOfAdvertisementFailureOrSucess}) = _$_NewAdSummaryState;
 
   @override
   NewAdvertisement get newAdvertisement => throw _privateConstructorUsedError;
@@ -772,7 +808,11 @@ abstract class _NewAdSummaryState implements NewAdSummaryState {
   @override
   bool get addItems => throw _privateConstructorUsedError;
   @override
-  bool get finish => throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
+  @override
+  Option<Either<AdvertisementFailure, Advertisement>>
+      get optionOfAdvertisementFailureOrSucess =>
+          throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NewAdSummaryStateCopyWith<_NewAdSummaryState> get copyWith =>

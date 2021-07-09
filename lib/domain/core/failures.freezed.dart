@@ -76,7 +76,7 @@ class _$ValueFailureTearOff {
     );
   }
 
-  InvalidNewAdDate<T> invalidNewAdDate<T>(String failedValue) {
+  InvalidNewAdDate<T> invalidNewAdDate<T>(DateTime failedValue) {
     return InvalidNewAdDate<T>(
       failedValue,
     );
@@ -160,7 +160,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -186,7 +186,7 @@ mixin _$ValueFailure<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -359,7 +359,7 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -388,7 +388,7 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -567,7 +567,7 @@ class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -596,7 +596,7 @@ class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -773,7 +773,7 @@ class _$InvalidFullName<T> implements InvalidFullName<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -802,7 +802,7 @@ class _$InvalidFullName<T> implements InvalidFullName<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -979,7 +979,7 @@ class _$MissingSurname<T> implements MissingSurname<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -1008,7 +1008,7 @@ class _$MissingSurname<T> implements MissingSurname<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -1185,7 +1185,7 @@ class _$InvalidNickname<T> implements InvalidNickname<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -1214,7 +1214,7 @@ class _$InvalidNickname<T> implements InvalidNickname<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -1391,7 +1391,7 @@ class _$InvalidAvatar<T> implements InvalidAvatar<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -1420,7 +1420,7 @@ class _$InvalidAvatar<T> implements InvalidAvatar<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -1599,7 +1599,7 @@ class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -1628,7 +1628,7 @@ class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -1806,7 +1806,7 @@ class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -1835,7 +1835,7 @@ class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -2012,7 +2012,7 @@ class _$InvalidCity<T> implements InvalidCity<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -2041,7 +2041,7 @@ class _$InvalidCity<T> implements InvalidCity<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -2218,7 +2218,7 @@ class _$InvalidAddress<T> implements InvalidAddress<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -2247,7 +2247,7 @@ class _$InvalidAddress<T> implements InvalidAddress<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -2353,7 +2353,7 @@ abstract class $InvalidNewAdDateCopyWith<T, $Res> {
   factory $InvalidNewAdDateCopyWith(
           InvalidNewAdDate<T> value, $Res Function(InvalidNewAdDate<T>) then) =
       _$InvalidNewAdDateCopyWithImpl<T, $Res>;
-  $Res call({String failedValue});
+  $Res call({DateTime failedValue});
 }
 
 /// @nodoc
@@ -2375,7 +2375,7 @@ class _$InvalidNewAdDateCopyWithImpl<T, $Res>
       failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
     ));
   }
 }
@@ -2386,7 +2386,7 @@ class _$InvalidNewAdDate<T> implements InvalidNewAdDate<T> {
   const _$InvalidNewAdDate(this.failedValue);
 
   @override
-  final String failedValue;
+  final DateTime failedValue;
 
   @override
   String toString() {
@@ -2424,7 +2424,7 @@ class _$InvalidNewAdDate<T> implements InvalidNewAdDate<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -2453,7 +2453,7 @@ class _$InvalidNewAdDate<T> implements InvalidNewAdDate<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -2546,9 +2546,9 @@ class _$InvalidNewAdDate<T> implements InvalidNewAdDate<T> {
 }
 
 abstract class InvalidNewAdDate<T> implements ValueFailure<T> {
-  const factory InvalidNewAdDate(String failedValue) = _$InvalidNewAdDate<T>;
+  const factory InvalidNewAdDate(DateTime failedValue) = _$InvalidNewAdDate<T>;
 
-  String get failedValue => throw _privateConstructorUsedError;
+  DateTime get failedValue => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $InvalidNewAdDateCopyWith<T, InvalidNewAdDate<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2631,7 +2631,7 @@ class _$InvalidNewAdPlace<T> implements InvalidNewAdPlace<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -2660,7 +2660,7 @@ class _$InvalidNewAdPlace<T> implements InvalidNewAdPlace<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -2839,7 +2839,7 @@ class _$InvalidNewAdDeliveryPlace<T> implements InvalidNewAdDeliveryPlace<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -2868,7 +2868,7 @@ class _$InvalidNewAdDeliveryPlace<T> implements InvalidNewAdDeliveryPlace<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -3052,7 +3052,7 @@ class _$InvalidNewAdDeliveryDescription<T>
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -3081,7 +3081,7 @@ class _$InvalidNewAdDeliveryDescription<T>
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -3262,7 +3262,7 @@ class _$InvalidNewAdProductId<T> implements InvalidNewAdProductId<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -3291,7 +3291,7 @@ class _$InvalidNewAdProductId<T> implements InvalidNewAdProductId<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -3472,7 +3472,7 @@ class _$InvalidNewAdProductKind<T> implements InvalidNewAdProductKind<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -3501,7 +3501,7 @@ class _$InvalidNewAdProductKind<T> implements InvalidNewAdProductKind<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -3681,7 +3681,7 @@ class _$InvalidNewAdProductRating<T> implements InvalidNewAdProductRating<T> {
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -3710,7 +3710,7 @@ class _$InvalidNewAdProductRating<T> implements InvalidNewAdProductRating<T> {
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -3894,7 +3894,7 @@ class _$InvalidNewAdProductUnitMeasureId<T>
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -3923,7 +3923,7 @@ class _$InvalidNewAdProductUnitMeasureId<T>
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -4107,7 +4107,7 @@ class _$InvalidNewAdProductQuantity<T>
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -4136,7 +4136,7 @@ class _$InvalidNewAdProductQuantity<T>
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
@@ -4319,7 +4319,7 @@ class _$InvalidNewAdProductObservation<T>
     required TResult Function(String failedValue) invalidPlaceName,
     required TResult Function(String failedValue) invalidCity,
     required TResult Function(String failedValue) invalidAddress,
-    required TResult Function(String failedValue) invalidNewAdDate,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
     required TResult Function(String failedValue) invalidNewAdPlace,
     required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
     required TResult Function(String failedValue)
@@ -4348,7 +4348,7 @@ class _$InvalidNewAdProductObservation<T>
     TResult Function(String failedValue)? invalidPlaceName,
     TResult Function(String failedValue)? invalidCity,
     TResult Function(String failedValue)? invalidAddress,
-    TResult Function(String failedValue)? invalidNewAdDate,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
     TResult Function(String failedValue)? invalidNewAdPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
     TResult Function(String failedValue)? invalidNewAdDeliveryDescription,

@@ -13,7 +13,7 @@ class AddProductState with _$AddProductState {
 
   factory AddProductState.initial() => AddProductState(
       newAdvertisement: NewAdvertisement(
-          date: NewAdvertisementDate(''),
+          date: NewAdvertisementDate(DateTime.now()),
           newAdDeliveryDescription: NewAdvertisementDeliveryDescription(''),
           newAdDeliveryPlace: null,
           products: [NewAdProduct()]),

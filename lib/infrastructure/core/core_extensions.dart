@@ -13,6 +13,10 @@ extension DateTimeExtensions on DateTime {
   String getDayMonthYear() {
     return DateFormat('dd-MM-yyyy').format(this);
   }
+
+  String getServerDate() {
+    return DateFormat('yyyy-MM-dd hh:mm:ss').format(this);
+  }
 }
 
 extension IntDateExtensions on int {

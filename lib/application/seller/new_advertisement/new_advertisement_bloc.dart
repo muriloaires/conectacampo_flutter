@@ -50,9 +50,8 @@ class NewAdvertisementBloc
         onDateSelected: (OnDateSelected value) async* {
           if (value.dateTime != null) {
             yield state.copyWith(
-                newAdvertisement: state.newAdvertisement.copyWith(
-                    date: NewAdvertisementDate(
-                        value.dateTime!.getDayMonthYear())),
+                newAdvertisement: state.newAdvertisement
+                    .copyWith(date: NewAdvertisementDate(value.dateTime!)),
                 isBtnContinueEnabled: setIsBtnConinueEnabled(state));
           }
         },

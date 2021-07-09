@@ -351,10 +351,10 @@ class _$AdProductTearOff {
       String name,
       String unitMeasure,
       int quantity,
-      String unitPrice,
+      String? unitPrice,
       String rating,
       String kind,
-      String observation,
+      String? observation,
       List<ProductImages> images,
       String createdAt,
       Advertisement? advertisement) {
@@ -383,10 +383,10 @@ mixin _$AdProduct {
   String get name => throw _privateConstructorUsedError;
   String get unitMeasure => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
-  String get unitPrice => throw _privateConstructorUsedError;
+  String? get unitPrice => throw _privateConstructorUsedError;
   String get rating => throw _privateConstructorUsedError;
   String get kind => throw _privateConstructorUsedError;
-  String get observation => throw _privateConstructorUsedError;
+  String? get observation => throw _privateConstructorUsedError;
   List<ProductImages> get images => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   Advertisement? get advertisement => throw _privateConstructorUsedError;
@@ -405,10 +405,10 @@ abstract class $AdProductCopyWith<$Res> {
       String name,
       String unitMeasure,
       int quantity,
-      String unitPrice,
+      String? unitPrice,
       String rating,
       String kind,
-      String observation,
+      String? observation,
       List<ProductImages> images,
       String createdAt,
       Advertisement? advertisement});
@@ -458,7 +458,7 @@ class _$AdProductCopyWithImpl<$Res> implements $AdProductCopyWith<$Res> {
       unitPrice: unitPrice == freezed
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -470,7 +470,7 @@ class _$AdProductCopyWithImpl<$Res> implements $AdProductCopyWith<$Res> {
       observation: observation == freezed
           ? _value.observation
           : observation // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -509,10 +509,10 @@ abstract class _$AdProductCopyWith<$Res> implements $AdProductCopyWith<$Res> {
       String name,
       String unitMeasure,
       int quantity,
-      String unitPrice,
+      String? unitPrice,
       String rating,
       String kind,
-      String observation,
+      String? observation,
       List<ProductImages> images,
       String createdAt,
       Advertisement? advertisement});
@@ -564,7 +564,7 @@ class __$AdProductCopyWithImpl<$Res> extends _$AdProductCopyWithImpl<$Res>
       unitPrice == freezed
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -576,7 +576,7 @@ class __$AdProductCopyWithImpl<$Res> extends _$AdProductCopyWithImpl<$Res>
       observation == freezed
           ? _value.observation
           : observation // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -618,13 +618,13 @@ class _$_AdProduct implements _AdProduct {
   @override
   final int quantity;
   @override
-  final String unitPrice;
+  final String? unitPrice;
   @override
   final String rating;
   @override
   final String kind;
   @override
-  final String observation;
+  final String? observation;
   @override
   final List<ProductImages> images;
   @override
@@ -698,10 +698,10 @@ abstract class _AdProduct implements AdProduct {
       String name,
       String unitMeasure,
       int quantity,
-      String unitPrice,
+      String? unitPrice,
       String rating,
       String kind,
-      String observation,
+      String? observation,
       List<ProductImages> images,
       String createdAt,
       Advertisement? advertisement) = _$_AdProduct;
@@ -715,13 +715,13 @@ abstract class _AdProduct implements AdProduct {
   @override
   int get quantity => throw _privateConstructorUsedError;
   @override
-  String get unitPrice => throw _privateConstructorUsedError;
+  String? get unitPrice => throw _privateConstructorUsedError;
   @override
   String get rating => throw _privateConstructorUsedError;
   @override
   String get kind => throw _privateConstructorUsedError;
   @override
-  String get observation => throw _privateConstructorUsedError;
+  String? get observation => throw _privateConstructorUsedError;
   @override
   List<ProductImages> get images => throw _privateConstructorUsedError;
   @override
