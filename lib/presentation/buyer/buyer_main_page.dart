@@ -1,8 +1,12 @@
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
+import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/injection.dart';
+import 'package:conectacampo/presentation/buyer/group/group_page.dart';
 import 'package:conectacampo/presentation/buyer/menu/buyer_summary.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/profile/profile_page.dart';
+import 'package:conectacampo/presentation/seller/seller_main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,13 +23,23 @@ class BuyerMainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<BuyerMenuBloc>(create: (BuildContext context) => getIt()),
+        BlocProvider<BuyerMenuBloc>(create: (context) => getIt()),
         BlocProvider<AdvertisementsBloc>(
-            create: (BuildContext context) =>
+            create: (context) =>
                 getIt()..add(const AdvertisementsEvent.started())),
+        BlocProvider<GroupBloc>(
+            create: (context) => getIt()..add(const GroupEvent.started()))
       ],
       child: BlocConsumer<BuyerMenuBloc, BuyerMenuState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state.navToSeller) {
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) => SellerMainPage(),
+                ),
+                (route) => false);
+          }
+        },
         builder: (context, state) {
           return Scaffold(
             backgroundColor: ColorSet.textFieldGrayBackground,
@@ -39,9 +53,13 @@ class BuyerMainPage extends StatelessWidget {
                 index: context.read<BuyerMenuBloc>().state.currentIndex,
                 children: [
                   BuyerSummary(navigatorKeys[0]!),
-                  Scaffold(body: Text('Grupos')),
+                  GroupPage(navigatorKeys[1]!),
                   Scaffold(body: Text('Reservas')),
-                  Scaffold(body: Text('Perfil'))
+                  Scaffold(body: Text('Reservas')),
+                  ProfilePage(
+                    navigatorKey: navigatorKeys[3]!,
+                    isBuyer: true,
+                  )
                 ],
               ),
             ),
@@ -133,7 +151,9 @@ class BuyerMainPage extends StatelessWidget {
                     if (!reselect) {
                       bloc.add(const BuyerMenuEvent.profileTapped());
                     } else {
-                      bloc.add(const BuyerMenuEvent.profileRetapped());
+                      navigatorKeys[1]!
+                          .currentState!
+                          .popUntil((r) => r.isFirst);
                     }
 
                     break;

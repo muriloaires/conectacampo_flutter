@@ -141,6 +141,13 @@ class _$ValueFailureTearOff {
       failedValue,
     );
   }
+
+  InvalidReservationQuantity<T> invalidReservationQuantity<T>(
+      String failedValue) {
+    return InvalidReservationQuantity<T>(
+      failedValue,
+    );
+  }
 }
 
 /// @nodoc
@@ -172,6 +179,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -196,6 +204,7 @@ mixin _$ValueFailure<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -230,6 +239,8 @@ mixin _$ValueFailure<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -260,6 +271,8 @@ mixin _$ValueFailure<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -371,6 +384,7 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidPhoneNumber(failedValue);
   }
@@ -398,6 +412,7 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidPhoneNumber != null) {
@@ -438,6 +453,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidPhoneNumber(this);
   }
@@ -471,6 +488,8 @@ class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidPhoneNumber != null) {
@@ -579,6 +598,7 @@ class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidCodeLength(failedValue);
   }
@@ -606,6 +626,7 @@ class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidCodeLength != null) {
@@ -646,6 +667,8 @@ class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidCodeLength(this);
   }
@@ -679,6 +702,8 @@ class _$InvalidCodeLength<T> implements InvalidCodeLength<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidCodeLength != null) {
@@ -785,6 +810,7 @@ class _$InvalidFullName<T> implements InvalidFullName<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidFullName(failedValue);
   }
@@ -812,6 +838,7 @@ class _$InvalidFullName<T> implements InvalidFullName<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidFullName != null) {
@@ -852,6 +879,8 @@ class _$InvalidFullName<T> implements InvalidFullName<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidFullName(this);
   }
@@ -885,6 +914,8 @@ class _$InvalidFullName<T> implements InvalidFullName<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidFullName != null) {
@@ -991,6 +1022,7 @@ class _$MissingSurname<T> implements MissingSurname<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return missingSurname(failedValue);
   }
@@ -1018,6 +1050,7 @@ class _$MissingSurname<T> implements MissingSurname<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (missingSurname != null) {
@@ -1058,6 +1091,8 @@ class _$MissingSurname<T> implements MissingSurname<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return missingSurname(this);
   }
@@ -1091,6 +1126,8 @@ class _$MissingSurname<T> implements MissingSurname<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (missingSurname != null) {
@@ -1197,6 +1234,7 @@ class _$InvalidNickname<T> implements InvalidNickname<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNickname(failedValue);
   }
@@ -1224,6 +1262,7 @@ class _$InvalidNickname<T> implements InvalidNickname<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNickname != null) {
@@ -1264,6 +1303,8 @@ class _$InvalidNickname<T> implements InvalidNickname<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNickname(this);
   }
@@ -1297,6 +1338,8 @@ class _$InvalidNickname<T> implements InvalidNickname<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNickname != null) {
@@ -1403,6 +1446,7 @@ class _$InvalidAvatar<T> implements InvalidAvatar<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidAvatar(failedValue);
   }
@@ -1430,6 +1474,7 @@ class _$InvalidAvatar<T> implements InvalidAvatar<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidAvatar != null) {
@@ -1470,6 +1515,8 @@ class _$InvalidAvatar<T> implements InvalidAvatar<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidAvatar(this);
   }
@@ -1503,6 +1550,8 @@ class _$InvalidAvatar<T> implements InvalidAvatar<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidAvatar != null) {
@@ -1611,6 +1660,7 @@ class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidStatePlaceName(failedValue);
   }
@@ -1638,6 +1688,7 @@ class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidStatePlaceName != null) {
@@ -1678,6 +1729,8 @@ class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidStatePlaceName(this);
   }
@@ -1711,6 +1764,8 @@ class _$InvalidStatePlaceName<T> implements InvalidStatePlaceName<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidStatePlaceName != null) {
@@ -1818,6 +1873,7 @@ class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidPlaceName(failedValue);
   }
@@ -1845,6 +1901,7 @@ class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidPlaceName != null) {
@@ -1885,6 +1942,8 @@ class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidPlaceName(this);
   }
@@ -1918,6 +1977,8 @@ class _$InvalidPlaceName<T> implements InvalidPlaceName<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidPlaceName != null) {
@@ -2024,6 +2085,7 @@ class _$InvalidCity<T> implements InvalidCity<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidCity(failedValue);
   }
@@ -2051,6 +2113,7 @@ class _$InvalidCity<T> implements InvalidCity<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidCity != null) {
@@ -2091,6 +2154,8 @@ class _$InvalidCity<T> implements InvalidCity<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidCity(this);
   }
@@ -2124,6 +2189,8 @@ class _$InvalidCity<T> implements InvalidCity<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidCity != null) {
@@ -2230,6 +2297,7 @@ class _$InvalidAddress<T> implements InvalidAddress<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidAddress(failedValue);
   }
@@ -2257,6 +2325,7 @@ class _$InvalidAddress<T> implements InvalidAddress<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidAddress != null) {
@@ -2297,6 +2366,8 @@ class _$InvalidAddress<T> implements InvalidAddress<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidAddress(this);
   }
@@ -2330,6 +2401,8 @@ class _$InvalidAddress<T> implements InvalidAddress<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidAddress != null) {
@@ -2436,6 +2509,7 @@ class _$InvalidNewAdDate<T> implements InvalidNewAdDate<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdDate(failedValue);
   }
@@ -2463,6 +2537,7 @@ class _$InvalidNewAdDate<T> implements InvalidNewAdDate<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdDate != null) {
@@ -2503,6 +2578,8 @@ class _$InvalidNewAdDate<T> implements InvalidNewAdDate<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdDate(this);
   }
@@ -2536,6 +2613,8 @@ class _$InvalidNewAdDate<T> implements InvalidNewAdDate<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdDate != null) {
@@ -2643,6 +2722,7 @@ class _$InvalidNewAdPlace<T> implements InvalidNewAdPlace<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdPlace(failedValue);
   }
@@ -2670,6 +2750,7 @@ class _$InvalidNewAdPlace<T> implements InvalidNewAdPlace<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdPlace != null) {
@@ -2710,6 +2791,8 @@ class _$InvalidNewAdPlace<T> implements InvalidNewAdPlace<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdPlace(this);
   }
@@ -2743,6 +2826,8 @@ class _$InvalidNewAdPlace<T> implements InvalidNewAdPlace<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdPlace != null) {
@@ -2851,6 +2936,7 @@ class _$InvalidNewAdDeliveryPlace<T> implements InvalidNewAdDeliveryPlace<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdDeliveryPlace(failedValue);
   }
@@ -2878,6 +2964,7 @@ class _$InvalidNewAdDeliveryPlace<T> implements InvalidNewAdDeliveryPlace<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdDeliveryPlace != null) {
@@ -2918,6 +3005,8 @@ class _$InvalidNewAdDeliveryPlace<T> implements InvalidNewAdDeliveryPlace<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdDeliveryPlace(this);
   }
@@ -2951,6 +3040,8 @@ class _$InvalidNewAdDeliveryPlace<T> implements InvalidNewAdDeliveryPlace<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdDeliveryPlace != null) {
@@ -3064,6 +3155,7 @@ class _$InvalidNewAdDeliveryDescription<T>
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdDeliveryDescription(failedValue);
   }
@@ -3091,6 +3183,7 @@ class _$InvalidNewAdDeliveryDescription<T>
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdDeliveryDescription != null) {
@@ -3131,6 +3224,8 @@ class _$InvalidNewAdDeliveryDescription<T>
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdDeliveryDescription(this);
   }
@@ -3164,6 +3259,8 @@ class _$InvalidNewAdDeliveryDescription<T>
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdDeliveryDescription != null) {
@@ -3274,6 +3371,7 @@ class _$InvalidNewAdProductId<T> implements InvalidNewAdProductId<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdProductId(failedValue);
   }
@@ -3301,6 +3399,7 @@ class _$InvalidNewAdProductId<T> implements InvalidNewAdProductId<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductId != null) {
@@ -3341,6 +3440,8 @@ class _$InvalidNewAdProductId<T> implements InvalidNewAdProductId<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdProductId(this);
   }
@@ -3374,6 +3475,8 @@ class _$InvalidNewAdProductId<T> implements InvalidNewAdProductId<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductId != null) {
@@ -3484,6 +3587,7 @@ class _$InvalidNewAdProductKind<T> implements InvalidNewAdProductKind<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdProductKind(failedValue);
   }
@@ -3511,6 +3615,7 @@ class _$InvalidNewAdProductKind<T> implements InvalidNewAdProductKind<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductKind != null) {
@@ -3551,6 +3656,8 @@ class _$InvalidNewAdProductKind<T> implements InvalidNewAdProductKind<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdProductKind(this);
   }
@@ -3584,6 +3691,8 @@ class _$InvalidNewAdProductKind<T> implements InvalidNewAdProductKind<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductKind != null) {
@@ -3693,6 +3802,7 @@ class _$InvalidNewAdProductRating<T> implements InvalidNewAdProductRating<T> {
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdProductRating(failedValue);
   }
@@ -3720,6 +3830,7 @@ class _$InvalidNewAdProductRating<T> implements InvalidNewAdProductRating<T> {
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductRating != null) {
@@ -3760,6 +3871,8 @@ class _$InvalidNewAdProductRating<T> implements InvalidNewAdProductRating<T> {
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdProductRating(this);
   }
@@ -3793,6 +3906,8 @@ class _$InvalidNewAdProductRating<T> implements InvalidNewAdProductRating<T> {
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductRating != null) {
@@ -3906,6 +4021,7 @@ class _$InvalidNewAdProductUnitMeasureId<T>
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdProductUnitMeasureId(failedValue);
   }
@@ -3933,6 +4049,7 @@ class _$InvalidNewAdProductUnitMeasureId<T>
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductUnitMeasureId != null) {
@@ -3973,6 +4090,8 @@ class _$InvalidNewAdProductUnitMeasureId<T>
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdProductUnitMeasureId(this);
   }
@@ -4006,6 +4125,8 @@ class _$InvalidNewAdProductUnitMeasureId<T>
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductUnitMeasureId != null) {
@@ -4119,6 +4240,7 @@ class _$InvalidNewAdProductQuantity<T>
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdProductQuantity(failedValue);
   }
@@ -4146,6 +4268,7 @@ class _$InvalidNewAdProductQuantity<T>
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductQuantity != null) {
@@ -4186,6 +4309,8 @@ class _$InvalidNewAdProductQuantity<T>
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdProductQuantity(this);
   }
@@ -4219,6 +4344,8 @@ class _$InvalidNewAdProductQuantity<T>
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductQuantity != null) {
@@ -4331,6 +4458,7 @@ class _$InvalidNewAdProductObservation<T>
     required TResult Function(int failedValue) invalidNewAdProductQuantity,
     required TResult Function(String failedValue)
         invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
   }) {
     return invalidNewAdProductObservation(failedValue);
   }
@@ -4358,6 +4486,7 @@ class _$InvalidNewAdProductObservation<T>
     TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
     TResult Function(int failedValue)? invalidNewAdProductQuantity,
     TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductObservation != null) {
@@ -4398,6 +4527,8 @@ class _$InvalidNewAdProductObservation<T>
         invalidNewAdProductQuantity,
     required TResult Function(InvalidNewAdProductObservation<T> value)
         invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
   }) {
     return invalidNewAdProductObservation(this);
   }
@@ -4431,6 +4562,8 @@ class _$InvalidNewAdProductObservation<T>
         invalidNewAdProductQuantity,
     TResult Function(InvalidNewAdProductObservation<T> value)?
         invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
     required TResult orElse(),
   }) {
     if (invalidNewAdProductObservation != null) {
@@ -4447,5 +4580,221 @@ abstract class InvalidNewAdProductObservation<T> implements ValueFailure<T> {
   String get failedValue => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $InvalidNewAdProductObservationCopyWith<T, InvalidNewAdProductObservation<T>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvalidReservationQuantityCopyWith<T, $Res> {
+  factory $InvalidReservationQuantityCopyWith(
+          InvalidReservationQuantity<T> value,
+          $Res Function(InvalidReservationQuantity<T>) then) =
+      _$InvalidReservationQuantityCopyWithImpl<T, $Res>;
+  $Res call({String failedValue});
+}
+
+/// @nodoc
+class _$InvalidReservationQuantityCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $InvalidReservationQuantityCopyWith<T, $Res> {
+  _$InvalidReservationQuantityCopyWithImpl(InvalidReservationQuantity<T> _value,
+      $Res Function(InvalidReservationQuantity<T>) _then)
+      : super(_value, (v) => _then(v as InvalidReservationQuantity<T>));
+
+  @override
+  InvalidReservationQuantity<T> get _value =>
+      super._value as InvalidReservationQuantity<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(InvalidReservationQuantity<T>(
+      failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvalidReservationQuantity<T> implements InvalidReservationQuantity<T> {
+  const _$InvalidReservationQuantity(this.failedValue);
+
+  @override
+  final String failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidReservationQuantity(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is InvalidReservationQuantity<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @JsonKey(ignore: true)
+  @override
+  $InvalidReservationQuantityCopyWith<T, InvalidReservationQuantity<T>>
+      get copyWith => _$InvalidReservationQuantityCopyWithImpl<T,
+          InvalidReservationQuantity<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue) invalidPhoneNumber,
+    required TResult Function(String failedValue) invalidCodeLength,
+    required TResult Function(String failedValue) invalidFullName,
+    required TResult Function(String failedValue) missingSurname,
+    required TResult Function(String failedValue) invalidNickname,
+    required TResult Function(String failedValue) invalidAvatar,
+    required TResult Function(String failedValue) invalidStatePlaceName,
+    required TResult Function(String failedValue) invalidPlaceName,
+    required TResult Function(String failedValue) invalidCity,
+    required TResult Function(String failedValue) invalidAddress,
+    required TResult Function(DateTime failedValue) invalidNewAdDate,
+    required TResult Function(String failedValue) invalidNewAdPlace,
+    required TResult Function(String failedValue) invalidNewAdDeliveryPlace,
+    required TResult Function(String failedValue)
+        invalidNewAdDeliveryDescription,
+    required TResult Function(int failedValue) invalidNewAdProductId,
+    required TResult Function(String failedValue) invalidNewAdProductKind,
+    required TResult Function(String failedValue) invalidNewAdProductRating,
+    required TResult Function(int failedValue) invalidNewAdProductUnitMeasureId,
+    required TResult Function(int failedValue) invalidNewAdProductQuantity,
+    required TResult Function(String failedValue)
+        invalidNewAdProductObservation,
+    required TResult Function(String failedValue) invalidReservationQuantity,
+  }) {
+    return invalidReservationQuantity(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue)? invalidPhoneNumber,
+    TResult Function(String failedValue)? invalidCodeLength,
+    TResult Function(String failedValue)? invalidFullName,
+    TResult Function(String failedValue)? missingSurname,
+    TResult Function(String failedValue)? invalidNickname,
+    TResult Function(String failedValue)? invalidAvatar,
+    TResult Function(String failedValue)? invalidStatePlaceName,
+    TResult Function(String failedValue)? invalidPlaceName,
+    TResult Function(String failedValue)? invalidCity,
+    TResult Function(String failedValue)? invalidAddress,
+    TResult Function(DateTime failedValue)? invalidNewAdDate,
+    TResult Function(String failedValue)? invalidNewAdPlace,
+    TResult Function(String failedValue)? invalidNewAdDeliveryPlace,
+    TResult Function(String failedValue)? invalidNewAdDeliveryDescription,
+    TResult Function(int failedValue)? invalidNewAdProductId,
+    TResult Function(String failedValue)? invalidNewAdProductKind,
+    TResult Function(String failedValue)? invalidNewAdProductRating,
+    TResult Function(int failedValue)? invalidNewAdProductUnitMeasureId,
+    TResult Function(int failedValue)? invalidNewAdProductQuantity,
+    TResult Function(String failedValue)? invalidNewAdProductObservation,
+    TResult Function(String failedValue)? invalidReservationQuantity,
+    required TResult orElse(),
+  }) {
+    if (invalidReservationQuantity != null) {
+      return invalidReservationQuantity(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidCodeLength<T> value) invalidCodeLength,
+    required TResult Function(InvalidFullName<T> value) invalidFullName,
+    required TResult Function(MissingSurname<T> value) missingSurname,
+    required TResult Function(InvalidNickname<T> value) invalidNickname,
+    required TResult Function(InvalidAvatar<T> value) invalidAvatar,
+    required TResult Function(InvalidStatePlaceName<T> value)
+        invalidStatePlaceName,
+    required TResult Function(InvalidPlaceName<T> value) invalidPlaceName,
+    required TResult Function(InvalidCity<T> value) invalidCity,
+    required TResult Function(InvalidAddress<T> value) invalidAddress,
+    required TResult Function(InvalidNewAdDate<T> value) invalidNewAdDate,
+    required TResult Function(InvalidNewAdPlace<T> value) invalidNewAdPlace,
+    required TResult Function(InvalidNewAdDeliveryPlace<T> value)
+        invalidNewAdDeliveryPlace,
+    required TResult Function(InvalidNewAdDeliveryDescription<T> value)
+        invalidNewAdDeliveryDescription,
+    required TResult Function(InvalidNewAdProductId<T> value)
+        invalidNewAdProductId,
+    required TResult Function(InvalidNewAdProductKind<T> value)
+        invalidNewAdProductKind,
+    required TResult Function(InvalidNewAdProductRating<T> value)
+        invalidNewAdProductRating,
+    required TResult Function(InvalidNewAdProductUnitMeasureId<T> value)
+        invalidNewAdProductUnitMeasureId,
+    required TResult Function(InvalidNewAdProductQuantity<T> value)
+        invalidNewAdProductQuantity,
+    required TResult Function(InvalidNewAdProductObservation<T> value)
+        invalidNewAdProductObservation,
+    required TResult Function(InvalidReservationQuantity<T> value)
+        invalidReservationQuantity,
+  }) {
+    return invalidReservationQuantity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidCodeLength<T> value)? invalidCodeLength,
+    TResult Function(InvalidFullName<T> value)? invalidFullName,
+    TResult Function(MissingSurname<T> value)? missingSurname,
+    TResult Function(InvalidNickname<T> value)? invalidNickname,
+    TResult Function(InvalidAvatar<T> value)? invalidAvatar,
+    TResult Function(InvalidStatePlaceName<T> value)? invalidStatePlaceName,
+    TResult Function(InvalidPlaceName<T> value)? invalidPlaceName,
+    TResult Function(InvalidCity<T> value)? invalidCity,
+    TResult Function(InvalidAddress<T> value)? invalidAddress,
+    TResult Function(InvalidNewAdDate<T> value)? invalidNewAdDate,
+    TResult Function(InvalidNewAdPlace<T> value)? invalidNewAdPlace,
+    TResult Function(InvalidNewAdDeliveryPlace<T> value)?
+        invalidNewAdDeliveryPlace,
+    TResult Function(InvalidNewAdDeliveryDescription<T> value)?
+        invalidNewAdDeliveryDescription,
+    TResult Function(InvalidNewAdProductId<T> value)? invalidNewAdProductId,
+    TResult Function(InvalidNewAdProductKind<T> value)? invalidNewAdProductKind,
+    TResult Function(InvalidNewAdProductRating<T> value)?
+        invalidNewAdProductRating,
+    TResult Function(InvalidNewAdProductUnitMeasureId<T> value)?
+        invalidNewAdProductUnitMeasureId,
+    TResult Function(InvalidNewAdProductQuantity<T> value)?
+        invalidNewAdProductQuantity,
+    TResult Function(InvalidNewAdProductObservation<T> value)?
+        invalidNewAdProductObservation,
+    TResult Function(InvalidReservationQuantity<T> value)?
+        invalidReservationQuantity,
+    required TResult orElse(),
+  }) {
+    if (invalidReservationQuantity != null) {
+      return invalidReservationQuantity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidReservationQuantity<T> implements ValueFailure<T> {
+  const factory InvalidReservationQuantity(String failedValue) =
+      _$InvalidReservationQuantity<T>;
+
+  String get failedValue => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $InvalidReservationQuantityCopyWith<T, InvalidReservationQuantity<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

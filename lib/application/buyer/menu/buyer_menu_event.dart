@@ -13,4 +13,6 @@ class BuyerMenuEvent with _$BuyerMenuEvent {
   const factory BuyerMenuEvent.groupsRetapped() = GroupsRetapped;
   const factory BuyerMenuEvent.reservationRetapped() = ReservationRetapped;
   const factory BuyerMenuEvent.profileRetapped() = ProfileRetapped;
+
+  const factory BuyerMenuEvent.navToSellerTapped() = NavToSellerTapped;
 }

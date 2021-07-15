@@ -51,6 +51,10 @@ class _$BuyerMenuEventTearOff {
   ProfileRetapped profileRetapped() {
     return const ProfileRetapped();
   }
+
+  NavToSellerTapped navToSellerTapped() {
+    return const NavToSellerTapped();
+  }
 }
 
 /// @nodoc
@@ -69,6 +73,7 @@ mixin _$BuyerMenuEvent {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,6 +87,7 @@ mixin _$BuyerMenuEvent {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -96,6 +102,7 @@ mixin _$BuyerMenuEvent {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -109,6 +116,7 @@ mixin _$BuyerMenuEvent {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -177,6 +185,7 @@ class _$BuyTapped implements BuyTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) {
     return buyTapped();
   }
@@ -193,6 +202,7 @@ class _$BuyTapped implements BuyTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (buyTapped != null) {
@@ -213,6 +223,7 @@ class _$BuyTapped implements BuyTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) {
     return buyTapped(this);
   }
@@ -229,6 +240,7 @@ class _$BuyTapped implements BuyTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (buyTapped != null) {
@@ -289,6 +301,7 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) {
     return homeTapped();
   }
@@ -305,6 +318,7 @@ class _$HomeTapped implements HomeTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (homeTapped != null) {
@@ -325,6 +339,7 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) {
     return homeTapped(this);
   }
@@ -341,6 +356,7 @@ class _$HomeTapped implements HomeTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (homeTapped != null) {
@@ -403,6 +419,7 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) {
     return groupsTapped();
   }
@@ -419,6 +436,7 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (groupsTapped != null) {
@@ -439,6 +457,7 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) {
     return groupsTapped(this);
   }
@@ -455,6 +474,7 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (groupsTapped != null) {
@@ -517,6 +537,7 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) {
     return reservationTapped();
   }
@@ -533,6 +554,7 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (reservationTapped != null) {
@@ -553,6 +575,7 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) {
     return reservationTapped(this);
   }
@@ -569,6 +592,7 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (reservationTapped != null) {
@@ -631,6 +655,7 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) {
     return profileTapped();
   }
@@ -647,6 +672,7 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (profileTapped != null) {
@@ -667,6 +693,7 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) {
     return profileTapped(this);
   }
@@ -683,6 +710,7 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (profileTapped != null) {
@@ -745,6 +773,7 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) {
     return homeRetapped();
   }
@@ -761,6 +790,7 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (homeRetapped != null) {
@@ -781,6 +811,7 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) {
     return homeRetapped(this);
   }
@@ -797,6 +828,7 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (homeRetapped != null) {
@@ -859,6 +891,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) {
     return groupsRetapped();
   }
@@ -875,6 +908,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (groupsRetapped != null) {
@@ -895,6 +929,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) {
     return groupsRetapped(this);
   }
@@ -911,6 +946,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (groupsRetapped != null) {
@@ -973,6 +1009,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) {
     return reservationRetapped();
   }
@@ -989,6 +1026,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (reservationRetapped != null) {
@@ -1009,6 +1047,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) {
     return reservationRetapped(this);
   }
@@ -1025,6 +1064,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (reservationRetapped != null) {
@@ -1087,6 +1127,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
   }) {
     return profileRetapped();
   }
@@ -1103,6 +1144,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (profileRetapped != null) {
@@ -1123,6 +1165,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
   }) {
     return profileRetapped(this);
   }
@@ -1139,6 +1182,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
     required TResult orElse(),
   }) {
     if (profileRetapped != null) {
@@ -1153,13 +1197,135 @@ abstract class ProfileRetapped implements BuyerMenuEvent {
 }
 
 /// @nodoc
+abstract class $NavToSellerTappedCopyWith<$Res> {
+  factory $NavToSellerTappedCopyWith(
+          NavToSellerTapped value, $Res Function(NavToSellerTapped) then) =
+      _$NavToSellerTappedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NavToSellerTappedCopyWithImpl<$Res>
+    extends _$BuyerMenuEventCopyWithImpl<$Res>
+    implements $NavToSellerTappedCopyWith<$Res> {
+  _$NavToSellerTappedCopyWithImpl(
+      NavToSellerTapped _value, $Res Function(NavToSellerTapped) _then)
+      : super(_value, (v) => _then(v as NavToSellerTapped));
+
+  @override
+  NavToSellerTapped get _value => super._value as NavToSellerTapped;
+}
+
+/// @nodoc
+
+class _$NavToSellerTapped implements NavToSellerTapped {
+  const _$NavToSellerTapped();
+
+  @override
+  String toString() {
+    return 'BuyerMenuEvent.navToSellerTapped()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NavToSellerTapped);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() buyTapped,
+    required TResult Function() homeTapped,
+    required TResult Function() groupsTapped,
+    required TResult Function() reservationTapped,
+    required TResult Function() profileTapped,
+    required TResult Function() homeRetapped,
+    required TResult Function() groupsRetapped,
+    required TResult Function() reservationRetapped,
+    required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
+  }) {
+    return navToSellerTapped();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? buyTapped,
+    TResult Function()? homeTapped,
+    TResult Function()? groupsTapped,
+    TResult Function()? reservationTapped,
+    TResult Function()? profileTapped,
+    TResult Function()? homeRetapped,
+    TResult Function()? groupsRetapped,
+    TResult Function()? reservationRetapped,
+    TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
+    required TResult orElse(),
+  }) {
+    if (navToSellerTapped != null) {
+      return navToSellerTapped();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BuyTapped value) buyTapped,
+    required TResult Function(HomeTapped value) homeTapped,
+    required TResult Function(GroupsTapped value) groupsTapped,
+    required TResult Function(ReservationTapped value) reservationTapped,
+    required TResult Function(ProfileTapped value) profileTapped,
+    required TResult Function(HomeRetapped value) homeRetapped,
+    required TResult Function(GroupsRetapped value) groupsRetapped,
+    required TResult Function(ReservationRetapped value) reservationRetapped,
+    required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
+  }) {
+    return navToSellerTapped(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BuyTapped value)? buyTapped,
+    TResult Function(HomeTapped value)? homeTapped,
+    TResult Function(GroupsTapped value)? groupsTapped,
+    TResult Function(ReservationTapped value)? reservationTapped,
+    TResult Function(ProfileTapped value)? profileTapped,
+    TResult Function(HomeRetapped value)? homeRetapped,
+    TResult Function(GroupsRetapped value)? groupsRetapped,
+    TResult Function(ReservationRetapped value)? reservationRetapped,
+    TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    required TResult orElse(),
+  }) {
+    if (navToSellerTapped != null) {
+      return navToSellerTapped(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NavToSellerTapped implements BuyerMenuEvent {
+  const factory NavToSellerTapped() = _$NavToSellerTapped;
+}
+
+/// @nodoc
 class _$BuyerMenuStateTearOff {
   const _$BuyerMenuStateTearOff();
 
-  _BuyerMenuState call({required int currentIndex, required bool navToRoot}) {
+  _BuyerMenuState call(
+      {required int currentIndex,
+      required bool navToRoot,
+      required bool navToSeller}) {
     return _BuyerMenuState(
       currentIndex: currentIndex,
       navToRoot: navToRoot,
+      navToSeller: navToSeller,
     );
   }
 }
@@ -1171,6 +1337,7 @@ const $BuyerMenuState = _$BuyerMenuStateTearOff();
 mixin _$BuyerMenuState {
   int get currentIndex => throw _privateConstructorUsedError;
   bool get navToRoot => throw _privateConstructorUsedError;
+  bool get navToSeller => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BuyerMenuStateCopyWith<BuyerMenuState> get copyWith =>
@@ -1182,7 +1349,7 @@ abstract class $BuyerMenuStateCopyWith<$Res> {
   factory $BuyerMenuStateCopyWith(
           BuyerMenuState value, $Res Function(BuyerMenuState) then) =
       _$BuyerMenuStateCopyWithImpl<$Res>;
-  $Res call({int currentIndex, bool navToRoot});
+  $Res call({int currentIndex, bool navToRoot, bool navToSeller});
 }
 
 /// @nodoc
@@ -1198,6 +1365,7 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
   $Res call({
     Object? currentIndex = freezed,
     Object? navToRoot = freezed,
+    Object? navToSeller = freezed,
   }) {
     return _then(_value.copyWith(
       currentIndex: currentIndex == freezed
@@ -1207,6 +1375,10 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
       navToRoot: navToRoot == freezed
           ? _value.navToRoot
           : navToRoot // ignore: cast_nullable_to_non_nullable
+              as bool,
+      navToSeller: navToSeller == freezed
+          ? _value.navToSeller
+          : navToSeller // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -1219,7 +1391,7 @@ abstract class _$BuyerMenuStateCopyWith<$Res>
           _BuyerMenuState value, $Res Function(_BuyerMenuState) then) =
       __$BuyerMenuStateCopyWithImpl<$Res>;
   @override
-  $Res call({int currentIndex, bool navToRoot});
+  $Res call({int currentIndex, bool navToRoot, bool navToSeller});
 }
 
 /// @nodoc
@@ -1237,6 +1409,7 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
   $Res call({
     Object? currentIndex = freezed,
     Object? navToRoot = freezed,
+    Object? navToSeller = freezed,
   }) {
     return _then(_BuyerMenuState(
       currentIndex: currentIndex == freezed
@@ -1247,6 +1420,10 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.navToRoot
           : navToRoot // ignore: cast_nullable_to_non_nullable
               as bool,
+      navToSeller: navToSeller == freezed
+          ? _value.navToSeller
+          : navToSeller // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1255,16 +1432,20 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
 
 class _$_BuyerMenuState implements _BuyerMenuState {
   const _$_BuyerMenuState(
-      {required this.currentIndex, required this.navToRoot});
+      {required this.currentIndex,
+      required this.navToRoot,
+      required this.navToSeller});
 
   @override
   final int currentIndex;
   @override
   final bool navToRoot;
+  @override
+  final bool navToSeller;
 
   @override
   String toString() {
-    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot)';
+    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller)';
   }
 
   @override
@@ -1276,14 +1457,18 @@ class _$_BuyerMenuState implements _BuyerMenuState {
                     .equals(other.currentIndex, currentIndex)) &&
             (identical(other.navToRoot, navToRoot) ||
                 const DeepCollectionEquality()
-                    .equals(other.navToRoot, navToRoot)));
+                    .equals(other.navToRoot, navToRoot)) &&
+            (identical(other.navToSeller, navToSeller) ||
+                const DeepCollectionEquality()
+                    .equals(other.navToSeller, navToSeller)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(currentIndex) ^
-      const DeepCollectionEquality().hash(navToRoot);
+      const DeepCollectionEquality().hash(navToRoot) ^
+      const DeepCollectionEquality().hash(navToSeller);
 
   @JsonKey(ignore: true)
   @override
@@ -1293,12 +1478,16 @@ class _$_BuyerMenuState implements _BuyerMenuState {
 
 abstract class _BuyerMenuState implements BuyerMenuState {
   const factory _BuyerMenuState(
-      {required int currentIndex, required bool navToRoot}) = _$_BuyerMenuState;
+      {required int currentIndex,
+      required bool navToRoot,
+      required bool navToSeller}) = _$_BuyerMenuState;
 
   @override
   int get currentIndex => throw _privateConstructorUsedError;
   @override
   bool get navToRoot => throw _privateConstructorUsedError;
+  @override
+  bool get navToSeller => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BuyerMenuStateCopyWith<_BuyerMenuState> get copyWith =>

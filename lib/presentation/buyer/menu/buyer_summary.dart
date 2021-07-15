@@ -1,5 +1,5 @@
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
-import 'package:conectacampo/application/buyer/reservation/bloc/reservation_bloc.dart';
+import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
 import 'package:conectacampo/presentation/buyer/search/search_page.dart';
@@ -81,8 +81,8 @@ class BuyerSummary extends StatelessWidget {
                                 } else {
                                   return AdvertisementList(
                                       false,
-                                      r
-                                          .map((e) => UIAdvertisement(false, e))
+                                      (r.length > 3 ? r.sublist(0, 2) : r)
+                                          .map((e) => UIAdvertisement(true, e))
                                           .toList());
                                 }
                               }),
@@ -140,8 +140,8 @@ class BuyerSummary extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
+                                    children: const [
+                                      Text(
                                         'Dúvidas sobre preço?',
                                         style: TextStyle(
                                           color: Colors.white,
@@ -149,7 +149,7 @@ class BuyerSummary extends StatelessWidget {
                                           fontSize: 18,
                                         ),
                                       ),
-                                      const Text(
+                                      Text(
                                         'Acesse o PROHORT ou o SIMA!',
                                         style: TextStyle(color: Colors.white),
                                       )
@@ -201,12 +201,12 @@ class BuyerSummary extends StatelessWidget {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   'Sem itens na sua feira!',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                const Text('Fazer novo pedido')
+                Text('Fazer novo pedido')
               ],
             ),
             const SizedBox(
@@ -232,12 +232,12 @@ class BuyerSummary extends StatelessWidget {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   'Sem grupos',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                const Text('Procurar grupo de produtores')
+                Text('Procurar grupo de produtores')
               ],
             ),
             const SizedBox(
@@ -254,7 +254,7 @@ class BuyerSummary extends StatelessWidget {
     );
   }
 
-  Card _getSearchWidget(BuildContext context) {
+  Widget _getSearchWidget(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(0),
       shape: BeveledRectangleBorder(
@@ -289,12 +289,12 @@ class BuyerSummary extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        const Text(
+                      children: const [
+                        Text(
                           'O que você quer comprar hoje?',
                           style: TextStyle(fontFamily: 'Roboto', fontSize: 16),
                         ),
-                        const Icon(
+                        Icon(
                           Icons.search,
                           color: ColorSet.colorPrimaryGreen,
                         ),
@@ -334,15 +334,18 @@ class BuyerSummary extends StatelessWidget {
                       TextSpan(children: [
                         const TextSpan(
                           text: 'Produtos e Retirada em: ',
-                          style: TextStyle(color: ColorSet.gray2),
+                          style: TextStyle(color: ColorSet.gray2, fontSize: 13),
                         ),
                         TextSpan(
-                          text:
-                              '${context.read<AdvertisementsBloc>().state.fromPlace?.state} ${context.read<AdvertisementsBloc>().state.fromPlace?.name}',
+                          text: context
+                              .read<AdvertisementsBloc>()
+                              .state
+                              .fromPlace
+                              ?.name,
                           style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: ColorSet.gray2,
-                          ),
+                              fontWeight: FontWeight.bold,
+                              color: ColorSet.gray2,
+                              fontSize: 13),
                         ),
                       ]),
                       overflow: TextOverflow.ellipsis,

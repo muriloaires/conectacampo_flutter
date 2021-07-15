@@ -34,8 +34,7 @@ class AdvertisementsBloc
       if (selectedPlace != null) {
         final adsFailureOrSuccess =
             await _adsFacade.getAdvertisements(selectedPlace);
-        final groupAdsFailureOrSuccess =
-            await _adsFacade.getAdvertisements(selectedPlace);
+        final groupAdsFailureOrSuccess = await _adsFacade.getGroupsAds();
         yield state.copyWith(
             loading: false,
             adsFailureOrSuccess: adsFailureOrSuccess,

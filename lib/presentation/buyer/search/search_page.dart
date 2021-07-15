@@ -35,7 +35,6 @@ class SearchForm extends StatelessWidget {
         builder: (context, state) => Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
-                leading: null,
                 toolbarHeight: 120,
                 title: SizedBox(
                   height: 120,
@@ -75,7 +74,7 @@ class SearchForm extends StatelessWidget {
                                     cursorColor: ColorSet.colorPrimaryGreen,
                                     style:
                                         const TextStyle(fontFamily: 'Roboto'),
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       border: InputBorder.none,
                                       suffixIcon: Icon(
                                         Icons.search,
@@ -113,8 +112,11 @@ class SearchForm extends StatelessWidget {
                                             color: Colors.white, fontSize: 13),
                                       ),
                                       TextSpan(
-                                        text:
-                                            '${context.read<SearchFormBloc>().state.place?.state} ${context.read<SearchFormBloc>().state.place?.name}',
+                                        text: context
+                                            .read<SearchFormBloc>()
+                                            .state
+                                            .place
+                                            ?.name,
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,
@@ -150,7 +152,7 @@ class SearchForm extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: [
+                                    children: const [
                                       Text('+100 resultados'),
                                       Text(
                                         'Filtrar',
@@ -172,9 +174,9 @@ class SearchForm extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const Text('Escolher data de retirada'),
-                                      const Text(
+                                    children: const [
+                                      Text('Escolher data de retirada'),
+                                      Text(
                                         '22 de maio',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -188,33 +190,43 @@ class SearchForm extends StatelessWidget {
                               ],
                             )),
                         Expanded(
-                          child: state.adsProductsFailureOrSuccess
-                              .fold((l) => Text('Error'), (r) {
-                            return ListView.separated(
-                                separatorBuilder: (context, index) {
-                                  return Container(
-                                    height: 2,
-                                    color: ColorSet.gray10,
-                                  );
-                                },
-                                itemCount: r.length,
-                                physics: const ClampingScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  return Wrap(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () =>
-                                            context.read<SearchFormBloc>().add(
-                                                  const SearchFormEvent
-                                                      .productSelected(),
-                                                ),
-                                        child: SearchAdvertisement(r[index]),
-                                      )
-                                    ],
-                                  );
-                                });
-                          }),
+                          child: state.optionOfAdsProductsFailureOrSuccess.fold(
+                              () => Container(),
+                              (a) => a.fold((l) => const Text('Error'), (r) {
+                                    if (r.isEmpty) {
+                                      return const Center(
+                                          child: Text(
+                                              'Nenhum produto encontrado'));
+                                    } else {
+                                      return ListView.separated(
+                                          separatorBuilder: (context, index) {
+                                            return Container(
+                                              height: 2,
+                                              color: ColorSet.gray10,
+                                            );
+                                          },
+                                          itemCount: r.length,
+                                          physics:
+                                              const ClampingScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) {
+                                            return Wrap(
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () => context
+                                                      .read<SearchFormBloc>()
+                                                      .add(
+                                                        const SearchFormEvent
+                                                            .productSelected(),
+                                                      ),
+                                                  child: SearchAdvertisement(
+                                                      r[index]),
+                                                )
+                                              ],
+                                            );
+                                          });
+                                    }
+                                  })),
                         ),
                       ],
                     ),

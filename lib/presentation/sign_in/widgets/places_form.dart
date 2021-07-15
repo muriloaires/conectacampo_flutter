@@ -23,7 +23,7 @@ class PlacesForm extends StatelessWidget {
                     color: ColorSet.colorPrimaryGreenButton,
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context, null);
                   },
                 ),
               ),

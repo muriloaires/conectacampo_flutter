@@ -26,4 +26,9 @@ abstract class IAdvertisementsFacade {
 
   Future<Either<AdvertisementFailure, Advertisement>> publishAdvertisement(
       NewAdvertisement newAdvertisement);
+
+  Future<Either<AdvertisementFailure, List<Advertisement>>> getSellerAds(
+      Place place);
+
+  Future<Either<AdvertisementFailure, List<Advertisement>>> getGroupsAds();
 }

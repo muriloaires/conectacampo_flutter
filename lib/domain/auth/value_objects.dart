@@ -4,10 +4,10 @@ import 'package:conectacampo/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
 
 class PhoneNumber extends ValueObject<String> {
+  @override
   final Either<ValueFailure<String>, String> value;
 
   factory PhoneNumber(String input) {
-    assert(input != null);
     return PhoneNumber._(validatePhoneNumber(input));
   }
 
@@ -19,7 +19,6 @@ class SmsCode extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory SmsCode(String input) {
-    assert(input != null);
     return SmsCode._(validateSmsCode(input));
   }
 
@@ -31,7 +30,6 @@ class FullName extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory FullName(String input) {
-    assert(input != null);
     return FullName._(validateFullName(input));
   }
 
@@ -43,7 +41,6 @@ class Nickname extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory Nickname(String input) {
-    assert(input != null);
     return Nickname._(validateNickname(input));
   }
 
@@ -55,7 +52,6 @@ class UniqueId extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory UniqueId.fromUniqueString(String uniqueId) {
-    assert(uniqueId != null);
     return UniqueId._(
       right(uniqueId),
     );
@@ -69,7 +65,6 @@ class MediumAvatar extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory MediumAvatar(String input) {
-    assert(input != null);
     return MediumAvatar._(validateAvatar(input));
   }
 
@@ -81,7 +76,6 @@ class ThumbAvatar extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory ThumbAvatar(String input) {
-    assert(input != null);
     return ThumbAvatar._(validateAvatar(input));
   }
 
@@ -93,7 +87,6 @@ class OriginalAvatar extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory OriginalAvatar(String input) {
-    assert(input != null);
     return OriginalAvatar._(validateAvatar(input));
   }
 
@@ -102,8 +95,8 @@ class OriginalAvatar extends ValueObject<String> {
 
 void test() {
   final phoNumber = PhoneNumber('123');
-  String phoneNumberText = phoNumber.value
+  final String phoneNumberText = phoNumber.value
       .fold((left) => 'Failure happended: $left', (right) => right);
 
-  String teste = phoNumber.value.getOrElse(() => 'Some failure');
+  final teste = phoNumber.value.getOrElse(() => 'Some failure');
 }

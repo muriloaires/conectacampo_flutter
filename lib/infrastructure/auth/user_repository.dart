@@ -44,7 +44,7 @@ Future<String?> loadLoggedUserType() async {
       await SharedPreferences.getInstance();
 
   final userType = sharedPreferences.getString('logged_user_type');
-  if (json == null) {
+  if (userType == null) {
     return null;
   }
 

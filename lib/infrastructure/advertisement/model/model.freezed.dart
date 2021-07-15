@@ -398,7 +398,7 @@ class _$AdProductResponseTearOff {
 
   _AdProductResponse call(
       @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String? unitPrice,
@@ -434,7 +434,7 @@ mixin _$AdProductResponse {
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'measurement_unit')
   String get unitMeasure => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity')
@@ -465,7 +465,7 @@ abstract class $AdProductResponseCopyWith<$Res> {
       _$AdProductResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String? unitPrice,
@@ -506,7 +506,7 @@ class _$AdProductResponseCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       unitMeasure: unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
@@ -552,7 +552,7 @@ abstract class _$AdProductResponseCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String? unitPrice,
@@ -595,7 +595,7 @@ class __$AdProductResponseCopyWithImpl<$Res>
       name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
@@ -655,7 +655,7 @@ class _$_AdProductResponse implements _AdProductResponse {
   final int id;
   @override
   @JsonKey(name: 'name')
-  final String name;
+  final String? name;
   @override
   @JsonKey(name: 'measurement_unit')
   final String unitMeasure;
@@ -745,7 +745,7 @@ class _$_AdProductResponse implements _AdProductResponse {
 abstract class _AdProductResponse implements AdProductResponse {
   const factory _AdProductResponse(
       @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'name') String name,
+      @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'measurement_unit') String unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String? unitPrice,
@@ -763,7 +763,7 @@ abstract class _AdProductResponse implements AdProductResponse {
   int get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'measurement_unit')
   String get unitMeasure => throw _privateConstructorUsedError;

@@ -20,25 +20,25 @@ class _TutorialState extends State<Tutorial> {
     return Scaffold(
       body: Stack(
         children: [
-          PageView(
-            onPageChanged: (page) {
-              setState(() {
-                _showArrowLeft = page != 0;
-                _showBtnRegister = page == 3;
-              });
-            },
-            controller: _pageController,
-            children: [
-              Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Center(
+          Align(
+            alignment: Alignment.topCenter,
+            child: PageView(
+              onPageChanged: (page) {
+                setState(() {
+                  _showArrowLeft = page != 0;
+                  _showBtnRegister = page == 4;
+                });
+              },
+              controller: _pageController,
+              children: [
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(32, 60, 32, 0),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(
                           width: double.infinity,
                           child: Text(
-                            'Procure!',
+                            'Quem somos!',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: ColorSet.colorPrimaryGreen,
@@ -46,14 +46,17 @@ class _TutorialState extends State<Tutorial> {
                           ),
                         ),
                         const SizedBox(
-                          height: 24,
-                        ),
-                        const Text(
-                          'Conectamos Compradores e vendedores de Hortaliças, frutas e legumes na sua região, de maneira fácil e prática!',
-                          style: TextStyle(height: 2),
+                          height: 10,
                         ),
                         const SizedBox(
-                          height: 24,
+                          height: 180,
+                          child: Text(
+                            'Somos uma plataforma que conecta Compradores e Vendedores de hortaliças frutas e legumes na sua região de maneira fácil e prática.',
+                            style: TextStyle(height: 2),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         Image.asset(
                           'assets/onboarding_1.png',
@@ -61,82 +64,95 @@ class _TutorialState extends State<Tutorial> {
                           width: 250,
                         )
                       ],
-                    ),
-                  )),
-              Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            'Encontre!',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorSet.colorPrimaryGreen,
-                                fontSize: 40),
+                    )),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(32, 60, 32, 0),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              'Procure!',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorSet.colorPrimaryGreen,
+                                  fontSize: 40),
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        const Text(
-                          'Encontre com facilidade produtores locais para o seu negócio através do nosso sistema de anúncio, não perca tempo em procuras longas no Ceasa ou mercados',
-                          style: TextStyle(height: 2),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Image.asset(
-                          'assets/onboarding_2.png',
-                          height: 250,
-                          width: 250,
-                        )
-                      ],
-                    ),
-                  )),
-              Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          width: double.infinity,
-                          // ignore: prefer_const_constructors
-                          child: Text(
-                            'Segurança',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorSet.colorPrimaryGreen,
-                                fontSize: 40),
+                          const SizedBox(
+                            height: 10,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        const Text(
-                          'Com o nosso sistema de conexão comprador e vendedor conseguem fazer uma transação segura',
-                          style: TextStyle(height: 2),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Image.asset(
-                          'assets/onboarding_3.png',
-                          height: 250,
-                          width: 250,
-                        )
-                      ],
-                    ),
-                  )),
-              Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Center(
+                          const SizedBox(
+                            height: 180,
+                            child: Text.rich(
+                              TextSpan(
+                                  text:
+                                      'Com o nosso sistema de busca, você tem acesso a todos os produtos comercializados nos Ceasas na palma da sua mão. ',
+                                  style: TextStyle(height: 2),
+                                  children: [
+                                    TextSpan(
+                                        text:
+                                            'Antecipe suas compras e economize seu tempo!',
+                                        style: TextStyle(
+                                            height: 2,
+                                            fontWeight: FontWeight.bold,
+                                            color: ColorSet.colorPrimaryGreen))
+                                  ]),
+                              style: TextStyle(height: 2),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Image.asset(
+                            'assets/onboarding_2.png',
+                            height: 250,
+                            width: 250,
+                          )
+                        ],
+                      ),
+                    )),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(32, 60, 32, 0),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            width: double.infinity,
+                            // ignore: prefer_const_constructors
+                            child: Text(
+                              'Encontre!',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorSet.colorPrimaryGreen,
+                                  fontSize: 40),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const SizedBox(
+                            height: 180,
+                            child: Text(
+                              'Aqui você encontra produtos de qualidade e parceiros para a vida toda!',
+                              style: TextStyle(height: 2),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Image.asset(
+                            'assets/onboarding_3.png',
+                            height: 250,
+                            width: 250,
+                          )
+                        ],
+                      ),
+                    )),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(32, 60, 32, 0),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(
                           width: double.infinity,
@@ -149,14 +165,17 @@ class _TutorialState extends State<Tutorial> {
                           ),
                         ),
                         const SizedBox(
-                          height: 16,
-                        ),
-                        const Text(
-                          'Seu tempo é pracioso e por isso nós facilitamos a entrega entre vendedor e comprador.',
-                          style: TextStyle(height: 2),
+                          height: 10,
                         ),
                         const SizedBox(
-                          height: 16,
+                          height: 180,
+                          child: Text(
+                            'Com o nosso sistema de conexão, compradores e vendedores.',
+                            style: TextStyle(height: 2),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         Image.asset(
                           'assets/onboarding_1.png',
@@ -164,9 +183,56 @@ class _TutorialState extends State<Tutorial> {
                           width: 250,
                         )
                       ],
-                    ),
-                  ))
-            ],
+                    )),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(32, 60, 32, 0),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            'Visibilidade',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorSet.colorPrimaryGreen,
+                                fontSize: 40),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          height: 180,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                '• Anuncie para todos os compradores, compare de todos os vendedores.',
+                                style: TextStyle(height: 2),
+                              ),
+                              Text(
+                                '• Venda mais rápido, compre o melhor.',
+                                style: TextStyle(height: 2),
+                              ),
+                              Text(
+                                '• Um produto, muitos compradores. Muitos vendedores, seu produto.',
+                                style: TextStyle(height: 2),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Image.asset(
+                          'assets/onboarding_4.png',
+                          height: 250,
+                          width: 250,
+                        )
+                      ],
+                    ))
+              ],
+            ),
           ),
           Align(
               alignment: Alignment.bottomCenter,
@@ -178,7 +244,7 @@ class _TutorialState extends State<Tutorial> {
                       children: [
                         SmoothPageIndicator(
                             controller: _pageController, // PageController
-                            count: 4,
+                            count: 5,
                             effect: const JumpingDotEffect(
                                 activeDotColor: ColorSet.colorPrimaryGreen,
                                 dotColor: ColorSet.colorPrimaryGreenDisabled,

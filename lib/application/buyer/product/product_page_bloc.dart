@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:conectacampo/domain/reservation/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -16,6 +17,12 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
   Stream<ProductPageState> mapEventToState(
     ProductPageEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    yield* event.map(
+        started: (started) async* {},
+        ammountChanged: (ammountChanged) async* {
+          yield state.copyWith(
+              reservationQuantity: ReservationQuantity(ammountChanged.ammount));
+        },
+        onBtnReservationTap: (onBtnReservationTap) async* {});
   }
 }

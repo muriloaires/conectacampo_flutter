@@ -1,4 +1,4 @@
-import 'package:conectacampo/application/buyer/reservation/bloc/reservation_bloc.dart';
+import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,17 +81,17 @@ class Reservation extends StatelessWidget {
                         child: FittedBox(
                           child: Row(
                             children: [
-                              Text(
+                              const Text(
                                 'Fale com o vendedor',
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: ColorSet.green1,
                                     fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 8,
                               ),
                               SvgPicture.asset(
-                                'assets/whatsapp_colored.svg',
+                                'assets/whatsapp.svg',
                                 height: 18,
                                 width: 18,
                               )

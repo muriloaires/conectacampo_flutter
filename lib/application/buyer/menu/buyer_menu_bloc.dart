@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+part 'buyer_menu_bloc.freezed.dart';
 part 'buyer_menu_event.dart';
 part 'buyer_menu_state.dart';
-part 'buyer_menu_bloc.freezed.dart';
 
 @injectable
 class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
@@ -25,10 +26,10 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
         },
         buyTapped: (e) async* {},
         reservationTapped: (e) async* {
-          yield state.copyWith(currentIndex: 2, navToRoot: false);
+          yield state.copyWith(currentIndex: 3, navToRoot: false);
         },
         profileTapped: (e) async* {
-          yield state.copyWith(currentIndex: 3, navToRoot: false);
+          yield state.copyWith(currentIndex: 4, navToRoot: false);
         },
         groupsRetapped: (value) async* {
           yield state.copyWith(navToRoot: true);
@@ -41,6 +42,10 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
         },
         reservationRetapped: (value) async* {
           yield state.copyWith(navToRoot: true);
+        },
+        navToSellerTapped: (NavToSellerTapped value) async* {
+          await persistUserType('seller');
+          yield state.copyWith(navToSeller: true);
         });
   }
 }

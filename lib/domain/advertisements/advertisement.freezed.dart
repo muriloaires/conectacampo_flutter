@@ -348,7 +348,7 @@ class _$AdProductTearOff {
 
   _AdProduct call(
       int id,
-      String name,
+      String? name,
       String unitMeasure,
       int quantity,
       String? unitPrice,
@@ -380,7 +380,7 @@ const $AdProduct = _$AdProductTearOff();
 /// @nodoc
 mixin _$AdProduct {
   int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String get unitMeasure => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   String? get unitPrice => throw _privateConstructorUsedError;
@@ -402,7 +402,7 @@ abstract class $AdProductCopyWith<$Res> {
       _$AdProductCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      String name,
+      String? name,
       String unitMeasure,
       int quantity,
       String? unitPrice,
@@ -446,7 +446,7 @@ class _$AdProductCopyWithImpl<$Res> implements $AdProductCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       unitMeasure: unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
@@ -506,7 +506,7 @@ abstract class _$AdProductCopyWith<$Res> implements $AdProductCopyWith<$Res> {
   @override
   $Res call(
       {int id,
-      String name,
+      String? name,
       String unitMeasure,
       int quantity,
       String? unitPrice,
@@ -552,7 +552,7 @@ class __$AdProductCopyWithImpl<$Res> extends _$AdProductCopyWithImpl<$Res>
       name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
@@ -612,7 +612,7 @@ class _$_AdProduct implements _AdProduct {
   @override
   final int id;
   @override
-  final String name;
+  final String? name;
   @override
   final String unitMeasure;
   @override
@@ -695,7 +695,7 @@ class _$_AdProduct implements _AdProduct {
 abstract class _AdProduct implements AdProduct {
   const factory _AdProduct(
       int id,
-      String name,
+      String? name,
       String unitMeasure,
       int quantity,
       String? unitPrice,
@@ -709,7 +709,7 @@ abstract class _AdProduct implements AdProduct {
   @override
   int get id => throw _privateConstructorUsedError;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   @override
   String get unitMeasure => throw _privateConstructorUsedError;
   @override

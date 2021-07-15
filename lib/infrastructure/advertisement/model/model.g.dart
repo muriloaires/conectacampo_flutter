@@ -38,7 +38,7 @@ Map<String, dynamic> _$_$_AdvertisementResponseToJson(
 _$_AdProductResponse _$_$_AdProductResponseFromJson(Map<String, dynamic> json) {
   return _$_AdProductResponse(
     json['id'] as int,
-    json['name'] as String,
+    json['name'] as String?,
     json['measurement_unit'] as String,
     json['quantity'] as int,
     json['unit_price'] as String?,

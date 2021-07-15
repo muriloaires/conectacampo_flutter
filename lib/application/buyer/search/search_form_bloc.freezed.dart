@@ -535,8 +535,8 @@ class _$SearchFormStateTearOff {
   _SearchFormState call(
       {required bool productSelected,
       required bool searching,
-      required Either<AdvertisementFailure, List<AdProduct>>
-          adsProductsFailureOrSuccess,
+      required Option<Either<AdvertisementFailure, List<AdProduct>>>
+          optionOfAdsProductsFailureOrSuccess,
       required bool showFilters,
       required Place? place,
       required bool showHistory,
@@ -544,7 +544,7 @@ class _$SearchFormStateTearOff {
     return _SearchFormState(
       productSelected: productSelected,
       searching: searching,
-      adsProductsFailureOrSuccess: adsProductsFailureOrSuccess,
+      optionOfAdsProductsFailureOrSuccess: optionOfAdsProductsFailureOrSuccess,
       showFilters: showFilters,
       place: place,
       showHistory: showHistory,
@@ -560,8 +560,9 @@ const $SearchFormState = _$SearchFormStateTearOff();
 mixin _$SearchFormState {
   bool get productSelected => throw _privateConstructorUsedError;
   bool get searching => throw _privateConstructorUsedError;
-  Either<AdvertisementFailure, List<AdProduct>>
-      get adsProductsFailureOrSuccess => throw _privateConstructorUsedError;
+  Option<Either<AdvertisementFailure, List<AdProduct>>>
+      get optionOfAdsProductsFailureOrSuccess =>
+          throw _privateConstructorUsedError;
   bool get showFilters => throw _privateConstructorUsedError;
   Place? get place => throw _privateConstructorUsedError;
   bool get showHistory => throw _privateConstructorUsedError;
@@ -580,7 +581,8 @@ abstract class $SearchFormStateCopyWith<$Res> {
   $Res call(
       {bool productSelected,
       bool searching,
-      Either<AdvertisementFailure, List<AdProduct>> adsProductsFailureOrSuccess,
+      Option<Either<AdvertisementFailure, List<AdProduct>>>
+          optionOfAdsProductsFailureOrSuccess,
       bool showFilters,
       Place? place,
       bool showHistory,
@@ -602,7 +604,7 @@ class _$SearchFormStateCopyWithImpl<$Res>
   $Res call({
     Object? productSelected = freezed,
     Object? searching = freezed,
-    Object? adsProductsFailureOrSuccess = freezed,
+    Object? optionOfAdsProductsFailureOrSuccess = freezed,
     Object? showFilters = freezed,
     Object? place = freezed,
     Object? showHistory = freezed,
@@ -617,10 +619,11 @@ class _$SearchFormStateCopyWithImpl<$Res>
           ? _value.searching
           : searching // ignore: cast_nullable_to_non_nullable
               as bool,
-      adsProductsFailureOrSuccess: adsProductsFailureOrSuccess == freezed
-          ? _value.adsProductsFailureOrSuccess
-          : adsProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Either<AdvertisementFailure, List<AdProduct>>,
+      optionOfAdsProductsFailureOrSuccess: optionOfAdsProductsFailureOrSuccess ==
+              freezed
+          ? _value.optionOfAdsProductsFailureOrSuccess
+          : optionOfAdsProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AdvertisementFailure, List<AdProduct>>>,
       showFilters: showFilters == freezed
           ? _value.showFilters
           : showFilters // ignore: cast_nullable_to_non_nullable
@@ -662,7 +665,8 @@ abstract class _$SearchFormStateCopyWith<$Res>
   $Res call(
       {bool productSelected,
       bool searching,
-      Either<AdvertisementFailure, List<AdProduct>> adsProductsFailureOrSuccess,
+      Option<Either<AdvertisementFailure, List<AdProduct>>>
+          optionOfAdsProductsFailureOrSuccess,
       bool showFilters,
       Place? place,
       bool showHistory,
@@ -687,7 +691,7 @@ class __$SearchFormStateCopyWithImpl<$Res>
   $Res call({
     Object? productSelected = freezed,
     Object? searching = freezed,
-    Object? adsProductsFailureOrSuccess = freezed,
+    Object? optionOfAdsProductsFailureOrSuccess = freezed,
     Object? showFilters = freezed,
     Object? place = freezed,
     Object? showHistory = freezed,
@@ -702,10 +706,11 @@ class __$SearchFormStateCopyWithImpl<$Res>
           ? _value.searching
           : searching // ignore: cast_nullable_to_non_nullable
               as bool,
-      adsProductsFailureOrSuccess: adsProductsFailureOrSuccess == freezed
-          ? _value.adsProductsFailureOrSuccess
-          : adsProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Either<AdvertisementFailure, List<AdProduct>>,
+      optionOfAdsProductsFailureOrSuccess: optionOfAdsProductsFailureOrSuccess ==
+              freezed
+          ? _value.optionOfAdsProductsFailureOrSuccess
+          : optionOfAdsProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AdvertisementFailure, List<AdProduct>>>,
       showFilters: showFilters == freezed
           ? _value.showFilters
           : showFilters // ignore: cast_nullable_to_non_nullable
@@ -732,7 +737,7 @@ class _$_SearchFormState implements _SearchFormState {
   const _$_SearchFormState(
       {required this.productSelected,
       required this.searching,
-      required this.adsProductsFailureOrSuccess,
+      required this.optionOfAdsProductsFailureOrSuccess,
       required this.showFilters,
       required this.place,
       required this.showHistory,
@@ -743,8 +748,8 @@ class _$_SearchFormState implements _SearchFormState {
   @override
   final bool searching;
   @override
-  final Either<AdvertisementFailure, List<AdProduct>>
-      adsProductsFailureOrSuccess;
+  final Option<Either<AdvertisementFailure, List<AdProduct>>>
+      optionOfAdsProductsFailureOrSuccess;
   @override
   final bool showFilters;
   @override
@@ -756,7 +761,7 @@ class _$_SearchFormState implements _SearchFormState {
 
   @override
   String toString() {
-    return 'SearchFormState(productSelected: $productSelected, searching: $searching, adsProductsFailureOrSuccess: $adsProductsFailureOrSuccess, showFilters: $showFilters, place: $place, showHistory: $showHistory, history: $history)';
+    return 'SearchFormState(productSelected: $productSelected, searching: $searching, optionOfAdsProductsFailureOrSuccess: $optionOfAdsProductsFailureOrSuccess, showFilters: $showFilters, place: $place, showHistory: $showHistory, history: $history)';
   }
 
   @override
@@ -769,11 +774,11 @@ class _$_SearchFormState implements _SearchFormState {
             (identical(other.searching, searching) ||
                 const DeepCollectionEquality()
                     .equals(other.searching, searching)) &&
-            (identical(other.adsProductsFailureOrSuccess,
-                    adsProductsFailureOrSuccess) ||
+            (identical(other.optionOfAdsProductsFailureOrSuccess,
+                    optionOfAdsProductsFailureOrSuccess) ||
                 const DeepCollectionEquality().equals(
-                    other.adsProductsFailureOrSuccess,
-                    adsProductsFailureOrSuccess)) &&
+                    other.optionOfAdsProductsFailureOrSuccess,
+                    optionOfAdsProductsFailureOrSuccess)) &&
             (identical(other.showFilters, showFilters) ||
                 const DeepCollectionEquality()
                     .equals(other.showFilters, showFilters)) &&
@@ -791,7 +796,7 @@ class _$_SearchFormState implements _SearchFormState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(productSelected) ^
       const DeepCollectionEquality().hash(searching) ^
-      const DeepCollectionEquality().hash(adsProductsFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(optionOfAdsProductsFailureOrSuccess) ^
       const DeepCollectionEquality().hash(showFilters) ^
       const DeepCollectionEquality().hash(place) ^
       const DeepCollectionEquality().hash(showHistory) ^
@@ -807,8 +812,8 @@ abstract class _SearchFormState implements SearchFormState {
   const factory _SearchFormState(
       {required bool productSelected,
       required bool searching,
-      required Either<AdvertisementFailure, List<AdProduct>>
-          adsProductsFailureOrSuccess,
+      required Option<Either<AdvertisementFailure, List<AdProduct>>>
+          optionOfAdsProductsFailureOrSuccess,
       required bool showFilters,
       required Place? place,
       required bool showHistory,
@@ -819,8 +824,9 @@ abstract class _SearchFormState implements SearchFormState {
   @override
   bool get searching => throw _privateConstructorUsedError;
   @override
-  Either<AdvertisementFailure, List<AdProduct>>
-      get adsProductsFailureOrSuccess => throw _privateConstructorUsedError;
+  Option<Either<AdvertisementFailure, List<AdProduct>>>
+      get optionOfAdsProductsFailureOrSuccess =>
+          throw _privateConstructorUsedError;
   @override
   bool get showFilters => throw _privateConstructorUsedError;
   @override

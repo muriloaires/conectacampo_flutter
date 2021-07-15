@@ -158,3 +158,12 @@ Either<ValueFailure<String>, String> validateNewAdProductObservation(
     return right(input);
   }
 }
+
+Either<ValueFailure<String>, String> validateReservationQuantity(String input) {
+  final intValue = int.tryParse(input);
+  if (intValue == null || intValue <= 0) {
+    return left(ValueFailure.invalidReservationQuantity(input));
+  } else {
+    return right(input);
+  }
+}

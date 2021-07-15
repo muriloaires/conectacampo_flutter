@@ -23,15 +23,11 @@ class Advertiser extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
       child: Row(
         children: [
-          Container(
-              width: 72.0,
-              height: 72.0,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image:
-                          NetworkImage(user.thumbAvatar?.getOrCrash() ?? '')))),
+          CircleAvatar(
+              radius: 30.0,
+              backgroundColor: ColorSet.green1,
+              foregroundImage:
+                  NetworkImage(user.thumbAvatar?.getOrCrash() ?? '')),
           const SizedBox(
             width: 8,
           ),
@@ -43,7 +39,7 @@ class Advertiser extends StatelessWidget {
                   user.name.getOrCrash(),
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                      fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Text.rich(TextSpan(children: [
                   const TextSpan(

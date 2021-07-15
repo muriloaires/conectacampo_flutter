@@ -5,8 +5,8 @@ class SearchFormState with _$SearchFormState {
   const factory SearchFormState(
       {required bool productSelected,
       required bool searching,
-      required Either<AdvertisementFailure, List<AdProduct>>
-          adsProductsFailureOrSuccess,
+      required Option<Either<AdvertisementFailure, List<AdProduct>>>
+          optionOfAdsProductsFailureOrSuccess,
       required bool showFilters,
       required Place? place,
       required bool showHistory,
@@ -15,8 +15,7 @@ class SearchFormState with _$SearchFormState {
   factory SearchFormState.initial() => SearchFormState(
       productSelected: false,
       searching: false,
-      adsProductsFailureOrSuccess:
-          left(const AdvertisementFailure.productsNotFound()),
+      optionOfAdsProductsFailureOrSuccess: none(),
       showFilters: false,
       place: null,
       showHistory: true,

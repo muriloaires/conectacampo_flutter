@@ -1,5 +1,6 @@
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/presentation/buyer/product/product_page.dart';
+
 import 'package:conectacampo/presentation/buyer/widgets/product_advertisement.dart';
 import 'package:flutter/material.dart';
 
@@ -38,8 +39,8 @@ class SingleAdvertisement extends StatelessWidget {
                 return GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            ProductPage(_advertisement.products[index]),
+                        builder: (context) => ProductPage(
+                            _advertisement.products[index], _advertisement),
                       ));
                     },
                     child:

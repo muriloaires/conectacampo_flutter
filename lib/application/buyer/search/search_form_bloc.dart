@@ -44,7 +44,7 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
             adsProductFailureOrSuccess = await _advertisementsFacade.getProduct(
                 place: place, productName: value.query);
         yield state.copyWith(
-          adsProductsFailureOrSuccess: adsProductFailureOrSuccess,
+          optionOfAdsProductsFailureOrSuccess: some(adsProductFailureOrSuccess),
           showFilters: true,
           searching: false,
           showHistory: false,
@@ -52,8 +52,8 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
       } else {
         yield state.copyWith(
           searching: false,
-          adsProductsFailureOrSuccess:
-              left(const AdvertisementFailure.placeNotFound()),
+          optionOfAdsProductsFailureOrSuccess:
+              some(left(const AdvertisementFailure.placeNotFound())),
         );
       }
     }, historySelected: (HistorySelected value) async* {
@@ -65,7 +65,7 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
             adsProductFailureOrSuccess = await _advertisementsFacade.getProduct(
                 place: place, productName: value.query);
         yield state.copyWith(
-          adsProductsFailureOrSuccess: adsProductFailureOrSuccess,
+          optionOfAdsProductsFailureOrSuccess: some(adsProductFailureOrSuccess),
           showFilters: true,
           searching: false,
           showHistory: false,
@@ -73,8 +73,8 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
       } else {
         yield state.copyWith(
           searching: false,
-          adsProductsFailureOrSuccess:
-              left(const AdvertisementFailure.placeNotFound()),
+          optionOfAdsProductsFailureOrSuccess:
+              some(left(const AdvertisementFailure.placeNotFound())),
         );
       }
     });

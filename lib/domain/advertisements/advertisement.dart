@@ -23,7 +23,7 @@ class Advertisement with _$Advertisement {
 class AdProduct with _$AdProduct {
   const factory AdProduct(
     int id,
-    String name,
+    String? name,
     String unitMeasure,
     int quantity,
     String? unitPrice,

@@ -151,8 +151,17 @@ abstract class _Started implements SellerSummaryEvent {
 class _$SellerSummaryStateTearOff {
   const _$SellerSummaryStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  _SellerSummaryState call(
+      {required Option<Place> optionOfOPlace,
+      required Option<Either<AuthFailure, User>> optionOfOUser,
+      required Option<Either<AdvertisementFailure, List<Advertisement>>>
+          optionOfAdvertisementsFailureOrSuccess}) {
+    return _SellerSummaryState(
+      optionOfOPlace: optionOfOPlace,
+      optionOfOUser: optionOfOUser,
+      optionOfAdvertisementsFailureOrSuccess:
+          optionOfAdvertisementsFailureOrSuccess,
+    );
   }
 }
 
@@ -161,27 +170,15 @@ const $SellerSummaryState = _$SellerSummaryStateTearOff();
 
 /// @nodoc
 mixin _$SellerSummaryState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
+  Option<Place> get optionOfOPlace => throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, User>> get optionOfOUser =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  Option<Either<AdvertisementFailure, List<Advertisement>>>
+      get optionOfAdvertisementsFailureOrSuccess =>
+          throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SellerSummaryStateCopyWith<SellerSummaryState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -190,6 +187,11 @@ abstract class $SellerSummaryStateCopyWith<$Res> {
   factory $SellerSummaryStateCopyWith(
           SellerSummaryState value, $Res Function(SellerSummaryState) then) =
       _$SellerSummaryStateCopyWithImpl<$Res>;
+  $Res call(
+      {Option<Place> optionOfOPlace,
+      Option<Either<AuthFailure, User>> optionOfOUser,
+      Option<Either<AdvertisementFailure, List<Advertisement>>>
+          optionOfAdvertisementsFailureOrSuccess});
 }
 
 /// @nodoc
@@ -200,84 +202,150 @@ class _$SellerSummaryStateCopyWithImpl<$Res>
   final SellerSummaryState _value;
   // ignore: unused_field
   final $Res Function(SellerSummaryState) _then;
-}
-
-/// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$InitialCopyWithImpl<$Res>
-    extends _$SellerSummaryStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  $Res call({
+    Object? optionOfOPlace = freezed,
+    Object? optionOfOUser = freezed,
+    Object? optionOfAdvertisementsFailureOrSuccess = freezed,
+  }) {
+    return _then(_value.copyWith(
+      optionOfOPlace: optionOfOPlace == freezed
+          ? _value.optionOfOPlace
+          : optionOfOPlace // ignore: cast_nullable_to_non_nullable
+              as Option<Place>,
+      optionOfOUser: optionOfOUser == freezed
+          ? _value.optionOfOUser
+          : optionOfOUser // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, User>>,
+      optionOfAdvertisementsFailureOrSuccess:
+          optionOfAdvertisementsFailureOrSuccess == freezed
+              ? _value.optionOfAdvertisementsFailureOrSuccess
+              : optionOfAdvertisementsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<AdvertisementFailure, List<Advertisement>>>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$SellerSummaryStateCopyWith<$Res>
+    implements $SellerSummaryStateCopyWith<$Res> {
+  factory _$SellerSummaryStateCopyWith(
+          _SellerSummaryState value, $Res Function(_SellerSummaryState) then) =
+      __$SellerSummaryStateCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {Option<Place> optionOfOPlace,
+      Option<Either<AuthFailure, User>> optionOfOUser,
+      Option<Either<AdvertisementFailure, List<Advertisement>>>
+          optionOfAdvertisementsFailureOrSuccess});
+}
+
+/// @nodoc
+class __$SellerSummaryStateCopyWithImpl<$Res>
+    extends _$SellerSummaryStateCopyWithImpl<$Res>
+    implements _$SellerSummaryStateCopyWith<$Res> {
+  __$SellerSummaryStateCopyWithImpl(
+      _SellerSummaryState _value, $Res Function(_SellerSummaryState) _then)
+      : super(_value, (v) => _then(v as _SellerSummaryState));
+
+  @override
+  _SellerSummaryState get _value => super._value as _SellerSummaryState;
+
+  @override
+  $Res call({
+    Object? optionOfOPlace = freezed,
+    Object? optionOfOUser = freezed,
+    Object? optionOfAdvertisementsFailureOrSuccess = freezed,
+  }) {
+    return _then(_SellerSummaryState(
+      optionOfOPlace: optionOfOPlace == freezed
+          ? _value.optionOfOPlace
+          : optionOfOPlace // ignore: cast_nullable_to_non_nullable
+              as Option<Place>,
+      optionOfOUser: optionOfOUser == freezed
+          ? _value.optionOfOUser
+          : optionOfOUser // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, User>>,
+      optionOfAdvertisementsFailureOrSuccess:
+          optionOfAdvertisementsFailureOrSuccess == freezed
+              ? _value.optionOfAdvertisementsFailureOrSuccess
+              : optionOfAdvertisementsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<AdvertisementFailure, List<Advertisement>>>,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_SellerSummaryState implements _SellerSummaryState {
+  const _$_SellerSummaryState(
+      {required this.optionOfOPlace,
+      required this.optionOfOUser,
+      required this.optionOfAdvertisementsFailureOrSuccess});
+
+  @override
+  final Option<Place> optionOfOPlace;
+  @override
+  final Option<Either<AuthFailure, User>> optionOfOUser;
+  @override
+  final Option<Either<AdvertisementFailure, List<Advertisement>>>
+      optionOfAdvertisementsFailureOrSuccess;
 
   @override
   String toString() {
-    return 'SellerSummaryState.initial()';
+    return 'SellerSummaryState(optionOfOPlace: $optionOfOPlace, optionOfOUser: $optionOfOUser, optionOfAdvertisementsFailureOrSuccess: $optionOfAdvertisementsFailureOrSuccess)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other is _SellerSummaryState &&
+            (identical(other.optionOfOPlace, optionOfOPlace) ||
+                const DeepCollectionEquality()
+                    .equals(other.optionOfOPlace, optionOfOPlace)) &&
+            (identical(other.optionOfOUser, optionOfOUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.optionOfOUser, optionOfOUser)) &&
+            (identical(other.optionOfAdvertisementsFailureOrSuccess,
+                    optionOfAdvertisementsFailureOrSuccess) ||
+                const DeepCollectionEquality().equals(
+                    other.optionOfAdvertisementsFailureOrSuccess,
+                    optionOfAdvertisementsFailureOrSuccess)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(optionOfOPlace) ^
+      const DeepCollectionEquality().hash(optionOfOUser) ^
+      const DeepCollectionEquality()
+          .hash(optionOfAdvertisementsFailureOrSuccess);
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  _$SellerSummaryStateCopyWith<_SellerSummaryState> get copyWith =>
+      __$SellerSummaryStateCopyWithImpl<_SellerSummaryState>(this, _$identity);
 }
 
-abstract class _Initial implements SellerSummaryState {
-  const factory _Initial() = _$_Initial;
+abstract class _SellerSummaryState implements SellerSummaryState {
+  const factory _SellerSummaryState(
+      {required Option<Place> optionOfOPlace,
+      required Option<Either<AuthFailure, User>> optionOfOUser,
+      required Option<Either<AdvertisementFailure, List<Advertisement>>>
+          optionOfAdvertisementsFailureOrSuccess}) = _$_SellerSummaryState;
+
+  @override
+  Option<Place> get optionOfOPlace => throw _privateConstructorUsedError;
+  @override
+  Option<Either<AuthFailure, User>> get optionOfOUser =>
+      throw _privateConstructorUsedError;
+  @override
+  Option<Either<AdvertisementFailure, List<Advertisement>>>
+      get optionOfAdvertisementsFailureOrSuccess =>
+          throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$SellerSummaryStateCopyWith<_SellerSummaryState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

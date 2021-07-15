@@ -83,4 +83,8 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidNewAdProductObservation(
     String failedValue,
   ) = InvalidNewAdProductObservation<T>;
+
+  const factory ValueFailure.invalidReservationQuantity(
+    String failedValue,
+  ) = InvalidReservationQuantity<T>;
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/advertisements/advertisement_failure.dart';
@@ -18,6 +19,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 @LazySingleton(as: IAdvertisementsFacade)
 class AdvertisementFacade extends IAdvertisementsFacade {
   static const routeAdvertisements = '/advertisements';
+  static const routeGroupsAds = '/groups/advertisements';
+  static const routeSellersAds = '/advertisements/me';
   static const routeAdsProducts = '/advertisement_products';
 
   @override
@@ -32,12 +35,12 @@ class AdvertisementFacade extends IAdvertisementsFacade {
       final advertisementsResponse = iterable.map((e) =>
           AdvertisementResponse.fromJson(e as Map<String, dynamic>).toDomain());
 
-      for (var element in advertisementsResponse) {
-        for (var product in element.products) {
-          product.copyWith(advertisement: element);
-        }
-      }
-      return right(advertisementsResponse.toList());
+      final List<Advertisement> finalResult = advertisementsResponse
+          .map((e) => e.copyWith(
+              products:
+                  e.products.map((f) => f.copyWith(advertisement: e)).toList()))
+          .toList();
+      return right(finalResult);
     } else if (code == 401) {
       return left(const AdvertisementFailure.unauthorized());
     } else if (code >= 400 && code < 500) {
@@ -56,7 +59,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
     int? quantity,
     String? rating,
   }) async {
-    Map<String, dynamic> params = {'place_id': place.id};
+    final Map<String, dynamic> params = {'place_id': place.id};
 
     if (productName != null) {
       params.addAll({'name': productName});
@@ -194,6 +197,58 @@ class AdvertisementFacade extends IAdvertisementsFacade {
             'products_attributes[$index][images][]', element));
       }
       index++;
+    }
+  }
+
+  @override
+  Future<Either<AdvertisementFailure, List<Advertisement>>> getSellerAds(
+      Place place) async {
+    final url = Uri.https(baseUrl, '$apiVersion$routeSellersAds',
+        {'place_id': place.id.toString()});
+    final response = await getAuthenticatedRequest(url, getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final Iterable iterable = jsonDecode(response.body) as Iterable;
+      final advertisementsResponse = iterable.map((e) =>
+          AdvertisementResponse.fromJson(e as Map<String, dynamic>).toDomain());
+      final List<Advertisement> finalResult = advertisementsResponse
+          .map((e) => e.copyWith(
+              products:
+                  e.products.map((f) => f.copyWith(advertisement: e)).toList()))
+          .toList();
+      return right(finalResult);
+    } else if (code == 401) {
+      return left(const AdvertisementFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const AdvertisementFailure.requestError());
+    } else {
+      return left(const AdvertisementFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AdvertisementFailure, List<Advertisement>>>
+      getGroupsAds() async {
+    final url = Uri.https(baseUrl, '$apiVersion$routeGroupsAds');
+    final response = await getAuthenticatedRequest(url, getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final Iterable iterable = jsonDecode(response.body) as Iterable;
+      final advertisementsResponse = iterable.map((e) =>
+          AdvertisementResponse.fromJson(e as Map<String, dynamic>).toDomain());
+
+      final List<Advertisement> finalResult = advertisementsResponse
+          .map((e) => e.copyWith(
+              products:
+                  e.products.map((f) => f.copyWith(advertisement: e)).toList()))
+          .toList();
+      return right(finalResult);
+    } else if (code == 401) {
+      return left(const AdvertisementFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const AdvertisementFailure.requestError());
+    } else {
+      return left(const AdvertisementFailure.serverError());
     }
   }
 }
