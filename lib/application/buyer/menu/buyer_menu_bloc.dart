@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
+import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -11,7 +13,9 @@ part 'buyer_menu_state.dart';
 
 @injectable
 class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
-  BuyerMenuBloc() : super(BuyerMenuState.initial());
+  BuyerMenuBloc(this.reservationFacade) : super(BuyerMenuState.initial());
+
+  final IReservationFacade reservationFacade;
 
   @override
   Stream<BuyerMenuState> mapEventToState(
@@ -46,6 +50,14 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
         navToSellerTapped: (NavToSellerTapped value) async* {
           await persistUserType('seller');
           yield state.copyWith(navToSeller: true);
+        },
+        started: (Started value) async* {
+          final itemsInCart = await reservationFacade.getItemsInCart();
+          yield state.copyWith(itemsInCart: itemsInCart);
+        },
+        onCartTapped: (OnCartTapped value) async* {
+          yield state.copyWith(openCart: true);
+          yield state.copyWith(openCart: false);
         });
   }
 }

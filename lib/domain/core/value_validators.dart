@@ -2,9 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:conectacampo/domain/core/failures.dart';
 
 Either<ValueFailure<String>, String> validatePhoneNumber(String input) {
-  final formated =
-      input.replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "");
-  if (formated.isEmpty || formated.length != 12) {
+  final formated = input
+      .replaceAll("(", "")
+      .replaceAll(")", "")
+      .replaceAll(" ", "")
+      .replaceAll("+55", "")
+      .replaceAll("-", "");
+  if (formated.isEmpty || formated.length != 11) {
     return left(ValueFailure.invalidPhoneNumber(formated));
   } else {
     return right(formated);

@@ -18,6 +18,8 @@ class _$ReservationItemTearOff {
 
   _ReservationItem call(
       {required int id,
+      required String name,
+      required String image,
       required String measurementUnit,
       required int quantity,
       required String rating,
@@ -26,6 +28,8 @@ class _$ReservationItemTearOff {
       required String sellerPhone}) {
     return _ReservationItem(
       id: id,
+      name: name,
+      image: image,
       measurementUnit: measurementUnit,
       quantity: quantity,
       rating: rating,
@@ -42,6 +46,8 @@ const $ReservationItem = _$ReservationItemTearOff();
 /// @nodoc
 mixin _$ReservationItem {
   int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   String get measurementUnit => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   String get rating => throw _privateConstructorUsedError;
@@ -61,6 +67,8 @@ abstract class $ReservationItemCopyWith<$Res> {
       _$ReservationItemCopyWithImpl<$Res>;
   $Res call(
       {int id,
+      String name,
+      String image,
       String measurementUnit,
       int quantity,
       String rating,
@@ -81,6 +89,8 @@ class _$ReservationItemCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
     Object? measurementUnit = freezed,
     Object? quantity = freezed,
     Object? rating = freezed,
@@ -93,6 +103,14 @@ class _$ReservationItemCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
       measurementUnit: measurementUnit == freezed
           ? _value.measurementUnit
           : measurementUnit // ignore: cast_nullable_to_non_nullable
@@ -130,6 +148,8 @@ abstract class _$ReservationItemCopyWith<$Res>
   @override
   $Res call(
       {int id,
+      String name,
+      String image,
       String measurementUnit,
       int quantity,
       String rating,
@@ -152,6 +172,8 @@ class __$ReservationItemCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
     Object? measurementUnit = freezed,
     Object? quantity = freezed,
     Object? rating = freezed,
@@ -164,6 +186,14 @@ class __$ReservationItemCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
       measurementUnit: measurementUnit == freezed
           ? _value.measurementUnit
           : measurementUnit // ignore: cast_nullable_to_non_nullable
@@ -197,6 +227,8 @@ class __$ReservationItemCopyWithImpl<$Res>
 class _$_ReservationItem implements _ReservationItem {
   const _$_ReservationItem(
       {required this.id,
+      required this.name,
+      required this.image,
       required this.measurementUnit,
       required this.quantity,
       required this.rating,
@@ -206,6 +238,10 @@ class _$_ReservationItem implements _ReservationItem {
 
   @override
   final int id;
+  @override
+  final String name;
+  @override
+  final String image;
   @override
   final String measurementUnit;
   @override
@@ -221,7 +257,7 @@ class _$_ReservationItem implements _ReservationItem {
 
   @override
   String toString() {
-    return 'ReservationItem(id: $id, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerPhone: $sellerPhone)';
+    return 'ReservationItem(id: $id, name: $name, image: $image, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerPhone: $sellerPhone)';
   }
 
   @override
@@ -230,6 +266,10 @@ class _$_ReservationItem implements _ReservationItem {
         (other is _ReservationItem &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)) &&
             (identical(other.measurementUnit, measurementUnit) ||
                 const DeepCollectionEquality()
                     .equals(other.measurementUnit, measurementUnit)) &&
@@ -252,6 +292,8 @@ class _$_ReservationItem implements _ReservationItem {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(image) ^
       const DeepCollectionEquality().hash(measurementUnit) ^
       const DeepCollectionEquality().hash(quantity) ^
       const DeepCollectionEquality().hash(rating) ^
@@ -268,6 +310,8 @@ class _$_ReservationItem implements _ReservationItem {
 abstract class _ReservationItem implements ReservationItem {
   const factory _ReservationItem(
       {required int id,
+      required String name,
+      required String image,
       required String measurementUnit,
       required int quantity,
       required String rating,
@@ -277,6 +321,10 @@ abstract class _ReservationItem implements ReservationItem {
 
   @override
   int get id => throw _privateConstructorUsedError;
+  @override
+  String get name => throw _privateConstructorUsedError;
+  @override
+  String get image => throw _privateConstructorUsedError;
   @override
   String get measurementUnit => throw _privateConstructorUsedError;
   @override

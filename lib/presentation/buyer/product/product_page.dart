@@ -1,3 +1,4 @@
+import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/buyer/product/product_page_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/infrastructure/core/core_extensions.dart';
@@ -7,6 +8,7 @@ import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatelessWidget {
@@ -16,10 +18,24 @@ class ProductPage extends StatelessWidget {
   const ProductPage(this._product, this._advertisement);
   @override
   Widget build(BuildContext context) {
+    final textController = TextEditingController();
     return BlocProvider<ProductPageBloc>(
-      create: (context) => getIt(),
+      create: (context) => getIt()..add(ProductPageEvent.started(_product)),
       child: BlocConsumer<ProductPageBloc, ProductPageState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state.setInitialQuantity) {
+              state.optionOfReservatiomItem.fold(() => null, (a) {
+                context.read<ProductPageBloc>().add(
+                    ProductPageEvent.ammountChanged(a.quantity.toString()));
+                textController.text = a.quantity.toString();
+              });
+            }
+
+            if (state.back) {
+              context.read<BuyerMenuBloc>().add(const BuyerMenuEvent.started());
+              Navigator.of(context).pop();
+            }
+          },
           builder: (context, state) => Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
@@ -103,7 +119,7 @@ class ProductPage extends StatelessWidget {
                         children: [
                           Text(
                             _product.name ?? '',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 20),
                           ),
                           const SizedBox(
@@ -114,7 +130,7 @@ class ProductPage extends StatelessWidget {
                             padding: const EdgeInsets.all(2),
                             child: Text(
                               '${_product.kind} ${_product.unitMeasure}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 12,
                                   color: ColorSet.gray2),
@@ -203,6 +219,7 @@ class ProductPage extends StatelessWidget {
                                       color: ColorSet.grayRoundedBackground,
                                       child: Center(
                                         child: TextFormField(
+                                          controller: textController,
                                           validator: (_) => context
                                               .read<ProductPageBloc>()
                                               .state
@@ -212,7 +229,7 @@ class ProductPage extends StatelessWidget {
                                                   (l) => l.maybeMap(
                                                       invalidReservationQuantity:
                                                           (_) =>
-                                                              'Número inválido',
+                                                              'Quantidade inválida',
                                                       orElse: () => null),
                                                   (r) => null),
                                           onChanged: (value) {
@@ -275,7 +292,21 @@ class ProductPage extends StatelessWidget {
                               height: 16,
                             ),
                             MaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (context
+                                    .read<ProductPageBloc>()
+                                    .state
+                                    .reservationQuantity
+                                    .isValid()) {
+                                  context.read<ProductPageBloc>().add(
+                                      ProductPageEvent.onBtnReservationTap(
+                                          _product));
+
+                                  EasyLoading.showSuccess(
+                                      'Produto adicionado com sucesso',
+                                      duration: const Duration(seconds: 2));
+                                }
+                              },
                               child: ClipRRect(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(8)),

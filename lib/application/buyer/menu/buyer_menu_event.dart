@@ -2,6 +2,9 @@ part of 'buyer_menu_bloc.dart';
 
 @freezed
 class BuyerMenuEvent with _$BuyerMenuEvent {
+  const factory BuyerMenuEvent.started() = Started;
+  const factory BuyerMenuEvent.onCartTapped() = OnCartTapped;
+
   const factory BuyerMenuEvent.buyTapped() = BuyTapped;
 
   const factory BuyerMenuEvent.homeTapped() = HomeTapped;

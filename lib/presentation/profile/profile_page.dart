@@ -1,14 +1,10 @@
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/profile/profile_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
-import 'package:conectacampo/domain/auth/user.dart';
-import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
-import 'package:conectacampo/presentation/seller/seller_main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 class ProfilePage extends StatelessWidget {
   final GlobalKey navigatorKey;
@@ -26,6 +22,8 @@ class ProfilePage extends StatelessWidget {
           final primaryColor =
               state.isBuyer ? ColorSet.colorPrimaryGreen : ColorSet.brown1;
 
+          final user = state.optionOfUserFailureOrSuccess
+              .fold(() => null, (a) => a.fold((l) => null, (r) => r));
           return Navigator(
               key: navigatorKey,
               onGenerateRoute: (settings) => MaterialPageRoute(
@@ -101,28 +99,15 @@ class ProfilePage extends StatelessWidget {
                               leading: CircleAvatar(
                                 radius: 32,
                                 backgroundColor: primaryColor,
-                                foregroundImage: NetworkImage(state
-                                        .optionOfUserFailureOrSuccess
-                                        .fold(
-                                            () => null,
-                                            (a) =>
-                                                a.fold((l) => null, (r) => r))
-                                        ?.mediumAvatar
-                                        ?.value
+                                foregroundImage: NetworkImage(user
+                                        ?.mediumAvatar?.value
                                         .getOrElse(() => '') ??
                                     ''),
                               ),
                               title:
                                   Text.rich(TextSpan(text: 'Olá, ', children: [
                                 TextSpan(
-                                    text: state.optionOfUserFailureOrSuccess
-                                            .fold(
-                                                () => null,
-                                                (a) => a.fold(
-                                                    (l) => null, (r) => r))
-                                            ?.name
-                                            .getOrCrash() ??
-                                        '',
+                                    text: user?.name.getOrCrash() ?? '',
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold))
                               ])),

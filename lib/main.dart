@@ -1,5 +1,3 @@
-import 'package:conectacampo/infrastructure/auth/user_repository.dart';
-import 'package:conectacampo/infrastructure/onboarding/onboarding_repository.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/app_widget.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
@@ -7,14 +5,19 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
-import 'package:intl/intl.dart';
+import 'package:sqflite/sqflite.dart';
 
 Future<void> main() async {
   configureInjection(Environment.prod);
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await setUpDB();
   runApp(const AppWidget());
   configLoading();
+}
+
+Future<void> setUpDB() async {
+  var db = await openDatabase('my_db.db');
 }
 
 void configLoading() {

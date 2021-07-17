@@ -20,13 +20,7 @@ class GroupPage extends StatelessWidget {
                   body: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: BlocConsumer<GroupBloc, GroupState>(
-                      listener: (context, state) {
-                        if (state.loading) {
-                          EasyLoading.show();
-                        } else {
-                          EasyLoading.dismiss();
-                        }
-                      },
+                      listener: (context, state) {},
                       builder: (context, state) =>
                           state.optionOfGrousAdsSuccessOrFailure.fold(
                               () => Container(),

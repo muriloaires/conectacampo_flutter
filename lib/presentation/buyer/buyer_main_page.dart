@@ -2,6 +2,7 @@ import 'package:conectacampo/application/buyer/adivertisements/adivertisements_b
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/injection.dart';
+import 'package:conectacampo/presentation/buyer/cart/cart_page.dart';
 import 'package:conectacampo/presentation/buyer/group/group_page.dart';
 import 'package:conectacampo/presentation/buyer/menu/buyer_summary.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
@@ -23,7 +24,8 @@ class BuyerMainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<BuyerMenuBloc>(create: (context) => getIt()),
+        BlocProvider<BuyerMenuBloc>(
+            create: (context) => getIt()..add(const BuyerMenuEvent.started())),
         BlocProvider<AdvertisementsBloc>(
             create: (context) =>
                 getIt()..add(const AdvertisementsEvent.started())),
@@ -31,7 +33,7 @@ class BuyerMainPage extends StatelessWidget {
             create: (context) => getIt()..add(const GroupEvent.started()))
       ],
       child: BlocConsumer<BuyerMenuBloc, BuyerMenuState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state.navToSeller) {
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
@@ -39,30 +41,70 @@ class BuyerMainPage extends StatelessWidget {
                 ),
                 (route) => false);
           }
+
+          if (state.openCart) {
+            await Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const CartPage(),
+            ));
+            context.read<BuyerMenuBloc>().add(const BuyerMenuEvent.started());
+          }
         },
         builder: (context, state) {
-          return Scaffold(
-            backgroundColor: ColorSet.textFieldGrayBackground,
-            bottomNavigationBar: _getBottomMenu(context, state),
-            body: WillPopScope(
-              onWillPop: () async {
-                return !await Navigator.maybePop(
-                    navigatorKeys[state.currentIndex]!.currentState!.context);
-              },
-              child: IndexedStack(
-                index: context.read<BuyerMenuBloc>().state.currentIndex,
-                children: [
-                  BuyerSummary(navigatorKeys[0]!),
-                  GroupPage(navigatorKeys[1]!),
-                  Scaffold(body: Text('Reservas')),
-                  Scaffold(body: Text('Reservas')),
-                  ProfilePage(
-                    navigatorKey: navigatorKeys[3]!,
-                    isBuyer: true,
-                  )
-                ],
+          return Stack(
+            children: [
+              Scaffold(
+                backgroundColor: ColorSet.textFieldGrayBackground,
+                bottomNavigationBar: _getBottomMenu(context, state),
+                body: WillPopScope(
+                  onWillPop: () async {
+                    return !await Navigator.maybePop(
+                        navigatorKeys[state.currentIndex]!
+                            .currentState!
+                            .context);
+                  },
+                  child: IndexedStack(
+                    index: context.read<BuyerMenuBloc>().state.currentIndex,
+                    children: [
+                      BuyerSummary(navigatorKeys[0]!),
+                      GroupPage(navigatorKeys[1]!),
+                      const Scaffold(body: Text('Reservas')),
+                      const Scaffold(body: Text('Reservas')),
+                      ProfilePage(
+                          navigatorKey: navigatorKeys[3]!, isBuyer: true)
+                    ],
+                  ),
+                ),
               ),
-            ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: 68,
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          width: 68.0,
+                          height: 68.0,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: ColorSet.greenIcon,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: SvgPicture.asset('assets/white_icon.svg'),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 55,
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
           );
         },
       ),
@@ -70,122 +112,115 @@ class BuyerMainPage extends StatelessWidget {
   }
 
   Widget _getBottomMenu(BuildContext context, BuyerMenuState state) {
-    return SizedBox(
-      height: 125,
-      child: Stack(children: [
-        Column(
-          children: [
-            const SizedBox(
-              height: 35,
-            ),
-            BottomNavigationBar(
-              backgroundColor: ColorSet.gray10,
-              type: BottomNavigationBarType.fixed,
-              showUnselectedLabels: true,
-              selectedIconTheme:
-                  const IconThemeData(color: ColorSet.greenTextColor),
-              unselectedIconTheme: const IconThemeData(color: Colors.black),
-              unselectedItemColor: Colors.black,
-              selectedItemColor: ColorSet.greenTextColor,
-              unselectedLabelStyle:
-                  const TextStyle(fontWeight: FontWeight.w600),
-              selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/home.png')),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/grupos.png')),
-                  label: 'Grupos',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home_outlined,
-                  ),
-                  label: 'Comprar',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/reservas.png')),
-                  label: 'Reservas',
-                ),
-                BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/user.png')),
-                  label: 'Perfil',
-                ),
+    return ListView(shrinkWrap: true, children: [
+      Visibility(
+        visible: state.itemsInCart.isNotEmpty,
+        child: GestureDetector(
+          onTap: () {
+            context
+                .read<BuyerMenuBloc>()
+                .add(const BuyerMenuEvent.onCartTapped());
+          },
+          child: Container(
+            padding: const EdgeInsets.all(4),
+            color: ColorSet.green2,
+            height: 45,
+            child: Row(
+              children: [
+                SvgPicture.asset('assets/basket.svg', height: 24, width: 24),
+                const Expanded(child: SizedBox()),
+                Text(
+                  '${state.itemsInCart.length} ${state.itemsInCart.length > 1 ? 'itens' : 'item'}',
+                  style: const TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                )
               ],
-              currentIndex: state.currentIndex,
-              onTap: (index) {
-                final bool reselect =
-                    index == context.read<BuyerMenuBloc>().state.currentIndex;
-                final bloc = context.read<BuyerMenuBloc>();
-                switch (index) {
-                  case 0:
-                    if (!reselect) {
-                      bloc.add(const BuyerMenuEvent.homeTapped());
-                    } else {
-                      navigatorKeys[0]!
-                          .currentState!
-                          .popUntil((r) => r.isFirst);
-                    }
-
-                    break;
-                  case 1:
-                    if (!reselect) {
-                      bloc.add(const BuyerMenuEvent.groupsTapped());
-                    } else {
-                      bloc.add(const BuyerMenuEvent.groupsRetapped());
-                    }
-
-                    break;
-                  case 3:
-                    if (!reselect) {
-                      bloc.add(const BuyerMenuEvent.reservationTapped());
-                    } else {
-                      bloc.add(const BuyerMenuEvent.reservationRetapped());
-                    }
-
-                    break;
-
-                  case 4:
-                    if (!reselect) {
-                      bloc.add(const BuyerMenuEvent.profileTapped());
-                    } else {
-                      navigatorKeys[1]!
-                          .currentState!
-                          .popUntil((r) => r.isFirst);
-                    }
-
-                    break;
-                  default:
-                }
-              },
-            ),
-            Container(
-              height: 34,
-              color: ColorSet.gray10,
-            )
-          ],
-        ),
-        Align(
-          alignment: Alignment.topCenter,
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(
-              width: 68.0,
-              height: 68.0,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: ColorSet.greenIcon,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: SvgPicture.asset('assets/white_icon.svg'),
-              ),
             ),
           ),
         ),
-      ]),
-    );
+      ),
+      BottomNavigationBar(
+        elevation: 0,
+        backgroundColor: ColorSet.gray10,
+        type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: true,
+        selectedIconTheme: const IconThemeData(color: ColorSet.greenTextColor),
+        unselectedIconTheme: const IconThemeData(color: Colors.black),
+        unselectedItemColor: Colors.black,
+        selectedItemColor: ColorSet.greenTextColor,
+        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: ImageIcon(AssetImage('assets/home.png')),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(AssetImage('assets/grupos.png')),
+            label: 'Grupos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+            ),
+            label: 'Comprar',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(AssetImage('assets/reservas.png')),
+            label: 'Reservas',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(AssetImage('assets/user.png')),
+            label: 'Perfil',
+          ),
+        ],
+        currentIndex: state.currentIndex,
+        onTap: (index) {
+          final bool reselect =
+              index == context.read<BuyerMenuBloc>().state.currentIndex;
+          final bloc = context.read<BuyerMenuBloc>();
+          switch (index) {
+            case 0:
+              if (!reselect) {
+                bloc.add(const BuyerMenuEvent.homeTapped());
+              } else {
+                navigatorKeys[0]!.currentState!.popUntil((r) => r.isFirst);
+              }
+
+              break;
+            case 1:
+              if (!reselect) {
+                bloc.add(const BuyerMenuEvent.groupsTapped());
+              } else {
+                bloc.add(const BuyerMenuEvent.groupsRetapped());
+              }
+
+              break;
+            case 3:
+              if (!reselect) {
+                bloc.add(const BuyerMenuEvent.reservationTapped());
+              } else {
+                bloc.add(const BuyerMenuEvent.reservationRetapped());
+              }
+
+              break;
+
+            case 4:
+              if (!reselect) {
+                bloc.add(const BuyerMenuEvent.profileTapped());
+              } else {
+                navigatorKeys[1]!.currentState!.popUntil((r) => r.isFirst);
+              }
+
+              break;
+            default:
+          }
+        },
+      ),
+      Container(
+        color: ColorSet.gray10,
+        height: 30,
+      )
+    ]);
   }
 }

@@ -1,5 +1,8 @@
 import 'dart:io';
+import 'dart:math';
 
+import 'package:conectacampo/infrastructure/reservation/model/model.dart';
+import 'package:dartz/dartz.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -10,15 +13,15 @@ class DatabaseHelper {
 
   static const table = 'reservation_item';
 
-  static const columnId = '_id';
-  static const columnName = 'name';
-  static const columnMeasurementUnit = 'measuremente_unit';
-  static const columnAmmount = 'ammount';
-  static const columnRating = 'rating';
-  static const columnKind = 'kind';
-  static const columnSellerName = 'seller_name';
-  static const columnSellerPhone = 'seller_phone';
-  static const columnImage = 'image';
+  static const _columnName = 'name';
+  static const _columnId = '_id';
+  static const _columnMeasurementUnit = 'measuremente_unit';
+  static const _columnAmmount = 'ammount';
+  static const _columnRating = 'rating';
+  static const _columnKind = 'kind';
+  static const _columnSellerName = 'seller_name';
+  static const _columnSellerPhone = 'seller_phone';
+  static const _columnImage = 'image';
 
   // make this a singleton class
   DatabaseHelper._privateConstructor();
@@ -46,57 +49,70 @@ class DatabaseHelper {
   Future _onCreate(Database db, int version) async {
     await db.execute('''
           CREATE TABLE $table (
-            $columnId INTEGER PRIMARY KEY,
-            $columnName TEXT NOT NULL,
-            $columnMeasurementUnit TEXT NOT NULL,
-            $columnAmmount INTEGER NOT NULL,
-            $columnRating TEXT NOT NULL,
-            $columnKind TEXT NOT NULL,
-            $columnSellerName TEXT NOT NULL,
-            $columnSellerPhone TEXT NOT NULL,
-            $columnImage TEXT NOT NULL,
+            $_columnId INTEGER PRIMARY KEY,
+            $_columnName TEXT NOT NULL,
+            $_columnMeasurementUnit TEXT NOT NULL,
+            $_columnAmmount INTEGER NOT NULL,
+            $_columnRating TEXT NOT NULL,
+            $_columnKind TEXT NOT NULL,
+            $_columnSellerName TEXT NOT NULL,
+            $_columnSellerPhone TEXT NOT NULL,
+            $_columnImage TEXT NOT NULL
           )
           ''');
   }
 
-  // Helper methods
-
-  // Inserts a row in the database where each key in the Map is a column name
-  // and the value is the column value. The return value is the id of the
-  // inserted row.
-  Future<int> insert(Map<String, dynamic> row) async {
+  Future<int> insert(ReservationItemDB reservationItemDB) async {
     Database db = await instance.database;
-    return await db.insert(table, row);
+    return await db.insert(table, reservationItemDB.toJson());
   }
 
-  // All of the rows are returned as a list of maps, where each map is
-  // a key-value list of columns.
-  Future<List<Map<String, dynamic>>> queryAllRows() async {
+  Future<List<ReservationItemDB>> queryAllRows() async {
     final Database db = await instance.database;
     final List<Map<String, dynamic>> result = await db.query(table);
-    return result;
+    return result.map((e) => ReservationItemDB.fromJson(e)).toList();
   }
 
-  // All of the methods (insert, query, update, delete) can also be done using
-  // raw SQL commands. This method uses a raw query to give the row count.
   Future<int?> queryRowCount() async {
     Database db = await instance.database;
     return Sqflite.firstIntValue(
         await db.rawQuery('SELECT COUNT(*) FROM $table'));
   }
 
-  // We are assuming here that the id column in the map is set. The other
-  // column values will be used to update the row.
-  Future<int> update(Map<String, dynamic> row) async {
-    Database db = await instance.database;
-    final int id = row[columnId] as int;
-    return await db.update(table, row, where: '$columnId = ?', whereArgs: [id]);
+  Future<ReservationItemDB?> updateOrInsert(
+      ReservationItemDB reservationItemDB) async {
+    final Database db = await instance.database;
+    final result = await db.transaction<ReservationItemDB?>((txn) async {
+      final int id = reservationItemDB.id;
+      final rowsAffected = await txn.update(table, reservationItemDB.toJson(),
+          where: '$_columnId = ?', whereArgs: [id]);
+      if (rowsAffected <= 0) {
+        await txn.insert(table, reservationItemDB.toJson());
+      }
+      final raw = await txn.query(table,
+          where: '$_columnId = ?', whereArgs: [id], limit: 1);
+      try {
+        return ReservationItemDB.fromJson(raw.first);
+      } catch (e) {
+        return null;
+      }
+    });
+    return result;
   }
 
-  // Deletes the row specified by the id. The number of affected rows is
-  // returned. This should be 1 as long as the row exists.
   Future<int> delete(int id) async {
     Database db = await instance.database;
-    return await db.delete(table, where: '$columnId = ?', whereArgs: [id]);
+    return await db.delete(table, where: '$_columnId = ?', whereArgs: [id]);
+  }
+
+  Future<ReservationItemDB?> select(int id) async {
+    Database db = await instance.database;
+    final raw = await db.query(table,
+        where: '$_columnId = ?', whereArgs: [id], limit: 1);
+    try {
+      return ReservationItemDB.fromJson(raw.first);
+    } catch (e) {
+      return null;
+    }
   }
 }

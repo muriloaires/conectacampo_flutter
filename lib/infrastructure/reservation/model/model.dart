@@ -1,3 +1,4 @@
+import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'model.freezed.dart';
@@ -18,4 +19,34 @@ class ReservationItemDB with _$ReservationItemDB {
 
   factory ReservationItemDB.fromJson(Map<String, dynamic> json) =>
       _$ReservationItemDBFromJson(json);
+}
+
+extension ReservationItemDBExtension on ReservationItemDB {
+  ReservationItem toDomain() {
+    return ReservationItem(
+        id: id,
+        image: image,
+        kind: kind,
+        measurementUnit: measurementUnit,
+        name: name,
+        quantity: quantity,
+        rating: rating,
+        sellerName: sellerName,
+        sellerPhone: sellerName);
+  }
+}
+
+extension ReservationItemDBDomain on ReservationItem {
+  ReservationItemDB toLocal() {
+    return ReservationItemDB(
+        id: id,
+        image: image,
+        kind: kind,
+        measurementUnit: measurementUnit,
+        name: name,
+        quantity: quantity,
+        rating: rating,
+        sellerName: sellerName,
+        sellerPhone: sellerName);
+  }
 }

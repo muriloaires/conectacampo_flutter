@@ -16,6 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$BuyerMenuEventTearOff {
   const _$BuyerMenuEventTearOff();
 
+  Started started() {
+    return const Started();
+  }
+
+  OnCartTapped onCartTapped() {
+    return const OnCartTapped();
+  }
+
   BuyTapped buyTapped() {
     return const BuyTapped();
   }
@@ -64,6 +72,8 @@ const $BuyerMenuEvent = _$BuyerMenuEventTearOff();
 mixin _$BuyerMenuEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -78,6 +88,8 @@ mixin _$BuyerMenuEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -93,6 +105,8 @@ mixin _$BuyerMenuEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -107,6 +121,8 @@ mixin _$BuyerMenuEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -137,6 +153,255 @@ class _$BuyerMenuEventCopyWithImpl<$Res>
   final BuyerMenuEvent _value;
   // ignore: unused_field
   final $Res Function(BuyerMenuEvent) _then;
+}
+
+/// @nodoc
+abstract class $StartedCopyWith<$Res> {
+  factory $StartedCopyWith(Started value, $Res Function(Started) then) =
+      _$StartedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$StartedCopyWithImpl<$Res> extends _$BuyerMenuEventCopyWithImpl<$Res>
+    implements $StartedCopyWith<$Res> {
+  _$StartedCopyWithImpl(Started _value, $Res Function(Started) _then)
+      : super(_value, (v) => _then(v as Started));
+
+  @override
+  Started get _value => super._value as Started;
+}
+
+/// @nodoc
+
+class _$Started implements Started {
+  const _$Started();
+
+  @override
+  String toString() {
+    return 'BuyerMenuEvent.started()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Started);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
+    required TResult Function() buyTapped,
+    required TResult Function() homeTapped,
+    required TResult Function() groupsTapped,
+    required TResult Function() reservationTapped,
+    required TResult Function() profileTapped,
+    required TResult Function() homeRetapped,
+    required TResult Function() groupsRetapped,
+    required TResult Function() reservationRetapped,
+    required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
+  }) {
+    return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
+    TResult Function()? buyTapped,
+    TResult Function()? homeTapped,
+    TResult Function()? groupsTapped,
+    TResult Function()? reservationTapped,
+    TResult Function()? profileTapped,
+    TResult Function()? homeRetapped,
+    TResult Function()? groupsRetapped,
+    TResult Function()? reservationRetapped,
+    TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
+    required TResult Function(BuyTapped value) buyTapped,
+    required TResult Function(HomeTapped value) homeTapped,
+    required TResult Function(GroupsTapped value) groupsTapped,
+    required TResult Function(ReservationTapped value) reservationTapped,
+    required TResult Function(ProfileTapped value) profileTapped,
+    required TResult Function(HomeRetapped value) homeRetapped,
+    required TResult Function(GroupsRetapped value) groupsRetapped,
+    required TResult Function(ReservationRetapped value) reservationRetapped,
+    required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
+  }) {
+    return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
+    TResult Function(BuyTapped value)? buyTapped,
+    TResult Function(HomeTapped value)? homeTapped,
+    TResult Function(GroupsTapped value)? groupsTapped,
+    TResult Function(ReservationTapped value)? reservationTapped,
+    TResult Function(ProfileTapped value)? profileTapped,
+    TResult Function(HomeRetapped value)? homeRetapped,
+    TResult Function(GroupsRetapped value)? groupsRetapped,
+    TResult Function(ReservationRetapped value)? reservationRetapped,
+    TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Started implements BuyerMenuEvent {
+  const factory Started() = _$Started;
+}
+
+/// @nodoc
+abstract class $OnCartTappedCopyWith<$Res> {
+  factory $OnCartTappedCopyWith(
+          OnCartTapped value, $Res Function(OnCartTapped) then) =
+      _$OnCartTappedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$OnCartTappedCopyWithImpl<$Res>
+    extends _$BuyerMenuEventCopyWithImpl<$Res>
+    implements $OnCartTappedCopyWith<$Res> {
+  _$OnCartTappedCopyWithImpl(
+      OnCartTapped _value, $Res Function(OnCartTapped) _then)
+      : super(_value, (v) => _then(v as OnCartTapped));
+
+  @override
+  OnCartTapped get _value => super._value as OnCartTapped;
+}
+
+/// @nodoc
+
+class _$OnCartTapped implements OnCartTapped {
+  const _$OnCartTapped();
+
+  @override
+  String toString() {
+    return 'BuyerMenuEvent.onCartTapped()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is OnCartTapped);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
+    required TResult Function() buyTapped,
+    required TResult Function() homeTapped,
+    required TResult Function() groupsTapped,
+    required TResult Function() reservationTapped,
+    required TResult Function() profileTapped,
+    required TResult Function() homeRetapped,
+    required TResult Function() groupsRetapped,
+    required TResult Function() reservationRetapped,
+    required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
+  }) {
+    return onCartTapped();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
+    TResult Function()? buyTapped,
+    TResult Function()? homeTapped,
+    TResult Function()? groupsTapped,
+    TResult Function()? reservationTapped,
+    TResult Function()? profileTapped,
+    TResult Function()? homeRetapped,
+    TResult Function()? groupsRetapped,
+    TResult Function()? reservationRetapped,
+    TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
+    required TResult orElse(),
+  }) {
+    if (onCartTapped != null) {
+      return onCartTapped();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
+    required TResult Function(BuyTapped value) buyTapped,
+    required TResult Function(HomeTapped value) homeTapped,
+    required TResult Function(GroupsTapped value) groupsTapped,
+    required TResult Function(ReservationTapped value) reservationTapped,
+    required TResult Function(ProfileTapped value) profileTapped,
+    required TResult Function(HomeRetapped value) homeRetapped,
+    required TResult Function(GroupsRetapped value) groupsRetapped,
+    required TResult Function(ReservationRetapped value) reservationRetapped,
+    required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
+  }) {
+    return onCartTapped(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
+    TResult Function(BuyTapped value)? buyTapped,
+    TResult Function(HomeTapped value)? homeTapped,
+    TResult Function(GroupsTapped value)? groupsTapped,
+    TResult Function(ReservationTapped value)? reservationTapped,
+    TResult Function(ProfileTapped value)? profileTapped,
+    TResult Function(HomeRetapped value)? homeRetapped,
+    TResult Function(GroupsRetapped value)? groupsRetapped,
+    TResult Function(ReservationRetapped value)? reservationRetapped,
+    TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    required TResult orElse(),
+  }) {
+    if (onCartTapped != null) {
+      return onCartTapped(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnCartTapped implements BuyerMenuEvent {
+  const factory OnCartTapped() = _$OnCartTapped;
 }
 
 /// @nodoc
@@ -176,6 +441,8 @@ class _$BuyTapped implements BuyTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -193,6 +460,8 @@ class _$BuyTapped implements BuyTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -214,6 +483,8 @@ class _$BuyTapped implements BuyTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -231,6 +502,8 @@ class _$BuyTapped implements BuyTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -292,6 +565,8 @@ class _$HomeTapped implements HomeTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -309,6 +584,8 @@ class _$HomeTapped implements HomeTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -330,6 +607,8 @@ class _$HomeTapped implements HomeTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -347,6 +626,8 @@ class _$HomeTapped implements HomeTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -410,6 +691,8 @@ class _$GroupsTapped implements GroupsTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -427,6 +710,8 @@ class _$GroupsTapped implements GroupsTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -448,6 +733,8 @@ class _$GroupsTapped implements GroupsTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -465,6 +752,8 @@ class _$GroupsTapped implements GroupsTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -528,6 +817,8 @@ class _$ReservationTapped implements ReservationTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -545,6 +836,8 @@ class _$ReservationTapped implements ReservationTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -566,6 +859,8 @@ class _$ReservationTapped implements ReservationTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -583,6 +878,8 @@ class _$ReservationTapped implements ReservationTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -646,6 +943,8 @@ class _$ProfileTapped implements ProfileTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -663,6 +962,8 @@ class _$ProfileTapped implements ProfileTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -684,6 +985,8 @@ class _$ProfileTapped implements ProfileTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -701,6 +1004,8 @@ class _$ProfileTapped implements ProfileTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -764,6 +1069,8 @@ class _$HomeRetapped implements HomeRetapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -781,6 +1088,8 @@ class _$HomeRetapped implements HomeRetapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -802,6 +1111,8 @@ class _$HomeRetapped implements HomeRetapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -819,6 +1130,8 @@ class _$HomeRetapped implements HomeRetapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -882,6 +1195,8 @@ class _$GroupsRetapped implements GroupsRetapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -899,6 +1214,8 @@ class _$GroupsRetapped implements GroupsRetapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -920,6 +1237,8 @@ class _$GroupsRetapped implements GroupsRetapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -937,6 +1256,8 @@ class _$GroupsRetapped implements GroupsRetapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1000,6 +1321,8 @@ class _$ReservationRetapped implements ReservationRetapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -1017,6 +1340,8 @@ class _$ReservationRetapped implements ReservationRetapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1038,6 +1363,8 @@ class _$ReservationRetapped implements ReservationRetapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1055,6 +1382,8 @@ class _$ReservationRetapped implements ReservationRetapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1118,6 +1447,8 @@ class _$ProfileRetapped implements ProfileRetapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -1135,6 +1466,8 @@ class _$ProfileRetapped implements ProfileRetapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1156,6 +1489,8 @@ class _$ProfileRetapped implements ProfileRetapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1173,6 +1508,8 @@ class _$ProfileRetapped implements ProfileRetapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1236,6 +1573,8 @@ class _$NavToSellerTapped implements NavToSellerTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
     required TResult Function() buyTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -1253,6 +1592,8 @@ class _$NavToSellerTapped implements NavToSellerTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
     TResult Function()? buyTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1274,6 +1615,8 @@ class _$NavToSellerTapped implements NavToSellerTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
     required TResult Function(BuyTapped value) buyTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1291,6 +1634,8 @@ class _$NavToSellerTapped implements NavToSellerTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
     TResult Function(BuyTapped value)? buyTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1321,11 +1666,15 @@ class _$BuyerMenuStateTearOff {
   _BuyerMenuState call(
       {required int currentIndex,
       required bool navToRoot,
-      required bool navToSeller}) {
+      required bool navToSeller,
+      required List<ReservationItem> itemsInCart,
+      required bool openCart}) {
     return _BuyerMenuState(
       currentIndex: currentIndex,
       navToRoot: navToRoot,
       navToSeller: navToSeller,
+      itemsInCart: itemsInCart,
+      openCart: openCart,
     );
   }
 }
@@ -1338,6 +1687,8 @@ mixin _$BuyerMenuState {
   int get currentIndex => throw _privateConstructorUsedError;
   bool get navToRoot => throw _privateConstructorUsedError;
   bool get navToSeller => throw _privateConstructorUsedError;
+  List<ReservationItem> get itemsInCart => throw _privateConstructorUsedError;
+  bool get openCart => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BuyerMenuStateCopyWith<BuyerMenuState> get copyWith =>
@@ -1349,7 +1700,12 @@ abstract class $BuyerMenuStateCopyWith<$Res> {
   factory $BuyerMenuStateCopyWith(
           BuyerMenuState value, $Res Function(BuyerMenuState) then) =
       _$BuyerMenuStateCopyWithImpl<$Res>;
-  $Res call({int currentIndex, bool navToRoot, bool navToSeller});
+  $Res call(
+      {int currentIndex,
+      bool navToRoot,
+      bool navToSeller,
+      List<ReservationItem> itemsInCart,
+      bool openCart});
 }
 
 /// @nodoc
@@ -1366,6 +1722,8 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
     Object? currentIndex = freezed,
     Object? navToRoot = freezed,
     Object? navToSeller = freezed,
+    Object? itemsInCart = freezed,
+    Object? openCart = freezed,
   }) {
     return _then(_value.copyWith(
       currentIndex: currentIndex == freezed
@@ -1380,6 +1738,14 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.navToSeller
           : navToSeller // ignore: cast_nullable_to_non_nullable
               as bool,
+      itemsInCart: itemsInCart == freezed
+          ? _value.itemsInCart
+          : itemsInCart // ignore: cast_nullable_to_non_nullable
+              as List<ReservationItem>,
+      openCart: openCart == freezed
+          ? _value.openCart
+          : openCart // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1391,7 +1757,12 @@ abstract class _$BuyerMenuStateCopyWith<$Res>
           _BuyerMenuState value, $Res Function(_BuyerMenuState) then) =
       __$BuyerMenuStateCopyWithImpl<$Res>;
   @override
-  $Res call({int currentIndex, bool navToRoot, bool navToSeller});
+  $Res call(
+      {int currentIndex,
+      bool navToRoot,
+      bool navToSeller,
+      List<ReservationItem> itemsInCart,
+      bool openCart});
 }
 
 /// @nodoc
@@ -1410,6 +1781,8 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
     Object? currentIndex = freezed,
     Object? navToRoot = freezed,
     Object? navToSeller = freezed,
+    Object? itemsInCart = freezed,
+    Object? openCart = freezed,
   }) {
     return _then(_BuyerMenuState(
       currentIndex: currentIndex == freezed
@@ -1424,6 +1797,14 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.navToSeller
           : navToSeller // ignore: cast_nullable_to_non_nullable
               as bool,
+      itemsInCart: itemsInCart == freezed
+          ? _value.itemsInCart
+          : itemsInCart // ignore: cast_nullable_to_non_nullable
+              as List<ReservationItem>,
+      openCart: openCart == freezed
+          ? _value.openCart
+          : openCart // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1434,7 +1815,9 @@ class _$_BuyerMenuState implements _BuyerMenuState {
   const _$_BuyerMenuState(
       {required this.currentIndex,
       required this.navToRoot,
-      required this.navToSeller});
+      required this.navToSeller,
+      required this.itemsInCart,
+      required this.openCart});
 
   @override
   final int currentIndex;
@@ -1442,10 +1825,14 @@ class _$_BuyerMenuState implements _BuyerMenuState {
   final bool navToRoot;
   @override
   final bool navToSeller;
+  @override
+  final List<ReservationItem> itemsInCart;
+  @override
+  final bool openCart;
 
   @override
   String toString() {
-    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller)';
+    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller, itemsInCart: $itemsInCart, openCart: $openCart)';
   }
 
   @override
@@ -1460,7 +1847,13 @@ class _$_BuyerMenuState implements _BuyerMenuState {
                     .equals(other.navToRoot, navToRoot)) &&
             (identical(other.navToSeller, navToSeller) ||
                 const DeepCollectionEquality()
-                    .equals(other.navToSeller, navToSeller)));
+                    .equals(other.navToSeller, navToSeller)) &&
+            (identical(other.itemsInCart, itemsInCart) ||
+                const DeepCollectionEquality()
+                    .equals(other.itemsInCart, itemsInCart)) &&
+            (identical(other.openCart, openCart) ||
+                const DeepCollectionEquality()
+                    .equals(other.openCart, openCart)));
   }
 
   @override
@@ -1468,7 +1861,9 @@ class _$_BuyerMenuState implements _BuyerMenuState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(currentIndex) ^
       const DeepCollectionEquality().hash(navToRoot) ^
-      const DeepCollectionEquality().hash(navToSeller);
+      const DeepCollectionEquality().hash(navToSeller) ^
+      const DeepCollectionEquality().hash(itemsInCart) ^
+      const DeepCollectionEquality().hash(openCart);
 
   @JsonKey(ignore: true)
   @override
@@ -1480,7 +1875,9 @@ abstract class _BuyerMenuState implements BuyerMenuState {
   const factory _BuyerMenuState(
       {required int currentIndex,
       required bool navToRoot,
-      required bool navToSeller}) = _$_BuyerMenuState;
+      required bool navToSeller,
+      required List<ReservationItem> itemsInCart,
+      required bool openCart}) = _$_BuyerMenuState;
 
   @override
   int get currentIndex => throw _privateConstructorUsedError;
@@ -1488,6 +1885,10 @@ abstract class _BuyerMenuState implements BuyerMenuState {
   bool get navToRoot => throw _privateConstructorUsedError;
   @override
   bool get navToSeller => throw _privateConstructorUsedError;
+  @override
+  List<ReservationItem> get itemsInCart => throw _privateConstructorUsedError;
+  @override
+  bool get openCart => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BuyerMenuStateCopyWith<_BuyerMenuState> get copyWith =>
