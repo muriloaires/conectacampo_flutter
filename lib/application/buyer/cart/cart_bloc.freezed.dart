@@ -25,6 +25,14 @@ class _$CartEventTearOff {
       reservationItem,
     );
   }
+
+  QuantityChanged quantityChanged(
+      ReservationItem reservationItem, String value) {
+    return QuantityChanged(
+      reservationItem,
+      value,
+    );
+  }
 }
 
 /// @nodoc
@@ -36,12 +44,16 @@ mixin _$CartEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(ReservationItem reservationItem) onBtnDeleteTap,
+    required TResult Function(ReservationItem reservationItem, String value)
+        quantityChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(ReservationItem reservationItem)? onBtnDeleteTap,
+    TResult Function(ReservationItem reservationItem, String value)?
+        quantityChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,12 +61,14 @@ mixin _$CartEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(OnBtnDeleteTap value) onBtnDeleteTap,
+    required TResult Function(QuantityChanged value) quantityChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(OnBtnDeleteTap value)? onBtnDeleteTap,
+    TResult Function(QuantityChanged value)? quantityChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +128,8 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(ReservationItem reservationItem) onBtnDeleteTap,
+    required TResult Function(ReservationItem reservationItem, String value)
+        quantityChanged,
   }) {
     return started();
   }
@@ -123,6 +139,8 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(ReservationItem reservationItem)? onBtnDeleteTap,
+    TResult Function(ReservationItem reservationItem, String value)?
+        quantityChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -136,6 +154,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(OnBtnDeleteTap value) onBtnDeleteTap,
+    required TResult Function(QuantityChanged value) quantityChanged,
   }) {
     return started(this);
   }
@@ -145,6 +164,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(OnBtnDeleteTap value)? onBtnDeleteTap,
+    TResult Function(QuantityChanged value)? quantityChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -235,6 +255,8 @@ class _$OnBtnDeleteTap implements OnBtnDeleteTap {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(ReservationItem reservationItem) onBtnDeleteTap,
+    required TResult Function(ReservationItem reservationItem, String value)
+        quantityChanged,
   }) {
     return onBtnDeleteTap(reservationItem);
   }
@@ -244,6 +266,8 @@ class _$OnBtnDeleteTap implements OnBtnDeleteTap {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(ReservationItem reservationItem)? onBtnDeleteTap,
+    TResult Function(ReservationItem reservationItem, String value)?
+        quantityChanged,
     required TResult orElse(),
   }) {
     if (onBtnDeleteTap != null) {
@@ -257,6 +281,7 @@ class _$OnBtnDeleteTap implements OnBtnDeleteTap {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(OnBtnDeleteTap value) onBtnDeleteTap,
+    required TResult Function(QuantityChanged value) quantityChanged,
   }) {
     return onBtnDeleteTap(this);
   }
@@ -266,6 +291,7 @@ class _$OnBtnDeleteTap implements OnBtnDeleteTap {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(OnBtnDeleteTap value)? onBtnDeleteTap,
+    TResult Function(QuantityChanged value)? quantityChanged,
     required TResult orElse(),
   }) {
     if (onBtnDeleteTap != null) {
@@ -282,6 +308,150 @@ abstract class OnBtnDeleteTap implements CartEvent {
   ReservationItem get reservationItem => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OnBtnDeleteTapCopyWith<OnBtnDeleteTap> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $QuantityChangedCopyWith<$Res> {
+  factory $QuantityChangedCopyWith(
+          QuantityChanged value, $Res Function(QuantityChanged) then) =
+      _$QuantityChangedCopyWithImpl<$Res>;
+  $Res call({ReservationItem reservationItem, String value});
+
+  $ReservationItemCopyWith<$Res> get reservationItem;
+}
+
+/// @nodoc
+class _$QuantityChangedCopyWithImpl<$Res> extends _$CartEventCopyWithImpl<$Res>
+    implements $QuantityChangedCopyWith<$Res> {
+  _$QuantityChangedCopyWithImpl(
+      QuantityChanged _value, $Res Function(QuantityChanged) _then)
+      : super(_value, (v) => _then(v as QuantityChanged));
+
+  @override
+  QuantityChanged get _value => super._value as QuantityChanged;
+
+  @override
+  $Res call({
+    Object? reservationItem = freezed,
+    Object? value = freezed,
+  }) {
+    return _then(QuantityChanged(
+      reservationItem == freezed
+          ? _value.reservationItem
+          : reservationItem // ignore: cast_nullable_to_non_nullable
+              as ReservationItem,
+      value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  $ReservationItemCopyWith<$Res> get reservationItem {
+    return $ReservationItemCopyWith<$Res>(_value.reservationItem, (value) {
+      return _then(_value.copyWith(reservationItem: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$QuantityChanged implements QuantityChanged {
+  const _$QuantityChanged(this.reservationItem, this.value);
+
+  @override
+  final ReservationItem reservationItem;
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'CartEvent.quantityChanged(reservationItem: $reservationItem, value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is QuantityChanged &&
+            (identical(other.reservationItem, reservationItem) ||
+                const DeepCollectionEquality()
+                    .equals(other.reservationItem, reservationItem)) &&
+            (identical(other.value, value) ||
+                const DeepCollectionEquality().equals(other.value, value)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(reservationItem) ^
+      const DeepCollectionEquality().hash(value);
+
+  @JsonKey(ignore: true)
+  @override
+  $QuantityChangedCopyWith<QuantityChanged> get copyWith =>
+      _$QuantityChangedCopyWithImpl<QuantityChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(ReservationItem reservationItem) onBtnDeleteTap,
+    required TResult Function(ReservationItem reservationItem, String value)
+        quantityChanged,
+  }) {
+    return quantityChanged(reservationItem, value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(ReservationItem reservationItem)? onBtnDeleteTap,
+    TResult Function(ReservationItem reservationItem, String value)?
+        quantityChanged,
+    required TResult orElse(),
+  }) {
+    if (quantityChanged != null) {
+      return quantityChanged(reservationItem, value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnBtnDeleteTap value) onBtnDeleteTap,
+    required TResult Function(QuantityChanged value) quantityChanged,
+  }) {
+    return quantityChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnBtnDeleteTap value)? onBtnDeleteTap,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    required TResult orElse(),
+  }) {
+    if (quantityChanged != null) {
+      return quantityChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class QuantityChanged implements CartEvent {
+  const factory QuantityChanged(ReservationItem reservationItem, String value) =
+      _$QuantityChanged;
+
+  ReservationItem get reservationItem => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $QuantityChangedCopyWith<QuantityChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

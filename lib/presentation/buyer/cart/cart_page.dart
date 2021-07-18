@@ -193,7 +193,10 @@ class ReservationItemWidget extends StatelessWidget {
                       height: 40,
                       child: TextField(
                         textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
                         controller: textController,
+                        onChanged: (value) => context.read<CartBloc>().add(
+                            CartEvent.quantityChanged(reservationItem, value)),
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
+import 'package:conectacampo/domain/reservation/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -27,6 +28,16 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       await reservationFacade.removeReservationItem(value.reservationItem);
       final itemsInCart = await reservationFacade.getItemsInCart();
       yield state.copyWith(itemsInCart: itemsInCart);
+    }, quantityChanged: (QuantityChanged value) async* {
+      final quantity = ReservationQuantity(value.value);
+      if (quantity.isValid()) {
+        await reservationFacade.insertReservationItemToCart(value
+            .reservationItem
+            .copyWith(quantity: int.parse(quantity.getOrCrash())));
+
+        final itemsInCart = await reservationFacade.getItemsInCart();
+        yield state.copyWith(itemsInCart: itemsInCart);
+      }
     });
   }
 }
