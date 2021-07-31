@@ -26,18 +26,19 @@ extension ProductExtension on AdProductResponse {
     return AdProduct(
         id,
         name,
-        unitMeasure,
+        unitMeasure ?? '',
         quantity,
         unitPrice,
         rating,
         kind,
         observation,
         images
-            .map((element) => ProductImages(
-                ThumbAvatar(element.thumbnail.url),
-                MediumAvatar(element.medium.url),
-                OriginalAvatar(element.original.url)))
-            .toList(),
+                ?.map((element) => ProductImages(
+                    ThumbAvatar(element.thumbnail.url),
+                    MediumAvatar(element.medium.url),
+                    OriginalAvatar(element.original.url)))
+                .toList() ??
+            List<ProductImages>.empty(),
         createdAt,
         null);
   }

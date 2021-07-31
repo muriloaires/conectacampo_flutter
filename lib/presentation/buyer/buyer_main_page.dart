@@ -43,9 +43,50 @@ class BuyerMainPage extends StatelessWidget {
           }
 
           if (state.openCart) {
-            await Navigator.of(context).push(MaterialPageRoute(
+            final success = await Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => const CartPage(),
-            ));
+            )) as bool?;
+            if (success != null && success) {
+              showDialog<String>(
+                context: context,
+                builder: (BuildContext dialogContext) => Dialog(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      const Divider(),
+                      const CircleAvatar(
+                        radius: 35,
+                        backgroundColor: ColorSet.green1,
+                        child: Icon(
+                          Icons.check,
+                          size: 48,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const Divider(),
+                      const Center(
+                        child: Text('Pedido efetuado com sucesso!',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                      const Divider(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: const Text('Ok',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: ColorSet.grayDark))),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              );
+            }
             context.read<BuyerMenuBloc>().add(const BuyerMenuEvent.started());
           }
         },

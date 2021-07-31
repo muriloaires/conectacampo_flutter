@@ -1,10 +1,14 @@
 import 'package:conectacampo/application/buyer/cart/cart_bloc.dart';
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:conectacampo/infrastructure/advertisement/advertisement_mapper.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -14,7 +18,74 @@ class CartPage extends StatelessWidget {
     return BlocProvider<CartBloc>(
       create: (context) => getIt()..add(const CartEvent.started()),
       child: BlocConsumer<CartBloc, CartState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state.reservating) {
+            EasyLoading.show(status: 'Criando reserva');
+          } else {
+            EasyLoading.dismiss();
+          }
+
+          state.optionOfReservationResponse.fold(() => null, (a) {
+            showDialog<String>(
+              context: context,
+              builder: (BuildContext dialogContext) => Dialog(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    const Divider(),
+                    CircleAvatar(
+                      radius: 35,
+                      backgroundColor: Colors.red[400],
+                      child: const Icon(
+                        Icons.close,
+                        size: 48,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Divider(),
+                    const Center(
+                      child: Text('Reserva não efetuada',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ),
+                    const Divider(height: 8),
+                    const Center(
+                      child: SizedBox(
+                        width: 180,
+                        child: Flexible(
+                          child: Text(
+                            'Alguns itens se encontram indisponíveis',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Divider(height: 8),
+                    Container(height: 1, color: ColorSet.grayLine),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text('Ajustar pedido',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorSet.grayDark))),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            );
+          });
+
+          state.optionOfreservationResultSuccessOrFailure.fold(
+              () => null,
+              (a) => a.fold((l) => null, (r) {
+                    Navigator.of(context).pop(true);
+                  }));
+        },
         builder: (context, state) => Scaffold(
           appBar: AppBar(
             title: const Text('Carrinho'),
@@ -25,40 +96,45 @@ class CartPage extends StatelessWidget {
               },
             ),
           ),
-          body: Column(children: [
-            Flexible(
-              flex: 4,
-              child: ListView(
-                children: [
-                  ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    separatorBuilder: (context, index) => Container(
-                      height: 1,
-                      color: ColorSet.grayLine,
-                    ),
-                    itemCount: state.itemsInCart.length,
-                    itemBuilder: (context, index) {
-                      return ReservationItemWidget(state.itemsInCart[index]);
-                    },
+          bottomNavigationBar:
+              state.itemsInCart.isEmpty ? null : CartBottomMenu(),
+          body: state.itemsInCart.isEmpty
+              ? Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: const Center(child: Text('Carrinho vazio')))
+              : ListView.separated(
+                  separatorBuilder: (context, index) => Container(
+                    height: 1,
+                    color: ColorSet.grayLine,
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Comprar mais produtos',
-                          style: TextStyle(
-                              color: ColorSet.green1,
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold),
-                        )),
-                  ),
-                ],
-              ),
-            ),
-            Flexible(flex: 1, child: CartBottomMenu()),
-          ]),
+                  itemCount: state.itemsInCart.length,
+                  itemBuilder: (context, index) {
+                    var showError = false;
+                    AdProduct? product;
+                    final errorList = state.optionOfReservationResponse
+                        .fold(() => null, (a) => a.productReservations);
+                    try {
+                      if (errorList != null && errorList.isNotEmpty) {
+                        product = errorList
+                            .map((e) => e.adProduct)
+                            .toList()
+                            .where((element) =>
+                                element.id == state.itemsInCart[index].id)
+                            .first
+                            .toDomain();
+                        showError = product.quantity <
+                            state.itemsInCart[index].quantity;
+                      } else {
+                        product = state.optionOfRemoteAdProductsFailureOrSuccess
+                            .fold(() => null,
+                                (a) => a.fold((l) => null, (r) => r[index]));
+                      }
+                    } catch (e) {}
+                    return ReservationItemWidget(
+                        state.itemsInCart[index], product, showError);
+                  },
+                ),
         ),
       ),
     );
@@ -75,11 +151,39 @@ class CartBottomMenu extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(8), topRight: Radius.circular(8))),
-          height: 150,
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+          child: ListView(
+            shrinkWrap: true,
             children: [
+              GestureDetector(
+                onTap: () async {
+                  final whatsappUrl =
+                      "whatsapp://send?phone=${state.itemsInCart.first.sellerPhone}";
+                  await canLaunch(whatsappUrl)
+                      ? launch(whatsappUrl)
+                      : EasyLoading.showError(
+                          "open whatsapp app link or do a snackbar with notification that there is no whatsapp installed",
+                          duration: const Duration(seconds: 2));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                        'Combinar entrega com ${state.itemsInCart.first.sellerName}',
+                        style: const TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: ColorSet.green1)),
+                    const SizedBox(width: 8),
+                    SvgPicture.asset(
+                      'assets/whatsapp.svg',
+                      width: 18,
+                      height: 18,
+                      color: Colors.green[600],
+                    )
+                  ],
+                ),
+              ),
+              const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -93,7 +197,11 @@ class CartBottomMenu extends StatelessWidget {
               ),
               Divider(),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  context
+                      .read<CartBloc>()
+                      .add(const CartEvent.btnFinishPressed());
+                },
                 child: Container(
                   width: double.infinity,
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
@@ -119,11 +227,16 @@ class CartBottomMenu extends StatelessWidget {
 }
 
 class ReservationItemWidget extends StatelessWidget {
-  const ReservationItemWidget(this.reservationItem);
+  const ReservationItemWidget(
+      this.reservationItem, this.remoteProduct, this.showError);
   final ReservationItem reservationItem;
+  final AdProduct? remoteProduct;
+  final bool showError;
 
   @override
   Widget build(BuildContext context) {
+    final available = remoteProduct?.quantity ?? 0;
+    final availability = available > 1 ? 'Disponíveis' : 'Disponível';
     final TextEditingController textController =
         TextEditingController(text: reservationItem.quantity.toString());
     return Container(
@@ -134,15 +247,17 @@ class ReservationItemWidget extends StatelessWidget {
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
+                padding: const EdgeInsets.fromLTRB(10, 20, 20, 0),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  child: Image.network(
-                    reservationItem.image,
-                    height: 90,
-                    width: 90,
-                    fit: BoxFit.cover,
-                  ),
+                  child: reservationItem.image.isEmpty
+                      ? Container()
+                      : Image.network(
+                          reservationItem.image,
+                          height: 90,
+                          width: 90,
+                          fit: BoxFit.cover,
+                        ),
                 ),
               ),
               Column(
@@ -175,16 +290,19 @@ class ReservationItemWidget extends StatelessWidget {
               )
             ],
           ),
+          Divider(),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Editar',
-                    style: TextStyle(decoration: TextDecoration.underline),
-                  ),
+                  Text('$available $availability',
+                      style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color:
+                              showError ? Colors.red : Colors.lightGreen[800])),
                   const SizedBox(
                     height: 4,
                   ),
@@ -284,13 +402,6 @@ class ReservationItemWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    SvgPicture.asset(
-                      'assets/whatsapp.svg',
-                      width: 24,
-                      height: 24,
-                      color: ColorSet.green1,
-                    ),
-                    const Divider(),
                     const Text('Valor final combinar'),
                     const Text('com o vendedor'),
                     Text(

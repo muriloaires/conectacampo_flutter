@@ -42,6 +42,30 @@ Future<Response> getAuthenticatedRequest(
   return response;
 }
 
+Future<Response> getAuthenticatedPostRequest(
+    Uri url, Map<String, String>? headers, String body) async {
+  final accessTokenHeader = {
+    'Authorization': 'Bearer ${await getCurrentAcessToken()}'
+  };
+
+  headers ??= {};
+  headers.addAll(accessTokenHeader);
+  headers.addAll({'content-type': 'application/json'});
+  final response = await http.post(url, headers: headers, body: body);
+  final code = response.statusCode;
+  if (code == 401) {
+    if (await getNewToken()) {
+      final newToken = await getCurrentAcessToken();
+      headers.addAll({'Authorization': 'Bearer $newToken'});
+      final newReponse = await http.get(url, headers: headers);
+      return newReponse;
+    } else {
+      return response;
+    }
+  }
+  return response;
+}
+
 Future<bool> getNewToken() async {
   final refreshToken = await getCurrentRefreshToken();
   final url = Uri.https(

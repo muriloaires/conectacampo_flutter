@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:conectacampo/domain/reservation/reservation_failure.dart';
 import 'package:conectacampo/infrastructure/reservation/model/model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:path/path.dart';
@@ -21,6 +22,7 @@ class DatabaseHelper {
   static const _columnKind = 'kind';
   static const _columnSellerName = 'seller_name';
   static const _columnSellerPhone = 'seller_phone';
+  static const _columnSellerId = 'seller_id';
   static const _columnImage = 'image';
 
   // make this a singleton class
@@ -57,6 +59,7 @@ class DatabaseHelper {
             $_columnKind TEXT NOT NULL,
             $_columnSellerName TEXT NOT NULL,
             $_columnSellerPhone TEXT NOT NULL,
+            $_columnSellerId TEXT NOT NULL,
             $_columnImage TEXT NOT NULL
           )
           ''');
@@ -79,11 +82,23 @@ class DatabaseHelper {
         await db.rawQuery('SELECT COUNT(*) FROM $table'));
   }
 
-  Future<ReservationItemDB?> updateOrInsert(
+  Future<Either<ReservationFailure, ReservationItemDB>> updateOrInsert(
       ReservationItemDB reservationItemDB) async {
     final Database db = await instance.database;
-    final result = await db.transaction<ReservationItemDB?>((txn) async {
+    final result = await db
+        .transaction<Either<ReservationFailure, ReservationItemDB>>(
+            (txn) async {
       final int id = reservationItemDB.id;
+
+      final existingRaw = await txn.query(table, limit: 1);
+
+      if (existingRaw.isNotEmpty) {
+        final existingItem = ReservationItemDB.fromJson(existingRaw.first);
+        if (existingItem.sellerId != reservationItemDB.sellerId) {
+          return left(const ReservationFailure.anotherSellerInCart());
+        }
+      }
+
       final rowsAffected = await txn.update(table, reservationItemDB.toJson(),
           where: '$_columnId = ?', whereArgs: [id]);
       if (rowsAffected <= 0) {
@@ -92,9 +107,9 @@ class DatabaseHelper {
       final raw = await txn.query(table,
           where: '$_columnId = ?', whereArgs: [id], limit: 1);
       try {
-        return ReservationItemDB.fromJson(raw.first);
+        return right(ReservationItemDB.fromJson(raw.first));
       } catch (e) {
-        return null;
+        return left(const ReservationFailure.errorInsertingInCart());
       }
     });
     return result;
@@ -114,5 +129,11 @@ class DatabaseHelper {
     } catch (e) {
       return null;
     }
+  }
+
+  Future<Unit> clearCart() async {
+    Database db = await instance.database;
+    await db.delete(table);
+    return unit;
   }
 }

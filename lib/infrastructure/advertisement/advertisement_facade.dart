@@ -251,4 +251,29 @@ class AdvertisementFacade extends IAdvertisementsFacade {
       return left(const AdvertisementFailure.serverError());
     }
   }
+
+  @override
+  Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProductsByIds(
+      List<int> ids) async {
+    final params = {'ids[]': ids.map((e) => e.toString()).toList()};
+
+    final url = Uri.https(baseUrl, '$apiVersion$routeAdsProducts', params);
+    final response = await getAuthenticatedRequest(url, getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final Iterable iterable = jsonDecode(response.body) as Iterable;
+      final productsResponse = iterable.map((e) =>
+          AdProductResponse.fromJson(e as Map<String, dynamic>).toDomain());
+
+      return right(productsResponse.toList());
+    } else if (code == 401) {
+      return left(const AdvertisementFailure.unauthorized());
+    } else if (code == 404) {
+      return left(const AdvertisementFailure.productsNotFound());
+    } else if (code >= 400 && code < 500) {
+      return left(const AdvertisementFailure.requestError());
+    } else {
+      return left(const AdvertisementFailure.serverError());
+    }
+  }
 }

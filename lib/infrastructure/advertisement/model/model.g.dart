@@ -39,14 +39,14 @@ _$_AdProductResponse _$_$_AdProductResponseFromJson(Map<String, dynamic> json) {
   return _$_AdProductResponse(
     json['id'] as int,
     json['name'] as String?,
-    json['measurement_unit'] as String,
+    json['measurement_unit'] as String?,
     json['quantity'] as int,
     json['unit_price'] as String?,
     json['rating'] as String,
     json['kind'] as String,
     json['observation'] as String?,
-    (json['images'] as List<dynamic>)
-        .map((e) => AvatarResponse.fromJson(e as Map<String, dynamic>))
+    (json['images'] as List<dynamic>?)
+        ?.map((e) => AvatarResponse.fromJson(e as Map<String, dynamic>))
         .toList(),
     json['created_at'] as String,
   );

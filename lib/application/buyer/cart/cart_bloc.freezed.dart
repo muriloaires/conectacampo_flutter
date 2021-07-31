@@ -33,6 +33,10 @@ class _$CartEventTearOff {
       value,
     );
   }
+
+  BtnFinishPressed btnFinishPressed() {
+    return const BtnFinishPressed();
+  }
 }
 
 /// @nodoc
@@ -46,6 +50,7 @@ mixin _$CartEvent {
     required TResult Function(ReservationItem reservationItem) onBtnDeleteTap,
     required TResult Function(ReservationItem reservationItem, String value)
         quantityChanged,
+    required TResult Function() btnFinishPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +59,7 @@ mixin _$CartEvent {
     TResult Function(ReservationItem reservationItem)? onBtnDeleteTap,
     TResult Function(ReservationItem reservationItem, String value)?
         quantityChanged,
+    TResult Function()? btnFinishPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +68,7 @@ mixin _$CartEvent {
     required TResult Function(_Started value) started,
     required TResult Function(OnBtnDeleteTap value) onBtnDeleteTap,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(BtnFinishPressed value) btnFinishPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +76,7 @@ mixin _$CartEvent {
     TResult Function(_Started value)? started,
     TResult Function(OnBtnDeleteTap value)? onBtnDeleteTap,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(BtnFinishPressed value)? btnFinishPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,6 +138,7 @@ class _$_Started implements _Started {
     required TResult Function(ReservationItem reservationItem) onBtnDeleteTap,
     required TResult Function(ReservationItem reservationItem, String value)
         quantityChanged,
+    required TResult Function() btnFinishPressed,
   }) {
     return started();
   }
@@ -141,6 +150,7 @@ class _$_Started implements _Started {
     TResult Function(ReservationItem reservationItem)? onBtnDeleteTap,
     TResult Function(ReservationItem reservationItem, String value)?
         quantityChanged,
+    TResult Function()? btnFinishPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -155,6 +165,7 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(OnBtnDeleteTap value) onBtnDeleteTap,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(BtnFinishPressed value) btnFinishPressed,
   }) {
     return started(this);
   }
@@ -165,6 +176,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(OnBtnDeleteTap value)? onBtnDeleteTap,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(BtnFinishPressed value)? btnFinishPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -257,6 +269,7 @@ class _$OnBtnDeleteTap implements OnBtnDeleteTap {
     required TResult Function(ReservationItem reservationItem) onBtnDeleteTap,
     required TResult Function(ReservationItem reservationItem, String value)
         quantityChanged,
+    required TResult Function() btnFinishPressed,
   }) {
     return onBtnDeleteTap(reservationItem);
   }
@@ -268,6 +281,7 @@ class _$OnBtnDeleteTap implements OnBtnDeleteTap {
     TResult Function(ReservationItem reservationItem)? onBtnDeleteTap,
     TResult Function(ReservationItem reservationItem, String value)?
         quantityChanged,
+    TResult Function()? btnFinishPressed,
     required TResult orElse(),
   }) {
     if (onBtnDeleteTap != null) {
@@ -282,6 +296,7 @@ class _$OnBtnDeleteTap implements OnBtnDeleteTap {
     required TResult Function(_Started value) started,
     required TResult Function(OnBtnDeleteTap value) onBtnDeleteTap,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(BtnFinishPressed value) btnFinishPressed,
   }) {
     return onBtnDeleteTap(this);
   }
@@ -292,6 +307,7 @@ class _$OnBtnDeleteTap implements OnBtnDeleteTap {
     TResult Function(_Started value)? started,
     TResult Function(OnBtnDeleteTap value)? onBtnDeleteTap,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(BtnFinishPressed value)? btnFinishPressed,
     required TResult orElse(),
   }) {
     if (onBtnDeleteTap != null) {
@@ -400,6 +416,7 @@ class _$QuantityChanged implements QuantityChanged {
     required TResult Function(ReservationItem reservationItem) onBtnDeleteTap,
     required TResult Function(ReservationItem reservationItem, String value)
         quantityChanged,
+    required TResult Function() btnFinishPressed,
   }) {
     return quantityChanged(reservationItem, value);
   }
@@ -411,6 +428,7 @@ class _$QuantityChanged implements QuantityChanged {
     TResult Function(ReservationItem reservationItem)? onBtnDeleteTap,
     TResult Function(ReservationItem reservationItem, String value)?
         quantityChanged,
+    TResult Function()? btnFinishPressed,
     required TResult orElse(),
   }) {
     if (quantityChanged != null) {
@@ -425,6 +443,7 @@ class _$QuantityChanged implements QuantityChanged {
     required TResult Function(_Started value) started,
     required TResult Function(OnBtnDeleteTap value) onBtnDeleteTap,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(BtnFinishPressed value) btnFinishPressed,
   }) {
     return quantityChanged(this);
   }
@@ -435,6 +454,7 @@ class _$QuantityChanged implements QuantityChanged {
     TResult Function(_Started value)? started,
     TResult Function(OnBtnDeleteTap value)? onBtnDeleteTap,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(BtnFinishPressed value)? btnFinishPressed,
     required TResult orElse(),
   }) {
     if (quantityChanged != null) {
@@ -456,12 +476,120 @@ abstract class QuantityChanged implements CartEvent {
 }
 
 /// @nodoc
+abstract class $BtnFinishPressedCopyWith<$Res> {
+  factory $BtnFinishPressedCopyWith(
+          BtnFinishPressed value, $Res Function(BtnFinishPressed) then) =
+      _$BtnFinishPressedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$BtnFinishPressedCopyWithImpl<$Res> extends _$CartEventCopyWithImpl<$Res>
+    implements $BtnFinishPressedCopyWith<$Res> {
+  _$BtnFinishPressedCopyWithImpl(
+      BtnFinishPressed _value, $Res Function(BtnFinishPressed) _then)
+      : super(_value, (v) => _then(v as BtnFinishPressed));
+
+  @override
+  BtnFinishPressed get _value => super._value as BtnFinishPressed;
+}
+
+/// @nodoc
+
+class _$BtnFinishPressed implements BtnFinishPressed {
+  const _$BtnFinishPressed();
+
+  @override
+  String toString() {
+    return 'CartEvent.btnFinishPressed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is BtnFinishPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(ReservationItem reservationItem) onBtnDeleteTap,
+    required TResult Function(ReservationItem reservationItem, String value)
+        quantityChanged,
+    required TResult Function() btnFinishPressed,
+  }) {
+    return btnFinishPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(ReservationItem reservationItem)? onBtnDeleteTap,
+    TResult Function(ReservationItem reservationItem, String value)?
+        quantityChanged,
+    TResult Function()? btnFinishPressed,
+    required TResult orElse(),
+  }) {
+    if (btnFinishPressed != null) {
+      return btnFinishPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnBtnDeleteTap value) onBtnDeleteTap,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(BtnFinishPressed value) btnFinishPressed,
+  }) {
+    return btnFinishPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnBtnDeleteTap value)? onBtnDeleteTap,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(BtnFinishPressed value)? btnFinishPressed,
+    required TResult orElse(),
+  }) {
+    if (btnFinishPressed != null) {
+      return btnFinishPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BtnFinishPressed implements CartEvent {
+  const factory BtnFinishPressed() = _$BtnFinishPressed;
+}
+
+/// @nodoc
 class _$CartStateTearOff {
   const _$CartStateTearOff();
 
-  _CartState call({required List<ReservationItem> itemsInCart}) {
+  _CartState call(
+      {required List<ReservationItem> itemsInCart,
+      required Option<Either<AdvertisementFailure, List<AdProduct>>>
+          optionOfRemoteAdProductsFailureOrSuccess,
+      required bool reservating,
+      required Option<Either<ReservationFailure, Unit>>
+          optionOfreservationResultSuccessOrFailure,
+      required Option<ReservationResponse> optionOfReservationResponse}) {
     return _CartState(
       itemsInCart: itemsInCart,
+      optionOfRemoteAdProductsFailureOrSuccess:
+          optionOfRemoteAdProductsFailureOrSuccess,
+      reservating: reservating,
+      optionOfreservationResultSuccessOrFailure:
+          optionOfreservationResultSuccessOrFailure,
+      optionOfReservationResponse: optionOfReservationResponse,
     );
   }
 }
@@ -472,6 +600,15 @@ const $CartState = _$CartStateTearOff();
 /// @nodoc
 mixin _$CartState {
   List<ReservationItem> get itemsInCart => throw _privateConstructorUsedError;
+  Option<Either<AdvertisementFailure, List<AdProduct>>>
+      get optionOfRemoteAdProductsFailureOrSuccess =>
+          throw _privateConstructorUsedError;
+  bool get reservating => throw _privateConstructorUsedError;
+  Option<Either<ReservationFailure, Unit>>
+      get optionOfreservationResultSuccessOrFailure =>
+          throw _privateConstructorUsedError;
+  Option<ReservationResponse> get optionOfReservationResponse =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartStateCopyWith<CartState> get copyWith =>
@@ -482,7 +619,14 @@ mixin _$CartState {
 abstract class $CartStateCopyWith<$Res> {
   factory $CartStateCopyWith(CartState value, $Res Function(CartState) then) =
       _$CartStateCopyWithImpl<$Res>;
-  $Res call({List<ReservationItem> itemsInCart});
+  $Res call(
+      {List<ReservationItem> itemsInCart,
+      Option<Either<AdvertisementFailure, List<AdProduct>>>
+          optionOfRemoteAdProductsFailureOrSuccess,
+      bool reservating,
+      Option<Either<ReservationFailure, Unit>>
+          optionOfreservationResultSuccessOrFailure,
+      Option<ReservationResponse> optionOfReservationResponse});
 }
 
 /// @nodoc
@@ -496,12 +640,34 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
   @override
   $Res call({
     Object? itemsInCart = freezed,
+    Object? optionOfRemoteAdProductsFailureOrSuccess = freezed,
+    Object? reservating = freezed,
+    Object? optionOfreservationResultSuccessOrFailure = freezed,
+    Object? optionOfReservationResponse = freezed,
   }) {
     return _then(_value.copyWith(
       itemsInCart: itemsInCart == freezed
           ? _value.itemsInCart
           : itemsInCart // ignore: cast_nullable_to_non_nullable
               as List<ReservationItem>,
+      optionOfRemoteAdProductsFailureOrSuccess:
+          optionOfRemoteAdProductsFailureOrSuccess == freezed
+              ? _value.optionOfRemoteAdProductsFailureOrSuccess
+              : optionOfRemoteAdProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<AdvertisementFailure, List<AdProduct>>>,
+      reservating: reservating == freezed
+          ? _value.reservating
+          : reservating // ignore: cast_nullable_to_non_nullable
+              as bool,
+      optionOfreservationResultSuccessOrFailure:
+          optionOfreservationResultSuccessOrFailure == freezed
+              ? _value.optionOfreservationResultSuccessOrFailure
+              : optionOfreservationResultSuccessOrFailure // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<ReservationFailure, Unit>>,
+      optionOfReservationResponse: optionOfReservationResponse == freezed
+          ? _value.optionOfReservationResponse
+          : optionOfReservationResponse // ignore: cast_nullable_to_non_nullable
+              as Option<ReservationResponse>,
     ));
   }
 }
@@ -512,7 +678,14 @@ abstract class _$CartStateCopyWith<$Res> implements $CartStateCopyWith<$Res> {
           _CartState value, $Res Function(_CartState) then) =
       __$CartStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<ReservationItem> itemsInCart});
+  $Res call(
+      {List<ReservationItem> itemsInCart,
+      Option<Either<AdvertisementFailure, List<AdProduct>>>
+          optionOfRemoteAdProductsFailureOrSuccess,
+      bool reservating,
+      Option<Either<ReservationFailure, Unit>>
+          optionOfreservationResultSuccessOrFailure,
+      Option<ReservationResponse> optionOfReservationResponse});
 }
 
 /// @nodoc
@@ -527,12 +700,34 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? itemsInCart = freezed,
+    Object? optionOfRemoteAdProductsFailureOrSuccess = freezed,
+    Object? reservating = freezed,
+    Object? optionOfreservationResultSuccessOrFailure = freezed,
+    Object? optionOfReservationResponse = freezed,
   }) {
     return _then(_CartState(
       itemsInCart: itemsInCart == freezed
           ? _value.itemsInCart
           : itemsInCart // ignore: cast_nullable_to_non_nullable
               as List<ReservationItem>,
+      optionOfRemoteAdProductsFailureOrSuccess:
+          optionOfRemoteAdProductsFailureOrSuccess == freezed
+              ? _value.optionOfRemoteAdProductsFailureOrSuccess
+              : optionOfRemoteAdProductsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<AdvertisementFailure, List<AdProduct>>>,
+      reservating: reservating == freezed
+          ? _value.reservating
+          : reservating // ignore: cast_nullable_to_non_nullable
+              as bool,
+      optionOfreservationResultSuccessOrFailure:
+          optionOfreservationResultSuccessOrFailure == freezed
+              ? _value.optionOfreservationResultSuccessOrFailure
+              : optionOfreservationResultSuccessOrFailure // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<ReservationFailure, Unit>>,
+      optionOfReservationResponse: optionOfReservationResponse == freezed
+          ? _value.optionOfReservationResponse
+          : optionOfReservationResponse // ignore: cast_nullable_to_non_nullable
+              as Option<ReservationResponse>,
     ));
   }
 }
@@ -540,14 +735,29 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CartState implements _CartState {
-  const _$_CartState({required this.itemsInCart});
+  const _$_CartState(
+      {required this.itemsInCart,
+      required this.optionOfRemoteAdProductsFailureOrSuccess,
+      required this.reservating,
+      required this.optionOfreservationResultSuccessOrFailure,
+      required this.optionOfReservationResponse});
 
   @override
   final List<ReservationItem> itemsInCart;
+  @override
+  final Option<Either<AdvertisementFailure, List<AdProduct>>>
+      optionOfRemoteAdProductsFailureOrSuccess;
+  @override
+  final bool reservating;
+  @override
+  final Option<Either<ReservationFailure, Unit>>
+      optionOfreservationResultSuccessOrFailure;
+  @override
+  final Option<ReservationResponse> optionOfReservationResponse;
 
   @override
   String toString() {
-    return 'CartState(itemsInCart: $itemsInCart)';
+    return 'CartState(itemsInCart: $itemsInCart, optionOfRemoteAdProductsFailureOrSuccess: $optionOfRemoteAdProductsFailureOrSuccess, reservating: $reservating, optionOfreservationResultSuccessOrFailure: $optionOfreservationResultSuccessOrFailure, optionOfReservationResponse: $optionOfReservationResponse)';
   }
 
   @override
@@ -556,12 +766,37 @@ class _$_CartState implements _CartState {
         (other is _CartState &&
             (identical(other.itemsInCart, itemsInCart) ||
                 const DeepCollectionEquality()
-                    .equals(other.itemsInCart, itemsInCart)));
+                    .equals(other.itemsInCart, itemsInCart)) &&
+            (identical(other.optionOfRemoteAdProductsFailureOrSuccess,
+                    optionOfRemoteAdProductsFailureOrSuccess) ||
+                const DeepCollectionEquality().equals(
+                    other.optionOfRemoteAdProductsFailureOrSuccess,
+                    optionOfRemoteAdProductsFailureOrSuccess)) &&
+            (identical(other.reservating, reservating) ||
+                const DeepCollectionEquality()
+                    .equals(other.reservating, reservating)) &&
+            (identical(other.optionOfreservationResultSuccessOrFailure,
+                    optionOfreservationResultSuccessOrFailure) ||
+                const DeepCollectionEquality().equals(
+                    other.optionOfreservationResultSuccessOrFailure,
+                    optionOfreservationResultSuccessOrFailure)) &&
+            (identical(other.optionOfReservationResponse,
+                    optionOfReservationResponse) ||
+                const DeepCollectionEquality().equals(
+                    other.optionOfReservationResponse,
+                    optionOfReservationResponse)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(itemsInCart);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(itemsInCart) ^
+      const DeepCollectionEquality()
+          .hash(optionOfRemoteAdProductsFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(reservating) ^
+      const DeepCollectionEquality()
+          .hash(optionOfreservationResultSuccessOrFailure) ^
+      const DeepCollectionEquality().hash(optionOfReservationResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -570,11 +805,31 @@ class _$_CartState implements _CartState {
 }
 
 abstract class _CartState implements CartState {
-  const factory _CartState({required List<ReservationItem> itemsInCart}) =
+  const factory _CartState(
+          {required List<ReservationItem> itemsInCart,
+          required Option<Either<AdvertisementFailure, List<AdProduct>>>
+              optionOfRemoteAdProductsFailureOrSuccess,
+          required bool reservating,
+          required Option<Either<ReservationFailure, Unit>>
+              optionOfreservationResultSuccessOrFailure,
+          required Option<ReservationResponse> optionOfReservationResponse}) =
       _$_CartState;
 
   @override
   List<ReservationItem> get itemsInCart => throw _privateConstructorUsedError;
+  @override
+  Option<Either<AdvertisementFailure, List<AdProduct>>>
+      get optionOfRemoteAdProductsFailureOrSuccess =>
+          throw _privateConstructorUsedError;
+  @override
+  bool get reservating => throw _privateConstructorUsedError;
+  @override
+  Option<Either<ReservationFailure, Unit>>
+      get optionOfreservationResultSuccessOrFailure =>
+          throw _privateConstructorUsedError;
+  @override
+  Option<ReservationResponse> get optionOfReservationResponse =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CartStateCopyWith<_CartState> get copyWith =>

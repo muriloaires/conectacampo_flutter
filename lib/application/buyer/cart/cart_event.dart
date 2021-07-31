@@ -8,4 +8,5 @@ class CartEvent with _$CartEvent {
 
   const factory CartEvent.quantityChanged(
       ReservationItem reservationItem, String value) = QuantityChanged;
+  const factory CartEvent.btnFinishPressed() = BtnFinishPressed;
 }

@@ -15,6 +15,7 @@ class ReservationItem with _$ReservationItem {
       required String rating,
       required String kind,
       required String sellerName,
+      required String sellerId,
       required String sellerPhone}) = _ReservationItem;
 
   factory ReservationItem.fromAdProduct(AdProduct product) => ReservationItem(
@@ -26,6 +27,7 @@ class ReservationItem with _$ReservationItem {
       rating: product.rating,
       kind: product.kind,
       sellerName: product.advertisement?.seller.name.getOrCrash() ?? '',
+      sellerId: product.advertisement?.seller.id.getOrCrash() ?? '',
       sellerPhone:
           product.advertisement?.seller.phoneNumber.getOrCrash() ?? '');
 }

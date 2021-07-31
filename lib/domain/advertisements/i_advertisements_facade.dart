@@ -29,4 +29,7 @@ abstract class IAdvertisementsFacade {
       Place place);
 
   Future<Either<AdvertisementFailure, List<Advertisement>>> getGroupsAds();
+
+  Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProductsByIds(
+      List<int> ids);
 }

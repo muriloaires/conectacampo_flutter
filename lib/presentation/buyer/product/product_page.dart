@@ -24,11 +24,107 @@ class ProductPage extends StatelessWidget {
       child: BlocConsumer<ProductPageBloc, ProductPageState>(
           listener: (context, state) {
             if (state.setInitialQuantity) {
-              state.optionOfReservatiomItem.fold(() => null, (a) {
-                context.read<ProductPageBloc>().add(
-                    ProductPageEvent.ammountChanged(a.quantity.toString()));
-                textController.text = a.quantity.toString();
+              state.optionOfReservatiomItemFailureOrSuccess.fold(() => null,
+                  (a) {
+                a.fold(
+                    (l) => null,
+                    (r) => () {
+                          context.read<ProductPageBloc>().add(
+                              ProductPageEvent.ammountChanged(
+                                  r.quantity.toString()));
+                          textController.text = r.quantity.toString();
+                        });
               });
+            }
+
+            state.optionOfReservatiomItemFailureOrSuccess.fold(
+                () => null,
+                (a) => a.fold((l) {
+                      if (state.showErrorMsg) {
+                        l.maybeMap(
+                            anotherSellerInCart: (anotherSellerInCart) =>
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext dialogContext) =>
+                                      Dialog(
+                                    child: ListView(
+                                      shrinkWrap: true,
+                                      children: [
+                                        const Divider(),
+                                        CircleAvatar(
+                                          radius: 35,
+                                          backgroundColor: Colors.amber[400],
+                                          child: const Text(
+                                            '!',
+                                            style: TextStyle(
+                                                fontSize: 40,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        const Divider(),
+                                        const Center(
+                                          child: Text(
+                                              'Há produtos de outro vendedor no seu carrinho!',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                        ),
+                                        const Divider(height: 8),
+                                        const Center(
+                                          child: SizedBox(
+                                            width: 180,
+                                            child: Flexible(
+                                              child: Text(
+                                                'Você pode concluir ou cancelar o pedido',
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        const Divider(height: 8),
+                                        Container(
+                                            height: 1,
+                                            color: ColorSet.grayLine),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Expanded(
+                                              child: TextButton(
+                                                  onPressed: () {
+                                                    Navigator.of(dialogContext)
+                                                        .pop();
+                                                    context
+                                                        .read<BuyerMenuBloc>()
+                                                        .add(const BuyerMenuEvent
+                                                            .onCartTapped());
+                                                  },
+                                                  child: const Text(
+                                                      'Ir para o carrinho',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: ColorSet
+                                                              .grayDark))),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                            errorInsertingInCart: (errorInsertingInCart) =>
+                                EasyLoading.showError(
+                                    'Erro ao inserir produto no carrinho',
+                                    duration: const Duration(seconds: 1)),
+                            orElse: () {});
+                      }
+                    }, (r) => null));
+
+            if (state.showInserted) {
+              EasyLoading.showSuccess('Produto inserido com sucesso!',
+                  duration: const Duration(seconds: 2));
             }
 
             if (state.back) {
@@ -301,10 +397,6 @@ class ProductPage extends StatelessWidget {
                                   context.read<ProductPageBloc>().add(
                                       ProductPageEvent.onBtnReservationTap(
                                           _product));
-
-                                  EasyLoading.showSuccess(
-                                      'Produto adicionado com sucesso',
-                                      duration: const Duration(seconds: 2));
                                 }
                               },
                               child: ClipRRect(

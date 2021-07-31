@@ -90,8 +90,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i30.AdvertisementsBloc(get<_i6.IAdvertisementsFacade>()));
   gh.factory<_i31.BuyerMenuBloc>(
       () => _i31.BuyerMenuBloc(get<_i14.IReservationFacade>()));
-  gh.factory<_i32.CartBloc>(
-      () => _i32.CartBloc(get<_i14.IReservationFacade>()));
+  gh.factory<_i32.CartBloc>(() => _i32.CartBloc(
+      get<_i14.IReservationFacade>(), get<_i6.IAdvertisementsFacade>()));
   gh.factory<_i33.GroupBloc>(
       () => _i33.GroupBloc(get<_i6.IAdvertisementsFacade>()));
   return get;

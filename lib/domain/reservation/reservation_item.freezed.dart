@@ -25,6 +25,7 @@ class _$ReservationItemTearOff {
       required String rating,
       required String kind,
       required String sellerName,
+      required String sellerId,
       required String sellerPhone}) {
     return _ReservationItem(
       id: id,
@@ -35,6 +36,7 @@ class _$ReservationItemTearOff {
       rating: rating,
       kind: kind,
       sellerName: sellerName,
+      sellerId: sellerId,
       sellerPhone: sellerPhone,
     );
   }
@@ -53,6 +55,7 @@ mixin _$ReservationItem {
   String get rating => throw _privateConstructorUsedError;
   String get kind => throw _privateConstructorUsedError;
   String get sellerName => throw _privateConstructorUsedError;
+  String get sellerId => throw _privateConstructorUsedError;
   String get sellerPhone => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -74,6 +77,7 @@ abstract class $ReservationItemCopyWith<$Res> {
       String rating,
       String kind,
       String sellerName,
+      String sellerId,
       String sellerPhone});
 }
 
@@ -96,6 +100,7 @@ class _$ReservationItemCopyWithImpl<$Res>
     Object? rating = freezed,
     Object? kind = freezed,
     Object? sellerName = freezed,
+    Object? sellerId = freezed,
     Object? sellerPhone = freezed,
   }) {
     return _then(_value.copyWith(
@@ -131,6 +136,10 @@ class _$ReservationItemCopyWithImpl<$Res>
           ? _value.sellerName
           : sellerName // ignore: cast_nullable_to_non_nullable
               as String,
+      sellerId: sellerId == freezed
+          ? _value.sellerId
+          : sellerId // ignore: cast_nullable_to_non_nullable
+              as String,
       sellerPhone: sellerPhone == freezed
           ? _value.sellerPhone
           : sellerPhone // ignore: cast_nullable_to_non_nullable
@@ -155,6 +164,7 @@ abstract class _$ReservationItemCopyWith<$Res>
       String rating,
       String kind,
       String sellerName,
+      String sellerId,
       String sellerPhone});
 }
 
@@ -179,6 +189,7 @@ class __$ReservationItemCopyWithImpl<$Res>
     Object? rating = freezed,
     Object? kind = freezed,
     Object? sellerName = freezed,
+    Object? sellerId = freezed,
     Object? sellerPhone = freezed,
   }) {
     return _then(_ReservationItem(
@@ -214,6 +225,10 @@ class __$ReservationItemCopyWithImpl<$Res>
           ? _value.sellerName
           : sellerName // ignore: cast_nullable_to_non_nullable
               as String,
+      sellerId: sellerId == freezed
+          ? _value.sellerId
+          : sellerId // ignore: cast_nullable_to_non_nullable
+              as String,
       sellerPhone: sellerPhone == freezed
           ? _value.sellerPhone
           : sellerPhone // ignore: cast_nullable_to_non_nullable
@@ -234,6 +249,7 @@ class _$_ReservationItem implements _ReservationItem {
       required this.rating,
       required this.kind,
       required this.sellerName,
+      required this.sellerId,
       required this.sellerPhone});
 
   @override
@@ -253,11 +269,13 @@ class _$_ReservationItem implements _ReservationItem {
   @override
   final String sellerName;
   @override
+  final String sellerId;
+  @override
   final String sellerPhone;
 
   @override
   String toString() {
-    return 'ReservationItem(id: $id, name: $name, image: $image, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerPhone: $sellerPhone)';
+    return 'ReservationItem(id: $id, name: $name, image: $image, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerId: $sellerId, sellerPhone: $sellerPhone)';
   }
 
   @override
@@ -283,6 +301,9 @@ class _$_ReservationItem implements _ReservationItem {
             (identical(other.sellerName, sellerName) ||
                 const DeepCollectionEquality()
                     .equals(other.sellerName, sellerName)) &&
+            (identical(other.sellerId, sellerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.sellerId, sellerId)) &&
             (identical(other.sellerPhone, sellerPhone) ||
                 const DeepCollectionEquality()
                     .equals(other.sellerPhone, sellerPhone)));
@@ -299,6 +320,7 @@ class _$_ReservationItem implements _ReservationItem {
       const DeepCollectionEquality().hash(rating) ^
       const DeepCollectionEquality().hash(kind) ^
       const DeepCollectionEquality().hash(sellerName) ^
+      const DeepCollectionEquality().hash(sellerId) ^
       const DeepCollectionEquality().hash(sellerPhone);
 
   @JsonKey(ignore: true)
@@ -317,6 +339,7 @@ abstract class _ReservationItem implements ReservationItem {
       required String rating,
       required String kind,
       required String sellerName,
+      required String sellerId,
       required String sellerPhone}) = _$_ReservationItem;
 
   @override
@@ -335,6 +358,8 @@ abstract class _ReservationItem implements ReservationItem {
   String get kind => throw _privateConstructorUsedError;
   @override
   String get sellerName => throw _privateConstructorUsedError;
+  @override
+  String get sellerId => throw _privateConstructorUsedError;
   @override
   String get sellerPhone => throw _privateConstructorUsedError;
   @override

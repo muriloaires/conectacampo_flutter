@@ -399,13 +399,13 @@ class _$AdProductResponseTearOff {
   _AdProductResponse call(
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'measurement_unit') String unitMeasure,
+      @JsonKey(name: 'measurement_unit') String? unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String? unitPrice,
       @JsonKey(name: 'rating') String rating,
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'observation') String? observation,
-      @JsonKey(name: 'images') List<AvatarResponse> images,
+      @JsonKey(name: 'images') List<AvatarResponse>? images,
       @JsonKey(name: 'created_at') String createdAt) {
     return _AdProductResponse(
       id,
@@ -436,7 +436,7 @@ mixin _$AdProductResponse {
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'measurement_unit')
-  String get unitMeasure => throw _privateConstructorUsedError;
+  String? get unitMeasure => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity')
   int get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'unit_price')
@@ -448,7 +448,7 @@ mixin _$AdProductResponse {
   @JsonKey(name: 'observation')
   String? get observation => throw _privateConstructorUsedError;
   @JsonKey(name: 'images')
-  List<AvatarResponse> get images => throw _privateConstructorUsedError;
+  List<AvatarResponse>? get images => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
 
@@ -466,13 +466,13 @@ abstract class $AdProductResponseCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'measurement_unit') String unitMeasure,
+      @JsonKey(name: 'measurement_unit') String? unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String? unitPrice,
       @JsonKey(name: 'rating') String rating,
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'observation') String? observation,
-      @JsonKey(name: 'images') List<AvatarResponse> images,
+      @JsonKey(name: 'images') List<AvatarResponse>? images,
       @JsonKey(name: 'created_at') String createdAt});
 }
 
@@ -510,7 +510,7 @@ class _$AdProductResponseCopyWithImpl<$Res>
       unitMeasure: unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -534,7 +534,7 @@ class _$AdProductResponseCopyWithImpl<$Res>
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<AvatarResponse>,
+              as List<AvatarResponse>?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -553,13 +553,13 @@ abstract class _$AdProductResponseCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'measurement_unit') String unitMeasure,
+      @JsonKey(name: 'measurement_unit') String? unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String? unitPrice,
       @JsonKey(name: 'rating') String rating,
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'observation') String? observation,
-      @JsonKey(name: 'images') List<AvatarResponse> images,
+      @JsonKey(name: 'images') List<AvatarResponse>? images,
       @JsonKey(name: 'created_at') String createdAt});
 }
 
@@ -599,7 +599,7 @@ class __$AdProductResponseCopyWithImpl<$Res>
       unitMeasure == freezed
           ? _value.unitMeasure
           : unitMeasure // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -623,7 +623,7 @@ class __$AdProductResponseCopyWithImpl<$Res>
       images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<AvatarResponse>,
+              as List<AvatarResponse>?,
       createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -658,7 +658,7 @@ class _$_AdProductResponse implements _AdProductResponse {
   final String? name;
   @override
   @JsonKey(name: 'measurement_unit')
-  final String unitMeasure;
+  final String? unitMeasure;
   @override
   @JsonKey(name: 'quantity')
   final int quantity;
@@ -676,7 +676,7 @@ class _$_AdProductResponse implements _AdProductResponse {
   final String? observation;
   @override
   @JsonKey(name: 'images')
-  final List<AvatarResponse> images;
+  final List<AvatarResponse>? images;
   @override
   @JsonKey(name: 'created_at')
   final String createdAt;
@@ -746,13 +746,13 @@ abstract class _AdProductResponse implements AdProductResponse {
   const factory _AdProductResponse(
       @JsonKey(name: 'id') int id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'measurement_unit') String unitMeasure,
+      @JsonKey(name: 'measurement_unit') String? unitMeasure,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'unit_price') String? unitPrice,
       @JsonKey(name: 'rating') String rating,
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'observation') String? observation,
-      @JsonKey(name: 'images') List<AvatarResponse> images,
+      @JsonKey(name: 'images') List<AvatarResponse>? images,
       @JsonKey(name: 'created_at') String createdAt) = _$_AdProductResponse;
 
   factory _AdProductResponse.fromJson(Map<String, dynamic> json) =
@@ -766,7 +766,7 @@ abstract class _AdProductResponse implements AdProductResponse {
   String? get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'measurement_unit')
-  String get unitMeasure => throw _privateConstructorUsedError;
+  String? get unitMeasure => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'quantity')
   int get quantity => throw _privateConstructorUsedError;
@@ -784,7 +784,7 @@ abstract class _AdProductResponse implements AdProductResponse {
   String? get observation => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'images')
-  List<AvatarResponse> get images => throw _privateConstructorUsedError;
+  List<AvatarResponse>? get images => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
