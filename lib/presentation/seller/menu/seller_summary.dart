@@ -1,9 +1,11 @@
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_advertisement.dart';
+import 'package:conectacampo/presentation/seller/reservation/seller_reservation.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,7 @@ class SellerSummary extends StatelessWidget {
           builder: (context) => Scaffold(
                 body: SingleChildScrollView(
                   child: BlocConsumer<SellerSummaryBloc, SellerSummaryState>(
-                    listener: (context, state) {},
+                    listener: (context, state) async {},
                     builder: (context, state) => Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -197,39 +199,63 @@ class SellerAdvertisements extends StatelessWidget {
 class SellerReservations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if (/*context.read<SellerSummaryBloc>().state.reservations.isEmpty*/ true) {
-      return Card(
-        margin: const EdgeInsets.all(0),
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Sem reservas',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    return BlocBuilder<SellerSummaryBloc, SellerSummaryState>(
+      builder: (context, state) {
+        if (state.loadingReservations) {
+          return const Center(
+              child: CircularProgressIndicator(
+            color: ColorSet.brown1,
+          ));
+        }
+
+        List<Reservation> list = context
+            .read<SellerSummaryBloc>()
+            .state
+            .optionOfReservationFailureOrSuccess
+            .fold(() => [], (a) => a.fold((l) => [], (r) => r));
+
+        if (list.isEmpty) {
+          return Card(
+            margin: const EdgeInsets.all(0),
+            child: Padding(
+              padding: const EdgeInsets.all(32),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Sem reservas',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Text('Sem reservas no momento')
+                    ],
                   ),
-                  Text('Sem reservas no momento')
+                  const SizedBox(
+                    width: 32,
+                  ),
+                  SvgPicture.asset(
+                    'assets/coolicon.svg',
+                    color: ColorSet.brown1,
+                    width: 21,
+                    height: 21,
+                  ),
                 ],
               ),
-              const SizedBox(
-                width: 32,
-              ),
-              SvgPicture.asset(
-                'assets/coolicon.svg',
-                color: ColorSet.brown1,
-                width: 21,
-                height: 21,
-              ),
-            ],
-          ),
-        ),
-      );
-    } else {
-//TODO
-    }
+            ),
+          );
+        } else {
+          return ListView.separated(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              itemBuilder: (context, index) =>
+                  SellerReservationWidget(list[index].copyWith()),
+              separatorBuilder: (context, index) => const Divider(),
+              itemCount: list.length);
+        }
+      },
+    );
   }
 }
 

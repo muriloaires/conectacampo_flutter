@@ -1,6 +1,11 @@
+import 'package:conectacampo/domain/reservation/product_reservation.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
+import 'package:conectacampo/infrastructure/advertisement/advertisement_mapper.dart';
 import 'package:conectacampo/infrastructure/advertisement/model/model.dart';
 import 'package:conectacampo/infrastructure/auth/model/model.dart';
+import 'package:conectacampo/infrastructure/auth/user_mapper.dart';
+import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'model.freezed.dart';
@@ -37,23 +42,23 @@ class ProductReservationAttributes with _$ProductReservationAttributes {
 }
 
 @freezed
-class Reservation with _$Reservation {
-  const factory Reservation(
+class ReservationRequest with _$ReservationRequest {
+  const factory ReservationRequest(
           {@JsonKey(name: 'product_reservations_attributes')
               required List<ProductReservationAttributes> adProducts}) =
-      _Reservation;
+      _ReservationRequest;
 
-  factory Reservation.fromJson(Map<String, dynamic> json) =>
-      _$ReservationFromJson(json);
+  factory ReservationRequest.fromJson(Map<String, dynamic> json) =>
+      _$ReservationRequestFromJson(json);
 }
 
 @freezed
-class ReservationObj with _$ReservationObj {
-  const factory ReservationObj(
-          {@JsonKey(name: 'reservation') required Reservation reservation}) =
-      _ReservationObj;
-  factory ReservationObj.fromJson(Map<String, dynamic> json) =>
-      _$ReservationObjFromJson(json);
+class ReservationObjRequest with _$ReservationObjRequest {
+  const factory ReservationObjRequest(
+      {@JsonKey(name: 'reservation')
+          required ReservationRequest reservation}) = _ReservationObjRequest;
+  factory ReservationObjRequest.fromJson(Map<String, dynamic> json) =>
+      _$ReservationObjRequestFromJson(json);
 }
 
 @freezed
@@ -61,7 +66,7 @@ class ReservationResponse with _$ReservationResponse {
   const factory ReservationResponse({
     @JsonKey(name: 'id') required int? id,
     @JsonKey(name: 'created_at') required String? createdAt,
-    @JsonKey(name: 'errors') required List<ErrorResponse> errors,
+    @JsonKey(name: 'errors') required List<ErrorResponse>? errors,
     @JsonKey(name: 'buyer') required UserResponse buyer,
     @JsonKey(name: 'seller') required UserResponse? seller,
     @JsonKey(name: 'product_reservations')
@@ -77,7 +82,7 @@ class ProductReservationResponse with _$ProductReservationResponse {
   const factory ProductReservationResponse({
     @JsonKey(name: 'id') required int? id,
     @JsonKey(name: 'created_at') required String? createdAt,
-    @JsonKey(name: 'errors') required List<ErrorResponse> errors,
+    @JsonKey(name: 'errors') required List<ErrorResponse>? errors,
     @JsonKey(name: 'status') required String status,
     @JsonKey(name: 'quantity') required int quantity,
     @JsonKey(name: 'advertisement_product')
@@ -130,3 +135,48 @@ extension ReservationItemDBDomain on ReservationItem {
         sellerId: sellerId);
   }
 }
+
+extension ReservationExt on ReservationResponse {
+  Reservation toDomain() {
+    return Reservation(
+        id: id ?? -1,
+        createdAt: createdAt ?? "",
+        buyer: buyer.toDomain(),
+        seller: seller?.toDomain(),
+        productReservations:
+            productReservations.map((e) => e.toDomain()).toList());
+  }
+}
+
+extension ProductReservationExt on ProductReservationResponse {
+  ProductReservation toDomain() {
+    return ProductReservation(
+        id: id,
+        createdAt: createdAt,
+        status: geStatus(status),
+        quantity: quantity,
+        adProduct: adProduct.toDomain());
+  }
+
+  ReservationItemStatus geStatus(String status) {
+    if (status == 'awaiting_buyer') {
+      return ReservationItemStatus.awaitingBuyer;
+    } else if (status == 'pending_seller') {
+      return ReservationItemStatus.pendingSeller;
+    } else if (status == 'buyer_canceled') {
+      return ReservationItemStatus.pendingSeller;
+    } else if (status == 'seller_canceled') {
+      return ReservationItemStatus.pendingSeller;
+    } else if (status == 'confirmed') {
+      return ReservationItemStatus.pendingSeller;
+    } else {
+      return ReservationItemStatus.paid;
+    }
+  }
+}
+// awaiting_buyer
+// pending_seller
+// buyer_canceled
+// seller_canceled
+// confirmed
+// paid

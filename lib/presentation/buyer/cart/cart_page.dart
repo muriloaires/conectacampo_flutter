@@ -1,5 +1,7 @@
 import 'package:conectacampo/application/buyer/cart/cart_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/reservation/product_reservation.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
@@ -103,37 +105,55 @@ class CartPage extends StatelessWidget {
                   width: double.infinity,
                   height: double.infinity,
                   child: const Center(child: Text('Carrinho vazio')))
-              : ListView.separated(
-                  separatorBuilder: (context, index) => Container(
-                    height: 1,
-                    color: ColorSet.grayLine,
-                  ),
-                  itemCount: state.itemsInCart.length,
-                  itemBuilder: (context, index) {
-                    var showError = false;
-                    AdProduct? product;
-                    final errorList = state.optionOfReservationResponse
-                        .fold(() => null, (a) => a.productReservations);
-                    try {
-                      if (errorList != null && errorList.isNotEmpty) {
-                        product = errorList
-                            .map((e) => e.adProduct)
-                            .toList()
-                            .where((element) =>
-                                element.id == state.itemsInCart[index].id)
-                            .first
-                            .toDomain();
-                        showError = product.quantity <
-                            state.itemsInCart[index].quantity;
-                      } else {
-                        product = state.optionOfRemoteAdProductsFailureOrSuccess
-                            .fold(() => null,
-                                (a) => a.fold((l) => null, (r) => r[index]));
-                      }
-                    } catch (e) {}
-                    return ReservationItemWidget(
-                        state.itemsInCart[index], product, showError);
-                  },
+              : ListView(
+                  children: [
+                    ListView.separated(
+                      shrinkWrap: true,
+                      separatorBuilder: (context, index) => Container(
+                        height: 1,
+                        color: ColorSet.grayLine,
+                      ),
+                      itemCount: state.itemsInCart.length,
+                      itemBuilder: (context, index) {
+                        var showError = false;
+                        AdProduct? product;
+                        final errorList = state.optionOfReservationResponse
+                            .fold(() => null, (a) => a.productReservations);
+                        try {
+                          if (errorList != null && errorList.isNotEmpty) {
+                            product = errorList
+                                .map((e) => e.adProduct)
+                                .toList()
+                                .where((element) =>
+                                    element.id == state.itemsInCart[index].id)
+                                .first
+                                .toDomain();
+                            showError = product.quantity <
+                                state.itemsInCart[index].quantity;
+                          } else {
+                            product = state
+                                .optionOfRemoteAdProductsFailureOrSuccess
+                                .fold(
+                                    () => null,
+                                    (a) =>
+                                        a.fold((l) => null, (r) => r[index]));
+                          }
+                        } catch (e) {}
+                        return ReservationItemWidget(
+                            state.itemsInCart[index], product, showError);
+                      },
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Comprar mais produtos',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: ColorSet.colorPrimaryGreen,
+                              decoration: TextDecoration.underline,
+                            )))
+                  ],
                 ),
         ),
       ),

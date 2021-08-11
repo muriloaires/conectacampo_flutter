@@ -1,4 +1,6 @@
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
+import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
@@ -6,10 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ReservationWidget extends StatelessWidget {
+class SellerReservationWidget extends StatelessWidget {
   final Reservation reservation;
 
-  const ReservationWidget(this.reservation);
+  const SellerReservationWidget(this.reservation);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ReservationBloc, ReservationState>(
@@ -42,12 +44,14 @@ class ReservationWidget extends StatelessWidget {
                       Container(
                           width: 72.0,
                           height: 72.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   fit: BoxFit.fill,
-                                  image: NetworkImage(
-                                      "https://i.imgur.com/BoN9kdC.png")))),
+                                  image: NetworkImage(reservation
+                                          .buyer.mediumAvatar?.value
+                                          .fold((l) => '', (r) => r) ??
+                                      '')))),
                       const SizedBox(
                         width: 12,
                       ),
@@ -55,18 +59,17 @@ class ReservationWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            reservation.seller?.name.getOrCrash() ?? '',
+                            reservation.buyer.name.getOrCrash() ?? '',
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 20),
                           ),
-                          SizedBox(
-                            height: 8,
-                          ),
+                          const SizedBox(height: 8),
                           Text.rich(TextSpan(text: 'Placa: ', children: [
                             TextSpan(
-                                text: reservation.seller?.vehicleLicensePlate ??
-                                    '',
-                                style: TextStyle(fontWeight: FontWeight.bold))
+                                text:
+                                    reservation.buyer.vehicleLicensePlate ?? '',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold))
                           ]))
                         ],
                       )
@@ -88,7 +91,7 @@ class ReservationWidget extends StatelessWidget {
                           child: Row(
                             children: [
                               const Text(
-                                'Fale com o vendedor',
+                                'Fale com o comprador',
                                 style: TextStyle(
                                     color: ColorSet.green1,
                                     fontWeight: FontWeight.bold),
@@ -118,7 +121,7 @@ class ReservationWidget extends StatelessWidget {
                             const Text('Itens',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: ColorSet.colorPrimaryGreen,
+                                  color: ColorSet.brown1,
                                 )),
                             ListView.builder(
                               physics: const ClampingScrollPhysics(),
@@ -137,11 +140,17 @@ class ReservationWidget extends StatelessWidget {
                             const SizedBox(
                               height: 4,
                             ),
-                            const Text('Alterar itens',
-                                style: TextStyle(
-                                    color: ColorSet.colorPrimaryGreen,
-                                    fontSize: 12,
-                                    decoration: TextDecoration.underline)),
+                            GestureDetector(
+                                onTap: () {
+                                  context.read<SellerMenuBloc>().add(
+                                      SellerMenuEvent.reservationEditItemsTap(
+                                          reservation));
+                                },
+                                child: const Text('Alterar itens',
+                                    style: TextStyle(
+                                        color: ColorSet.brown1,
+                                        fontSize: 12,
+                                        decoration: TextDecoration.underline))),
                             const SizedBox(
                               height: 50,
                             ),
@@ -157,97 +166,7 @@ class ReservationWidget extends StatelessWidget {
                                             decoration:
                                                 TextDecoration.underline)),
                                     const SizedBox(height: 8),
-                                    ListView.separated(
-                                      separatorBuilder: (context, index) =>
-                                          const SizedBox(height: 8),
-                                      physics: const ClampingScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemBuilder: (itemBuilder, index) {
-                                        return Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Alface Crespa',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                              'Só tem 40 unidades disponíveis. Aceitar?',
-                                              style: TextStyle(),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: GestureDetector(
-                                                      onTap: () {},
-                                                      child: Container(
-                                                        padding:
-                                                            EdgeInsets.fromLTRB(
-                                                                30, 10, 30, 10),
-                                                        child: Text('Cancelar',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: ColorSet
-                                                                    .red1)),
-                                                        decoration: BoxDecoration(
-                                                            color: ColorSet
-                                                                .red1Alpha,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .all(Radius
-                                                                        .circular(
-                                                                            20))),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: GestureDetector(
-                                                    onTap: () {},
-                                                    child: Container(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              30, 10, 30, 10),
-                                                      child: Text(
-                                                        'Aceitar',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color: ColorSet
-                                                                .green1),
-                                                      ),
-                                                      decoration: BoxDecoration(
-                                                          color: ColorSet
-                                                              .green1Alpha,
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          20))),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        );
-                                      },
-                                      itemCount: 4,
-                                    ),
-                                    SizedBox(
-                                      height: 40,
-                                    ),
+                                    const SizedBox(height: 40),
                                     Center(
                                       child: GestureDetector(
                                         onTap: () {},

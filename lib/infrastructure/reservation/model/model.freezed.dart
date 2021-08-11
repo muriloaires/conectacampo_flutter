@@ -614,59 +614,60 @@ abstract class _ProductReservationAttributes
       get copyWith => throw _privateConstructorUsedError;
 }
 
-Reservation _$ReservationFromJson(Map<String, dynamic> json) {
-  return _Reservation.fromJson(json);
+ReservationRequest _$ReservationRequestFromJson(Map<String, dynamic> json) {
+  return _ReservationRequest.fromJson(json);
 }
 
 /// @nodoc
-class _$ReservationTearOff {
-  const _$ReservationTearOff();
+class _$ReservationRequestTearOff {
+  const _$ReservationRequestTearOff();
 
-  _Reservation call(
+  _ReservationRequest call(
       {@JsonKey(name: 'product_reservations_attributes')
           required List<ProductReservationAttributes> adProducts}) {
-    return _Reservation(
+    return _ReservationRequest(
       adProducts: adProducts,
     );
   }
 
-  Reservation fromJson(Map<String, Object> json) {
-    return Reservation.fromJson(json);
+  ReservationRequest fromJson(Map<String, Object> json) {
+    return ReservationRequest.fromJson(json);
   }
 }
 
 /// @nodoc
-const $Reservation = _$ReservationTearOff();
+const $ReservationRequest = _$ReservationRequestTearOff();
 
 /// @nodoc
-mixin _$Reservation {
+mixin _$ReservationRequest {
   @JsonKey(name: 'product_reservations_attributes')
   List<ProductReservationAttributes> get adProducts =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ReservationCopyWith<Reservation> get copyWith =>
+  $ReservationRequestCopyWith<ReservationRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ReservationCopyWith<$Res> {
-  factory $ReservationCopyWith(
-          Reservation value, $Res Function(Reservation) then) =
-      _$ReservationCopyWithImpl<$Res>;
+abstract class $ReservationRequestCopyWith<$Res> {
+  factory $ReservationRequestCopyWith(
+          ReservationRequest value, $Res Function(ReservationRequest) then) =
+      _$ReservationRequestCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'product_reservations_attributes')
           List<ProductReservationAttributes> adProducts});
 }
 
 /// @nodoc
-class _$ReservationCopyWithImpl<$Res> implements $ReservationCopyWith<$Res> {
-  _$ReservationCopyWithImpl(this._value, this._then);
+class _$ReservationRequestCopyWithImpl<$Res>
+    implements $ReservationRequestCopyWith<$Res> {
+  _$ReservationRequestCopyWithImpl(this._value, this._then);
 
-  final Reservation _value;
+  final ReservationRequest _value;
   // ignore: unused_field
-  final $Res Function(Reservation) _then;
+  final $Res Function(ReservationRequest) _then;
 
   @override
   $Res call({
@@ -682,11 +683,11 @@ class _$ReservationCopyWithImpl<$Res> implements $ReservationCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ReservationCopyWith<$Res>
-    implements $ReservationCopyWith<$Res> {
-  factory _$ReservationCopyWith(
-          _Reservation value, $Res Function(_Reservation) then) =
-      __$ReservationCopyWithImpl<$Res>;
+abstract class _$ReservationRequestCopyWith<$Res>
+    implements $ReservationRequestCopyWith<$Res> {
+  factory _$ReservationRequestCopyWith(
+          _ReservationRequest value, $Res Function(_ReservationRequest) then) =
+      __$ReservationRequestCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'product_reservations_attributes')
@@ -694,20 +695,21 @@ abstract class _$ReservationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ReservationCopyWithImpl<$Res> extends _$ReservationCopyWithImpl<$Res>
-    implements _$ReservationCopyWith<$Res> {
-  __$ReservationCopyWithImpl(
-      _Reservation _value, $Res Function(_Reservation) _then)
-      : super(_value, (v) => _then(v as _Reservation));
+class __$ReservationRequestCopyWithImpl<$Res>
+    extends _$ReservationRequestCopyWithImpl<$Res>
+    implements _$ReservationRequestCopyWith<$Res> {
+  __$ReservationRequestCopyWithImpl(
+      _ReservationRequest _value, $Res Function(_ReservationRequest) _then)
+      : super(_value, (v) => _then(v as _ReservationRequest));
 
   @override
-  _Reservation get _value => super._value as _Reservation;
+  _ReservationRequest get _value => super._value as _ReservationRequest;
 
   @override
   $Res call({
     Object? adProducts = freezed,
   }) {
-    return _then(_Reservation(
+    return _then(_ReservationRequest(
       adProducts: adProducts == freezed
           ? _value.adProducts
           : adProducts // ignore: cast_nullable_to_non_nullable
@@ -718,13 +720,13 @@ class __$ReservationCopyWithImpl<$Res> extends _$ReservationCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Reservation implements _Reservation {
-  const _$_Reservation(
+class _$_ReservationRequest implements _ReservationRequest {
+  const _$_ReservationRequest(
       {@JsonKey(name: 'product_reservations_attributes')
           required this.adProducts});
 
-  factory _$_Reservation.fromJson(Map<String, dynamic> json) =>
-      _$_$_ReservationFromJson(json);
+  factory _$_ReservationRequest.fromJson(Map<String, dynamic> json) =>
+      _$_$_ReservationRequestFromJson(json);
 
   @override
   @JsonKey(name: 'product_reservations_attributes')
@@ -732,13 +734,13 @@ class _$_Reservation implements _Reservation {
 
   @override
   String toString() {
-    return 'Reservation(adProducts: $adProducts)';
+    return 'ReservationRequest(adProducts: $adProducts)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Reservation &&
+        (other is _ReservationRequest &&
             (identical(other.adProducts, adProducts) ||
                 const DeepCollectionEquality()
                     .equals(other.adProducts, adProducts)));
@@ -750,23 +752,23 @@ class _$_Reservation implements _Reservation {
 
   @JsonKey(ignore: true)
   @override
-  _$ReservationCopyWith<_Reservation> get copyWith =>
-      __$ReservationCopyWithImpl<_Reservation>(this, _$identity);
+  _$ReservationRequestCopyWith<_ReservationRequest> get copyWith =>
+      __$ReservationRequestCopyWithImpl<_ReservationRequest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ReservationToJson(this);
+    return _$_$_ReservationRequestToJson(this);
   }
 }
 
-abstract class _Reservation implements Reservation {
-  const factory _Reservation(
+abstract class _ReservationRequest implements ReservationRequest {
+  const factory _ReservationRequest(
           {@JsonKey(name: 'product_reservations_attributes')
               required List<ProductReservationAttributes> adProducts}) =
-      _$_Reservation;
+      _$_ReservationRequest;
 
-  factory _Reservation.fromJson(Map<String, dynamic> json) =
-      _$_Reservation.fromJson;
+  factory _ReservationRequest.fromJson(Map<String, dynamic> json) =
+      _$_ReservationRequest.fromJson;
 
   @override
   @JsonKey(name: 'product_reservations_attributes')
@@ -774,62 +776,63 @@ abstract class _Reservation implements Reservation {
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ReservationCopyWith<_Reservation> get copyWith =>
+  _$ReservationRequestCopyWith<_ReservationRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-ReservationObj _$ReservationObjFromJson(Map<String, dynamic> json) {
-  return _ReservationObj.fromJson(json);
+ReservationObjRequest _$ReservationObjRequestFromJson(
+    Map<String, dynamic> json) {
+  return _ReservationObjRequest.fromJson(json);
 }
 
 /// @nodoc
-class _$ReservationObjTearOff {
-  const _$ReservationObjTearOff();
+class _$ReservationObjRequestTearOff {
+  const _$ReservationObjRequestTearOff();
 
-  _ReservationObj call(
-      {@JsonKey(name: 'reservation') required Reservation reservation}) {
-    return _ReservationObj(
+  _ReservationObjRequest call(
+      {@JsonKey(name: 'reservation') required ReservationRequest reservation}) {
+    return _ReservationObjRequest(
       reservation: reservation,
     );
   }
 
-  ReservationObj fromJson(Map<String, Object> json) {
-    return ReservationObj.fromJson(json);
+  ReservationObjRequest fromJson(Map<String, Object> json) {
+    return ReservationObjRequest.fromJson(json);
   }
 }
 
 /// @nodoc
-const $ReservationObj = _$ReservationObjTearOff();
+const $ReservationObjRequest = _$ReservationObjRequestTearOff();
 
 /// @nodoc
-mixin _$ReservationObj {
+mixin _$ReservationObjRequest {
   @JsonKey(name: 'reservation')
-  Reservation get reservation => throw _privateConstructorUsedError;
+  ReservationRequest get reservation => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ReservationObjCopyWith<ReservationObj> get copyWith =>
+  $ReservationObjRequestCopyWith<ReservationObjRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ReservationObjCopyWith<$Res> {
-  factory $ReservationObjCopyWith(
-          ReservationObj value, $Res Function(ReservationObj) then) =
-      _$ReservationObjCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'reservation') Reservation reservation});
+abstract class $ReservationObjRequestCopyWith<$Res> {
+  factory $ReservationObjRequestCopyWith(ReservationObjRequest value,
+          $Res Function(ReservationObjRequest) then) =
+      _$ReservationObjRequestCopyWithImpl<$Res>;
+  $Res call({@JsonKey(name: 'reservation') ReservationRequest reservation});
 
-  $ReservationCopyWith<$Res> get reservation;
+  $ReservationRequestCopyWith<$Res> get reservation;
 }
 
 /// @nodoc
-class _$ReservationObjCopyWithImpl<$Res>
-    implements $ReservationObjCopyWith<$Res> {
-  _$ReservationObjCopyWithImpl(this._value, this._then);
+class _$ReservationObjRequestCopyWithImpl<$Res>
+    implements $ReservationObjRequestCopyWith<$Res> {
+  _$ReservationObjRequestCopyWithImpl(this._value, this._then);
 
-  final ReservationObj _value;
+  final ReservationObjRequest _value;
   // ignore: unused_field
-  final $Res Function(ReservationObj) _then;
+  final $Res Function(ReservationObjRequest) _then;
 
   @override
   $Res call({
@@ -839,77 +842,77 @@ class _$ReservationObjCopyWithImpl<$Res>
       reservation: reservation == freezed
           ? _value.reservation
           : reservation // ignore: cast_nullable_to_non_nullable
-              as Reservation,
+              as ReservationRequest,
     ));
   }
 
   @override
-  $ReservationCopyWith<$Res> get reservation {
-    return $ReservationCopyWith<$Res>(_value.reservation, (value) {
+  $ReservationRequestCopyWith<$Res> get reservation {
+    return $ReservationRequestCopyWith<$Res>(_value.reservation, (value) {
       return _then(_value.copyWith(reservation: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$ReservationObjCopyWith<$Res>
-    implements $ReservationObjCopyWith<$Res> {
-  factory _$ReservationObjCopyWith(
-          _ReservationObj value, $Res Function(_ReservationObj) then) =
-      __$ReservationObjCopyWithImpl<$Res>;
+abstract class _$ReservationObjRequestCopyWith<$Res>
+    implements $ReservationObjRequestCopyWith<$Res> {
+  factory _$ReservationObjRequestCopyWith(_ReservationObjRequest value,
+          $Res Function(_ReservationObjRequest) then) =
+      __$ReservationObjRequestCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'reservation') Reservation reservation});
+  $Res call({@JsonKey(name: 'reservation') ReservationRequest reservation});
 
   @override
-  $ReservationCopyWith<$Res> get reservation;
+  $ReservationRequestCopyWith<$Res> get reservation;
 }
 
 /// @nodoc
-class __$ReservationObjCopyWithImpl<$Res>
-    extends _$ReservationObjCopyWithImpl<$Res>
-    implements _$ReservationObjCopyWith<$Res> {
-  __$ReservationObjCopyWithImpl(
-      _ReservationObj _value, $Res Function(_ReservationObj) _then)
-      : super(_value, (v) => _then(v as _ReservationObj));
+class __$ReservationObjRequestCopyWithImpl<$Res>
+    extends _$ReservationObjRequestCopyWithImpl<$Res>
+    implements _$ReservationObjRequestCopyWith<$Res> {
+  __$ReservationObjRequestCopyWithImpl(_ReservationObjRequest _value,
+      $Res Function(_ReservationObjRequest) _then)
+      : super(_value, (v) => _then(v as _ReservationObjRequest));
 
   @override
-  _ReservationObj get _value => super._value as _ReservationObj;
+  _ReservationObjRequest get _value => super._value as _ReservationObjRequest;
 
   @override
   $Res call({
     Object? reservation = freezed,
   }) {
-    return _then(_ReservationObj(
+    return _then(_ReservationObjRequest(
       reservation: reservation == freezed
           ? _value.reservation
           : reservation // ignore: cast_nullable_to_non_nullable
-              as Reservation,
+              as ReservationRequest,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReservationObj implements _ReservationObj {
-  const _$_ReservationObj(
+class _$_ReservationObjRequest implements _ReservationObjRequest {
+  const _$_ReservationObjRequest(
       {@JsonKey(name: 'reservation') required this.reservation});
 
-  factory _$_ReservationObj.fromJson(Map<String, dynamic> json) =>
-      _$_$_ReservationObjFromJson(json);
+  factory _$_ReservationObjRequest.fromJson(Map<String, dynamic> json) =>
+      _$_$_ReservationObjRequestFromJson(json);
 
   @override
   @JsonKey(name: 'reservation')
-  final Reservation reservation;
+  final ReservationRequest reservation;
 
   @override
   String toString() {
-    return 'ReservationObj(reservation: $reservation)';
+    return 'ReservationObjRequest(reservation: $reservation)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ReservationObj &&
+        (other is _ReservationObjRequest &&
             (identical(other.reservation, reservation) ||
                 const DeepCollectionEquality()
                     .equals(other.reservation, reservation)));
@@ -921,29 +924,30 @@ class _$_ReservationObj implements _ReservationObj {
 
   @JsonKey(ignore: true)
   @override
-  _$ReservationObjCopyWith<_ReservationObj> get copyWith =>
-      __$ReservationObjCopyWithImpl<_ReservationObj>(this, _$identity);
+  _$ReservationObjRequestCopyWith<_ReservationObjRequest> get copyWith =>
+      __$ReservationObjRequestCopyWithImpl<_ReservationObjRequest>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ReservationObjToJson(this);
+    return _$_$_ReservationObjRequestToJson(this);
   }
 }
 
-abstract class _ReservationObj implements ReservationObj {
-  const factory _ReservationObj(
-          {@JsonKey(name: 'reservation') required Reservation reservation}) =
-      _$_ReservationObj;
+abstract class _ReservationObjRequest implements ReservationObjRequest {
+  const factory _ReservationObjRequest(
+      {@JsonKey(name: 'reservation')
+          required ReservationRequest reservation}) = _$_ReservationObjRequest;
 
-  factory _ReservationObj.fromJson(Map<String, dynamic> json) =
-      _$_ReservationObj.fromJson;
+  factory _ReservationObjRequest.fromJson(Map<String, dynamic> json) =
+      _$_ReservationObjRequest.fromJson;
 
   @override
   @JsonKey(name: 'reservation')
-  Reservation get reservation => throw _privateConstructorUsedError;
+  ReservationRequest get reservation => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ReservationObjCopyWith<_ReservationObj> get copyWith =>
+  _$ReservationObjRequestCopyWith<_ReservationObjRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -961,7 +965,7 @@ class _$ReservationResponseTearOff {
       @JsonKey(name: 'created_at')
           required String? createdAt,
       @JsonKey(name: 'errors')
-          required List<ErrorResponse> errors,
+          required List<ErrorResponse>? errors,
       @JsonKey(name: 'buyer')
           required UserResponse buyer,
       @JsonKey(name: 'seller')
@@ -993,7 +997,7 @@ mixin _$ReservationResponse {
   @JsonKey(name: 'created_at')
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'errors')
-  List<ErrorResponse> get errors => throw _privateConstructorUsedError;
+  List<ErrorResponse>? get errors => throw _privateConstructorUsedError;
   @JsonKey(name: 'buyer')
   UserResponse get buyer => throw _privateConstructorUsedError;
   @JsonKey(name: 'seller')
@@ -1019,7 +1023,7 @@ abstract class $ReservationResponseCopyWith<$Res> {
       @JsonKey(name: 'created_at')
           String? createdAt,
       @JsonKey(name: 'errors')
-          List<ErrorResponse> errors,
+          List<ErrorResponse>? errors,
       @JsonKey(name: 'buyer')
           UserResponse buyer,
       @JsonKey(name: 'seller')
@@ -1061,7 +1065,7 @@ class _$ReservationResponseCopyWithImpl<$Res>
       errors: errors == freezed
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
-              as List<ErrorResponse>,
+              as List<ErrorResponse>?,
       buyer: buyer == freezed
           ? _value.buyer
           : buyer // ignore: cast_nullable_to_non_nullable
@@ -1109,7 +1113,7 @@ abstract class _$ReservationResponseCopyWith<$Res>
       @JsonKey(name: 'created_at')
           String? createdAt,
       @JsonKey(name: 'errors')
-          List<ErrorResponse> errors,
+          List<ErrorResponse>? errors,
       @JsonKey(name: 'buyer')
           UserResponse buyer,
       @JsonKey(name: 'seller')
@@ -1155,7 +1159,7 @@ class __$ReservationResponseCopyWithImpl<$Res>
       errors: errors == freezed
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
-              as List<ErrorResponse>,
+              as List<ErrorResponse>?,
       buyer: buyer == freezed
           ? _value.buyer
           : buyer // ignore: cast_nullable_to_non_nullable
@@ -1200,7 +1204,7 @@ class _$_ReservationResponse implements _ReservationResponse {
   final String? createdAt;
   @override
   @JsonKey(name: 'errors')
-  final List<ErrorResponse> errors;
+  final List<ErrorResponse>? errors;
   @override
   @JsonKey(name: 'buyer')
   final UserResponse buyer;
@@ -1265,7 +1269,7 @@ abstract class _ReservationResponse implements ReservationResponse {
           @JsonKey(name: 'created_at')
               required String? createdAt,
           @JsonKey(name: 'errors')
-              required List<ErrorResponse> errors,
+              required List<ErrorResponse>? errors,
           @JsonKey(name: 'buyer')
               required UserResponse buyer,
           @JsonKey(name: 'seller')
@@ -1285,7 +1289,7 @@ abstract class _ReservationResponse implements ReservationResponse {
   String? get createdAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'errors')
-  List<ErrorResponse> get errors => throw _privateConstructorUsedError;
+  List<ErrorResponse>? get errors => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'buyer')
   UserResponse get buyer => throw _privateConstructorUsedError;
@@ -1317,7 +1321,7 @@ class _$ProductReservationResponseTearOff {
       @JsonKey(name: 'created_at')
           required String? createdAt,
       @JsonKey(name: 'errors')
-          required List<ErrorResponse> errors,
+          required List<ErrorResponse>? errors,
       @JsonKey(name: 'status')
           required String status,
       @JsonKey(name: 'quantity')
@@ -1349,7 +1353,7 @@ mixin _$ProductReservationResponse {
   @JsonKey(name: 'created_at')
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'errors')
-  List<ErrorResponse> get errors => throw _privateConstructorUsedError;
+  List<ErrorResponse>? get errors => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
   String get status => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity')
@@ -1371,7 +1375,7 @@ abstract class $ProductReservationResponseCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'created_at') String? createdAt,
-      @JsonKey(name: 'errors') List<ErrorResponse> errors,
+      @JsonKey(name: 'errors') List<ErrorResponse>? errors,
       @JsonKey(name: 'status') String status,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'advertisement_product') AdProductResponse adProduct});
@@ -1409,7 +1413,7 @@ class _$ProductReservationResponseCopyWithImpl<$Res>
       errors: errors == freezed
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
-              as List<ErrorResponse>,
+              as List<ErrorResponse>?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1444,7 +1448,7 @@ abstract class _$ProductReservationResponseCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'created_at') String? createdAt,
-      @JsonKey(name: 'errors') List<ErrorResponse> errors,
+      @JsonKey(name: 'errors') List<ErrorResponse>? errors,
       @JsonKey(name: 'status') String status,
       @JsonKey(name: 'quantity') int quantity,
       @JsonKey(name: 'advertisement_product') AdProductResponse adProduct});
@@ -1486,7 +1490,7 @@ class __$ProductReservationResponseCopyWithImpl<$Res>
       errors: errors == freezed
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
-              as List<ErrorResponse>,
+              as List<ErrorResponse>?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1525,7 +1529,7 @@ class _$_ProductReservationResponse implements _ProductReservationResponse {
   final String? createdAt;
   @override
   @JsonKey(name: 'errors')
-  final List<ErrorResponse> errors;
+  final List<ErrorResponse>? errors;
   @override
   @JsonKey(name: 'status')
   final String status;
@@ -1592,7 +1596,7 @@ abstract class _ProductReservationResponse
           @JsonKey(name: 'created_at')
               required String? createdAt,
           @JsonKey(name: 'errors')
-              required List<ErrorResponse> errors,
+              required List<ErrorResponse>? errors,
           @JsonKey(name: 'status')
               required String status,
           @JsonKey(name: 'quantity')
@@ -1612,7 +1616,7 @@ abstract class _ProductReservationResponse
   String? get createdAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'errors')
-  List<ErrorResponse> get errors => throw _privateConstructorUsedError;
+  List<ErrorResponse>? get errors => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'status')
   String get status => throw _privateConstructorUsedError;

@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ReservationItem _$ReservationItemFromJson(Map<String, dynamic> json) {
+  return _ReservationItem.fromJson(json);
+}
+
 /// @nodoc
 class _$ReservationItemTearOff {
   const _$ReservationItemTearOff();
@@ -19,26 +23,30 @@ class _$ReservationItemTearOff {
   _ReservationItem call(
       {required int id,
       required String name,
-      required String image,
       required String measurementUnit,
       required int quantity,
       required String rating,
       required String kind,
       required String sellerName,
+      required String sellerPhone,
       required String sellerId,
-      required String sellerPhone}) {
+      required String image}) {
     return _ReservationItem(
       id: id,
       name: name,
-      image: image,
       measurementUnit: measurementUnit,
       quantity: quantity,
       rating: rating,
       kind: kind,
       sellerName: sellerName,
-      sellerId: sellerId,
       sellerPhone: sellerPhone,
+      sellerId: sellerId,
+      image: image,
     );
+  }
+
+  ReservationItem fromJson(Map<String, Object> json) {
+    return ReservationItem.fromJson(json);
   }
 }
 
@@ -49,15 +57,16 @@ const $ReservationItem = _$ReservationItemTearOff();
 mixin _$ReservationItem {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
   String get measurementUnit => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   String get rating => throw _privateConstructorUsedError;
   String get kind => throw _privateConstructorUsedError;
   String get sellerName => throw _privateConstructorUsedError;
-  String get sellerId => throw _privateConstructorUsedError;
   String get sellerPhone => throw _privateConstructorUsedError;
+  String get sellerId => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ReservationItemCopyWith<ReservationItem> get copyWith =>
       throw _privateConstructorUsedError;
@@ -71,14 +80,14 @@ abstract class $ReservationItemCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      String image,
       String measurementUnit,
       int quantity,
       String rating,
       String kind,
       String sellerName,
+      String sellerPhone,
       String sellerId,
-      String sellerPhone});
+      String image});
 }
 
 /// @nodoc
@@ -94,14 +103,14 @@ class _$ReservationItemCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? image = freezed,
     Object? measurementUnit = freezed,
     Object? quantity = freezed,
     Object? rating = freezed,
     Object? kind = freezed,
     Object? sellerName = freezed,
-    Object? sellerId = freezed,
     Object? sellerPhone = freezed,
+    Object? sellerId = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -111,10 +120,6 @@ class _$ReservationItemCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
               as String,
       measurementUnit: measurementUnit == freezed
           ? _value.measurementUnit
@@ -136,13 +141,17 @@ class _$ReservationItemCopyWithImpl<$Res>
           ? _value.sellerName
           : sellerName // ignore: cast_nullable_to_non_nullable
               as String,
+      sellerPhone: sellerPhone == freezed
+          ? _value.sellerPhone
+          : sellerPhone // ignore: cast_nullable_to_non_nullable
+              as String,
       sellerId: sellerId == freezed
           ? _value.sellerId
           : sellerId // ignore: cast_nullable_to_non_nullable
               as String,
-      sellerPhone: sellerPhone == freezed
-          ? _value.sellerPhone
-          : sellerPhone // ignore: cast_nullable_to_non_nullable
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -158,14 +167,14 @@ abstract class _$ReservationItemCopyWith<$Res>
   $Res call(
       {int id,
       String name,
-      String image,
       String measurementUnit,
       int quantity,
       String rating,
       String kind,
       String sellerName,
+      String sellerPhone,
       String sellerId,
-      String sellerPhone});
+      String image});
 }
 
 /// @nodoc
@@ -183,14 +192,14 @@ class __$ReservationItemCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? image = freezed,
     Object? measurementUnit = freezed,
     Object? quantity = freezed,
     Object? rating = freezed,
     Object? kind = freezed,
     Object? sellerName = freezed,
-    Object? sellerId = freezed,
     Object? sellerPhone = freezed,
+    Object? sellerId = freezed,
+    Object? image = freezed,
   }) {
     return _then(_ReservationItem(
       id: id == freezed
@@ -200,10 +209,6 @@ class __$ReservationItemCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
               as String,
       measurementUnit: measurementUnit == freezed
           ? _value.measurementUnit
@@ -225,39 +230,44 @@ class __$ReservationItemCopyWithImpl<$Res>
           ? _value.sellerName
           : sellerName // ignore: cast_nullable_to_non_nullable
               as String,
+      sellerPhone: sellerPhone == freezed
+          ? _value.sellerPhone
+          : sellerPhone // ignore: cast_nullable_to_non_nullable
+              as String,
       sellerId: sellerId == freezed
           ? _value.sellerId
           : sellerId // ignore: cast_nullable_to_non_nullable
               as String,
-      sellerPhone: sellerPhone == freezed
-          ? _value.sellerPhone
-          : sellerPhone // ignore: cast_nullable_to_non_nullable
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_ReservationItem implements _ReservationItem {
   const _$_ReservationItem(
       {required this.id,
       required this.name,
-      required this.image,
       required this.measurementUnit,
       required this.quantity,
       required this.rating,
       required this.kind,
       required this.sellerName,
+      required this.sellerPhone,
       required this.sellerId,
-      required this.sellerPhone});
+      required this.image});
+
+  factory _$_ReservationItem.fromJson(Map<String, dynamic> json) =>
+      _$_$_ReservationItemFromJson(json);
 
   @override
   final int id;
   @override
   final String name;
-  @override
-  final String image;
   @override
   final String measurementUnit;
   @override
@@ -269,13 +279,15 @@ class _$_ReservationItem implements _ReservationItem {
   @override
   final String sellerName;
   @override
+  final String sellerPhone;
+  @override
   final String sellerId;
   @override
-  final String sellerPhone;
+  final String image;
 
   @override
   String toString() {
-    return 'ReservationItem(id: $id, name: $name, image: $image, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerId: $sellerId, sellerPhone: $sellerPhone)';
+    return 'ReservationItem(id: $id, name: $name, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerPhone: $sellerPhone, sellerId: $sellerId, image: $image)';
   }
 
   @override
@@ -286,8 +298,6 @@ class _$_ReservationItem implements _ReservationItem {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
             (identical(other.measurementUnit, measurementUnit) ||
                 const DeepCollectionEquality()
                     .equals(other.measurementUnit, measurementUnit)) &&
@@ -301,12 +311,14 @@ class _$_ReservationItem implements _ReservationItem {
             (identical(other.sellerName, sellerName) ||
                 const DeepCollectionEquality()
                     .equals(other.sellerName, sellerName)) &&
+            (identical(other.sellerPhone, sellerPhone) ||
+                const DeepCollectionEquality()
+                    .equals(other.sellerPhone, sellerPhone)) &&
             (identical(other.sellerId, sellerId) ||
                 const DeepCollectionEquality()
                     .equals(other.sellerId, sellerId)) &&
-            (identical(other.sellerPhone, sellerPhone) ||
-                const DeepCollectionEquality()
-                    .equals(other.sellerPhone, sellerPhone)));
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)));
   }
 
   @override
@@ -314,40 +326,46 @@ class _$_ReservationItem implements _ReservationItem {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(image) ^
       const DeepCollectionEquality().hash(measurementUnit) ^
       const DeepCollectionEquality().hash(quantity) ^
       const DeepCollectionEquality().hash(rating) ^
       const DeepCollectionEquality().hash(kind) ^
       const DeepCollectionEquality().hash(sellerName) ^
+      const DeepCollectionEquality().hash(sellerPhone) ^
       const DeepCollectionEquality().hash(sellerId) ^
-      const DeepCollectionEquality().hash(sellerPhone);
+      const DeepCollectionEquality().hash(image);
 
   @JsonKey(ignore: true)
   @override
   _$ReservationItemCopyWith<_ReservationItem> get copyWith =>
       __$ReservationItemCopyWithImpl<_ReservationItem>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ReservationItemToJson(this);
+  }
 }
 
 abstract class _ReservationItem implements ReservationItem {
   const factory _ReservationItem(
       {required int id,
       required String name,
-      required String image,
       required String measurementUnit,
       required int quantity,
       required String rating,
       required String kind,
       required String sellerName,
+      required String sellerPhone,
       required String sellerId,
-      required String sellerPhone}) = _$_ReservationItem;
+      required String image}) = _$_ReservationItem;
+
+  factory _ReservationItem.fromJson(Map<String, dynamic> json) =
+      _$_ReservationItem.fromJson;
 
   @override
   int get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
-  @override
-  String get image => throw _privateConstructorUsedError;
   @override
   String get measurementUnit => throw _privateConstructorUsedError;
   @override
@@ -359,9 +377,11 @@ abstract class _ReservationItem implements ReservationItem {
   @override
   String get sellerName => throw _privateConstructorUsedError;
   @override
+  String get sellerPhone => throw _privateConstructorUsedError;
+  @override
   String get sellerId => throw _privateConstructorUsedError;
   @override
-  String get sellerPhone => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ReservationItemCopyWith<_ReservationItem> get copyWith =>

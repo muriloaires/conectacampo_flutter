@@ -1,5 +1,6 @@
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
 import 'package:conectacampo/presentation/buyer/search/search_page.dart';
@@ -30,10 +31,11 @@ class BuyerSummary extends StatelessWidget {
                     builder: (context, state) => Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Column(
+                        ListView(
+                          shrinkWrap: true,
+                          physics: const ClampingScrollPhysics(),
                           children: [
                             _getSearchWidget(context),
-                            _getReservationsWidget(),
                             const SizedBox(
                               height: 32,
                             ),
@@ -53,7 +55,7 @@ class BuyerSummary extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                              child: _getNoItemsAddedWidget(),
+                              child: _getReservations(),
                             ),
                             const SizedBox(
                               height: 32,
@@ -173,53 +175,49 @@ class BuyerSummary extends StatelessWidget {
     );
   }
 
-  Padding _getReservationsWidget() {
-    return Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: ListView.separated(
-          separatorBuilder: (context, index) => SizedBox(
-            height: 10,
-          ),
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 1,
-          itemBuilder: (context, index) {
-            return BlocProvider(
-              create: (context) => getIt<ReservationBloc>(),
-              child: Reservation(),
-            );
-          },
-        ));
-  }
-
-  Card _getNoItemsAddedWidget() {
-    return Card(
-      margin: const EdgeInsets.all(0),
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'Sem itens na sua feira!',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+  Widget _getReservations() {
+    return BlocBuilder<ReservationBloc, ReservationState>(
+      builder: (context, state) {
+        List<Reservation> list = state.optionOfReservationListFailureOrSuccess
+            .fold(() => [], (a) => a.fold((l) => [], (r) => r));
+        final finalWidget = list.isEmpty
+            ? Card(
+                margin: const EdgeInsets.all(0),
+                child: Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Sem itens na sua feira!',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text('Fazer novo pedido')
+                        ],
+                      ),
+                      const SizedBox(
+                        width: 32,
+                      ),
+                      SvgPicture.asset(
+                        'assets/coolicon.svg',
+                        width: 21,
+                        height: 21,
+                      ),
+                    ],
+                  ),
                 ),
-                Text('Fazer novo pedido')
-              ],
-            ),
-            const SizedBox(
-              width: 32,
-            ),
-            SvgPicture.asset(
-              'assets/coolicon.svg',
-              width: 21,
-              height: 21,
-            ),
-          ],
-        ),
-      ),
+              )
+            : ListView.separated(
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                itemBuilder: (context, index) => ReservationWidget(list[index]),
+                separatorBuilder: (context, index) => const Divider(),
+                itemCount: list.length);
+        return finalWidget;
+      },
     );
   }
 

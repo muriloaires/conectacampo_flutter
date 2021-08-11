@@ -7,10 +7,15 @@ class SellerSummaryState with _$SellerSummaryState {
     required Option<Either<AuthFailure, User>> optionOfOUser,
     required Option<Either<AdvertisementFailure, List<Advertisement>>>
         optionOfAdvertisementsFailureOrSuccess,
+    required Option<Either<ReservationFailure, List<Reservation>>>
+        optionOfReservationFailureOrSuccess,
+    required bool loadingReservations,
   }) = _SellerSummaryState;
 
   factory SellerSummaryState.initial() => SellerSummaryState(
       optionOfOPlace: none(),
       optionOfOUser: none(),
-      optionOfAdvertisementsFailureOrSuccess: none());
+      optionOfAdvertisementsFailureOrSuccess: none(),
+      optionOfReservationFailureOrSuccess: none(),
+      loadingReservations: false);
 }

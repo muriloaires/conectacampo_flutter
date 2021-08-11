@@ -1,6 +1,7 @@
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
+import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/cart/cart_page.dart';
 import 'package:conectacampo/presentation/buyer/group/group_page.dart';
@@ -30,7 +31,9 @@ class BuyerMainPage extends StatelessWidget {
             create: (context) =>
                 getIt()..add(const AdvertisementsEvent.started())),
         BlocProvider<GroupBloc>(
-            create: (context) => getIt()..add(const GroupEvent.started()))
+            create: (context) => getIt()..add(const GroupEvent.started())),
+        BlocProvider<ReservationBloc>(
+            create: (context) => getIt()..add(const ReservationEvent.started()))
       ],
       child: BlocConsumer<BuyerMenuBloc, BuyerMenuState>(
         listener: (context, state) async {

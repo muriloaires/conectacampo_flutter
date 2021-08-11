@@ -51,8 +51,9 @@ Map<String, dynamic> _$_$_ProductReservationAttributesToJson(
       'advertisement_product_id': instance.adProductId,
     };
 
-_$_Reservation _$_$_ReservationFromJson(Map<String, dynamic> json) {
-  return _$_Reservation(
+_$_ReservationRequest _$_$_ReservationRequestFromJson(
+    Map<String, dynamic> json) {
+  return _$_ReservationRequest(
     adProducts: (json['product_reservations_attributes'] as List<dynamic>)
         .map((e) =>
             ProductReservationAttributes.fromJson(e as Map<String, dynamic>))
@@ -60,19 +61,22 @@ _$_Reservation _$_$_ReservationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_ReservationToJson(_$_Reservation instance) =>
+Map<String, dynamic> _$_$_ReservationRequestToJson(
+        _$_ReservationRequest instance) =>
     <String, dynamic>{
       'product_reservations_attributes': instance.adProducts,
     };
 
-_$_ReservationObj _$_$_ReservationObjFromJson(Map<String, dynamic> json) {
-  return _$_ReservationObj(
-    reservation:
-        Reservation.fromJson(json['reservation'] as Map<String, dynamic>),
+_$_ReservationObjRequest _$_$_ReservationObjRequestFromJson(
+    Map<String, dynamic> json) {
+  return _$_ReservationObjRequest(
+    reservation: ReservationRequest.fromJson(
+        json['reservation'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$_$_ReservationObjToJson(_$_ReservationObj instance) =>
+Map<String, dynamic> _$_$_ReservationObjRequestToJson(
+        _$_ReservationObjRequest instance) =>
     <String, dynamic>{
       'reservation': instance.reservation,
     };
@@ -82,8 +86,8 @@ _$_ReservationResponse _$_$_ReservationResponseFromJson(
   return _$_ReservationResponse(
     id: json['id'] as int?,
     createdAt: json['created_at'] as String?,
-    errors: (json['errors'] as List<dynamic>)
-        .map((e) => ErrorResponse.fromJson(e as Map<String, dynamic>))
+    errors: (json['errors'] as List<dynamic>?)
+        ?.map((e) => ErrorResponse.fromJson(e as Map<String, dynamic>))
         .toList(),
     buyer: UserResponse.fromJson(json['buyer'] as Map<String, dynamic>),
     seller: json['seller'] == null
@@ -112,8 +116,8 @@ _$_ProductReservationResponse _$_$_ProductReservationResponseFromJson(
   return _$_ProductReservationResponse(
     id: json['id'] as int?,
     createdAt: json['created_at'] as String?,
-    errors: (json['errors'] as List<dynamic>)
-        .map((e) => ErrorResponse.fromJson(e as Map<String, dynamic>))
+    errors: (json['errors'] as List<dynamic>?)
+        ?.map((e) => ErrorResponse.fromJson(e as Map<String, dynamic>))
         .toList(),
     status: json['status'] as String,
     quantity: json['quantity'] as int,

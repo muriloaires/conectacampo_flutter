@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/places/place.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -51,6 +53,15 @@ class SellerMenuBloc extends Bloc<SellerMenuEvent, SellerMenuState> {
         navToBuyerTapped: (navToBuyerTapped) async* {
           await persistUserType('buyer');
           yield state.copyWith(navToBuyer: true);
+        },
+        reservationEditItemsTap: (EditReservation value) async* {
+          yield state.copyWith(
+              openEditReservation: true,
+              optionOfResevationToEdit: some(value.reservation));
+        },
+        editingEnd: (EditingEnd value) async* {
+          yield state.copyWith(
+              openEditReservation: false, optionOfResevationToEdit: none());
         });
   }
 }

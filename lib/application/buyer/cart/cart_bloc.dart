@@ -10,13 +10,12 @@ import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/domain/reservation/value_objects.dart';
 import 'package:conectacampo/infrastructure/reservation/model/model.dart';
 import 'package:dartz/dartz.dart';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+part 'cart_bloc.freezed.dart';
 part 'cart_event.dart';
 part 'cart_state.dart';
-part 'cart_bloc.freezed.dart';
 
 @injectable
 class CartBloc extends Bloc<CartEvent, CartState> {
@@ -60,8 +59,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }, btnFinishPressed: (BtnFinishPressed value) async* {
       yield state.copyWith(
           reservating: true, optionOfReservationResponse: none());
-      final ReservationObj reservationObj = ReservationObj(
-          reservation: Reservation(
+      final ReservationObjRequest reservationObj = ReservationObjRequest(
+          reservation: ReservationRequest(
               adProducts: state.itemsInCart
                   .map((e) => ProductReservationAttributes(
                       quantity: e.quantity, adProductId: e.id))

@@ -16,7 +16,9 @@ class PlacesFacade implements IPlacesFacade {
   static const routePlaces = '/places';
   static const routeStatesPlaces = '/states';
   final FirebaseAuth _firebaseAuth;
+
   PlacesFacade(this._firebaseAuth);
+
   @override
   Future<Either<PlacesFailure, List<Place>>> getAllPlaces() async {
     final url = Uri.parse('${getCurrentApiUrl()}$routePlaces');

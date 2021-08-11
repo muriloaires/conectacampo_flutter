@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
+import 'package:conectacampo/domain/reservation/product_reservation.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

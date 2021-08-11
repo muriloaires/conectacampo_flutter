@@ -183,15 +183,13 @@ class NewProduct extends StatelessWidget {
                             product.newAdProductKind?.value
                                     .getOrElse(() => '') ??
                                 '',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
                                 color: ColorSet.grayDark),
                           ),
                         ),
-                        SizedBox(
-                          width: 2,
-                        ),
+                        const SizedBox(width: 2),
                         Container(
                           padding: EdgeInsets.all(2),
                           color: ColorSet.gray10,
@@ -199,21 +197,19 @@ class NewProduct extends StatelessWidget {
                               product.newAdProductRating?.value
                                       .getOrElse(() => '') ??
                                   '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   color: ColorSet.grayDark)),
                         ),
-                        SizedBox(
-                          width: 2,
-                        ),
+                        const SizedBox(width: 2),
                         Container(
                           padding: EdgeInsets.all(2),
                           color: ColorSet.gray10,
                           child: Text(
                               product.newAdProductUnitMeasure?.name ?? '',
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   color: ColorSet.grayDark)),
@@ -223,7 +219,7 @@ class NewProduct extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right)
+              const Icon(Icons.chevron_right)
             ],
           ),
         );

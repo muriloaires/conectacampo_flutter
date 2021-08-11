@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/injection.dart';
@@ -6,6 +9,7 @@ import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/menu/seller_summary.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_bottom_menu.dart';
+import 'package:conectacampo/presentation/seller/reservation/edit_reservation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,9 +29,26 @@ class SellerMainPage extends StatelessWidget {
         BlocProvider<SellerSummaryBloc>(
             create: (BuildContext context) =>
                 getIt()..add(const SellerSummaryEvent.started())),
+        BlocProvider<ReservationBloc>(
+            create: (context) => getIt()..add(const ReservationEvent.started()))
       ],
       child: BlocConsumer<SellerMenuBloc, SellerMenuState>(
-        listener: (context, state) {
+        listener: (context, state) async {
+          if (state.openEditReservation) {
+            state.optionOfResevationToEdit.fold(() => null, (a) async {
+              final result = await Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => EditReservationPage(a),
+              ));
+              context
+                  .read<SellerSummaryBloc>()
+                  .add(const SellerSummaryEvent.started());
+
+              context
+                  .read<SellerMenuBloc>()
+                  .add(const SellerMenuEvent.editingEnd());
+            });
+          }
+
           if (state.navToBuyer) {
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(

@@ -249,9 +249,14 @@ class _$ReservationStateTearOff {
   const _$ReservationStateTearOff();
 
   _ReservationState call(
-      {required ReservationStatus status, required bool isItemsVisible}) {
+      {required bool loading,
+      required Option<Either<ReservationFailure, List<Reservation>>>
+          optionOfReservationListFailureOrSuccess,
+      required bool isItemsVisible}) {
     return _ReservationState(
-      status: status,
+      loading: loading,
+      optionOfReservationListFailureOrSuccess:
+          optionOfReservationListFailureOrSuccess,
       isItemsVisible: isItemsVisible,
     );
   }
@@ -262,7 +267,10 @@ const $ReservationState = _$ReservationStateTearOff();
 
 /// @nodoc
 mixin _$ReservationState {
-  ReservationStatus get status => throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
+  Option<Either<ReservationFailure, List<Reservation>>>
+      get optionOfReservationListFailureOrSuccess =>
+          throw _privateConstructorUsedError;
   bool get isItemsVisible => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -275,7 +283,11 @@ abstract class $ReservationStateCopyWith<$Res> {
   factory $ReservationStateCopyWith(
           ReservationState value, $Res Function(ReservationState) then) =
       _$ReservationStateCopyWithImpl<$Res>;
-  $Res call({ReservationStatus status, bool isItemsVisible});
+  $Res call(
+      {bool loading,
+      Option<Either<ReservationFailure, List<Reservation>>>
+          optionOfReservationListFailureOrSuccess,
+      bool isItemsVisible});
 }
 
 /// @nodoc
@@ -289,14 +301,20 @@ class _$ReservationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? status = freezed,
+    Object? loading = freezed,
+    Object? optionOfReservationListFailureOrSuccess = freezed,
     Object? isItemsVisible = freezed,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ReservationStatus,
+      loading: loading == freezed
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      optionOfReservationListFailureOrSuccess:
+          optionOfReservationListFailureOrSuccess == freezed
+              ? _value.optionOfReservationListFailureOrSuccess
+              : optionOfReservationListFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<ReservationFailure, List<Reservation>>>,
       isItemsVisible: isItemsVisible == freezed
           ? _value.isItemsVisible
           : isItemsVisible // ignore: cast_nullable_to_non_nullable
@@ -312,7 +330,11 @@ abstract class _$ReservationStateCopyWith<$Res>
           _ReservationState value, $Res Function(_ReservationState) then) =
       __$ReservationStateCopyWithImpl<$Res>;
   @override
-  $Res call({ReservationStatus status, bool isItemsVisible});
+  $Res call(
+      {bool loading,
+      Option<Either<ReservationFailure, List<Reservation>>>
+          optionOfReservationListFailureOrSuccess,
+      bool isItemsVisible});
 }
 
 /// @nodoc
@@ -328,14 +350,20 @@ class __$ReservationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? status = freezed,
+    Object? loading = freezed,
+    Object? optionOfReservationListFailureOrSuccess = freezed,
     Object? isItemsVisible = freezed,
   }) {
     return _then(_ReservationState(
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ReservationStatus,
+      loading: loading == freezed
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      optionOfReservationListFailureOrSuccess:
+          optionOfReservationListFailureOrSuccess == freezed
+              ? _value.optionOfReservationListFailureOrSuccess
+              : optionOfReservationListFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<ReservationFailure, List<Reservation>>>,
       isItemsVisible: isItemsVisible == freezed
           ? _value.isItemsVisible
           : isItemsVisible // ignore: cast_nullable_to_non_nullable
@@ -348,24 +376,35 @@ class __$ReservationStateCopyWithImpl<$Res>
 
 class _$_ReservationState implements _ReservationState {
   const _$_ReservationState(
-      {required this.status, required this.isItemsVisible});
+      {required this.loading,
+      required this.optionOfReservationListFailureOrSuccess,
+      required this.isItemsVisible});
 
   @override
-  final ReservationStatus status;
+  final bool loading;
+  @override
+  final Option<Either<ReservationFailure, List<Reservation>>>
+      optionOfReservationListFailureOrSuccess;
   @override
   final bool isItemsVisible;
 
   @override
   String toString() {
-    return 'ReservationState(status: $status, isItemsVisible: $isItemsVisible)';
+    return 'ReservationState(loading: $loading, optionOfReservationListFailureOrSuccess: $optionOfReservationListFailureOrSuccess, isItemsVisible: $isItemsVisible)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ReservationState &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
+            (identical(other.loading, loading) ||
+                const DeepCollectionEquality()
+                    .equals(other.loading, loading)) &&
+            (identical(other.optionOfReservationListFailureOrSuccess,
+                    optionOfReservationListFailureOrSuccess) ||
+                const DeepCollectionEquality().equals(
+                    other.optionOfReservationListFailureOrSuccess,
+                    optionOfReservationListFailureOrSuccess)) &&
             (identical(other.isItemsVisible, isItemsVisible) ||
                 const DeepCollectionEquality()
                     .equals(other.isItemsVisible, isItemsVisible)));
@@ -374,7 +413,9 @@ class _$_ReservationState implements _ReservationState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(status) ^
+      const DeepCollectionEquality().hash(loading) ^
+      const DeepCollectionEquality()
+          .hash(optionOfReservationListFailureOrSuccess) ^
       const DeepCollectionEquality().hash(isItemsVisible);
 
   @JsonKey(ignore: true)
@@ -385,11 +426,17 @@ class _$_ReservationState implements _ReservationState {
 
 abstract class _ReservationState implements ReservationState {
   const factory _ReservationState(
-      {required ReservationStatus status,
+      {required bool loading,
+      required Option<Either<ReservationFailure, List<Reservation>>>
+          optionOfReservationListFailureOrSuccess,
       required bool isItemsVisible}) = _$_ReservationState;
 
   @override
-  ReservationStatus get status => throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
+  @override
+  Option<Either<ReservationFailure, List<Reservation>>>
+      get optionOfReservationListFailureOrSuccess =>
+          throw _privateConstructorUsedError;
   @override
   bool get isItemsVisible => throw _privateConstructorUsedError;
   @override

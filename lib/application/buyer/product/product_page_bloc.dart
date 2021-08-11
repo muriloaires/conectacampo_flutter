@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_failure.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
+
 import 'package:conectacampo/domain/reservation/value_objects.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -26,7 +28,7 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
   ) async* {
     yield* event.map(started: (started) async* {
       final reservation =
-          await reservationFacade.getReservatiomItemByProduct(started.product);
+          await reservationFacade.getReservationItemByProduct(started.product);
       yield state.copyWith(
           optionOfReservatiomItemFailureOrSuccess:
               reservation.fold(() => none(), (a) => some(right(a))));

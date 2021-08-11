@@ -183,8 +183,8 @@ class NewProductWidget extends StatelessWidget {
                       ),
                   dropdownSearchDecoration:
                       const InputDecoration(border: InputBorder.none),
-                  searchBoxDecoration:
-                      InputDecoration(hintText: 'Digite o nome do produto'),
+                  searchBoxDecoration: const InputDecoration(
+                      hintText: 'Digite o nome do produto'),
                   showSearchBox: true,
                   validator: (value) =>
                       value == null ? 'Campo obrigatório' : null,
@@ -307,7 +307,7 @@ class NewProductWidget extends StatelessWidget {
                           .read<AddProductBloc>()
                           .add(AddProductEvent.quantityChanged(index, value)),
                       keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           border: InputBorder.none, hintText: 'Quantidade*'),
                     ),
                   ),
