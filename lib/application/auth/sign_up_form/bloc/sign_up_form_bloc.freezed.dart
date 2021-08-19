@@ -31,6 +31,20 @@ class _$SignUpFormBlocEventTearOff {
   BtnSignUpPressed btnSignUpPressed() {
     return const BtnSignUpPressed();
   }
+
+  BtnConcluirPressed btnConcluirPressed() {
+    return const BtnConcluirPressed();
+  }
+
+  StartedWithUser startedWithUser() {
+    return const StartedWithUser();
+  }
+
+  PhotoSelected photoSelected(String path) {
+    return PhotoSelected(
+      path,
+    );
+  }
 }
 
 /// @nodoc
@@ -43,6 +57,9 @@ mixin _$SignUpFormBlocEvent {
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
     required TResult Function() btnSignUpPressed,
+    required TResult Function() btnConcluirPressed,
+    required TResult Function() startedWithUser,
+    required TResult Function(String path) photoSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +67,9 @@ mixin _$SignUpFormBlocEvent {
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
     TResult Function()? btnSignUpPressed,
+    TResult Function()? btnConcluirPressed,
+    TResult Function()? startedWithUser,
+    TResult Function(String path)? photoSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,6 +78,9 @@ mixin _$SignUpFormBlocEvent {
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
+    required TResult Function(BtnConcluirPressed value) btnConcluirPressed,
+    required TResult Function(StartedWithUser value) startedWithUser,
+    required TResult Function(PhotoSelected value) photoSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +88,9 @@ mixin _$SignUpFormBlocEvent {
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    TResult Function(BtnConcluirPressed value)? btnConcluirPressed,
+    TResult Function(StartedWithUser value)? startedWithUser,
+    TResult Function(PhotoSelected value)? photoSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,6 +182,9 @@ class _$FullNameChanged implements FullNameChanged {
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
     required TResult Function() btnSignUpPressed,
+    required TResult Function() btnConcluirPressed,
+    required TResult Function() startedWithUser,
+    required TResult Function(String path) photoSelected,
   }) {
     return fullNameChanged(fullName);
   }
@@ -166,6 +195,9 @@ class _$FullNameChanged implements FullNameChanged {
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
     TResult Function()? btnSignUpPressed,
+    TResult Function()? btnConcluirPressed,
+    TResult Function()? startedWithUser,
+    TResult Function(String path)? photoSelected,
     required TResult orElse(),
   }) {
     if (fullNameChanged != null) {
@@ -180,6 +212,9 @@ class _$FullNameChanged implements FullNameChanged {
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
+    required TResult Function(BtnConcluirPressed value) btnConcluirPressed,
+    required TResult Function(StartedWithUser value) startedWithUser,
+    required TResult Function(PhotoSelected value) photoSelected,
   }) {
     return fullNameChanged(this);
   }
@@ -190,6 +225,9 @@ class _$FullNameChanged implements FullNameChanged {
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    TResult Function(BtnConcluirPressed value)? btnConcluirPressed,
+    TResult Function(StartedWithUser value)? startedWithUser,
+    TResult Function(PhotoSelected value)? photoSelected,
     required TResult orElse(),
   }) {
     if (fullNameChanged != null) {
@@ -277,6 +315,9 @@ class _$NicknameChanged implements NicknameChanged {
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
     required TResult Function() btnSignUpPressed,
+    required TResult Function() btnConcluirPressed,
+    required TResult Function() startedWithUser,
+    required TResult Function(String path) photoSelected,
   }) {
     return nicknameChanged(nickname);
   }
@@ -287,6 +328,9 @@ class _$NicknameChanged implements NicknameChanged {
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
     TResult Function()? btnSignUpPressed,
+    TResult Function()? btnConcluirPressed,
+    TResult Function()? startedWithUser,
+    TResult Function(String path)? photoSelected,
     required TResult orElse(),
   }) {
     if (nicknameChanged != null) {
@@ -301,6 +345,9 @@ class _$NicknameChanged implements NicknameChanged {
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
+    required TResult Function(BtnConcluirPressed value) btnConcluirPressed,
+    required TResult Function(StartedWithUser value) startedWithUser,
+    required TResult Function(PhotoSelected value) photoSelected,
   }) {
     return nicknameChanged(this);
   }
@@ -311,6 +358,9 @@ class _$NicknameChanged implements NicknameChanged {
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    TResult Function(BtnConcluirPressed value)? btnConcluirPressed,
+    TResult Function(StartedWithUser value)? startedWithUser,
+    TResult Function(PhotoSelected value)? photoSelected,
     required TResult orElse(),
   }) {
     if (nicknameChanged != null) {
@@ -372,6 +422,9 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
     required TResult Function(String fullName) fullNameChanged,
     required TResult Function(String nickname) nicknameChanged,
     required TResult Function() btnSignUpPressed,
+    required TResult Function() btnConcluirPressed,
+    required TResult Function() startedWithUser,
+    required TResult Function(String path) photoSelected,
   }) {
     return btnSignUpPressed();
   }
@@ -382,6 +435,9 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
     TResult Function(String fullName)? fullNameChanged,
     TResult Function(String nickname)? nicknameChanged,
     TResult Function()? btnSignUpPressed,
+    TResult Function()? btnConcluirPressed,
+    TResult Function()? startedWithUser,
+    TResult Function(String path)? photoSelected,
     required TResult orElse(),
   }) {
     if (btnSignUpPressed != null) {
@@ -396,6 +452,9 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
     required TResult Function(FullNameChanged value) fullNameChanged,
     required TResult Function(NicknameChanged value) nicknameChanged,
     required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
+    required TResult Function(BtnConcluirPressed value) btnConcluirPressed,
+    required TResult Function(StartedWithUser value) startedWithUser,
+    required TResult Function(PhotoSelected value) photoSelected,
   }) {
     return btnSignUpPressed(this);
   }
@@ -406,6 +465,9 @@ class _$BtnSignUpPressed implements BtnSignUpPressed {
     TResult Function(FullNameChanged value)? fullNameChanged,
     TResult Function(NicknameChanged value)? nicknameChanged,
     TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    TResult Function(BtnConcluirPressed value)? btnConcluirPressed,
+    TResult Function(StartedWithUser value)? startedWithUser,
+    TResult Function(PhotoSelected value)? photoSelected,
     required TResult orElse(),
   }) {
     if (btnSignUpPressed != null) {
@@ -420,23 +482,363 @@ abstract class BtnSignUpPressed implements SignUpFormBlocEvent {
 }
 
 /// @nodoc
+abstract class $BtnConcluirPressedCopyWith<$Res> {
+  factory $BtnConcluirPressedCopyWith(
+          BtnConcluirPressed value, $Res Function(BtnConcluirPressed) then) =
+      _$BtnConcluirPressedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$BtnConcluirPressedCopyWithImpl<$Res>
+    extends _$SignUpFormBlocEventCopyWithImpl<$Res>
+    implements $BtnConcluirPressedCopyWith<$Res> {
+  _$BtnConcluirPressedCopyWithImpl(
+      BtnConcluirPressed _value, $Res Function(BtnConcluirPressed) _then)
+      : super(_value, (v) => _then(v as BtnConcluirPressed));
+
+  @override
+  BtnConcluirPressed get _value => super._value as BtnConcluirPressed;
+}
+
+/// @nodoc
+
+class _$BtnConcluirPressed implements BtnConcluirPressed {
+  const _$BtnConcluirPressed();
+
+  @override
+  String toString() {
+    return 'SignUpFormBlocEvent.btnConcluirPressed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is BtnConcluirPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fullName) fullNameChanged,
+    required TResult Function(String nickname) nicknameChanged,
+    required TResult Function() btnSignUpPressed,
+    required TResult Function() btnConcluirPressed,
+    required TResult Function() startedWithUser,
+    required TResult Function(String path) photoSelected,
+  }) {
+    return btnConcluirPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fullName)? fullNameChanged,
+    TResult Function(String nickname)? nicknameChanged,
+    TResult Function()? btnSignUpPressed,
+    TResult Function()? btnConcluirPressed,
+    TResult Function()? startedWithUser,
+    TResult Function(String path)? photoSelected,
+    required TResult orElse(),
+  }) {
+    if (btnConcluirPressed != null) {
+      return btnConcluirPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FullNameChanged value) fullNameChanged,
+    required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
+    required TResult Function(BtnConcluirPressed value) btnConcluirPressed,
+    required TResult Function(StartedWithUser value) startedWithUser,
+    required TResult Function(PhotoSelected value) photoSelected,
+  }) {
+    return btnConcluirPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FullNameChanged value)? fullNameChanged,
+    TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    TResult Function(BtnConcluirPressed value)? btnConcluirPressed,
+    TResult Function(StartedWithUser value)? startedWithUser,
+    TResult Function(PhotoSelected value)? photoSelected,
+    required TResult orElse(),
+  }) {
+    if (btnConcluirPressed != null) {
+      return btnConcluirPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BtnConcluirPressed implements SignUpFormBlocEvent {
+  const factory BtnConcluirPressed() = _$BtnConcluirPressed;
+}
+
+/// @nodoc
+abstract class $StartedWithUserCopyWith<$Res> {
+  factory $StartedWithUserCopyWith(
+          StartedWithUser value, $Res Function(StartedWithUser) then) =
+      _$StartedWithUserCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$StartedWithUserCopyWithImpl<$Res>
+    extends _$SignUpFormBlocEventCopyWithImpl<$Res>
+    implements $StartedWithUserCopyWith<$Res> {
+  _$StartedWithUserCopyWithImpl(
+      StartedWithUser _value, $Res Function(StartedWithUser) _then)
+      : super(_value, (v) => _then(v as StartedWithUser));
+
+  @override
+  StartedWithUser get _value => super._value as StartedWithUser;
+}
+
+/// @nodoc
+
+class _$StartedWithUser implements StartedWithUser {
+  const _$StartedWithUser();
+
+  @override
+  String toString() {
+    return 'SignUpFormBlocEvent.startedWithUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is StartedWithUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fullName) fullNameChanged,
+    required TResult Function(String nickname) nicknameChanged,
+    required TResult Function() btnSignUpPressed,
+    required TResult Function() btnConcluirPressed,
+    required TResult Function() startedWithUser,
+    required TResult Function(String path) photoSelected,
+  }) {
+    return startedWithUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fullName)? fullNameChanged,
+    TResult Function(String nickname)? nicknameChanged,
+    TResult Function()? btnSignUpPressed,
+    TResult Function()? btnConcluirPressed,
+    TResult Function()? startedWithUser,
+    TResult Function(String path)? photoSelected,
+    required TResult orElse(),
+  }) {
+    if (startedWithUser != null) {
+      return startedWithUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FullNameChanged value) fullNameChanged,
+    required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
+    required TResult Function(BtnConcluirPressed value) btnConcluirPressed,
+    required TResult Function(StartedWithUser value) startedWithUser,
+    required TResult Function(PhotoSelected value) photoSelected,
+  }) {
+    return startedWithUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FullNameChanged value)? fullNameChanged,
+    TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    TResult Function(BtnConcluirPressed value)? btnConcluirPressed,
+    TResult Function(StartedWithUser value)? startedWithUser,
+    TResult Function(PhotoSelected value)? photoSelected,
+    required TResult orElse(),
+  }) {
+    if (startedWithUser != null) {
+      return startedWithUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StartedWithUser implements SignUpFormBlocEvent {
+  const factory StartedWithUser() = _$StartedWithUser;
+}
+
+/// @nodoc
+abstract class $PhotoSelectedCopyWith<$Res> {
+  factory $PhotoSelectedCopyWith(
+          PhotoSelected value, $Res Function(PhotoSelected) then) =
+      _$PhotoSelectedCopyWithImpl<$Res>;
+  $Res call({String path});
+}
+
+/// @nodoc
+class _$PhotoSelectedCopyWithImpl<$Res>
+    extends _$SignUpFormBlocEventCopyWithImpl<$Res>
+    implements $PhotoSelectedCopyWith<$Res> {
+  _$PhotoSelectedCopyWithImpl(
+      PhotoSelected _value, $Res Function(PhotoSelected) _then)
+      : super(_value, (v) => _then(v as PhotoSelected));
+
+  @override
+  PhotoSelected get _value => super._value as PhotoSelected;
+
+  @override
+  $Res call({
+    Object? path = freezed,
+  }) {
+    return _then(PhotoSelected(
+      path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PhotoSelected implements PhotoSelected {
+  const _$PhotoSelected(this.path);
+
+  @override
+  final String path;
+
+  @override
+  String toString() {
+    return 'SignUpFormBlocEvent.photoSelected(path: $path)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is PhotoSelected &&
+            (identical(other.path, path) ||
+                const DeepCollectionEquality().equals(other.path, path)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(path);
+
+  @JsonKey(ignore: true)
+  @override
+  $PhotoSelectedCopyWith<PhotoSelected> get copyWith =>
+      _$PhotoSelectedCopyWithImpl<PhotoSelected>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fullName) fullNameChanged,
+    required TResult Function(String nickname) nicknameChanged,
+    required TResult Function() btnSignUpPressed,
+    required TResult Function() btnConcluirPressed,
+    required TResult Function() startedWithUser,
+    required TResult Function(String path) photoSelected,
+  }) {
+    return photoSelected(path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fullName)? fullNameChanged,
+    TResult Function(String nickname)? nicknameChanged,
+    TResult Function()? btnSignUpPressed,
+    TResult Function()? btnConcluirPressed,
+    TResult Function()? startedWithUser,
+    TResult Function(String path)? photoSelected,
+    required TResult orElse(),
+  }) {
+    if (photoSelected != null) {
+      return photoSelected(path);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FullNameChanged value) fullNameChanged,
+    required TResult Function(NicknameChanged value) nicknameChanged,
+    required TResult Function(BtnSignUpPressed value) btnSignUpPressed,
+    required TResult Function(BtnConcluirPressed value) btnConcluirPressed,
+    required TResult Function(StartedWithUser value) startedWithUser,
+    required TResult Function(PhotoSelected value) photoSelected,
+  }) {
+    return photoSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FullNameChanged value)? fullNameChanged,
+    TResult Function(NicknameChanged value)? nicknameChanged,
+    TResult Function(BtnSignUpPressed value)? btnSignUpPressed,
+    TResult Function(BtnConcluirPressed value)? btnConcluirPressed,
+    TResult Function(StartedWithUser value)? startedWithUser,
+    TResult Function(PhotoSelected value)? photoSelected,
+    required TResult orElse(),
+  }) {
+    if (photoSelected != null) {
+      return photoSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PhotoSelected implements SignUpFormBlocEvent {
+  const factory PhotoSelected(String path) = _$PhotoSelected;
+
+  String get path => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PhotoSelectedCopyWith<PhotoSelected> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$SignUpFormBlocStateTearOff {
   const _$SignUpFormBlocStateTearOff();
 
   _SignUpFormBlocState call(
-      bool isSubmitting,
-      FullName fullName,
-      Nickname nickname,
-      bool showErrorMessages,
-      bool navigateNext,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) {
+      {required bool isSubmitting,
+      required FullName fullName,
+      required Nickname nickname,
+      required bool showErrorMessages,
+      required bool navigateNext,
+      required Option<String> optionOfAvatar,
+      required bool authSuccess,
+      required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
     return _SignUpFormBlocState(
-      isSubmitting,
-      fullName,
-      nickname,
-      showErrorMessages,
-      navigateNext,
-      authFailureOrSuccessOption,
+      isSubmitting: isSubmitting,
+      fullName: fullName,
+      nickname: nickname,
+      showErrorMessages: showErrorMessages,
+      navigateNext: navigateNext,
+      optionOfAvatar: optionOfAvatar,
+      authSuccess: authSuccess,
+      authFailureOrSuccessOption: authFailureOrSuccessOption,
     );
   }
 }
@@ -451,6 +853,8 @@ mixin _$SignUpFormBlocState {
   Nickname get nickname => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get navigateNext => throw _privateConstructorUsedError;
+  Option<String> get optionOfAvatar => throw _privateConstructorUsedError;
+  bool get authSuccess => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -470,6 +874,8 @@ abstract class $SignUpFormBlocStateCopyWith<$Res> {
       Nickname nickname,
       bool showErrorMessages,
       bool navigateNext,
+      Option<String> optionOfAvatar,
+      bool authSuccess,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
 }
 
@@ -489,6 +895,8 @@ class _$SignUpFormBlocStateCopyWithImpl<$Res>
     Object? nickname = freezed,
     Object? showErrorMessages = freezed,
     Object? navigateNext = freezed,
+    Object? optionOfAvatar = freezed,
+    Object? authSuccess = freezed,
     Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -512,6 +920,14 @@ class _$SignUpFormBlocStateCopyWithImpl<$Res>
           ? _value.navigateNext
           : navigateNext // ignore: cast_nullable_to_non_nullable
               as bool,
+      optionOfAvatar: optionOfAvatar == freezed
+          ? _value.optionOfAvatar
+          : optionOfAvatar // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
+      authSuccess: authSuccess == freezed
+          ? _value.authSuccess
+          : authSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -533,6 +949,8 @@ abstract class _$SignUpFormBlocStateCopyWith<$Res>
       Nickname nickname,
       bool showErrorMessages,
       bool navigateNext,
+      Option<String> optionOfAvatar,
+      bool authSuccess,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
 }
 
@@ -554,30 +972,40 @@ class __$SignUpFormBlocStateCopyWithImpl<$Res>
     Object? nickname = freezed,
     Object? showErrorMessages = freezed,
     Object? navigateNext = freezed,
+    Object? optionOfAvatar = freezed,
+    Object? authSuccess = freezed,
     Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_SignUpFormBlocState(
-      isSubmitting == freezed
+      isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      fullName == freezed
+      fullName: fullName == freezed
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as FullName,
-      nickname == freezed
+      nickname: nickname == freezed
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as Nickname,
-      showErrorMessages == freezed
+      showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
-      navigateNext == freezed
+      navigateNext: navigateNext == freezed
           ? _value.navigateNext
           : navigateNext // ignore: cast_nullable_to_non_nullable
               as bool,
-      authFailureOrSuccessOption == freezed
+      optionOfAvatar: optionOfAvatar == freezed
+          ? _value.optionOfAvatar
+          : optionOfAvatar // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
+      authSuccess: authSuccess == freezed
+          ? _value.authSuccess
+          : authSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
+      authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
@@ -589,12 +1017,14 @@ class __$SignUpFormBlocStateCopyWithImpl<$Res>
 
 class _$_SignUpFormBlocState implements _SignUpFormBlocState {
   const _$_SignUpFormBlocState(
-      this.isSubmitting,
-      this.fullName,
-      this.nickname,
-      this.showErrorMessages,
-      this.navigateNext,
-      this.authFailureOrSuccessOption);
+      {required this.isSubmitting,
+      required this.fullName,
+      required this.nickname,
+      required this.showErrorMessages,
+      required this.navigateNext,
+      required this.optionOfAvatar,
+      required this.authSuccess,
+      required this.authFailureOrSuccessOption});
 
   @override
   final bool isSubmitting;
@@ -607,11 +1037,15 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
   @override
   final bool navigateNext;
   @override
+  final Option<String> optionOfAvatar;
+  @override
+  final bool authSuccess;
+  @override
   final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'SignUpFormBlocState(isSubmitting: $isSubmitting, fullName: $fullName, nickname: $nickname, showErrorMessages: $showErrorMessages, navigateNext: $navigateNext, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'SignUpFormBlocState(isSubmitting: $isSubmitting, fullName: $fullName, nickname: $nickname, showErrorMessages: $showErrorMessages, navigateNext: $navigateNext, optionOfAvatar: $optionOfAvatar, authSuccess: $authSuccess, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -633,6 +1067,12 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
             (identical(other.navigateNext, navigateNext) ||
                 const DeepCollectionEquality()
                     .equals(other.navigateNext, navigateNext)) &&
+            (identical(other.optionOfAvatar, optionOfAvatar) ||
+                const DeepCollectionEquality()
+                    .equals(other.optionOfAvatar, optionOfAvatar)) &&
+            (identical(other.authSuccess, authSuccess) ||
+                const DeepCollectionEquality()
+                    .equals(other.authSuccess, authSuccess)) &&
             (identical(other.authFailureOrSuccessOption,
                     authFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
@@ -648,6 +1088,8 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
       const DeepCollectionEquality().hash(nickname) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(navigateNext) ^
+      const DeepCollectionEquality().hash(optionOfAvatar) ^
+      const DeepCollectionEquality().hash(authSuccess) ^
       const DeepCollectionEquality().hash(authFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -659,13 +1101,15 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
 
 abstract class _SignUpFormBlocState implements SignUpFormBlocState {
   const factory _SignUpFormBlocState(
-          bool isSubmitting,
-          FullName fullName,
-          Nickname nickname,
-          bool showErrorMessages,
-          bool navigateNext,
-          Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) =
-      _$_SignUpFormBlocState;
+      {required bool isSubmitting,
+      required FullName fullName,
+      required Nickname nickname,
+      required bool showErrorMessages,
+      required bool navigateNext,
+      required Option<String> optionOfAvatar,
+      required bool authSuccess,
+      required Option<Either<AuthFailure, Unit>>
+          authFailureOrSuccessOption}) = _$_SignUpFormBlocState;
 
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
@@ -677,6 +1121,10 @@ abstract class _SignUpFormBlocState implements SignUpFormBlocState {
   bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
   bool get navigateNext => throw _privateConstructorUsedError;
+  @override
+  Option<String> get optionOfAvatar => throw _privateConstructorUsedError;
+  @override
+  bool get authSuccess => throw _privateConstructorUsedError;
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;

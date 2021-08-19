@@ -2,10 +2,12 @@ import 'package:conectacampo/application/buyer/adivertisements/adivertisements_b
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/cart/cart_page.dart';
 import 'package:conectacampo/presentation/buyer/group/group_page.dart';
 import 'package:conectacampo/presentation/buyer/menu/buyer_summary.dart';
+import 'package:conectacampo/presentation/buyer/reservation/reservation_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/seller_main_page.dart';
@@ -33,7 +35,10 @@ class BuyerMainPage extends StatelessWidget {
         BlocProvider<GroupBloc>(
             create: (context) => getIt()..add(const GroupEvent.started())),
         BlocProvider<ReservationBloc>(
-            create: (context) => getIt()..add(const ReservationEvent.started()))
+            create: (context) =>
+                getIt()..add(const ReservationEvent.started())),
+        BlocProvider<SummaryBloc>(
+            create: (context) => getIt()..add(const SummaryEvent.started()))
       ],
       child: BlocConsumer<BuyerMenuBloc, BuyerMenuState>(
         listener: (context, state) async {
@@ -112,7 +117,7 @@ class BuyerMainPage extends StatelessWidget {
                       BuyerSummary(navigatorKeys[0]!),
                       GroupPage(navigatorKeys[1]!),
                       const Scaffold(body: Text('Reservas')),
-                      const Scaffold(body: Text('Reservas')),
+                      BuyerResevationsPage(navigatorKeys[2]!),
                       ProfilePage(
                           navigatorKey: navigatorKeys[3]!, isBuyer: true)
                     ],

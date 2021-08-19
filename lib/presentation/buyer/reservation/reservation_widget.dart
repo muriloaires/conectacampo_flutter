@@ -1,315 +1,380 @@
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/application/buyer/reservation/single_reservation/single_reservation_bloc.dart';
+import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
+import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ReservationWidget extends StatelessWidget {
-  final Reservation reservation;
+  final Reservation resservation;
 
-  const ReservationWidget(this.reservation);
+  const ReservationWidget(this.resservation);
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ReservationBloc, ReservationState>(
-        builder: (context, state) => Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15)),
-                  child: Container(
-                    height: 40,
-                    color: _getStatusColor(reservation),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(40, 8, 40, 8),
-                      child: Center(
-                        child: _getStatusText(reservation),
+    return BlocProvider<SingleReservationBloc>(
+      create: (context) =>
+          getIt()..add(SingleReservationEvent.started(resservation)),
+      child: BlocConsumer<SingleReservationBloc, SingleReservationState>(
+          listener: (context, state) {
+            if (state.showAcceptError) {
+              EasyLoading.showError("Erro ao aceitar produto",
+                  duration: const Duration(seconds: 2));
+              context
+                  .read<SingleReservationBloc>()
+                  .add(const SingleReservationEvent.onAcceptErrorDisplayed());
+            }
+
+            if (state.showAcceptError) {
+              EasyLoading.showError("Erro ao cancelar produto",
+                  duration: const Duration(seconds: 2));
+              context
+                  .read<SingleReservationBloc>()
+                  .add(const SingleReservationEvent.onCancelErrorDisplayed());
+            }
+          },
+          builder: (context, state) => Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: ListView(
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15)),
+                    child: Container(
+                      height: 40,
+                      color: _getStatusColor(state.reservation),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+                        child: Center(
+                          child: _getStatusText(state.reservation),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Row(
-                    children: [
-                      Container(
-                          width: 72.0,
-                          height: 72.0,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(
-                                      "https://i.imgur.com/BoN9kdC.png")))),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            reservation.seller?.name.getOrCrash() ?? '',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text.rich(TextSpan(text: 'Placa: ', children: [
-                            TextSpan(
-                                text: reservation.seller?.vehicleLicensePlate ??
-                                    '',
-                                style: TextStyle(fontWeight: FontWeight.bold))
-                          ]))
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                      decoration: const BoxDecoration(
-                        color: ColorSet.gray10,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
+                  Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Row(
+                      children: [
+                        Container(
+                            width: 72.0,
+                            height: 72.0,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(state.reservation.seller
+                                            ?.mediumAvatar?.value
+                                            .fold((l) => '', (r) => r) ??
+                                        '')))),
+                        const SizedBox(
+                          width: 12,
                         ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-                        child: FittedBox(
-                          child: Row(
-                            children: [
-                              const Text(
-                                'Fale com o vendedor',
-                                style: TextStyle(
-                                    color: ColorSet.green1,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              SvgPicture.asset(
-                                'assets/whatsapp.svg',
-                                height: 18,
-                                width: 18,
-                              )
-                            ],
-                          ),
-                        ),
-                      )),
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  child: Visibility(
-                      visible: state.isItemsVisible,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text('Itens',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorSet.colorPrimaryGreen,
-                                )),
-                            ListView.builder(
-                              physics: const ClampingScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (itemBuilder, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    '${reservation.productReservations[index].adProduct.name} • ${reservation.productReservations[index].quantity} ${reservation.productReservations[index].adProduct.unitMeasure}',
-                                    style: const TextStyle(fontSize: 12),
-                                  ),
-                                );
-                              },
-                              itemCount: reservation.productReservations.length,
+                            Text(
+                              state.reservation.seller?.name.getOrCrash() ?? '',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
                             ),
-                            const SizedBox(
-                              height: 4,
+                            const SizedBox(height: 8),
+                            Text.rich(TextSpan(text: 'Placa: ', children: [
+                              TextSpan(
+                                  text: state.reservation.seller
+                                          ?.vehicleLicensePlate ??
+                                      '',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold))
+                            ]))
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  MaterialButton(
+                    onPressed: () {},
+                    child: Container(
+                        decoration: const BoxDecoration(
+                          color: ColorSet.gray10,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                          child: FittedBox(
+                            child: Row(
+                              children: [
+                                const Text(
+                                  'Fale com o vendedor',
+                                  style: TextStyle(
+                                      color: ColorSet.green1,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                SvgPicture.asset(
+                                  'assets/whatsapp.svg',
+                                  height: 18,
+                                  width: 18,
+                                )
+                              ],
                             ),
-                            const Text('Alterar itens',
-                                style: TextStyle(
+                          ),
+                        )),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    child: Visibility(
+                        visible: state.isItemVisible,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListView(
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            children: [
+                              const Text('Itens',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
                                     color: ColorSet.colorPrimaryGreen,
-                                    fontSize: 12,
-                                    decoration: TextDecoration.underline)),
-                            const SizedBox(
-                              height: 50,
-                            ),
-                            Visibility(
-                                visible: reservation.getStatusFromItems() ==
-                                    ReservationItemStatus.awaitingBuyer,
-                                child: Column(
-                                  children: [
-                                    const Text('❗ Atenção!',
-                                        style: TextStyle(
-                                            color: ColorSet.yellow2,
-                                            fontSize: 12,
-                                            decoration:
-                                                TextDecoration.underline)),
-                                    const SizedBox(height: 8),
-                                    ListView.separated(
-                                      separatorBuilder: (context, index) =>
-                                          const SizedBox(height: 8),
-                                      physics: const ClampingScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemBuilder: (itemBuilder, index) {
-                                        return Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Alface Crespa',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                              'Só tem 40 unidades disponíveis. Aceitar?',
-                                              style: TextStyle(),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: GestureDetector(
-                                                      onTap: () {},
+                                  )),
+                              ListView.builder(
+                                physics: const ClampingScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (itemBuilder, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      '${state.reservation.productReservations[index].adProduct.name} • ${state.reservation.productReservations[index].quantity} ${state.reservation.productReservations[index].adProduct.unitMeasure}',
+                                      style: const TextStyle(fontSize: 12),
+                                    ),
+                                  );
+                                },
+                                itemCount: state
+                                    .reservation.productReservations.length,
+                              ),
+                              const SizedBox(height: 4),
+                              const Text('Alterar itens',
+                                  style: TextStyle(
+                                      color: ColorSet.colorPrimaryGreen,
+                                      fontSize: 12,
+                                      decoration: TextDecoration.underline)),
+                              const SizedBox(height: 30),
+                              Visibility(
+                                  visible:
+                                      state.reservation.getStatusFromItems() ==
+                                          ReservationItemStatus.awaitingBuyer,
+                                  child: ListView(
+                                    shrinkWrap: true,
+                                    physics: const ClampingScrollPhysics(),
+                                    children: [
+                                      const Center(
+                                        child: Text('❗ Atenção!',
+                                            style: TextStyle(
+                                                color: ColorSet.yellow2,
+                                                fontSize: 14)),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      ListView.separated(
+                                        separatorBuilder: (context, index) =>
+                                            const SizedBox(height: 8),
+                                        physics: const ClampingScrollPhysics(),
+                                        shrinkWrap: true,
+                                        itemBuilder: (itemBuilder, index) {
+                                          final list = state
+                                              .reservation.productReservations
+                                              .where((element) =>
+                                                  element.status ==
+                                                  ReservationItemStatus
+                                                      .awaitingBuyer)
+                                              .toList();
+                                          return Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                list[index].adProduct.name ??
+                                                    '',
+                                                style: const TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                'Só tem ${list[index].quantity} ${list[index].adProduct.unitMeasure} disponível(eis). Aceitar?',
+                                                style: const TextStyle(),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: MaterialButton(
+                                                        onPressed: () {},
+                                                        child: Container(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  0, 8, 0, 8),
+                                                          width:
+                                                              double.infinity,
+                                                          decoration: const BoxDecoration(
+                                                              color: ColorSet
+                                                                  .red1Alpha,
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          20))),
+                                                          child: const Text(
+                                                              'Cancelar',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: ColorSet
+                                                                      .red1)),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: MaterialButton(
+                                                      onPressed: () {
+                                                        context
+                                                            .read<
+                                                                SingleReservationBloc>()
+                                                            .add(SingleReservationEvent
+                                                                .onAcceptPressed(
+                                                                    index));
+                                                      },
                                                       child: Container(
                                                         padding:
-                                                            EdgeInsets.fromLTRB(
-                                                                30, 10, 30, 10),
-                                                        child: Text('Cancelar',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: ColorSet
-                                                                    .red1)),
-                                                        decoration: BoxDecoration(
+                                                            const EdgeInsets
+                                                                    .fromLTRB(
+                                                                0, 8, 0, 8),
+                                                        width: double.infinity,
+                                                        decoration: const BoxDecoration(
                                                             color: ColorSet
-                                                                .red1Alpha,
+                                                                .green1Alpha,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .all(Radius
                                                                         .circular(
                                                                             20))),
+                                                        child: const Text(
+                                                          'Aceitar',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color: ColorSet
+                                                                  .green1),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: GestureDetector(
-                                                    onTap: () {},
-                                                    child: Container(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              30, 10, 30, 10),
-                                                      child: Text(
-                                                        'Aceitar',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color: ColorSet
-                                                                .green1),
-                                                      ),
-                                                      decoration: BoxDecoration(
-                                                          color: ColorSet
-                                                              .green1Alpha,
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          20))),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        );
-                                      },
-                                      itemCount: 4,
-                                    ),
-                                    SizedBox(
-                                      height: 40,
-                                    ),
-                                    Center(
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Container(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              50, 10, 50, 10),
-                                          decoration: const BoxDecoration(
-                                              color: ColorSet.red1Alpha,
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(20))),
-                                          child: const Text('Cancelar Pedido',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: ColorSet.red1)),
-                                        ),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          );
+                                        },
+                                        itemCount: state
+                                            .reservation.productReservations
+                                            .where((element) =>
+                                                element.status ==
+                                                ReservationItemStatus
+                                                    .awaitingBuyer)
+                                            .toList()
+                                            .length,
                                       ),
-                                    ),
-                                  ],
-                                )),
-                          ],
-                        ),
-                      )),
-                ),
-                Container(
-                  height: 1,
-                  color: ColorSet.gray10,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    context
-                        .read<ReservationBloc>()
-                        .add(const ReservationEvent.showItemsTapped());
-                  },
-                  child: SizedBox(
-                    height: 40,
-                    child: Stack(
-                      children: [
-                        Align(
-                          child: Text(
-                            state.isItemsVisible ? 'Itens' : 'Ver itens',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                                      const SizedBox(height: 40),
+                                    ],
+                                  )),
+                              const Divider(),
+                              if (state.reservation.getStatusFromItems() !=
+                                      ReservationItemStatus.buyerCanceled &&
+                                  state.reservation.getStatusFromItems() !=
+                                      ReservationItemStatus.sellerCanceled)
+                                MaterialButton(
+                                  onPressed: () {
+                                    context.read<SummaryBloc>().add(
+                                        SummaryEvent.onCancelReservationPressed(
+                                            state.reservation));
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        50, 10, 50, 10),
+                                    decoration: const BoxDecoration(
+                                        color: ColorSet.red1Alpha,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                    child: const Text('Cancelar Pedido',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: ColorSet.red1)),
+                                  ),
+                                ),
+                            ],
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Icon(
-                              state.isItemsVisible
-                                  ? Icons.expand_less
-                                  : Icons.expand_more,
-                              size: 32,
+                        )),
+                  ),
+                  Container(
+                    height: 1,
+                    color: ColorSet.gray10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      context
+                          .read<ReservationBloc>()
+                          .add(const ReservationEvent.showItemsTapped());
+                    },
+                    child: SizedBox(
+                      height: 40,
+                      child: Stack(
+                        children: [
+                          Align(
+                            child: Text(
+                              state.isItemVisible ? 'Itens' : 'Ver itens',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
-                        )
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Icon(
+                                state.isItemVisible
+                                    ? Icons.expand_less
+                                    : Icons.expand_more,
+                                size: 32,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            )));
+                ],
+              ))),
+    );
   }
 
   Widget _getStatusText(Reservation reservation) {

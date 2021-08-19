@@ -10,12 +10,8 @@ class ReservationState with _$ReservationState {
   }) = _ReservationState;
 
   factory ReservationState.initial() => ReservationState(
-      loading: false,
-      optionOfReservationListFailureOrSuccess: none(),
-      isItemsVisible: false);
+        loading: false,
+        optionOfReservationListFailureOrSuccess: none(),
+        isItemsVisible: false,
+      );
 }
-// const factory SearchFormState({required bool productSelected}) =
-//       _SearchFormState;
-
-//   factory SearchFormState.initial() =>
-//       const SearchFormState(productSelected: false);

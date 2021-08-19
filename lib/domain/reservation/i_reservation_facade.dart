@@ -1,4 +1,5 @@
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/reservation/product_reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_failure.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
@@ -25,4 +26,25 @@ abstract class IReservationFacade {
       getCurrentUserReservations();
 
   Future<Either<ReservationFailure, List<Reservation>>> getSellerReservations();
+
+  Future<Either<ReservationFailure, Unit>> updateProductReservation(
+      ProductReservation productReservation, int newQuantity);
+
+  Future<Either<ReservationFailure, Unit>> deleteProductReservation(
+      ProductReservation productReservation);
+
+  Future<Either<ReservationFailure, Unit>> cancelReservation(
+      Reservation reservation);
+
+  Future<Either<ReservationFailure, Unit>> confirmProductReservation(
+      ProductReservation productReservation);
+
+  Future<Either<ReservationFailure, Unit>> confirmReservation(
+      Reservation reservation);
+
+  Future<Either<ReservationFailure, Unit>> confirmReservationPayment(
+      Reservation reservation);
+
+  Future<Either<ReservationFailure, Reservation>> getReservation(
+      int reservationId);
 }

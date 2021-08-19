@@ -9,4 +9,7 @@ class SignUpFormBlocEvent with _$SignUpFormBlocEvent {
       NicknameChanged;
 
   const factory SignUpFormBlocEvent.btnSignUpPressed() = BtnSignUpPressed;
+  const factory SignUpFormBlocEvent.btnConcluirPressed() = BtnConcluirPressed;
+  const factory SignUpFormBlocEvent.startedWithUser() = StartedWithUser;
+  const factory SignUpFormBlocEvent.photoSelected(String path) = PhotoSelected;
 }

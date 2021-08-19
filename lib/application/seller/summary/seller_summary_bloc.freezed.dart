@@ -19,6 +19,13 @@ class _$SellerSummaryEventTearOff {
   _Started started() {
     return const _Started();
   }
+
+  OnCancelReservationPressed onCancelReservationPressed(
+      Reservation reservation) {
+    return OnCancelReservationPressed(
+      reservation,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +36,29 @@ mixin _$SellerSummaryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(Reservation reservation)
+        onCancelReservationPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(Reservation reservation)? onCancelReservationPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +120,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(Reservation reservation)
+        onCancelReservationPressed,
   }) {
     return started();
   }
@@ -114,6 +130,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(Reservation reservation)? onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -126,6 +143,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
   }) {
     return started(this);
   }
@@ -134,6 +153,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -148,6 +169,139 @@ abstract class _Started implements SellerSummaryEvent {
 }
 
 /// @nodoc
+abstract class $OnCancelReservationPressedCopyWith<$Res> {
+  factory $OnCancelReservationPressedCopyWith(OnCancelReservationPressed value,
+          $Res Function(OnCancelReservationPressed) then) =
+      _$OnCancelReservationPressedCopyWithImpl<$Res>;
+  $Res call({Reservation reservation});
+
+  $ReservationCopyWith<$Res> get reservation;
+}
+
+/// @nodoc
+class _$OnCancelReservationPressedCopyWithImpl<$Res>
+    extends _$SellerSummaryEventCopyWithImpl<$Res>
+    implements $OnCancelReservationPressedCopyWith<$Res> {
+  _$OnCancelReservationPressedCopyWithImpl(OnCancelReservationPressed _value,
+      $Res Function(OnCancelReservationPressed) _then)
+      : super(_value, (v) => _then(v as OnCancelReservationPressed));
+
+  @override
+  OnCancelReservationPressed get _value =>
+      super._value as OnCancelReservationPressed;
+
+  @override
+  $Res call({
+    Object? reservation = freezed,
+  }) {
+    return _then(OnCancelReservationPressed(
+      reservation == freezed
+          ? _value.reservation
+          : reservation // ignore: cast_nullable_to_non_nullable
+              as Reservation,
+    ));
+  }
+
+  @override
+  $ReservationCopyWith<$Res> get reservation {
+    return $ReservationCopyWith<$Res>(_value.reservation, (value) {
+      return _then(_value.copyWith(reservation: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$OnCancelReservationPressed implements OnCancelReservationPressed {
+  const _$OnCancelReservationPressed(this.reservation);
+
+  @override
+  final Reservation reservation;
+
+  @override
+  String toString() {
+    return 'SellerSummaryEvent.onCancelReservationPressed(reservation: $reservation)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnCancelReservationPressed &&
+            (identical(other.reservation, reservation) ||
+                const DeepCollectionEquality()
+                    .equals(other.reservation, reservation)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(reservation);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnCancelReservationPressedCopyWith<OnCancelReservationPressed>
+      get copyWith =>
+          _$OnCancelReservationPressedCopyWithImpl<OnCancelReservationPressed>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Reservation reservation)
+        onCancelReservationPressed,
+  }) {
+    return onCancelReservationPressed(reservation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Reservation reservation)? onCancelReservationPressed,
+    required TResult orElse(),
+  }) {
+    if (onCancelReservationPressed != null) {
+      return onCancelReservationPressed(reservation);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
+  }) {
+    return onCancelReservationPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
+    required TResult orElse(),
+  }) {
+    if (onCancelReservationPressed != null) {
+      return onCancelReservationPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnCancelReservationPressed implements SellerSummaryEvent {
+  const factory OnCancelReservationPressed(Reservation reservation) =
+      _$OnCancelReservationPressed;
+
+  Reservation get reservation => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnCancelReservationPressedCopyWith<OnCancelReservationPressed>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$SellerSummaryStateTearOff {
   const _$SellerSummaryStateTearOff();
 
@@ -158,7 +312,10 @@ class _$SellerSummaryStateTearOff {
           optionOfAdvertisementsFailureOrSuccess,
       required Option<Either<ReservationFailure, List<Reservation>>>
           optionOfReservationFailureOrSuccess,
-      required bool loadingReservations}) {
+      required bool loadingReservations,
+      required bool cancellingReservation,
+      required Option<Either<ReservationFailure, Unit>>
+          optionOfReservationCancelFailureOrSuccess}) {
     return _SellerSummaryState(
       optionOfOPlace: optionOfOPlace,
       optionOfOUser: optionOfOUser,
@@ -166,6 +323,9 @@ class _$SellerSummaryStateTearOff {
           optionOfAdvertisementsFailureOrSuccess,
       optionOfReservationFailureOrSuccess: optionOfReservationFailureOrSuccess,
       loadingReservations: loadingReservations,
+      cancellingReservation: cancellingReservation,
+      optionOfReservationCancelFailureOrSuccess:
+          optionOfReservationCancelFailureOrSuccess,
     );
   }
 }
@@ -185,6 +345,10 @@ mixin _$SellerSummaryState {
       get optionOfReservationFailureOrSuccess =>
           throw _privateConstructorUsedError;
   bool get loadingReservations => throw _privateConstructorUsedError;
+  bool get cancellingReservation => throw _privateConstructorUsedError;
+  Option<Either<ReservationFailure, Unit>>
+      get optionOfReservationCancelFailureOrSuccess =>
+          throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SellerSummaryStateCopyWith<SellerSummaryState> get copyWith =>
@@ -203,7 +367,10 @@ abstract class $SellerSummaryStateCopyWith<$Res> {
           optionOfAdvertisementsFailureOrSuccess,
       Option<Either<ReservationFailure, List<Reservation>>>
           optionOfReservationFailureOrSuccess,
-      bool loadingReservations});
+      bool loadingReservations,
+      bool cancellingReservation,
+      Option<Either<ReservationFailure, Unit>>
+          optionOfReservationCancelFailureOrSuccess});
 }
 
 /// @nodoc
@@ -222,6 +389,8 @@ class _$SellerSummaryStateCopyWithImpl<$Res>
     Object? optionOfAdvertisementsFailureOrSuccess = freezed,
     Object? optionOfReservationFailureOrSuccess = freezed,
     Object? loadingReservations = freezed,
+    Object? cancellingReservation = freezed,
+    Object? optionOfReservationCancelFailureOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       optionOfOPlace: optionOfOPlace == freezed
@@ -246,6 +415,15 @@ class _$SellerSummaryStateCopyWithImpl<$Res>
           ? _value.loadingReservations
           : loadingReservations // ignore: cast_nullable_to_non_nullable
               as bool,
+      cancellingReservation: cancellingReservation == freezed
+          ? _value.cancellingReservation
+          : cancellingReservation // ignore: cast_nullable_to_non_nullable
+              as bool,
+      optionOfReservationCancelFailureOrSuccess:
+          optionOfReservationCancelFailureOrSuccess == freezed
+              ? _value.optionOfReservationCancelFailureOrSuccess
+              : optionOfReservationCancelFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<ReservationFailure, Unit>>,
     ));
   }
 }
@@ -264,7 +442,10 @@ abstract class _$SellerSummaryStateCopyWith<$Res>
           optionOfAdvertisementsFailureOrSuccess,
       Option<Either<ReservationFailure, List<Reservation>>>
           optionOfReservationFailureOrSuccess,
-      bool loadingReservations});
+      bool loadingReservations,
+      bool cancellingReservation,
+      Option<Either<ReservationFailure, Unit>>
+          optionOfReservationCancelFailureOrSuccess});
 }
 
 /// @nodoc
@@ -285,6 +466,8 @@ class __$SellerSummaryStateCopyWithImpl<$Res>
     Object? optionOfAdvertisementsFailureOrSuccess = freezed,
     Object? optionOfReservationFailureOrSuccess = freezed,
     Object? loadingReservations = freezed,
+    Object? cancellingReservation = freezed,
+    Object? optionOfReservationCancelFailureOrSuccess = freezed,
   }) {
     return _then(_SellerSummaryState(
       optionOfOPlace: optionOfOPlace == freezed
@@ -309,6 +492,15 @@ class __$SellerSummaryStateCopyWithImpl<$Res>
           ? _value.loadingReservations
           : loadingReservations // ignore: cast_nullable_to_non_nullable
               as bool,
+      cancellingReservation: cancellingReservation == freezed
+          ? _value.cancellingReservation
+          : cancellingReservation // ignore: cast_nullable_to_non_nullable
+              as bool,
+      optionOfReservationCancelFailureOrSuccess:
+          optionOfReservationCancelFailureOrSuccess == freezed
+              ? _value.optionOfReservationCancelFailureOrSuccess
+              : optionOfReservationCancelFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+                  as Option<Either<ReservationFailure, Unit>>,
     ));
   }
 }
@@ -321,7 +513,9 @@ class _$_SellerSummaryState implements _SellerSummaryState {
       required this.optionOfOUser,
       required this.optionOfAdvertisementsFailureOrSuccess,
       required this.optionOfReservationFailureOrSuccess,
-      required this.loadingReservations});
+      required this.loadingReservations,
+      required this.cancellingReservation,
+      required this.optionOfReservationCancelFailureOrSuccess});
 
   @override
   final Option<Place> optionOfOPlace;
@@ -335,10 +529,15 @@ class _$_SellerSummaryState implements _SellerSummaryState {
       optionOfReservationFailureOrSuccess;
   @override
   final bool loadingReservations;
+  @override
+  final bool cancellingReservation;
+  @override
+  final Option<Either<ReservationFailure, Unit>>
+      optionOfReservationCancelFailureOrSuccess;
 
   @override
   String toString() {
-    return 'SellerSummaryState(optionOfOPlace: $optionOfOPlace, optionOfOUser: $optionOfOUser, optionOfAdvertisementsFailureOrSuccess: $optionOfAdvertisementsFailureOrSuccess, optionOfReservationFailureOrSuccess: $optionOfReservationFailureOrSuccess, loadingReservations: $loadingReservations)';
+    return 'SellerSummaryState(optionOfOPlace: $optionOfOPlace, optionOfOUser: $optionOfOUser, optionOfAdvertisementsFailureOrSuccess: $optionOfAdvertisementsFailureOrSuccess, optionOfReservationFailureOrSuccess: $optionOfReservationFailureOrSuccess, loadingReservations: $loadingReservations, cancellingReservation: $cancellingReservation, optionOfReservationCancelFailureOrSuccess: $optionOfReservationCancelFailureOrSuccess)';
   }
 
   @override
@@ -363,7 +562,15 @@ class _$_SellerSummaryState implements _SellerSummaryState {
                     optionOfReservationFailureOrSuccess)) &&
             (identical(other.loadingReservations, loadingReservations) ||
                 const DeepCollectionEquality()
-                    .equals(other.loadingReservations, loadingReservations)));
+                    .equals(other.loadingReservations, loadingReservations)) &&
+            (identical(other.cancellingReservation, cancellingReservation) ||
+                const DeepCollectionEquality().equals(
+                    other.cancellingReservation, cancellingReservation)) &&
+            (identical(other.optionOfReservationCancelFailureOrSuccess,
+                    optionOfReservationCancelFailureOrSuccess) ||
+                const DeepCollectionEquality().equals(
+                    other.optionOfReservationCancelFailureOrSuccess,
+                    optionOfReservationCancelFailureOrSuccess)));
   }
 
   @override
@@ -374,7 +581,10 @@ class _$_SellerSummaryState implements _SellerSummaryState {
       const DeepCollectionEquality()
           .hash(optionOfAdvertisementsFailureOrSuccess) ^
       const DeepCollectionEquality().hash(optionOfReservationFailureOrSuccess) ^
-      const DeepCollectionEquality().hash(loadingReservations);
+      const DeepCollectionEquality().hash(loadingReservations) ^
+      const DeepCollectionEquality().hash(cancellingReservation) ^
+      const DeepCollectionEquality()
+          .hash(optionOfReservationCancelFailureOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -390,7 +600,10 @@ abstract class _SellerSummaryState implements SellerSummaryState {
           optionOfAdvertisementsFailureOrSuccess,
       required Option<Either<ReservationFailure, List<Reservation>>>
           optionOfReservationFailureOrSuccess,
-      required bool loadingReservations}) = _$_SellerSummaryState;
+      required bool loadingReservations,
+      required bool cancellingReservation,
+      required Option<Either<ReservationFailure, Unit>>
+          optionOfReservationCancelFailureOrSuccess}) = _$_SellerSummaryState;
 
   @override
   Option<Place> get optionOfOPlace => throw _privateConstructorUsedError;
@@ -407,6 +620,12 @@ abstract class _SellerSummaryState implements SellerSummaryState {
           throw _privateConstructorUsedError;
   @override
   bool get loadingReservations => throw _privateConstructorUsedError;
+  @override
+  bool get cancellingReservation => throw _privateConstructorUsedError;
+  @override
+  Option<Either<ReservationFailure, Unit>>
+      get optionOfReservationCancelFailureOrSuccess =>
+          throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SellerSummaryStateCopyWith<_SellerSummaryState> get copyWith =>

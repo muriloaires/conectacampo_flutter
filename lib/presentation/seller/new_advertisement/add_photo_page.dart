@@ -38,7 +38,7 @@ class AddPhotoForm extends StatelessWidget {
                       style: TextStyle(color: Colors.white))),
               body: SingleChildScrollView(
                 child: Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -152,9 +152,7 @@ class AddPhotoForm extends StatelessWidget {
                       ),
                     )),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               TextButton(
                   onPressed: () async {
                     final PickedFile? pickedFile =
@@ -174,16 +172,14 @@ class AddPhotoForm extends StatelessWidget {
                           decoration: TextDecoration.underline),
                     ),
                   )),
-              SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               MaterialButton(
                   onPressed: () {
                     Navigator.of(context).pop(state.photos);
                   },
                   child: Container(
                     height: 40,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: ColorSet.brown1,
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                     child: const Center(

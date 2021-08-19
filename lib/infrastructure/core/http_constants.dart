@@ -57,7 +57,55 @@ Future<Response> getAuthenticatedPostRequest(
     if (await getNewToken()) {
       final newToken = await getCurrentAcessToken();
       headers.addAll({'Authorization': 'Bearer $newToken'});
-      final newReponse = await http.get(url, headers: headers);
+      final newReponse = await http.post(url, headers: headers, body: body);
+      return newReponse;
+    } else {
+      return response;
+    }
+  }
+  return response;
+}
+
+Future<Response> getAuthenticatedPatchRequest(Uri url,
+    {Map<String, String>? headers, String? body}) async {
+  final accessTokenHeader = {
+    'Authorization': 'Bearer ${await getCurrentAcessToken()}'
+  };
+
+  headers ??= {};
+  headers.addAll(accessTokenHeader);
+  headers.addAll({'content-type': 'application/json'});
+  final response = await http.patch(url, headers: headers, body: body);
+  final code = response.statusCode;
+  if (code == 401) {
+    if (await getNewToken()) {
+      final newToken = await getCurrentAcessToken();
+      headers.addAll({'Authorization': 'Bearer $newToken'});
+      final newReponse = await http.patch(url, headers: headers, body: body);
+      return newReponse;
+    } else {
+      return response;
+    }
+  }
+  return response;
+}
+
+Future<Response> getAuthenticatedDeleteRequest(
+    Uri url, Map<String, String>? headers) async {
+  final accessTokenHeader = {
+    'Authorization': 'Bearer ${await getCurrentAcessToken()}'
+  };
+
+  headers ??= {};
+  headers.addAll(accessTokenHeader);
+  headers.addAll({'content-type': 'application/json'});
+  final response = await http.delete(url, headers: headers);
+  final code = response.statusCode;
+  if (code == 401) {
+    if (await getNewToken()) {
+      final newToken = await getCurrentAcessToken();
+      headers.addAll({'Authorization': 'Bearer $newToken'});
+      final newReponse = await http.delete(url, headers: headers);
       return newReponse;
     } else {
       return response;

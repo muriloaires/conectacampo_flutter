@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
+import 'package:conectacampo/domain/reservation/product_reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_failure.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
@@ -15,6 +16,7 @@ import 'package:injectable/injectable.dart';
 class ReservationFacade extends IReservationFacade {
   static const routeCurrentUserReservations = '/me/reservations';
   static const routeReservations = '/reservations';
+  static const routeProductReservations = '/product_reservations';
 
   @override
   Future<List<ReservationItem>> getItemsInCart() async {
@@ -91,14 +93,6 @@ class ReservationFacade extends IReservationFacade {
       return right(reservationsResponse.toList());
     } else if (code == 401) {
       return left(const ReservationFailure.unauthorized());
-    } else if (code == 422) {
-      ReservationResponse? responseObj;
-      try {
-        responseObj = ReservationResponse.fromJson(
-            jsonDecode(response.body) as Map<String, dynamic>);
-      } catch (e) {}
-
-      return left(ReservationFailure.unavailableItems(responseObj));
     } else if (code >= 400 && code < 500) {
       return left(const ReservationFailure.requestError());
     } else {
@@ -121,14 +115,148 @@ class ReservationFacade extends IReservationFacade {
       return right(reservationsResponse.toList());
     } else if (code == 401) {
       return left(const ReservationFailure.unauthorized());
-    } else if (code == 422) {
-      ReservationResponse? responseObj;
-      try {
-        responseObj = ReservationResponse.fromJson(
-            jsonDecode(response.body) as Map<String, dynamic>);
-      } catch (e) {}
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
 
-      return left(ReservationFailure.unavailableItems(responseObj));
+  @override
+  Future<Either<ReservationFailure, Unit>> updateProductReservation(
+      ProductReservation productReservation, int newQuantity) async {
+    final url = Uri.https(baseUrl,
+        '$apiVersion$routeProductReservations/${productReservation.id}');
+    final response = await getAuthenticatedPatchRequest(url,
+        headers: getApiHeader(), body: jsonEncode({'quantity': newQuantity}));
+
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ReservationFailure, Unit>> deleteProductReservation(
+      ProductReservation productReservation) async {
+    final url = Uri.https(baseUrl,
+        '$apiVersion$routeProductReservations/${productReservation.id}');
+    final response = await getAuthenticatedDeleteRequest(url, getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ReservationFailure, Unit>> cancelReservation(
+      Reservation reservation) async {
+    final url = Uri.https(
+        baseUrl, '$apiVersion$routeReservations/${reservation.id}/cancel');
+    final response =
+        await getAuthenticatedPatchRequest(url, headers: getApiHeader());
+
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ReservationFailure, Unit>> confirmProductReservation(
+      ProductReservation productReservation) async {
+    final url = Uri.https(baseUrl,
+        '$apiVersion$routeProductReservations/${productReservation.id}/confirm');
+    final response =
+        await getAuthenticatedPatchRequest(url, headers: getApiHeader());
+
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ReservationFailure, Reservation>> getReservation(
+      int reservationId) async {
+    final url = Uri.https(
+      baseUrl,
+      '$apiVersion$routeReservations/$reservationId',
+    );
+    final response = await getAuthenticatedRequest(url, getApiHeader());
+
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final Map<String, dynamic> decode =
+          jsonDecode(response.body) as Map<String, dynamic>;
+
+      return right(ReservationResponse.fromJson(decode).toDomain());
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ReservationFailure, Unit>> confirmReservation(
+      Reservation reservation) async {
+    final url = Uri.https(
+        baseUrl, '$apiVersion$routeReservations/${reservation.id}/confirm');
+    final response =
+        await getAuthenticatedPatchRequest(url, headers: getApiHeader());
+
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ReservationFailure, Unit>> confirmReservationPayment(
+      Reservation reservation) async {
+    final url = Uri.https(baseUrl,
+        '$apiVersion$routeReservations/${reservation.id}/confirm_payment');
+    final response =
+        await getAuthenticatedPatchRequest(url, headers: getApiHeader());
+
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
     } else if (code >= 400 && code < 500) {
       return left(const ReservationFailure.requestError());
     } else {

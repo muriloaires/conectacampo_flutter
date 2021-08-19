@@ -10,11 +10,8 @@ import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/infrastructure/core/http_constants.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-
-import 'user_mapper.dart';
 
 @LazySingleton(as: IAuthFacade)
 class AuthFacade implements IAuthFacade {
@@ -26,6 +23,8 @@ class AuthFacade implements IAuthFacade {
   String _verificationId = '';
 
   String _phoneNumber = '';
+  String _name = '';
+  String _nickname = '';
 
   AuthFacade(this._firebaseAuth);
 
@@ -114,26 +113,36 @@ class AuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> signUp(
-      FullName fullName, Nickname nickname) async {
+      FullName fullName, Nickname nickname, String avatar) async {
     final firstName = fullName.getOrCrash().split(' ')[0];
     final lastName = fullName.getOrCrash().split(' ')[1];
     final url = Uri.https(baseUrl, '$apiVersion$routeUsers');
-    final response = await http.post(url,
-        body: UserRegister(firstName, lastName, nickname.getOrCrash(),
-                '+55${_phoneNumber.replaceAll(RegExp(r'-'), '')}')
-            .toJson(),
-        headers: getApiHeader());
+    final request = http.MultipartRequest(
+      'POST',
+      url,
+    );
+    request.headers.addAll(getApiHeader());
+    request.files.add(await http.MultipartFile.fromPath('avatar', avatar));
+    request.fields['first_name'] = firstName;
+    request.fields['last_name'] = lastName;
+    request.fields['nickname'] = nickname.getOrCrash();
+    request.fields['phone_number'] =
+        '+55${_phoneNumber.replaceAll(RegExp(r'-'), '')}';
+
+    final response = await request.send();
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
       final user = UserResponse.fromJson(
-          json.decode(response.body) as Map<String, dynamic>);
+          json.decode(await response.stream.bytesToString())
+              as Map<String, dynamic>);
       await persistUser(user);
       return right(unit);
     } else if (code == 401) {
       return left(const AuthFailure.unauthorized());
     } else if (code >= 400 && code < 500) {
-      final errors =
-          Errors.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      final errors = Errors.fromJson(
+          jsonDecode(await response.stream.bytesToString())
+              as Map<String, dynamic>);
       if (errors.errors.contains('Celular já está em uso')) {
         return left(const AuthFailure.phoneAlreadyUsed());
       }
@@ -142,4 +151,17 @@ class AuthFacade implements IAuthFacade {
       return left(const AuthFailure.serverError());
     }
   }
+
+  @override
+  Unit onNameAndNicknameSelected(String name, String nickname) {
+    _name = name;
+    _nickname = nickname;
+    return unit;
+  }
+
+  @override
+  String getSelectedName() => _name;
+
+  @override
+  String getSelectedNickname() => _nickname;
 }

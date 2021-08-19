@@ -164,11 +164,11 @@ extension ProductReservationExt on ProductReservationResponse {
     } else if (status == 'pending_seller') {
       return ReservationItemStatus.pendingSeller;
     } else if (status == 'buyer_canceled') {
-      return ReservationItemStatus.pendingSeller;
+      return ReservationItemStatus.buyerCanceled;
     } else if (status == 'seller_canceled') {
-      return ReservationItemStatus.pendingSeller;
+      return ReservationItemStatus.sellerCanceled;
     } else if (status == 'confirmed') {
-      return ReservationItemStatus.pendingSeller;
+      return ReservationItemStatus.confirmed;
     } else {
       return ReservationItemStatus.paid;
     }

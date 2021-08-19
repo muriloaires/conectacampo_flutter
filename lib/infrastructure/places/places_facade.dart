@@ -9,15 +9,15 @@ import 'package:conectacampo/infrastructure/places/model/model.dart';
 import 'package:conectacampo/infrastructure/places/places_mapper.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IPlacesFacade)
 class PlacesFacade implements IPlacesFacade {
   static const routePlaces = '/places';
   static const routeStatesPlaces = '/states';
-  final FirebaseAuth _firebaseAuth;
 
-  PlacesFacade(this._firebaseAuth);
+  PlacesFacade();
 
   @override
   Future<Either<PlacesFailure, List<Place>>> getAllPlaces() async {

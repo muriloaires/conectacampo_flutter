@@ -1,16 +1,16 @@
-part of 'seller_reservation_bloc.dart';
+part of 'single_reservation_bloc.dart';
 
 @freezed
-class SellerReservationState with _$SellerReservationState {
-  const factory SellerReservationState(
-      {required Reservation reservation,
-      required bool update,
-      required List<ProductReservation> deletedItems,
-      required bool isItemsVisible,
-      required bool finishing,
-      required bool finished}) = _SellerReservationState;
+class SingleReservationState with _$SingleReservationState {
+  const factory SingleReservationState({
+    required bool isItemVisible,
+    required Reservation reservation,
+    required bool showAcceptError,
+    required bool showCancelItemError,
+  }) = _SingleReservationState;
 
-  factory SellerReservationState.initial() => SellerReservationState(
+  factory SingleReservationState.initial() => SingleReservationState(
+      isItemVisible: true,
       reservation: Reservation(
           id: -1,
           createdAt: '',
@@ -33,9 +33,6 @@ class SellerReservationState with _$SellerReservationState {
               null,
               null),
           productReservations: []),
-      update: false,
-      deletedItems: [],
-      finishing: false,
-      finished: false,
-      isItemsVisible: false);
+      showAcceptError: false,
+      showCancelItemError: false);
 }

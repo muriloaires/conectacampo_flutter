@@ -139,6 +139,13 @@ class EditReservationItemPage extends StatelessWidget {
                   ),
                   Expanded(
                     child: TextFormField(
+                      onChanged: (value) {
+                        if (value.isNotEmpty &&
+                            int.parse(value) > product.quantity) {
+                          textEditingController.text =
+                              product.quantity.toString();
+                        }
+                      },
                       controller: textEditingController,
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(

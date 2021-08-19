@@ -31,17 +31,47 @@ class SignUpFormBloc extends Bloc<SignUpFormBlocEvent, SignUpFormBlocState> {
       Either<AuthFailure, Unit> failureOrSuccess =
           left(const AuthFailure.applicationError());
 
+      if (!state.fullName.isValid()) {
+        failureOrSuccess = left(const AuthFailure.invalidFullName());
+      } else if (!state.nickname.isValid()) {
+        failureOrSuccess = left(const AuthFailure.invalidNickname());
+      } else {
+        failureOrSuccess = right(unit);
+      }
+
       if (state.fullName.isValid() && state.nickname.isValid()) {
-        yield state.copyWith(
-            isSubmitting: true, authFailureOrSuccessOption: none());
-        failureOrSuccess =
-            await _authFacade.signUp(state.fullName, state.nickname);
+        yield state.copyWith(authFailureOrSuccessOption: none());
+
+        _authFacade.onNameAndNicknameSelected(
+            state.fullName.getOrCrash(), state.nickname.getOrCrash());
       }
 
       yield state.copyWith(
         isSubmitting: false,
         showErrorMessages: true,
         authFailureOrSuccessOption: optionOf(failureOrSuccess),
+      );
+    }, startedWithUser: (StartedWithUser value) async* {
+      yield state.copyWith(
+          fullName: FullName(_authFacade.getSelectedName()),
+          nickname: Nickname(_authFacade.getSelectedNickname()));
+    }, photoSelected: (PhotoSelected value) async* {
+      yield state.copyWith(optionOfAvatar: some(value.path));
+    }, btnConcluirPressed: (BtnConcluirPressed value) async* {
+      Either<AuthFailure, Unit> failureOrSuccess =
+          left(const AuthFailure.applicationError());
+
+      if (state.fullName.isValid() && state.nickname.isValid()) {
+        yield state.copyWith(
+            isSubmitting: true, authFailureOrSuccessOption: none());
+        failureOrSuccess = await _authFacade.signUp(state.fullName,
+            state.nickname, state.optionOfAvatar.fold(() => '', (a) => a));
+      }
+
+      yield state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: true,
+        authFailureOrSuccessOption: some(failureOrSuccess),
       );
     });
   }

@@ -15,6 +15,11 @@ abstract class IAuthFacade {
     SmsCode smsCode,
   );
 
+  Unit onNameAndNicknameSelected(String name, String nickname);
+
   Future<Either<AuthFailure, Unit>> signUp(
-      FullName fullName, Nickname nickname);
+      FullName fullName, Nickname nickname, String avatarPath);
+
+  String getSelectedName();
+  String getSelectedNickname();
 }

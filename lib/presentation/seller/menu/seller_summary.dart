@@ -1,15 +1,17 @@
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
+import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_advertisement.dart';
-import 'package:conectacampo/presentation/seller/reservation/seller_reservation.dart';
+import 'package:conectacampo/presentation/seller/reservation/seller_reservation_widget.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SellerSummary extends StatelessWidget {
@@ -23,79 +25,89 @@ class SellerSummary extends StatelessWidget {
       onGenerateRoute: (settings) => MaterialPageRoute(
           settings: settings,
           builder: (context) => Scaffold(
-                body: SingleChildScrollView(
-                  child: BlocConsumer<SellerSummaryBloc, SellerSummaryState>(
-                    listener: (context, state) async {},
-                    builder: (context, state) => Column(
-                      mainAxisSize: MainAxisSize.min,
+                body: BlocConsumer<SellerSummaryBloc, SellerSummaryState>(
+                  listener: (context, state) async {
+                    if (state.cancellingReservation) {
+                      EasyLoading.show(status: 'Cancelando Reserva');
+                    } else {
+                      EasyLoading.dismiss();
+                    }
+                  },
+                  builder: (context, state) => RefreshIndicator(
+                    onRefresh: () async {
+                      context
+                          .read<SellerSummaryBloc>()
+                          .add(const SellerSummaryEvent.started());
+
+                      context
+                          .read<ReservationBloc>()
+                          .add(const ReservationEvent.started());
+                    },
+                    child: ListView(
+                      shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
                       children: [
-                        Column(
-                          children: [
-                            CustomAppBar(),
-                            const SizedBox(
-                              height: 32,
+                        CustomAppBar(),
+                        const SizedBox(height: 32),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: Text(
+                            'Administrar Reservas',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: ColorSet.brown1,
                             ),
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                              child: Text(
-                                'Administrar Reservas',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorSet.brown1,
-                                ),
-                              ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: SellerReservations(),
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: Text(
+                            'Meus anúncios',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: ColorSet.brown1,
                             ),
-                            const SizedBox(
-                              height: 32,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: SellerAdvertisements(),
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: Text(
+                            'Meugrupo',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: ColorSet.brown1,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                              child: SellerReservations(),
-                            ),
-                            const SizedBox(
-                              height: 32,
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                              child: Text(
-                                'Meus anúncios',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorSet.brown1,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 32,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                              child: SellerAdvertisements(),
-                            ),
-                            const SizedBox(
-                              height: 32,
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                              child: Text(
-                                'Meugrupo',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorSet.brown1,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 32,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                              child: SellerGroup(),
-                            )
-                          ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: SellerGroup(),
                         )
                       ],
                     ),
@@ -273,9 +285,7 @@ class CustomAppBar extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(20, 32, 20, 8),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 32,
-                ),
+                const SizedBox(height: 20),
                 Row(
                   children: [
                     SvgPicture.asset(
