@@ -60,6 +60,10 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
         onCartTapped: (OnCartTapped value) async* {
           yield state.copyWith(openCart: true);
           yield state.copyWith(openCart: false);
+        },
+        logout: (Logout value) async* {
+          await logout();
+          yield state.copyWith(navToLogin: true);
         });
   }
 }

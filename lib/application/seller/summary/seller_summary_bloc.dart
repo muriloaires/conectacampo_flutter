@@ -59,6 +59,9 @@ class SellerSummaryBloc extends Bloc<SellerSummaryEvent, SellerSummaryState> {
           cancellingReservation: false,
           optionOfReservationCancelFailureOrSuccess: some(cancelResult));
       yield state.copyWith(optionOfReservationCancelFailureOrSuccess: none());
+    }, placeChanged: (PlaceChanged value) async* {
+      final place = await loadSelectedPlace();
+      yield state.copyWith(optionOfOPlace: optionOf(place));
     });
   }
 }

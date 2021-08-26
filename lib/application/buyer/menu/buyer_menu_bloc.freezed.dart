@@ -63,6 +63,10 @@ class _$BuyerMenuEventTearOff {
   NavToSellerTapped navToSellerTapped() {
     return const NavToSellerTapped();
   }
+
+  Logout logout() {
+    return const Logout();
+  }
 }
 
 /// @nodoc
@@ -84,6 +88,7 @@ mixin _$BuyerMenuEvent {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -100,6 +105,7 @@ mixin _$BuyerMenuEvent {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +123,7 @@ mixin _$BuyerMenuEvent {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -133,6 +140,7 @@ mixin _$BuyerMenuEvent {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -204,6 +212,7 @@ class _$Started implements Started {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return started();
   }
@@ -223,6 +232,7 @@ class _$Started implements Started {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -246,6 +256,7 @@ class _$Started implements Started {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return started(this);
   }
@@ -265,6 +276,7 @@ class _$Started implements Started {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -330,6 +342,7 @@ class _$OnCartTapped implements OnCartTapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return onCartTapped();
   }
@@ -349,6 +362,7 @@ class _$OnCartTapped implements OnCartTapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (onCartTapped != null) {
@@ -372,6 +386,7 @@ class _$OnCartTapped implements OnCartTapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return onCartTapped(this);
   }
@@ -391,6 +406,7 @@ class _$OnCartTapped implements OnCartTapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (onCartTapped != null) {
@@ -453,6 +469,7 @@ class _$BuyTapped implements BuyTapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return buyTapped();
   }
@@ -472,6 +489,7 @@ class _$BuyTapped implements BuyTapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (buyTapped != null) {
@@ -495,6 +513,7 @@ class _$BuyTapped implements BuyTapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return buyTapped(this);
   }
@@ -514,6 +533,7 @@ class _$BuyTapped implements BuyTapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (buyTapped != null) {
@@ -577,6 +597,7 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return homeTapped();
   }
@@ -596,6 +617,7 @@ class _$HomeTapped implements HomeTapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (homeTapped != null) {
@@ -619,6 +641,7 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return homeTapped(this);
   }
@@ -638,6 +661,7 @@ class _$HomeTapped implements HomeTapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (homeTapped != null) {
@@ -703,6 +727,7 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return groupsTapped();
   }
@@ -722,6 +747,7 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (groupsTapped != null) {
@@ -745,6 +771,7 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return groupsTapped(this);
   }
@@ -764,6 +791,7 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (groupsTapped != null) {
@@ -829,6 +857,7 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return reservationTapped();
   }
@@ -848,6 +877,7 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (reservationTapped != null) {
@@ -871,6 +901,7 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return reservationTapped(this);
   }
@@ -890,6 +921,7 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (reservationTapped != null) {
@@ -955,6 +987,7 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return profileTapped();
   }
@@ -974,6 +1007,7 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (profileTapped != null) {
@@ -997,6 +1031,7 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return profileTapped(this);
   }
@@ -1016,6 +1051,7 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (profileTapped != null) {
@@ -1081,6 +1117,7 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return homeRetapped();
   }
@@ -1100,6 +1137,7 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (homeRetapped != null) {
@@ -1123,6 +1161,7 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return homeRetapped(this);
   }
@@ -1142,6 +1181,7 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (homeRetapped != null) {
@@ -1207,6 +1247,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return groupsRetapped();
   }
@@ -1226,6 +1267,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (groupsRetapped != null) {
@@ -1249,6 +1291,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return groupsRetapped(this);
   }
@@ -1268,6 +1311,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (groupsRetapped != null) {
@@ -1333,6 +1377,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return reservationRetapped();
   }
@@ -1352,6 +1397,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (reservationRetapped != null) {
@@ -1375,6 +1421,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return reservationRetapped(this);
   }
@@ -1394,6 +1441,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (reservationRetapped != null) {
@@ -1459,6 +1507,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return profileRetapped();
   }
@@ -1478,6 +1527,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (profileRetapped != null) {
@@ -1501,6 +1551,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return profileRetapped(this);
   }
@@ -1520,6 +1571,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (profileRetapped != null) {
@@ -1585,6 +1637,7 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
     required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
   }) {
     return navToSellerTapped();
   }
@@ -1604,6 +1657,7 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
     TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (navToSellerTapped != null) {
@@ -1627,6 +1681,7 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
   }) {
     return navToSellerTapped(this);
   }
@@ -1646,6 +1701,7 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (navToSellerTapped != null) {
@@ -1660,6 +1716,133 @@ abstract class NavToSellerTapped implements BuyerMenuEvent {
 }
 
 /// @nodoc
+abstract class $LogoutCopyWith<$Res> {
+  factory $LogoutCopyWith(Logout value, $Res Function(Logout) then) =
+      _$LogoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$LogoutCopyWithImpl<$Res> extends _$BuyerMenuEventCopyWithImpl<$Res>
+    implements $LogoutCopyWith<$Res> {
+  _$LogoutCopyWithImpl(Logout _value, $Res Function(Logout) _then)
+      : super(_value, (v) => _then(v as Logout));
+
+  @override
+  Logout get _value => super._value as Logout;
+}
+
+/// @nodoc
+
+class _$Logout implements Logout {
+  const _$Logout();
+
+  @override
+  String toString() {
+    return 'BuyerMenuEvent.logout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Logout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
+    required TResult Function() buyTapped,
+    required TResult Function() homeTapped,
+    required TResult Function() groupsTapped,
+    required TResult Function() reservationTapped,
+    required TResult Function() profileTapped,
+    required TResult Function() homeRetapped,
+    required TResult Function() groupsRetapped,
+    required TResult Function() reservationRetapped,
+    required TResult Function() profileRetapped,
+    required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
+  }) {
+    return logout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
+    TResult Function()? buyTapped,
+    TResult Function()? homeTapped,
+    TResult Function()? groupsTapped,
+    TResult Function()? reservationTapped,
+    TResult Function()? profileTapped,
+    TResult Function()? homeRetapped,
+    TResult Function()? groupsRetapped,
+    TResult Function()? reservationRetapped,
+    TResult Function()? profileRetapped,
+    TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
+    required TResult Function(BuyTapped value) buyTapped,
+    required TResult Function(HomeTapped value) homeTapped,
+    required TResult Function(GroupsTapped value) groupsTapped,
+    required TResult Function(ReservationTapped value) reservationTapped,
+    required TResult Function(ProfileTapped value) profileTapped,
+    required TResult Function(HomeRetapped value) homeRetapped,
+    required TResult Function(GroupsRetapped value) groupsRetapped,
+    required TResult Function(ReservationRetapped value) reservationRetapped,
+    required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
+  }) {
+    return logout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
+    TResult Function(BuyTapped value)? buyTapped,
+    TResult Function(HomeTapped value)? homeTapped,
+    TResult Function(GroupsTapped value)? groupsTapped,
+    TResult Function(ReservationTapped value)? reservationTapped,
+    TResult Function(ProfileTapped value)? profileTapped,
+    TResult Function(HomeRetapped value)? homeRetapped,
+    TResult Function(GroupsRetapped value)? groupsRetapped,
+    TResult Function(ReservationRetapped value)? reservationRetapped,
+    TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Logout implements BuyerMenuEvent {
+  const factory Logout() = _$Logout;
+}
+
+/// @nodoc
 class _$BuyerMenuStateTearOff {
   const _$BuyerMenuStateTearOff();
 
@@ -1668,13 +1851,15 @@ class _$BuyerMenuStateTearOff {
       required bool navToRoot,
       required bool navToSeller,
       required List<ReservationItem> itemsInCart,
-      required bool openCart}) {
+      required bool openCart,
+      required bool navToLogin}) {
     return _BuyerMenuState(
       currentIndex: currentIndex,
       navToRoot: navToRoot,
       navToSeller: navToSeller,
       itemsInCart: itemsInCart,
       openCart: openCart,
+      navToLogin: navToLogin,
     );
   }
 }
@@ -1689,6 +1874,7 @@ mixin _$BuyerMenuState {
   bool get navToSeller => throw _privateConstructorUsedError;
   List<ReservationItem> get itemsInCart => throw _privateConstructorUsedError;
   bool get openCart => throw _privateConstructorUsedError;
+  bool get navToLogin => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BuyerMenuStateCopyWith<BuyerMenuState> get copyWith =>
@@ -1705,7 +1891,8 @@ abstract class $BuyerMenuStateCopyWith<$Res> {
       bool navToRoot,
       bool navToSeller,
       List<ReservationItem> itemsInCart,
-      bool openCart});
+      bool openCart,
+      bool navToLogin});
 }
 
 /// @nodoc
@@ -1724,6 +1911,7 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
     Object? navToSeller = freezed,
     Object? itemsInCart = freezed,
     Object? openCart = freezed,
+    Object? navToLogin = freezed,
   }) {
     return _then(_value.copyWith(
       currentIndex: currentIndex == freezed
@@ -1746,6 +1934,10 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.openCart
           : openCart // ignore: cast_nullable_to_non_nullable
               as bool,
+      navToLogin: navToLogin == freezed
+          ? _value.navToLogin
+          : navToLogin // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1762,7 +1954,8 @@ abstract class _$BuyerMenuStateCopyWith<$Res>
       bool navToRoot,
       bool navToSeller,
       List<ReservationItem> itemsInCart,
-      bool openCart});
+      bool openCart,
+      bool navToLogin});
 }
 
 /// @nodoc
@@ -1783,6 +1976,7 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
     Object? navToSeller = freezed,
     Object? itemsInCart = freezed,
     Object? openCart = freezed,
+    Object? navToLogin = freezed,
   }) {
     return _then(_BuyerMenuState(
       currentIndex: currentIndex == freezed
@@ -1805,6 +1999,10 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.openCart
           : openCart // ignore: cast_nullable_to_non_nullable
               as bool,
+      navToLogin: navToLogin == freezed
+          ? _value.navToLogin
+          : navToLogin // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1817,7 +2015,8 @@ class _$_BuyerMenuState implements _BuyerMenuState {
       required this.navToRoot,
       required this.navToSeller,
       required this.itemsInCart,
-      required this.openCart});
+      required this.openCart,
+      required this.navToLogin});
 
   @override
   final int currentIndex;
@@ -1829,10 +2028,12 @@ class _$_BuyerMenuState implements _BuyerMenuState {
   final List<ReservationItem> itemsInCart;
   @override
   final bool openCart;
+  @override
+  final bool navToLogin;
 
   @override
   String toString() {
-    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller, itemsInCart: $itemsInCart, openCart: $openCart)';
+    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller, itemsInCart: $itemsInCart, openCart: $openCart, navToLogin: $navToLogin)';
   }
 
   @override
@@ -1853,7 +2054,10 @@ class _$_BuyerMenuState implements _BuyerMenuState {
                     .equals(other.itemsInCart, itemsInCart)) &&
             (identical(other.openCart, openCart) ||
                 const DeepCollectionEquality()
-                    .equals(other.openCart, openCart)));
+                    .equals(other.openCart, openCart)) &&
+            (identical(other.navToLogin, navToLogin) ||
+                const DeepCollectionEquality()
+                    .equals(other.navToLogin, navToLogin)));
   }
 
   @override
@@ -1863,7 +2067,8 @@ class _$_BuyerMenuState implements _BuyerMenuState {
       const DeepCollectionEquality().hash(navToRoot) ^
       const DeepCollectionEquality().hash(navToSeller) ^
       const DeepCollectionEquality().hash(itemsInCart) ^
-      const DeepCollectionEquality().hash(openCart);
+      const DeepCollectionEquality().hash(openCart) ^
+      const DeepCollectionEquality().hash(navToLogin);
 
   @JsonKey(ignore: true)
   @override
@@ -1877,7 +2082,8 @@ abstract class _BuyerMenuState implements BuyerMenuState {
       required bool navToRoot,
       required bool navToSeller,
       required List<ReservationItem> itemsInCart,
-      required bool openCart}) = _$_BuyerMenuState;
+      required bool openCart,
+      required bool navToLogin}) = _$_BuyerMenuState;
 
   @override
   int get currentIndex => throw _privateConstructorUsedError;
@@ -1889,6 +2095,8 @@ abstract class _BuyerMenuState implements BuyerMenuState {
   List<ReservationItem> get itemsInCart => throw _privateConstructorUsedError;
   @override
   bool get openCart => throw _privateConstructorUsedError;
+  @override
+  bool get navToLogin => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BuyerMenuStateCopyWith<_BuyerMenuState> get copyWith =>

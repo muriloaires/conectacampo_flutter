@@ -62,6 +62,10 @@ class SellerMenuBloc extends Bloc<SellerMenuEvent, SellerMenuState> {
         editingEnd: (EditingEnd value) async* {
           yield state.copyWith(
               openEditReservation: false, optionOfResevationToEdit: none());
+        },
+        logout: (Logout value) async* {
+          await logout();
+          yield state.copyWith(navToLogin: true);
         });
   }
 }

@@ -26,6 +26,10 @@ class _$SummaryEventTearOff {
       reservation,
     );
   }
+
+  OnPlaceChanged onPlaceChanged() {
+    return const OnPlaceChanged();
+  }
 }
 
 /// @nodoc
@@ -38,12 +42,14 @@ mixin _$SummaryEvent {
     required TResult Function() started,
     required TResult Function(Reservation reservation)
         onCancelReservationPressed,
+    required TResult Function() onPlaceChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(Reservation reservation)? onCancelReservationPressed,
+    TResult Function()? onPlaceChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +58,7 @@ mixin _$SummaryEvent {
     required TResult Function(_Started value) started,
     required TResult Function(OnCancelReservationPressed value)
         onCancelReservationPressed,
+    required TResult Function(OnPlaceChanged value) onPlaceChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +66,7 @@ mixin _$SummaryEvent {
     TResult Function(_Started value)? started,
     TResult Function(OnCancelReservationPressed value)?
         onCancelReservationPressed,
+    TResult Function(OnPlaceChanged value)? onPlaceChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +128,7 @@ class _$_Started implements _Started {
     required TResult Function() started,
     required TResult Function(Reservation reservation)
         onCancelReservationPressed,
+    required TResult Function() onPlaceChanged,
   }) {
     return started();
   }
@@ -129,6 +138,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(Reservation reservation)? onCancelReservationPressed,
+    TResult Function()? onPlaceChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -143,6 +153,7 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(OnCancelReservationPressed value)
         onCancelReservationPressed,
+    required TResult Function(OnPlaceChanged value) onPlaceChanged,
   }) {
     return started(this);
   }
@@ -153,6 +164,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(OnCancelReservationPressed value)?
         onCancelReservationPressed,
+    TResult Function(OnPlaceChanged value)? onPlaceChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -247,6 +259,7 @@ class _$OnCancelReservationPressed implements OnCancelReservationPressed {
     required TResult Function() started,
     required TResult Function(Reservation reservation)
         onCancelReservationPressed,
+    required TResult Function() onPlaceChanged,
   }) {
     return onCancelReservationPressed(reservation);
   }
@@ -256,6 +269,7 @@ class _$OnCancelReservationPressed implements OnCancelReservationPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(Reservation reservation)? onCancelReservationPressed,
+    TResult Function()? onPlaceChanged,
     required TResult orElse(),
   }) {
     if (onCancelReservationPressed != null) {
@@ -270,6 +284,7 @@ class _$OnCancelReservationPressed implements OnCancelReservationPressed {
     required TResult Function(_Started value) started,
     required TResult Function(OnCancelReservationPressed value)
         onCancelReservationPressed,
+    required TResult Function(OnPlaceChanged value) onPlaceChanged,
   }) {
     return onCancelReservationPressed(this);
   }
@@ -280,6 +295,7 @@ class _$OnCancelReservationPressed implements OnCancelReservationPressed {
     TResult Function(_Started value)? started,
     TResult Function(OnCancelReservationPressed value)?
         onCancelReservationPressed,
+    TResult Function(OnPlaceChanged value)? onPlaceChanged,
     required TResult orElse(),
   }) {
     if (onCancelReservationPressed != null) {
@@ -300,17 +316,112 @@ abstract class OnCancelReservationPressed implements SummaryEvent {
 }
 
 /// @nodoc
+abstract class $OnPlaceChangedCopyWith<$Res> {
+  factory $OnPlaceChangedCopyWith(
+          OnPlaceChanged value, $Res Function(OnPlaceChanged) then) =
+      _$OnPlaceChangedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$OnPlaceChangedCopyWithImpl<$Res>
+    extends _$SummaryEventCopyWithImpl<$Res>
+    implements $OnPlaceChangedCopyWith<$Res> {
+  _$OnPlaceChangedCopyWithImpl(
+      OnPlaceChanged _value, $Res Function(OnPlaceChanged) _then)
+      : super(_value, (v) => _then(v as OnPlaceChanged));
+
+  @override
+  OnPlaceChanged get _value => super._value as OnPlaceChanged;
+}
+
+/// @nodoc
+
+class _$OnPlaceChanged implements OnPlaceChanged {
+  const _$OnPlaceChanged();
+
+  @override
+  String toString() {
+    return 'SummaryEvent.onPlaceChanged()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is OnPlaceChanged);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Reservation reservation)
+        onCancelReservationPressed,
+    required TResult Function() onPlaceChanged,
+  }) {
+    return onPlaceChanged();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Reservation reservation)? onCancelReservationPressed,
+    TResult Function()? onPlaceChanged,
+    required TResult orElse(),
+  }) {
+    if (onPlaceChanged != null) {
+      return onPlaceChanged();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
+    required TResult Function(OnPlaceChanged value) onPlaceChanged,
+  }) {
+    return onPlaceChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
+    TResult Function(OnPlaceChanged value)? onPlaceChanged,
+    required TResult orElse(),
+  }) {
+    if (onPlaceChanged != null) {
+      return onPlaceChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnPlaceChanged implements SummaryEvent {
+  const factory OnPlaceChanged() = _$OnPlaceChanged;
+}
+
+/// @nodoc
 class _$SummaryStateTearOff {
   const _$SummaryStateTearOff();
 
   _SummaryState call(
       {required bool cancellingReservation,
       required Option<Either<ReservationFailure, Unit>>
-          optionOfReservationCancelFailureOrSuccess}) {
+          optionOfReservationCancelFailureOrSuccess,
+      required Place selectedPlace}) {
     return _SummaryState(
       cancellingReservation: cancellingReservation,
       optionOfReservationCancelFailureOrSuccess:
           optionOfReservationCancelFailureOrSuccess,
+      selectedPlace: selectedPlace,
     );
   }
 }
@@ -324,6 +435,7 @@ mixin _$SummaryState {
   Option<Either<ReservationFailure, Unit>>
       get optionOfReservationCancelFailureOrSuccess =>
           throw _privateConstructorUsedError;
+  Place get selectedPlace => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SummaryStateCopyWith<SummaryState> get copyWith =>
@@ -338,7 +450,10 @@ abstract class $SummaryStateCopyWith<$Res> {
   $Res call(
       {bool cancellingReservation,
       Option<Either<ReservationFailure, Unit>>
-          optionOfReservationCancelFailureOrSuccess});
+          optionOfReservationCancelFailureOrSuccess,
+      Place selectedPlace});
+
+  $PlaceCopyWith<$Res> get selectedPlace;
 }
 
 /// @nodoc
@@ -353,6 +468,7 @@ class _$SummaryStateCopyWithImpl<$Res> implements $SummaryStateCopyWith<$Res> {
   $Res call({
     Object? cancellingReservation = freezed,
     Object? optionOfReservationCancelFailureOrSuccess = freezed,
+    Object? selectedPlace = freezed,
   }) {
     return _then(_value.copyWith(
       cancellingReservation: cancellingReservation == freezed
@@ -364,7 +480,18 @@ class _$SummaryStateCopyWithImpl<$Res> implements $SummaryStateCopyWith<$Res> {
               ? _value.optionOfReservationCancelFailureOrSuccess
               : optionOfReservationCancelFailureOrSuccess // ignore: cast_nullable_to_non_nullable
                   as Option<Either<ReservationFailure, Unit>>,
+      selectedPlace: selectedPlace == freezed
+          ? _value.selectedPlace
+          : selectedPlace // ignore: cast_nullable_to_non_nullable
+              as Place,
     ));
+  }
+
+  @override
+  $PlaceCopyWith<$Res> get selectedPlace {
+    return $PlaceCopyWith<$Res>(_value.selectedPlace, (value) {
+      return _then(_value.copyWith(selectedPlace: value));
+    });
   }
 }
 
@@ -378,7 +505,11 @@ abstract class _$SummaryStateCopyWith<$Res>
   $Res call(
       {bool cancellingReservation,
       Option<Either<ReservationFailure, Unit>>
-          optionOfReservationCancelFailureOrSuccess});
+          optionOfReservationCancelFailureOrSuccess,
+      Place selectedPlace});
+
+  @override
+  $PlaceCopyWith<$Res> get selectedPlace;
 }
 
 /// @nodoc
@@ -395,6 +526,7 @@ class __$SummaryStateCopyWithImpl<$Res> extends _$SummaryStateCopyWithImpl<$Res>
   $Res call({
     Object? cancellingReservation = freezed,
     Object? optionOfReservationCancelFailureOrSuccess = freezed,
+    Object? selectedPlace = freezed,
   }) {
     return _then(_SummaryState(
       cancellingReservation: cancellingReservation == freezed
@@ -406,6 +538,10 @@ class __$SummaryStateCopyWithImpl<$Res> extends _$SummaryStateCopyWithImpl<$Res>
               ? _value.optionOfReservationCancelFailureOrSuccess
               : optionOfReservationCancelFailureOrSuccess // ignore: cast_nullable_to_non_nullable
                   as Option<Either<ReservationFailure, Unit>>,
+      selectedPlace: selectedPlace == freezed
+          ? _value.selectedPlace
+          : selectedPlace // ignore: cast_nullable_to_non_nullable
+              as Place,
     ));
   }
 }
@@ -415,17 +551,20 @@ class __$SummaryStateCopyWithImpl<$Res> extends _$SummaryStateCopyWithImpl<$Res>
 class _$_SummaryState implements _SummaryState {
   const _$_SummaryState(
       {required this.cancellingReservation,
-      required this.optionOfReservationCancelFailureOrSuccess});
+      required this.optionOfReservationCancelFailureOrSuccess,
+      required this.selectedPlace});
 
   @override
   final bool cancellingReservation;
   @override
   final Option<Either<ReservationFailure, Unit>>
       optionOfReservationCancelFailureOrSuccess;
+  @override
+  final Place selectedPlace;
 
   @override
   String toString() {
-    return 'SummaryState(cancellingReservation: $cancellingReservation, optionOfReservationCancelFailureOrSuccess: $optionOfReservationCancelFailureOrSuccess)';
+    return 'SummaryState(cancellingReservation: $cancellingReservation, optionOfReservationCancelFailureOrSuccess: $optionOfReservationCancelFailureOrSuccess, selectedPlace: $selectedPlace)';
   }
 
   @override
@@ -439,7 +578,10 @@ class _$_SummaryState implements _SummaryState {
                     optionOfReservationCancelFailureOrSuccess) ||
                 const DeepCollectionEquality().equals(
                     other.optionOfReservationCancelFailureOrSuccess,
-                    optionOfReservationCancelFailureOrSuccess)));
+                    optionOfReservationCancelFailureOrSuccess)) &&
+            (identical(other.selectedPlace, selectedPlace) ||
+                const DeepCollectionEquality()
+                    .equals(other.selectedPlace, selectedPlace)));
   }
 
   @override
@@ -447,7 +589,8 @@ class _$_SummaryState implements _SummaryState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(cancellingReservation) ^
       const DeepCollectionEquality()
-          .hash(optionOfReservationCancelFailureOrSuccess);
+          .hash(optionOfReservationCancelFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(selectedPlace);
 
   @JsonKey(ignore: true)
   @override
@@ -459,7 +602,8 @@ abstract class _SummaryState implements SummaryState {
   const factory _SummaryState(
       {required bool cancellingReservation,
       required Option<Either<ReservationFailure, Unit>>
-          optionOfReservationCancelFailureOrSuccess}) = _$_SummaryState;
+          optionOfReservationCancelFailureOrSuccess,
+      required Place selectedPlace}) = _$_SummaryState;
 
   @override
   bool get cancellingReservation => throw _privateConstructorUsedError;
@@ -467,6 +611,8 @@ abstract class _SummaryState implements SummaryState {
   Option<Either<ReservationFailure, Unit>>
       get optionOfReservationCancelFailureOrSuccess =>
           throw _privateConstructorUsedError;
+  @override
+  Place get selectedPlace => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SummaryStateCopyWith<_SummaryState> get copyWith =>

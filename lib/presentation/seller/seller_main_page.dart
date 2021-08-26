@@ -12,6 +12,9 @@ import 'package:conectacampo/presentation/seller/menu/widgets/seller_bottom_menu
 import 'package:conectacampo/presentation/seller/reservation/edit_reservation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+
+import 'new_advertisement/new_advertisement_page.dart';
 
 class SellerMainPage extends StatelessWidget {
   final Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
@@ -49,6 +52,11 @@ class SellerMainPage extends StatelessWidget {
             });
           }
 
+          if (state.navToLogin) {
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/splash', (route) => false);
+          }
+
           if (state.navToBuyer) {
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
@@ -64,28 +72,62 @@ class SellerMainPage extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return Scaffold(
-            backgroundColor: ColorSet.textFieldGrayBackground,
-            bottomNavigationBar: SellerBottomMenu(),
-            body: WillPopScope(
-              onWillPop: () async {
-                return !await Navigator.maybePop(
-                    navigatorKeys[state.currentIndex]!.currentState!.context);
-              },
-              child: IndexedStack(
-                index: context.read<SellerMenuBloc>().state.currentIndex,
-                children: [
-                  SellerSummary(navigatorKeys[0]!),
-                  Scaffold(body: Text('Grupos')),
-                  Scaffold(body: Text('Reservas')),
-                  Scaffold(body: Text('Reservas')),
-                  ProfilePage(
-                    navigatorKey: navigatorKeys[1]!,
-                    isBuyer: false,
-                  )
-                ],
+          return Stack(
+            children: [
+              Scaffold(
+                backgroundColor: ColorSet.textFieldGrayBackground,
+                bottomNavigationBar: SellerBottomMenu(),
+                body: WillPopScope(
+                  onWillPop: () async {
+                    return !await Navigator.maybePop(
+                        navigatorKeys[state.currentIndex]!
+                            .currentState!
+                            .context);
+                  },
+                  child: IndexedStack(
+                    index: context.read<SellerMenuBloc>().state.currentIndex,
+                    children: [
+                      SellerSummary(navigatorKeys[0]!),
+                      Scaffold(body: Text('Grupos')),
+                      Scaffold(body: Text('Reservas')),
+                      Scaffold(body: Text('Reservas')),
+                      ProfilePage(
+                        navigatorKey: navigatorKeys[1]!,
+                      )
+                    ],
+                  ),
+                ),
               ),
-            ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: 68,
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          width: 68.0,
+                          height: 68.0,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: ColorSet.brown1,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: SvgPicture.asset('assets/white_icon.svg'),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 55,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
           );
         },
       ),

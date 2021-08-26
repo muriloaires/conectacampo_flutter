@@ -5,4 +5,5 @@ class SellerSummaryEvent with _$SellerSummaryEvent {
   const factory SellerSummaryEvent.started() = _Started;
   const factory SellerSummaryEvent.onCancelReservationPressed(
       Reservation reservation) = OnCancelReservationPressed;
+  const factory SellerSummaryEvent.placeChanged() = PlaceChanged;
 }

@@ -346,9 +346,7 @@ class BuyerSummary extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 24,
-            ),
+            const SizedBox(height: 24),
             GestureDetector(
               onTap: () async {
                 final success = await Navigator.push(
@@ -359,6 +357,9 @@ class BuyerSummary extends StatelessWidget {
                 context
                     .read<AdvertisementsBloc>()
                     .add(const AdvertisementsEvent.placeChanged());
+                context
+                    .read<SummaryBloc>()
+                    .add(const SummaryEvent.onPlaceChanged());
               },
               child: Row(
                 children: [
@@ -380,10 +381,10 @@ class BuyerSummary extends StatelessWidget {
                         ),
                         TextSpan(
                           text: context
-                              .read<AdvertisementsBloc>()
+                              .read<SummaryBloc>()
                               .state
-                              .fromPlace
-                              ?.name,
+                              .selectedPlace
+                              .name,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: ColorSet.gray2,

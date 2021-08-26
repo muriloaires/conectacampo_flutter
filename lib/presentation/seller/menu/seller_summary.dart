@@ -94,7 +94,7 @@ class SellerSummary extends StatelessWidget {
                         const Padding(
                           padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Text(
-                            'Meugrupo',
+                            'Meu grupo',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -132,12 +132,12 @@ class SellerGroup extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
+                children: const [
+                  Text(
                     'Sem membros',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  const Flexible(
+                  Flexible(
                       child: Text('Venda produtos para\nadicionar membros',
                           overflow: TextOverflow.ellipsis)),
                 ],
@@ -225,7 +225,12 @@ class SellerReservations extends StatelessWidget {
             .state
             .optionOfReservationFailureOrSuccess
             .fold(() => [], (a) => a.fold((l) => [], (r) => r));
-
+        int size = 0;
+        if (list.length > 3) {
+          size = 3;
+        } else {
+          size = list.length;
+        }
         if (list.isEmpty) {
           return Card(
             margin: const EdgeInsets.all(0),
@@ -264,7 +269,7 @@ class SellerReservations extends StatelessWidget {
               itemBuilder: (context, index) =>
                   SellerReservationWidget(list[index].copyWith()),
               separatorBuilder: (context, index) => const Divider(),
-              itemCount: list.length);
+              itemCount: size);
         }
       },
     );
@@ -337,8 +342,8 @@ class CustomAppBar extends StatelessWidget {
                         ));
                     if (success != null) {
                       context
-                          .read<AdvertisementsBloc>()
-                          .add(const AdvertisementsEvent.placeChanged());
+                          .read<SellerSummaryBloc>()
+                          .add(const SellerSummaryEvent.placeChanged());
                     }
                   },
                   child: Row(

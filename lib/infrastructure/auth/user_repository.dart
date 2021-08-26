@@ -31,6 +31,15 @@ Future<Either<AuthFailure, User>> loadLoggedUser() async {
       .toDomain());
 }
 
+Future<Unit> logout() async {
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
+
+  await sharedPreferences.remove('logged_user');
+  await sharedPreferences.remove('logged_user_type');
+  return unit;
+}
+
 Future<Unit> persistUserType(String userType) async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();

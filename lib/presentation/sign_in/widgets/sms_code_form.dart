@@ -54,13 +54,13 @@ class SmsCodeForm extends StatelessWidget {
                           final success = await Navigator.of(context).push(
                               MaterialPageRoute(
                                   builder: (context) => PlacesPage()));
-                          // if (success != null) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpPage()),
-                          );
-                          // }
+                          if (success != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpPage()),
+                            );
+                          }
                         },
                         orElse: () {});
                     final String errorText = failure.maybeMap(

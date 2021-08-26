@@ -30,7 +30,7 @@ class AdvertisementsBloc
     }, started: (_Started value) async* {
       yield state.copyWith(loading: true);
       final selectedPlace = await loadSelectedPlace();
-      yield state.copyWith(fromPlace: selectedPlace);
+
       if (selectedPlace != null) {
         final adsFailureOrSuccess =
             await _adsFacade.getAdvertisements(selectedPlace);

@@ -35,12 +35,15 @@ Future<String> getInitialRoute() async {
   final userFailureOrSuccess = await loadLoggedUser();
 
   final bool isUserLogged = userFailureOrSuccess.isRight();
+  final userType = await loadLoggedUserType();
 
+  if (userType == null) {
+    return '/user_type';
+  }
   if (!isUserLogged) {
     return '/sign_in';
   }
 
-  final userType = await loadLoggedUserType();
   if (userType == null) {
     return '/sign_in';
   } else if (userType == 'seller') {

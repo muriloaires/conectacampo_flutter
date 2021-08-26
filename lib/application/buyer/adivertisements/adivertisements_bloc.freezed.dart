@@ -408,13 +408,11 @@ class _$AdvertisementsStateTearOff {
           adsFailureOrSuccess,
       required Either<AdvertisementFailure, List<Advertisement>>
           groupsAdsFailureOrSuccess,
-      required bool loading,
-      required Place? fromPlace}) {
+      required bool loading}) {
     return _AdivertisementsState(
       adsFailureOrSuccess: adsFailureOrSuccess,
       groupsAdsFailureOrSuccess: groupsAdsFailureOrSuccess,
       loading: loading,
-      fromPlace: fromPlace,
     );
   }
 }
@@ -429,7 +427,6 @@ mixin _$AdvertisementsState {
   Either<AdvertisementFailure, List<Advertisement>>
       get groupsAdsFailureOrSuccess => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
-  Place? get fromPlace => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AdvertisementsStateCopyWith<AdvertisementsState> get copyWith =>
@@ -445,10 +442,7 @@ abstract class $AdvertisementsStateCopyWith<$Res> {
       {Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess,
       Either<AdvertisementFailure, List<Advertisement>>
           groupsAdsFailureOrSuccess,
-      bool loading,
-      Place? fromPlace});
-
-  $PlaceCopyWith<$Res>? get fromPlace;
+      bool loading});
 }
 
 /// @nodoc
@@ -465,7 +459,6 @@ class _$AdvertisementsStateCopyWithImpl<$Res>
     Object? adsFailureOrSuccess = freezed,
     Object? groupsAdsFailureOrSuccess = freezed,
     Object? loading = freezed,
-    Object? fromPlace = freezed,
   }) {
     return _then(_value.copyWith(
       adsFailureOrSuccess: adsFailureOrSuccess == freezed
@@ -480,22 +473,7 @@ class _$AdvertisementsStateCopyWithImpl<$Res>
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      fromPlace: fromPlace == freezed
-          ? _value.fromPlace
-          : fromPlace // ignore: cast_nullable_to_non_nullable
-              as Place?,
     ));
-  }
-
-  @override
-  $PlaceCopyWith<$Res>? get fromPlace {
-    if (_value.fromPlace == null) {
-      return null;
-    }
-
-    return $PlaceCopyWith<$Res>(_value.fromPlace!, (value) {
-      return _then(_value.copyWith(fromPlace: value));
-    });
   }
 }
 
@@ -510,11 +488,7 @@ abstract class _$AdivertisementsStateCopyWith<$Res>
       {Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess,
       Either<AdvertisementFailure, List<Advertisement>>
           groupsAdsFailureOrSuccess,
-      bool loading,
-      Place? fromPlace});
-
-  @override
-  $PlaceCopyWith<$Res>? get fromPlace;
+      bool loading});
 }
 
 /// @nodoc
@@ -533,7 +507,6 @@ class __$AdivertisementsStateCopyWithImpl<$Res>
     Object? adsFailureOrSuccess = freezed,
     Object? groupsAdsFailureOrSuccess = freezed,
     Object? loading = freezed,
-    Object? fromPlace = freezed,
   }) {
     return _then(_AdivertisementsState(
       adsFailureOrSuccess: adsFailureOrSuccess == freezed
@@ -548,10 +521,6 @@ class __$AdivertisementsStateCopyWithImpl<$Res>
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
-      fromPlace: fromPlace == freezed
-          ? _value.fromPlace
-          : fromPlace // ignore: cast_nullable_to_non_nullable
-              as Place?,
     ));
   }
 }
@@ -562,8 +531,7 @@ class _$_AdivertisementsState implements _AdivertisementsState {
   const _$_AdivertisementsState(
       {required this.adsFailureOrSuccess,
       required this.groupsAdsFailureOrSuccess,
-      required this.loading,
-      required this.fromPlace});
+      required this.loading});
 
   @override
   final Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess;
@@ -572,12 +540,10 @@ class _$_AdivertisementsState implements _AdivertisementsState {
       groupsAdsFailureOrSuccess;
   @override
   final bool loading;
-  @override
-  final Place? fromPlace;
 
   @override
   String toString() {
-    return 'AdvertisementsState(adsFailureOrSuccess: $adsFailureOrSuccess, groupsAdsFailureOrSuccess: $groupsAdsFailureOrSuccess, loading: $loading, fromPlace: $fromPlace)';
+    return 'AdvertisementsState(adsFailureOrSuccess: $adsFailureOrSuccess, groupsAdsFailureOrSuccess: $groupsAdsFailureOrSuccess, loading: $loading)';
   }
 
   @override
@@ -593,11 +559,7 @@ class _$_AdivertisementsState implements _AdivertisementsState {
                     other.groupsAdsFailureOrSuccess,
                     groupsAdsFailureOrSuccess)) &&
             (identical(other.loading, loading) ||
-                const DeepCollectionEquality()
-                    .equals(other.loading, loading)) &&
-            (identical(other.fromPlace, fromPlace) ||
-                const DeepCollectionEquality()
-                    .equals(other.fromPlace, fromPlace)));
+                const DeepCollectionEquality().equals(other.loading, loading)));
   }
 
   @override
@@ -605,8 +567,7 @@ class _$_AdivertisementsState implements _AdivertisementsState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(adsFailureOrSuccess) ^
       const DeepCollectionEquality().hash(groupsAdsFailureOrSuccess) ^
-      const DeepCollectionEquality().hash(loading) ^
-      const DeepCollectionEquality().hash(fromPlace);
+      const DeepCollectionEquality().hash(loading);
 
   @JsonKey(ignore: true)
   @override
@@ -621,8 +582,7 @@ abstract class _AdivertisementsState implements AdvertisementsState {
           adsFailureOrSuccess,
       required Either<AdvertisementFailure, List<Advertisement>>
           groupsAdsFailureOrSuccess,
-      required bool loading,
-      required Place? fromPlace}) = _$_AdivertisementsState;
+      required bool loading}) = _$_AdivertisementsState;
 
   @override
   Either<AdvertisementFailure, List<Advertisement>> get adsFailureOrSuccess =>
@@ -632,8 +592,6 @@ abstract class _AdivertisementsState implements AdvertisementsState {
       get groupsAdsFailureOrSuccess => throw _privateConstructorUsedError;
   @override
   bool get loading => throw _privateConstructorUsedError;
-  @override
-  Place? get fromPlace => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AdivertisementsStateCopyWith<_AdivertisementsState> get copyWith =>

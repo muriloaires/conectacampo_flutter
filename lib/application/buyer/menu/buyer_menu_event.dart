@@ -18,4 +18,5 @@ class BuyerMenuEvent with _$BuyerMenuEvent {
   const factory BuyerMenuEvent.profileRetapped() = ProfileRetapped;
 
   const factory BuyerMenuEvent.navToSellerTapped() = NavToSellerTapped;
+  const factory BuyerMenuEvent.logout() = Logout;
 }

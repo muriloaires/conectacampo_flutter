@@ -50,6 +50,11 @@ class BuyerMainPage extends StatelessWidget {
                 (route) => false);
           }
 
+          if (state.navToLogin) {
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/splash', (route) => false);
+          }
+
           if (state.openCart) {
             final success = await Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => const CartPage(),
@@ -118,8 +123,7 @@ class BuyerMainPage extends StatelessWidget {
                       GroupPage(navigatorKeys[1]!),
                       const Scaffold(body: Text('Reservas')),
                       BuyerResevationsPage(navigatorKeys[2]!),
-                      ProfilePage(
-                          navigatorKey: navigatorKeys[3]!, isBuyer: true)
+                      ProfilePage(navigatorKey: navigatorKeys[3]!)
                     ],
                   ),
                 ),

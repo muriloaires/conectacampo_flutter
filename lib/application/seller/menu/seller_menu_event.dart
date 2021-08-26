@@ -18,4 +18,5 @@ class SellerMenuEvent with _$SellerMenuEvent {
       Reservation reservation) = EditReservation;
 
   const factory SellerMenuEvent.editingEnd() = EditingEnd;
+  const factory SellerMenuEvent.logout() = Logout;
 }

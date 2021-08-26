@@ -149,11 +149,9 @@ abstract class _Started implements ProfileEvent {
 class _$ProfileStateTearOff {
   const _$ProfileStateTearOff();
 
-  _ProfileState call(
-      {required Option<Either<AuthFailure, User>> optionOfUserFailureOrSuccess,
-      required bool isBuyer}) {
+  _ProfileState call({required User user, required bool isBuyer}) {
     return _ProfileState(
-      optionOfUserFailureOrSuccess: optionOfUserFailureOrSuccess,
+      user: user,
       isBuyer: isBuyer,
     );
   }
@@ -164,8 +162,7 @@ const $ProfileState = _$ProfileStateTearOff();
 
 /// @nodoc
 mixin _$ProfileState {
-  Option<Either<AuthFailure, User>> get optionOfUserFailureOrSuccess =>
-      throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
   bool get isBuyer => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -178,9 +175,9 @@ abstract class $ProfileStateCopyWith<$Res> {
   factory $ProfileStateCopyWith(
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res>;
-  $Res call(
-      {Option<Either<AuthFailure, User>> optionOfUserFailureOrSuccess,
-      bool isBuyer});
+  $Res call({User user, bool isBuyer});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -193,19 +190,26 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? optionOfUserFailureOrSuccess = freezed,
+    Object? user = freezed,
     Object? isBuyer = freezed,
   }) {
     return _then(_value.copyWith(
-      optionOfUserFailureOrSuccess: optionOfUserFailureOrSuccess == freezed
-          ? _value.optionOfUserFailureOrSuccess
-          : optionOfUserFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       isBuyer: isBuyer == freezed
           ? _value.isBuyer
           : isBuyer // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
+  }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -216,9 +220,10 @@ abstract class _$ProfileStateCopyWith<$Res>
           _ProfileState value, $Res Function(_ProfileState) then) =
       __$ProfileStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {Option<Either<AuthFailure, User>> optionOfUserFailureOrSuccess,
-      bool isBuyer});
+  $Res call({User user, bool isBuyer});
+
+  @override
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -233,14 +238,14 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? optionOfUserFailureOrSuccess = freezed,
+    Object? user = freezed,
     Object? isBuyer = freezed,
   }) {
     return _then(_ProfileState(
-      optionOfUserFailureOrSuccess: optionOfUserFailureOrSuccess == freezed
-          ? _value.optionOfUserFailureOrSuccess
-          : optionOfUserFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       isBuyer: isBuyer == freezed
           ? _value.isBuyer
           : isBuyer // ignore: cast_nullable_to_non_nullable
@@ -252,28 +257,24 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ProfileState implements _ProfileState {
-  const _$_ProfileState(
-      {required this.optionOfUserFailureOrSuccess, required this.isBuyer});
+  const _$_ProfileState({required this.user, required this.isBuyer});
 
   @override
-  final Option<Either<AuthFailure, User>> optionOfUserFailureOrSuccess;
+  final User user;
   @override
   final bool isBuyer;
 
   @override
   String toString() {
-    return 'ProfileState(optionOfUserFailureOrSuccess: $optionOfUserFailureOrSuccess, isBuyer: $isBuyer)';
+    return 'ProfileState(user: $user, isBuyer: $isBuyer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ProfileState &&
-            (identical(other.optionOfUserFailureOrSuccess,
-                    optionOfUserFailureOrSuccess) ||
-                const DeepCollectionEquality().equals(
-                    other.optionOfUserFailureOrSuccess,
-                    optionOfUserFailureOrSuccess)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.isBuyer, isBuyer) ||
                 const DeepCollectionEquality().equals(other.isBuyer, isBuyer)));
   }
@@ -281,7 +282,7 @@ class _$_ProfileState implements _ProfileState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(optionOfUserFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(user) ^
       const DeepCollectionEquality().hash(isBuyer);
 
   @JsonKey(ignore: true)
@@ -291,13 +292,11 @@ class _$_ProfileState implements _ProfileState {
 }
 
 abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState(
-      {required Option<Either<AuthFailure, User>> optionOfUserFailureOrSuccess,
-      required bool isBuyer}) = _$_ProfileState;
+  const factory _ProfileState({required User user, required bool isBuyer}) =
+      _$_ProfileState;
 
   @override
-  Option<Either<AuthFailure, User>> get optionOfUserFailureOrSuccess =>
-      throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
   @override
   bool get isBuyer => throw _privateConstructorUsedError;
   @override
