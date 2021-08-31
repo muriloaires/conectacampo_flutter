@@ -1,9 +1,8 @@
-import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
-import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_advertisement.dart';
 import 'package:conectacampo/presentation/seller/reservation/seller_reservation_widget.dart';
@@ -47,7 +46,6 @@ class SellerSummary extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: [
-                        CustomAppBar(),
                         const SizedBox(height: 32),
                         const Padding(
                           padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -272,118 +270,6 @@ class SellerReservations extends StatelessWidget {
               itemCount: size);
         }
       },
-    );
-  }
-}
-
-class CustomAppBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(0),
-      shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(0.0),
-      ),
-      child: BlocBuilder<SellerSummaryBloc, SellerSummaryState>(
-        builder: (context, state) {
-          return Container(
-            padding: const EdgeInsets.fromLTRB(20, 32, 20, 8),
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/map.svg',
-                      color: ColorSet.brown1,
-                    ),
-                    const SizedBox(
-                      width: 24,
-                    ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                              state.optionOfOUser.fold(
-                                  () => '',
-                                  (a) => a.fold((l) => '',
-                                      (r) => r.name.value.getOrElse(() => ''))),
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold)),
-                          const SizedBox(
-                            width: 24,
-                          ),
-                          CircleAvatar(
-                              radius: 16.0,
-                              foregroundImage: NetworkImage(state.optionOfOUser
-                                  .fold(
-                                      () => '',
-                                      (a) => a.fold(
-                                          (l) => '',
-                                          (r) =>
-                                              r.thumbAvatar?.value
-                                                  .getOrElse(() => '') ??
-                                              ''))))
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    final success = await Navigator.push<Unit>(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PlacesPage(),
-                        ));
-                    if (success != null) {
-                      context
-                          .read<SellerSummaryBloc>()
-                          .add(const SellerSummaryEvent.placeChanged());
-                    }
-                  },
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/location_outline.svg',
-                        width: 16,
-                        height: 16,
-                        color: ColorSet.grayLine,
-                      ),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      Flexible(
-                        child: Text.rich(
-                          TextSpan(children: [
-                            const TextSpan(
-                              text: 'Entrega em: ',
-                              style: TextStyle(color: ColorSet.gray2),
-                            ),
-                            TextSpan(
-                              text: state.optionOfOPlace
-                                  .fold(() => '', (a) => a.name),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorSet.gray2,
-                              ),
-                            ),
-                          ]),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          );
-        },
-      ),
     );
   }
 }

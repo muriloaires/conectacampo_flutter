@@ -1,9 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:conectacampo/domain/auth/auth_failure.dart';
+import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
+import 'package:conectacampo/infrastructure/places/place_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -66,6 +69,16 @@ class SellerMenuBloc extends Bloc<SellerMenuEvent, SellerMenuState> {
         logout: (Logout value) async* {
           await logout();
           yield state.copyWith(navToLogin: true);
+        },
+        placeChanged: (PlaceChanged value) async* {
+          final place = await loadSelectedPlace();
+          yield state.copyWith(optionOfPlace: optionOf(place));
+        },
+        started: (Started value) async* {
+          final place = await loadSelectedPlace();
+          final user = await loadLoggedUser();
+          yield state.copyWith(
+              optionOfPlace: optionOf(place), optionOfUser: some(user));
         });
   }
 }

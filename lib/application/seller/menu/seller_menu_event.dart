@@ -2,6 +2,8 @@ part of 'seller_menu_bloc.dart';
 
 @freezed
 class SellerMenuEvent with _$SellerMenuEvent {
+  const factory SellerMenuEvent.started() = Started;
+
   const factory SellerMenuEvent.sellTapped() = SellTapped;
 
   const factory SellerMenuEvent.homeTapped() = HomeTapped;
@@ -19,4 +21,5 @@ class SellerMenuEvent with _$SellerMenuEvent {
 
   const factory SellerMenuEvent.editingEnd() = EditingEnd;
   const factory SellerMenuEvent.logout() = Logout;
+  const factory SellerMenuEvent.placeChanged() = PlaceChanged;
 }

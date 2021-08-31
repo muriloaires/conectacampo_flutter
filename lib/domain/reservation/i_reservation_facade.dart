@@ -47,4 +47,7 @@ abstract class IReservationFacade {
 
   Future<Either<ReservationFailure, Reservation>> getReservation(
       int reservationId);
+
+  Future<Either<ReservationFailure, List<Reservation>>>
+      getSellerGroupReservations();
 }

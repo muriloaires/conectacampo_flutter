@@ -10,7 +10,9 @@ class SellerMenuState with _$SellerMenuState {
       required Place? place,
       required bool openEditReservation,
       required Option<Reservation> optionOfResevationToEdit,
-      required bool navToLogin}) = _SellerMenuState;
+      required bool navToLogin,
+      required Option<Either<AuthFailure, User>> optionOfUser,
+      required Option<Place> optionOfPlace}) = _SellerMenuState;
 
   factory SellerMenuState.initial() => SellerMenuState(
       currentIndex: 0,
@@ -20,5 +22,7 @@ class SellerMenuState with _$SellerMenuState {
       reTapIndex: -1,
       openEditReservation: false,
       optionOfResevationToEdit: none(),
-      navToLogin: false);
+      navToLogin: false,
+      optionOfUser: none(),
+      optionOfPlace: none());
 }

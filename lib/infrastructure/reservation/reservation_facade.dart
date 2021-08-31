@@ -14,6 +14,7 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IReservationFacade)
 class ReservationFacade extends IReservationFacade {
+  static const routeOwnGroupReservations = '/own_group/reservations';
   static const routeCurrentUserReservations = '/me/reservations';
   static const routeReservations = '/reservations';
   static const routeProductReservations = '/product_reservations';
@@ -255,6 +256,27 @@ class ReservationFacade extends IReservationFacade {
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
       return right(unit);
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ReservationFailure, List<Reservation>>>
+      getSellerGroupReservations() async {
+    final url = Uri.https(baseUrl, '$apiVersion$routeOwnGroupReservations');
+    final response = await getAuthenticatedRequest(url, getApiHeader());
+
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final Iterable iterable = jsonDecode(response.body) as Iterable;
+      final reservationsResponse = iterable.map((e) =>
+          ReservationResponse.fromJson(e as Map<String, dynamic>).toDomain());
+      return right(reservationsResponse.toList());
     } else if (code == 401) {
       return left(const ReservationFailure.unauthorized());
     } else if (code >= 400 && code < 500) {

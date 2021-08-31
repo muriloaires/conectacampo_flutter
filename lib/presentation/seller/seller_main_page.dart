@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
@@ -10,11 +8,13 @@ import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/menu/seller_summary.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_bottom_menu.dart';
 import 'package:conectacampo/presentation/seller/reservation/edit_reservation.dart';
+import 'package:conectacampo/presentation/sign_in/places_page.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'new_advertisement/new_advertisement_page.dart';
+import 'group/seller_group_page.dart';
 
 class SellerMainPage extends StatelessWidget {
   final Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
@@ -28,7 +28,9 @@ class SellerMainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<SellerMenuBloc>(create: (BuildContext context) => getIt()),
+        BlocProvider<SellerMenuBloc>(
+            create: (BuildContext context) =>
+                getIt()..add(const SellerMenuEvent.started())),
         BlocProvider<SellerSummaryBloc>(
             create: (BuildContext context) =>
                 getIt()..add(const SellerSummaryEvent.started())),
@@ -77,6 +79,7 @@ class SellerMainPage extends StatelessWidget {
               Scaffold(
                 backgroundColor: ColorSet.textFieldGrayBackground,
                 bottomNavigationBar: SellerBottomMenu(),
+                appBar: _CustomAppBar(),
                 body: WillPopScope(
                   onWillPop: () async {
                     return !await Navigator.maybePop(
@@ -88,7 +91,7 @@ class SellerMainPage extends StatelessWidget {
                     index: context.read<SellerMenuBloc>().state.currentIndex,
                     children: [
                       SellerSummary(navigatorKeys[0]!),
-                      Scaffold(body: Text('Grupos')),
+                      SellerGroupPage(navigatorKeys[2]!),
                       Scaffold(body: Text('Reservas')),
                       Scaffold(body: Text('Reservas')),
                       ProfilePage(
@@ -133,4 +136,115 @@ class SellerMainPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.all(0),
+      shape: BeveledRectangleBorder(
+        borderRadius: BorderRadius.circular(0.0),
+      ),
+      child: BlocBuilder<SellerMenuBloc, SellerMenuState>(
+        builder: (context, state) {
+          return Container(
+            padding: const EdgeInsets.fromLTRB(20, 32, 20, 8),
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/map.svg',
+                      color: ColorSet.brown1,
+                    ),
+                    const SizedBox(
+                      width: 24,
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                              state.optionOfUser.fold(
+                                  () => '',
+                                  (a) => a.fold((l) => '',
+                                      (r) => r.name.value.getOrElse(() => ''))),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
+                          const SizedBox(width: 24),
+                          CircleAvatar(
+                              radius: 16.0,
+                              foregroundImage: NetworkImage(state.optionOfUser
+                                  .fold(
+                                      () => '',
+                                      (a) => a.fold(
+                                          (l) => '',
+                                          (r) =>
+                                              r.thumbAvatar?.value
+                                                  .getOrElse(() => '') ??
+                                              ''))))
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 24),
+                GestureDetector(
+                  onTap: () async {
+                    final success = await Navigator.push<Unit>(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PlacesPage(),
+                        ));
+                    if (success != null) {
+                      context
+                          .read<SellerMenuBloc>()
+                          .add(const SellerMenuEvent.placeChanged());
+                    }
+                  },
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/location_outline.svg',
+                        width: 16,
+                        height: 16,
+                        color: ColorSet.grayLine,
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Flexible(
+                        child: Text.rich(
+                          TextSpan(children: [
+                            const TextSpan(
+                              text: 'Entrega em: ',
+                              style: TextStyle(color: ColorSet.gray2),
+                            ),
+                            TextSpan(
+                              text: state.optionOfPlace
+                                  .fold(() => '', (a) => a.name),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorSet.gray2,
+                              ),
+                            ),
+                          ]),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size(double.infinity, 100);
 }

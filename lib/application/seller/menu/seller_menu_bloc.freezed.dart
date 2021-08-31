@@ -16,6 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SellerMenuEventTearOff {
   const _$SellerMenuEventTearOff();
 
+  Started started() {
+    return const Started();
+  }
+
   SellTapped sellTapped() {
     return const SellTapped();
   }
@@ -69,6 +73,10 @@ class _$SellerMenuEventTearOff {
   Logout logout() {
     return const Logout();
   }
+
+  PlaceChanged placeChanged() {
+    return const PlaceChanged();
+  }
 }
 
 /// @nodoc
@@ -78,6 +86,7 @@ const $SellerMenuEvent = _$SellerMenuEventTearOff();
 mixin _$SellerMenuEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -91,10 +100,12 @@ mixin _$SellerMenuEvent {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -108,11 +119,13 @@ mixin _$SellerMenuEvent {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -126,10 +139,12 @@ mixin _$SellerMenuEvent {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -143,6 +158,7 @@ mixin _$SellerMenuEvent {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -163,6 +179,141 @@ class _$SellerMenuEventCopyWithImpl<$Res>
   final SellerMenuEvent _value;
   // ignore: unused_field
   final $Res Function(SellerMenuEvent) _then;
+}
+
+/// @nodoc
+abstract class $StartedCopyWith<$Res> {
+  factory $StartedCopyWith(Started value, $Res Function(Started) then) =
+      _$StartedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$StartedCopyWithImpl<$Res> extends _$SellerMenuEventCopyWithImpl<$Res>
+    implements $StartedCopyWith<$Res> {
+  _$StartedCopyWithImpl(Started _value, $Res Function(Started) _then)
+      : super(_value, (v) => _then(v as Started));
+
+  @override
+  Started get _value => super._value as Started;
+}
+
+/// @nodoc
+
+class _$Started implements Started {
+  const _$Started();
+
+  @override
+  String toString() {
+    return 'SellerMenuEvent.started()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Started);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() sellTapped,
+    required TResult Function() homeTapped,
+    required TResult Function() groupsTapped,
+    required TResult Function() reservationTapped,
+    required TResult Function() profileTapped,
+    required TResult Function() homeRetapped,
+    required TResult Function() groupsRetapped,
+    required TResult Function() reservationRetapped,
+    required TResult Function() profileRetapped,
+    required TResult Function() navToBuyerTapped,
+    required TResult Function(Reservation reservation) reservationEditItemsTap,
+    required TResult Function() editingEnd,
+    required TResult Function() logout,
+    required TResult Function() placeChanged,
+  }) {
+    return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? sellTapped,
+    TResult Function()? homeTapped,
+    TResult Function()? groupsTapped,
+    TResult Function()? reservationTapped,
+    TResult Function()? profileTapped,
+    TResult Function()? homeRetapped,
+    TResult Function()? groupsRetapped,
+    TResult Function()? reservationRetapped,
+    TResult Function()? profileRetapped,
+    TResult Function()? navToBuyerTapped,
+    TResult Function(Reservation reservation)? reservationEditItemsTap,
+    TResult Function()? editingEnd,
+    TResult Function()? logout,
+    TResult Function()? placeChanged,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(SellTapped value) sellTapped,
+    required TResult Function(HomeTapped value) homeTapped,
+    required TResult Function(GroupsTapped value) groupsTapped,
+    required TResult Function(ReservationTapped value) reservationTapped,
+    required TResult Function(ProfileTapped value) profileTapped,
+    required TResult Function(HomeRetapped value) homeRetapped,
+    required TResult Function(GroupsRetapped value) groupsRetapped,
+    required TResult Function(ReservationRetapped value) reservationRetapped,
+    required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToBuyerTapped value) navToBuyerTapped,
+    required TResult Function(EditReservation value) reservationEditItemsTap,
+    required TResult Function(EditingEnd value) editingEnd,
+    required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
+  }) {
+    return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(SellTapped value)? sellTapped,
+    TResult Function(HomeTapped value)? homeTapped,
+    TResult Function(GroupsTapped value)? groupsTapped,
+    TResult Function(ReservationTapped value)? reservationTapped,
+    TResult Function(ProfileTapped value)? profileTapped,
+    TResult Function(HomeRetapped value)? homeRetapped,
+    TResult Function(GroupsRetapped value)? groupsRetapped,
+    TResult Function(ReservationRetapped value)? reservationRetapped,
+    TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToBuyerTapped value)? navToBuyerTapped,
+    TResult Function(EditReservation value)? reservationEditItemsTap,
+    TResult Function(EditingEnd value)? editingEnd,
+    TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Started implements SellerMenuEvent {
+  const factory Started() = _$Started;
 }
 
 /// @nodoc
@@ -203,6 +354,7 @@ class _$SellTapped implements SellTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -216,6 +368,7 @@ class _$SellTapped implements SellTapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return sellTapped();
   }
@@ -223,6 +376,7 @@ class _$SellTapped implements SellTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -236,6 +390,7 @@ class _$SellTapped implements SellTapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (sellTapped != null) {
@@ -247,6 +402,7 @@ class _$SellTapped implements SellTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -260,6 +416,7 @@ class _$SellTapped implements SellTapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return sellTapped(this);
   }
@@ -267,6 +424,7 @@ class _$SellTapped implements SellTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -280,6 +438,7 @@ class _$SellTapped implements SellTapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (sellTapped != null) {
@@ -331,6 +490,7 @@ class _$HomeTapped implements HomeTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -344,6 +504,7 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return homeTapped();
   }
@@ -351,6 +512,7 @@ class _$HomeTapped implements HomeTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -364,6 +526,7 @@ class _$HomeTapped implements HomeTapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (homeTapped != null) {
@@ -375,6 +538,7 @@ class _$HomeTapped implements HomeTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -388,6 +552,7 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return homeTapped(this);
   }
@@ -395,6 +560,7 @@ class _$HomeTapped implements HomeTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -408,6 +574,7 @@ class _$HomeTapped implements HomeTapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (homeTapped != null) {
@@ -461,6 +628,7 @@ class _$GroupsTapped implements GroupsTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -474,6 +642,7 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return groupsTapped();
   }
@@ -481,6 +650,7 @@ class _$GroupsTapped implements GroupsTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -494,6 +664,7 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (groupsTapped != null) {
@@ -505,6 +676,7 @@ class _$GroupsTapped implements GroupsTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -518,6 +690,7 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return groupsTapped(this);
   }
@@ -525,6 +698,7 @@ class _$GroupsTapped implements GroupsTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -538,6 +712,7 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (groupsTapped != null) {
@@ -591,6 +766,7 @@ class _$ReservationTapped implements ReservationTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -604,6 +780,7 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return reservationTapped();
   }
@@ -611,6 +788,7 @@ class _$ReservationTapped implements ReservationTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -624,6 +802,7 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (reservationTapped != null) {
@@ -635,6 +814,7 @@ class _$ReservationTapped implements ReservationTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -648,6 +828,7 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return reservationTapped(this);
   }
@@ -655,6 +836,7 @@ class _$ReservationTapped implements ReservationTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -668,6 +850,7 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (reservationTapped != null) {
@@ -721,6 +904,7 @@ class _$ProfileTapped implements ProfileTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -734,6 +918,7 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return profileTapped();
   }
@@ -741,6 +926,7 @@ class _$ProfileTapped implements ProfileTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -754,6 +940,7 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (profileTapped != null) {
@@ -765,6 +952,7 @@ class _$ProfileTapped implements ProfileTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -778,6 +966,7 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return profileTapped(this);
   }
@@ -785,6 +974,7 @@ class _$ProfileTapped implements ProfileTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -798,6 +988,7 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (profileTapped != null) {
@@ -851,6 +1042,7 @@ class _$HomeRetapped implements HomeRetapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -864,6 +1056,7 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return homeRetapped();
   }
@@ -871,6 +1064,7 @@ class _$HomeRetapped implements HomeRetapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -884,6 +1078,7 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (homeRetapped != null) {
@@ -895,6 +1090,7 @@ class _$HomeRetapped implements HomeRetapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -908,6 +1104,7 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return homeRetapped(this);
   }
@@ -915,6 +1112,7 @@ class _$HomeRetapped implements HomeRetapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -928,6 +1126,7 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (homeRetapped != null) {
@@ -981,6 +1180,7 @@ class _$GroupsRetapped implements GroupsRetapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -994,6 +1194,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return groupsRetapped();
   }
@@ -1001,6 +1202,7 @@ class _$GroupsRetapped implements GroupsRetapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1014,6 +1216,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (groupsRetapped != null) {
@@ -1025,6 +1228,7 @@ class _$GroupsRetapped implements GroupsRetapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1038,6 +1242,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return groupsRetapped(this);
   }
@@ -1045,6 +1250,7 @@ class _$GroupsRetapped implements GroupsRetapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1058,6 +1264,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (groupsRetapped != null) {
@@ -1111,6 +1318,7 @@ class _$ReservationRetapped implements ReservationRetapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -1124,6 +1332,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return reservationRetapped();
   }
@@ -1131,6 +1340,7 @@ class _$ReservationRetapped implements ReservationRetapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1144,6 +1354,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (reservationRetapped != null) {
@@ -1155,6 +1366,7 @@ class _$ReservationRetapped implements ReservationRetapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1168,6 +1380,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return reservationRetapped(this);
   }
@@ -1175,6 +1388,7 @@ class _$ReservationRetapped implements ReservationRetapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1188,6 +1402,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (reservationRetapped != null) {
@@ -1241,6 +1456,7 @@ class _$ProfileRetapped implements ProfileRetapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -1254,6 +1470,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return profileRetapped();
   }
@@ -1261,6 +1478,7 @@ class _$ProfileRetapped implements ProfileRetapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1274,6 +1492,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (profileRetapped != null) {
@@ -1285,6 +1504,7 @@ class _$ProfileRetapped implements ProfileRetapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1298,6 +1518,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return profileRetapped(this);
   }
@@ -1305,6 +1526,7 @@ class _$ProfileRetapped implements ProfileRetapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1318,6 +1540,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (profileRetapped != null) {
@@ -1371,6 +1594,7 @@ class _$NavToBuyerTapped implements NavToBuyerTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -1384,6 +1608,7 @@ class _$NavToBuyerTapped implements NavToBuyerTapped {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return navToBuyerTapped();
   }
@@ -1391,6 +1616,7 @@ class _$NavToBuyerTapped implements NavToBuyerTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1404,6 +1630,7 @@ class _$NavToBuyerTapped implements NavToBuyerTapped {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (navToBuyerTapped != null) {
@@ -1415,6 +1642,7 @@ class _$NavToBuyerTapped implements NavToBuyerTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1428,6 +1656,7 @@ class _$NavToBuyerTapped implements NavToBuyerTapped {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return navToBuyerTapped(this);
   }
@@ -1435,6 +1664,7 @@ class _$NavToBuyerTapped implements NavToBuyerTapped {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1448,6 +1678,7 @@ class _$NavToBuyerTapped implements NavToBuyerTapped {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (navToBuyerTapped != null) {
@@ -1536,6 +1767,7 @@ class _$EditReservation implements EditReservation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -1549,6 +1781,7 @@ class _$EditReservation implements EditReservation {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return reservationEditItemsTap(reservation);
   }
@@ -1556,6 +1789,7 @@ class _$EditReservation implements EditReservation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1569,6 +1803,7 @@ class _$EditReservation implements EditReservation {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (reservationEditItemsTap != null) {
@@ -1580,6 +1815,7 @@ class _$EditReservation implements EditReservation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1593,6 +1829,7 @@ class _$EditReservation implements EditReservation {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return reservationEditItemsTap(this);
   }
@@ -1600,6 +1837,7 @@ class _$EditReservation implements EditReservation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1613,6 +1851,7 @@ class _$EditReservation implements EditReservation {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (reservationEditItemsTap != null) {
@@ -1669,6 +1908,7 @@ class _$EditingEnd implements EditingEnd {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -1682,6 +1922,7 @@ class _$EditingEnd implements EditingEnd {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return editingEnd();
   }
@@ -1689,6 +1930,7 @@ class _$EditingEnd implements EditingEnd {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1702,6 +1944,7 @@ class _$EditingEnd implements EditingEnd {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (editingEnd != null) {
@@ -1713,6 +1956,7 @@ class _$EditingEnd implements EditingEnd {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1726,6 +1970,7 @@ class _$EditingEnd implements EditingEnd {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return editingEnd(this);
   }
@@ -1733,6 +1978,7 @@ class _$EditingEnd implements EditingEnd {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1746,6 +1992,7 @@ class _$EditingEnd implements EditingEnd {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (editingEnd != null) {
@@ -1796,6 +2043,7 @@ class _$Logout implements Logout {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() sellTapped,
     required TResult Function() homeTapped,
     required TResult Function() groupsTapped,
@@ -1809,6 +2057,7 @@ class _$Logout implements Logout {
     required TResult Function(Reservation reservation) reservationEditItemsTap,
     required TResult Function() editingEnd,
     required TResult Function() logout,
+    required TResult Function() placeChanged,
   }) {
     return logout();
   }
@@ -1816,6 +2065,7 @@ class _$Logout implements Logout {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? sellTapped,
     TResult Function()? homeTapped,
     TResult Function()? groupsTapped,
@@ -1829,6 +2079,7 @@ class _$Logout implements Logout {
     TResult Function(Reservation reservation)? reservationEditItemsTap,
     TResult Function()? editingEnd,
     TResult Function()? logout,
+    TResult Function()? placeChanged,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -1840,6 +2091,7 @@ class _$Logout implements Logout {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(SellTapped value) sellTapped,
     required TResult Function(HomeTapped value) homeTapped,
     required TResult Function(GroupsTapped value) groupsTapped,
@@ -1853,6 +2105,7 @@ class _$Logout implements Logout {
     required TResult Function(EditReservation value) reservationEditItemsTap,
     required TResult Function(EditingEnd value) editingEnd,
     required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
   }) {
     return logout(this);
   }
@@ -1860,6 +2113,7 @@ class _$Logout implements Logout {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(SellTapped value)? sellTapped,
     TResult Function(HomeTapped value)? homeTapped,
     TResult Function(GroupsTapped value)? groupsTapped,
@@ -1873,6 +2127,7 @@ class _$Logout implements Logout {
     TResult Function(EditReservation value)? reservationEditItemsTap,
     TResult Function(EditingEnd value)? editingEnd,
     TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -1887,6 +2142,144 @@ abstract class Logout implements SellerMenuEvent {
 }
 
 /// @nodoc
+abstract class $PlaceChangedCopyWith<$Res> {
+  factory $PlaceChangedCopyWith(
+          PlaceChanged value, $Res Function(PlaceChanged) then) =
+      _$PlaceChangedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PlaceChangedCopyWithImpl<$Res>
+    extends _$SellerMenuEventCopyWithImpl<$Res>
+    implements $PlaceChangedCopyWith<$Res> {
+  _$PlaceChangedCopyWithImpl(
+      PlaceChanged _value, $Res Function(PlaceChanged) _then)
+      : super(_value, (v) => _then(v as PlaceChanged));
+
+  @override
+  PlaceChanged get _value => super._value as PlaceChanged;
+}
+
+/// @nodoc
+
+class _$PlaceChanged implements PlaceChanged {
+  const _$PlaceChanged();
+
+  @override
+  String toString() {
+    return 'SellerMenuEvent.placeChanged()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is PlaceChanged);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() sellTapped,
+    required TResult Function() homeTapped,
+    required TResult Function() groupsTapped,
+    required TResult Function() reservationTapped,
+    required TResult Function() profileTapped,
+    required TResult Function() homeRetapped,
+    required TResult Function() groupsRetapped,
+    required TResult Function() reservationRetapped,
+    required TResult Function() profileRetapped,
+    required TResult Function() navToBuyerTapped,
+    required TResult Function(Reservation reservation) reservationEditItemsTap,
+    required TResult Function() editingEnd,
+    required TResult Function() logout,
+    required TResult Function() placeChanged,
+  }) {
+    return placeChanged();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? sellTapped,
+    TResult Function()? homeTapped,
+    TResult Function()? groupsTapped,
+    TResult Function()? reservationTapped,
+    TResult Function()? profileTapped,
+    TResult Function()? homeRetapped,
+    TResult Function()? groupsRetapped,
+    TResult Function()? reservationRetapped,
+    TResult Function()? profileRetapped,
+    TResult Function()? navToBuyerTapped,
+    TResult Function(Reservation reservation)? reservationEditItemsTap,
+    TResult Function()? editingEnd,
+    TResult Function()? logout,
+    TResult Function()? placeChanged,
+    required TResult orElse(),
+  }) {
+    if (placeChanged != null) {
+      return placeChanged();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(SellTapped value) sellTapped,
+    required TResult Function(HomeTapped value) homeTapped,
+    required TResult Function(GroupsTapped value) groupsTapped,
+    required TResult Function(ReservationTapped value) reservationTapped,
+    required TResult Function(ProfileTapped value) profileTapped,
+    required TResult Function(HomeRetapped value) homeRetapped,
+    required TResult Function(GroupsRetapped value) groupsRetapped,
+    required TResult Function(ReservationRetapped value) reservationRetapped,
+    required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(NavToBuyerTapped value) navToBuyerTapped,
+    required TResult Function(EditReservation value) reservationEditItemsTap,
+    required TResult Function(EditingEnd value) editingEnd,
+    required TResult Function(Logout value) logout,
+    required TResult Function(PlaceChanged value) placeChanged,
+  }) {
+    return placeChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(SellTapped value)? sellTapped,
+    TResult Function(HomeTapped value)? homeTapped,
+    TResult Function(GroupsTapped value)? groupsTapped,
+    TResult Function(ReservationTapped value)? reservationTapped,
+    TResult Function(ProfileTapped value)? profileTapped,
+    TResult Function(HomeRetapped value)? homeRetapped,
+    TResult Function(GroupsRetapped value)? groupsRetapped,
+    TResult Function(ReservationRetapped value)? reservationRetapped,
+    TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(NavToBuyerTapped value)? navToBuyerTapped,
+    TResult Function(EditReservation value)? reservationEditItemsTap,
+    TResult Function(EditingEnd value)? editingEnd,
+    TResult Function(Logout value)? logout,
+    TResult Function(PlaceChanged value)? placeChanged,
+    required TResult orElse(),
+  }) {
+    if (placeChanged != null) {
+      return placeChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PlaceChanged implements SellerMenuEvent {
+  const factory PlaceChanged() = _$PlaceChanged;
+}
+
+/// @nodoc
 class _$SellerMenuStateTearOff {
   const _$SellerMenuStateTearOff();
 
@@ -1898,7 +2291,9 @@ class _$SellerMenuStateTearOff {
       required Place? place,
       required bool openEditReservation,
       required Option<Reservation> optionOfResevationToEdit,
-      required bool navToLogin}) {
+      required bool navToLogin,
+      required Option<Either<AuthFailure, User>> optionOfUser,
+      required Option<Place> optionOfPlace}) {
     return _SellerMenuState(
       currentIndex: currentIndex,
       navToRoot: navToRoot,
@@ -1908,6 +2303,8 @@ class _$SellerMenuStateTearOff {
       openEditReservation: openEditReservation,
       optionOfResevationToEdit: optionOfResevationToEdit,
       navToLogin: navToLogin,
+      optionOfUser: optionOfUser,
+      optionOfPlace: optionOfPlace,
     );
   }
 }
@@ -1926,6 +2323,9 @@ mixin _$SellerMenuState {
   Option<Reservation> get optionOfResevationToEdit =>
       throw _privateConstructorUsedError;
   bool get navToLogin => throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, User>> get optionOfUser =>
+      throw _privateConstructorUsedError;
+  Option<Place> get optionOfPlace => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SellerMenuStateCopyWith<SellerMenuState> get copyWith =>
@@ -1945,7 +2345,9 @@ abstract class $SellerMenuStateCopyWith<$Res> {
       Place? place,
       bool openEditReservation,
       Option<Reservation> optionOfResevationToEdit,
-      bool navToLogin});
+      bool navToLogin,
+      Option<Either<AuthFailure, User>> optionOfUser,
+      Option<Place> optionOfPlace});
 
   $PlaceCopyWith<$Res>? get place;
 }
@@ -1969,6 +2371,8 @@ class _$SellerMenuStateCopyWithImpl<$Res>
     Object? openEditReservation = freezed,
     Object? optionOfResevationToEdit = freezed,
     Object? navToLogin = freezed,
+    Object? optionOfUser = freezed,
+    Object? optionOfPlace = freezed,
   }) {
     return _then(_value.copyWith(
       currentIndex: currentIndex == freezed
@@ -2003,6 +2407,14 @@ class _$SellerMenuStateCopyWithImpl<$Res>
           ? _value.navToLogin
           : navToLogin // ignore: cast_nullable_to_non_nullable
               as bool,
+      optionOfUser: optionOfUser == freezed
+          ? _value.optionOfUser
+          : optionOfUser // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, User>>,
+      optionOfPlace: optionOfPlace == freezed
+          ? _value.optionOfPlace
+          : optionOfPlace // ignore: cast_nullable_to_non_nullable
+              as Option<Place>,
     ));
   }
 
@@ -2033,7 +2445,9 @@ abstract class _$SellerMenuStateCopyWith<$Res>
       Place? place,
       bool openEditReservation,
       Option<Reservation> optionOfResevationToEdit,
-      bool navToLogin});
+      bool navToLogin,
+      Option<Either<AuthFailure, User>> optionOfUser,
+      Option<Place> optionOfPlace});
 
   @override
   $PlaceCopyWith<$Res>? get place;
@@ -2060,6 +2474,8 @@ class __$SellerMenuStateCopyWithImpl<$Res>
     Object? openEditReservation = freezed,
     Object? optionOfResevationToEdit = freezed,
     Object? navToLogin = freezed,
+    Object? optionOfUser = freezed,
+    Object? optionOfPlace = freezed,
   }) {
     return _then(_SellerMenuState(
       currentIndex: currentIndex == freezed
@@ -2094,6 +2510,14 @@ class __$SellerMenuStateCopyWithImpl<$Res>
           ? _value.navToLogin
           : navToLogin // ignore: cast_nullable_to_non_nullable
               as bool,
+      optionOfUser: optionOfUser == freezed
+          ? _value.optionOfUser
+          : optionOfUser // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, User>>,
+      optionOfPlace: optionOfPlace == freezed
+          ? _value.optionOfPlace
+          : optionOfPlace // ignore: cast_nullable_to_non_nullable
+              as Option<Place>,
     ));
   }
 }
@@ -2109,7 +2533,9 @@ class _$_SellerMenuState implements _SellerMenuState {
       required this.place,
       required this.openEditReservation,
       required this.optionOfResevationToEdit,
-      required this.navToLogin});
+      required this.navToLogin,
+      required this.optionOfUser,
+      required this.optionOfPlace});
 
   @override
   final int currentIndex;
@@ -2127,10 +2553,14 @@ class _$_SellerMenuState implements _SellerMenuState {
   final Option<Reservation> optionOfResevationToEdit;
   @override
   final bool navToLogin;
+  @override
+  final Option<Either<AuthFailure, User>> optionOfUser;
+  @override
+  final Option<Place> optionOfPlace;
 
   @override
   String toString() {
-    return 'SellerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToBuyer: $navToBuyer, reTapIndex: $reTapIndex, place: $place, openEditReservation: $openEditReservation, optionOfResevationToEdit: $optionOfResevationToEdit, navToLogin: $navToLogin)';
+    return 'SellerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToBuyer: $navToBuyer, reTapIndex: $reTapIndex, place: $place, openEditReservation: $openEditReservation, optionOfResevationToEdit: $optionOfResevationToEdit, navToLogin: $navToLogin, optionOfUser: $optionOfUser, optionOfPlace: $optionOfPlace)';
   }
 
   @override
@@ -2161,7 +2591,13 @@ class _$_SellerMenuState implements _SellerMenuState {
                     optionOfResevationToEdit)) &&
             (identical(other.navToLogin, navToLogin) ||
                 const DeepCollectionEquality()
-                    .equals(other.navToLogin, navToLogin)));
+                    .equals(other.navToLogin, navToLogin)) &&
+            (identical(other.optionOfUser, optionOfUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.optionOfUser, optionOfUser)) &&
+            (identical(other.optionOfPlace, optionOfPlace) ||
+                const DeepCollectionEquality()
+                    .equals(other.optionOfPlace, optionOfPlace)));
   }
 
   @override
@@ -2174,7 +2610,9 @@ class _$_SellerMenuState implements _SellerMenuState {
       const DeepCollectionEquality().hash(place) ^
       const DeepCollectionEquality().hash(openEditReservation) ^
       const DeepCollectionEquality().hash(optionOfResevationToEdit) ^
-      const DeepCollectionEquality().hash(navToLogin);
+      const DeepCollectionEquality().hash(navToLogin) ^
+      const DeepCollectionEquality().hash(optionOfUser) ^
+      const DeepCollectionEquality().hash(optionOfPlace);
 
   @JsonKey(ignore: true)
   @override
@@ -2191,7 +2629,9 @@ abstract class _SellerMenuState implements SellerMenuState {
       required Place? place,
       required bool openEditReservation,
       required Option<Reservation> optionOfResevationToEdit,
-      required bool navToLogin}) = _$_SellerMenuState;
+      required bool navToLogin,
+      required Option<Either<AuthFailure, User>> optionOfUser,
+      required Option<Place> optionOfPlace}) = _$_SellerMenuState;
 
   @override
   int get currentIndex => throw _privateConstructorUsedError;
@@ -2210,6 +2650,11 @@ abstract class _SellerMenuState implements SellerMenuState {
       throw _privateConstructorUsedError;
   @override
   bool get navToLogin => throw _privateConstructorUsedError;
+  @override
+  Option<Either<AuthFailure, User>> get optionOfUser =>
+      throw _privateConstructorUsedError;
+  @override
+  Option<Place> get optionOfPlace => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SellerMenuStateCopyWith<_SellerMenuState> get copyWith =>
