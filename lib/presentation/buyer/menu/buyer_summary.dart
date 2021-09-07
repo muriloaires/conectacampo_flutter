@@ -115,8 +115,11 @@ class BuyerSummary extends StatelessWidget {
                                   return _getNoGroupsAddedWidget();
                                 } else {
                                   return AdvertisementList(
-                                      false,
-                                      (r.length > 3 ? r.sublist(0, 2) : r)
+                                      isSearch: false,
+                                      isGroup: true,
+                                      advertisements: (r.length > 3
+                                              ? r.sublist(0, 2)
+                                              : r)
                                           .map((e) => UIAdvertisement(true, e))
                                           .toList());
                                 }
@@ -148,8 +151,9 @@ class BuyerSummary extends StatelessWidget {
                               child: state.adsFailureOrSuccess.fold(
                                   (l) => const Text('Erro'),
                                   (r) => AdvertisementList(
-                                      false,
-                                      r
+                                      isSearch: false,
+                                      isGroup: false,
+                                      advertisements: r
                                           .map((e) => UIAdvertisement(false, e))
                                           .toList()))
 

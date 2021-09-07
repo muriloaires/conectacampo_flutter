@@ -1,4 +1,5 @@
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
@@ -92,7 +93,7 @@ class SellerSummary extends StatelessWidget {
                         const Padding(
                           padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Text(
-                            'Meu grupo',
+                            'Meus grupos',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -119,29 +120,39 @@ class SellerSummary extends StatelessWidget {
 class SellerGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if (/*context.read<SellerSummaryBloc>().state.reservations.isEmpty*/ true) {
-      return Card(
-        margin: const EdgeInsets.all(0),
+    final groups = createBuyerReservations(context
+        .read<SellerGroupBloc>()
+        .state
+        .groupReservations
+        .fold((l) => [], (r) => r));
+
+    return Card(
+      margin: const EdgeInsets.all(0),
+      child: MaterialButton(
+        onPressed: () {
+          context
+              .read<SellerMenuBloc>()
+              .add(const SellerMenuEvent.groupsTapped());
+        },
         child: Padding(
-          padding: const EdgeInsets.all(32),
+          padding: const EdgeInsets.fromLTRB(20, 32, 20, 32),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
-                    'Sem membros',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    '${groups.isEmpty ? 'Sem membros' : '${groups.length}'} membro(s)',
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Flexible(
-                      child: Text('Venda produtos para\nadicionar membros',
+                      child: Text(
+                          '${groups.isEmpty ? 'Venda produtos para\nadicionar membros' : 'Confira seus membros'} ',
                           overflow: TextOverflow.ellipsis)),
                 ],
-              ),
-              const SizedBox(
-                width: 32,
               ),
               SvgPicture.asset(
                 'assets/coolicon.svg',
@@ -152,10 +163,8 @@ class SellerGroup extends StatelessWidget {
             ],
           ),
         ),
-      );
-    } else {
-//TODO
-    }
+      ),
+    );
   }
 }
 
@@ -218,7 +227,7 @@ class SellerReservations extends StatelessWidget {
           ));
         }
 
-        List<Reservation> list = context
+        final list = context
             .read<SellerSummaryBloc>()
             .state
             .optionOfReservationFailureOrSuccess
@@ -229,26 +238,34 @@ class SellerReservations extends StatelessWidget {
         } else {
           size = list.length;
         }
-        if (list.isEmpty) {
-          return Card(
-            margin: const EdgeInsets.all(0),
+        // if (list.isEmpty) {
+        return Card(
+          margin: const EdgeInsets.all(0),
+          child: MaterialButton(
+            onPressed: () {
+              context
+                  .read<SellerMenuBloc>()
+                  .add(const SellerMenuEvent.reservationTapped());
+            },
             child: Padding(
-              padding: const EdgeInsets.all(32),
+              padding: const EdgeInsets.fromLTRB(20, 32, 0, 32),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
-                        'Sem reservas',
-                        style: TextStyle(
+                        list.isEmpty
+                            ? 'Sem reservas'
+                            : '${list.length} reserva(s)',
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      Text('Sem reservas no momento')
+                      Text(list.isEmpty
+                          ? 'Aguarde o contato de um cliente'
+                          : 'Confira suas reservas')
                     ],
-                  ),
-                  const SizedBox(
-                    width: 32,
                   ),
                   SvgPicture.asset(
                     'assets/coolicon.svg',
@@ -259,16 +276,17 @@ class SellerReservations extends StatelessWidget {
                 ],
               ),
             ),
-          );
-        } else {
-          return ListView.separated(
-              shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
-              itemBuilder: (context, index) =>
-                  SellerReservationWidget(list[index].copyWith()),
-              separatorBuilder: (context, index) => const Divider(),
-              itemCount: size);
-        }
+          ),
+        );
+        // } else {
+        //   return ListView.separated(
+        //       shrinkWrap: true,
+        //       physics: const ClampingScrollPhysics(),
+        //       itemBuilder: (context, index) =>
+        //           SellerReservationWidget(list[index].copyWith()),
+        //       separatorBuilder: (context, index) => const Divider(),
+        //       itemCount: size);
+        // }
       },
     );
   }

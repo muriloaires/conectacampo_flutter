@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/auth/user.dart';
+import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
+import 'package:conectacampo/domain/reservation/reservation_failure.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -12,7 +15,9 @@ part 'seller_group_bloc.freezed.dart';
 
 @injectable
 class SellerGroupBloc extends Bloc<SellerGroupEvent, SellerGroupState> {
-  SellerGroupBloc() : super(SellerGroupState.initial());
+  SellerGroupBloc(this.reservationFacade) : super(SellerGroupState.initial());
+
+  final IReservationFacade reservationFacade;
 
   @override
   Stream<SellerGroupState> mapEventToState(
@@ -20,9 +25,8 @@ class SellerGroupBloc extends Bloc<SellerGroupEvent, SellerGroupState> {
   ) async* {
     yield* event.map(started: (started) async* {
       //load reservations
-      final List<Reservation> reservations = [];
-      reservations.sort((a, b) => a.id!.compareTo(b.id!));
-      reservations.forEach((element) {});
+      final reservations = await reservationFacade.getSellerGroupReservations();
+      yield state.copyWith(groupReservations: reservations);
     });
   }
 }
@@ -36,19 +40,19 @@ class BuyerReservations {
 List<BuyerReservations> createBuyerReservations(
     List<Reservation> reservations) {
   reservations.sort((a, b) => a.id!.compareTo(b.id!));
-  var id = -1;
+  var id = '';
   final List<List<Reservation>> listOfLists = [];
   List<Reservation> aux = [];
 
   for (final element in reservations) {
-    if (element.id == id) {
+    if (element.buyer.id.getOrCrash() == id) {
       aux.add(element);
     } else {
       if (aux.isNotEmpty) {
         listOfLists.add(aux);
       }
       aux = [];
-      id = element.id!;
+      id = element.buyer.id.getOrCrash();
       aux.add(element);
     }
   }

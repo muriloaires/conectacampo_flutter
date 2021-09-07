@@ -30,6 +30,7 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
       final reservation =
           await reservationFacade.getReservationItemByProduct(started.product);
       yield state.copyWith(
+          setInitialQuantity: true,
           optionOfReservatiomItemFailureOrSuccess:
               reservation.fold(() => none(), (a) => some(right(a))));
     }, ammountChanged: (ammountChanged) async* {

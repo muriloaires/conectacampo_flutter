@@ -29,28 +29,35 @@ class SellerMenuBloc extends Bloc<SellerMenuEvent, SellerMenuState> {
           yield state.copyWith(currentIndex: 0, navToRoot: false);
         },
         groupsTapped: (groupsTapped) async* {
-          yield state.copyWith(currentIndex: 1, navToRoot: false);
+          yield state.copyWith(
+              currentIndex: 1, navToRoot: false, showToolBar: true);
         },
         reservationTapped: (reservationTapped) async* {
-          yield state.copyWith(currentIndex: 3, navToRoot: false);
+          yield state.copyWith(
+              currentIndex: 3, navToRoot: false, showToolBar: true);
         },
         profileTapped: (profileTapped) async* {
-          yield state.copyWith(currentIndex: 4, navToRoot: false);
+          yield state.copyWith(
+              currentIndex: 4, navToRoot: false, showToolBar: false);
         },
         homeRetapped: (homeRetapped) async* {
-          yield state.copyWith(reTapIndex: 0, navToRoot: false);
+          yield state.copyWith(
+              reTapIndex: 0, navToRoot: false, showToolBar: true);
           state.copyWith(reTapIndex: -1, navToRoot: false);
         },
         groupsRetapped: (groupsRetapped) async* {
-          yield state.copyWith(reTapIndex: 1, navToRoot: false);
+          yield state.copyWith(
+              reTapIndex: 1, navToRoot: false, showToolBar: true);
           state.copyWith(reTapIndex: -1, navToRoot: false);
         },
         reservationRetapped: (reservationRetapped) async* {
-          yield state.copyWith(reTapIndex: 3, navToRoot: false);
+          yield state.copyWith(
+              reTapIndex: 3, navToRoot: false, showToolBar: true);
           state.copyWith(reTapIndex: -1, navToRoot: false);
         },
         profileRetapped: (profileRetapped) async* {
-          yield state.copyWith(reTapIndex: 4, navToRoot: false);
+          yield state.copyWith(
+              reTapIndex: 4, navToRoot: false, showToolBar: false);
           state.copyWith(reTapIndex: -1, navToRoot: false);
         },
         navToBuyerTapped: (navToBuyerTapped) async* {

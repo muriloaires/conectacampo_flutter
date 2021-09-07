@@ -11,10 +11,10 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'application/auth/phone_number_form/sign_in_form_bloc.dart' as _i28;
 import 'application/auth/sign_up_form/bloc/sign_up_form_bloc.dart' as _i29;
 import 'application/auth/sms_code_form/sms_code_form_bloc.dart' as _i31;
-import 'application/buyer/adivertisements/adivertisements_bloc.dart' as _i35;
-import 'application/buyer/cart/cart_bloc.dart' as _i37;
-import 'application/buyer/group/group_bloc.dart' as _i38;
-import 'application/buyer/menu/buyer_menu_bloc.dart' as _i36;
+import 'application/buyer/adivertisements/adivertisements_bloc.dart' as _i36;
+import 'application/buyer/cart/cart_bloc.dart' as _i38;
+import 'application/buyer/group/group_bloc.dart' as _i39;
+import 'application/buyer/menu/buyer_menu_bloc.dart' as _i37;
 import 'application/buyer/product/product_page_bloc.dart' as _i19;
 import 'application/buyer/reservation/reservation_bloc.dart' as _i21;
 import 'application/buyer/reservation/single_reservation/single_reservation_bloc.dart'
@@ -30,12 +30,14 @@ import 'application/seller/new_advertisement/add_photo/add_photo_bloc.dart'
 import 'application/seller/new_advertisement/add_photos_summary/add_photos_summary_bloc.dart'
     as _i4;
 import 'application/seller/new_advertisement/add_product/add_product_bloc.dart'
-    as _i34;
+    as _i35;
 import 'application/seller/new_advertisement/add_summary/new_ad_summary_bloc.dart'
     as _i16;
 import 'application/seller/new_advertisement/new_advertisement_bloc.dart'
     as _i17;
 import 'application/seller/reservation/seller_reservation_bloc.dart' as _i26;
+import 'application/seller/reservation_summary/summary_reservations_bloc.dart'
+    as _i34;
 import 'application/seller/summary/seller_summary_bloc.dart' as _i27;
 import 'application/splash/splash_bloc.dart' as _i32;
 import 'domain/advertisements/i_advertisements_facade.dart' as _i6;
@@ -46,7 +48,7 @@ import 'domain/reservation/i_reservation_facade.dart' as _i14;
 import 'infrastructure/advertisement/advertisement_facade.dart' as _i7;
 import 'infrastructure/auth/auth_facade.dart' as _i9;
 import 'infrastructure/auth/rest_auth_facade.dart' as _i22;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i39;
+import 'infrastructure/core/firebase_injectable_module.dart' as _i40;
 import 'infrastructure/places/places_facade.dart' as _i11;
 import 'infrastructure/product/product_facade.dart' as _i13;
 import 'infrastructure/reservation/reservation_facade.dart'
@@ -81,7 +83,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i22.RestAuthFacade>(() => _i22.RestAuthFacade());
   gh.factory<_i23.SearchFormBloc>(
       () => _i23.SearchFormBloc(get<_i6.IAdvertisementsFacade>()));
-  gh.factory<_i24.SellerGroupBloc>(() => _i24.SellerGroupBloc());
+  gh.factory<_i24.SellerGroupBloc>(
+      () => _i24.SellerGroupBloc(get<_i14.IReservationFacade>()));
   gh.factory<_i25.SellerMenuBloc>(() => _i25.SellerMenuBloc());
   gh.factory<_i26.SellerReservationBloc>(
       () => _i26.SellerReservationBloc(get<_i14.IReservationFacade>()));
@@ -98,17 +101,19 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i32.SplashBloc>(() => _i32.SplashBloc());
   gh.factory<_i33.SummaryBloc>(
       () => _i33.SummaryBloc(get<_i14.IReservationFacade>()));
-  gh.factory<_i34.AddProductBloc>(
-      () => _i34.AddProductBloc(get<_i12.IProductFacade>()));
-  gh.factory<_i35.AdvertisementsBloc>(
-      () => _i35.AdvertisementsBloc(get<_i6.IAdvertisementsFacade>()));
-  gh.factory<_i36.BuyerMenuBloc>(
-      () => _i36.BuyerMenuBloc(get<_i14.IReservationFacade>()));
-  gh.factory<_i37.CartBloc>(() => _i37.CartBloc(
+  gh.factory<_i34.SummaryReservationsBloc>(
+      () => _i34.SummaryReservationsBloc(get<_i14.IReservationFacade>()));
+  gh.factory<_i35.AddProductBloc>(
+      () => _i35.AddProductBloc(get<_i12.IProductFacade>()));
+  gh.factory<_i36.AdvertisementsBloc>(
+      () => _i36.AdvertisementsBloc(get<_i6.IAdvertisementsFacade>()));
+  gh.factory<_i37.BuyerMenuBloc>(
+      () => _i37.BuyerMenuBloc(get<_i14.IReservationFacade>()));
+  gh.factory<_i38.CartBloc>(() => _i38.CartBloc(
       get<_i14.IReservationFacade>(), get<_i6.IAdvertisementsFacade>()));
-  gh.factory<_i38.GroupBloc>(
-      () => _i38.GroupBloc(get<_i6.IAdvertisementsFacade>()));
+  gh.factory<_i39.GroupBloc>(
+      () => _i39.GroupBloc(get<_i6.IAdvertisementsFacade>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i39.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i40.FirebaseInjectableModule {}

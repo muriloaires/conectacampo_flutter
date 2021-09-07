@@ -31,6 +31,12 @@ class _$AdvertisementsEventTearOff {
   PlaceChanged placeChanged() {
     return const PlaceChanged();
   }
+
+  LeaveGroupTapped leaveGroupTapped(Advertisement advertisement) {
+    return LeaveGroupTapped(
+      advertisement,
+    );
+  }
 }
 
 /// @nodoc
@@ -43,6 +49,7 @@ mixin _$AdvertisementsEvent {
     required TResult Function(int index, bool isExpanded) expandedChanged,
     required TResult Function() started,
     required TResult Function() placeChanged,
+    required TResult Function(Advertisement advertisement) leaveGroupTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +57,7 @@ mixin _$AdvertisementsEvent {
     TResult Function(int index, bool isExpanded)? expandedChanged,
     TResult Function()? started,
     TResult Function()? placeChanged,
+    TResult Function(Advertisement advertisement)? leaveGroupTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,6 +66,7 @@ mixin _$AdvertisementsEvent {
     required TResult Function(ExpandedChanged value) expandedChanged,
     required TResult Function(_Started value) started,
     required TResult Function(PlaceChanged value) placeChanged,
+    required TResult Function(LeaveGroupTapped value) leaveGroupTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +74,7 @@ mixin _$AdvertisementsEvent {
     TResult Function(ExpandedChanged value)? expandedChanged,
     TResult Function(_Started value)? started,
     TResult Function(PlaceChanged value)? placeChanged,
+    TResult Function(LeaveGroupTapped value)? leaveGroupTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,6 +177,7 @@ class _$ExpandedChanged implements ExpandedChanged {
     required TResult Function(int index, bool isExpanded) expandedChanged,
     required TResult Function() started,
     required TResult Function() placeChanged,
+    required TResult Function(Advertisement advertisement) leaveGroupTapped,
   }) {
     return expandedChanged(index, isExpanded);
   }
@@ -177,6 +188,7 @@ class _$ExpandedChanged implements ExpandedChanged {
     TResult Function(int index, bool isExpanded)? expandedChanged,
     TResult Function()? started,
     TResult Function()? placeChanged,
+    TResult Function(Advertisement advertisement)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (expandedChanged != null) {
@@ -191,6 +203,7 @@ class _$ExpandedChanged implements ExpandedChanged {
     required TResult Function(ExpandedChanged value) expandedChanged,
     required TResult Function(_Started value) started,
     required TResult Function(PlaceChanged value) placeChanged,
+    required TResult Function(LeaveGroupTapped value) leaveGroupTapped,
   }) {
     return expandedChanged(this);
   }
@@ -201,6 +214,7 @@ class _$ExpandedChanged implements ExpandedChanged {
     TResult Function(ExpandedChanged value)? expandedChanged,
     TResult Function(_Started value)? started,
     TResult Function(PlaceChanged value)? placeChanged,
+    TResult Function(LeaveGroupTapped value)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (expandedChanged != null) {
@@ -262,6 +276,7 @@ class _$_Started implements _Started {
     required TResult Function(int index, bool isExpanded) expandedChanged,
     required TResult Function() started,
     required TResult Function() placeChanged,
+    required TResult Function(Advertisement advertisement) leaveGroupTapped,
   }) {
     return started();
   }
@@ -272,6 +287,7 @@ class _$_Started implements _Started {
     TResult Function(int index, bool isExpanded)? expandedChanged,
     TResult Function()? started,
     TResult Function()? placeChanged,
+    TResult Function(Advertisement advertisement)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -286,6 +302,7 @@ class _$_Started implements _Started {
     required TResult Function(ExpandedChanged value) expandedChanged,
     required TResult Function(_Started value) started,
     required TResult Function(PlaceChanged value) placeChanged,
+    required TResult Function(LeaveGroupTapped value) leaveGroupTapped,
   }) {
     return started(this);
   }
@@ -296,6 +313,7 @@ class _$_Started implements _Started {
     TResult Function(ExpandedChanged value)? expandedChanged,
     TResult Function(_Started value)? started,
     TResult Function(PlaceChanged value)? placeChanged,
+    TResult Function(LeaveGroupTapped value)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -352,6 +370,7 @@ class _$PlaceChanged implements PlaceChanged {
     required TResult Function(int index, bool isExpanded) expandedChanged,
     required TResult Function() started,
     required TResult Function() placeChanged,
+    required TResult Function(Advertisement advertisement) leaveGroupTapped,
   }) {
     return placeChanged();
   }
@@ -362,6 +381,7 @@ class _$PlaceChanged implements PlaceChanged {
     TResult Function(int index, bool isExpanded)? expandedChanged,
     TResult Function()? started,
     TResult Function()? placeChanged,
+    TResult Function(Advertisement advertisement)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (placeChanged != null) {
@@ -376,6 +396,7 @@ class _$PlaceChanged implements PlaceChanged {
     required TResult Function(ExpandedChanged value) expandedChanged,
     required TResult Function(_Started value) started,
     required TResult Function(PlaceChanged value) placeChanged,
+    required TResult Function(LeaveGroupTapped value) leaveGroupTapped,
   }) {
     return placeChanged(this);
   }
@@ -386,6 +407,7 @@ class _$PlaceChanged implements PlaceChanged {
     TResult Function(ExpandedChanged value)? expandedChanged,
     TResult Function(_Started value)? started,
     TResult Function(PlaceChanged value)? placeChanged,
+    TResult Function(LeaveGroupTapped value)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (placeChanged != null) {
@@ -400,6 +422,141 @@ abstract class PlaceChanged implements AdvertisementsEvent {
 }
 
 /// @nodoc
+abstract class $LeaveGroupTappedCopyWith<$Res> {
+  factory $LeaveGroupTappedCopyWith(
+          LeaveGroupTapped value, $Res Function(LeaveGroupTapped) then) =
+      _$LeaveGroupTappedCopyWithImpl<$Res>;
+  $Res call({Advertisement advertisement});
+
+  $AdvertisementCopyWith<$Res> get advertisement;
+}
+
+/// @nodoc
+class _$LeaveGroupTappedCopyWithImpl<$Res>
+    extends _$AdvertisementsEventCopyWithImpl<$Res>
+    implements $LeaveGroupTappedCopyWith<$Res> {
+  _$LeaveGroupTappedCopyWithImpl(
+      LeaveGroupTapped _value, $Res Function(LeaveGroupTapped) _then)
+      : super(_value, (v) => _then(v as LeaveGroupTapped));
+
+  @override
+  LeaveGroupTapped get _value => super._value as LeaveGroupTapped;
+
+  @override
+  $Res call({
+    Object? advertisement = freezed,
+  }) {
+    return _then(LeaveGroupTapped(
+      advertisement == freezed
+          ? _value.advertisement
+          : advertisement // ignore: cast_nullable_to_non_nullable
+              as Advertisement,
+    ));
+  }
+
+  @override
+  $AdvertisementCopyWith<$Res> get advertisement {
+    return $AdvertisementCopyWith<$Res>(_value.advertisement, (value) {
+      return _then(_value.copyWith(advertisement: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LeaveGroupTapped implements LeaveGroupTapped {
+  const _$LeaveGroupTapped(this.advertisement);
+
+  @override
+  final Advertisement advertisement;
+
+  @override
+  String toString() {
+    return 'AdvertisementsEvent.leaveGroupTapped(advertisement: $advertisement)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is LeaveGroupTapped &&
+            (identical(other.advertisement, advertisement) ||
+                const DeepCollectionEquality()
+                    .equals(other.advertisement, advertisement)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(advertisement);
+
+  @JsonKey(ignore: true)
+  @override
+  $LeaveGroupTappedCopyWith<LeaveGroupTapped> get copyWith =>
+      _$LeaveGroupTappedCopyWithImpl<LeaveGroupTapped>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index, bool isExpanded) expandedChanged,
+    required TResult Function() started,
+    required TResult Function() placeChanged,
+    required TResult Function(Advertisement advertisement) leaveGroupTapped,
+  }) {
+    return leaveGroupTapped(advertisement);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index, bool isExpanded)? expandedChanged,
+    TResult Function()? started,
+    TResult Function()? placeChanged,
+    TResult Function(Advertisement advertisement)? leaveGroupTapped,
+    required TResult orElse(),
+  }) {
+    if (leaveGroupTapped != null) {
+      return leaveGroupTapped(advertisement);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ExpandedChanged value) expandedChanged,
+    required TResult Function(_Started value) started,
+    required TResult Function(PlaceChanged value) placeChanged,
+    required TResult Function(LeaveGroupTapped value) leaveGroupTapped,
+  }) {
+    return leaveGroupTapped(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ExpandedChanged value)? expandedChanged,
+    TResult Function(_Started value)? started,
+    TResult Function(PlaceChanged value)? placeChanged,
+    TResult Function(LeaveGroupTapped value)? leaveGroupTapped,
+    required TResult orElse(),
+  }) {
+    if (leaveGroupTapped != null) {
+      return leaveGroupTapped(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LeaveGroupTapped implements AdvertisementsEvent {
+  const factory LeaveGroupTapped(Advertisement advertisement) =
+      _$LeaveGroupTapped;
+
+  Advertisement get advertisement => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LeaveGroupTappedCopyWith<LeaveGroupTapped> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$AdvertisementsStateTearOff {
   const _$AdvertisementsStateTearOff();
 
@@ -408,11 +565,13 @@ class _$AdvertisementsStateTearOff {
           adsFailureOrSuccess,
       required Either<AdvertisementFailure, List<Advertisement>>
           groupsAdsFailureOrSuccess,
-      required bool loading}) {
+      required bool loading,
+      required bool groupRemovalSuccess}) {
     return _AdivertisementsState(
       adsFailureOrSuccess: adsFailureOrSuccess,
       groupsAdsFailureOrSuccess: groupsAdsFailureOrSuccess,
       loading: loading,
+      groupRemovalSuccess: groupRemovalSuccess,
     );
   }
 }
@@ -427,6 +586,7 @@ mixin _$AdvertisementsState {
   Either<AdvertisementFailure, List<Advertisement>>
       get groupsAdsFailureOrSuccess => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
+  bool get groupRemovalSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AdvertisementsStateCopyWith<AdvertisementsState> get copyWith =>
@@ -442,7 +602,8 @@ abstract class $AdvertisementsStateCopyWith<$Res> {
       {Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess,
       Either<AdvertisementFailure, List<Advertisement>>
           groupsAdsFailureOrSuccess,
-      bool loading});
+      bool loading,
+      bool groupRemovalSuccess});
 }
 
 /// @nodoc
@@ -459,6 +620,7 @@ class _$AdvertisementsStateCopyWithImpl<$Res>
     Object? adsFailureOrSuccess = freezed,
     Object? groupsAdsFailureOrSuccess = freezed,
     Object? loading = freezed,
+    Object? groupRemovalSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       adsFailureOrSuccess: adsFailureOrSuccess == freezed
@@ -472,6 +634,10 @@ class _$AdvertisementsStateCopyWithImpl<$Res>
       loading: loading == freezed
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      groupRemovalSuccess: groupRemovalSuccess == freezed
+          ? _value.groupRemovalSuccess
+          : groupRemovalSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -488,7 +654,8 @@ abstract class _$AdivertisementsStateCopyWith<$Res>
       {Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess,
       Either<AdvertisementFailure, List<Advertisement>>
           groupsAdsFailureOrSuccess,
-      bool loading});
+      bool loading,
+      bool groupRemovalSuccess});
 }
 
 /// @nodoc
@@ -507,6 +674,7 @@ class __$AdivertisementsStateCopyWithImpl<$Res>
     Object? adsFailureOrSuccess = freezed,
     Object? groupsAdsFailureOrSuccess = freezed,
     Object? loading = freezed,
+    Object? groupRemovalSuccess = freezed,
   }) {
     return _then(_AdivertisementsState(
       adsFailureOrSuccess: adsFailureOrSuccess == freezed
@@ -521,6 +689,10 @@ class __$AdivertisementsStateCopyWithImpl<$Res>
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
+      groupRemovalSuccess: groupRemovalSuccess == freezed
+          ? _value.groupRemovalSuccess
+          : groupRemovalSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -531,7 +703,8 @@ class _$_AdivertisementsState implements _AdivertisementsState {
   const _$_AdivertisementsState(
       {required this.adsFailureOrSuccess,
       required this.groupsAdsFailureOrSuccess,
-      required this.loading});
+      required this.loading,
+      required this.groupRemovalSuccess});
 
   @override
   final Either<AdvertisementFailure, List<Advertisement>> adsFailureOrSuccess;
@@ -540,10 +713,12 @@ class _$_AdivertisementsState implements _AdivertisementsState {
       groupsAdsFailureOrSuccess;
   @override
   final bool loading;
+  @override
+  final bool groupRemovalSuccess;
 
   @override
   String toString() {
-    return 'AdvertisementsState(adsFailureOrSuccess: $adsFailureOrSuccess, groupsAdsFailureOrSuccess: $groupsAdsFailureOrSuccess, loading: $loading)';
+    return 'AdvertisementsState(adsFailureOrSuccess: $adsFailureOrSuccess, groupsAdsFailureOrSuccess: $groupsAdsFailureOrSuccess, loading: $loading, groupRemovalSuccess: $groupRemovalSuccess)';
   }
 
   @override
@@ -559,7 +734,11 @@ class _$_AdivertisementsState implements _AdivertisementsState {
                     other.groupsAdsFailureOrSuccess,
                     groupsAdsFailureOrSuccess)) &&
             (identical(other.loading, loading) ||
-                const DeepCollectionEquality().equals(other.loading, loading)));
+                const DeepCollectionEquality()
+                    .equals(other.loading, loading)) &&
+            (identical(other.groupRemovalSuccess, groupRemovalSuccess) ||
+                const DeepCollectionEquality()
+                    .equals(other.groupRemovalSuccess, groupRemovalSuccess)));
   }
 
   @override
@@ -567,7 +746,8 @@ class _$_AdivertisementsState implements _AdivertisementsState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(adsFailureOrSuccess) ^
       const DeepCollectionEquality().hash(groupsAdsFailureOrSuccess) ^
-      const DeepCollectionEquality().hash(loading);
+      const DeepCollectionEquality().hash(loading) ^
+      const DeepCollectionEquality().hash(groupRemovalSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -582,7 +762,8 @@ abstract class _AdivertisementsState implements AdvertisementsState {
           adsFailureOrSuccess,
       required Either<AdvertisementFailure, List<Advertisement>>
           groupsAdsFailureOrSuccess,
-      required bool loading}) = _$_AdivertisementsState;
+      required bool loading,
+      required bool groupRemovalSuccess}) = _$_AdivertisementsState;
 
   @override
   Either<AdvertisementFailure, List<Advertisement>> get adsFailureOrSuccess =>
@@ -592,6 +773,8 @@ abstract class _AdivertisementsState implements AdvertisementsState {
       get groupsAdsFailureOrSuccess => throw _privateConstructorUsedError;
   @override
   bool get loading => throw _privateConstructorUsedError;
+  @override
+  bool get groupRemovalSuccess => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AdivertisementsStateCopyWith<_AdivertisementsState> get copyWith =>

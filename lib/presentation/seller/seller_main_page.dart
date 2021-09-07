@@ -1,4 +1,5 @@
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/injection.dart';
@@ -8,6 +9,7 @@ import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/menu/seller_summary.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_bottom_menu.dart';
 import 'package:conectacampo/presentation/seller/reservation/edit_reservation.dart';
+import 'package:conectacampo/presentation/seller/reservations_summary/reservations_sumarry_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +33,9 @@ class SellerMainPage extends StatelessWidget {
         BlocProvider<SellerMenuBloc>(
             create: (BuildContext context) =>
                 getIt()..add(const SellerMenuEvent.started())),
+        BlocProvider<SellerGroupBloc>(
+            create: (BuildContext context) =>
+                getIt()..add(const SellerGroupEvent.started())),
         BlocProvider<SellerSummaryBloc>(
             create: (BuildContext context) =>
                 getIt()..add(const SellerSummaryEvent.started())),
@@ -79,7 +84,7 @@ class SellerMainPage extends StatelessWidget {
               Scaffold(
                 backgroundColor: ColorSet.textFieldGrayBackground,
                 bottomNavigationBar: SellerBottomMenu(),
-                appBar: _CustomAppBar(),
+                appBar: state.showToolBar ? _CustomAppBar() : null,
                 body: WillPopScope(
                   onWillPop: () async {
                     return !await Navigator.maybePop(
@@ -93,7 +98,7 @@ class SellerMainPage extends StatelessWidget {
                       SellerSummary(navigatorKeys[0]!),
                       SellerGroupPage(navigatorKeys[2]!),
                       Scaffold(body: Text('Reservas')),
-                      Scaffold(body: Text('Reservas')),
+                      ReservationsSummaryPage(navigatorKeys[3]!),
                       ProfilePage(
                         navigatorKey: navigatorKeys[1]!,
                       )
@@ -246,5 +251,5 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size(double.infinity, 100);
+  Size get preferredSize => const Size(double.infinity, 110);
 }

@@ -1,5 +1,6 @@
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
+import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -35,14 +36,33 @@ class GroupPage extends StatelessWidget {
                                                 'Não anúncios em seus grupos'),
                                           ),
                                         )
-                                      : SingleChildScrollView(
-                                          child: AdvertisementList(
-                                              false,
-                                              r
-                                                  .map((e) =>
-                                                      UIAdvertisement(true, e))
-                                                  .toList()),
-                                        ))),
+                                      : ListView(
+                                          shrinkWrap: true,
+                                          physics:
+                                              const ClampingScrollPhysics(),
+                                          children: [
+                                              const Padding(
+                                                padding: EdgeInsets.fromLTRB(
+                                                    10, 20, 20, 20),
+                                                child: Text(
+                                                  'Administrar Grupos',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:
+                                                        ColorSet.greenTextColor,
+                                                  ),
+                                                ),
+                                              ),
+                                              AdvertisementList(
+                                                  isSearch: false,
+                                                  isGroup: true,
+                                                  advertisements: r
+                                                      .map((e) =>
+                                                          UIAdvertisement(
+                                                              true, e))
+                                                      .toList())
+                                            ]))),
                     ),
                   ),
                 ),

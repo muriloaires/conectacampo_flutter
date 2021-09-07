@@ -13,9 +13,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatelessWidget {
   final AdProduct _product;
-  final Advertisement _advertisement;
 
-  const ProductPage(this._product, this._advertisement);
+  const ProductPage(this._product);
   @override
   Widget build(BuildContext context) {
     final textController = TextEditingController();
@@ -23,17 +22,17 @@ class ProductPage extends StatelessWidget {
       create: (context) => getIt()..add(ProductPageEvent.started(_product)),
       child: BlocConsumer<ProductPageBloc, ProductPageState>(
           listener: (context, state) {
-            if (state.setInitialQuantity) {
-              state.optionOfReservatiomItemFailureOrSuccess.fold(() => null,
-                  (a) {
-                a.fold(
-                    (l) => null,
-                    (r) => () {
-                          context.read<ProductPageBloc>().add(
-                              ProductPageEvent.ammountChanged(
-                                  r.quantity.toString()));
-                          textController.text = r.quantity.toString();
-                        });
+            if (context.read<ProductPageBloc>().state.setInitialQuantity) {
+              context
+                  .read<ProductPageBloc>()
+                  .state
+                  .optionOfReservatiomItemFailureOrSuccess
+                  .fold(() => null, (a) {
+                a.fold((l) => null, (r) {
+                  context.read<ProductPageBloc>().add(
+                      ProductPageEvent.ammountChanged(r.quantity.toString()));
+                  textController.text = r.quantity.toString();
+                });
               });
             }
 
@@ -474,27 +473,31 @@ class ProductPage extends StatelessWidget {
                           /*Advertiser(
                   isSearch: true,
                 )*/
-                          SizedBox(
-                        height: 230,
-                        width: double.infinity,
-                        child: ListView.builder(
-                            physics: const ClampingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: _product.advertisement?.products.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context)
-                                        .push(MaterialPageRoute(
-                                      builder: (context) => ProductPage(
-                                          _advertisement.products[index],
-                                          _advertisement),
-                                    ));
-                                  },
-                                  child: ProductAdvertisement(
-                                      _product.advertisement!.products[index]));
-                            }),
+                          Visibility(
+                        visible: _product.advertisement != null,
+                        child: SizedBox(
+                          height: 230,
+                          width: double.infinity,
+                          child: ListView.builder(
+                              physics: const ClampingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount:
+                                  _product.advertisement?.products.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                        builder: (context) => ProductPage(
+                                            _product.advertisement!
+                                                .products[index]),
+                                      ));
+                                    },
+                                    child: ProductAdvertisement(_product
+                                        .advertisement!.products[index]));
+                              }),
+                        ),
                       ),
                     ),
                     const SizedBox(

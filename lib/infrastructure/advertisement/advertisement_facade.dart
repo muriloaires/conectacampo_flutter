@@ -5,6 +5,7 @@ import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/advertisements/advertisement_failure.dart';
 import 'package:conectacampo/domain/advertisements/i_advertisements_facade.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
+import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/infrastructure/advertisement/advertisement_mapper.dart';
 import 'package:conectacampo/infrastructure/advertisement/model/model.dart';
@@ -22,6 +23,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   static const routeGroupsAds = '/groups/advertisements';
   static const routeSellersAds = '/advertisements/me';
   static const routeAdsProducts = '/advertisement_products';
+  static const routeGroups = '/group_memberships';
 
   @override
   Future<Either<AdvertisementFailure, List<Advertisement>>> getAdvertisements(
@@ -270,6 +272,24 @@ class AdvertisementFacade extends IAdvertisementsFacade {
       return left(const AdvertisementFailure.unauthorized());
     } else if (code == 404) {
       return left(const AdvertisementFailure.productsNotFound());
+    } else if (code >= 400 && code < 500) {
+      return left(const AdvertisementFailure.requestError());
+    } else {
+      return left(const AdvertisementFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AdvertisementFailure, Unit>> leaveGroup(
+      {required UniqueId sellerId}) async {
+    final url =
+        Uri.https(baseUrl, '$apiVersion$routeGroups/${sellerId.getOrCrash()}');
+    final response = await getAuthenticatedDeleteRequest(url, getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const AdvertisementFailure.unauthorized());
     } else if (code >= 400 && code < 500) {
       return left(const AdvertisementFailure.requestError());
     } else {

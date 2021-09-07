@@ -12,7 +12,8 @@ class SellerMenuState with _$SellerMenuState {
       required Option<Reservation> optionOfResevationToEdit,
       required bool navToLogin,
       required Option<Either<AuthFailure, User>> optionOfUser,
-      required Option<Place> optionOfPlace}) = _SellerMenuState;
+      required Option<Place> optionOfPlace,
+      required bool showToolBar}) = _SellerMenuState;
 
   factory SellerMenuState.initial() => SellerMenuState(
       currentIndex: 0,
@@ -24,5 +25,6 @@ class SellerMenuState with _$SellerMenuState {
       optionOfResevationToEdit: none(),
       navToLogin: false,
       optionOfUser: none(),
-      optionOfPlace: none());
+      optionOfPlace: none(),
+      showToolBar: true);
 }

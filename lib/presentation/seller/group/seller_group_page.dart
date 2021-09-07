@@ -19,33 +19,41 @@ class SellerGroupPage extends StatelessWidget {
         settings: settings,
         builder: (context) => Scaffold(
           body: BlocProvider(
-            create: (context) => getIt<SellerGroupBloc>(),
+            create: (context) =>
+                getIt<SellerGroupBloc>()..add(const SellerGroupEvent.started()),
             child: BlocConsumer<SellerGroupBloc, SellerGroupState>(
               listener: (context, state) {},
-              builder: (context, state) => Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 32, 20, 0),
-                  child: ListView(
-                    shrinkWrap: true,
-                    physics: const ClampingScrollPhysics(),
-                    children: [
-                      // const SizedBox(height: 32),
-                      const Text(
-                        'Administrar Grupo',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: ColorSet.brown1,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      ListView.separated(
-                          itemBuilder: (context, index) =>
-                              SellerGroupWidget(state.groupReservations[index]),
-                          separatorBuilder: (context, index) =>
+              builder: (context, state) =>
+                  state.groupReservations.fold((l) => Container(), (r) {
+                final buyerGroup = createBuyerReservations(r);
+                return Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 32, 20, 0),
+                    child: r.isEmpty
+                        ? const Center(child: Text('Você não tem grupos'))
+                        : ListView(
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            children: [
+                              const Text(
+                                'Administrar Grupo',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorSet.brown1,
+                                ),
+                              ),
                               const SizedBox(height: 20),
-                          itemCount: state.groupReservations.length)
-                    ],
-                  )),
+                              ListView.separated(
+                                  shrinkWrap: true,
+                                  physics: const ClampingScrollPhysics(),
+                                  itemBuilder: (context, index) =>
+                                      SellerGroupWidget(buyerGroup[index]),
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(height: 20),
+                                  itemCount: buyerGroup.length)
+                            ],
+                          ));
+              }),
             ),
           ),
         ),

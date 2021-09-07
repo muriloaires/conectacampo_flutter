@@ -31,7 +31,7 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
       }
     }, productSelected: (e) async* {
       yield state.copyWith(productSelected: true);
-      yield state.copyWith(productSelected: false);
+      state.copyWith(productSelected: false);
     }, searchTapped: (SearchTapped value) async* {
       if (value.query.length < 3) {
         return;

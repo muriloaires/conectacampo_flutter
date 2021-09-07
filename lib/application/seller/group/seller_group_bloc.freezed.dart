@@ -150,7 +150,9 @@ abstract class _Started implements SellerGroupEvent {
 class _$SellerGroupStateTearOff {
   const _$SellerGroupStateTearOff();
 
-  _SellerGroupState call({required dynamic groupReservations}) {
+  _SellerGroupState call(
+      {required Either<ReservationFailure, List<Reservation>>
+          groupReservations}) {
     return _SellerGroupState(
       groupReservations: groupReservations,
     );
@@ -162,7 +164,8 @@ const $SellerGroupState = _$SellerGroupStateTearOff();
 
 /// @nodoc
 mixin _$SellerGroupState {
-  dynamic get groupReservations => throw _privateConstructorUsedError;
+  Either<ReservationFailure, List<Reservation>> get groupReservations =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SellerGroupStateCopyWith<SellerGroupState> get copyWith =>
@@ -174,7 +177,7 @@ abstract class $SellerGroupStateCopyWith<$Res> {
   factory $SellerGroupStateCopyWith(
           SellerGroupState value, $Res Function(SellerGroupState) then) =
       _$SellerGroupStateCopyWithImpl<$Res>;
-  $Res call({dynamic groupReservations});
+  $Res call({Either<ReservationFailure, List<Reservation>> groupReservations});
 }
 
 /// @nodoc
@@ -194,7 +197,7 @@ class _$SellerGroupStateCopyWithImpl<$Res>
       groupReservations: groupReservations == freezed
           ? _value.groupReservations
           : groupReservations // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Either<ReservationFailure, List<Reservation>>,
     ));
   }
 }
@@ -206,7 +209,7 @@ abstract class _$SellerGroupStateCopyWith<$Res>
           _SellerGroupState value, $Res Function(_SellerGroupState) then) =
       __$SellerGroupStateCopyWithImpl<$Res>;
   @override
-  $Res call({dynamic groupReservations});
+  $Res call({Either<ReservationFailure, List<Reservation>> groupReservations});
 }
 
 /// @nodoc
@@ -227,7 +230,8 @@ class __$SellerGroupStateCopyWithImpl<$Res>
     return _then(_SellerGroupState(
       groupReservations: groupReservations == freezed
           ? _value.groupReservations
-          : groupReservations,
+          : groupReservations // ignore: cast_nullable_to_non_nullable
+              as Either<ReservationFailure, List<Reservation>>,
     ));
   }
 }
@@ -238,7 +242,7 @@ class _$_SellerGroupState implements _SellerGroupState {
   const _$_SellerGroupState({required this.groupReservations});
 
   @override
-  final dynamic groupReservations;
+  final Either<ReservationFailure, List<Reservation>> groupReservations;
 
   @override
   String toString() {
@@ -266,11 +270,13 @@ class _$_SellerGroupState implements _SellerGroupState {
 }
 
 abstract class _SellerGroupState implements SellerGroupState {
-  const factory _SellerGroupState({required dynamic groupReservations}) =
-      _$_SellerGroupState;
+  const factory _SellerGroupState(
+      {required Either<ReservationFailure, List<Reservation>>
+          groupReservations}) = _$_SellerGroupState;
 
   @override
-  dynamic get groupReservations => throw _privateConstructorUsedError;
+  Either<ReservationFailure, List<Reservation>> get groupReservations =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SellerGroupStateCopyWith<_SellerGroupState> get copyWith =>

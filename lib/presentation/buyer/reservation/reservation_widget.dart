@@ -136,7 +136,10 @@ class ReservationWidget extends StatelessWidget {
                   const SizedBox(height: 20),
                   SizedBox(
                     child: Visibility(
-                        visible: state.isItemVisible,
+                        visible: context
+                            .read<ReservationBloc>()
+                            .state
+                            .isItemsVisible,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ListView(

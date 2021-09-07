@@ -1,9 +1,8 @@
 import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
-import 'package:conectacampo/application/seller/reservation/seller_reservation_bloc.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 
 class SellerGroupWidget extends StatefulWidget {
   final BuyerReservations buyerReservations;
@@ -102,6 +101,8 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
               child: Visibility(
                   visible: expanded,
                   child: ListView.separated(
+                    shrinkWrap: true,
+                    physics: const ClampingScrollPhysics(),
                     itemBuilder: (context, index) {
                       final reservation =
                           widget.buyerReservations.reservations[index];
@@ -111,11 +112,12 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                           shrinkWrap: true,
                           physics: const ClampingScrollPhysics(),
                           children: [
-                            const Text('Itens',
-                                style: TextStyle(
+                            Text(
+                                'Dia: ${DateTime.parse(reservation.createdAt ?? '').getDayMonthYear()}',
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: ColorSet.brown1,
                                 )),
+                            const SizedBox(height: 10),
                             ListView.builder(
                               physics: const ClampingScrollPhysics(),
                               shrinkWrap: true,
@@ -130,7 +132,7 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                               },
                               itemCount: reservation.productReservations.length,
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 10),
                           ],
                         ),
                       );
@@ -145,9 +147,9 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
             ),
             GestureDetector(
               onTap: () {
-                context
-                    .read<SellerReservationBloc>()
-                    .add(const SellerReservationEvent.showItemsTapped());
+                setState(() {
+                  expanded = !expanded;
+                });
               },
               child: SizedBox(
                 height: 40,

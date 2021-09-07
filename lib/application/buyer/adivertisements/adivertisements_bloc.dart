@@ -50,7 +50,19 @@ class AdvertisementsBloc
             loading: false,
             adsFailureOrSuccess: advertisementsFailureOrSuccess);
       }
+    }, leaveGroupTapped: (LeaveGroupTapped value) async* {
+      final result =
+          await _adsFacade.leaveGroup(sellerId: value.advertisement.seller.id);
+
+      if (result.isRight()) {
+        final groupAdsFailureOrSuccess = await _adsFacade.getGroupsAds();
+        yield state.copyWith(
+            loading: false,
+            groupsAdsFailureOrSuccess: groupAdsFailureOrSuccess);
+      } else {
+        yield state.copyWith(groupRemovalSuccess: false);
+        state.copyWith(groupRemovalSuccess: true);
+      }
     });
   }
 }
-// [expandedChanged.index].isExpanded = expandedChanged.isExpanded;

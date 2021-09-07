@@ -1,6 +1,7 @@
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/advertisements/advertisement_failure.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
+import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/places/place.dart';
 
 import 'package:dartz/dartz.dart';
@@ -32,4 +33,7 @@ abstract class IAdvertisementsFacade {
 
   Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProductsByIds(
       List<int> ids);
+
+  Future<Either<AdvertisementFailure, Unit>> leaveGroup(
+      {required UniqueId sellerId});
 }

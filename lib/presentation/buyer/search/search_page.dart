@@ -1,5 +1,6 @@
 import 'package:conectacampo/application/buyer/search/search_form_bloc.dart';
 import 'package:conectacampo/injection.dart';
+import 'package:conectacampo/presentation/buyer/product/product_page.dart';
 import 'package:conectacampo/presentation/buyer/widgets/search_advertisement.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,8 @@ class SearchForm extends StatelessWidget {
           } else {
             EasyLoading.dismiss();
           }
+
+          if (state.productSelected) {}
         },
         builder: (context, state) => Scaffold(
               appBar: AppBar(
@@ -210,19 +213,22 @@ class SearchForm extends StatelessWidget {
                                               const ClampingScrollPhysics(),
                                           shrinkWrap: true,
                                           itemBuilder: (context, index) {
-                                            return Wrap(
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () => context
-                                                      .read<SearchFormBloc>()
-                                                      .add(
-                                                        const SearchFormEvent
-                                                            .productSelected(),
-                                                      ),
-                                                  child: SearchAdvertisement(
-                                                      r[index]),
-                                                )
-                                              ],
+                                            return GestureDetector(
+                                              onTap: () {
+                                                Navigator.of(context)
+                                                    .push(MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ProductPage(r[index]),
+                                                ));
+                                                context
+                                                    .read<SearchFormBloc>()
+                                                    .add(
+                                                      const SearchFormEvent
+                                                          .productSelected(),
+                                                    );
+                                              },
+                                              child:
+                                                  SearchAdvertisement(r[index]),
                                             );
                                           });
                                     }

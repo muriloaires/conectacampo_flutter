@@ -39,14 +39,15 @@ class SingleAdvertisement extends StatelessWidget {
                 return GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ProductPage(
-                            _advertisement.products[index], _advertisement),
+                        builder: (context) =>
+                            ProductPage(_advertisement.products[index]),
                       ));
                     },
                     child:
                         ProductAdvertisement(_advertisement.products[index]));
               }),
-        )
+        ),
+        const Divider(),
       ],
     );
   }

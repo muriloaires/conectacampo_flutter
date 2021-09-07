@@ -30,10 +30,10 @@ class SellerReservationWidget extends StatelessWidget {
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15)),
                     child: Container(
-                      height: 40,
+                      height: 45,
                       color: _getStatusColor(state.reservation),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 8, 30, 8),
+                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
                         child: Center(
                           child: _getStatusText(state.reservation),
                         ),

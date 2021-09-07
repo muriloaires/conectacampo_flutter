@@ -8,11 +8,12 @@ class AdvertisementsState with _$AdvertisementsState {
     required Either<AdvertisementFailure, List<Advertisement>>
         groupsAdsFailureOrSuccess,
     required bool loading,
+    required bool groupRemovalSuccess,
   }) = _AdivertisementsState;
 
   factory AdvertisementsState.initial() => AdvertisementsState(
-        adsFailureOrSuccess: right(List<Advertisement>.empty()),
-        groupsAdsFailureOrSuccess: right(List<Advertisement>.empty()),
-        loading: true,
-      );
+      adsFailureOrSuccess: right(List<Advertisement>.empty()),
+      groupsAdsFailureOrSuccess: right(List<Advertisement>.empty()),
+      loading: true,
+      groupRemovalSuccess: true);
 }
