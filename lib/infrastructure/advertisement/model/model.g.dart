@@ -15,10 +15,11 @@ _$_AdvertisementResponse _$_$_AdvertisementResponseFromJson(
         .toList(),
     json['delivery_at'] as String,
     json['available_for_groups_at'] as String,
-    json['vehicle_license_plate'] as String,
     PlaceResponse.fromJson(json['place'] as Map<String, dynamic>),
     UserResponse.fromJson(json['seller'] as Map<String, dynamic>),
     json['created_at'] as String,
+    json['meeting_type'] as String?,
+    json['meeting_type_description'] as String?,
   );
 }
 
@@ -29,10 +30,11 @@ Map<String, dynamic> _$_$_AdvertisementResponseToJson(
       'products': instance.products,
       'delivery_at': instance.deliveryAt,
       'available_for_groups_at': instance.availableForGroupsAt,
-      'vehicle_license_plate': instance.vehicleLicensePlate,
       'place': instance.place,
       'seller': instance.seller,
       'created_at': instance.createdAt,
+      'meeting_type': instance.meetingType,
+      'meeting_type_description': instance.meetingTypeDescription,
     };
 
 _$_AdProductResponse _$_$_AdProductResponseFromJson(Map<String, dynamic> json) {
@@ -49,6 +51,7 @@ _$_AdProductResponse _$_$_AdProductResponseFromJson(Map<String, dynamic> json) {
         ?.map((e) => AvatarResponse.fromJson(e as Map<String, dynamic>))
         .toList(),
     json['created_at'] as String,
+    json['advertisement_id'] as int,
   );
 }
 
@@ -65,4 +68,5 @@ Map<String, dynamic> _$_$_AdProductResponseToJson(
       'observation': instance.observation,
       'images': instance.images,
       'created_at': instance.createdAt,
+      'advertisement_id': instance.advertisementId,
     };

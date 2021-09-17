@@ -12,10 +12,11 @@ class Advertisement with _$Advertisement {
     List<AdProduct> products,
     String deliveryAt,
     String availableForGroupsAt,
-    String vehicleLicensePlate,
     Place place,
     User seller,
     String createdAt,
+    String meetingType,
+    String meetingTypeDescription,
   ) = _Advertisement;
 }
 
@@ -33,7 +34,7 @@ class AdProduct with _$AdProduct {
     List<ProductImages> images,
     String createdAt,
     Advertisement? advertisement,
-  ) = _AdProduct;
+      int advertisementId) = _AdProduct;
 }
 
 @freezed

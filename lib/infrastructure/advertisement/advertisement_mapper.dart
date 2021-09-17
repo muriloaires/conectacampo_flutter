@@ -1,7 +1,6 @@
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/places/place.dart';
-import 'package:conectacampo/domain/places/value_objects.dart';
 import 'package:conectacampo/infrastructure/advertisement/model/model.dart';
 import 'package:conectacampo/infrastructure/auth/user_mapper.dart';
 import 'package:conectacampo/infrastructure/places/model/model.dart';
@@ -13,10 +12,11 @@ extension AdvertisementExtension on AdvertisementResponse {
       products.map((e) => e.toDomain()).toList(),
       deliveryAt,
       availableForGroupsAt,
-      vehicleLicensePlate,
       place.toDomain(),
       seller.toDomain(),
       createdAt,
+      meetingType ?? '',
+      meetingTypeDescription ?? '',
     );
   }
 }
@@ -40,7 +40,8 @@ extension ProductExtension on AdProductResponse {
                 .toList() ??
             List<ProductImages>.empty(),
         createdAt,
-        null);
+        null,
+        advertisementId);
   }
 }
 

@@ -1,9 +1,11 @@
+import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
+
+import '../buyer_main_page.dart';
 
 class GroupPage extends StatelessWidget {
   final GlobalKey navigatorKey;
@@ -16,10 +18,21 @@ class GroupPage extends StatelessWidget {
       key: navigatorKey,
       onGenerateRoute: (settings) => MaterialPageRoute(
           settings: settings,
-          builder: (context) => SafeArea(
-                child: Scaffold(
-                  body: Padding(
-                    padding: const EdgeInsets.all(16.0),
+          builder: (context) => Scaffold(
+                appBar: SearchWidget(),
+                body: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: BlocListener<AdvertisementsBloc, AdvertisementsState>(
+                    listener: (context, state) {
+                      if (context
+                          .read<AdvertisementsBloc>()
+                          .state
+                          .groupRemovalSuccess) {
+                        context
+                            .read<GroupBloc>()
+                            .add(const GroupEvent.started());
+                      }
+                    },
                     child: BlocConsumer<GroupBloc, GroupState>(
                       listener: (context, state) {},
                       builder: (context, state) =>
@@ -33,36 +46,43 @@ class GroupPage extends StatelessWidget {
                                           width: double.infinity,
                                           child: Center(
                                             child: Text(
-                                                'Não anúncios em seus grupos'),
+                                                'Não há anúncios em seus grupos'),
                                           ),
                                         )
-                                      : ListView(
-                                          shrinkWrap: true,
-                                          physics:
-                                              const ClampingScrollPhysics(),
-                                          children: [
-                                              const Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    10, 20, 20, 20),
-                                                child: Text(
-                                                  'Administrar Grupos',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                    color:
-                                                        ColorSet.greenTextColor,
+                                      : RefreshIndicator(
+                                          onRefresh: () async {
+                                            context.read<GroupBloc>().add(
+                                                const GroupEvent.started());
+                                          },
+                                          child: ListView(
+                                              shrinkWrap: true,
+                                              physics:
+                                                  const ClampingScrollPhysics(),
+                                              children: [
+                                                const Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      10, 20, 20, 20),
+                                                  child: Text(
+                                                    'Administrar Grupos',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: ColorSet
+                                                          .greenTextColor,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                              AdvertisementList(
-                                                  isSearch: false,
-                                                  isGroup: true,
-                                                  advertisements: r
-                                                      .map((e) =>
-                                                          UIAdvertisement(
-                                                              true, e))
-                                                      .toList())
-                                            ]))),
+                                                AdvertisementList(
+                                                    isSearch: false,
+                                                    isGroup: true,
+                                                    advertisements: r
+                                                        .map((e) =>
+                                                            UIAdvertisement(
+                                                                true, e))
+                                                        .toList())
+                                              ]),
+                                        ))),
                     ),
                   ),
                 ),

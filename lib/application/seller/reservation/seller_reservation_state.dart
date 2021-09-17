@@ -22,6 +22,7 @@ class SellerReservationState with _$SellerReservationState {
               PhoneNumber('62999999999'),
               null,
               null,
+              null,
               null),
           seller: User(
               UniqueId.fromUniqueString('as'),
@@ -29,6 +30,7 @@ class SellerReservationState with _$SellerReservationState {
               Nickname('nickname'),
               'vehicleLicensePlate',
               PhoneNumber('62999999999'),
+              null,
               null,
               null,
               null),

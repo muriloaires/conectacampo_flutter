@@ -2,12 +2,13 @@ part of 'single_reservation_bloc.dart';
 
 @freezed
 class SingleReservationState with _$SingleReservationState {
-  const factory SingleReservationState({
-    required bool isItemVisible,
-    required Reservation reservation,
-    required bool showAcceptError,
-    required bool showCancelItemError,
-  }) = _SingleReservationState;
+  const factory SingleReservationState(
+      {required bool isItemVisible,
+      required Reservation reservation,
+      required bool showAcceptError,
+      required bool showCancelItemError,
+      required Option<Either<AdvertisementFailure, Advertisement>>
+          optionOfAdFailureOrSuccess}) = _SingleReservationState;
 
   factory SingleReservationState.initial() => SingleReservationState(
       isItemVisible: true,
@@ -22,6 +23,7 @@ class SingleReservationState with _$SingleReservationState {
               PhoneNumber('62999999999'),
               null,
               null,
+              null,
               null),
           seller: User(
               UniqueId.fromUniqueString('as'),
@@ -31,8 +33,10 @@ class SingleReservationState with _$SingleReservationState {
               PhoneNumber('62999999999'),
               null,
               null,
+              null,
               null),
           productReservations: []),
       showAcceptError: false,
-      showCancelItemError: false);
+      showCancelItemError: false,
+      optionOfAdFailureOrSuccess: none());
 }

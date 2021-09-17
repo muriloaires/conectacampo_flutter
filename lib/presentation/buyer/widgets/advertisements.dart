@@ -4,7 +4,6 @@ import 'package:conectacampo/presentation/buyer/widgets/advertiser.dart';
 import 'package:conectacampo/presentation/buyer/widgets/single_advertisement.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdvertisementList extends StatefulWidget {
@@ -41,17 +40,90 @@ class _AdvertisementListState extends State<AdvertisementList> {
                 Stack(
                   children: [
                     Advertiser(
-                        isSearch: widget.isSearch,
-                        user: advertisement.seller,
-                        lastAdvertisements: advertisement.products),
+                      isSearch: widget.isSearch,
+                      seller: advertisement.seller
+                    ),
                     if (widget.isGroup)
                       Align(
                         alignment: Alignment.topRight,
                         child: IconButton(
                           onPressed: () {
-                            context.read<AdvertisementsBloc>().add(
-                                AdvertisementsEvent.leaveGroupTapped(
-                                    advertisement));
+                            showDialog<String>(
+                              context: context,
+                              builder: (BuildContext dialogContext) => Dialog(
+                                child: ListView(
+                                  shrinkWrap: true,
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    CircleAvatar(
+                                      radius: 35,
+                                      backgroundColor: Colors.red[800],
+                                      child: const Icon(Icons.close,
+                                          size: 40, color: Colors.white),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Center(
+                                      child: Text('Sair do grupo',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    const Center(
+                                      child: SizedBox(
+                                        width: 180,
+                                        child: Flexible(
+                                          child: Text(
+                                            'Você deseja sair do grupo?',
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Container(
+                                        height: 1, color: ColorSet.grayLine),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Expanded(
+                                          child: TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(dialogContext),
+                                              child: const Text('Voltar',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color:
+                                                          ColorSet.grayDark))),
+                                        ),
+                                        Expanded(
+                                          child: TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(dialogContext);
+                                                context
+                                                    .read<AdvertisementsBloc>()
+                                                    .add(AdvertisementsEvent
+                                                        .leaveGroupTapped(
+                                                            advertisement));
+                                              },
+                                              child: const Text('Sim',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color:
+                                                          ColorSet.grayDark))),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
                           },
                           icon: const Icon(Icons.close),
                         ),

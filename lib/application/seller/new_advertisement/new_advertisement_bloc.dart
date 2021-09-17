@@ -4,8 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_ad_product.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
 import 'package:conectacampo/domain/advertisements/seller/value_objects.dart';
-import 'package:conectacampo/domain/places/place.dart';
-import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/infrastructure/places/place_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -35,7 +33,7 @@ class NewAdvertisementBloc
         },
         onPlaceTap: (onPlaceTap) async* {
           yield state.copyWith(openPlace: true);
-          yield state.copyWith(openPlace: false);
+          state.copyWith(openPlace: false);
         },
         onPlaceSelected: (onPlaceSelected) async* {
           final place = await loadSelectedPlace();
@@ -59,6 +57,8 @@ class NewAdvertisementBloc
           if (onDeliveryPlaceSelected.where != null) {
             yield state.copyWith(
                 deliveryPlace: onDeliveryPlaceSelected.where,
+                newAdvertisement: state.newAdvertisement.copyWith(
+                    newAdDeliveryType: onDeliveryPlaceSelected.where!),
                 requestDeliveryPlaceFocus: true,
                 isBtnContinueEnabled: setIsBtnConinueEnabled(state));
           }

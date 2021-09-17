@@ -1,3 +1,4 @@
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,5 +14,6 @@ class User with _$User {
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
-      OriginalAvatar? originalAvatar) = _User;
+      OriginalAvatar? originalAvatar,
+      Advertisement? lastAdvertisement) = _User;
 }

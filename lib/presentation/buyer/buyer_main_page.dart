@@ -8,9 +8,11 @@ import 'package:conectacampo/presentation/buyer/cart/cart_page.dart';
 import 'package:conectacampo/presentation/buyer/group/group_page.dart';
 import 'package:conectacampo/presentation/buyer/menu/buyer_summary.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_page.dart';
+import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/seller_main_page.dart';
+import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -136,7 +138,11 @@ class BuyerMainPage extends StatelessWidget {
                     shrinkWrap: true,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context
+                              .read<BuyerMenuBloc>()
+                              .add(const BuyerMenuEvent.homeTapped());
+                        },
                         child: Container(
                           width: 68.0,
                           height: 68.0,
@@ -276,4 +282,118 @@ class BuyerMainPage extends StatelessWidget {
       )
     ]);
   }
+}
+
+class SearchWidget extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.all(0),
+      shape: BeveledRectangleBorder(
+        borderRadius: BorderRadius.circular(0.0),
+      ),
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(20, 32, 20, 8),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 32,
+            ),
+            GestureDetector(
+              onTap: () {
+                // context
+                //     .read<BuyerMenuBloc>()
+                //     .add(const BuyerMenuEvent.searchTapped());
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (builder) => SearchPage()));
+              },
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  color: ColorSet.grayRoundedBackground,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(32),
+                  ),
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Text(
+                          'O que você quer comprar hoje?',
+                          style: TextStyle(fontFamily: 'Roboto', fontSize: 16),
+                        ),
+                        Icon(
+                          Icons.search,
+                          color: ColorSet.colorPrimaryGreen,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+            GestureDetector(
+              onTap: () async {
+                final success = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PlacesPage(),
+                    ));
+                context
+                    .read<AdvertisementsBloc>()
+                    .add(const AdvertisementsEvent.placeChanged());
+                context
+                    .read<SummaryBloc>()
+                    .add(const SummaryEvent.onPlaceChanged());
+              },
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    'assets/location_outline.svg',
+                    width: 16,
+                    height: 16,
+                    color: ColorSet.grayLine,
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  Flexible(
+                    child: Text.rich(
+                      TextSpan(children: [
+                        const TextSpan(
+                          text: 'Produtos e Retirada em: ',
+                          style: TextStyle(color: ColorSet.gray2, fontSize: 13),
+                        ),
+                        TextSpan(
+                          text: context
+                              .read<SummaryBloc>()
+                              .state
+                              .selectedPlace
+                              .name,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: ColorSet.gray2,
+                              fontSize: 13),
+                        ),
+                      ]),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => const Size(double.infinity, 155);
 }

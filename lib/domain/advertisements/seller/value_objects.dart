@@ -15,6 +15,16 @@ class NewAdvertisementDate extends ValueObject<DateTime> {
   }
 
   const NewAdvertisementDate._(this.value);
+
+  @override
+  bool isValid() {
+    if (super.isValid()) {
+      return validateNewAdDate(value.fold((l) => DateTime.now(), (r) => r))
+          .isRight();
+    } else {
+      return false;
+    }
+  }
 }
 
 class NewAdvertisementDeliveryPlace extends ValueObject<String> {

@@ -140,8 +140,8 @@ class SignUpForm extends StatelessWidget {
                           (_) => null),
                   keyboardType: TextInputType.name,
                   decoration: const InputDecoration(
-                      hintStyle: TextStyle(fontSize: 24, fontFamily: 'Roboto'),
-                      hintText: 'Nome ou apelido'),
+                      hintStyle: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
+                      hintText: 'Como gostaria de ser chamado no app?'),
                   style: const TextStyle(fontSize: 24, fontFamily: 'Roboto'),
                 ),
                 const SizedBox(

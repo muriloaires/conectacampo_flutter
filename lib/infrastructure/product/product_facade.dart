@@ -30,4 +30,26 @@ class ProductFacade extends IProductFacade {
       return left(const ProductFailure.serverError());
     }
   }
+
+  @override
+  Future<Either<ProductFailure, Product>> getProductByName(String name) async {
+    final url = Uri.https(baseUrl, '$apiVersion$routeProducts', {'name': name});
+    final response = await getAuthenticatedRequest(url, getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final Iterable iterable = jsonDecode(response.body) as Iterable;
+      final productsResponse = iterable.map((e) =>
+          ProductResponse.fromJson(e as Map<String, dynamic>).toDomain());
+      if (productsResponse.isEmpty) {
+        return left(const ProductFailure.productsNotFound());
+      } else {}
+      return right(productsResponse.toList().first);
+    } else if (code == 401) {
+      return left(const ProductFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ProductFailure.requestError());
+    } else {
+      return left(const ProductFailure.serverError());
+    }
+  }
 }

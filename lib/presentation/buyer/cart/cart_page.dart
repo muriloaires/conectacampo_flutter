@@ -3,6 +3,7 @@ import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/reservation/product_reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
+import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
@@ -177,13 +178,7 @@ class CartBottomMenu extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () async {
-                  final whatsappUrl =
-                      "whatsapp://send?phone=${state.itemsInCart.first.sellerPhone}";
-                  await canLaunch(whatsappUrl)
-                      ? launch(whatsappUrl)
-                      : EasyLoading.showError(
-                          "open whatsapp app link or do a snackbar with notification that there is no whatsapp installed",
-                          duration: const Duration(seconds: 2));
+                  await openWhatsapp(state.itemsInCart.first.sellerPhone);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

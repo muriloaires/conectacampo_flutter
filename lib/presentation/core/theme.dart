@@ -24,6 +24,8 @@ class ColorSet {
   static const Color yellow2 = Color.fromRGBO(244, 181, 18, 1);
   static const Color green1 = Color.fromRGBO(33, 150, 83, 1);
   static const Color green2 = Color.fromRGBO(39, 174, 96, 1);
+  static const Color green3 = Color.fromRGBO(114, 161, 63, 1);
+
   static const Color red1Alpha = Color.fromRGBO(248, 221, 221, 1);
   static const Color green1Alpha = Color.fromRGBO(221, 248, 227, 1);
   static const Color red1 = Color.fromRGBO(235, 87, 87, 1);

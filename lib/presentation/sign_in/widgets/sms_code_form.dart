@@ -1,11 +1,10 @@
 import 'package:conectacampo/application/auth/sms_code_form/sms_code_form_bloc.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
-import 'package:conectacampo/presentation/buyer/buyer_main_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
+import 'package:conectacampo/presentation/sign_in/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:conectacampo/presentation/sign_in/sign_up_page.dart';
 
 class SmsCodeForm extends StatelessWidget {
   final FocusScopeNode _node = FocusScopeNode();
@@ -51,16 +50,11 @@ class SmsCodeForm extends StatelessWidget {
               (either) => either.fold((failure) {
                     failure.maybeMap(
                         userNotFound: (_) async {
-                          final success = await Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => PlacesPage()));
-                          if (success != null) {
-                            Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => SignUpPage()),
                             );
-                          }
                         },
                         orElse: () {});
                     final String errorText = failure.maybeMap(

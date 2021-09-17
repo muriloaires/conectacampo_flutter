@@ -1,6 +1,5 @@
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertiser.dart';
-import 'package:conectacampo/presentation/buyer/widgets/single_advertisement.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_single_ad.dart';
 import 'package:flutter/material.dart';
@@ -36,9 +35,9 @@ class _SellerAdvertisementListState extends State<SellerAdvertisementList> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Advertiser(
-                          isSearch: widget.isSearch,
-                          user: e.advertisement.seller,
-                          lastAdvertisements: e.advertisement.products),
+                        isSearch: widget.isSearch,
+                        seller: e.advertisement.seller
+                      ),
                       Container(
                         height: 1,
                         color: ColorSet.grayLine,

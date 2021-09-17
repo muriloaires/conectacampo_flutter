@@ -34,13 +34,7 @@ class SellerSummaryBloc extends Bloc<SellerSummaryEvent, SellerSummaryState> {
     yield* event.map(started: (started) async* {
       final place = await loadSelectedPlace();
       final user = await loadLoggedUser();
-      final Option<Either<AdvertisementFailure, List<Advertisement>>>
-          adsFailureOrSucces;
-      if (place != null) {
-        adsFailureOrSucces = some(await adsFacade.getSellerAds(place));
-      } else {
-        adsFailureOrSucces = none();
-      }
+
       yield state.copyWith(loadingReservations: true);
       final reservationFailureOrSucess =
           await reservationFacade.getSellerReservations();
@@ -48,7 +42,6 @@ class SellerSummaryBloc extends Bloc<SellerSummaryEvent, SellerSummaryState> {
       yield state.copyWith(
           optionOfOPlace: optionOf(place),
           optionOfOUser: optionOf(user),
-          optionOfAdvertisementsFailureOrSuccess: adsFailureOrSucces,
           optionOfReservationFailureOrSuccess: some(reservationFailureOrSucess),
           loadingReservations: false);
     }, onCancelReservationPressed: (OnCancelReservationPressed value) async* {

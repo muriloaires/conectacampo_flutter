@@ -23,6 +23,7 @@ extension LocalUserDomainX on UserResponse {
       thumb,
       medium,
       original,
+      null
     );
   }
 }

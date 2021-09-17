@@ -26,6 +26,8 @@ abstract class IAdvertisementsFacade {
   Future<Either<AdvertisementFailure, Advertisement>> publishAdvertisement(
       NewAdvertisement newAdvertisement);
 
+  Future<Either<AdvertisementFailure, Advertisement>> getAdvertisement(int adId);
+
   Future<Either<AdvertisementFailure, List<Advertisement>>> getSellerAds(
       Place place);
 
@@ -36,4 +38,7 @@ abstract class IAdvertisementsFacade {
 
   Future<Either<AdvertisementFailure, Unit>> leaveGroup(
       {required UniqueId sellerId});
+
+  Future<Either<AdvertisementFailure, Unit>> deleteAd(
+      Advertisement advertisement);
 }

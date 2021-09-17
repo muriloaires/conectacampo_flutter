@@ -21,19 +21,21 @@ class _$AdvertisementTearOff {
       List<AdProduct> products,
       String deliveryAt,
       String availableForGroupsAt,
-      String vehicleLicensePlate,
       Place place,
       User seller,
-      String createdAt) {
+      String createdAt,
+      String meetingType,
+      String meetingTypeDescription) {
     return _Advertisement(
       id,
       products,
       deliveryAt,
       availableForGroupsAt,
-      vehicleLicensePlate,
       place,
       seller,
       createdAt,
+      meetingType,
+      meetingTypeDescription,
     );
   }
 }
@@ -47,10 +49,11 @@ mixin _$Advertisement {
   List<AdProduct> get products => throw _privateConstructorUsedError;
   String get deliveryAt => throw _privateConstructorUsedError;
   String get availableForGroupsAt => throw _privateConstructorUsedError;
-  String get vehicleLicensePlate => throw _privateConstructorUsedError;
   Place get place => throw _privateConstructorUsedError;
   User get seller => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
+  String get meetingType => throw _privateConstructorUsedError;
+  String get meetingTypeDescription => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AdvertisementCopyWith<Advertisement> get copyWith =>
@@ -67,10 +70,11 @@ abstract class $AdvertisementCopyWith<$Res> {
       List<AdProduct> products,
       String deliveryAt,
       String availableForGroupsAt,
-      String vehicleLicensePlate,
       Place place,
       User seller,
-      String createdAt});
+      String createdAt,
+      String meetingType,
+      String meetingTypeDescription});
 
   $PlaceCopyWith<$Res> get place;
   $UserCopyWith<$Res> get seller;
@@ -91,10 +95,11 @@ class _$AdvertisementCopyWithImpl<$Res>
     Object? products = freezed,
     Object? deliveryAt = freezed,
     Object? availableForGroupsAt = freezed,
-    Object? vehicleLicensePlate = freezed,
     Object? place = freezed,
     Object? seller = freezed,
     Object? createdAt = freezed,
+    Object? meetingType = freezed,
+    Object? meetingTypeDescription = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -113,10 +118,6 @@ class _$AdvertisementCopyWithImpl<$Res>
           ? _value.availableForGroupsAt
           : availableForGroupsAt // ignore: cast_nullable_to_non_nullable
               as String,
-      vehicleLicensePlate: vehicleLicensePlate == freezed
-          ? _value.vehicleLicensePlate
-          : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
-              as String,
       place: place == freezed
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
@@ -128,6 +129,14 @@ class _$AdvertisementCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      meetingType: meetingType == freezed
+          ? _value.meetingType
+          : meetingType // ignore: cast_nullable_to_non_nullable
+              as String,
+      meetingTypeDescription: meetingTypeDescription == freezed
+          ? _value.meetingTypeDescription
+          : meetingTypeDescription // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -159,10 +168,11 @@ abstract class _$AdvertisementCopyWith<$Res>
       List<AdProduct> products,
       String deliveryAt,
       String availableForGroupsAt,
-      String vehicleLicensePlate,
       Place place,
       User seller,
-      String createdAt});
+      String createdAt,
+      String meetingType,
+      String meetingTypeDescription});
 
   @override
   $PlaceCopyWith<$Res> get place;
@@ -187,10 +197,11 @@ class __$AdvertisementCopyWithImpl<$Res>
     Object? products = freezed,
     Object? deliveryAt = freezed,
     Object? availableForGroupsAt = freezed,
-    Object? vehicleLicensePlate = freezed,
     Object? place = freezed,
     Object? seller = freezed,
     Object? createdAt = freezed,
+    Object? meetingType = freezed,
+    Object? meetingTypeDescription = freezed,
   }) {
     return _then(_Advertisement(
       id == freezed
@@ -209,10 +220,6 @@ class __$AdvertisementCopyWithImpl<$Res>
           ? _value.availableForGroupsAt
           : availableForGroupsAt // ignore: cast_nullable_to_non_nullable
               as String,
-      vehicleLicensePlate == freezed
-          ? _value.vehicleLicensePlate
-          : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
-              as String,
       place == freezed
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
@@ -224,6 +231,14 @@ class __$AdvertisementCopyWithImpl<$Res>
       createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      meetingType == freezed
+          ? _value.meetingType
+          : meetingType // ignore: cast_nullable_to_non_nullable
+              as String,
+      meetingTypeDescription == freezed
+          ? _value.meetingTypeDescription
+          : meetingTypeDescription // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -237,10 +252,11 @@ class _$_Advertisement implements _Advertisement {
       this.products,
       this.deliveryAt,
       this.availableForGroupsAt,
-      this.vehicleLicensePlate,
       this.place,
       this.seller,
-      this.createdAt);
+      this.createdAt,
+      this.meetingType,
+      this.meetingTypeDescription);
 
   @override
   final int id;
@@ -251,17 +267,19 @@ class _$_Advertisement implements _Advertisement {
   @override
   final String availableForGroupsAt;
   @override
-  final String vehicleLicensePlate;
-  @override
   final Place place;
   @override
   final User seller;
   @override
   final String createdAt;
+  @override
+  final String meetingType;
+  @override
+  final String meetingTypeDescription;
 
   @override
   String toString() {
-    return 'Advertisement(id: $id, products: $products, deliveryAt: $deliveryAt, availableForGroupsAt: $availableForGroupsAt, vehicleLicensePlate: $vehicleLicensePlate, place: $place, seller: $seller, createdAt: $createdAt)';
+    return 'Advertisement(id: $id, products: $products, deliveryAt: $deliveryAt, availableForGroupsAt: $availableForGroupsAt, place: $place, seller: $seller, createdAt: $createdAt, meetingType: $meetingType, meetingTypeDescription: $meetingTypeDescription)';
   }
 
   @override
@@ -279,16 +297,19 @@ class _$_Advertisement implements _Advertisement {
             (identical(other.availableForGroupsAt, availableForGroupsAt) ||
                 const DeepCollectionEquality().equals(
                     other.availableForGroupsAt, availableForGroupsAt)) &&
-            (identical(other.vehicleLicensePlate, vehicleLicensePlate) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleLicensePlate, vehicleLicensePlate)) &&
             (identical(other.place, place) ||
                 const DeepCollectionEquality().equals(other.place, place)) &&
             (identical(other.seller, seller) ||
                 const DeepCollectionEquality().equals(other.seller, seller)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)));
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.meetingType, meetingType) ||
+                const DeepCollectionEquality()
+                    .equals(other.meetingType, meetingType)) &&
+            (identical(other.meetingTypeDescription, meetingTypeDescription) ||
+                const DeepCollectionEquality().equals(
+                    other.meetingTypeDescription, meetingTypeDescription)));
   }
 
   @override
@@ -298,10 +319,11 @@ class _$_Advertisement implements _Advertisement {
       const DeepCollectionEquality().hash(products) ^
       const DeepCollectionEquality().hash(deliveryAt) ^
       const DeepCollectionEquality().hash(availableForGroupsAt) ^
-      const DeepCollectionEquality().hash(vehicleLicensePlate) ^
       const DeepCollectionEquality().hash(place) ^
       const DeepCollectionEquality().hash(seller) ^
-      const DeepCollectionEquality().hash(createdAt);
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(meetingType) ^
+      const DeepCollectionEquality().hash(meetingTypeDescription);
 
   @JsonKey(ignore: true)
   @override
@@ -315,10 +337,11 @@ abstract class _Advertisement implements Advertisement {
       List<AdProduct> products,
       String deliveryAt,
       String availableForGroupsAt,
-      String vehicleLicensePlate,
       Place place,
       User seller,
-      String createdAt) = _$_Advertisement;
+      String createdAt,
+      String meetingType,
+      String meetingTypeDescription) = _$_Advertisement;
 
   @override
   int get id => throw _privateConstructorUsedError;
@@ -329,13 +352,15 @@ abstract class _Advertisement implements Advertisement {
   @override
   String get availableForGroupsAt => throw _privateConstructorUsedError;
   @override
-  String get vehicleLicensePlate => throw _privateConstructorUsedError;
-  @override
   Place get place => throw _privateConstructorUsedError;
   @override
   User get seller => throw _privateConstructorUsedError;
   @override
   String get createdAt => throw _privateConstructorUsedError;
+  @override
+  String get meetingType => throw _privateConstructorUsedError;
+  @override
+  String get meetingTypeDescription => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AdvertisementCopyWith<_Advertisement> get copyWith =>
@@ -357,7 +382,8 @@ class _$AdProductTearOff {
       String? observation,
       List<ProductImages> images,
       String createdAt,
-      Advertisement? advertisement) {
+      Advertisement? advertisement,
+      int advertisementId) {
     return _AdProduct(
       id,
       name,
@@ -370,6 +396,7 @@ class _$AdProductTearOff {
       images,
       createdAt,
       advertisement,
+      advertisementId,
     );
   }
 }
@@ -390,6 +417,7 @@ mixin _$AdProduct {
   List<ProductImages> get images => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   Advertisement? get advertisement => throw _privateConstructorUsedError;
+  int get advertisementId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AdProductCopyWith<AdProduct> get copyWith =>
@@ -411,7 +439,8 @@ abstract class $AdProductCopyWith<$Res> {
       String? observation,
       List<ProductImages> images,
       String createdAt,
-      Advertisement? advertisement});
+      Advertisement? advertisement,
+      int advertisementId});
 
   $AdvertisementCopyWith<$Res>? get advertisement;
 }
@@ -437,6 +466,7 @@ class _$AdProductCopyWithImpl<$Res> implements $AdProductCopyWith<$Res> {
     Object? images = freezed,
     Object? createdAt = freezed,
     Object? advertisement = freezed,
+    Object? advertisementId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -483,6 +513,10 @@ class _$AdProductCopyWithImpl<$Res> implements $AdProductCopyWith<$Res> {
           ? _value.advertisement
           : advertisement // ignore: cast_nullable_to_non_nullable
               as Advertisement?,
+      advertisementId: advertisementId == freezed
+          ? _value.advertisementId
+          : advertisementId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -515,7 +549,8 @@ abstract class _$AdProductCopyWith<$Res> implements $AdProductCopyWith<$Res> {
       String? observation,
       List<ProductImages> images,
       String createdAt,
-      Advertisement? advertisement});
+      Advertisement? advertisement,
+      int advertisementId});
 
   @override
   $AdvertisementCopyWith<$Res>? get advertisement;
@@ -543,6 +578,7 @@ class __$AdProductCopyWithImpl<$Res> extends _$AdProductCopyWithImpl<$Res>
     Object? images = freezed,
     Object? createdAt = freezed,
     Object? advertisement = freezed,
+    Object? advertisementId = freezed,
   }) {
     return _then(_AdProduct(
       id == freezed
@@ -589,6 +625,10 @@ class __$AdProductCopyWithImpl<$Res> extends _$AdProductCopyWithImpl<$Res>
           ? _value.advertisement
           : advertisement // ignore: cast_nullable_to_non_nullable
               as Advertisement?,
+      advertisementId == freezed
+          ? _value.advertisementId
+          : advertisementId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -607,7 +647,8 @@ class _$_AdProduct implements _AdProduct {
       this.observation,
       this.images,
       this.createdAt,
-      this.advertisement);
+      this.advertisement,
+      this.advertisementId);
 
   @override
   final int id;
@@ -631,10 +672,12 @@ class _$_AdProduct implements _AdProduct {
   final String createdAt;
   @override
   final Advertisement? advertisement;
+  @override
+  final int advertisementId;
 
   @override
   String toString() {
-    return 'AdProduct(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt, advertisement: $advertisement)';
+    return 'AdProduct(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt, advertisement: $advertisement, advertisementId: $advertisementId)';
   }
 
   @override
@@ -668,7 +711,10 @@ class _$_AdProduct implements _AdProduct {
                     .equals(other.createdAt, createdAt)) &&
             (identical(other.advertisement, advertisement) ||
                 const DeepCollectionEquality()
-                    .equals(other.advertisement, advertisement)));
+                    .equals(other.advertisement, advertisement)) &&
+            (identical(other.advertisementId, advertisementId) ||
+                const DeepCollectionEquality()
+                    .equals(other.advertisementId, advertisementId)));
   }
 
   @override
@@ -684,7 +730,8 @@ class _$_AdProduct implements _AdProduct {
       const DeepCollectionEquality().hash(observation) ^
       const DeepCollectionEquality().hash(images) ^
       const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(advertisement);
+      const DeepCollectionEquality().hash(advertisement) ^
+      const DeepCollectionEquality().hash(advertisementId);
 
   @JsonKey(ignore: true)
   @override
@@ -704,7 +751,8 @@ abstract class _AdProduct implements AdProduct {
       String? observation,
       List<ProductImages> images,
       String createdAt,
-      Advertisement? advertisement) = _$_AdProduct;
+      Advertisement? advertisement,
+      int advertisementId) = _$_AdProduct;
 
   @override
   int get id => throw _privateConstructorUsedError;
@@ -728,6 +776,8 @@ abstract class _AdProduct implements AdProduct {
   String get createdAt => throw _privateConstructorUsedError;
   @override
   Advertisement? get advertisement => throw _privateConstructorUsedError;
+  @override
+  int get advertisementId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AdProductCopyWith<_AdProduct> get copyWith =>

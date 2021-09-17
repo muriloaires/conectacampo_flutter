@@ -1,4 +1,5 @@
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/application/seller/adveretisements/seller_advertisements_bloc.dart';
 import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/menu/seller_summary.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_bottom_menu.dart';
+import 'package:conectacampo/presentation/seller/new_advertisement/new_advertisement_page.dart';
 import 'package:conectacampo/presentation/seller/reservation/edit_reservation.dart';
 import 'package:conectacampo/presentation/seller/reservations_summary/reservations_sumarry_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
@@ -40,7 +42,11 @@ class SellerMainPage extends StatelessWidget {
             create: (BuildContext context) =>
                 getIt()..add(const SellerSummaryEvent.started())),
         BlocProvider<ReservationBloc>(
-            create: (context) => getIt()..add(const ReservationEvent.started()))
+            create: (context) =>
+                getIt()..add(const ReservationEvent.started())),
+        BlocProvider<SellerAdvertisementsBloc>(
+            create: (context) =>
+                getIt()..add(const SellerAdvertisementsEvent.started()))
       ],
       child: BlocConsumer<SellerMenuBloc, SellerMenuState>(
         listener: (context, state) async {
@@ -114,7 +120,10 @@ class SellerMainPage extends StatelessWidget {
                     shrinkWrap: true,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => NewAdvertisementPage()));
+                        },
                         child: Container(
                           width: 68.0,
                           height: 68.0,

@@ -27,15 +27,21 @@ class PhoneNumberForm extends StatelessWidget {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorSet.colorPrimaryGreenButton,
-        onPressed: () {
-          context
-              .read<SignInFormBloc>()
-              .add(const SignInFormEvent.verifyPhoneNumberPressed());
-        },
-        child: const Icon(Icons.chevron_right),
-      ),
+      floatingActionButton: BlocBuilder<SignInFormBloc, SignInFormState>(
+          builder: (context, state) {
+        return Visibility(
+          visible: context.read<SignInFormBloc>().state.phoneNumber.isValid(),
+          child: FloatingActionButton(
+            backgroundColor: ColorSet.colorPrimaryGreenButton,
+            onPressed: () {
+              context
+                  .read<SignInFormBloc>()
+                  .add(const SignInFormEvent.verifyPhoneNumberPressed());
+            },
+            child: const Icon(Icons.chevron_right),
+          ),
+        );
+      }),
       body: Stack(
         children: [
           Image.asset(

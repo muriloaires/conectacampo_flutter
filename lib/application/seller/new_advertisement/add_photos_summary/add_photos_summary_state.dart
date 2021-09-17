@@ -10,10 +10,11 @@ class AddPhotosSummaryState with _$AddPhotosSummaryState {
       required bool proceed}) = _AddPhotosSummaryState;
   factory AddPhotosSummaryState.initial() => AddPhotosSummaryState(
       newAdvertisement: NewAdvertisement(
-          date: NewAdvertisementDate(DateTime.now()),
+          date: NewAdvertisementDate(DateTime.now().add(Duration(days: 1))),
           newAdDeliveryDescription: NewAdvertisementDeliveryDescription(''),
           newAdDeliveryPlace: null,
-          products: List.empty()),
+          products: List.empty(),
+          newAdDeliveryType: 'Type'),
       showBtnProceed: false,
       openPhotoSelection: false,
       openPhotoIndex: -1,

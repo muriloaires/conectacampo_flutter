@@ -1,32 +1,45 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/advertisements/advertisement_failure.dart';
+import 'package:conectacampo/domain/advertisements/i_advertisements_facade.dart';
 import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+part 'single_reservation_bloc.freezed.dart';
+
 part 'single_reservation_event.dart';
 part 'single_reservation_state.dart';
-part 'single_reservation_bloc.freezed.dart';
 
 @injectable
 class SingleReservationBloc
     extends Bloc<SingleReservationEvent, SingleReservationState> {
-  SingleReservationBloc(this.reservationFacade)
+  SingleReservationBloc(this.reservationFacade, this.advertisementsFacade)
       : super(SingleReservationState.initial());
 
   final IReservationFacade reservationFacade;
+  final IAdvertisementsFacade advertisementsFacade;
 
   @override
   Stream<SingleReservationState> mapEventToState(
     SingleReservationEvent event,
   ) async* {
     yield* event.map(started: (started) async* {
-      yield state.copyWith(reservation: started.resservation);
+      Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess;
+      if (started.resservation.productReservations.isNotEmpty) {
+        adFailureOrSuccess = await advertisementsFacade.getAdvertisement(started
+            .resservation.productReservations.first.adProduct.advertisementId);
+      }
+      yield state.copyWith(
+          reservation: started.resservation,
+          optionOfAdFailureOrSuccess: optionOf(adFailureOrSuccess));
     }, onAcceptPressed: (OnAcceptPressed value) async* {
       final product = state.reservation.productReservations
           .where((element) =>

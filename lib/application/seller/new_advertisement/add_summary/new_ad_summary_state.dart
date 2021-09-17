@@ -13,11 +13,12 @@ class NewAdSummaryState with _$NewAdSummaryState {
 
   factory NewAdSummaryState.initial() => NewAdSummaryState(
         newAdvertisement: NewAdvertisement(
-            date: NewAdvertisementDate(DateTime.now()),
+            date: NewAdvertisementDate(DateTime.now().add(Duration(days: 1))),
             newAdDeliveryDescription:
                 NewAdvertisementDeliveryDescription('Des'),
             newAdDeliveryPlace: null,
-            products: List.empty()),
+            products: List.empty(),
+            newAdDeliveryType: 'Type'),
         openEdit: false,
         editIndex: 0,
         addItems: false,

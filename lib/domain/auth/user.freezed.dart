@@ -24,7 +24,8 @@ class _$UserTearOff {
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
-      OriginalAvatar? originalAvatar) {
+      OriginalAvatar? originalAvatar,
+      Advertisement? lastAdvertisement) {
     return _User(
       id,
       name,
@@ -34,6 +35,7 @@ class _$UserTearOff {
       thumbAvatar,
       mediumAvatar,
       originalAvatar,
+      lastAdvertisement,
     );
   }
 }
@@ -51,6 +53,7 @@ mixin _$User {
   ThumbAvatar? get thumbAvatar => throw _privateConstructorUsedError;
   MediumAvatar? get mediumAvatar => throw _privateConstructorUsedError;
   OriginalAvatar? get originalAvatar => throw _privateConstructorUsedError;
+  Advertisement? get lastAdvertisement => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -68,7 +71,10 @@ abstract class $UserCopyWith<$Res> {
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
-      OriginalAvatar? originalAvatar});
+      OriginalAvatar? originalAvatar,
+      Advertisement? lastAdvertisement});
+
+  $AdvertisementCopyWith<$Res>? get lastAdvertisement;
 }
 
 /// @nodoc
@@ -89,6 +95,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? thumbAvatar = freezed,
     Object? mediumAvatar = freezed,
     Object? originalAvatar = freezed,
+    Object? lastAdvertisement = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -123,7 +130,22 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.originalAvatar
           : originalAvatar // ignore: cast_nullable_to_non_nullable
               as OriginalAvatar?,
+      lastAdvertisement: lastAdvertisement == freezed
+          ? _value.lastAdvertisement
+          : lastAdvertisement // ignore: cast_nullable_to_non_nullable
+              as Advertisement?,
     ));
+  }
+
+  @override
+  $AdvertisementCopyWith<$Res>? get lastAdvertisement {
+    if (_value.lastAdvertisement == null) {
+      return null;
+    }
+
+    return $AdvertisementCopyWith<$Res>(_value.lastAdvertisement!, (value) {
+      return _then(_value.copyWith(lastAdvertisement: value));
+    });
   }
 }
 
@@ -140,7 +162,11 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
-      OriginalAvatar? originalAvatar});
+      OriginalAvatar? originalAvatar,
+      Advertisement? lastAdvertisement});
+
+  @override
+  $AdvertisementCopyWith<$Res>? get lastAdvertisement;
 }
 
 /// @nodoc
@@ -162,6 +188,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? thumbAvatar = freezed,
     Object? mediumAvatar = freezed,
     Object? originalAvatar = freezed,
+    Object? lastAdvertisement = freezed,
   }) {
     return _then(_User(
       id == freezed
@@ -196,6 +223,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.originalAvatar
           : originalAvatar // ignore: cast_nullable_to_non_nullable
               as OriginalAvatar?,
+      lastAdvertisement == freezed
+          ? _value.lastAdvertisement
+          : lastAdvertisement // ignore: cast_nullable_to_non_nullable
+              as Advertisement?,
     ));
   }
 }
@@ -211,7 +242,8 @@ class _$_User implements _User {
       this.phoneNumber,
       this.thumbAvatar,
       this.mediumAvatar,
-      this.originalAvatar);
+      this.originalAvatar,
+      this.lastAdvertisement);
 
   @override
   final UniqueId id;
@@ -229,10 +261,12 @@ class _$_User implements _User {
   final MediumAvatar? mediumAvatar;
   @override
   final OriginalAvatar? originalAvatar;
+  @override
+  final Advertisement? lastAdvertisement;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, nickname: $nickname, vehicleLicensePlate: $vehicleLicensePlate, phoneNumber: $phoneNumber, thumbAvatar: $thumbAvatar, mediumAvatar: $mediumAvatar, originalAvatar: $originalAvatar)';
+    return 'User(id: $id, name: $name, nickname: $nickname, vehicleLicensePlate: $vehicleLicensePlate, phoneNumber: $phoneNumber, thumbAvatar: $thumbAvatar, mediumAvatar: $mediumAvatar, originalAvatar: $originalAvatar, lastAdvertisement: $lastAdvertisement)';
   }
 
   @override
@@ -260,7 +294,10 @@ class _$_User implements _User {
                     .equals(other.mediumAvatar, mediumAvatar)) &&
             (identical(other.originalAvatar, originalAvatar) ||
                 const DeepCollectionEquality()
-                    .equals(other.originalAvatar, originalAvatar)));
+                    .equals(other.originalAvatar, originalAvatar)) &&
+            (identical(other.lastAdvertisement, lastAdvertisement) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastAdvertisement, lastAdvertisement)));
   }
 
   @override
@@ -273,7 +310,8 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(phoneNumber) ^
       const DeepCollectionEquality().hash(thumbAvatar) ^
       const DeepCollectionEquality().hash(mediumAvatar) ^
-      const DeepCollectionEquality().hash(originalAvatar);
+      const DeepCollectionEquality().hash(originalAvatar) ^
+      const DeepCollectionEquality().hash(lastAdvertisement);
 
   @JsonKey(ignore: true)
   @override
@@ -290,7 +328,8 @@ abstract class _User implements User {
       PhoneNumber phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
-      OriginalAvatar? originalAvatar) = _$_User;
+      OriginalAvatar? originalAvatar,
+      Advertisement? lastAdvertisement) = _$_User;
 
   @override
   UniqueId get id => throw _privateConstructorUsedError;
@@ -308,6 +347,8 @@ abstract class _User implements User {
   MediumAvatar? get mediumAvatar => throw _privateConstructorUsedError;
   @override
   OriginalAvatar? get originalAvatar => throw _privateConstructorUsedError;
+  @override
+  Advertisement? get lastAdvertisement => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

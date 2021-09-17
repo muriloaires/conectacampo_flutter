@@ -1,4 +1,5 @@
 import 'package:conectacampo/application/seller/new_advertisement/new_advertisement_bloc.dart';
+import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/new_advertisement/add_product_page.dart';
@@ -6,7 +7,6 @@ import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 
 class NewAdvertisementPage extends StatelessWidget {
   @override
@@ -47,96 +47,98 @@ class NewAdvertisementForm extends StatelessWidget {
               ),
             )),
         backgroundColor: ColorSet.backgroundInput,
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 40, 20, 40),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      GestureDetector(
-                          onTap: () async {
-                            final date = await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime.now(),
-                              lastDate: DateTime.now().add(Duration(days: 60)),
-                              builder: (context, child) => Theme(
-                                data: Theme.of(context).copyWith(
-                                  colorScheme: const ColorScheme.light(
-                                      primary: ColorSet.brown1,
-                                      onPrimary: Colors.black),
-                                  textButtonTheme: TextButtonThemeData(
-                                      style: TextButton.styleFrom(
-                                          primary: Colors.black)),
-                                ),
-                                child: child!,
-                              ),
-                            );
-                            context.read<NewAdvertisementBloc>().add(
-                                NewAdvertisementEvent.onDateSelected(date));
-                            dateController.text = date!.getDayMonthYear();
-                          },
-                          child: NewAdDate(
-                            dateController: dateController,
-                          )),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      NewAdPlace(),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      NewAdMeetPlace(),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          if (!context
-                              .read<NewAdvertisementBloc>()
-                              .state
-                              .isBtnContinueEnabled) {
-                            return;
-                          }
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddProductPage(
-                              newAdvertisement: state.newAdvertisement,
+        body: ListView(
+          shrinkWrap: true,
+          physics: const ClampingScrollPhysics(),
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 40, 20, 40),
+              child: ListView(
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                children: [
+                  GestureDetector(
+                      onTap: () async {
+                        final date = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now().add(const Duration(days: 1)),
+                          firstDate:  DateTime.now().add(const Duration(days: 1)),
+                          lastDate: DateTime.now().add(Duration(days: 60)),
+                          builder: (context, child) => Theme(
+                            data: Theme.of(context).copyWith(
+                              colorScheme: const ColorScheme.light(
+                                  primary: ColorSet.brown1,
+                                  onPrimary: Colors.black),
+                              textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                      primary: Colors.black)),
                             ),
-                          ));
-                        },
-                        child: ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8)),
-                            child: Container(
-                              padding: const EdgeInsets.all(16),
-                              color: context
-                                      .read<NewAdvertisementBloc>()
-                                      .state
-                                      .isBtnContinueEnabled
-                                  ? ColorSet.brown1
-                                  : ColorSet.grayLine,
-                              child: const Center(
-                                child: Text(
-                                  'Continuar',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            )),
-                      )
-                    ],
+                            child: child!,
+                          ),
+                        );
+                        if (date != null) {
+                          context
+                              .read<NewAdvertisementBloc>()
+                              .add(NewAdvertisementEvent.onDateSelected(date));
+                          dateController.text = date.getDayMonthYear();
+                        }
+                        FocusScope.of(context).requestFocus(FocusNode());
+                      },
+                      child: NewAdDate(
+                        dateController: dateController,
+                      )),
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
+                  NewAdPlace(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  NewAdMeetPlace(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  MaterialButton(
+                    onPressed: () {
+                      if (!context
+                          .read<NewAdvertisementBloc>()
+                          .state
+                          .isBtnContinueEnabled) {
+                        return;
+                      }
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => AddProductPage(
+                          newAdvertisement: state.newAdvertisement,
+                        ),
+                      ));
+                    },
+                    child: ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                        child: Container(
+                          padding: const EdgeInsets.all(16),
+                          color: context
+                                  .read<NewAdvertisementBloc>()
+                                  .state
+                                  .isBtnContinueEnabled
+                              ? ColorSet.brown1
+                              : ColorSet.grayLine,
+                          child: const Center(
+                            child: Text(
+                              'Continuar',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        )),
+                  )
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -301,14 +303,10 @@ class NewAdMeetPlace extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Como te encontrar?',
-          style: const TextStyle(
-              color: ColorSet.brown1, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
+        const Text('Como te encontrar?',
+            style:
+                TextStyle(color: ColorSet.brown1, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 20),
         Container(
           decoration: const BoxDecoration(
               color: Colors.white,
@@ -352,15 +350,16 @@ class NewAdMeetPlace extends StatelessWidget {
                                 ),
                             (_) => null),
                     onTap: () async {
-                      if (!focusNode.hasFocus) {
-                        focusNode.nextFocus();
-                        final place = await showDialog<String>(
-                          context: context,
-                          builder: (context) => SimpleDialog(
-                            children: [DialogPlaceDelivery()],
-                          ),
-                        );
+                      final place = await showDialog<String>(
+                        context: context,
+                        builder: (context) => SimpleDialog(
+                          children: [DialogPlaceDelivery()],
+                        ),
+                      );
 
+                      if (place == null) {
+                        focusNode.nextFocus();
+                      } else {
                         context.read<NewAdvertisementBloc>().add(
                             NewAdvertisementEvent.onDeliveryPlaceSelected(
                                 place));
@@ -408,17 +407,16 @@ class DialogPlaceDelivery extends StatelessWidget {
     'Placa do veículo',
     'Box',
     'Pedra',
-    'Falar com o vendedor',
   ];
 
   @override
   Widget build(BuildContext buildContext) {
     return SizedBox(
-      height: 220,
+      height: 170,
       width: 300,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 4,
+        itemCount: 3,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             title: Text(whereList[index]),

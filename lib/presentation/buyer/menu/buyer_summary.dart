@@ -5,14 +5,14 @@ import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
-import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
-import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../buyer_main_page.dart';
 
 class BuyerSummary extends StatelessWidget {
   final GlobalKey navigatorKey;
@@ -28,6 +28,7 @@ class BuyerSummary extends StatelessWidget {
             settings: settings,
             builder: (context) {
               return Scaffold(
+                appBar: SearchWidget(),
                 body: BlocConsumer<SummaryBloc, SummaryState>(
                   listener: (context, state) {
                     if (state.cancellingReservation) {
@@ -66,7 +67,6 @@ class BuyerSummary extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: [
-                        _getSearchWidget(context),
                         const SizedBox(
                           height: 32,
                         ),
@@ -294,113 +294,6 @@ class BuyerSummary extends StatelessWidget {
               width: 21,
               height: 21,
             ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _getSearchWidget(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(0),
-      shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(0.0),
-      ),
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(20, 32, 20, 8),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 32,
-            ),
-            GestureDetector(
-              onTap: () {
-                // context
-                //     .read<BuyerMenuBloc>()
-                //     .add(const BuyerMenuEvent.searchTapped());
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (builder) => SearchPage()));
-              },
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                decoration: const BoxDecoration(
-                  color: ColorSet.grayRoundedBackground,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(32),
-                  ),
-                ),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text(
-                          'O que você quer comprar hoje?',
-                          style: TextStyle(fontFamily: 'Roboto', fontSize: 16),
-                        ),
-                        Icon(
-                          Icons.search,
-                          color: ColorSet.colorPrimaryGreen,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 24),
-            GestureDetector(
-              onTap: () async {
-                final success = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PlacesPage(),
-                    ));
-                context
-                    .read<AdvertisementsBloc>()
-                    .add(const AdvertisementsEvent.placeChanged());
-                context
-                    .read<SummaryBloc>()
-                    .add(const SummaryEvent.onPlaceChanged());
-              },
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    'assets/location_outline.svg',
-                    width: 16,
-                    height: 16,
-                    color: ColorSet.grayLine,
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Flexible(
-                    child: Text.rich(
-                      TextSpan(children: [
-                        const TextSpan(
-                          text: 'Produtos e Retirada em: ',
-                          style: TextStyle(color: ColorSet.gray2, fontSize: 13),
-                        ),
-                        TextSpan(
-                          text: context
-                              .read<SummaryBloc>()
-                              .state
-                              .selectedPlace
-                              .name,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: ColorSet.gray2,
-                              fontSize: 13),
-                        ),
-                      ]),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  )
-                ],
-              ),
-            )
           ],
         ),
       ),

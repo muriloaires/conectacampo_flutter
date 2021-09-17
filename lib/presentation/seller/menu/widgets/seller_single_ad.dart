@@ -1,8 +1,10 @@
+import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/presentation/buyer/product/product_page.dart';
 
 import 'package:conectacampo/presentation/buyer/widgets/product_advertisement.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SellerSingleAdvertisement extends StatelessWidget {
   final Advertisement _advertisement;
@@ -37,11 +39,17 @@ class SellerSingleAdvertisement extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
+                    onTap: () async {
+                      context
+                          .read<BuyerMenuBloc>()
+                          .add(const BuyerMenuEvent.produtDetailsOpen());
+                      await Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
                             ProductPage(_advertisement.products[index]),
                       ));
+                      context
+                          .read<BuyerMenuBloc>()
+                          .add(const BuyerMenuEvent.produtDetailsClosed());
                     },
                     child:
                         ProductAdvertisement(_advertisement.products[index]));

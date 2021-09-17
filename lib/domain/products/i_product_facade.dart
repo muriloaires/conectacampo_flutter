@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class IProductFacade {
   Future<Either<ProductFailure, List<Product>>> getAllProducts();
+  Future<Either<ProductFailure, Product>> getProductByName(String name);
 }

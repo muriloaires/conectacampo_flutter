@@ -20,12 +20,14 @@ class _$NewAdvertisementTearOff {
       {required NewAdvertisementDate date,
       required Place? newAdDeliveryPlace,
       required NewAdvertisementDeliveryDescription newAdDeliveryDescription,
-      required List<NewAdProduct> products}) {
+      required List<NewAdProduct> products,
+      required String newAdDeliveryType}) {
     return _NewAdvertisement(
       date: date,
       newAdDeliveryPlace: newAdDeliveryPlace,
       newAdDeliveryDescription: newAdDeliveryDescription,
       products: products,
+      newAdDeliveryType: newAdDeliveryType,
     );
   }
 }
@@ -40,6 +42,7 @@ mixin _$NewAdvertisement {
   NewAdvertisementDeliveryDescription get newAdDeliveryDescription =>
       throw _privateConstructorUsedError;
   List<NewAdProduct> get products => throw _privateConstructorUsedError;
+  String get newAdDeliveryType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewAdvertisementCopyWith<NewAdvertisement> get copyWith =>
@@ -55,7 +58,8 @@ abstract class $NewAdvertisementCopyWith<$Res> {
       {NewAdvertisementDate date,
       Place? newAdDeliveryPlace,
       NewAdvertisementDeliveryDescription newAdDeliveryDescription,
-      List<NewAdProduct> products});
+      List<NewAdProduct> products,
+      String newAdDeliveryType});
 
   $PlaceCopyWith<$Res>? get newAdDeliveryPlace;
 }
@@ -75,6 +79,7 @@ class _$NewAdvertisementCopyWithImpl<$Res>
     Object? newAdDeliveryPlace = freezed,
     Object? newAdDeliveryDescription = freezed,
     Object? products = freezed,
+    Object? newAdDeliveryType = freezed,
   }) {
     return _then(_value.copyWith(
       date: date == freezed
@@ -93,6 +98,10 @@ class _$NewAdvertisementCopyWithImpl<$Res>
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<NewAdProduct>,
+      newAdDeliveryType: newAdDeliveryType == freezed
+          ? _value.newAdDeliveryType
+          : newAdDeliveryType // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -119,7 +128,8 @@ abstract class _$NewAdvertisementCopyWith<$Res>
       {NewAdvertisementDate date,
       Place? newAdDeliveryPlace,
       NewAdvertisementDeliveryDescription newAdDeliveryDescription,
-      List<NewAdProduct> products});
+      List<NewAdProduct> products,
+      String newAdDeliveryType});
 
   @override
   $PlaceCopyWith<$Res>? get newAdDeliveryPlace;
@@ -142,6 +152,7 @@ class __$NewAdvertisementCopyWithImpl<$Res>
     Object? newAdDeliveryPlace = freezed,
     Object? newAdDeliveryDescription = freezed,
     Object? products = freezed,
+    Object? newAdDeliveryType = freezed,
   }) {
     return _then(_NewAdvertisement(
       date: date == freezed
@@ -160,6 +171,10 @@ class __$NewAdvertisementCopyWithImpl<$Res>
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<NewAdProduct>,
+      newAdDeliveryType: newAdDeliveryType == freezed
+          ? _value.newAdDeliveryType
+          : newAdDeliveryType // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -171,7 +186,8 @@ class _$_NewAdvertisement implements _NewAdvertisement {
       {required this.date,
       required this.newAdDeliveryPlace,
       required this.newAdDeliveryDescription,
-      required this.products});
+      required this.products,
+      required this.newAdDeliveryType});
 
   @override
   final NewAdvertisementDate date;
@@ -181,10 +197,12 @@ class _$_NewAdvertisement implements _NewAdvertisement {
   final NewAdvertisementDeliveryDescription newAdDeliveryDescription;
   @override
   final List<NewAdProduct> products;
+  @override
+  final String newAdDeliveryType;
 
   @override
   String toString() {
-    return 'NewAdvertisement(date: $date, newAdDeliveryPlace: $newAdDeliveryPlace, newAdDeliveryDescription: $newAdDeliveryDescription, products: $products)';
+    return 'NewAdvertisement(date: $date, newAdDeliveryPlace: $newAdDeliveryPlace, newAdDeliveryDescription: $newAdDeliveryDescription, products: $products, newAdDeliveryType: $newAdDeliveryType)';
   }
 
   @override
@@ -203,7 +221,10 @@ class _$_NewAdvertisement implements _NewAdvertisement {
                     newAdDeliveryDescription)) &&
             (identical(other.products, products) ||
                 const DeepCollectionEquality()
-                    .equals(other.products, products)));
+                    .equals(other.products, products)) &&
+            (identical(other.newAdDeliveryType, newAdDeliveryType) ||
+                const DeepCollectionEquality()
+                    .equals(other.newAdDeliveryType, newAdDeliveryType)));
   }
 
   @override
@@ -212,7 +233,8 @@ class _$_NewAdvertisement implements _NewAdvertisement {
       const DeepCollectionEquality().hash(date) ^
       const DeepCollectionEquality().hash(newAdDeliveryPlace) ^
       const DeepCollectionEquality().hash(newAdDeliveryDescription) ^
-      const DeepCollectionEquality().hash(products);
+      const DeepCollectionEquality().hash(products) ^
+      const DeepCollectionEquality().hash(newAdDeliveryType);
 
   @JsonKey(ignore: true)
   @override
@@ -225,7 +247,8 @@ abstract class _NewAdvertisement implements NewAdvertisement {
       {required NewAdvertisementDate date,
       required Place? newAdDeliveryPlace,
       required NewAdvertisementDeliveryDescription newAdDeliveryDescription,
-      required List<NewAdProduct> products}) = _$_NewAdvertisement;
+      required List<NewAdProduct> products,
+      required String newAdDeliveryType}) = _$_NewAdvertisement;
 
   @override
   NewAdvertisementDate get date => throw _privateConstructorUsedError;
@@ -236,6 +259,8 @@ abstract class _NewAdvertisement implements NewAdvertisement {
       throw _privateConstructorUsedError;
   @override
   List<NewAdProduct> get products => throw _privateConstructorUsedError;
+  @override
+  String get newAdDeliveryType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NewAdvertisementCopyWith<_NewAdvertisement> get copyWith =>

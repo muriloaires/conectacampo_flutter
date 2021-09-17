@@ -1,4 +1,6 @@
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 extension StringDateExtension on String {
   String getDateAndMonthName() {
@@ -50,4 +52,13 @@ extension IntDateExtensions on int {
         return '';
     }
   }
+}
+
+Future openWhatsapp(String phone) async {
+  final whatsappUrl = "whatsapp://send?phone=$phone";
+  await canLaunch(whatsappUrl)
+      ? launch(whatsappUrl)
+      : EasyLoading.showError(
+          "open whatsapp app link or do a snackbar with notification that there is no whatsapp installed",
+          duration: const Duration(seconds: 2));
 }

@@ -11,11 +11,11 @@ class NewAdvertisementState with _$NewAdvertisementState {
 
   factory NewAdvertisementState.initial() => NewAdvertisementState(
         newAdvertisement: NewAdvertisement(
-          date: NewAdvertisementDate(DateTime.now()),
+          date: NewAdvertisementDate(DateTime.now().add(Duration(days: 1))),
           newAdDeliveryPlace: null,
           newAdDeliveryDescription: NewAdvertisementDeliveryDescription(''),
           products: [NewAdProduct()],
-        ),
+            newAdDeliveryType: ''),
         openPlace: false,
         deliveryPlace: null,
         requestDeliveryPlaceFocus: false,

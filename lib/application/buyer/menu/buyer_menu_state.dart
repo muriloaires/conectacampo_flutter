@@ -8,7 +8,8 @@ class BuyerMenuState with _$BuyerMenuState {
       required bool navToSeller,
       required List<ReservationItem> itemsInCart,
       required bool openCart,
-      required bool navToLogin}) = _BuyerMenuState;
+      required bool navToLogin,
+      required bool showToolBar}) = _BuyerMenuState;
 
   factory BuyerMenuState.initial() => BuyerMenuState(
       currentIndex: 0,
@@ -16,5 +17,6 @@ class BuyerMenuState with _$BuyerMenuState {
       navToSeller: false,
       itemsInCart: List.empty(),
       openCart: false,
-      navToLogin: false);
+      navToLogin: false,
+      showToolBar: true);
 }

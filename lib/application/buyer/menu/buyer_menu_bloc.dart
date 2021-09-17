@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
-import 'package:conectacampo/domain/reservation/product_reservation.dart';
-import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -25,17 +23,21 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
   ) async* {
     yield* event.map(
         homeTapped: (e) async* {
-          yield state.copyWith(currentIndex: 0, navToRoot: false);
+          yield state.copyWith(
+              currentIndex: 0, navToRoot: false, showToolBar: true);
         },
         groupsTapped: (e) async* {
-          yield state.copyWith(currentIndex: 1, navToRoot: false);
+          yield state.copyWith(
+              currentIndex: 1, navToRoot: false, showToolBar: true);
         },
         buyTapped: (e) async* {},
         reservationTapped: (e) async* {
-          yield state.copyWith(currentIndex: 3, navToRoot: false);
+          yield state.copyWith(
+              currentIndex: 3, navToRoot: false, showToolBar: true);
         },
         profileTapped: (e) async* {
-          yield state.copyWith(currentIndex: 4, navToRoot: false);
+          yield state.copyWith(
+              currentIndex: 4, navToRoot: false, showToolBar: false);
         },
         groupsRetapped: (value) async* {
           yield state.copyWith(navToRoot: true);
@@ -64,6 +66,12 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
         logout: (Logout value) async* {
           await logout();
           yield state.copyWith(navToLogin: true);
+        },
+        produtDetailsOpen: (ProdutDetailsOpen value) async* {
+          yield state.copyWith(showToolBar: false);
+        },
+        produtDetailsClosed: (ProdutDetailsClosed value) async* {
+          yield state.copyWith(showToolBar: true);
         });
   }
 }

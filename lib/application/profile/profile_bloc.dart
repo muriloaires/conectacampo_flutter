@@ -35,7 +35,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                   PhoneNumber('+5562999999999'),
                   null,
                   null,
-                  null),
+                  null, null),
               (r, previous) => r),
           isBuyer: isBuyer == 'buyer');
     });

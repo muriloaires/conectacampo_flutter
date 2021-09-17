@@ -87,14 +87,23 @@ class ReservationWidget extends StatelessWidget {
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             const SizedBox(height: 8),
-                            Text.rich(TextSpan(text: 'Placa: ', children: [
-                              TextSpan(
-                                  text: state.reservation.seller
-                                          ?.vehicleLicensePlate ??
-                                      '',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold))
-                            ]))
+                            Text.rich(TextSpan(
+                                text: state.optionOfAdFailureOrSuccess.fold(
+                                    () => '',
+                                    (a) => a.fold(
+                                        (l) => '', (r) => r.meetingType)),
+                                children: [
+                                  TextSpan(
+                                      text: state.optionOfAdFailureOrSuccess
+                                          .fold(
+                                              () => '',
+                                              (a) => a.fold(
+                                                  (l) => '',
+                                                  (r) => r
+                                                      .meetingTypeDescription)),
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                ]))
                           ],
                         )
                       ],

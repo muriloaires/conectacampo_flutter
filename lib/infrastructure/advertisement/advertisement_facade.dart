@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/advertisements/advertisement_failure.dart';
@@ -21,7 +20,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AdvertisementFacade extends IAdvertisementsFacade {
   static const routeAdvertisements = '/advertisements';
   static const routeGroupsAds = '/groups/advertisements';
-  static const routeSellersAds = '/advertisements/me';
+  static const routeSellersAds = '/me/advertisements';
   static const routeAdsProducts = '/advertisement_products';
   static const routeGroups = '/group_memberships';
 
@@ -175,7 +174,9 @@ class AdvertisementFacade extends IAdvertisementsFacade {
     request.fields['delivery_at'] = adDate.getServerDate();
     request.fields['available_for_groups_at'] = groupAdDate.getServerDate();
     request.fields['place_id'] = newAdvertisement.newAdDeliveryPlace?.id ?? '';
-    request.fields['vehicle_license_plate'] = 'KDH-0082';
+    request.fields['meeting_type'] = newAdvertisement.newAdDeliveryType;
+    request.fields['meeting_type_description'] =
+        newAdvertisement.newAdDeliveryDescription.getOrCrash();
 
     var index = 0;
     for (final product in newAdvertisement.products) {
@@ -282,14 +283,53 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   @override
   Future<Either<AdvertisementFailure, Unit>> leaveGroup(
       {required UniqueId sellerId}) async {
-    final url =
-        Uri.https(baseUrl, '$apiVersion$routeGroups/${sellerId.getOrCrash()}');
+    final url = Uri.https(
+        baseUrl, '$apiVersion/me$routeGroups/${sellerId.getOrCrash()}');
     final response = await getAuthenticatedDeleteRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
       return right(unit);
     } else if (code == 401) {
       return left(const AdvertisementFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const AdvertisementFailure.requestError());
+    } else {
+      return left(const AdvertisementFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AdvertisementFailure, Unit>> deleteAd(
+      Advertisement advertisement) async {
+    final url = Uri.https(
+        baseUrl, '$apiVersion$routeAdvertisements/${advertisement.id}');
+    final response = await getAuthenticatedDeleteRequest(url, getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const AdvertisementFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const AdvertisementFailure.requestError());
+    } else {
+      return left(const AdvertisementFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AdvertisementFailure, Advertisement>> getAdvertisement(
+      int adId) async {
+    final url = Uri.https(baseUrl, '$apiVersion$routeAdvertisements/$adId');
+    final response = await getAuthenticatedRequest(url, getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final ad = AdvertisementResponse.fromJson(
+          json.decode(response.body) as Map<String, dynamic>);
+      return right(ad.toDomain());
+    } else if (code == 401) {
+      return left(const AdvertisementFailure.unauthorized());
+    } else if (code == 404) {
+      return left(const AdvertisementFailure.productsNotFound());
     } else if (code >= 400 && code < 500) {
       return left(const AdvertisementFailure.requestError());
     } else {

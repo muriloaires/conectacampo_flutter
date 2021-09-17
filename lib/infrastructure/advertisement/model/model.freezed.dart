@@ -22,23 +22,34 @@ class _$AdvertisementResponseTearOff {
   const _$AdvertisementResponseTearOff();
 
   _AdvertisementResponse call(
-      @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'products') List<AdProductResponse> products,
-      @JsonKey(name: 'delivery_at') String deliveryAt,
-      @JsonKey(name: 'available_for_groups_at') String availableForGroupsAt,
-      @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
-      @JsonKey(name: 'place') PlaceResponse place,
-      @JsonKey(name: 'seller') UserResponse seller,
-      @JsonKey(name: 'created_at') String createdAt) {
+      @JsonKey(name: 'id')
+          int id,
+      @JsonKey(name: 'products')
+          List<AdProductResponse> products,
+      @JsonKey(name: 'delivery_at')
+          String deliveryAt,
+      @JsonKey(name: 'available_for_groups_at')
+          String availableForGroupsAt,
+      @JsonKey(name: 'place')
+          PlaceResponse place,
+      @JsonKey(name: 'seller')
+          UserResponse seller,
+      @JsonKey(name: 'created_at')
+          String createdAt,
+      @JsonKey(name: 'meeting_type')
+          String? meetingType,
+      @JsonKey(name: 'meeting_type_description')
+          String? meetingTypeDescription) {
     return _AdvertisementResponse(
       id,
       products,
       deliveryAt,
       availableForGroupsAt,
-      vehicleLicensePlate,
       place,
       seller,
       createdAt,
+      meetingType,
+      meetingTypeDescription,
     );
   }
 
@@ -60,14 +71,16 @@ mixin _$AdvertisementResponse {
   String get deliveryAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'available_for_groups_at')
   String get availableForGroupsAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'vehicle_license_plate')
-  String get vehicleLicensePlate => throw _privateConstructorUsedError;
   @JsonKey(name: 'place')
   PlaceResponse get place => throw _privateConstructorUsedError;
   @JsonKey(name: 'seller')
   UserResponse get seller => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'meeting_type')
+  String? get meetingType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'meeting_type_description')
+  String? get meetingTypeDescription => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -81,14 +94,24 @@ abstract class $AdvertisementResponseCopyWith<$Res> {
           $Res Function(AdvertisementResponse) then) =
       _$AdvertisementResponseCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'products') List<AdProductResponse> products,
-      @JsonKey(name: 'delivery_at') String deliveryAt,
-      @JsonKey(name: 'available_for_groups_at') String availableForGroupsAt,
-      @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
-      @JsonKey(name: 'place') PlaceResponse place,
-      @JsonKey(name: 'seller') UserResponse seller,
-      @JsonKey(name: 'created_at') String createdAt});
+      {@JsonKey(name: 'id')
+          int id,
+      @JsonKey(name: 'products')
+          List<AdProductResponse> products,
+      @JsonKey(name: 'delivery_at')
+          String deliveryAt,
+      @JsonKey(name: 'available_for_groups_at')
+          String availableForGroupsAt,
+      @JsonKey(name: 'place')
+          PlaceResponse place,
+      @JsonKey(name: 'seller')
+          UserResponse seller,
+      @JsonKey(name: 'created_at')
+          String createdAt,
+      @JsonKey(name: 'meeting_type')
+          String? meetingType,
+      @JsonKey(name: 'meeting_type_description')
+          String? meetingTypeDescription});
 
   $PlaceResponseCopyWith<$Res> get place;
   $UserResponseCopyWith<$Res> get seller;
@@ -109,10 +132,11 @@ class _$AdvertisementResponseCopyWithImpl<$Res>
     Object? products = freezed,
     Object? deliveryAt = freezed,
     Object? availableForGroupsAt = freezed,
-    Object? vehicleLicensePlate = freezed,
     Object? place = freezed,
     Object? seller = freezed,
     Object? createdAt = freezed,
+    Object? meetingType = freezed,
+    Object? meetingTypeDescription = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -131,10 +155,6 @@ class _$AdvertisementResponseCopyWithImpl<$Res>
           ? _value.availableForGroupsAt
           : availableForGroupsAt // ignore: cast_nullable_to_non_nullable
               as String,
-      vehicleLicensePlate: vehicleLicensePlate == freezed
-          ? _value.vehicleLicensePlate
-          : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
-              as String,
       place: place == freezed
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
@@ -147,6 +167,14 @@ class _$AdvertisementResponseCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      meetingType: meetingType == freezed
+          ? _value.meetingType
+          : meetingType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      meetingTypeDescription: meetingTypeDescription == freezed
+          ? _value.meetingTypeDescription
+          : meetingTypeDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -173,14 +201,24 @@ abstract class _$AdvertisementResponseCopyWith<$Res>
       __$AdvertisementResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'id') int id,
-      @JsonKey(name: 'products') List<AdProductResponse> products,
-      @JsonKey(name: 'delivery_at') String deliveryAt,
-      @JsonKey(name: 'available_for_groups_at') String availableForGroupsAt,
-      @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
-      @JsonKey(name: 'place') PlaceResponse place,
-      @JsonKey(name: 'seller') UserResponse seller,
-      @JsonKey(name: 'created_at') String createdAt});
+      {@JsonKey(name: 'id')
+          int id,
+      @JsonKey(name: 'products')
+          List<AdProductResponse> products,
+      @JsonKey(name: 'delivery_at')
+          String deliveryAt,
+      @JsonKey(name: 'available_for_groups_at')
+          String availableForGroupsAt,
+      @JsonKey(name: 'place')
+          PlaceResponse place,
+      @JsonKey(name: 'seller')
+          UserResponse seller,
+      @JsonKey(name: 'created_at')
+          String createdAt,
+      @JsonKey(name: 'meeting_type')
+          String? meetingType,
+      @JsonKey(name: 'meeting_type_description')
+          String? meetingTypeDescription});
 
   @override
   $PlaceResponseCopyWith<$Res> get place;
@@ -205,10 +243,11 @@ class __$AdvertisementResponseCopyWithImpl<$Res>
     Object? products = freezed,
     Object? deliveryAt = freezed,
     Object? availableForGroupsAt = freezed,
-    Object? vehicleLicensePlate = freezed,
     Object? place = freezed,
     Object? seller = freezed,
     Object? createdAt = freezed,
+    Object? meetingType = freezed,
+    Object? meetingTypeDescription = freezed,
   }) {
     return _then(_AdvertisementResponse(
       id == freezed
@@ -227,10 +266,6 @@ class __$AdvertisementResponseCopyWithImpl<$Res>
           ? _value.availableForGroupsAt
           : availableForGroupsAt // ignore: cast_nullable_to_non_nullable
               as String,
-      vehicleLicensePlate == freezed
-          ? _value.vehicleLicensePlate
-          : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
-              as String,
       place == freezed
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
@@ -243,6 +278,14 @@ class __$AdvertisementResponseCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      meetingType == freezed
+          ? _value.meetingType
+          : meetingType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      meetingTypeDescription == freezed
+          ? _value.meetingTypeDescription
+          : meetingTypeDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -255,10 +298,11 @@ class _$_AdvertisementResponse implements _AdvertisementResponse {
       @JsonKey(name: 'products') this.products,
       @JsonKey(name: 'delivery_at') this.deliveryAt,
       @JsonKey(name: 'available_for_groups_at') this.availableForGroupsAt,
-      @JsonKey(name: 'vehicle_license_plate') this.vehicleLicensePlate,
       @JsonKey(name: 'place') this.place,
       @JsonKey(name: 'seller') this.seller,
-      @JsonKey(name: 'created_at') this.createdAt);
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'meeting_type') this.meetingType,
+      @JsonKey(name: 'meeting_type_description') this.meetingTypeDescription);
 
   factory _$_AdvertisementResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_AdvertisementResponseFromJson(json);
@@ -276,9 +320,6 @@ class _$_AdvertisementResponse implements _AdvertisementResponse {
   @JsonKey(name: 'available_for_groups_at')
   final String availableForGroupsAt;
   @override
-  @JsonKey(name: 'vehicle_license_plate')
-  final String vehicleLicensePlate;
-  @override
   @JsonKey(name: 'place')
   final PlaceResponse place;
   @override
@@ -287,10 +328,16 @@ class _$_AdvertisementResponse implements _AdvertisementResponse {
   @override
   @JsonKey(name: 'created_at')
   final String createdAt;
+  @override
+  @JsonKey(name: 'meeting_type')
+  final String? meetingType;
+  @override
+  @JsonKey(name: 'meeting_type_description')
+  final String? meetingTypeDescription;
 
   @override
   String toString() {
-    return 'AdvertisementResponse(id: $id, products: $products, deliveryAt: $deliveryAt, availableForGroupsAt: $availableForGroupsAt, vehicleLicensePlate: $vehicleLicensePlate, place: $place, seller: $seller, createdAt: $createdAt)';
+    return 'AdvertisementResponse(id: $id, products: $products, deliveryAt: $deliveryAt, availableForGroupsAt: $availableForGroupsAt, place: $place, seller: $seller, createdAt: $createdAt, meetingType: $meetingType, meetingTypeDescription: $meetingTypeDescription)';
   }
 
   @override
@@ -308,16 +355,19 @@ class _$_AdvertisementResponse implements _AdvertisementResponse {
             (identical(other.availableForGroupsAt, availableForGroupsAt) ||
                 const DeepCollectionEquality().equals(
                     other.availableForGroupsAt, availableForGroupsAt)) &&
-            (identical(other.vehicleLicensePlate, vehicleLicensePlate) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicleLicensePlate, vehicleLicensePlate)) &&
             (identical(other.place, place) ||
                 const DeepCollectionEquality().equals(other.place, place)) &&
             (identical(other.seller, seller) ||
                 const DeepCollectionEquality().equals(other.seller, seller)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)));
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.meetingType, meetingType) ||
+                const DeepCollectionEquality()
+                    .equals(other.meetingType, meetingType)) &&
+            (identical(other.meetingTypeDescription, meetingTypeDescription) ||
+                const DeepCollectionEquality().equals(
+                    other.meetingTypeDescription, meetingTypeDescription)));
   }
 
   @override
@@ -327,10 +377,11 @@ class _$_AdvertisementResponse implements _AdvertisementResponse {
       const DeepCollectionEquality().hash(products) ^
       const DeepCollectionEquality().hash(deliveryAt) ^
       const DeepCollectionEquality().hash(availableForGroupsAt) ^
-      const DeepCollectionEquality().hash(vehicleLicensePlate) ^
       const DeepCollectionEquality().hash(place) ^
       const DeepCollectionEquality().hash(seller) ^
-      const DeepCollectionEquality().hash(createdAt);
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(meetingType) ^
+      const DeepCollectionEquality().hash(meetingTypeDescription);
 
   @JsonKey(ignore: true)
   @override
@@ -346,14 +397,24 @@ class _$_AdvertisementResponse implements _AdvertisementResponse {
 
 abstract class _AdvertisementResponse implements AdvertisementResponse {
   const factory _AdvertisementResponse(
-      @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'products') List<AdProductResponse> products,
-      @JsonKey(name: 'delivery_at') String deliveryAt,
-      @JsonKey(name: 'available_for_groups_at') String availableForGroupsAt,
-      @JsonKey(name: 'vehicle_license_plate') String vehicleLicensePlate,
-      @JsonKey(name: 'place') PlaceResponse place,
-      @JsonKey(name: 'seller') UserResponse seller,
-      @JsonKey(name: 'created_at') String createdAt) = _$_AdvertisementResponse;
+      @JsonKey(name: 'id')
+          int id,
+      @JsonKey(name: 'products')
+          List<AdProductResponse> products,
+      @JsonKey(name: 'delivery_at')
+          String deliveryAt,
+      @JsonKey(name: 'available_for_groups_at')
+          String availableForGroupsAt,
+      @JsonKey(name: 'place')
+          PlaceResponse place,
+      @JsonKey(name: 'seller')
+          UserResponse seller,
+      @JsonKey(name: 'created_at')
+          String createdAt,
+      @JsonKey(name: 'meeting_type')
+          String? meetingType,
+      @JsonKey(name: 'meeting_type_description')
+          String? meetingTypeDescription) = _$_AdvertisementResponse;
 
   factory _AdvertisementResponse.fromJson(Map<String, dynamic> json) =
       _$_AdvertisementResponse.fromJson;
@@ -371,9 +432,6 @@ abstract class _AdvertisementResponse implements AdvertisementResponse {
   @JsonKey(name: 'available_for_groups_at')
   String get availableForGroupsAt => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'vehicle_license_plate')
-  String get vehicleLicensePlate => throw _privateConstructorUsedError;
-  @override
   @JsonKey(name: 'place')
   PlaceResponse get place => throw _privateConstructorUsedError;
   @override
@@ -382,6 +440,12 @@ abstract class _AdvertisementResponse implements AdvertisementResponse {
   @override
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'meeting_type')
+  String? get meetingType => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'meeting_type_description')
+  String? get meetingTypeDescription => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AdvertisementResponseCopyWith<_AdvertisementResponse> get copyWith =>
@@ -406,7 +470,8 @@ class _$AdProductResponseTearOff {
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'observation') String? observation,
       @JsonKey(name: 'images') List<AvatarResponse>? images,
-      @JsonKey(name: 'created_at') String createdAt) {
+      @JsonKey(name: 'created_at') String createdAt,
+      @JsonKey(name: 'advertisement_id') int advertisementId) {
     return _AdProductResponse(
       id,
       name,
@@ -418,6 +483,7 @@ class _$AdProductResponseTearOff {
       observation,
       images,
       createdAt,
+      advertisementId,
     );
   }
 
@@ -451,6 +517,8 @@ mixin _$AdProductResponse {
   List<AvatarResponse>? get images => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'advertisement_id')
+  int get advertisementId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -473,7 +541,8 @@ abstract class $AdProductResponseCopyWith<$Res> {
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'observation') String? observation,
       @JsonKey(name: 'images') List<AvatarResponse>? images,
-      @JsonKey(name: 'created_at') String createdAt});
+      @JsonKey(name: 'created_at') String createdAt,
+      @JsonKey(name: 'advertisement_id') int advertisementId});
 }
 
 /// @nodoc
@@ -497,6 +566,7 @@ class _$AdProductResponseCopyWithImpl<$Res>
     Object? observation = freezed,
     Object? images = freezed,
     Object? createdAt = freezed,
+    Object? advertisementId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -539,6 +609,10 @@ class _$AdProductResponseCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      advertisementId: advertisementId == freezed
+          ? _value.advertisementId
+          : advertisementId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -560,7 +634,8 @@ abstract class _$AdProductResponseCopyWith<$Res>
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'observation') String? observation,
       @JsonKey(name: 'images') List<AvatarResponse>? images,
-      @JsonKey(name: 'created_at') String createdAt});
+      @JsonKey(name: 'created_at') String createdAt,
+      @JsonKey(name: 'advertisement_id') int advertisementId});
 }
 
 /// @nodoc
@@ -586,6 +661,7 @@ class __$AdProductResponseCopyWithImpl<$Res>
     Object? observation = freezed,
     Object? images = freezed,
     Object? createdAt = freezed,
+    Object? advertisementId = freezed,
   }) {
     return _then(_AdProductResponse(
       id == freezed
@@ -628,6 +704,10 @@ class __$AdProductResponseCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      advertisementId == freezed
+          ? _value.advertisementId
+          : advertisementId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -645,7 +725,8 @@ class _$_AdProductResponse implements _AdProductResponse {
       @JsonKey(name: 'kind') this.kind,
       @JsonKey(name: 'observation') this.observation,
       @JsonKey(name: 'images') this.images,
-      @JsonKey(name: 'created_at') this.createdAt);
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'advertisement_id') this.advertisementId);
 
   factory _$_AdProductResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_AdProductResponseFromJson(json);
@@ -680,10 +761,13 @@ class _$_AdProductResponse implements _AdProductResponse {
   @override
   @JsonKey(name: 'created_at')
   final String createdAt;
+  @override
+  @JsonKey(name: 'advertisement_id')
+  final int advertisementId;
 
   @override
   String toString() {
-    return 'AdProductResponse(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt)';
+    return 'AdProductResponse(id: $id, name: $name, unitMeasure: $unitMeasure, quantity: $quantity, unitPrice: $unitPrice, rating: $rating, kind: $kind, observation: $observation, images: $images, createdAt: $createdAt, advertisementId: $advertisementId)';
   }
 
   @override
@@ -714,7 +798,10 @@ class _$_AdProductResponse implements _AdProductResponse {
                 const DeepCollectionEquality().equals(other.images, images)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)));
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.advertisementId, advertisementId) ||
+                const DeepCollectionEquality()
+                    .equals(other.advertisementId, advertisementId)));
   }
 
   @override
@@ -729,7 +816,8 @@ class _$_AdProductResponse implements _AdProductResponse {
       const DeepCollectionEquality().hash(kind) ^
       const DeepCollectionEquality().hash(observation) ^
       const DeepCollectionEquality().hash(images) ^
-      const DeepCollectionEquality().hash(createdAt);
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(advertisementId);
 
   @JsonKey(ignore: true)
   @override
@@ -744,16 +832,18 @@ class _$_AdProductResponse implements _AdProductResponse {
 
 abstract class _AdProductResponse implements AdProductResponse {
   const factory _AdProductResponse(
-      @JsonKey(name: 'id') int id,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'measurement_unit') String? unitMeasure,
-      @JsonKey(name: 'quantity') int quantity,
-      @JsonKey(name: 'unit_price') String? unitPrice,
-      @JsonKey(name: 'rating') String rating,
-      @JsonKey(name: 'kind') String kind,
-      @JsonKey(name: 'observation') String? observation,
-      @JsonKey(name: 'images') List<AvatarResponse>? images,
-      @JsonKey(name: 'created_at') String createdAt) = _$_AdProductResponse;
+          @JsonKey(name: 'id') int id,
+          @JsonKey(name: 'name') String? name,
+          @JsonKey(name: 'measurement_unit') String? unitMeasure,
+          @JsonKey(name: 'quantity') int quantity,
+          @JsonKey(name: 'unit_price') String? unitPrice,
+          @JsonKey(name: 'rating') String rating,
+          @JsonKey(name: 'kind') String kind,
+          @JsonKey(name: 'observation') String? observation,
+          @JsonKey(name: 'images') List<AvatarResponse>? images,
+          @JsonKey(name: 'created_at') String createdAt,
+          @JsonKey(name: 'advertisement_id') int advertisementId) =
+      _$_AdProductResponse;
 
   factory _AdProductResponse.fromJson(Map<String, dynamic> json) =
       _$_AdProductResponse.fromJson;
@@ -788,6 +878,9 @@ abstract class _AdProductResponse implements AdProductResponse {
   @override
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'advertisement_id')
+  int get advertisementId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AdProductResponseCopyWith<_AdProductResponse> get copyWith =>

@@ -50,14 +50,7 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
-                      const SizedBox(height: 8),
-                      Text.rich(TextSpan(text: 'Placa: ', children: [
-                        TextSpan(
-                            text: widget.buyerReservations.user
-                                    .vehicleLicensePlate ??
-                                '',
-                            style: const TextStyle(fontWeight: FontWeight.bold))
-                      ]))
+
                     ],
                   )
                 ],

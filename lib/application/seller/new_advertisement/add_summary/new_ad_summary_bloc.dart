@@ -24,14 +24,7 @@ class NewAdSummaryBloc extends Bloc<NewAdSummaryEvent, NewAdSummaryState> {
       : super(NewAdSummaryState.initial());
 
   final IAdvertisementsFacade advertisementsFacade;
-//  UniqueId id,
-//       FullName name,
-//       Nickname nickname,
-//       String? vehicleLicensePlate,
-//       PhoneNumber phoneNumber,
-//       ThumbAvatar? thumbAvatar,
-//       MediumAvatar? mediumAvatar,
-//       OriginalAvatar? originalAvatar
+
   @override
   Stream<NewAdSummaryState> mapEventToState(
     NewAdSummaryEvent event,

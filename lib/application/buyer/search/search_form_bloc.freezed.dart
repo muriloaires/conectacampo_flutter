@@ -35,6 +35,26 @@ class _$SearchFormEventTearOff {
       query,
     );
   }
+
+  OnRadioKindTap onRadioKindTap(int index) {
+    return OnRadioKindTap(
+      index,
+    );
+  }
+
+  OnRadioRatingTap onRadioRatingTap(int index) {
+    return OnRadioRatingTap(
+      index,
+    );
+  }
+
+  OnTapKindFilter onTapKindFilter() {
+    return const OnTapKindFilter();
+  }
+
+  OnTapRatingFilter onTapRatingFilter() {
+    return const OnTapRatingFilter();
+  }
 }
 
 /// @nodoc
@@ -48,6 +68,10 @@ mixin _$SearchFormEvent {
     required TResult Function() productSelected,
     required TResult Function(String query) searchTapped,
     required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +80,10 @@ mixin _$SearchFormEvent {
     TResult Function()? productSelected,
     TResult Function(String query)? searchTapped,
     TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -65,6 +93,10 @@ mixin _$SearchFormEvent {
     required TResult Function(ProductSelected value) productSelected,
     required TResult Function(SearchTapped value) searchTapped,
     required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +105,10 @@ mixin _$SearchFormEvent {
     TResult Function(ProductSelected value)? productSelected,
     TResult Function(SearchTapped value)? searchTapped,
     TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,6 +172,10 @@ class _$_Started implements _Started {
     required TResult Function() productSelected,
     required TResult Function(String query) searchTapped,
     required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
   }) {
     return started();
   }
@@ -147,6 +187,10 @@ class _$_Started implements _Started {
     TResult Function()? productSelected,
     TResult Function(String query)? searchTapped,
     TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -162,6 +206,10 @@ class _$_Started implements _Started {
     required TResult Function(ProductSelected value) productSelected,
     required TResult Function(SearchTapped value) searchTapped,
     required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
   }) {
     return started(this);
   }
@@ -173,6 +221,10 @@ class _$_Started implements _Started {
     TResult Function(ProductSelected value)? productSelected,
     TResult Function(SearchTapped value)? searchTapped,
     TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -230,6 +282,10 @@ class _$ProductSelected implements ProductSelected {
     required TResult Function() productSelected,
     required TResult Function(String query) searchTapped,
     required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
   }) {
     return productSelected();
   }
@@ -241,6 +297,10 @@ class _$ProductSelected implements ProductSelected {
     TResult Function()? productSelected,
     TResult Function(String query)? searchTapped,
     TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
     required TResult orElse(),
   }) {
     if (productSelected != null) {
@@ -256,6 +316,10 @@ class _$ProductSelected implements ProductSelected {
     required TResult Function(ProductSelected value) productSelected,
     required TResult Function(SearchTapped value) searchTapped,
     required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
   }) {
     return productSelected(this);
   }
@@ -267,6 +331,10 @@ class _$ProductSelected implements ProductSelected {
     TResult Function(ProductSelected value)? productSelected,
     TResult Function(SearchTapped value)? searchTapped,
     TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
     required TResult orElse(),
   }) {
     if (productSelected != null) {
@@ -349,6 +417,10 @@ class _$SearchTapped implements SearchTapped {
     required TResult Function() productSelected,
     required TResult Function(String query) searchTapped,
     required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
   }) {
     return searchTapped(query);
   }
@@ -360,6 +432,10 @@ class _$SearchTapped implements SearchTapped {
     TResult Function()? productSelected,
     TResult Function(String query)? searchTapped,
     TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
     required TResult orElse(),
   }) {
     if (searchTapped != null) {
@@ -375,6 +451,10 @@ class _$SearchTapped implements SearchTapped {
     required TResult Function(ProductSelected value) productSelected,
     required TResult Function(SearchTapped value) searchTapped,
     required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
   }) {
     return searchTapped(this);
   }
@@ -386,6 +466,10 @@ class _$SearchTapped implements SearchTapped {
     TResult Function(ProductSelected value)? productSelected,
     TResult Function(SearchTapped value)? searchTapped,
     TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
     required TResult orElse(),
   }) {
     if (searchTapped != null) {
@@ -473,6 +557,10 @@ class _$HistorySelected implements HistorySelected {
     required TResult Function() productSelected,
     required TResult Function(String query) searchTapped,
     required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
   }) {
     return historySelected(query);
   }
@@ -484,6 +572,10 @@ class _$HistorySelected implements HistorySelected {
     TResult Function()? productSelected,
     TResult Function(String query)? searchTapped,
     TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
     required TResult orElse(),
   }) {
     if (historySelected != null) {
@@ -499,6 +591,10 @@ class _$HistorySelected implements HistorySelected {
     required TResult Function(ProductSelected value) productSelected,
     required TResult Function(SearchTapped value) searchTapped,
     required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
   }) {
     return historySelected(this);
   }
@@ -510,6 +606,10 @@ class _$HistorySelected implements HistorySelected {
     TResult Function(ProductSelected value)? productSelected,
     TResult Function(SearchTapped value)? searchTapped,
     TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
     required TResult orElse(),
   }) {
     if (historySelected != null) {
@@ -529,6 +629,506 @@ abstract class HistorySelected implements SearchFormEvent {
 }
 
 /// @nodoc
+abstract class $OnRadioKindTapCopyWith<$Res> {
+  factory $OnRadioKindTapCopyWith(
+          OnRadioKindTap value, $Res Function(OnRadioKindTap) then) =
+      _$OnRadioKindTapCopyWithImpl<$Res>;
+  $Res call({int index});
+}
+
+/// @nodoc
+class _$OnRadioKindTapCopyWithImpl<$Res>
+    extends _$SearchFormEventCopyWithImpl<$Res>
+    implements $OnRadioKindTapCopyWith<$Res> {
+  _$OnRadioKindTapCopyWithImpl(
+      OnRadioKindTap _value, $Res Function(OnRadioKindTap) _then)
+      : super(_value, (v) => _then(v as OnRadioKindTap));
+
+  @override
+  OnRadioKindTap get _value => super._value as OnRadioKindTap;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+  }) {
+    return _then(OnRadioKindTap(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnRadioKindTap implements OnRadioKindTap {
+  const _$OnRadioKindTap(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'SearchFormEvent.onRadioKindTap(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnRadioKindTap &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnRadioKindTapCopyWith<OnRadioKindTap> get copyWith =>
+      _$OnRadioKindTapCopyWithImpl<OnRadioKindTap>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() productSelected,
+    required TResult Function(String query) searchTapped,
+    required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
+  }) {
+    return onRadioKindTap(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? productSelected,
+    TResult Function(String query)? searchTapped,
+    TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
+    required TResult orElse(),
+  }) {
+    if (onRadioKindTap != null) {
+      return onRadioKindTap(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ProductSelected value) productSelected,
+    required TResult Function(SearchTapped value) searchTapped,
+    required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
+  }) {
+    return onRadioKindTap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ProductSelected value)? productSelected,
+    TResult Function(SearchTapped value)? searchTapped,
+    TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
+    required TResult orElse(),
+  }) {
+    if (onRadioKindTap != null) {
+      return onRadioKindTap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnRadioKindTap implements SearchFormEvent {
+  const factory OnRadioKindTap(int index) = _$OnRadioKindTap;
+
+  int get index => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnRadioKindTapCopyWith<OnRadioKindTap> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OnRadioRatingTapCopyWith<$Res> {
+  factory $OnRadioRatingTapCopyWith(
+          OnRadioRatingTap value, $Res Function(OnRadioRatingTap) then) =
+      _$OnRadioRatingTapCopyWithImpl<$Res>;
+  $Res call({int index});
+}
+
+/// @nodoc
+class _$OnRadioRatingTapCopyWithImpl<$Res>
+    extends _$SearchFormEventCopyWithImpl<$Res>
+    implements $OnRadioRatingTapCopyWith<$Res> {
+  _$OnRadioRatingTapCopyWithImpl(
+      OnRadioRatingTap _value, $Res Function(OnRadioRatingTap) _then)
+      : super(_value, (v) => _then(v as OnRadioRatingTap));
+
+  @override
+  OnRadioRatingTap get _value => super._value as OnRadioRatingTap;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+  }) {
+    return _then(OnRadioRatingTap(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnRadioRatingTap implements OnRadioRatingTap {
+  const _$OnRadioRatingTap(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'SearchFormEvent.onRadioRatingTap(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnRadioRatingTap &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnRadioRatingTapCopyWith<OnRadioRatingTap> get copyWith =>
+      _$OnRadioRatingTapCopyWithImpl<OnRadioRatingTap>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() productSelected,
+    required TResult Function(String query) searchTapped,
+    required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
+  }) {
+    return onRadioRatingTap(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? productSelected,
+    TResult Function(String query)? searchTapped,
+    TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
+    required TResult orElse(),
+  }) {
+    if (onRadioRatingTap != null) {
+      return onRadioRatingTap(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ProductSelected value) productSelected,
+    required TResult Function(SearchTapped value) searchTapped,
+    required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
+  }) {
+    return onRadioRatingTap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ProductSelected value)? productSelected,
+    TResult Function(SearchTapped value)? searchTapped,
+    TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
+    required TResult orElse(),
+  }) {
+    if (onRadioRatingTap != null) {
+      return onRadioRatingTap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnRadioRatingTap implements SearchFormEvent {
+  const factory OnRadioRatingTap(int index) = _$OnRadioRatingTap;
+
+  int get index => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnRadioRatingTapCopyWith<OnRadioRatingTap> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OnTapKindFilterCopyWith<$Res> {
+  factory $OnTapKindFilterCopyWith(
+          OnTapKindFilter value, $Res Function(OnTapKindFilter) then) =
+      _$OnTapKindFilterCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$OnTapKindFilterCopyWithImpl<$Res>
+    extends _$SearchFormEventCopyWithImpl<$Res>
+    implements $OnTapKindFilterCopyWith<$Res> {
+  _$OnTapKindFilterCopyWithImpl(
+      OnTapKindFilter _value, $Res Function(OnTapKindFilter) _then)
+      : super(_value, (v) => _then(v as OnTapKindFilter));
+
+  @override
+  OnTapKindFilter get _value => super._value as OnTapKindFilter;
+}
+
+/// @nodoc
+
+class _$OnTapKindFilter implements OnTapKindFilter {
+  const _$OnTapKindFilter();
+
+  @override
+  String toString() {
+    return 'SearchFormEvent.onTapKindFilter()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is OnTapKindFilter);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() productSelected,
+    required TResult Function(String query) searchTapped,
+    required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
+  }) {
+    return onTapKindFilter();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? productSelected,
+    TResult Function(String query)? searchTapped,
+    TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
+    required TResult orElse(),
+  }) {
+    if (onTapKindFilter != null) {
+      return onTapKindFilter();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ProductSelected value) productSelected,
+    required TResult Function(SearchTapped value) searchTapped,
+    required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
+  }) {
+    return onTapKindFilter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ProductSelected value)? productSelected,
+    TResult Function(SearchTapped value)? searchTapped,
+    TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
+    required TResult orElse(),
+  }) {
+    if (onTapKindFilter != null) {
+      return onTapKindFilter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnTapKindFilter implements SearchFormEvent {
+  const factory OnTapKindFilter() = _$OnTapKindFilter;
+}
+
+/// @nodoc
+abstract class $OnTapRatingFilterCopyWith<$Res> {
+  factory $OnTapRatingFilterCopyWith(
+          OnTapRatingFilter value, $Res Function(OnTapRatingFilter) then) =
+      _$OnTapRatingFilterCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$OnTapRatingFilterCopyWithImpl<$Res>
+    extends _$SearchFormEventCopyWithImpl<$Res>
+    implements $OnTapRatingFilterCopyWith<$Res> {
+  _$OnTapRatingFilterCopyWithImpl(
+      OnTapRatingFilter _value, $Res Function(OnTapRatingFilter) _then)
+      : super(_value, (v) => _then(v as OnTapRatingFilter));
+
+  @override
+  OnTapRatingFilter get _value => super._value as OnTapRatingFilter;
+}
+
+/// @nodoc
+
+class _$OnTapRatingFilter implements OnTapRatingFilter {
+  const _$OnTapRatingFilter();
+
+  @override
+  String toString() {
+    return 'SearchFormEvent.onTapRatingFilter()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is OnTapRatingFilter);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() productSelected,
+    required TResult Function(String query) searchTapped,
+    required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
+  }) {
+    return onTapRatingFilter();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? productSelected,
+    TResult Function(String query)? searchTapped,
+    TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
+    required TResult orElse(),
+  }) {
+    if (onTapRatingFilter != null) {
+      return onTapRatingFilter();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ProductSelected value) productSelected,
+    required TResult Function(SearchTapped value) searchTapped,
+    required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
+  }) {
+    return onTapRatingFilter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ProductSelected value)? productSelected,
+    TResult Function(SearchTapped value)? searchTapped,
+    TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
+    required TResult orElse(),
+  }) {
+    if (onTapRatingFilter != null) {
+      return onTapRatingFilter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnTapRatingFilter implements SearchFormEvent {
+  const factory OnTapRatingFilter() = _$OnTapRatingFilter;
+}
+
+/// @nodoc
 class _$SearchFormStateTearOff {
   const _$SearchFormStateTearOff();
 
@@ -540,7 +1140,13 @@ class _$SearchFormStateTearOff {
       required bool showFilters,
       required Place? place,
       required bool showHistory,
-      required List<String> history}) {
+      required List<String> history,
+      required int kindRadioValue,
+      required bool isKindsVisible,
+      required int ratingRadioValue,
+      required bool isRatingVisible,
+      required Option<Either<ProductFailure, Product>>
+          optionOfProductFailureOrSuccess}) {
     return _SearchFormState(
       productSelected: productSelected,
       searching: searching,
@@ -549,6 +1155,11 @@ class _$SearchFormStateTearOff {
       place: place,
       showHistory: showHistory,
       history: history,
+      kindRadioValue: kindRadioValue,
+      isKindsVisible: isKindsVisible,
+      ratingRadioValue: ratingRadioValue,
+      isRatingVisible: isRatingVisible,
+      optionOfProductFailureOrSuccess: optionOfProductFailureOrSuccess,
     );
   }
 }
@@ -567,6 +1178,12 @@ mixin _$SearchFormState {
   Place? get place => throw _privateConstructorUsedError;
   bool get showHistory => throw _privateConstructorUsedError;
   List<String> get history => throw _privateConstructorUsedError;
+  int get kindRadioValue => throw _privateConstructorUsedError;
+  bool get isKindsVisible => throw _privateConstructorUsedError;
+  int get ratingRadioValue => throw _privateConstructorUsedError;
+  bool get isRatingVisible => throw _privateConstructorUsedError;
+  Option<Either<ProductFailure, Product>> get optionOfProductFailureOrSuccess =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchFormStateCopyWith<SearchFormState> get copyWith =>
@@ -586,7 +1203,12 @@ abstract class $SearchFormStateCopyWith<$Res> {
       bool showFilters,
       Place? place,
       bool showHistory,
-      List<String> history});
+      List<String> history,
+      int kindRadioValue,
+      bool isKindsVisible,
+      int ratingRadioValue,
+      bool isRatingVisible,
+      Option<Either<ProductFailure, Product>> optionOfProductFailureOrSuccess});
 
   $PlaceCopyWith<$Res>? get place;
 }
@@ -609,6 +1231,11 @@ class _$SearchFormStateCopyWithImpl<$Res>
     Object? place = freezed,
     Object? showHistory = freezed,
     Object? history = freezed,
+    Object? kindRadioValue = freezed,
+    Object? isKindsVisible = freezed,
+    Object? ratingRadioValue = freezed,
+    Object? isRatingVisible = freezed,
+    Object? optionOfProductFailureOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       productSelected: productSelected == freezed
@@ -640,6 +1267,27 @@ class _$SearchFormStateCopyWithImpl<$Res>
           ? _value.history
           : history // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      kindRadioValue: kindRadioValue == freezed
+          ? _value.kindRadioValue
+          : kindRadioValue // ignore: cast_nullable_to_non_nullable
+              as int,
+      isKindsVisible: isKindsVisible == freezed
+          ? _value.isKindsVisible
+          : isKindsVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      ratingRadioValue: ratingRadioValue == freezed
+          ? _value.ratingRadioValue
+          : ratingRadioValue // ignore: cast_nullable_to_non_nullable
+              as int,
+      isRatingVisible: isRatingVisible == freezed
+          ? _value.isRatingVisible
+          : isRatingVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      optionOfProductFailureOrSuccess: optionOfProductFailureOrSuccess ==
+              freezed
+          ? _value.optionOfProductFailureOrSuccess
+          : optionOfProductFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ProductFailure, Product>>,
     ));
   }
 
@@ -670,7 +1318,12 @@ abstract class _$SearchFormStateCopyWith<$Res>
       bool showFilters,
       Place? place,
       bool showHistory,
-      List<String> history});
+      List<String> history,
+      int kindRadioValue,
+      bool isKindsVisible,
+      int ratingRadioValue,
+      bool isRatingVisible,
+      Option<Either<ProductFailure, Product>> optionOfProductFailureOrSuccess});
 
   @override
   $PlaceCopyWith<$Res>? get place;
@@ -696,6 +1349,11 @@ class __$SearchFormStateCopyWithImpl<$Res>
     Object? place = freezed,
     Object? showHistory = freezed,
     Object? history = freezed,
+    Object? kindRadioValue = freezed,
+    Object? isKindsVisible = freezed,
+    Object? ratingRadioValue = freezed,
+    Object? isRatingVisible = freezed,
+    Object? optionOfProductFailureOrSuccess = freezed,
   }) {
     return _then(_SearchFormState(
       productSelected: productSelected == freezed
@@ -727,6 +1385,27 @@ class __$SearchFormStateCopyWithImpl<$Res>
           ? _value.history
           : history // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      kindRadioValue: kindRadioValue == freezed
+          ? _value.kindRadioValue
+          : kindRadioValue // ignore: cast_nullable_to_non_nullable
+              as int,
+      isKindsVisible: isKindsVisible == freezed
+          ? _value.isKindsVisible
+          : isKindsVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      ratingRadioValue: ratingRadioValue == freezed
+          ? _value.ratingRadioValue
+          : ratingRadioValue // ignore: cast_nullable_to_non_nullable
+              as int,
+      isRatingVisible: isRatingVisible == freezed
+          ? _value.isRatingVisible
+          : isRatingVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      optionOfProductFailureOrSuccess: optionOfProductFailureOrSuccess ==
+              freezed
+          ? _value.optionOfProductFailureOrSuccess
+          : optionOfProductFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ProductFailure, Product>>,
     ));
   }
 }
@@ -741,7 +1420,12 @@ class _$_SearchFormState implements _SearchFormState {
       required this.showFilters,
       required this.place,
       required this.showHistory,
-      required this.history});
+      required this.history,
+      required this.kindRadioValue,
+      required this.isKindsVisible,
+      required this.ratingRadioValue,
+      required this.isRatingVisible,
+      required this.optionOfProductFailureOrSuccess});
 
   @override
   final bool productSelected;
@@ -758,10 +1442,20 @@ class _$_SearchFormState implements _SearchFormState {
   final bool showHistory;
   @override
   final List<String> history;
+  @override
+  final int kindRadioValue;
+  @override
+  final bool isKindsVisible;
+  @override
+  final int ratingRadioValue;
+  @override
+  final bool isRatingVisible;
+  @override
+  final Option<Either<ProductFailure, Product>> optionOfProductFailureOrSuccess;
 
   @override
   String toString() {
-    return 'SearchFormState(productSelected: $productSelected, searching: $searching, optionOfAdsProductsFailureOrSuccess: $optionOfAdsProductsFailureOrSuccess, showFilters: $showFilters, place: $place, showHistory: $showHistory, history: $history)';
+    return 'SearchFormState(productSelected: $productSelected, searching: $searching, optionOfAdsProductsFailureOrSuccess: $optionOfAdsProductsFailureOrSuccess, showFilters: $showFilters, place: $place, showHistory: $showHistory, history: $history, kindRadioValue: $kindRadioValue, isKindsVisible: $isKindsVisible, ratingRadioValue: $ratingRadioValue, isRatingVisible: $isRatingVisible, optionOfProductFailureOrSuccess: $optionOfProductFailureOrSuccess)';
   }
 
   @override
@@ -788,7 +1482,25 @@ class _$_SearchFormState implements _SearchFormState {
                 const DeepCollectionEquality()
                     .equals(other.showHistory, showHistory)) &&
             (identical(other.history, history) ||
-                const DeepCollectionEquality().equals(other.history, history)));
+                const DeepCollectionEquality()
+                    .equals(other.history, history)) &&
+            (identical(other.kindRadioValue, kindRadioValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.kindRadioValue, kindRadioValue)) &&
+            (identical(other.isKindsVisible, isKindsVisible) ||
+                const DeepCollectionEquality()
+                    .equals(other.isKindsVisible, isKindsVisible)) &&
+            (identical(other.ratingRadioValue, ratingRadioValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.ratingRadioValue, ratingRadioValue)) &&
+            (identical(other.isRatingVisible, isRatingVisible) ||
+                const DeepCollectionEquality()
+                    .equals(other.isRatingVisible, isRatingVisible)) &&
+            (identical(other.optionOfProductFailureOrSuccess,
+                    optionOfProductFailureOrSuccess) ||
+                const DeepCollectionEquality().equals(
+                    other.optionOfProductFailureOrSuccess,
+                    optionOfProductFailureOrSuccess)));
   }
 
   @override
@@ -800,7 +1512,12 @@ class _$_SearchFormState implements _SearchFormState {
       const DeepCollectionEquality().hash(showFilters) ^
       const DeepCollectionEquality().hash(place) ^
       const DeepCollectionEquality().hash(showHistory) ^
-      const DeepCollectionEquality().hash(history);
+      const DeepCollectionEquality().hash(history) ^
+      const DeepCollectionEquality().hash(kindRadioValue) ^
+      const DeepCollectionEquality().hash(isKindsVisible) ^
+      const DeepCollectionEquality().hash(ratingRadioValue) ^
+      const DeepCollectionEquality().hash(isRatingVisible) ^
+      const DeepCollectionEquality().hash(optionOfProductFailureOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -817,7 +1534,13 @@ abstract class _SearchFormState implements SearchFormState {
       required bool showFilters,
       required Place? place,
       required bool showHistory,
-      required List<String> history}) = _$_SearchFormState;
+      required List<String> history,
+      required int kindRadioValue,
+      required bool isKindsVisible,
+      required int ratingRadioValue,
+      required bool isRatingVisible,
+      required Option<Either<ProductFailure, Product>>
+          optionOfProductFailureOrSuccess}) = _$_SearchFormState;
 
   @override
   bool get productSelected => throw _privateConstructorUsedError;
@@ -835,6 +1558,17 @@ abstract class _SearchFormState implements SearchFormState {
   bool get showHistory => throw _privateConstructorUsedError;
   @override
   List<String> get history => throw _privateConstructorUsedError;
+  @override
+  int get kindRadioValue => throw _privateConstructorUsedError;
+  @override
+  bool get isKindsVisible => throw _privateConstructorUsedError;
+  @override
+  int get ratingRadioValue => throw _privateConstructorUsedError;
+  @override
+  bool get isRatingVisible => throw _privateConstructorUsedError;
+  @override
+  Option<Either<ProductFailure, Product>> get optionOfProductFailureOrSuccess =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SearchFormStateCopyWith<_SearchFormState> get copyWith =>

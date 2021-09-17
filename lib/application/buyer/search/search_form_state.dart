@@ -10,7 +10,12 @@ class SearchFormState with _$SearchFormState {
       required bool showFilters,
       required Place? place,
       required bool showHistory,
-      required List<String> history}) = _SearchFormState;
+      required List<String> history,
+      required int kindRadioValue,
+      required bool isKindsVisible,
+        required int ratingRadioValue,
+        required bool isRatingVisible,
+      required Option<Either<ProductFailure, Product>> optionOfProductFailureOrSuccess}) = _SearchFormState;
 
   factory SearchFormState.initial() => SearchFormState(
       productSelected: false,
@@ -19,5 +24,10 @@ class SearchFormState with _$SearchFormState {
       showFilters: false,
       place: null,
       showHistory: true,
-      history: List<String>.empty());
+      history: List<String>.empty(),
+      kindRadioValue: 0,
+      isKindsVisible: false,
+      ratingRadioValue: 0,
+      isRatingVisible: false,
+      optionOfProductFailureOrSuccess: none());
 }

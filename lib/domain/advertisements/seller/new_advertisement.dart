@@ -7,14 +7,17 @@ part 'new_advertisement.freezed.dart';
 
 @freezed
 class NewAdvertisement with _$NewAdvertisement {
-  const factory NewAdvertisement(
-      {required NewAdvertisementDate date,
-      required Place? newAdDeliveryPlace,
-      required NewAdvertisementDeliveryDescription newAdDeliveryDescription,
-      required List<NewAdProduct> products}) = _NewAdvertisement;
+  const factory NewAdvertisement({
+    required NewAdvertisementDate date,
+    required Place? newAdDeliveryPlace,
+    required NewAdvertisementDeliveryDescription newAdDeliveryDescription,
+    required List<NewAdProduct> products,
+    required String newAdDeliveryType,
+  }) = _NewAdvertisement;
 }
 
 bool isValidHeader(NewAdvertisement newAdvertisement) =>
     newAdvertisement.date.isValid() &&
     newAdvertisement.newAdDeliveryPlace != null &&
-    newAdvertisement.newAdDeliveryDescription.isValid();
+    newAdvertisement.newAdDeliveryDescription.isValid() &&
+    newAdvertisement.newAdDeliveryType.isNotEmpty;

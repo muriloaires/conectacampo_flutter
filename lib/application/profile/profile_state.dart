@@ -14,6 +14,7 @@ class ProfileState with _$ProfileState {
           PhoneNumber('+5562999999999'),
           null,
           null,
+          null,
           null),
       isBuyer: true);
 }

@@ -1,14 +1,12 @@
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/application/seller/adveretisements/seller_advertisements_bloc.dart';
 import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
-import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/seller/advertisements/advertisement_widget.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_advertisement.dart';
-import 'package:conectacampo/presentation/seller/reservation/seller_reservation_widget.dart';
-import 'package:conectacampo/presentation/sign_in/places_page.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -144,7 +142,9 @@ class SellerGroup extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${groups.isEmpty ? 'Sem membros' : '${groups.length}'} membro(s)',
+                    groups.isEmpty
+                        ? 'Sem membros'
+                        : '${groups.length} membro(s)',
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
@@ -171,47 +171,67 @@ class SellerGroup extends StatelessWidget {
 class SellerAdvertisements extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final List<Advertisement> sellerAds = context
-        .read<SellerSummaryBloc>()
-        .state
-        .optionOfAdvertisementsFailureOrSuccess
-        .fold(() => List.empty(), (a) => a.fold((l) => List.empty(), (r) => r));
+    return BlocConsumer<SellerAdvertisementsBloc, SellerAdvertisementsState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        final state2 = context.read<SellerAdvertisementsBloc>().state;
+        final widgetToRender = state2.optionOfSellerAdsFailureOrSuccess.fold(
+            () {
+          return Container();
+        },
+            (a) => a.fold(
+                (l) => const Center(
+                      child: Text('Erro ao carregar suas feiras'),
+                    ),
+                (r) => r.isEmpty
+                    ? Card(
+                        margin: const EdgeInsets.all(0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(32),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Sem anúncios',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text('Anuncie novos produtos!')
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 32,
+                              ),
+                              SvgPicture.asset(
+                                'assets/coolicon.svg',
+                                color: ColorSet.brown1,
+                                width: 21,
+                                height: 21,
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    : ListView.separated(
+                        shrinkWrap: true,
+                        physics: const ClampingScrollPhysics(),
+                        itemBuilder: (context, index) =>
+                            AdvertisementWidget(r[index]),
+                        separatorBuilder: (context, index) => const SizedBox(
+                              height: 20,
+                            ),
+                        itemCount: r.length)));
 
-    if (sellerAds.isEmpty) {
-      return Card(
-        margin: const EdgeInsets.all(0),
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Sem anúncios',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  Text('Anuncie novos produtos!')
-                ],
-              ),
-              const SizedBox(
-                width: 32,
-              ),
-              SvgPicture.asset(
-                'assets/coolicon.svg',
-                color: ColorSet.brown1,
-                width: 21,
-                height: 21,
-              ),
-            ],
-          ),
-        ),
-      );
-    } else {
-      return SellerAdvertisementList(false,
-          sellerAds.map((e) => SellerUIAdvertisement(false, e)).toList());
-    }
+        return state.loading
+            ? const Center(
+                child: CircularProgressIndicator(color: ColorSet.brown1))
+            : widgetToRender;
+      },
+    );
   }
 }
 
