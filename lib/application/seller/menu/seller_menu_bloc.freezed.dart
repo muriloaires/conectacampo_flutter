@@ -2293,8 +2293,7 @@ class _$SellerMenuStateTearOff {
       required Option<Reservation> optionOfResevationToEdit,
       required bool navToLogin,
       required Option<Either<AuthFailure, User>> optionOfUser,
-      required Option<Place> optionOfPlace,
-      required bool showToolBar}) {
+      required Option<Place> optionOfPlace}) {
     return _SellerMenuState(
       currentIndex: currentIndex,
       navToRoot: navToRoot,
@@ -2306,7 +2305,6 @@ class _$SellerMenuStateTearOff {
       navToLogin: navToLogin,
       optionOfUser: optionOfUser,
       optionOfPlace: optionOfPlace,
-      showToolBar: showToolBar,
     );
   }
 }
@@ -2328,7 +2326,6 @@ mixin _$SellerMenuState {
   Option<Either<AuthFailure, User>> get optionOfUser =>
       throw _privateConstructorUsedError;
   Option<Place> get optionOfPlace => throw _privateConstructorUsedError;
-  bool get showToolBar => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SellerMenuStateCopyWith<SellerMenuState> get copyWith =>
@@ -2350,8 +2347,7 @@ abstract class $SellerMenuStateCopyWith<$Res> {
       Option<Reservation> optionOfResevationToEdit,
       bool navToLogin,
       Option<Either<AuthFailure, User>> optionOfUser,
-      Option<Place> optionOfPlace,
-      bool showToolBar});
+      Option<Place> optionOfPlace});
 
   $PlaceCopyWith<$Res>? get place;
 }
@@ -2377,7 +2373,6 @@ class _$SellerMenuStateCopyWithImpl<$Res>
     Object? navToLogin = freezed,
     Object? optionOfUser = freezed,
     Object? optionOfPlace = freezed,
-    Object? showToolBar = freezed,
   }) {
     return _then(_value.copyWith(
       currentIndex: currentIndex == freezed
@@ -2420,10 +2415,6 @@ class _$SellerMenuStateCopyWithImpl<$Res>
           ? _value.optionOfPlace
           : optionOfPlace // ignore: cast_nullable_to_non_nullable
               as Option<Place>,
-      showToolBar: showToolBar == freezed
-          ? _value.showToolBar
-          : showToolBar // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 
@@ -2456,8 +2447,7 @@ abstract class _$SellerMenuStateCopyWith<$Res>
       Option<Reservation> optionOfResevationToEdit,
       bool navToLogin,
       Option<Either<AuthFailure, User>> optionOfUser,
-      Option<Place> optionOfPlace,
-      bool showToolBar});
+      Option<Place> optionOfPlace});
 
   @override
   $PlaceCopyWith<$Res>? get place;
@@ -2486,7 +2476,6 @@ class __$SellerMenuStateCopyWithImpl<$Res>
     Object? navToLogin = freezed,
     Object? optionOfUser = freezed,
     Object? optionOfPlace = freezed,
-    Object? showToolBar = freezed,
   }) {
     return _then(_SellerMenuState(
       currentIndex: currentIndex == freezed
@@ -2529,10 +2518,6 @@ class __$SellerMenuStateCopyWithImpl<$Res>
           ? _value.optionOfPlace
           : optionOfPlace // ignore: cast_nullable_to_non_nullable
               as Option<Place>,
-      showToolBar: showToolBar == freezed
-          ? _value.showToolBar
-          : showToolBar // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -2550,8 +2535,7 @@ class _$_SellerMenuState implements _SellerMenuState {
       required this.optionOfResevationToEdit,
       required this.navToLogin,
       required this.optionOfUser,
-      required this.optionOfPlace,
-      required this.showToolBar});
+      required this.optionOfPlace});
 
   @override
   final int currentIndex;
@@ -2573,12 +2557,10 @@ class _$_SellerMenuState implements _SellerMenuState {
   final Option<Either<AuthFailure, User>> optionOfUser;
   @override
   final Option<Place> optionOfPlace;
-  @override
-  final bool showToolBar;
 
   @override
   String toString() {
-    return 'SellerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToBuyer: $navToBuyer, reTapIndex: $reTapIndex, place: $place, openEditReservation: $openEditReservation, optionOfResevationToEdit: $optionOfResevationToEdit, navToLogin: $navToLogin, optionOfUser: $optionOfUser, optionOfPlace: $optionOfPlace, showToolBar: $showToolBar)';
+    return 'SellerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToBuyer: $navToBuyer, reTapIndex: $reTapIndex, place: $place, openEditReservation: $openEditReservation, optionOfResevationToEdit: $optionOfResevationToEdit, navToLogin: $navToLogin, optionOfUser: $optionOfUser, optionOfPlace: $optionOfPlace)';
   }
 
   @override
@@ -2615,10 +2597,7 @@ class _$_SellerMenuState implements _SellerMenuState {
                     .equals(other.optionOfUser, optionOfUser)) &&
             (identical(other.optionOfPlace, optionOfPlace) ||
                 const DeepCollectionEquality()
-                    .equals(other.optionOfPlace, optionOfPlace)) &&
-            (identical(other.showToolBar, showToolBar) ||
-                const DeepCollectionEquality()
-                    .equals(other.showToolBar, showToolBar)));
+                    .equals(other.optionOfPlace, optionOfPlace)));
   }
 
   @override
@@ -2633,8 +2612,7 @@ class _$_SellerMenuState implements _SellerMenuState {
       const DeepCollectionEquality().hash(optionOfResevationToEdit) ^
       const DeepCollectionEquality().hash(navToLogin) ^
       const DeepCollectionEquality().hash(optionOfUser) ^
-      const DeepCollectionEquality().hash(optionOfPlace) ^
-      const DeepCollectionEquality().hash(showToolBar);
+      const DeepCollectionEquality().hash(optionOfPlace);
 
   @JsonKey(ignore: true)
   @override
@@ -2653,8 +2631,7 @@ abstract class _SellerMenuState implements SellerMenuState {
       required Option<Reservation> optionOfResevationToEdit,
       required bool navToLogin,
       required Option<Either<AuthFailure, User>> optionOfUser,
-      required Option<Place> optionOfPlace,
-      required bool showToolBar}) = _$_SellerMenuState;
+      required Option<Place> optionOfPlace}) = _$_SellerMenuState;
 
   @override
   int get currentIndex => throw _privateConstructorUsedError;
@@ -2678,8 +2655,6 @@ abstract class _SellerMenuState implements SellerMenuState {
       throw _privateConstructorUsedError;
   @override
   Option<Place> get optionOfPlace => throw _privateConstructorUsedError;
-  @override
-  bool get showToolBar => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SellerMenuStateCopyWith<_SellerMenuState> get copyWith =>

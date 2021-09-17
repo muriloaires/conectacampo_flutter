@@ -90,7 +90,6 @@ class SellerMainPage extends StatelessWidget {
               Scaffold(
                 backgroundColor: ColorSet.textFieldGrayBackground,
                 bottomNavigationBar: SellerBottomMenu(),
-                appBar: state.showToolBar ? _CustomAppBar() : null,
                 body: WillPopScope(
                   onWillPop: () async {
                     return !await Navigator.maybePop(
@@ -106,7 +105,7 @@ class SellerMainPage extends StatelessWidget {
                       Scaffold(body: Text('Reservas')),
                       ReservationsSummaryPage(navigatorKeys[3]!),
                       ProfilePage(
-                        navigatorKey: navigatorKeys[1]!,
+                        navigatorKeys[1]!,
                       )
                     ],
                   ),
@@ -152,7 +151,8 @@ class SellerMainPage extends StatelessWidget {
   }
 }
 
-class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class SellerDefaultAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -169,13 +169,10 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 const SizedBox(height: 20),
                 Row(
                   children: [
-                    SvgPicture.asset(
-                      'assets/map.svg',
-                      color: ColorSet.brown1,
-                    ),
-                    const SizedBox(
-                      width: 24,
-                    ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.notifications_none_outlined)),
+                    const SizedBox(width: 24),
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -183,8 +180,10 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           Text(
                               state.optionOfUser.fold(
                                   () => '',
-                                  (a) => a.fold((l) => '',
-                                      (r) => r.name.value.getOrElse(() => ''))),
+                                  (a) => a.fold(
+                                      (l) => '',
+                                      (r) => r.nickname.value
+                                          .getOrElse(() => ''))),
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           const SizedBox(width: 24),
@@ -260,5 +259,5 @@ class _CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size(double.infinity, 110);
+  Size get preferredSize => const Size(double.infinity, 130);
 }

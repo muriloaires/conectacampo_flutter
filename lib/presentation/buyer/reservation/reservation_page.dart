@@ -8,10 +8,10 @@ import 'package:flutter_svg/svg.dart';
 
 import '../buyer_main_page.dart';
 
-class BuyerResevationsPage extends StatelessWidget {
+class BuyerReservationsPage extends StatelessWidget {
   final GlobalKey navigatorKey;
 
-  const BuyerResevationsPage(this.navigatorKey);
+  const BuyerReservationsPage(this.navigatorKey);
   @override
   Widget build(BuildContext context) {
     return Navigator(

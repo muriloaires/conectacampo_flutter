@@ -3,6 +3,7 @@ import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
+import 'package:conectacampo/application/profile/profile_bloc.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/cart/cart_page.dart';
 import 'package:conectacampo/presentation/buyer/group/group_page.dart';
@@ -23,6 +24,7 @@ class BuyerMainPage extends StatelessWidget {
     1: GlobalKey<NavigatorState>(),
     2: GlobalKey<NavigatorState>(),
     3: GlobalKey<NavigatorState>(),
+    4: GlobalKey<NavigatorState>(),
   };
 
   @override
@@ -40,7 +42,10 @@ class BuyerMainPage extends StatelessWidget {
             create: (context) =>
                 getIt()..add(const ReservationEvent.started())),
         BlocProvider<SummaryBloc>(
-            create: (context) => getIt()..add(const SummaryEvent.started()))
+            create: (context) => getIt()..add(const SummaryEvent.started())),
+        BlocProvider(
+            create: (context) =>
+                getIt<ProfileBloc>()..add(const ProfileEvent.started()))
       ],
       child: BlocConsumer<BuyerMenuBloc, BuyerMenuState>(
         listener: (context, state) async {
@@ -50,6 +55,12 @@ class BuyerMainPage extends StatelessWidget {
                   builder: (context) => SellerMainPage(),
                 ),
                 (route) => false);
+          }
+
+          if (context.read<BuyerMenuBloc>().state.navToRoot) {
+            navigatorKeys[state.currentIndex]!
+                .currentState!
+                .popUntil((r) => r.isFirst);
           }
 
           if (state.navToLogin) {
@@ -113,10 +124,22 @@ class BuyerMainPage extends StatelessWidget {
                 bottomNavigationBar: _getBottomMenu(context, state),
                 body: WillPopScope(
                   onWillPop: () async {
-                    return !await Navigator.maybePop(
-                        navigatorKeys[state.currentIndex]!
-                            .currentState!
-                            .context);
+                    final key = navigatorKeys[
+                        context.read<BuyerMenuBloc>().state.currentIndex]!;
+                    final popped =
+                        await Navigator.maybePop(key.currentState!.context);
+                    if (!popped) {
+                      if (state.currentIndex != 0) {
+                        context
+                            .read<BuyerMenuBloc>()
+                            .add(const BuyerMenuEvent.homeTapped());
+                        return false;
+                      } else {
+                        return true;
+                      }
+                    } else {
+                      return false;
+                    }
                   },
                   child: IndexedStack(
                     index: context.read<BuyerMenuBloc>().state.currentIndex,
@@ -124,8 +147,8 @@ class BuyerMainPage extends StatelessWidget {
                       BuyerSummary(navigatorKeys[0]!),
                       GroupPage(navigatorKeys[1]!),
                       const Scaffold(body: Text('Reservas')),
-                      BuyerResevationsPage(navigatorKeys[2]!),
-                      ProfilePage(navigatorKey: navigatorKeys[3]!)
+                      BuyerReservationsPage(navigatorKeys[3]!),
+                      ProfilePage(navigatorKeys[4]!)
                     ],
                   ),
                 ),
@@ -243,7 +266,7 @@ class BuyerMainPage extends StatelessWidget {
               if (!reselect) {
                 bloc.add(const BuyerMenuEvent.homeTapped());
               } else {
-                navigatorKeys[0]!.currentState!.popUntil((r) => r.isFirst);
+                bloc.add(const BuyerMenuEvent.homeRetapped());
               }
 
               break;
@@ -268,7 +291,7 @@ class BuyerMainPage extends StatelessWidget {
               if (!reselect) {
                 bloc.add(const BuyerMenuEvent.profileTapped());
               } else {
-                navigatorKeys[1]!.currentState!.popUntil((r) => r.isFirst);
+                bloc.add(const BuyerMenuEvent.profileRetapped());
               }
 
               break;

@@ -60,9 +60,12 @@ class NewAdvertisementForm extends StatelessWidget {
                   GestureDetector(
                       onTap: () async {
                         final date = await showDatePicker(
+                          locale: const Locale('pt', 'BR'),
                           context: context,
-                          initialDate: DateTime.now().add(const Duration(days: 1)),
-                          firstDate:  DateTime.now().add(const Duration(days: 1)),
+                          initialDate:
+                              DateTime.now().add(const Duration(days: 1)),
+                          firstDate:
+                              DateTime.now().add(const Duration(days: 1)),
                           lastDate: DateTime.now().add(Duration(days: 60)),
                           builder: (context, child) => Theme(
                             data: Theme.of(context).copyWith(

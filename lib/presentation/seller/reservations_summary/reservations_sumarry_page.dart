@@ -6,9 +6,13 @@ import 'package:conectacampo/presentation/seller/reservation/seller_reservation_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../seller_main_page.dart';
+
 class ReservationsSummaryPage extends StatelessWidget {
   const ReservationsSummaryPage(this.navigatorKey);
+
   final GlobalKey navigatorKey;
+
   @override
   Widget build(BuildContext context) {
     return Navigator(
@@ -29,6 +33,7 @@ class ReservationsSummaryPage extends StatelessWidget {
                         .fold(() => [], (a) => a.fold((l) => [], (r) => r));
 
                     return Scaffold(
+                      appBar: SellerDefaultAppBar(),
                       body: state.loading
                           ? const Center(
                               child: CircularProgressIndicator(),
@@ -47,18 +52,39 @@ class ReservationsSummaryPage extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(height: 20),
-                                  ListView.separated(
-                                      shrinkWrap: true,
-                                      physics: const ClampingScrollPhysics(),
-                                      itemBuilder: (context, index) =>
-                                          SellerReservationWidget(
-                                              list[index].copyWith()),
-                                      separatorBuilder: (context, index) =>
-                                          const Divider(),
-                                      itemCount: list.length)
+                                  if (list.isEmpty)
+                                    const Card(
+                                      child: Padding(
+                                        padding: EdgeInsets.all(20.0),
+                                        child: Text.rich(
+                                            TextSpan(
+
+                                            children: [
+                                                TextSpan(
+                                                text: 'Sem reservas',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold)),
+                                              TextSpan(
+                                                text:
+                                                    '\nAguarde contato do cliente',
+                                              )
+                                            ])),
+                                      ),
+                                    )
+                                  else
+                                    ListView.separated(
+                                        shrinkWrap: true,
+                                        physics: const ClampingScrollPhysics(),
+                                        itemBuilder: (context, index) =>
+                                            SellerReservationWidget(
+                                                list[index].copyWith()),
+                                        separatorBuilder: (context, index) =>
+                                            const Divider(),
+                                        itemCount: list.length)
                                 ],
-                              ),
-                            ),
+                        ),
+                      ),
                     );
                   },
                 ),

@@ -36,26 +36,24 @@ class AddPhotoForm extends StatelessWidget {
                   backgroundColor: ColorSet.brown1,
                   title: const Text('Anunciar',
                       style: TextStyle(color: Colors.white))),
-              body: SingleChildScrollView(
-                child: Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Padding(
-                          padding: EdgeInsets.fromLTRB(20, 20, 20, 0)),
-                      const Text('Resumo do anúncio',
-                          style: TextStyle(
-                              color: ColorSet.brown1,
-                              fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 20),
-                      if (state.photos.isEmpty)
-                        _nonePhotoSelected()
-                      else
-                        _somePhotoSelected(),
-                      const SizedBox(height: 4),
-                    ],
-                  ),
+              body: Container(
+                padding: const EdgeInsets.all(20),
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
+                  children: [
+                    const Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 0)),
+                    const Text('Resumo do anúncio',
+                        style: TextStyle(
+                            color: ColorSet.brown1,
+                            fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 20),
+                    if (state.photos.isEmpty)
+                      _nonePhotoSelected()
+                    else
+                      _somePhotoSelected(),
+                    const SizedBox(height: 4),
+                  ],
                 ),
               ),
             ));
@@ -284,6 +282,34 @@ class AddPhotoForm extends StatelessWidget {
                         color: ColorSet.brown1,
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline,
+                      ),
+                    )),
+              ),
+              MaterialButton(
+                onPressed: () async {
+                  final PickedFile? pickedFile =
+                      await _picker.getImage(source: ImageSource.camera);
+                  if (pickedFile != null) {
+                    context
+                        .read<AddPhotoBloc>()
+                        .add(AddPhotoEvent.photoSelected(pickedFile.path));
+                  }
+                },
+                child: ClipRRect(
+                    borderRadius:
+                    const BorderRadius.all(Radius.circular(8)),
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      color: ColorSet.brown1,
+                      child: const Center(
+                        child: Text(
+                          'Tirar foto deste produto',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     )),
               )

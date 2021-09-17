@@ -30,34 +30,33 @@ class SellerMenuBloc extends Bloc<SellerMenuEvent, SellerMenuState> {
         },
         groupsTapped: (groupsTapped) async* {
           yield state.copyWith(
-              currentIndex: 1, navToRoot: false, showToolBar: true);
+            currentIndex: 1,
+            navToRoot: false,
+          );
         },
         reservationTapped: (reservationTapped) async* {
-          yield state.copyWith(
-              currentIndex: 3, navToRoot: false, showToolBar: true);
+          yield state.copyWith(currentIndex: 3, navToRoot: false);
         },
         profileTapped: (profileTapped) async* {
           yield state.copyWith(
-              currentIndex: 4, navToRoot: false, showToolBar: false);
+            currentIndex: 4,
+            navToRoot: false,
+          );
         },
         homeRetapped: (homeRetapped) async* {
-          yield state.copyWith(
-              reTapIndex: 0, navToRoot: false, showToolBar: true);
+          yield state.copyWith(reTapIndex: 0, navToRoot: false);
           state.copyWith(reTapIndex: -1, navToRoot: false);
         },
         groupsRetapped: (groupsRetapped) async* {
-          yield state.copyWith(
-              reTapIndex: 1, navToRoot: false, showToolBar: true);
+          yield state.copyWith(reTapIndex: 1, navToRoot: false);
           state.copyWith(reTapIndex: -1, navToRoot: false);
         },
         reservationRetapped: (reservationRetapped) async* {
-          yield state.copyWith(
-              reTapIndex: 3, navToRoot: false, showToolBar: true);
+          yield state.copyWith(reTapIndex: 3, navToRoot: false);
           state.copyWith(reTapIndex: -1, navToRoot: false);
         },
         profileRetapped: (profileRetapped) async* {
-          yield state.copyWith(
-              reTapIndex: 4, navToRoot: false, showToolBar: false);
+          yield state.copyWith(reTapIndex: 4, navToRoot: false);
           state.copyWith(reTapIndex: -1, navToRoot: false);
         },
         navToBuyerTapped: (navToBuyerTapped) async* {

@@ -1,6 +1,5 @@
 import 'package:conectacampo/application/seller/new_advertisement/add_product/add_product_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
-import 'package:conectacampo/domain/advertisements/seller/new_ad_product.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
 import 'package:conectacampo/domain/products/product.dart';
 import 'package:conectacampo/injection.dart';
@@ -56,76 +55,83 @@ class AddProductForm extends StatelessWidget {
                 color: Colors.white,
               ),
             )),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'O que você quer anunciar hoje?',
-                    style: TextStyle(
-                        color: ColorSet.brown1, fontWeight: FontWeight.bold),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SizedBox(
+            width: double.infinity,
+            child: ListView(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              children: [
+                const Text(
+                  'O que você quer anunciar hoje?',
+                  style: TextStyle(
+                      color: ColorSet.brown1, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ListView.separated(
+                  separatorBuilder: (context, index) => const Divider(
+                    height: 40,
+                    thickness: 2,
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ListView.separated(
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: 40,
-                    ),
-                    itemCount: state.newAdvertisement.products.length,
-                    itemBuilder: (context, index) =>
-                        NewProductWidget(index: index),
+                  itemCount: state.newAdvertisement.products.length,
+                  itemBuilder: (context, index) => ListView(
                     shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
+                    physics: const ClampingScrollPhysics(),
+                    children: [
+                      Text('Produto #${index + 1}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                      const SizedBox(height: 5),
+                      NewProductWidget(index: index),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                  TextButton(
-                      onPressed: () {
-                        context
-                            .read<AddProductBloc>()
-                            .add(const AddProductEvent.addMoreTap());
-                      },
-                      child: const Center(
-                        child: Text(
-                          'Adicionar mais produtos',
-                          style: TextStyle(
-                              color: ColorSet.brown1,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline),
-                        ),
-                      )),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  MaterialButton(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                TextButton(
                     onPressed: () {
-                      if (!state.showBtnProceed) {
-                        return;
-                      }
-
                       context
                           .read<AddProductBloc>()
-                          .add(const AddProductEvent.btnProceedTap());
+                          .add(const AddProductEvent.addMoreTap());
                     },
-                    child: Center(
+                    child: const Center(
                       child: Text(
-                        'Já adicionei tudo',
+                        'Adicionar mais produtos',
                         style: TextStyle(
-                            color: state.showBtnProceed
-                                ? ColorSet.brown1
-                                : ColorSet.gray10,
-                            fontWeight: FontWeight.bold),
+                            color: ColorSet.brown1,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline),
                       ),
+                    )),
+                const SizedBox(
+                  height: 20,
+                ),
+                MaterialButton(
+                  onPressed: () {
+                    if (!state.showBtnProceed) {
+                      return;
+                    }
+
+                    context
+                        .read<AddProductBloc>()
+                        .add(const AddProductEvent.btnProceedTap());
+                  },
+                  child: Center(
+                    child: Text(
+                      'Já adicionei tudo',
+                      style: TextStyle(
+                          color: state.showBtnProceed
+                              ? ColorSet.brown1
+                              : ColorSet.gray10,
+                          fontWeight: FontWeight.bold),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
         ),
