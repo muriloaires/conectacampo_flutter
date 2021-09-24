@@ -4,11 +4,11 @@ PODS:
     - FirebaseAuth (~> 8.0.0)
   - Firebase/CoreOnly (8.0.0):
     - FirebaseCore (= 8.0.0)
-  - firebase_auth (2.0.0):
+  - firebase_auth (3.1.1):
     - Firebase/Auth (= 8.0.0)
     - firebase_core
     - Flutter
-  - firebase_core (1.3.0):
+  - firebase_core (1.6.0):
     - Firebase/CoreOnly (= 8.0.0)
     - Flutter
   - FirebaseAuth (8.0.0):
@@ -127,24 +127,24 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Firebase: 73c3e3b216ec1ecbc54d2ffdd4670c65c749edb1
-  firebase_auth: 1e633b05c508081a0876749432ac742075b3f4f3
-  firebase_core: cda81ae37eda6df2bc2d16027fda527987c4bd33
+  firebase_auth: 69ee0daa845ee1deeb59d5eef8e4d138cd775b51
+  firebase_core: f9caee49b6a43886842635941df1378a603aac73
   FirebaseAuth: b8cd992fca5b53dc6eec09e873a3f375f000c5a1
   FirebaseCore: 3f09591d51292843e2a46f18358d60bf4e996255
   FirebaseCoreDiagnostics: 61384f54989065b15c36b5922b65112e86811d3c
   FirebaseFirestore: 0d1548ab6085002d87c173ce3f881129f39b3565
-  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GoogleDataTransport: 04c3e9a480bbcaa2ec3f5d27f1cdeb6a92f20c8d
   GoogleUtilities: 45dbb24a7f351d69d0a601482b39ad6c32e30dab
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
-  image_picker: e06f7a68f000bd36f552c1847e33cda96ed31f1f
+  image_picker: 9aa50e1d8cdacdbed739e925b7eea16d014367e6
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  path_provider: d1e9807085df1f9cc9318206cd649dc0b76be3de
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
+  shared_preferences: 5033afbb22d372e15aff8ff766df9021b845f273
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
+  url_launcher: b6e016d912f04be9f5bf6e8e82dc599b7ba59649
 
 PODFILE CHECKSUM: da62cb04d1f6b4a1663bbd69dd8cf837e3365f28
 

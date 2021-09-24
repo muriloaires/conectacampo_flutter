@@ -38,6 +38,12 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Para tirar fotos para os anúncios de produtos</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Para tirar fotos de perfil e anuncios</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Para escolher fotos para os anúncios de produtos</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -45,8 +51,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -57,9 +61,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Para escolher fotos para os anúncios de produtos</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Para tirar fotos para os anúncios de produtos</string>
 </dict>
 </plist>

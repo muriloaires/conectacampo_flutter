@@ -1,4 +1,5 @@
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
+import 'package:conectacampo/application/profile/profile_bloc.dart';
 import 'package:conectacampo/application/seller/adveretisements/seller_advertisements_bloc.dart';
 import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
@@ -26,6 +27,7 @@ class SellerMainPage extends StatelessWidget {
     1: GlobalKey<NavigatorState>(),
     2: GlobalKey<NavigatorState>(),
     3: GlobalKey<NavigatorState>(),
+    4: GlobalKey<NavigatorState>(),
   };
 
   @override
@@ -46,7 +48,10 @@ class SellerMainPage extends StatelessWidget {
                 getIt()..add(const ReservationEvent.started())),
         BlocProvider<SellerAdvertisementsBloc>(
             create: (context) =>
-                getIt()..add(const SellerAdvertisementsEvent.started()))
+                getIt()..add(const SellerAdvertisementsEvent.started())),
+        BlocProvider(
+            create: (context) =>
+                getIt<ProfileBloc>()..add(const ProfileEvent.started()))
       ],
       child: BlocConsumer<SellerMenuBloc, SellerMenuState>(
         listener: (context, state) async {
@@ -63,6 +68,12 @@ class SellerMainPage extends StatelessWidget {
                   .read<SellerMenuBloc>()
                   .add(const SellerMenuEvent.editingEnd());
             });
+          }
+
+          if (context.read<SellerMenuBloc>().state.navToRoot) {
+            navigatorKeys[state.currentIndex]!
+                .currentState!
+                .popUntil((r) => r.isFirst);
           }
 
           if (state.navToLogin) {
@@ -92,20 +103,32 @@ class SellerMainPage extends StatelessWidget {
                 bottomNavigationBar: SellerBottomMenu(),
                 body: WillPopScope(
                   onWillPop: () async {
-                    return !await Navigator.maybePop(
-                        navigatorKeys[state.currentIndex]!
-                            .currentState!
-                            .context);
+                    final key = navigatorKeys[
+                    context.read<SellerMenuBloc>().state.currentIndex]!;
+                    final popped =
+                    await Navigator.maybePop(key.currentState!.context);
+                    if (!popped) {
+                      if (state.currentIndex != 0) {
+                        context
+                            .read<SellerMenuBloc>()
+                            .add(const SellerMenuEvent.homeTapped());
+                        return false;
+                      } else {
+                        return true;
+                      }
+                    } else {
+                      return false;
+                    }
                   },
                   child: IndexedStack(
                     index: context.read<SellerMenuBloc>().state.currentIndex,
                     children: [
                       SellerSummary(navigatorKeys[0]!),
-                      SellerGroupPage(navigatorKeys[2]!),
+                      SellerGroupPage(navigatorKeys[1]!),
                       Scaffold(body: Text('Reservas')),
                       ReservationsSummaryPage(navigatorKeys[3]!),
                       ProfilePage(
-                        navigatorKeys[1]!,
+                        navigatorKeys[4]!,
                       )
                     ],
                   ),

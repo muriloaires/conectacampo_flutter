@@ -129,6 +129,7 @@ class SmsCodeForm extends StatelessWidget {
                             if (_textSmsCodeController1.text.length == 1) {
                               _node.nextFocus();
                             }
+                            smsCodeChanged(context);
                           }),
                         ),
                         const SizedBox(
@@ -139,12 +140,15 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController2,
                               (value) {
-                            context.read<SmsCodeFormBloc>().add(
+                                context.read<SmsCodeFormBloc>().add(
                                 SmsCodeFormEvent.smsCodeChanged(
                                     _textSmsCodeController2.text));
                             if (_textSmsCodeController2.text.length == 1) {
                               _node.nextFocus();
+                            } else {
+                              _node.previousFocus();
                             }
+                            smsCodeChanged(context);
                           }),
                         ),
                         const SizedBox(
@@ -155,12 +159,15 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController3,
                               (value) {
-                            context.read<SmsCodeFormBloc>().add(
+                                context.read<SmsCodeFormBloc>().add(
                                 SmsCodeFormEvent.smsCodeChanged(
                                     _textSmsCodeController3.text));
                             if (_textSmsCodeController3.text.length == 1) {
                               _node.nextFocus();
+                            } else {
+                              _node.previousFocus();
                             }
+                            smsCodeChanged(context);
                           }),
                         ),
                         const SizedBox(
@@ -171,12 +178,15 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController4,
                               (value) {
-                            context.read<SmsCodeFormBloc>().add(
+                                context.read<SmsCodeFormBloc>().add(
                                 SmsCodeFormEvent.smsCodeChanged(
                                     _textSmsCodeController4.text));
                             if (_textSmsCodeController4.text.length == 1) {
                               _node.nextFocus();
+                            } else {
+                              _node.previousFocus();
                             }
+                            smsCodeChanged(context);
                           }),
                         ),
                         const SizedBox(
@@ -187,12 +197,15 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController5,
                               (value) {
-                            context.read<SmsCodeFormBloc>().add(
+                                context.read<SmsCodeFormBloc>().add(
                                 SmsCodeFormEvent.smsCodeChanged(
                                     _textSmsCodeController5.text));
                             if (_textSmsCodeController5.text.length == 1) {
                               _node.nextFocus();
+                            } else {
+                              _node.previousFocus();
                             }
+                            smsCodeChanged(context);
                           }),
                         ),
                         const SizedBox(
@@ -203,15 +216,10 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController6,
                               (value) {
-                            String smsCodeValue = _textSmsCodeController1.text +
-                                _textSmsCodeController2.text +
-                                _textSmsCodeController3.text +
-                                _textSmsCodeController4.text +
-                                _textSmsCodeController5.text +
-                                value;
-
-                            context.read<SmsCodeFormBloc>().add(
-                                SmsCodeFormEvent.smsCodeChanged(smsCodeValue));
+                            if (value.isEmpty) {
+                              _node.previousFocus();
+                            }
+                            smsCodeChanged(context);
                           }),
                         )
                       ],
@@ -248,6 +256,19 @@ class SmsCodeForm extends StatelessWidget {
     );
   }
 
+  void smsCodeChanged(BuildContext context) {
+    String smsCodeValue = _textSmsCodeController1.text +
+        _textSmsCodeController2.text +
+        _textSmsCodeController3.text +
+        _textSmsCodeController4.text +
+        _textSmsCodeController5.text +
+        _textSmsCodeController6.text;
+
+    context
+        .read<SmsCodeFormBloc>()
+        .add(SmsCodeFormEvent.smsCodeChanged(smsCodeValue));
+  }
+
   Widget _getSmsCodeTextField(TextEditingController controller,
       void Function(String value)? onChanged) {
     return TextField(
@@ -262,6 +283,8 @@ class SmsCodeForm extends StatelessWidget {
           (value) {
             if (value.length == 1) {
               _node.nextFocus();
+            } else if (value.isEmpty) {
+              _node.previousFocus();
             }
           },
       decoration: InputDecoration(
