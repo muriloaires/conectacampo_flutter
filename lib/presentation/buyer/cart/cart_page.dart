@@ -1,8 +1,7 @@
 import 'package:conectacampo/application/buyer/cart/cart_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
-import 'package:conectacampo/domain/reservation/product_reservation.dart';
-import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
+import 'package:conectacampo/infrastructure/advertisement/advertisement_mapper.dart';
 import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
@@ -10,8 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:conectacampo/infrastructure/advertisement/advertisement_mapper.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -29,13 +26,26 @@ class CartPage extends StatelessWidget {
           }
 
           state.optionOfReservationResponse.fold(() => null, (a) {
+            String errorMessage = '';
+            a.errors?.forEach((element) {
+              errorMessage += element.messsage;
+              errorMessage += '\n';
+            });
+
+            a.productReservations.forEach((element) {
+              element.errors?.forEach((element) {
+                errorMessage += element.messsage;
+                errorMessage += '\n';
+              });
+            });
+
             showDialog<String>(
               context: context,
               builder: (BuildContext dialogContext) => Dialog(
                 child: ListView(
                   shrinkWrap: true,
                   children: [
-                    const Divider(),
+                    const SizedBox(),
                     CircleAvatar(
                       radius: 35,
                       backgroundColor: Colors.red[400],
@@ -45,24 +55,24 @@ class CartPage extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    const Divider(),
+                    const SizedBox(height: 8),
                     const Center(
                       child: Text('Reserva não efetuada',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
-                    const Divider(height: 8),
-                    const Center(
+                    const SizedBox(height: 8),
+                    Center(
                       child: SizedBox(
                         width: 180,
                         child: Flexible(
                           child: Text(
-                            'Alguns itens se encontram indisponíveis',
+                            errorMessage,
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ),
                     ),
-                    const Divider(height: 8),
+                    const SizedBox(height: 8),
                     Container(height: 1, color: ColorSet.grayLine),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -74,12 +84,12 @@ class CartPage extends StatelessWidget {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: ColorSet.grayDark))),
+                            )
+                          ],
                         )
                       ],
-                    )
-                  ],
-                ),
-              ),
+                    ),
+                  ),
             );
           });
 
@@ -293,7 +303,7 @@ class ReservationItemWidget extends StatelessWidget {
                     style: const TextStyle(fontSize: 12),
                   ),
                   Text(
-                    '${reservationItem.quantity} ${reservationItem.measurementUnit}',
+                    '${reservationItem.quantity} ${reservationItem.measurementUnit}(s)',
                     style: const TextStyle(fontSize: 12),
                   ),
                   const SizedBox(height: 8),
@@ -341,88 +351,109 @@ class ReservationItemWidget extends StatelessWidget {
                       ))
                 ],
               ),
-              IconButton(
-                  onPressed: () {
-                    showDialog<String>(
-                      context: context,
-                      builder: (BuildContext dialogContext) => Dialog(
-                        child: ListView(
-                          shrinkWrap: true,
-                          children: [
-                            const Divider(),
-                            CircleAvatar(
-                              radius: 35,
-                              backgroundColor: Colors.amber[400],
-                              child: const Text(
-                                '!',
-                                style: TextStyle(
-                                    fontSize: 40,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+              TextButton(
+                onPressed: () {
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext dialogContext) => Dialog(
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          const Divider(),
+                          CircleAvatar(
+                            radius: 35,
+                            backgroundColor: Colors.amber[400],
+                            child: const Text(
+                              '!',
+                              style: TextStyle(
+                                  fontSize: 40,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          const Divider(),
+                          const Center(
+                            child: Text('Deseja excluir?',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                          ),
+                          const Divider(height: 8),
+                          const Center(
+                            child: SizedBox(
+                              width: 180,
+                              child: Flexible(
+                                child: Text(
+                                  'Tem certeza que você deseja excluir o item?',
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
-                            const Divider(),
-                            const Center(
-                              child: Text('Deseja excluir?',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                            ),
-                            const Divider(height: 8),
-                            const Center(
-                              child: SizedBox(
-                                width: 180,
-                                child: Flexible(
-                                  child: Text(
-                                    'Tem certeza que você deseja excluir o item?',
-                                    textAlign: TextAlign.center,
+                          ),
+                          const Divider(height: 8),
+                          Container(height: 1, color: ColorSet.grayLine),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                child: TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: const Text(
+                                    'Voltar',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorSet.grayDark,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            const Divider(height: 8),
-                            Container(height: 1, color: ColorSet.grayLine),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Expanded(
-                                  child: TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: const Text('Voltar',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: ColorSet.grayDark))),
+                              Expanded(
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    context.read<CartBloc>().add(
+                                          CartEvent.onBtnDeleteTap(
+                                            reservationItem,
+                                          ),
+                                        );
+                                  },
+                                  child: const Text(
+                                    'Sim',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorSet.grayDark,
+                                    ),
+                                  ),
                                 ),
-                                Expanded(
-                                  child: TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        context.read<CartBloc>().add(
-                                            CartEvent.onBtnDeleteTap(
-                                                reservationItem));
-                                      },
-                                      child: const Text('Sim',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: ColorSet.grayDark))),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
+                              )
+                            ],
+                          )
+                        ],
                       ),
-                    );
-                  },
-                  icon: const Icon(Icons.delete_outline_rounded)),
+                    ),
+                  );
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Excluir',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Text('Valor final combinar'),
+                    const Text('Valor final a combinar'),
                     const Text('com o vendedor'),
                     Text(
                       reservationItem.sellerName,
                       style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     )
                   ],
                 ),

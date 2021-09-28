@@ -107,7 +107,7 @@ class EditReservationPage extends StatelessWidget {
                                 BorderRadius.all(Radius.circular(10))),
                         child: const Center(
                           child: Text(
-                            'Finalizar anúncio',
+                            'Alterar reserva',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

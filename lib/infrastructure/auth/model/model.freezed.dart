@@ -29,7 +29,8 @@ class _$UserResponseTearOff {
       @JsonKey(name: 'vehicle_license_plate') String? vehicleLicensePlate,
       @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String? accessToken,
-      @JsonKey(name: 'refresh_token') String? refreshToken) {
+      @JsonKey(name: 'refresh_token') String? refreshToken,
+      @JsonKey(name: 'email') String? email) {
     return _UserResponse(
       id,
       firstName,
@@ -40,6 +41,7 @@ class _$UserResponseTearOff {
       avatar,
       accessToken,
       refreshToken,
+      email,
     );
   }
 
@@ -71,6 +73,8 @@ mixin _$UserResponse {
   String? get accessToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'refresh_token')
   String? get refreshToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email')
+  String? get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -92,7 +96,8 @@ abstract class $UserResponseCopyWith<$Res> {
       @JsonKey(name: 'vehicle_license_plate') String? vehicleLicensePlate,
       @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String? accessToken,
-      @JsonKey(name: 'refresh_token') String? refreshToken});
+      @JsonKey(name: 'refresh_token') String? refreshToken,
+      @JsonKey(name: 'email') String? email});
 
   $AvatarResponseCopyWith<$Res>? get avatar;
 }
@@ -116,6 +121,7 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
     Object? avatar = freezed,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
+    Object? email = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -154,6 +160,10 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -185,7 +195,8 @@ abstract class _$UserResponseCopyWith<$Res>
       @JsonKey(name: 'vehicle_license_plate') String? vehicleLicensePlate,
       @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String? accessToken,
-      @JsonKey(name: 'refresh_token') String? refreshToken});
+      @JsonKey(name: 'refresh_token') String? refreshToken,
+      @JsonKey(name: 'email') String? email});
 
   @override
   $AvatarResponseCopyWith<$Res>? get avatar;
@@ -212,6 +223,7 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
     Object? avatar = freezed,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
+    Object? email = freezed,
   }) {
     return _then(_UserResponse(
       id == freezed
@@ -250,6 +262,10 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -266,7 +282,8 @@ class _$_UserResponse implements _UserResponse {
       @JsonKey(name: 'vehicle_license_plate') this.vehicleLicensePlate,
       @JsonKey(name: 'avatar') this.avatar,
       @JsonKey(name: 'access_token') this.accessToken,
-      @JsonKey(name: 'refresh_token') this.refreshToken);
+      @JsonKey(name: 'refresh_token') this.refreshToken,
+      @JsonKey(name: 'email') this.email);
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_UserResponseFromJson(json);
@@ -298,10 +315,13 @@ class _$_UserResponse implements _UserResponse {
   @override
   @JsonKey(name: 'refresh_token')
   final String? refreshToken;
+  @override
+  @JsonKey(name: 'email')
+  final String? email;
 
   @override
   String toString() {
-    return 'UserResponse(id: $id, firstName: $firstName, lastName: $lastName, nickname: $nickname, phoneNumber: $phoneNumber, vehicleLicensePlate: $vehicleLicensePlate, avatar: $avatar, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'UserResponse(id: $id, firstName: $firstName, lastName: $lastName, nickname: $nickname, phoneNumber: $phoneNumber, vehicleLicensePlate: $vehicleLicensePlate, avatar: $avatar, accessToken: $accessToken, refreshToken: $refreshToken, email: $email)';
   }
 
   @override
@@ -332,7 +352,9 @@ class _$_UserResponse implements _UserResponse {
                     .equals(other.accessToken, accessToken)) &&
             (identical(other.refreshToken, refreshToken) ||
                 const DeepCollectionEquality()
-                    .equals(other.refreshToken, refreshToken)));
+                    .equals(other.refreshToken, refreshToken)) &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)));
   }
 
   @override
@@ -346,7 +368,8 @@ class _$_UserResponse implements _UserResponse {
       const DeepCollectionEquality().hash(vehicleLicensePlate) ^
       const DeepCollectionEquality().hash(avatar) ^
       const DeepCollectionEquality().hash(accessToken) ^
-      const DeepCollectionEquality().hash(refreshToken);
+      const DeepCollectionEquality().hash(refreshToken) ^
+      const DeepCollectionEquality().hash(email);
 
   @JsonKey(ignore: true)
   @override
@@ -369,7 +392,8 @@ abstract class _UserResponse implements UserResponse {
       @JsonKey(name: 'vehicle_license_plate') String? vehicleLicensePlate,
       @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String? accessToken,
-      @JsonKey(name: 'refresh_token') String? refreshToken) = _$_UserResponse;
+      @JsonKey(name: 'refresh_token') String? refreshToken,
+      @JsonKey(name: 'email') String? email) = _$_UserResponse;
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
       _$_UserResponse.fromJson;
@@ -401,6 +425,9 @@ abstract class _UserResponse implements UserResponse {
   @override
   @JsonKey(name: 'refresh_token')
   String? get refreshToken => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'email')
+  String? get email => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserResponseCopyWith<_UserResponse> get copyWith =>

@@ -10,13 +10,14 @@ abstract class IAdvertisementsFacade {
   Future<Either<AdvertisementFailure, List<Advertisement>>> getAdvertisements(
       Place place);
 
-  Future<Either<AdvertisementFailure, List<AdProduct>>> getProduct({
+  Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProducts({
     required Place place,
     String? productName,
     String? kind,
     int? productId,
     int? quantity,
     String? rating,
+    String? date
   });
 
   Future<Unit> saveSearchedName(String productName);

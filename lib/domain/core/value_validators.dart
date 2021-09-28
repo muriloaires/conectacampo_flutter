@@ -41,6 +41,14 @@ Either<ValueFailure<String>, String> validateNickname(String input) {
   }
 }
 
+Either<ValueFailure<String>, String> validateEmail(String input) {
+  if (!input.isValidEmail()) {
+    return left(ValueFailure.invalidNickname(input));
+  } else {
+    return right(input);
+  }
+}
+
 Either<ValueFailure<String>, String> validateAvatar(String input) {
   if (input.isEmpty) {
     return left(ValueFailure.invalidAvatar(input));
@@ -169,5 +177,13 @@ Either<ValueFailure<String>, String> validateReservationQuantity(String input) {
     return left(ValueFailure.invalidReservationQuantity(input));
   } else {
     return right(input);
+  }
+}
+
+extension EmailValidator on String {
+  bool isValidEmail() {
+    return RegExp(
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
   }
 }

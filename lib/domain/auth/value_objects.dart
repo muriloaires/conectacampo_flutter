@@ -47,6 +47,17 @@ class Nickname extends ValueObject<String> {
   const Nickname._(this.value);
 }
 
+class Email extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory Email(String input) {
+    return Email._(validateNickname(input));
+  }
+
+  const Email._(this.value);
+}
+
 class UniqueId extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;

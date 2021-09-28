@@ -3,7 +3,8 @@ part of 'search_form_bloc.dart';
 @freezed
 class SearchFormState with _$SearchFormState {
   const factory SearchFormState(
-      {required bool productSelected,
+      {required Option<Either<ProductFailure, List<Product>>>
+          optionOfProductsFailureOrSuccess,
       required bool searching,
       required Option<Either<AdvertisementFailure, List<AdProduct>>>
           optionOfAdsProductsFailureOrSuccess,
@@ -13,12 +14,16 @@ class SearchFormState with _$SearchFormState {
       required List<String> history,
       required int kindRadioValue,
       required bool isKindsVisible,
-        required int ratingRadioValue,
-        required bool isRatingVisible,
-      required Option<Either<ProductFailure, Product>> optionOfProductFailureOrSuccess}) = _SearchFormState;
+      required int ratingRadioValue,
+      required bool isRatingVisible,
+      required Option<Either<ProductFailure, Product>>
+          optionOfProductFailureOrSuccess,
+      required Option<Product> optionOfSelectedProduct,
+      required Option<DateTime> optionOfDateSelected,
+      required String quantity}) = _SearchFormState;
 
   factory SearchFormState.initial() => SearchFormState(
-      productSelected: false,
+      optionOfProductsFailureOrSuccess: none(),
       searching: false,
       optionOfAdsProductsFailureOrSuccess: none(),
       showFilters: false,
@@ -29,5 +34,8 @@ class SearchFormState with _$SearchFormState {
       isKindsVisible: false,
       ratingRadioValue: 0,
       isRatingVisible: false,
-      optionOfProductFailureOrSuccess: none());
+      optionOfProductFailureOrSuccess: none(),
+      optionOfSelectedProduct: none(),
+      optionOfDateSelected: none(),
+      quantity: '');
 }

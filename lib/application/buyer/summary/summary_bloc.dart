@@ -36,7 +36,7 @@ class SummaryBloc extends Bloc<SummaryEvent, SummaryState> {
       yield state.copyWith(
           cancellingReservation: false,
           optionOfReservationCancelFailureOrSuccess: some(cancelResult));
-      yield state.copyWith(optionOfReservationCancelFailureOrSuccess: none());
+      state.copyWith(optionOfReservationCancelFailureOrSuccess: none());
     }, onPlaceChanged: (OnPlaceChanged value) async* {
       final selectedPlace = await loadSelectedPlace();
       if (selectedPlace != null) {

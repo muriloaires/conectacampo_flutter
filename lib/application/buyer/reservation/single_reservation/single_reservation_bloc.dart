@@ -80,6 +80,8 @@ class SingleReservationBloc
       }
     }, onCancelErrorDisplayed: (OnCancelErrorDisplayed value) async* {
       yield state.copyWith(showCancelItemError: false);
+    }, onExpandPressed: (OnExpandPressed value) async* {
+      yield state.copyWith(isItemVisible: !state.isItemVisible);
     });
   }
 }

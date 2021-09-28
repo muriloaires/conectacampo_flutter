@@ -41,6 +41,10 @@ class _$SingleReservationEventTearOff {
   OnCancelErrorDisplayed onCancelErrorDisplayed() {
     return const OnCancelErrorDisplayed();
   }
+
+  OnExpandPressed onExpandPressed() {
+    return const OnExpandPressed();
+  }
 }
 
 /// @nodoc
@@ -55,6 +59,7 @@ mixin _$SingleReservationEvent {
     required TResult Function(int index) onCancelPressed,
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
+    required TResult Function() onExpandPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$SingleReservationEvent {
     TResult Function(int index)? onCancelPressed,
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
+    TResult Function()? onExpandPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -76,6 +82,7 @@ mixin _$SingleReservationEvent {
         onAcceptErrorDisplayed,
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
+    required TResult Function(OnExpandPressed value) onExpandPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +92,7 @@ mixin _$SingleReservationEvent {
     TResult Function(OnCancelPressed value)? onCancelPressed,
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
+    TResult Function(OnExpandPressed value)? onExpandPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -185,6 +193,7 @@ class _$_Started implements _Started {
     required TResult Function(int index) onCancelPressed,
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
+    required TResult Function() onExpandPressed,
   }) {
     return started(resservation);
   }
@@ -197,6 +206,7 @@ class _$_Started implements _Started {
     TResult Function(int index)? onCancelPressed,
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
+    TResult Function()? onExpandPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -215,6 +225,7 @@ class _$_Started implements _Started {
         onAcceptErrorDisplayed,
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
+    required TResult Function(OnExpandPressed value) onExpandPressed,
   }) {
     return started(this);
   }
@@ -227,6 +238,7 @@ class _$_Started implements _Started {
     TResult Function(OnCancelPressed value)? onCancelPressed,
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
+    TResult Function(OnExpandPressed value)? onExpandPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -315,6 +327,7 @@ class _$OnAcceptPressed implements OnAcceptPressed {
     required TResult Function(int index) onCancelPressed,
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
+    required TResult Function() onExpandPressed,
   }) {
     return onAcceptPressed(index);
   }
@@ -327,6 +340,7 @@ class _$OnAcceptPressed implements OnAcceptPressed {
     TResult Function(int index)? onCancelPressed,
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
+    TResult Function()? onExpandPressed,
     required TResult orElse(),
   }) {
     if (onAcceptPressed != null) {
@@ -345,6 +359,7 @@ class _$OnAcceptPressed implements OnAcceptPressed {
         onAcceptErrorDisplayed,
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
+    required TResult Function(OnExpandPressed value) onExpandPressed,
   }) {
     return onAcceptPressed(this);
   }
@@ -357,6 +372,7 @@ class _$OnAcceptPressed implements OnAcceptPressed {
     TResult Function(OnCancelPressed value)? onCancelPressed,
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
+    TResult Function(OnExpandPressed value)? onExpandPressed,
     required TResult orElse(),
   }) {
     if (onAcceptPressed != null) {
@@ -445,6 +461,7 @@ class _$OnCancelPressed implements OnCancelPressed {
     required TResult Function(int index) onCancelPressed,
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
+    required TResult Function() onExpandPressed,
   }) {
     return onCancelPressed(index);
   }
@@ -457,6 +474,7 @@ class _$OnCancelPressed implements OnCancelPressed {
     TResult Function(int index)? onCancelPressed,
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
+    TResult Function()? onExpandPressed,
     required TResult orElse(),
   }) {
     if (onCancelPressed != null) {
@@ -475,6 +493,7 @@ class _$OnCancelPressed implements OnCancelPressed {
         onAcceptErrorDisplayed,
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
+    required TResult Function(OnExpandPressed value) onExpandPressed,
   }) {
     return onCancelPressed(this);
   }
@@ -487,6 +506,7 @@ class _$OnCancelPressed implements OnCancelPressed {
     TResult Function(OnCancelPressed value)? onCancelPressed,
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
+    TResult Function(OnExpandPressed value)? onExpandPressed,
     required TResult orElse(),
   }) {
     if (onCancelPressed != null) {
@@ -550,6 +570,7 @@ class _$OnAcceptErrorDisplayed implements OnAcceptErrorDisplayed {
     required TResult Function(int index) onCancelPressed,
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
+    required TResult Function() onExpandPressed,
   }) {
     return onAcceptErrorDisplayed();
   }
@@ -562,6 +583,7 @@ class _$OnAcceptErrorDisplayed implements OnAcceptErrorDisplayed {
     TResult Function(int index)? onCancelPressed,
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
+    TResult Function()? onExpandPressed,
     required TResult orElse(),
   }) {
     if (onAcceptErrorDisplayed != null) {
@@ -580,6 +602,7 @@ class _$OnAcceptErrorDisplayed implements OnAcceptErrorDisplayed {
         onAcceptErrorDisplayed,
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
+    required TResult Function(OnExpandPressed value) onExpandPressed,
   }) {
     return onAcceptErrorDisplayed(this);
   }
@@ -592,6 +615,7 @@ class _$OnAcceptErrorDisplayed implements OnAcceptErrorDisplayed {
     TResult Function(OnCancelPressed value)? onCancelPressed,
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
+    TResult Function(OnExpandPressed value)? onExpandPressed,
     required TResult orElse(),
   }) {
     if (onAcceptErrorDisplayed != null) {
@@ -650,6 +674,7 @@ class _$OnCancelErrorDisplayed implements OnCancelErrorDisplayed {
     required TResult Function(int index) onCancelPressed,
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
+    required TResult Function() onExpandPressed,
   }) {
     return onCancelErrorDisplayed();
   }
@@ -662,6 +687,7 @@ class _$OnCancelErrorDisplayed implements OnCancelErrorDisplayed {
     TResult Function(int index)? onCancelPressed,
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
+    TResult Function()? onExpandPressed,
     required TResult orElse(),
   }) {
     if (onCancelErrorDisplayed != null) {
@@ -680,6 +706,7 @@ class _$OnCancelErrorDisplayed implements OnCancelErrorDisplayed {
         onAcceptErrorDisplayed,
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
+    required TResult Function(OnExpandPressed value) onExpandPressed,
   }) {
     return onCancelErrorDisplayed(this);
   }
@@ -692,6 +719,7 @@ class _$OnCancelErrorDisplayed implements OnCancelErrorDisplayed {
     TResult Function(OnCancelPressed value)? onCancelPressed,
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
+    TResult Function(OnExpandPressed value)? onExpandPressed,
     required TResult orElse(),
   }) {
     if (onCancelErrorDisplayed != null) {
@@ -703,6 +731,110 @@ class _$OnCancelErrorDisplayed implements OnCancelErrorDisplayed {
 
 abstract class OnCancelErrorDisplayed implements SingleReservationEvent {
   const factory OnCancelErrorDisplayed() = _$OnCancelErrorDisplayed;
+}
+
+/// @nodoc
+abstract class $OnExpandPressedCopyWith<$Res> {
+  factory $OnExpandPressedCopyWith(
+          OnExpandPressed value, $Res Function(OnExpandPressed) then) =
+      _$OnExpandPressedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$OnExpandPressedCopyWithImpl<$Res>
+    extends _$SingleReservationEventCopyWithImpl<$Res>
+    implements $OnExpandPressedCopyWith<$Res> {
+  _$OnExpandPressedCopyWithImpl(
+      OnExpandPressed _value, $Res Function(OnExpandPressed) _then)
+      : super(_value, (v) => _then(v as OnExpandPressed));
+
+  @override
+  OnExpandPressed get _value => super._value as OnExpandPressed;
+}
+
+/// @nodoc
+
+class _$OnExpandPressed implements OnExpandPressed {
+  const _$OnExpandPressed();
+
+  @override
+  String toString() {
+    return 'SingleReservationEvent.onExpandPressed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is OnExpandPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Reservation resservation) started,
+    required TResult Function(int index) onAcceptPressed,
+    required TResult Function(int index) onCancelPressed,
+    required TResult Function() onAcceptErrorDisplayed,
+    required TResult Function() onCancelErrorDisplayed,
+    required TResult Function() onExpandPressed,
+  }) {
+    return onExpandPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Reservation resservation)? started,
+    TResult Function(int index)? onAcceptPressed,
+    TResult Function(int index)? onCancelPressed,
+    TResult Function()? onAcceptErrorDisplayed,
+    TResult Function()? onCancelErrorDisplayed,
+    TResult Function()? onExpandPressed,
+    required TResult orElse(),
+  }) {
+    if (onExpandPressed != null) {
+      return onExpandPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnAcceptPressed value) onAcceptPressed,
+    required TResult Function(OnCancelPressed value) onCancelPressed,
+    required TResult Function(OnAcceptErrorDisplayed value)
+        onAcceptErrorDisplayed,
+    required TResult Function(OnCancelErrorDisplayed value)
+        onCancelErrorDisplayed,
+    required TResult Function(OnExpandPressed value) onExpandPressed,
+  }) {
+    return onExpandPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnAcceptPressed value)? onAcceptPressed,
+    TResult Function(OnCancelPressed value)? onCancelPressed,
+    TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
+    TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
+    TResult Function(OnExpandPressed value)? onExpandPressed,
+    required TResult orElse(),
+  }) {
+    if (onExpandPressed != null) {
+      return onExpandPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnExpandPressed implements SingleReservationEvent {
+  const factory OnExpandPressed() = _$OnExpandPressed;
 }
 
 /// @nodoc

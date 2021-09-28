@@ -30,6 +30,7 @@ class _$ReservationItemTearOff {
       required String sellerName,
       required String sellerPhone,
       required String sellerId,
+      required int advertisementId,
       required String image}) {
     return _ReservationItem(
       id: id,
@@ -41,6 +42,7 @@ class _$ReservationItemTearOff {
       sellerName: sellerName,
       sellerPhone: sellerPhone,
       sellerId: sellerId,
+      advertisementId: advertisementId,
       image: image,
     );
   }
@@ -64,6 +66,7 @@ mixin _$ReservationItem {
   String get sellerName => throw _privateConstructorUsedError;
   String get sellerPhone => throw _privateConstructorUsedError;
   String get sellerId => throw _privateConstructorUsedError;
+  int get advertisementId => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -87,6 +90,7 @@ abstract class $ReservationItemCopyWith<$Res> {
       String sellerName,
       String sellerPhone,
       String sellerId,
+      int advertisementId,
       String image});
 }
 
@@ -110,6 +114,7 @@ class _$ReservationItemCopyWithImpl<$Res>
     Object? sellerName = freezed,
     Object? sellerPhone = freezed,
     Object? sellerId = freezed,
+    Object? advertisementId = freezed,
     Object? image = freezed,
   }) {
     return _then(_value.copyWith(
@@ -149,6 +154,10 @@ class _$ReservationItemCopyWithImpl<$Res>
           ? _value.sellerId
           : sellerId // ignore: cast_nullable_to_non_nullable
               as String,
+      advertisementId: advertisementId == freezed
+          ? _value.advertisementId
+          : advertisementId // ignore: cast_nullable_to_non_nullable
+              as int,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -174,6 +183,7 @@ abstract class _$ReservationItemCopyWith<$Res>
       String sellerName,
       String sellerPhone,
       String sellerId,
+      int advertisementId,
       String image});
 }
 
@@ -199,6 +209,7 @@ class __$ReservationItemCopyWithImpl<$Res>
     Object? sellerName = freezed,
     Object? sellerPhone = freezed,
     Object? sellerId = freezed,
+    Object? advertisementId = freezed,
     Object? image = freezed,
   }) {
     return _then(_ReservationItem(
@@ -238,6 +249,10 @@ class __$ReservationItemCopyWithImpl<$Res>
           ? _value.sellerId
           : sellerId // ignore: cast_nullable_to_non_nullable
               as String,
+      advertisementId: advertisementId == freezed
+          ? _value.advertisementId
+          : advertisementId // ignore: cast_nullable_to_non_nullable
+              as int,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -259,6 +274,7 @@ class _$_ReservationItem implements _ReservationItem {
       required this.sellerName,
       required this.sellerPhone,
       required this.sellerId,
+      required this.advertisementId,
       required this.image});
 
   factory _$_ReservationItem.fromJson(Map<String, dynamic> json) =>
@@ -283,11 +299,13 @@ class _$_ReservationItem implements _ReservationItem {
   @override
   final String sellerId;
   @override
+  final int advertisementId;
+  @override
   final String image;
 
   @override
   String toString() {
-    return 'ReservationItem(id: $id, name: $name, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerPhone: $sellerPhone, sellerId: $sellerId, image: $image)';
+    return 'ReservationItem(id: $id, name: $name, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerPhone: $sellerPhone, sellerId: $sellerId, advertisementId: $advertisementId, image: $image)';
   }
 
   @override
@@ -317,6 +335,9 @@ class _$_ReservationItem implements _ReservationItem {
             (identical(other.sellerId, sellerId) ||
                 const DeepCollectionEquality()
                     .equals(other.sellerId, sellerId)) &&
+            (identical(other.advertisementId, advertisementId) ||
+                const DeepCollectionEquality()
+                    .equals(other.advertisementId, advertisementId)) &&
             (identical(other.image, image) ||
                 const DeepCollectionEquality().equals(other.image, image)));
   }
@@ -333,6 +354,7 @@ class _$_ReservationItem implements _ReservationItem {
       const DeepCollectionEquality().hash(sellerName) ^
       const DeepCollectionEquality().hash(sellerPhone) ^
       const DeepCollectionEquality().hash(sellerId) ^
+      const DeepCollectionEquality().hash(advertisementId) ^
       const DeepCollectionEquality().hash(image);
 
   @JsonKey(ignore: true)
@@ -357,6 +379,7 @@ abstract class _ReservationItem implements ReservationItem {
       required String sellerName,
       required String sellerPhone,
       required String sellerId,
+      required int advertisementId,
       required String image}) = _$_ReservationItem;
 
   factory _ReservationItem.fromJson(Map<String, dynamic> json) =
@@ -380,6 +403,8 @@ abstract class _ReservationItem implements ReservationItem {
   String get sellerPhone => throw _privateConstructorUsedError;
   @override
   String get sellerId => throw _privateConstructorUsedError;
+  @override
+  int get advertisementId => throw _privateConstructorUsedError;
   @override
   String get image => throw _privateConstructorUsedError;
   @override

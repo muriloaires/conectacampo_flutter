@@ -19,6 +19,7 @@ _$_UserResponse _$_$_UserResponseFromJson(Map<String, dynamic> json) {
         : AvatarResponse.fromJson(json['avatar'] as Map<String, dynamic>),
     json['access_token'] as String?,
     json['refresh_token'] as String?,
+    json['email'] as String?,
   );
 }
 
@@ -33,6 +34,7 @@ Map<String, dynamic> _$_$_UserResponseToJson(_$_UserResponse instance) =>
       'avatar': instance.avatar,
       'access_token': instance.accessToken,
       'refresh_token': instance.refreshToken,
+      'email': instance.email,
     };
 
 _$_AvatarResponse _$_$_AvatarResponseFromJson(Map<String, dynamic> json) {

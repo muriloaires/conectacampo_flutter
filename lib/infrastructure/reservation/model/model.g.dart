@@ -17,6 +17,7 @@ _$_ReservationItemDB _$_$_ReservationItemDBFromJson(Map<String, dynamic> json) {
     sellerName: json['seller_name'] as String,
     sellerPhone: json['seller_phone'] as String,
     sellerId: json['seller_id'] as String,
+    advertisementId: json['advertisement_id'] as int,
     image: json['image'] as String,
   );
 }
@@ -33,6 +34,7 @@ Map<String, dynamic> _$_$_ReservationItemDBToJson(
       'seller_name': instance.sellerName,
       'seller_phone': instance.sellerPhone,
       'seller_id': instance.sellerId,
+      'advertisement_id': instance.advertisementId,
       'image': instance.image,
     };
 

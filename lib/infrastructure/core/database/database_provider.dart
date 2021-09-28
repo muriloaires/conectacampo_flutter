@@ -23,6 +23,7 @@ class DatabaseHelper {
   static const _columnSellerName = 'seller_name';
   static const _columnSellerPhone = 'seller_phone';
   static const _columnSellerId = 'seller_id';
+  static const _advertisementId = 'advertisement_id';
   static const _columnImage = 'image';
 
   // make this a singleton class
@@ -56,6 +57,7 @@ class DatabaseHelper {
             $_columnMeasurementUnit TEXT NOT NULL,
             $_columnAmmount INTEGER NOT NULL,
             $_columnRating TEXT NOT NULL,
+            $_advertisementId INTEGER NOT NULL,
             $_columnKind TEXT NOT NULL,
             $_columnSellerName TEXT NOT NULL,
             $_columnSellerPhone TEXT NOT NULL,
@@ -94,7 +96,7 @@ class DatabaseHelper {
 
       if (existingRaw.isNotEmpty) {
         final existingItem = ReservationItemDB.fromJson(existingRaw.first);
-        if (existingItem.sellerId != reservationItemDB.sellerId) {
+        if (existingItem.advertisementId != reservationItemDB.advertisementId) {
           return left(const ReservationFailure.anotherSellerInCart());
         }
       }

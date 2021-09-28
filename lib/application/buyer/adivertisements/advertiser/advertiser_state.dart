@@ -14,5 +14,6 @@ class AdvertiserState with _$AdvertiserState {
           null,
           null,
           null,
+          null,
           null));
 }

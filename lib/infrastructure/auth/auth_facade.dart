@@ -13,10 +13,13 @@ import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
+import 'user_mapper.dart';
+
 @LazySingleton(as: IAuthFacade)
 class AuthFacade implements IAuthFacade {
   static const routeSessions = '/sessions';
   static const routeUsers = '/users';
+  static const routeMe = '/me';
 
   final FirebaseAuth _firebaseAuth;
 
@@ -115,6 +118,7 @@ class AuthFacade implements IAuthFacade {
   Future<Either<AuthFailure, Unit>> signUp(
       FullName fullName, Nickname nickname, String avatar) async {
     final firstName = fullName.getOrCrash().split(' ')[0];
+
     final lastName = fullName.getOrCrash().split(' ')[1];
     final url = Uri.https(baseUrl, '$apiVersion$routeUsers');
     final request = http.MultipartRequest(
@@ -164,4 +168,42 @@ class AuthFacade implements IAuthFacade {
 
   @override
   String getSelectedNickname() => _nickname;
+
+  @override
+  Future<Either<AuthFailure, User>> updateUser(
+    String? name,
+    String? nickname,
+    String? email,
+  ) async {
+    final url = Uri.https(
+      baseUrl,
+      '$apiVersion$routeMe',
+    );
+    final firstName = name?.split(' ')[0];
+
+    final lastName = name?.split(' ')[1];
+    final response = await getAuthenticatedPatchRequest(
+      url,
+      headers: getApiHeader(),
+      body: jsonEncode({
+        'first_name': firstName,
+        'last_name': lastName,
+        'nickname': nickname,
+      }),
+    );
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final user = UserResponse.fromJson(
+        json.decode(response.body) as Map<String, dynamic>,
+      );
+      await persistUser(user);
+      return right(user.toDomain());
+    } else if (code == 401) {
+      return left(const AuthFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const AuthFailure.applicationError());
+    } else {
+      return left(const AuthFailure.serverError());
+    }
+  }
 }

@@ -2,6 +2,7 @@ import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
+import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -42,32 +43,38 @@ class BuyerReservationsPage extends StatelessWidget {
                                   .read<BuyerMenuBloc>()
                                   .add(const BuyerMenuEvent.homeRetapped());
                             },
-                            child: Card(
-                              margin: const EdgeInsets.all(0),
-                              child: Padding(
-                                padding: const EdgeInsets.all(32),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: const [
-                                        Text(
-                                          'Sem itens na sua feira!',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Text('Fazer novo pedido')
-                                      ],
-                                    ),
-                                    SvgPicture.asset(
-                                      'assets/coolicon.svg',
-                                      width: 21,
-                                      height: 21,
-                                    ),
-                                  ],
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (builder) => SearchPage()));
+                              },
+                              child: Card(
+                                margin: const EdgeInsets.all(0),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(32),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: const [
+                                          Text(
+                                            'Sem itens na sua feira!',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text('Fazer novo pedido')
+                                        ],
+                                      ),
+                                      SvgPicture.asset(
+                                        'assets/coolicon.svg',
+                                        width: 21,
+                                        height: 21,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

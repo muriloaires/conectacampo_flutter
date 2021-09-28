@@ -6,7 +6,7 @@ class ProfileState with _$ProfileState {
       _ProfileState;
 
   factory ProfileState.initial() => ProfileState(
-      user: User(
+        user: User(
           UniqueId.fromUniqueString('id'),
           FullName('Full name'),
           Nickname('Nickname'),
@@ -15,6 +15,9 @@ class ProfileState with _$ProfileState {
           null,
           null,
           null,
-          null),
-      isBuyer: true);
+          null,
+          null,
+        ),
+        isBuyer: true,
+      );
 }

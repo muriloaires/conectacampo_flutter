@@ -16,6 +16,7 @@ class ReservationItem with _$ReservationItem {
       required String sellerName,
       required String sellerPhone,
       required String sellerId,
+      required int advertisementId,
       required String image}) = _ReservationItem;
 
   factory ReservationItem.fromAdProduct(AdProduct product) => ReservationItem(
@@ -28,8 +29,8 @@ class ReservationItem with _$ReservationItem {
       kind: product.kind,
       sellerName: product.advertisement?.seller.name.getOrCrash() ?? '',
       sellerId: product.advertisement?.seller.id.getOrCrash() ?? '',
-      sellerPhone:
-          product.advertisement?.seller.phoneNumber.getOrCrash() ?? '');
+      sellerPhone: product.advertisement?.seller.phoneNumber.getOrCrash() ?? '',
+      advertisementId: product.advertisementId);
 
   factory ReservationItem.fromJson(Map<String, dynamic> json) =>
       _$ReservationItemFromJson(json);

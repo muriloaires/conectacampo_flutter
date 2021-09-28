@@ -73,6 +73,10 @@ class BuyerMainPage extends StatelessWidget {
               builder: (context) => const CartPage(),
             )) as bool?;
             if (success != null && success) {
+              context.read<GroupBloc>().add(const GroupEvent.started());
+              context
+                  .read<ReservationBloc>()
+                  .add(const ReservationEvent.started());
               showDialog<String>(
                 context: context,
                 builder: (BuildContext dialogContext) => Dialog(
@@ -84,33 +88,33 @@ class BuyerMainPage extends StatelessWidget {
                         radius: 35,
                         backgroundColor: ColorSet.green1,
                         child: Icon(
-                          Icons.check,
-                          size: 48,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const Divider(),
-                      const Center(
-                        child: Text('Pedido efetuado com sucesso!',
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      ),
-                      const Divider(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Expanded(
-                            child: TextButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: const Text('Ok',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorSet.grayDark))),
+                              Icons.check,
+                              size: 48,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const Divider(),
+                          const Center(
+                            child: Text('Pedido efetuado com sucesso!',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                          ),
+                          const Divider(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                child: TextButton(
+                                    onPressed: () => Navigator.pop(context),
+                                    child: const Text('Ok',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: ColorSet.grayDark))),
+                              )
+                            ],
                           )
                         ],
-                      )
-                    ],
-                  ),
-                ),
+                      ),
+                    ),
               );
             }
             context.read<BuyerMenuBloc>().add(const BuyerMenuEvent.started());
@@ -162,9 +166,8 @@ class BuyerMainPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          context
-                              .read<BuyerMenuBloc>()
-                              .add(const BuyerMenuEvent.homeTapped());
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (builder) => SearchPage()));
                         },
                         child: Container(
                           width: 68.0,
@@ -209,7 +212,7 @@ class BuyerMainPage extends StatelessWidget {
             height: 45,
             child: Row(
               children: [
-                SvgPicture.asset('assets/basket.svg', height: 24, width: 24),
+                const Icon(Icons.shopping_cart_outlined, size: 24, color: Colors.white,),
                 const Expanded(child: SizedBox()),
                 Text(
                   '${state.itemsInCart.length} ${state.itemsInCart.length > 1 ? 'itens' : 'item'}',

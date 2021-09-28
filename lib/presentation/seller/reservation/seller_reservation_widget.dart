@@ -33,7 +33,7 @@ class SellerReservationWidget extends StatelessWidget {
                       height: 45,
                       color: _getStatusColor(state.reservation),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
                         child: Center(
                           child: _getStatusText(state.reservation),
                         ),

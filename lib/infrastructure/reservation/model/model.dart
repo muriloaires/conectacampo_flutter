@@ -5,7 +5,6 @@ import 'package:conectacampo/infrastructure/advertisement/advertisement_mapper.d
 import 'package:conectacampo/infrastructure/advertisement/model/model.dart';
 import 'package:conectacampo/infrastructure/auth/model/model.dart';
 import 'package:conectacampo/infrastructure/auth/user_mapper.dart';
-import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'model.freezed.dart';
@@ -23,6 +22,7 @@ class ReservationItemDB with _$ReservationItemDB {
       @JsonKey(name: 'seller_name') required String sellerName,
       @JsonKey(name: 'seller_phone') required String sellerPhone,
       @JsonKey(name: 'seller_id') required String sellerId,
+      @JsonKey(name: 'advertisement_id') required int advertisementId,
       @JsonKey(name: 'image') required String image}) = _ReservationItemDB;
 
   factory ReservationItemDB.fromJson(Map<String, dynamic> json) =>
@@ -116,7 +116,8 @@ extension ReservationItemDBExtension on ReservationItemDB {
         rating: rating,
         sellerName: sellerName,
         sellerPhone: sellerPhone,
-        sellerId: sellerId);
+        sellerId: sellerId,
+        advertisementId: advertisementId);
   }
 }
 
@@ -132,7 +133,8 @@ extension ReservationItemDBDomain on ReservationItem {
         rating: rating,
         sellerName: sellerName,
         sellerPhone: sellerPhone,
-        sellerId: sellerId);
+        sellerId: sellerId,
+        advertisementId: advertisementId);
   }
 }
 
@@ -174,9 +176,3 @@ extension ProductReservationExt on ProductReservationResponse {
     }
   }
 }
-// awaiting_buyer
-// pending_seller
-// buyer_canceled
-// seller_canceled
-// confirmed
-// paid

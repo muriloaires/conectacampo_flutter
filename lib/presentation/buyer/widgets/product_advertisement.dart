@@ -47,7 +47,7 @@ class ProductAdvertisement extends StatelessWidget {
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
-                      color: ColorSet.gray2),
+                      color: ColorSet.gray2,),
                 ),
               ),
               const SizedBox(
@@ -65,7 +65,7 @@ class ProductAdvertisement extends StatelessWidget {
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
-                      color: ColorSet.gray2),
+                      color: ColorSet.gray2,),
                 ),
               )
             ],

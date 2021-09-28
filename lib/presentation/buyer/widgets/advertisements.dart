@@ -32,6 +32,9 @@ class _AdvertisementListState extends State<AdvertisementList> {
           for (final element in advertisement.products) {
             lastProducts += '${element.name}, ';
           }
+          if(lastProducts.isNotEmpty){
+            lastProducts = lastProducts.substring(0, lastProducts.length-2);
+          }
           return Card(
             child: ListView(
               shrinkWrap: true,

@@ -11,7 +11,7 @@ class SingleReservationState with _$SingleReservationState {
           optionOfAdFailureOrSuccess}) = _SingleReservationState;
 
   factory SingleReservationState.initial() => SingleReservationState(
-      isItemVisible: true,
+      isItemVisible: false,
       reservation: Reservation(
           id: -1,
           createdAt: '',
@@ -24,6 +24,7 @@ class SingleReservationState with _$SingleReservationState {
               null,
               null,
               null,
+              null,
               null),
           seller: User(
               UniqueId.fromUniqueString('as'),
@@ -31,6 +32,7 @@ class SingleReservationState with _$SingleReservationState {
               Nickname('nickname'),
               'vehicleLicensePlate',
               PhoneNumber('62999999999'),
+              null,
               null,
               null,
               null,

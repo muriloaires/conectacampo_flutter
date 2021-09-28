@@ -65,7 +65,7 @@ class ProductPage extends StatelessWidget {
                                     const Divider(),
                                     const Center(
                                       child: Text(
-                                          'Há produtos de outro vendedor no seu carrinho!',
+                                          'Há produtos de outro vendedor ou de outra feira em seu carrinho!',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
@@ -219,16 +219,60 @@ class ProductPage extends StatelessWidget {
                         const SizedBox(
                           height: 4,
                         ),
-                        Container(
-                          color: ColorSet.gray10,
-                          padding: const EdgeInsets.all(2),
-                          child: Text(
-                            '${_product.kind} ${_product.unitMeasure}',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                                color: ColorSet.gray2),
-                          ),
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(2),
+                              decoration: const BoxDecoration(
+                                  color: ColorSet.grayRoundedBackground,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(2.0),
+                                  ),),
+                              child: Text(
+                                _product.kind,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                  color: ColorSet.gray2,),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 2,
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(2),
+                              decoration: const BoxDecoration(
+                                color: ColorSet.grayRoundedBackground,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(2.0),
+                                ),),
+                              child: Text(
+                                _product.rating,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                  color: ColorSet.gray2,),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 2,
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(2),
+                              decoration: const BoxDecoration(
+                                  color: ColorSet.grayRoundedBackground,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(2.0),
+                                  )),
+                              child: Text(
+                                _product.unitMeasure,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                  color: ColorSet.gray2,),
+                              ),
+                            )
+                          ],
                         ),
                         const SizedBox(
                           height: 15,
@@ -247,12 +291,12 @@ class ProductPage extends StatelessWidget {
                           height: 10,
                         ),
                         Text.rich(TextSpan(
-                            text: 'Confirmado: ',
+                            text: 'Disponível: ',
                             style: const TextStyle(fontWeight: FontWeight.bold),
                             children: [
                               TextSpan(
                                   text:
-                                      '${_product.quantity} ${_product.unitMeasure}',
+                                      '${_product.quantity} ${_product.unitMeasure}(s)',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.normal))
                             ])),
@@ -516,22 +560,17 @@ class ProductPage extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: [
-                        const Text(
+                        if (_product.observation != null &&
+                            _product.observation!.isNotEmpty) const Text(
                           'O que você precisa saber sobre esse produto:',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: ColorSet.gray2),
+                              color: ColorSet.gray2,),
                         ),
                         const SizedBox(height: 20),
-                        Text(
-                          '${_product.name ?? ''} ${_product.kind} ${_product.rating}',
-                        ),
-                        const SizedBox(height: 10),
-                        Text(_product.unitMeasure),
-                        const SizedBox(height: 10),
+
                         if (_product.observation != null &&
-                            _product.observation!.isNotEmpty)
-                          Text(_product.observation!),
+                            _product.observation!.isNotEmpty) Text(_product.observation!),
                         if (_product.advertisement != null)
                           Visibility(
                               child: ListView(
@@ -586,6 +625,14 @@ class ProductPage extends StatelessWidget {
                                       ),
                                     )),
                               ),
+                              TextButton(
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'Entrar no grupo do vendedor',
+                                    style: TextStyle(
+                                        color: ColorSet.green2,
+                                        decoration: TextDecoration.underline),
+                                  ))
                             ],
                           )),
                         const SizedBox(height: 50)

@@ -52,13 +52,14 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   }
 
   @override
-  Future<Either<AdvertisementFailure, List<AdProduct>>> getProduct({
+  Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProducts({
     required Place place,
     String? productName,
     String? kind,
     int? productId,
     int? quantity,
     String? rating,
+    String? date
   }) async {
     final Map<String, dynamic> params = {'place_id': place.id};
 
@@ -67,16 +68,19 @@ class AdvertisementFacade extends IAdvertisementsFacade {
       await saveSearchedName(productName);
     }
     if (kind != null) {
-      params.addAll({'kind': productName});
+      params.addAll({'kind': kind});
     }
     if (productId != null) {
-      params.addAll({'product_id': productName});
+      params.addAll({'name': productName});
     }
     if (quantity != null) {
       params.addAll({'quantity': quantity});
     }
     if (rating != null) {
       params.addAll({'rating': rating});
+    }
+    if (date != null) {
+      params.addAll({'delivery_at': date});
     }
 
     final url = Uri.https(baseUrl, '$apiVersion$routeAdsProducts', params);

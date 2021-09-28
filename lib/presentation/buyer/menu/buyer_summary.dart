@@ -2,9 +2,9 @@ import 'package:conectacampo/application/buyer/adivertisements/adivertisements_b
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
-
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
+import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,10 @@ class BuyerSummary extends StatelessWidget {
                 appBar: SearchWidget(),
                 body: BlocConsumer<SummaryBloc, SummaryState>(
                   listener: (context, state) {
-                    if (state.cancellingReservation) {
+                    if (context
+                        .read<SummaryBloc>()
+                        .state
+                        .cancellingReservation) {
                       EasyLoading.show(status: 'Cancelando Reserva');
                     } else {
                       EasyLoading.dismiss();
@@ -40,16 +43,24 @@ class BuyerSummary extends StatelessWidget {
                     state.optionOfReservationCancelFailureOrSuccess.fold(
                         () => null,
                         (a) => a.fold(
-                            (l) => l.maybeMap(
-                                  orElse: () {},
-                                  serverError: (s) {
-                                    EasyLoading.showError(
-                                        'Algo errado ocorreu');
-                                  },
-                                ),
-                            (r) => EasyLoading.showSuccess(
-                                'Reserva cancelada com sucesso!',
-                                duration: const Duration(seconds: 2))));
+                                (l) => l.maybeMap(
+                                      orElse: () {},
+                                      serverError: (s) {
+                                        EasyLoading.showError(
+                                            'Algo errado ocorreu');
+                                      },
+                                    ), (r) {
+                              context
+                                  .read<GroupBloc>()
+                                  .add(const GroupEvent.started());
+                              context
+                                  .read<ReservationBloc>()
+                                  .add(const ReservationEvent.started());
+
+                              EasyLoading.showSuccess(
+                                  'Reserva cancelada com sucesso!',
+                                  duration: const Duration(seconds: 2));
+                            }));
                   },
                   builder: (context, state) => RefreshIndicator(
                     onRefresh: () async {
@@ -112,7 +123,7 @@ class BuyerSummary extends StatelessWidget {
                               child: state.groupsAdsFailureOrSuccess
                                   .fold((l) => const Text('Erro'), (r) {
                                 if (r.isEmpty) {
-                                  return _getNoGroupsAddedWidget();
+                                  return _getNoGroupsAddedWidget(context);
                                 } else {
                                   return AdvertisementList(
                                       isSearch: false,
@@ -229,10 +240,13 @@ class BuyerSummary extends StatelessWidget {
           size = list.length;
         }
         final finalWidget = list.isEmpty
-            ? Card(
-                margin: const EdgeInsets.all(0),
-                child: Padding(
-                  padding: const EdgeInsets.all(32),
+            ? GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (builder) => SearchPage()));
+                },
+                child: Card(
+                  margin: const EdgeInsets.all(32),
                   child: Row(
                     children: [
                       Column(
@@ -269,32 +283,38 @@ class BuyerSummary extends StatelessWidget {
     );
   }
 
-  Card _getNoGroupsAddedWidget() {
-    return Card(
-      margin: const EdgeInsets.all(0),
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'Sem grupos',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Text('Procurar grupo de produtores')
-              ],
-            ),
-            const SizedBox(
-              width: 32,
-            ),
-            SvgPicture.asset(
-              'assets/coolicon.svg',
-              width: 21,
-              height: 21,
-            ),
-          ],
+  Widget _getNoGroupsAddedWidget(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (builder) => SearchPage()));
+      },
+      child: Card(
+        margin: const EdgeInsets.all(0),
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    'Sem grupos',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text('Procurar grupo de produtores')
+                ],
+              ),
+              const SizedBox(
+                width: 32,
+              ),
+              SvgPicture.asset(
+                'assets/coolicon.svg',
+                width: 21,
+                height: 21,
+              ),
+            ],
+          ),
         ),
       ),
     );

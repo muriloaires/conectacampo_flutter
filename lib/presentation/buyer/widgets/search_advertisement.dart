@@ -31,9 +31,7 @@ class SearchAdvertisement extends StatelessWidget {
               await Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => ProductPage(state.adProduct),
               ));
-              context.read<SearchFormBloc>().add(
-                    const SearchFormEvent.productSelected(),
-                  );
+
               context
                   .read<BuyerMenuBloc>()
                   .add(const BuyerMenuEvent.produtDetailsClosed());

@@ -5,6 +5,10 @@ import 'package:dartz/dartz.dart';
 
 abstract class IAuthFacade {
   Future<Option<Either<AuthFailure, User>>> getSignedUser();
+
+  Future<Either<AuthFailure, User>> updateUser(
+      String? name, String? nickname, String? email);
+
   Future<void> signOut();
 
   Future<Either<AuthFailure, Unit>> requestSmsCode(

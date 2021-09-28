@@ -30,6 +30,7 @@ class _$ReservationItemDBTearOff {
       @JsonKey(name: 'seller_name') required String sellerName,
       @JsonKey(name: 'seller_phone') required String sellerPhone,
       @JsonKey(name: 'seller_id') required String sellerId,
+      @JsonKey(name: 'advertisement_id') required int advertisementId,
       @JsonKey(name: 'image') required String image}) {
     return _ReservationItemDB(
       id: id,
@@ -41,6 +42,7 @@ class _$ReservationItemDBTearOff {
       sellerName: sellerName,
       sellerPhone: sellerPhone,
       sellerId: sellerId,
+      advertisementId: advertisementId,
       image: image,
     );
   }
@@ -73,6 +75,8 @@ mixin _$ReservationItemDB {
   String get sellerPhone => throw _privateConstructorUsedError;
   @JsonKey(name: 'seller_id')
   String get sellerId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'advertisement_id')
+  int get advertisementId => throw _privateConstructorUsedError;
   @JsonKey(name: 'image')
   String get image => throw _privateConstructorUsedError;
 
@@ -97,6 +101,7 @@ abstract class $ReservationItemDBCopyWith<$Res> {
       @JsonKey(name: 'seller_name') String sellerName,
       @JsonKey(name: 'seller_phone') String sellerPhone,
       @JsonKey(name: 'seller_id') String sellerId,
+      @JsonKey(name: 'advertisement_id') int advertisementId,
       @JsonKey(name: 'image') String image});
 }
 
@@ -120,6 +125,7 @@ class _$ReservationItemDBCopyWithImpl<$Res>
     Object? sellerName = freezed,
     Object? sellerPhone = freezed,
     Object? sellerId = freezed,
+    Object? advertisementId = freezed,
     Object? image = freezed,
   }) {
     return _then(_value.copyWith(
@@ -159,6 +165,10 @@ class _$ReservationItemDBCopyWithImpl<$Res>
           ? _value.sellerId
           : sellerId // ignore: cast_nullable_to_non_nullable
               as String,
+      advertisementId: advertisementId == freezed
+          ? _value.advertisementId
+          : advertisementId // ignore: cast_nullable_to_non_nullable
+              as int,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -184,6 +194,7 @@ abstract class _$ReservationItemDBCopyWith<$Res>
       @JsonKey(name: 'seller_name') String sellerName,
       @JsonKey(name: 'seller_phone') String sellerPhone,
       @JsonKey(name: 'seller_id') String sellerId,
+      @JsonKey(name: 'advertisement_id') int advertisementId,
       @JsonKey(name: 'image') String image});
 }
 
@@ -209,6 +220,7 @@ class __$ReservationItemDBCopyWithImpl<$Res>
     Object? sellerName = freezed,
     Object? sellerPhone = freezed,
     Object? sellerId = freezed,
+    Object? advertisementId = freezed,
     Object? image = freezed,
   }) {
     return _then(_ReservationItemDB(
@@ -248,6 +260,10 @@ class __$ReservationItemDBCopyWithImpl<$Res>
           ? _value.sellerId
           : sellerId // ignore: cast_nullable_to_non_nullable
               as String,
+      advertisementId: advertisementId == freezed
+          ? _value.advertisementId
+          : advertisementId // ignore: cast_nullable_to_non_nullable
+              as int,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -269,6 +285,7 @@ class _$_ReservationItemDB implements _ReservationItemDB {
       @JsonKey(name: 'seller_name') required this.sellerName,
       @JsonKey(name: 'seller_phone') required this.sellerPhone,
       @JsonKey(name: 'seller_id') required this.sellerId,
+      @JsonKey(name: 'advertisement_id') required this.advertisementId,
       @JsonKey(name: 'image') required this.image});
 
   factory _$_ReservationItemDB.fromJson(Map<String, dynamic> json) =>
@@ -302,12 +319,15 @@ class _$_ReservationItemDB implements _ReservationItemDB {
   @JsonKey(name: 'seller_id')
   final String sellerId;
   @override
+  @JsonKey(name: 'advertisement_id')
+  final int advertisementId;
+  @override
   @JsonKey(name: 'image')
   final String image;
 
   @override
   String toString() {
-    return 'ReservationItemDB(id: $id, name: $name, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerPhone: $sellerPhone, sellerId: $sellerId, image: $image)';
+    return 'ReservationItemDB(id: $id, name: $name, measurementUnit: $measurementUnit, quantity: $quantity, rating: $rating, kind: $kind, sellerName: $sellerName, sellerPhone: $sellerPhone, sellerId: $sellerId, advertisementId: $advertisementId, image: $image)';
   }
 
   @override
@@ -337,6 +357,9 @@ class _$_ReservationItemDB implements _ReservationItemDB {
             (identical(other.sellerId, sellerId) ||
                 const DeepCollectionEquality()
                     .equals(other.sellerId, sellerId)) &&
+            (identical(other.advertisementId, advertisementId) ||
+                const DeepCollectionEquality()
+                    .equals(other.advertisementId, advertisementId)) &&
             (identical(other.image, image) ||
                 const DeepCollectionEquality().equals(other.image, image)));
   }
@@ -353,6 +376,7 @@ class _$_ReservationItemDB implements _ReservationItemDB {
       const DeepCollectionEquality().hash(sellerName) ^
       const DeepCollectionEquality().hash(sellerPhone) ^
       const DeepCollectionEquality().hash(sellerId) ^
+      const DeepCollectionEquality().hash(advertisementId) ^
       const DeepCollectionEquality().hash(image);
 
   @JsonKey(ignore: true)
@@ -377,6 +401,7 @@ abstract class _ReservationItemDB implements ReservationItemDB {
       @JsonKey(name: 'seller_name') required String sellerName,
       @JsonKey(name: 'seller_phone') required String sellerPhone,
       @JsonKey(name: 'seller_id') required String sellerId,
+      @JsonKey(name: 'advertisement_id') required int advertisementId,
       @JsonKey(name: 'image') required String image}) = _$_ReservationItemDB;
 
   factory _ReservationItemDB.fromJson(Map<String, dynamic> json) =
@@ -409,6 +434,9 @@ abstract class _ReservationItemDB implements ReservationItemDB {
   @override
   @JsonKey(name: 'seller_id')
   String get sellerId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'advertisement_id')
+  int get advertisementId => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'image')
   String get image => throw _privateConstructorUsedError;

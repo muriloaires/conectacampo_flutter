@@ -15,7 +15,7 @@ import 'application/buyer/adivertisements/adivertisements_bloc.dart' as _i39;
 import 'application/buyer/adivertisements/advertiser/advertiser_bloc.dart'
     as _i40;
 import 'application/buyer/cart/cart_bloc.dart' as _i42;
-import 'application/buyer/group/group_bloc.dart' as _i43;
+import 'application/buyer/group/group_bloc.dart' as _i44;
 import 'application/buyer/menu/buyer_menu_bloc.dart' as _i41;
 import 'application/buyer/product/product_page_bloc.dart' as _i19;
 import 'application/buyer/reservation/reservation_bloc.dart' as _i21;
@@ -25,6 +25,7 @@ import 'application/buyer/search/result/search_result_bloc.dart' as _i24;
 import 'application/buyer/search/search_form_bloc.dart' as _i23;
 import 'application/buyer/summary/summary_bloc.dart' as _i36;
 import 'application/places_form/bloc/places_form_bloc.dart' as _i18;
+import 'application/profile/edit/edit_profile_bloc.dart' as _i43;
 import 'application/profile/profile_bloc.dart' as _i20;
 import 'application/seller/adveretisements/seller_advertisements_bloc.dart'
     as _i25;
@@ -55,7 +56,7 @@ import 'domain/reservation/i_reservation_facade.dart' as _i14;
 import 'infrastructure/advertisement/advertisement_facade.dart' as _i7;
 import 'infrastructure/auth/auth_facade.dart' as _i9;
 import 'infrastructure/auth/rest_auth_facade.dart' as _i22;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i44;
+import 'infrastructure/core/firebase_injectable_module.dart' as _i45;
 import 'infrastructure/places/places_facade.dart' as _i11;
 import 'infrastructure/product/product_facade.dart' as _i13;
 import 'infrastructure/reservation/reservation_facade.dart'
@@ -126,9 +127,11 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i41.BuyerMenuBloc(get<_i14.IReservationFacade>()));
   gh.factory<_i42.CartBloc>(() => _i42.CartBloc(
       get<_i14.IReservationFacade>(), get<_i6.IAdvertisementsFacade>()));
-  gh.factory<_i43.GroupBloc>(
-      () => _i43.GroupBloc(get<_i6.IAdvertisementsFacade>()));
+  gh.factory<_i43.EditProfileBloc>(
+      () => _i43.EditProfileBloc(get<_i8.IAuthFacade>()));
+  gh.factory<_i44.GroupBloc>(
+      () => _i44.GroupBloc(get<_i6.IAdvertisementsFacade>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i44.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i45.FirebaseInjectableModule {}
