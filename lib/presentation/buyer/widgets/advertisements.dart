@@ -63,8 +63,11 @@ class _AdvertisementListState extends State<AdvertisementList> {
                                     CircleAvatar(
                                       radius: 35,
                                       backgroundColor: Colors.red[800],
-                                      child: const Icon(Icons.close,
-                                          size: 40, color: Colors.white),
+                                      child: const Icon(
+                                        Icons.close,
+                                        size: 40,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                     const SizedBox(
                                       height: 10,
@@ -76,14 +79,9 @@ class _AdvertisementListState extends State<AdvertisementList> {
                                     ),
                                     const SizedBox(height: 10),
                                     const Center(
-                                      child: SizedBox(
-                                        width: 180,
-                                        child: Flexible(
-                                          child: Text(
-                                            'Você deseja sair do grupo?',
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
+                                      child: Text(
+                                        'Você deseja sair do grupo?',
+                                        textAlign: TextAlign.center,
                                       ),
                                     ),
                                     const SizedBox(height: 8),
@@ -93,33 +91,36 @@ class _AdvertisementListState extends State<AdvertisementList> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Expanded(
-                                          child: TextButton(
-                                              onPressed: () =>
-                                                  Navigator.pop(dialogContext),
-                                              child: const Text('Voltar',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color:
-                                                          ColorSet.grayDark))),
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(dialogContext),
+                                          child: const Text(
+                                            'Voltar',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: ColorSet.grayDark,
+                                            ),
+                                          ),
                                         ),
-                                        Expanded(
-                                          child: TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(dialogContext);
-                                                context
-                                                    .read<AdvertisementsBloc>()
-                                                    .add(AdvertisementsEvent
-                                                        .leaveGroupTapped(
-                                                            advertisement));
-                                              },
-                                              child: const Text('Sim',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color:
-                                                          ColorSet.grayDark))),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(dialogContext);
+                                            context
+                                                .read<AdvertisementsBloc>()
+                                                .add(
+                                                  AdvertisementsEvent
+                                                      .leaveGroupTapped(
+                                                    advertisement,
+                                                  ),
+                                                );
+                                          },
+                                          child: const Text(
+                                            'Sim',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: ColorSet.grayDark,
+                                            ),
+                                          ),
                                         )
                                       ],
                                     )

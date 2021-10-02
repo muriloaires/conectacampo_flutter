@@ -89,6 +89,27 @@ class EditFullNameForm extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
+                  TextFormField(
+                    onChanged: (value) => context
+                        .read<EditProfileBloc>()
+                        .add(EditProfileEvent.nicknameChanged(value)),
+                    validator: (_) => context
+                        .read<EditProfileBloc>()
+                        .state
+                        .nickname
+                        .value
+                        .fold(
+                          (l) => l.maybeMap(
+                        invalidNickname: (_) => 'Apelido inválido',
+                        orElse: () => null,
+                      ),
+                          (_) => null,
+                    ),
+                    decoration: const InputDecoration(
+                        hintStyle: TextStyle(fontSize: 24),
+                        hintText: 'Como quer ser chamado?'),
+                    style: const TextStyle(fontSize: 24),
+                  )
                 ],
               ),
             ),

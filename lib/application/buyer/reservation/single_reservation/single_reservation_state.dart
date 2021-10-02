@@ -17,8 +17,8 @@ class SingleReservationState with _$SingleReservationState {
           createdAt: '',
           buyer: User(
               UniqueId.fromUniqueString('as'),
-              FullName('Full name'),
-              Nickname('nickname'),
+              FullName('Carregando dados'),
+              Nickname('Aguarde'),
               'vehicleLicensePlate',
               PhoneNumber('62999999999'),
               null,
@@ -28,8 +28,8 @@ class SingleReservationState with _$SingleReservationState {
               null),
           seller: User(
               UniqueId.fromUniqueString('as'),
-              FullName('Full name'),
-              Nickname('nickname'),
+              FullName('Carregando dados'),
+              Nickname('Aguarde'),
               'vehicleLicensePlate',
               PhoneNumber('62999999999'),
               null,

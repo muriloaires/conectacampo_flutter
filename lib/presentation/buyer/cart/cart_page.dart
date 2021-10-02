@@ -58,18 +58,13 @@ class CartPage extends StatelessWidget {
                     const SizedBox(height: 8),
                     const Center(
                       child: Text('Reserva não efetuada',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(fontWeight: FontWeight.bold),),
                     ),
                     const SizedBox(height: 8),
                     Center(
-                      child: SizedBox(
-                        width: 180,
-                        child: Flexible(
-                          child: Text(
-                            errorMessage,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
+                      child: Text(
+                        errorMessage,
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -77,14 +72,12 @@ class CartPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Expanded(
-                          child: TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text('Ajustar pedido',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: ColorSet.grayDark))),
-                            )
+                        TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('Ajustar pedido',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: ColorSet.grayDark,),),)
                           ],
                         )
                       ],
@@ -393,34 +386,30 @@ class ReservationItemWidget extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Expanded(
-                                child: TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text(
-                                    'Voltar',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: ColorSet.grayDark,
-                                    ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: const Text(
+                                  'Voltar',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: ColorSet.grayDark,
                                   ),
                                 ),
                               ),
-                              Expanded(
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    context.read<CartBloc>().add(
-                                          CartEvent.onBtnDeleteTap(
-                                            reservationItem,
-                                          ),
-                                        );
-                                  },
-                                  child: const Text(
-                                    'Sim',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: ColorSet.grayDark,
-                                    ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  context.read<CartBloc>().add(
+                                        CartEvent.onBtnDeleteTap(
+                                          reservationItem,
+                                        ),
+                                      );
+                                },
+                                child: const Text(
+                                  'Sim',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: ColorSet.grayDark,
                                   ),
                                 ),
                               )

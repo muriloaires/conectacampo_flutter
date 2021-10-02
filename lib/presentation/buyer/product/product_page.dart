@@ -89,24 +89,22 @@ class ProductPage extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Expanded(
-                                          child: TextButton(
-                                              onPressed: () {
-                                                Navigator.of(dialogContext)
-                                                    .pop();
-                                                context
-                                                    .read<BuyerMenuBloc>()
-                                                    .add(const BuyerMenuEvent
-                                                        .onCartTapped());
-                                              },
-                                              child: const Text(
-                                                  'Ir para o carrinho',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color:
-                                                          ColorSet.grayDark))),
-                                        )
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.of(dialogContext)
+                                                  .pop();
+                                              context
+                                                  .read<BuyerMenuBloc>()
+                                                  .add(const BuyerMenuEvent
+                                                      .onCartTapped());
+                                            },
+                                            child: const Text(
+                                                'Ir para o carrinho',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold,
+                                                    color:
+                                                        ColorSet.grayDark)))
                                       ],
                                     )
                                   ],

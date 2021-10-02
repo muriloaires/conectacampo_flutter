@@ -102,15 +102,13 @@ class BuyerMainPage extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Expanded(
-                                child: TextButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: const Text('Ok',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: ColorSet.grayDark))),
-                              )
-                            ],
+                          TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text('Ok',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorSet.grayDark)))
+                        ],
                           )
                         ],
                       ),

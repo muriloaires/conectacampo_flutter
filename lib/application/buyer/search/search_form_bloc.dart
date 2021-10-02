@@ -33,19 +33,16 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
     yield* event.map(started: (e) async* {
       final place = await loadSelectedPlace();
       final productsFailureOrSuccess = await _productFacade.getAllProducts();
-      final history = await _advertisementsFacade.getSearchedNames();
       if (place != null) {
         yield state.copyWith(
             place: place,
-            history: history,
-            showHistory: true,
             optionOfProductsFailureOrSuccess: some(productsFailureOrSuccess));
       }
     }, searchTapped: (SearchTapped value) async* {
       if (value.query.length < 3) {
         return;
       }
-      yield state.copyWith(searching: true, showHistory: false);
+      yield state.copyWith(searching: true);
       final place = await loadSelectedPlace();
       if (place != null) {
         final Either<AdvertisementFailure, List<AdProduct>>
@@ -60,7 +57,7 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
                 some(adsProductFailureOrSuccess),
             showFilters: true,
             searching: false,
-            showHistory: false,
+
             optionOfProductFailureOrSuccess: some(productFailureOrSuccess));
       } else {
         yield state.copyWith(
@@ -70,7 +67,7 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
         );
       }
     }, historySelected: (HistorySelected value) async* {
-      yield state.copyWith(searching: true, showHistory: false);
+      yield state.copyWith(searching: true);
       final place = await loadSelectedPlace();
       if (place != null) {
         final Either<AdvertisementFailure, List<AdProduct>>
@@ -84,7 +81,7 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
                 some(adsProductFailureOrSuccess),
             showFilters: true,
             searching: false,
-            showHistory: false,
+
             optionOfProductFailureOrSuccess: some(productFailureOrSuccess));
       } else {
         yield state.copyWith(
@@ -105,16 +102,16 @@ class SearchFormBloc extends Bloc<SearchFormEvent, SearchFormState> {
       yield state.copyWith(
           showFilters: true,
           searching: false,
-          showHistory: false,
+
           optionOfSelectedProduct: some(value.product));
     }, onDateSelected: (OnDateSelected value) async* {
       yield state.copyWith(optionOfDateSelected: some(value.dateSelected));
     }, onBtnFilterPressed: (OnBtnFilterPressed value) async* {
-      yield state.copyWith(searching: true, showHistory: false);
+      yield state.copyWith(searching: true);
       final place = await loadSelectedPlace();
-      final kind = state.optionOfSelectedProduct
+      final kind = state.kindRadioValue == 0 ? null : state.optionOfSelectedProduct
           .fold(() => null, (a) => a.kinds[state.kindRadioValue]);
-      final rating = state.optionOfSelectedProduct
+      final rating = state.ratingRadioValue == 0 ? null :  state.optionOfSelectedProduct
           .fold(() => null, (a) => a.ratings[state.ratingRadioValue]);
       final dateSelected =
           state.optionOfDateSelected.fold(() => null, (a) => a);

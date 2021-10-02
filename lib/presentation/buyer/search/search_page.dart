@@ -34,54 +34,45 @@ class SearchForm extends StatelessWidget {
     }, builder: (context, state) {
       return Scaffold(
         appBar: SearchAppBar(),
-        body: state.showHistory
-            ? _getHistory(context, state)
-            : ListView(
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                children: [
-                  Visibility(
-                      visible: context.read<SearchFormBloc>().state.showFilters,
-                      child: SearchFilters()),
-                  Expanded(
-                    child: state.optionOfAdsProductsFailureOrSuccess.fold(
-                        () => Container(),
-                        (a) => a.fold((l) => const Text('Error'), (r) {
-                              if (r.isEmpty) {
-                                return const Center(
-                                    child: Text('Nenhum produto encontrado'));
-                              } else {
-                                return ListView.separated(
-                                    separatorBuilder: (context, index) {
-                                      return Container(
-                                        height: 2,
-                                        color: ColorSet.gray10,
-                                      );
-                                    },
-                                    itemCount: r.length,
-                                    physics: const ClampingScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) {
-                                      return SearchAdvertisement(r[index]);
-                                    });
-                              }
-                            })),
-                  ),
-                ],
+          body: ListView(
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+            children: [
+              Visibility(
+                visible: context.read<SearchFormBloc>().state.showFilters,
+                child: SearchFilters(),
               ),
-      );
-    });
-  }
-
-  Widget _getHistory(BuildContext context, SearchFormState state) {
-    return ListView.builder(
-      itemBuilder: (context, index) => ListTile(
-        title: Text(state.history[index]),
-        onTap: () => context
-            .read<SearchFormBloc>()
-            .add(SearchFormEvent.historySelected(state.history[index])),
-      ),
-      itemCount: state.history.length,
+              Expanded(
+                child: state.optionOfAdsProductsFailureOrSuccess.fold(
+                  () => Container(),
+                  (a) => a.fold((l) => const Text('Error'), (r) {
+                    if (r.isEmpty) {
+                      return const Center(
+                        child: Text('Nenhum produto encontrado'),
+                      );
+                    } else {
+                      return ListView.separated(
+                        separatorBuilder: (context, index) {
+                          return Container(
+                            height: 2,
+                            color: ColorSet.gray10,
+                          );
+                        },
+                        itemCount: r.length,
+                        physics: const ClampingScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return SearchAdvertisement(r[index]);
+                        },
+                      );
+                    }
+                  }),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -231,6 +222,13 @@ class SearchFilters extends StatelessWidget {
       builder: (context, state) {
         final productFailureOrSuccess =
             context.read<SearchFormBloc>().state.optionOfSelectedProduct;
+        final List<String> ratings =
+            List.from(productFailureOrSuccess.fold(() => [], (a) => a.ratings));
+
+        ratings.insert(0, 'Toque para escolher uma classificação');
+        final List<String> kinds =
+            List.from(productFailureOrSuccess.fold(() => [], (a) => a.kinds));
+        kinds.insert(0, 'Toque para escolher um tipo');
         return ListView(
           shrinkWrap: true,
           physics: const ClampingScrollPhysics(),
@@ -242,10 +240,9 @@ class SearchFilters extends StatelessWidget {
             )),
             ListTile(
               title: const Text('Classificação'),
-              subtitle: Text(productFailureOrSuccess.fold(
-                  () => '',
-                  (p) => p.ratings[
-                      context.read<SearchFormBloc>().state.ratingRadioValue])),
+              subtitle: Text(
+                ratings[context.read<SearchFormBloc>().state.ratingRadioValue],
+              ),
               trailing: const Icon(Icons.keyboard_arrow_down),
               onTap: () {
                 context
@@ -259,8 +256,9 @@ class SearchFilters extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),
                 itemBuilder: (context, index) => RadioListTile(
-                  title: Text(productFailureOrSuccess.fold(
-                      () => '', (p) => p.ratings[index])),
+                  title: Text(
+                    ratings[index],
+                  ),
                   value: index,
                   groupValue:
                       context.read<SearchFormBloc>().state.ratingRadioValue,
@@ -268,16 +266,13 @@ class SearchFilters extends StatelessWidget {
                       .read<SearchFormBloc>()
                       .add(SearchFormEvent.onRadioRatingTap(index)),
                 ),
-                itemCount: productFailureOrSuccess.fold(
-                    () => 0, (r) => r.ratings.length),
+                itemCount: ratings.length,
               ),
             ),
             ListTile(
               title: const Text('Tipo'),
-              subtitle: Text(productFailureOrSuccess.fold(
-                  () => '',
-                  (p) => p.kinds[
-                      context.read<SearchFormBloc>().state.kindRadioValue])),
+              subtitle: Text(
+                  kinds[context.read<SearchFormBloc>().state.kindRadioValue]),
               trailing: Icon(context.read<SearchFormBloc>().state.isKindsVisible
                   ? Icons.keyboard_arrow_up
                   : Icons.keyboard_arrow_down),
@@ -293,8 +288,7 @@ class SearchFilters extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),
                 itemBuilder: (context, index) => RadioListTile(
-                  title: Text(productFailureOrSuccess.fold(
-                      () => '', (r) => r.kinds[index])),
+                  title: Text(kinds[index]),
                   value: index,
                   groupValue:
                       context.read<SearchFormBloc>().state.kindRadioValue,
@@ -302,8 +296,7 @@ class SearchFilters extends StatelessWidget {
                       .read<SearchFormBloc>()
                       .add(SearchFormEvent.onRadioKindTap(index)),
                 ),
-                itemCount: productFailureOrSuccess.fold(
-                    () => 0, (r) => r.kinds.length),
+                itemCount: kinds.length,
               ),
             ),
             ListTile(

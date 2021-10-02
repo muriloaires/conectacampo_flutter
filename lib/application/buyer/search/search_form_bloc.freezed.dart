@@ -1732,8 +1732,6 @@ class _$SearchFormStateTearOff {
           optionOfAdsProductsFailureOrSuccess,
       required bool showFilters,
       required Place? place,
-      required bool showHistory,
-      required List<String> history,
       required int kindRadioValue,
       required bool isKindsVisible,
       required int ratingRadioValue,
@@ -1749,8 +1747,6 @@ class _$SearchFormStateTearOff {
       optionOfAdsProductsFailureOrSuccess: optionOfAdsProductsFailureOrSuccess,
       showFilters: showFilters,
       place: place,
-      showHistory: showHistory,
-      history: history,
       kindRadioValue: kindRadioValue,
       isKindsVisible: isKindsVisible,
       ratingRadioValue: ratingRadioValue,
@@ -1777,8 +1773,6 @@ mixin _$SearchFormState {
           throw _privateConstructorUsedError;
   bool get showFilters => throw _privateConstructorUsedError;
   Place? get place => throw _privateConstructorUsedError;
-  bool get showHistory => throw _privateConstructorUsedError;
-  List<String> get history => throw _privateConstructorUsedError;
   int get kindRadioValue => throw _privateConstructorUsedError;
   bool get isKindsVisible => throw _privateConstructorUsedError;
   int get ratingRadioValue => throw _privateConstructorUsedError;
@@ -1809,8 +1803,6 @@ abstract class $SearchFormStateCopyWith<$Res> {
           optionOfAdsProductsFailureOrSuccess,
       bool showFilters,
       Place? place,
-      bool showHistory,
-      List<String> history,
       int kindRadioValue,
       bool isKindsVisible,
       int ratingRadioValue,
@@ -1839,8 +1831,6 @@ class _$SearchFormStateCopyWithImpl<$Res>
     Object? optionOfAdsProductsFailureOrSuccess = freezed,
     Object? showFilters = freezed,
     Object? place = freezed,
-    Object? showHistory = freezed,
-    Object? history = freezed,
     Object? kindRadioValue = freezed,
     Object? isKindsVisible = freezed,
     Object? ratingRadioValue = freezed,
@@ -1873,14 +1863,6 @@ class _$SearchFormStateCopyWithImpl<$Res>
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
               as Place?,
-      showHistory: showHistory == freezed
-          ? _value.showHistory
-          : showHistory // ignore: cast_nullable_to_non_nullable
-              as bool,
-      history: history == freezed
-          ? _value.history
-          : history // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       kindRadioValue: kindRadioValue == freezed
           ? _value.kindRadioValue
           : kindRadioValue // ignore: cast_nullable_to_non_nullable
@@ -1944,8 +1926,6 @@ abstract class _$SearchFormStateCopyWith<$Res>
           optionOfAdsProductsFailureOrSuccess,
       bool showFilters,
       Place? place,
-      bool showHistory,
-      List<String> history,
       int kindRadioValue,
       bool isKindsVisible,
       int ratingRadioValue,
@@ -1977,8 +1957,6 @@ class __$SearchFormStateCopyWithImpl<$Res>
     Object? optionOfAdsProductsFailureOrSuccess = freezed,
     Object? showFilters = freezed,
     Object? place = freezed,
-    Object? showHistory = freezed,
-    Object? history = freezed,
     Object? kindRadioValue = freezed,
     Object? isKindsVisible = freezed,
     Object? ratingRadioValue = freezed,
@@ -2011,14 +1989,6 @@ class __$SearchFormStateCopyWithImpl<$Res>
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
               as Place?,
-      showHistory: showHistory == freezed
-          ? _value.showHistory
-          : showHistory // ignore: cast_nullable_to_non_nullable
-              as bool,
-      history: history == freezed
-          ? _value.history
-          : history // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       kindRadioValue: kindRadioValue == freezed
           ? _value.kindRadioValue
           : kindRadioValue // ignore: cast_nullable_to_non_nullable
@@ -2065,8 +2035,6 @@ class _$_SearchFormState implements _SearchFormState {
       required this.optionOfAdsProductsFailureOrSuccess,
       required this.showFilters,
       required this.place,
-      required this.showHistory,
-      required this.history,
       required this.kindRadioValue,
       required this.isKindsVisible,
       required this.ratingRadioValue,
@@ -2089,10 +2057,6 @@ class _$_SearchFormState implements _SearchFormState {
   @override
   final Place? place;
   @override
-  final bool showHistory;
-  @override
-  final List<String> history;
-  @override
   final int kindRadioValue;
   @override
   final bool isKindsVisible;
@@ -2111,7 +2075,7 @@ class _$_SearchFormState implements _SearchFormState {
 
   @override
   String toString() {
-    return 'SearchFormState(optionOfProductsFailureOrSuccess: $optionOfProductsFailureOrSuccess, searching: $searching, optionOfAdsProductsFailureOrSuccess: $optionOfAdsProductsFailureOrSuccess, showFilters: $showFilters, place: $place, showHistory: $showHistory, history: $history, kindRadioValue: $kindRadioValue, isKindsVisible: $isKindsVisible, ratingRadioValue: $ratingRadioValue, isRatingVisible: $isRatingVisible, optionOfProductFailureOrSuccess: $optionOfProductFailureOrSuccess, optionOfSelectedProduct: $optionOfSelectedProduct, optionOfDateSelected: $optionOfDateSelected, quantity: $quantity)';
+    return 'SearchFormState(optionOfProductsFailureOrSuccess: $optionOfProductsFailureOrSuccess, searching: $searching, optionOfAdsProductsFailureOrSuccess: $optionOfAdsProductsFailureOrSuccess, showFilters: $showFilters, place: $place, kindRadioValue: $kindRadioValue, isKindsVisible: $isKindsVisible, ratingRadioValue: $ratingRadioValue, isRatingVisible: $isRatingVisible, optionOfProductFailureOrSuccess: $optionOfProductFailureOrSuccess, optionOfSelectedProduct: $optionOfSelectedProduct, optionOfDateSelected: $optionOfDateSelected, quantity: $quantity)';
   }
 
   @override
@@ -2134,12 +2098,6 @@ class _$_SearchFormState implements _SearchFormState {
                     .equals(other.showFilters, showFilters)) &&
             (identical(other.place, place) ||
                 const DeepCollectionEquality().equals(other.place, place)) &&
-            (identical(other.showHistory, showHistory) ||
-                const DeepCollectionEquality()
-                    .equals(other.showHistory, showHistory)) &&
-            (identical(other.history, history) ||
-                const DeepCollectionEquality()
-                    .equals(other.history, history)) &&
             (identical(other.kindRadioValue, kindRadioValue) ||
                 const DeepCollectionEquality()
                     .equals(other.kindRadioValue, kindRadioValue)) &&
@@ -2159,8 +2117,11 @@ class _$_SearchFormState implements _SearchFormState {
             (identical(other.optionOfSelectedProduct, optionOfSelectedProduct) ||
                 const DeepCollectionEquality().equals(
                     other.optionOfSelectedProduct, optionOfSelectedProduct)) &&
-            (identical(other.optionOfDateSelected, optionOfDateSelected) || const DeepCollectionEquality().equals(other.optionOfDateSelected, optionOfDateSelected)) &&
-            (identical(other.quantity, quantity) || const DeepCollectionEquality().equals(other.quantity, quantity)));
+            (identical(other.optionOfDateSelected, optionOfDateSelected) ||
+                const DeepCollectionEquality().equals(
+                    other.optionOfDateSelected, optionOfDateSelected)) &&
+            (identical(other.quantity, quantity) ||
+                const DeepCollectionEquality().equals(other.quantity, quantity)));
   }
 
   @override
@@ -2171,8 +2132,6 @@ class _$_SearchFormState implements _SearchFormState {
       const DeepCollectionEquality().hash(optionOfAdsProductsFailureOrSuccess) ^
       const DeepCollectionEquality().hash(showFilters) ^
       const DeepCollectionEquality().hash(place) ^
-      const DeepCollectionEquality().hash(showHistory) ^
-      const DeepCollectionEquality().hash(history) ^
       const DeepCollectionEquality().hash(kindRadioValue) ^
       const DeepCollectionEquality().hash(isKindsVisible) ^
       const DeepCollectionEquality().hash(ratingRadioValue) ^
@@ -2197,8 +2156,6 @@ abstract class _SearchFormState implements SearchFormState {
           optionOfAdsProductsFailureOrSuccess,
       required bool showFilters,
       required Place? place,
-      required bool showHistory,
-      required List<String> history,
       required int kindRadioValue,
       required bool isKindsVisible,
       required int ratingRadioValue,
@@ -2223,10 +2180,6 @@ abstract class _SearchFormState implements SearchFormState {
   bool get showFilters => throw _privateConstructorUsedError;
   @override
   Place? get place => throw _privateConstructorUsedError;
-  @override
-  bool get showHistory => throw _privateConstructorUsedError;
-  @override
-  List<String> get history => throw _privateConstructorUsedError;
   @override
   int get kindRadioValue => throw _privateConstructorUsedError;
   @override

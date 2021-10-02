@@ -277,10 +277,12 @@ class _TutorialState extends State<Tutorial> {
                               TextButton(
                                   onPressed: () async {
                                     await saveOnboardingCheck();
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => UserType()));
+                                    Navigator.of(context).pushAndRemoveUntil(
+                                      MaterialPageRoute(
+                                        builder: (context) => UserType(),
+                                      ),
+                                      (route) => false,
+                                    );
                                   },
                                   child: const Text(
                                     'Pular',

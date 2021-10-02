@@ -83,26 +83,34 @@ class ReservationWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              state.reservation.seller?.name.getOrCrash() ?? '',
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
+                              state.reservation.seller?.nickname.getOrCrash() ?? '',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
                             const SizedBox(height: 8),
                             Text.rich(TextSpan(
                                 text: state.optionOfAdFailureOrSuccess.fold(
-                                    () => '',
-                                    (a) => a.fold(
-                                        (l) => '', (r) => r.meetingType)),
-                                children: [
-                                  TextSpan(
-                                      text: state.optionOfAdFailureOrSuccess
-                                          .fold(
-                                              () => '',
-                                              (a) => a.fold(
-                                                  (l) => '',
-                                                  (r) => r.meetingTypeDescription)),
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold))
+                              () => '',
+                              (a) => a.fold(
+                                (l) => '',
+                                (r) => r.meetingType,
+                              ),
+                            ),
+                            children: [
+                              TextSpan(
+                                text: state.optionOfAdFailureOrSuccess.fold(
+                                  () => '',
+                                  (a) => a.fold(
+                                    (l) => '',
+                                    (r) => r.meetingTypeDescription,
+                                  ),
+                                ),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
                             ]))
                       ],
                     )

@@ -73,13 +73,19 @@ class AdvertisementWidget extends StatelessWidget {
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             const SizedBox(height: 8),
-                            Text.rich(TextSpan(text: 'Placa: ', children: [
+                            Text.rich(
                               TextSpan(
-                                  text:
-                                      advertisement.seller.vehicleLicensePlate,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold))
-                            ]))
+                                text: '${advertisement.meetingType}: ',
+                                children: [
+                                  TextSpan(
+                                    text: advertisement.meetingTypeDescription,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
                           ],
                         )
                       ],
@@ -114,30 +120,39 @@ class AdvertisementWidget extends StatelessWidget {
                                 itemCount: advertisement.products.length,
                               ),
                               const SizedBox(height: 4),
-                              const Text('Alterar itens',
-                                  style: TextStyle(
-                                      color: ColorSet.colorPrimaryGreen,
-                                      fontSize: 12,
-                                      decoration: TextDecoration.underline)),
+                              const Text(
+                                'Alterar itens',
+                                style: TextStyle(
+                                  color: ColorSet.colorPrimaryGreen,
+                                  fontSize: 12,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
                               const SizedBox(height: 30),
                               MaterialButton(
                                 onPressed: () {
                                   context.read<SingleAdvertisementBloc>().add(
-                                      SingleAdvertisementEvent
-                                          .onCancelAdPressed(advertisement));
+                                        SingleAdvertisementEvent
+                                            .onCancelAdPressed(advertisement),
+                                      );
                                 },
                                 child: Container(
                                   padding:
                                       const EdgeInsets.fromLTRB(50, 10, 50, 10),
                                   decoration: const BoxDecoration(
-                                      color: ColorSet.brown1,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(20))),
-                                  child: const Text('Duplicar Feira',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
+                                    color: ColorSet.brown1,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'Duplicar Feira',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
                               ),
                               const SizedBox(height: 10),
@@ -156,28 +171,28 @@ class AdvertisementWidget extends StatelessWidget {
                                           CircleAvatar(
                                             radius: 35,
                                             backgroundColor: Colors.red[800],
-                                            child: const Icon(Icons.close,
-                                                size: 40, color: Colors.white),
+                                            child: const Icon(
+                                              Icons.close,
+                                              size: 40,
+                                              color: Colors.white,
+                                            ),
                                           ),
                                           const SizedBox(
                                             height: 10,
                                           ),
                                           const Center(
-                                            child: Text('Cancelar feira',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
+                                            child: Text(
+                                              'Cancelar feira',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
                                           ),
                                           const SizedBox(height: 10),
                                           const Center(
-                                            child: SizedBox(
-                                              width: 180,
-                                              child: Flexible(
-                                                child: Text(
-                                                  'Você deseja cancelar a feira?',
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                              ),
+                                            child: Text(
+                                              'Você deseja cancelar a feira?',
+                                              textAlign: TextAlign.center,
                                             ),
                                           ),
                                           const SizedBox(height: 8),
@@ -188,36 +203,39 @@ class AdvertisementWidget extends StatelessWidget {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
-                                              Expanded(
-                                                child: TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            dialogContext),
-                                                    child: const Text('Voltar',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color: ColorSet
-                                                                .grayDark))),
+                                              TextButton(
+                                                onPressed: () =>
+                                                    Navigator.pop(
+                                                        dialogContext),
+                                                child: const Text(
+                                                  'Voltar',
+                                                  style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold,
+                                                    color: ColorSet.grayDark,
+                                                  ),
+                                                ),
                                               ),
-                                              Expanded(
-                                                child: TextButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(
-                                                          dialogContext);
-                                                      context
-                                                          .read<
-                                                              SingleAdvertisementBloc>()
-                                                          .add(SingleAdvertisementEvent
-                                                              .onCancelAdPressed(
-                                                                  advertisement));
-                                                    },
-                                                    child: const Text('Sim',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color: ColorSet
-                                                                .grayDark))),
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(dialogContext);
+                                                  context
+                                                      .read<
+                                                          SingleAdvertisementBloc>()
+                                                      .add(
+                                                        SingleAdvertisementEvent
+                                                            .onCancelAdPressed(
+                                                          advertisement,
+                                                        ),
+                                                      );
+                                                },
+                                                child: const Text(
+                                                  'Sim',
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: ColorSet.grayDark,
+                                                  ),
+                                                ),
                                               )
                                             ],
                                           )

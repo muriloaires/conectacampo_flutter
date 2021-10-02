@@ -44,16 +44,21 @@ class _SellerAdvertisementListState extends State<SellerAdvertisementList> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(4),
-                        child: Text.rich(TextSpan(
+                        child: Text.rich(
+                          TextSpan(
                             text: 'Últimos anúncios ',
                             style: const TextStyle(fontSize: 12),
                             children: [
                               TextSpan(
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12),
-                                  text: lastProducts)
-                            ])),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                ),
+                                text: lastProducts,
+                              )
+                            ],
+                          ),
+                        ),
                       )
                     ],
                   );
