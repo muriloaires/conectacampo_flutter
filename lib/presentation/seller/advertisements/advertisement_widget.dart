@@ -129,32 +129,32 @@ class AdvertisementWidget extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 30),
-                              MaterialButton(
-                                onPressed: () {
-                                  context.read<SingleAdvertisementBloc>().add(
-                                        SingleAdvertisementEvent
-                                            .onCancelAdPressed(advertisement),
-                                      );
-                                },
-                                child: Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                                  decoration: const BoxDecoration(
-                                    color: ColorSet.brown1,
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(20),
-                                    ),
-                                  ),
-                                  child: const Text(
-                                    'Duplicar Feira',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // MaterialButton(
+                              //   onPressed: () {
+                              //     context.read<SingleAdvertisementBloc>().add(
+                              //           SingleAdvertisementEvent
+                              //               .onCancelAdPressed(advertisement),
+                              //         );
+                              //   },
+                              //   child: Container(
+                              //     padding:
+                              //         const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                              //     decoration: const BoxDecoration(
+                              //       color: ColorSet.brown1,
+                              //       borderRadius: BorderRadius.all(
+                              //         Radius.circular(20),
+                              //       ),
+                              //     ),
+                              //     child: const Text(
+                              //       'Duplicar Feira',
+                              //       textAlign: TextAlign.center,
+                              //       style: TextStyle(
+                              //         fontWeight: FontWeight.bold,
+                              //         color: Colors.white,
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                               const SizedBox(height: 10),
                               MaterialButton(
                                 onPressed: () {

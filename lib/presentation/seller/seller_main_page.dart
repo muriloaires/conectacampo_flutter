@@ -144,7 +144,7 @@ class SellerMainPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => NewAdvertisementPage()));
+                              builder: (context) => NewAdvertisementPage(),),);
                         },
                         child: Container(
                           width: 68.0,

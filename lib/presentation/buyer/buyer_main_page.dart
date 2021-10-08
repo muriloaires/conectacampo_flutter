@@ -361,55 +361,60 @@ class SearchWidget extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             const SizedBox(height: 24),
-            GestureDetector(
-              onTap: () async {
-                final success = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PlacesPage(),
-                    ));
-                context
-                    .read<AdvertisementsBloc>()
-                    .add(const AdvertisementsEvent.placeChanged());
-                context
-                    .read<SummaryBloc>()
-                    .add(const SummaryEvent.onPlaceChanged());
-              },
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    'assets/location_outline.svg',
-                    width: 16,
-                    height: 16,
-                    color: ColorSet.grayLine,
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Flexible(
-                    child: Text.rich(
-                      TextSpan(children: [
-                        const TextSpan(
-                          text: 'Produtos e Retirada em: ',
-                          style: TextStyle(color: ColorSet.gray2, fontSize: 13),
+            BlocBuilder<SummaryBloc,SummaryState>(
+
+              builder: (context, state) {
+                return GestureDetector(
+                  onTap: () async {
+                    final success = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PlacesPage(),
+                        ));
+                    context
+                        .read<AdvertisementsBloc>()
+                        .add(const AdvertisementsEvent.placeChanged());
+                    context
+                        .read<SummaryBloc>()
+                        .add(const SummaryEvent.onPlaceChanged());
+                  },
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/location_outline.svg',
+                        width: 16,
+                        height: 16,
+                        color: ColorSet.grayLine,
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Flexible(
+                        child: Text.rich(
+                          TextSpan(children: [
+                            const TextSpan(
+                              text: 'Produtos e Retirada em: ',
+                              style: TextStyle(color: ColorSet.gray2, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: context
+                                  .read<SummaryBloc>()
+                                  .state
+                                  .selectedPlace
+                                  .name,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorSet.gray2,
+                                  fontSize: 13),
+                            ),
+                          ]),
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        TextSpan(
-                          text: context
-                              .read<SummaryBloc>()
-                              .state
-                              .selectedPlace
-                              .name,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: ColorSet.gray2,
-                              fontSize: 13),
-                        ),
-                      ]),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  )
-                ],
-              ),
+                      )
+                    ],
+                  ),
+                );
+              }
             )
           ],
         ),

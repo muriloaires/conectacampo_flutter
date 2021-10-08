@@ -170,40 +170,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     trailing: const Icon(Icons.chevron_right),
                   ),
-                  ListTile(
-                    onTap: () async {
-                      await Navigator.of(context, rootNavigator: true).push(
-                        MaterialPageRoute(
-                          builder: (context) => const EditNickNamePage(),
-                        ),
-                      );
-                      bloc.add(const ProfileEvent.started());
-                    },
-                    leading: SvgPicture.asset(
-                      'assets/account_circle.svg',
-                      width: 24,
-                      height: 24,
-                      color: context.read<ProfileBloc>().state.isBuyer
-                          ? ColorSet.colorPrimaryGreen
-                          : ColorSet.brown1,
-                    ),
-                    title: const Text(
-                      'Como quer ser chamado',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    subtitle: Text(
-                      context
-                          .read<ProfileBloc>()
-                          .state
-                          .user
-                          .nickname
-                          .getOrCrash(),
-                    ),
-                    trailing: const Icon(Icons.chevron_right),
-                  ),
+
                   ListTile(
                     onTap: () async {
                       await Navigator.of(context, rootNavigator: true).push(

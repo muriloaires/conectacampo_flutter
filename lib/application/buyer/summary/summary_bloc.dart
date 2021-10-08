@@ -40,7 +40,7 @@ class SummaryBloc extends Bloc<SummaryEvent, SummaryState> {
     }, onPlaceChanged: (OnPlaceChanged value) async* {
       final selectedPlace = await loadSelectedPlace();
       if (selectedPlace != null) {
-        yield state.copyWith(selectedPlace: selectedPlace);
+        yield state.copyWith(selectedPlace: selectedPlace, );
       }
     });
   }

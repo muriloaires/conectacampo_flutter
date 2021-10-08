@@ -135,7 +135,8 @@ class SearchAppBar extends StatelessWidget implements PreferredSizeWidget {
                               searchBoxDecoration: const InputDecoration(
                                 hintText: 'Digite o nome do produto',
                               ),
-                              dropDownButton: const Icon(
+                              
+                              dropdownButtonBuilder: (context) => const Icon(
                                 Icons.keyboard_arrow_down,
                                 color: Colors.black,
                               ),
@@ -179,25 +180,27 @@ class SearchAppBar extends StatelessWidget implements PreferredSizeWidget {
                         height: 16,
                         color: Colors.white,
                       ),
-                      Text.rich(
-                        TextSpan(children: [
-                          const TextSpan(
-                            text: 'Produtos e Retirada em: ',
-                            style: TextStyle(color: Colors.white, fontSize: 13),
-                          ),
-                          TextSpan(
-                            text: context
-                                .read<SearchFormBloc>()
-                                .state
-                                .place
-                                ?.name,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                fontSize: 13),
-                          ),
-                        ]),
-                        overflow: TextOverflow.ellipsis,
+                      Flexible(
+                        child: Text.rich(
+                          TextSpan(children: [
+                            const TextSpan(
+                              text: 'Produtos e Retirada em: ',
+                              style: TextStyle(color: Colors.white, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: context
+                                  .read<SearchFormBloc>()
+                                  .state
+                                  .place
+                                  ?.name,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 13),
+                            ),
+                          ]),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       )
                     ],
                   ),

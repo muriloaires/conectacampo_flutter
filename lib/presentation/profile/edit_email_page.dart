@@ -81,9 +81,9 @@ class EditEmailForm extends StatelessWidget {
                           (_) => null,
                     ),
                     decoration: const InputDecoration(
-                        hintStyle: TextStyle(fontSize: 24),
-                        hintText: 'Como quer ser chamado?'),
-                    style: const TextStyle(fontSize: 24),
+                        hintStyle: TextStyle(fontSize: 20),
+                        hintText: 'Qual o seu e-mail?'),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   const SizedBox(
                     height: 8,

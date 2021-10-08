@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:conectacampo/application/seller/new_advertisement/add_summary/new_ad_summary_bloc.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_ad_product.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
+import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/seller_main_page.dart';
 import 'package:flutter/material.dart';
-import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -57,7 +57,7 @@ class NewAdSummaryPage extends StatelessWidget {
                   'Anúncio cadastrado com sucesso!',
                   duration: const Duration(seconds: 2),
                 );
-                Navigator.of(context).pushAndRemoveUntil(
+                Navigator.of(context,rootNavigator: true).pushAndRemoveUntil(
                     MaterialPageRoute(
                       builder: (context) => SellerMainPage(),
                     ),
@@ -139,18 +139,21 @@ class NewAdSummaryPage extends StatelessWidget {
                               decoration: const BoxDecoration(
                                   color: ColorSet.brown1,
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Center(
-                                child: Text(
-                                  'Finalizar anúncio',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: const Center(
+                              child: Text(
+                                'Finalizar anúncio',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                            ))
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 30,)
                       ],
+
                     ),
                   ),
                 ),

@@ -82,7 +82,7 @@ class EditFullNameForm extends StatelessWidget {
                         ),
                     keyboardType: TextInputType.name,
                     decoration: const InputDecoration(
-                        hintStyle: TextStyle(fontSize: 24),
+                        hintStyle: TextStyle(fontSize: 20),
                         hintText: 'Qual seu nome completo?'),
                     style: const TextStyle(fontSize: 24),
                   ),
@@ -106,7 +106,7 @@ class EditFullNameForm extends StatelessWidget {
                           (_) => null,
                     ),
                     decoration: const InputDecoration(
-                        hintStyle: TextStyle(fontSize: 24),
+                        hintStyle: TextStyle(fontSize: 20),
                         hintText: 'Como quer ser chamado?'),
                     style: const TextStyle(fontSize: 24),
                   )
@@ -131,7 +131,7 @@ class EditFullNameForm extends StatelessWidget {
       listener: (context, state) {
         final state = context.read<EditProfileBloc>().state;
         if (state.showProgress) {
-          EasyLoading.show(status: 'Atualizando', dismissOnTap: false);
+          EasyLoading.show(status: 'Atualizando');
         } else {
           EasyLoading.dismiss();
         }

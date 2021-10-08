@@ -54,7 +54,7 @@ class ReservationWidget extends StatelessWidget {
                   height: 40,
                   color: _getStatusColor(state.reservation),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                    padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
                     child: Center(
                       child: _getStatusText(state.reservation),
                     ),
@@ -417,7 +417,7 @@ class ReservationWidget extends StatelessWidget {
         iconText = '?';
         break;
       case ReservationItemStatus.buyerCanceled:
-        text = 'Cancelado pelo comprador';
+        text = 'Cancelado';
         iconText = 'x';
         break;
       case ReservationItemStatus.awaitingBuyer:
@@ -443,15 +443,15 @@ class ReservationWidget extends StatelessWidget {
         const Text('Status do pedido',
             style: TextStyle(color: Colors.white, fontSize: 12),),
         const SizedBox(
-          width: 4,
+          width: 2,
         ),
         CircleAvatar(
           backgroundColor: Colors.white,
-          radius: 10,
+          radius: 8,
           child: Text(iconText, style: TextStyle(fontSize: 12, color: _getStatusColor(reservation), fontWeight: FontWeight.bold),),
         ),
         const SizedBox(
-          width: 4,
+          width: 2,
         ),
         Text(
           text,
