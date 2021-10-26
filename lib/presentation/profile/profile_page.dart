@@ -3,7 +3,6 @@ import 'package:conectacampo/application/profile/profile_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/profile/edit_name_page.dart';
-import 'package:conectacampo/presentation/profile/edit_nickname_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,67 +28,39 @@ class ProfilePage extends StatelessWidget {
               appBar: AppBar(
                 backgroundColor: Colors.white,
                 toolbarHeight: 120,
-                title: SizedBox(
-                  height: 120,
-                  width: double.infinity,
-                  child: Expanded(
-                    child: Stack(
-                      children: [
-                        Align(
-                          child: SizedBox(
-                            height: 40,
-                            child: Stack(
-                              children: [
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: SizedBox(
-                                    width: 24,
-                                    height: 24,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: SvgPicture.asset(
-                                        'assets/notification_outline_dot.svg',
-                                        height: 24,
-                                        width: 24,
-                                        color: context
-                                                .read<ProfileBloc>()
-                                                .state
-                                                .isBuyer
-                                            ? ColorSet.colorPrimaryGreen
-                                            : ColorSet.brown1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                              Align(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      'assets/white_icon.svg',
-                                      color: context
-                                              .read<ProfileBloc>()
-                                              .state
-                                              .isBuyer
-                                          ? ColorSet.colorPrimaryGreen
-                                          : ColorSet.brown1,
-                              ),
-                              SvgPicture.asset(
-                                'assets/Group.svg',
-                                color: context.read<ProfileBloc>().state.isBuyer
-                                    ? ColorSet.colorPrimaryGreen
-                                    : ColorSet.brown1,
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                title: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: SvgPicture.asset(
+                        'assets/notification_outline_dot.svg',
+                        height: 24,
+                        width: 24,
+                        color: context.read<ProfileBloc>().state.isBuyer
+                            ? ColorSet.colorPrimaryGreen
+                            : ColorSet.brown1,
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/white_icon.svg',
+                            color: context.read<ProfileBloc>().state.isBuyer
+                                ? ColorSet.colorPrimaryGreen
+                                : ColorSet.brown1,
+                          ),
+                          SvgPicture.asset(
+                            'assets/Group.svg',
+                            color: context.read<ProfileBloc>().state.isBuyer
+                                ? ColorSet.colorPrimaryGreen
+                                : ColorSet.brown1,
+                          )
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               ),
               body: ListView(

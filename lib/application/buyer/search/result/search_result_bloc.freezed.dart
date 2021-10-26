@@ -217,9 +217,9 @@ abstract class _Started implements SearchResultEvent {
 class _$SearchResultStateTearOff {
   const _$SearchResultStateTearOff();
 
-  _SearchResultState call({required AdProduct adProduct}) {
+  _SearchResultState call({required Advertisement advertisement}) {
     return _SearchResultState(
-      adProduct: adProduct,
+      advertisement: advertisement,
     );
   }
 }
@@ -229,7 +229,7 @@ const $SearchResultState = _$SearchResultStateTearOff();
 
 /// @nodoc
 mixin _$SearchResultState {
-  AdProduct get adProduct => throw _privateConstructorUsedError;
+  Advertisement get advertisement => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchResultStateCopyWith<SearchResultState> get copyWith =>
@@ -241,9 +241,9 @@ abstract class $SearchResultStateCopyWith<$Res> {
   factory $SearchResultStateCopyWith(
           SearchResultState value, $Res Function(SearchResultState) then) =
       _$SearchResultStateCopyWithImpl<$Res>;
-  $Res call({AdProduct adProduct});
+  $Res call({Advertisement advertisement});
 
-  $AdProductCopyWith<$Res> get adProduct;
+  $AdvertisementCopyWith<$Res> get advertisement;
 }
 
 /// @nodoc
@@ -257,20 +257,20 @@ class _$SearchResultStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? adProduct = freezed,
+    Object? advertisement = freezed,
   }) {
     return _then(_value.copyWith(
-      adProduct: adProduct == freezed
-          ? _value.adProduct
-          : adProduct // ignore: cast_nullable_to_non_nullable
-              as AdProduct,
+      advertisement: advertisement == freezed
+          ? _value.advertisement
+          : advertisement // ignore: cast_nullable_to_non_nullable
+              as Advertisement,
     ));
   }
 
   @override
-  $AdProductCopyWith<$Res> get adProduct {
-    return $AdProductCopyWith<$Res>(_value.adProduct, (value) {
-      return _then(_value.copyWith(adProduct: value));
+  $AdvertisementCopyWith<$Res> get advertisement {
+    return $AdvertisementCopyWith<$Res>(_value.advertisement, (value) {
+      return _then(_value.copyWith(advertisement: value));
     });
   }
 }
@@ -282,10 +282,10 @@ abstract class _$SearchResultStateCopyWith<$Res>
           _SearchResultState value, $Res Function(_SearchResultState) then) =
       __$SearchResultStateCopyWithImpl<$Res>;
   @override
-  $Res call({AdProduct adProduct});
+  $Res call({Advertisement advertisement});
 
   @override
-  $AdProductCopyWith<$Res> get adProduct;
+  $AdvertisementCopyWith<$Res> get advertisement;
 }
 
 /// @nodoc
@@ -301,13 +301,13 @@ class __$SearchResultStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? adProduct = freezed,
+    Object? advertisement = freezed,
   }) {
     return _then(_SearchResultState(
-      adProduct: adProduct == freezed
-          ? _value.adProduct
-          : adProduct // ignore: cast_nullable_to_non_nullable
-              as AdProduct,
+      advertisement: advertisement == freezed
+          ? _value.advertisement
+          : advertisement // ignore: cast_nullable_to_non_nullable
+              as Advertisement,
     ));
   }
 }
@@ -315,28 +315,28 @@ class __$SearchResultStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchResultState implements _SearchResultState {
-  const _$_SearchResultState({required this.adProduct});
+  const _$_SearchResultState({required this.advertisement});
 
   @override
-  final AdProduct adProduct;
+  final Advertisement advertisement;
 
   @override
   String toString() {
-    return 'SearchResultState(adProduct: $adProduct)';
+    return 'SearchResultState(advertisement: $advertisement)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SearchResultState &&
-            (identical(other.adProduct, adProduct) ||
+            (identical(other.advertisement, advertisement) ||
                 const DeepCollectionEquality()
-                    .equals(other.adProduct, adProduct)));
+                    .equals(other.advertisement, advertisement)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(adProduct);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(advertisement);
 
   @JsonKey(ignore: true)
   @override
@@ -345,11 +345,11 @@ class _$_SearchResultState implements _SearchResultState {
 }
 
 abstract class _SearchResultState implements SearchResultState {
-  const factory _SearchResultState({required AdProduct adProduct}) =
+  const factory _SearchResultState({required Advertisement advertisement}) =
       _$_SearchResultState;
 
   @override
-  AdProduct get adProduct => throw _privateConstructorUsedError;
+  Advertisement get advertisement => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SearchResultStateCopyWith<_SearchResultState> get copyWith =>

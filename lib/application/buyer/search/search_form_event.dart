@@ -16,5 +16,6 @@ class SearchFormEvent with _$SearchFormEvent {
   const factory SearchFormEvent.onBtnFilterPressed() = OnBtnFilterPressed;
 
   const factory SearchFormEvent.onQtyChanged(String qty) = OnQtyChanged;
+  const factory SearchFormEvent.nameChanged(String newName) = NameChanged;
 
 }

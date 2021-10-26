@@ -246,29 +246,31 @@ class BuyerSummary extends StatelessWidget {
                       MaterialPageRoute(builder: (builder) => SearchPage()));
                 },
                 child: Card(
-                  margin: const EdgeInsets.all(32),
-                  child: Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Sem itens na sua feira!',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          Text('Fazer novo pedido')
-                        ],
-                      ),
-                      const SizedBox(
-                        width: 32,
-                      ),
-                      SvgPicture.asset(
-                        'assets/coolicon.svg',
-                        width: 21,
-                        height: 21,
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Sem itens na sua feira!',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            Text('Fazer novo pedido')
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 32,
+                        ),
+                        SvgPicture.asset(
+                          'assets/coolicon.svg',
+                          width: 21,
+                          height: 21,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               )

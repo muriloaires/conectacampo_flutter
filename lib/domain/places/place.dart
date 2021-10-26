@@ -1,5 +1,3 @@
-import 'package:conectacampo/domain/auth/value_objects.dart';
-import 'package:conectacampo/domain/places/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'place.freezed.dart';

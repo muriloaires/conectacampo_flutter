@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:conectacampo/domain/places/place.dart';
-import 'package:conectacampo/domain/places/places_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

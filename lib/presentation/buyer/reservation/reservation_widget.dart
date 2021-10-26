@@ -99,6 +99,7 @@ class ReservationWidget extends StatelessWidget {
                               ),
                             ),
                             children: [
+                              const TextSpan(text: ' '),
                               TextSpan(
                                 text: state.optionOfAdFailureOrSuccess.fold(
                                   () => '',

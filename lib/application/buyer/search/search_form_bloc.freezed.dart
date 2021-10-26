@@ -73,6 +73,12 @@ class _$SearchFormEventTearOff {
       qty,
     );
   }
+
+  NameChanged nameChanged(String newName) {
+    return NameChanged(
+      newName,
+    );
+  }
 }
 
 /// @nodoc
@@ -93,6 +99,7 @@ mixin _$SearchFormEvent {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -108,6 +115,7 @@ mixin _$SearchFormEvent {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,6 +132,7 @@ mixin _$SearchFormEvent {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -139,6 +148,7 @@ mixin _$SearchFormEvent {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -209,6 +219,7 @@ class _$_Started implements _Started {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return started();
   }
@@ -227,6 +238,7 @@ class _$_Started implements _Started {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -249,6 +261,7 @@ class _$_Started implements _Started {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return started(this);
   }
@@ -267,6 +280,7 @@ class _$_Started implements _Started {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -356,6 +370,7 @@ class _$SearchTapped implements SearchTapped {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return searchTapped(query);
   }
@@ -374,6 +389,7 @@ class _$SearchTapped implements SearchTapped {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (searchTapped != null) {
@@ -396,6 +412,7 @@ class _$SearchTapped implements SearchTapped {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return searchTapped(this);
   }
@@ -414,6 +431,7 @@ class _$SearchTapped implements SearchTapped {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (searchTapped != null) {
@@ -508,6 +526,7 @@ class _$HistorySelected implements HistorySelected {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return historySelected(query);
   }
@@ -526,6 +545,7 @@ class _$HistorySelected implements HistorySelected {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (historySelected != null) {
@@ -548,6 +568,7 @@ class _$HistorySelected implements HistorySelected {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return historySelected(this);
   }
@@ -566,6 +587,7 @@ class _$HistorySelected implements HistorySelected {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (historySelected != null) {
@@ -660,6 +682,7 @@ class _$OnRadioKindTap implements OnRadioKindTap {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return onRadioKindTap(index);
   }
@@ -678,6 +701,7 @@ class _$OnRadioKindTap implements OnRadioKindTap {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (onRadioKindTap != null) {
@@ -700,6 +724,7 @@ class _$OnRadioKindTap implements OnRadioKindTap {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return onRadioKindTap(this);
   }
@@ -718,6 +743,7 @@ class _$OnRadioKindTap implements OnRadioKindTap {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (onRadioKindTap != null) {
@@ -812,6 +838,7 @@ class _$OnRadioRatingTap implements OnRadioRatingTap {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return onRadioRatingTap(index);
   }
@@ -830,6 +857,7 @@ class _$OnRadioRatingTap implements OnRadioRatingTap {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (onRadioRatingTap != null) {
@@ -852,6 +880,7 @@ class _$OnRadioRatingTap implements OnRadioRatingTap {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return onRadioRatingTap(this);
   }
@@ -870,6 +899,7 @@ class _$OnRadioRatingTap implements OnRadioRatingTap {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (onRadioRatingTap != null) {
@@ -939,6 +969,7 @@ class _$OnTapKindFilter implements OnTapKindFilter {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return onTapKindFilter();
   }
@@ -957,6 +988,7 @@ class _$OnTapKindFilter implements OnTapKindFilter {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (onTapKindFilter != null) {
@@ -979,6 +1011,7 @@ class _$OnTapKindFilter implements OnTapKindFilter {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return onTapKindFilter(this);
   }
@@ -997,6 +1030,7 @@ class _$OnTapKindFilter implements OnTapKindFilter {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (onTapKindFilter != null) {
@@ -1061,6 +1095,7 @@ class _$OnTapRatingFilter implements OnTapRatingFilter {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return onTapRatingFilter();
   }
@@ -1079,6 +1114,7 @@ class _$OnTapRatingFilter implements OnTapRatingFilter {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (onTapRatingFilter != null) {
@@ -1101,6 +1137,7 @@ class _$OnTapRatingFilter implements OnTapRatingFilter {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return onTapRatingFilter(this);
   }
@@ -1119,6 +1156,7 @@ class _$OnTapRatingFilter implements OnTapRatingFilter {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (onTapRatingFilter != null) {
@@ -1217,6 +1255,7 @@ class _$OnProductSelected implements OnProductSelected {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return onProductSelected(product);
   }
@@ -1235,6 +1274,7 @@ class _$OnProductSelected implements OnProductSelected {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (onProductSelected != null) {
@@ -1257,6 +1297,7 @@ class _$OnProductSelected implements OnProductSelected {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return onProductSelected(this);
   }
@@ -1275,6 +1316,7 @@ class _$OnProductSelected implements OnProductSelected {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (onProductSelected != null) {
@@ -1370,6 +1412,7 @@ class _$OnDateSelected implements OnDateSelected {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return onDateSelected(dateSelected);
   }
@@ -1388,6 +1431,7 @@ class _$OnDateSelected implements OnDateSelected {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (onDateSelected != null) {
@@ -1410,6 +1454,7 @@ class _$OnDateSelected implements OnDateSelected {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return onDateSelected(this);
   }
@@ -1428,6 +1473,7 @@ class _$OnDateSelected implements OnDateSelected {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (onDateSelected != null) {
@@ -1497,6 +1543,7 @@ class _$OnBtnFilterPressed implements OnBtnFilterPressed {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return onBtnFilterPressed();
   }
@@ -1515,6 +1562,7 @@ class _$OnBtnFilterPressed implements OnBtnFilterPressed {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (onBtnFilterPressed != null) {
@@ -1537,6 +1585,7 @@ class _$OnBtnFilterPressed implements OnBtnFilterPressed {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return onBtnFilterPressed(this);
   }
@@ -1555,6 +1604,7 @@ class _$OnBtnFilterPressed implements OnBtnFilterPressed {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (onBtnFilterPressed != null) {
@@ -1644,6 +1694,7 @@ class _$OnQtyChanged implements OnQtyChanged {
     required TResult Function(DateTime dateSelected) onDateSelected,
     required TResult Function() onBtnFilterPressed,
     required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
   }) {
     return onQtyChanged(qty);
   }
@@ -1662,6 +1713,7 @@ class _$OnQtyChanged implements OnQtyChanged {
     TResult Function(DateTime dateSelected)? onDateSelected,
     TResult Function()? onBtnFilterPressed,
     TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
     required TResult orElse(),
   }) {
     if (onQtyChanged != null) {
@@ -1684,6 +1736,7 @@ class _$OnQtyChanged implements OnQtyChanged {
     required TResult Function(OnDateSelected value) onDateSelected,
     required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
     required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
   }) {
     return onQtyChanged(this);
   }
@@ -1702,6 +1755,7 @@ class _$OnQtyChanged implements OnQtyChanged {
     TResult Function(OnDateSelected value)? onDateSelected,
     TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
     TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
     required TResult orElse(),
   }) {
     if (onQtyChanged != null) {
@@ -1717,6 +1771,162 @@ abstract class OnQtyChanged implements SearchFormEvent {
   String get qty => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OnQtyChangedCopyWith<OnQtyChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NameChangedCopyWith<$Res> {
+  factory $NameChangedCopyWith(
+          NameChanged value, $Res Function(NameChanged) then) =
+      _$NameChangedCopyWithImpl<$Res>;
+  $Res call({String newName});
+}
+
+/// @nodoc
+class _$NameChangedCopyWithImpl<$Res>
+    extends _$SearchFormEventCopyWithImpl<$Res>
+    implements $NameChangedCopyWith<$Res> {
+  _$NameChangedCopyWithImpl(
+      NameChanged _value, $Res Function(NameChanged) _then)
+      : super(_value, (v) => _then(v as NameChanged));
+
+  @override
+  NameChanged get _value => super._value as NameChanged;
+
+  @override
+  $Res call({
+    Object? newName = freezed,
+  }) {
+    return _then(NameChanged(
+      newName == freezed
+          ? _value.newName
+          : newName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NameChanged implements NameChanged {
+  const _$NameChanged(this.newName);
+
+  @override
+  final String newName;
+
+  @override
+  String toString() {
+    return 'SearchFormEvent.nameChanged(newName: $newName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is NameChanged &&
+            (identical(other.newName, newName) ||
+                const DeepCollectionEquality().equals(other.newName, newName)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(newName);
+
+  @JsonKey(ignore: true)
+  @override
+  $NameChangedCopyWith<NameChanged> get copyWith =>
+      _$NameChangedCopyWithImpl<NameChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) searchTapped,
+    required TResult Function(String query) historySelected,
+    required TResult Function(int index) onRadioKindTap,
+    required TResult Function(int index) onRadioRatingTap,
+    required TResult Function() onTapKindFilter,
+    required TResult Function() onTapRatingFilter,
+    required TResult Function(Product product) onProductSelected,
+    required TResult Function(DateTime dateSelected) onDateSelected,
+    required TResult Function() onBtnFilterPressed,
+    required TResult Function(String qty) onQtyChanged,
+    required TResult Function(String newName) nameChanged,
+  }) {
+    return nameChanged(newName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? searchTapped,
+    TResult Function(String query)? historySelected,
+    TResult Function(int index)? onRadioKindTap,
+    TResult Function(int index)? onRadioRatingTap,
+    TResult Function()? onTapKindFilter,
+    TResult Function()? onTapRatingFilter,
+    TResult Function(Product product)? onProductSelected,
+    TResult Function(DateTime dateSelected)? onDateSelected,
+    TResult Function()? onBtnFilterPressed,
+    TResult Function(String qty)? onQtyChanged,
+    TResult Function(String newName)? nameChanged,
+    required TResult orElse(),
+  }) {
+    if (nameChanged != null) {
+      return nameChanged(newName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(SearchTapped value) searchTapped,
+    required TResult Function(HistorySelected value) historySelected,
+    required TResult Function(OnRadioKindTap value) onRadioKindTap,
+    required TResult Function(OnRadioRatingTap value) onRadioRatingTap,
+    required TResult Function(OnTapKindFilter value) onTapKindFilter,
+    required TResult Function(OnTapRatingFilter value) onTapRatingFilter,
+    required TResult Function(OnProductSelected value) onProductSelected,
+    required TResult Function(OnDateSelected value) onDateSelected,
+    required TResult Function(OnBtnFilterPressed value) onBtnFilterPressed,
+    required TResult Function(OnQtyChanged value) onQtyChanged,
+    required TResult Function(NameChanged value) nameChanged,
+  }) {
+    return nameChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(SearchTapped value)? searchTapped,
+    TResult Function(HistorySelected value)? historySelected,
+    TResult Function(OnRadioKindTap value)? onRadioKindTap,
+    TResult Function(OnRadioRatingTap value)? onRadioRatingTap,
+    TResult Function(OnTapKindFilter value)? onTapKindFilter,
+    TResult Function(OnTapRatingFilter value)? onTapRatingFilter,
+    TResult Function(OnProductSelected value)? onProductSelected,
+    TResult Function(OnDateSelected value)? onDateSelected,
+    TResult Function(OnBtnFilterPressed value)? onBtnFilterPressed,
+    TResult Function(OnQtyChanged value)? onQtyChanged,
+    TResult Function(NameChanged value)? nameChanged,
+    required TResult orElse(),
+  }) {
+    if (nameChanged != null) {
+      return nameChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NameChanged implements SearchFormEvent {
+  const factory NameChanged(String newName) = _$NameChanged;
+
+  String get newName => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $NameChangedCopyWith<NameChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1740,7 +1950,8 @@ class _$SearchFormStateTearOff {
           optionOfProductFailureOrSuccess,
       required Option<Product> optionOfSelectedProduct,
       required Option<DateTime> optionOfDateSelected,
-      required String quantity}) {
+      required String quantity,
+      required List<Product> filteredProducts}) {
     return _SearchFormState(
       optionOfProductsFailureOrSuccess: optionOfProductsFailureOrSuccess,
       searching: searching,
@@ -1755,6 +1966,7 @@ class _$SearchFormStateTearOff {
       optionOfSelectedProduct: optionOfSelectedProduct,
       optionOfDateSelected: optionOfDateSelected,
       quantity: quantity,
+      filteredProducts: filteredProducts,
     );
   }
 }
@@ -1784,6 +1996,7 @@ mixin _$SearchFormState {
   Option<DateTime> get optionOfDateSelected =>
       throw _privateConstructorUsedError;
   String get quantity => throw _privateConstructorUsedError;
+  List<Product> get filteredProducts => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchFormStateCopyWith<SearchFormState> get copyWith =>
@@ -1810,7 +2023,8 @@ abstract class $SearchFormStateCopyWith<$Res> {
       Option<Either<ProductFailure, Product>> optionOfProductFailureOrSuccess,
       Option<Product> optionOfSelectedProduct,
       Option<DateTime> optionOfDateSelected,
-      String quantity});
+      String quantity,
+      List<Product> filteredProducts});
 
   $PlaceCopyWith<$Res>? get place;
 }
@@ -1839,6 +2053,7 @@ class _$SearchFormStateCopyWithImpl<$Res>
     Object? optionOfSelectedProduct = freezed,
     Object? optionOfDateSelected = freezed,
     Object? quantity = freezed,
+    Object? filteredProducts = freezed,
   }) {
     return _then(_value.copyWith(
       optionOfProductsFailureOrSuccess: optionOfProductsFailureOrSuccess ==
@@ -1896,6 +2111,10 @@ class _$SearchFormStateCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as String,
+      filteredProducts: filteredProducts == freezed
+          ? _value.filteredProducts
+          : filteredProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
     ));
   }
 
@@ -1933,7 +2152,8 @@ abstract class _$SearchFormStateCopyWith<$Res>
       Option<Either<ProductFailure, Product>> optionOfProductFailureOrSuccess,
       Option<Product> optionOfSelectedProduct,
       Option<DateTime> optionOfDateSelected,
-      String quantity});
+      String quantity,
+      List<Product> filteredProducts});
 
   @override
   $PlaceCopyWith<$Res>? get place;
@@ -1965,6 +2185,7 @@ class __$SearchFormStateCopyWithImpl<$Res>
     Object? optionOfSelectedProduct = freezed,
     Object? optionOfDateSelected = freezed,
     Object? quantity = freezed,
+    Object? filteredProducts = freezed,
   }) {
     return _then(_SearchFormState(
       optionOfProductsFailureOrSuccess: optionOfProductsFailureOrSuccess ==
@@ -2022,6 +2243,10 @@ class __$SearchFormStateCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as String,
+      filteredProducts: filteredProducts == freezed
+          ? _value.filteredProducts
+          : filteredProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
     ));
   }
 }
@@ -2042,7 +2267,8 @@ class _$_SearchFormState implements _SearchFormState {
       required this.optionOfProductFailureOrSuccess,
       required this.optionOfSelectedProduct,
       required this.optionOfDateSelected,
-      required this.quantity});
+      required this.quantity,
+      required this.filteredProducts});
 
   @override
   final Option<Either<ProductFailure, List<Product>>>
@@ -2072,10 +2298,12 @@ class _$_SearchFormState implements _SearchFormState {
   final Option<DateTime> optionOfDateSelected;
   @override
   final String quantity;
+  @override
+  final List<Product> filteredProducts;
 
   @override
   String toString() {
-    return 'SearchFormState(optionOfProductsFailureOrSuccess: $optionOfProductsFailureOrSuccess, searching: $searching, optionOfAdsProductsFailureOrSuccess: $optionOfAdsProductsFailureOrSuccess, showFilters: $showFilters, place: $place, kindRadioValue: $kindRadioValue, isKindsVisible: $isKindsVisible, ratingRadioValue: $ratingRadioValue, isRatingVisible: $isRatingVisible, optionOfProductFailureOrSuccess: $optionOfProductFailureOrSuccess, optionOfSelectedProduct: $optionOfSelectedProduct, optionOfDateSelected: $optionOfDateSelected, quantity: $quantity)';
+    return 'SearchFormState(optionOfProductsFailureOrSuccess: $optionOfProductsFailureOrSuccess, searching: $searching, optionOfAdsProductsFailureOrSuccess: $optionOfAdsProductsFailureOrSuccess, showFilters: $showFilters, place: $place, kindRadioValue: $kindRadioValue, isKindsVisible: $isKindsVisible, ratingRadioValue: $ratingRadioValue, isRatingVisible: $isRatingVisible, optionOfProductFailureOrSuccess: $optionOfProductFailureOrSuccess, optionOfSelectedProduct: $optionOfSelectedProduct, optionOfDateSelected: $optionOfDateSelected, quantity: $quantity, filteredProducts: $filteredProducts)';
   }
 
   @override
@@ -2121,7 +2349,8 @@ class _$_SearchFormState implements _SearchFormState {
                 const DeepCollectionEquality().equals(
                     other.optionOfDateSelected, optionOfDateSelected)) &&
             (identical(other.quantity, quantity) ||
-                const DeepCollectionEquality().equals(other.quantity, quantity)));
+                const DeepCollectionEquality().equals(other.quantity, quantity)) &&
+            (identical(other.filteredProducts, filteredProducts) || const DeepCollectionEquality().equals(other.filteredProducts, filteredProducts)));
   }
 
   @override
@@ -2139,7 +2368,8 @@ class _$_SearchFormState implements _SearchFormState {
       const DeepCollectionEquality().hash(optionOfProductFailureOrSuccess) ^
       const DeepCollectionEquality().hash(optionOfSelectedProduct) ^
       const DeepCollectionEquality().hash(optionOfDateSelected) ^
-      const DeepCollectionEquality().hash(quantity);
+      const DeepCollectionEquality().hash(quantity) ^
+      const DeepCollectionEquality().hash(filteredProducts);
 
   @JsonKey(ignore: true)
   @override
@@ -2164,7 +2394,8 @@ abstract class _SearchFormState implements SearchFormState {
           optionOfProductFailureOrSuccess,
       required Option<Product> optionOfSelectedProduct,
       required Option<DateTime> optionOfDateSelected,
-      required String quantity}) = _$_SearchFormState;
+      required String quantity,
+      required List<Product> filteredProducts}) = _$_SearchFormState;
 
   @override
   Option<Either<ProductFailure, List<Product>>>
@@ -2199,6 +2430,8 @@ abstract class _SearchFormState implements SearchFormState {
       throw _privateConstructorUsedError;
   @override
   String get quantity => throw _privateConstructorUsedError;
+  @override
+  List<Product> get filteredProducts => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SearchFormStateCopyWith<_SearchFormState> get copyWith =>

@@ -2,23 +2,29 @@ part of 'search_result_bloc.dart';
 
 @freezed
 class SearchResultState with _$SearchResultState {
-  const factory SearchResultState({required AdProduct adProduct}) =
+  const factory SearchResultState({required Advertisement advertisement}) =
       _SearchResultState;
 
   factory SearchResultState.initial() => SearchResultState(
-      adProduct: AdProduct(
-          0,
-          '',
-          '',
-          0,
-          '',
-          '',
-          '',
-          '',
-          [
-            ProductImages(ThumbAvatar('a'), MediumAvatar('a'), OriginalAvatar('a'))
-          ],
-          '',
-          null,
-          -1));
+          advertisement: Advertisement(
+        -1,
+        [],
+        '',
+        '',
+        Place(id: '', name: '', state: '', address: ''),
+        User(
+            UniqueId.fromUniqueString('as'),
+            FullName('Full name'),
+            Nickname('nickname'),
+            'vehicleLicensePlate',
+            PhoneNumber('62999999999'),
+            null,
+            null,
+            null,
+            null,
+            null),
+        '',
+        '',
+        '',
+      ));
 }

@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/buyer/product/product_page_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
@@ -6,6 +7,7 @@ import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertiser.dart';
 import 'package:conectacampo/presentation/buyer/widgets/product_advertisement.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/util/photo_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +18,7 @@ class ProductPage extends StatelessWidget {
   final AdProduct _product;
 
   const ProductPage(this._product);
+
   @override
   Widget build(BuildContext context) {
     final textController = TextEditingController();
@@ -23,8 +26,8 @@ class ProductPage extends StatelessWidget {
       create: (context) => getIt()..add(ProductPageEvent.started(_product)),
       child: BlocConsumer<ProductPageBloc, ProductPageState>(
           listener: (context, state) {
-        if (context.read<ProductPageBloc>().state.setInitialQuantity) {
-          context
+            if (context.read<ProductPageBloc>().state.setInitialQuantity) {
+              context
               .read<ProductPageBloc>()
               .state
               .optionOfReservatiomItemFailureOrSuccess
@@ -35,89 +38,88 @@ class ProductPage extends StatelessWidget {
                   .add(ProductPageEvent.ammountChanged(r.quantity.toString()));
               textController.text = r.quantity.toString();
             });
-              });
-            }
+          });
+        }
 
-            state.optionOfReservatiomItemFailureOrSuccess.fold(
+        state.optionOfReservatiomItemFailureOrSuccess.fold(
             () => null,
             (a) => a.fold((l) {
                   if (state.showErrorMsg) {
                     l.maybeMap(
-                        anotherSellerInCart: (anotherSellerInCart) =>
-                            showDialog<String>(
-                              context: context,
-                              builder: (BuildContext dialogContext) => Dialog(
-                                child: ListView(
-                                  shrinkWrap: true,
-                                  children: [
-                                    const Divider(),
-                                    CircleAvatar(
-                                      radius: 35,
-                                      backgroundColor: Colors.amber[400],
-                                      child: const Text(
-                                        '!',
-                                        style: TextStyle(
-                                            fontSize: 40,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    const Divider(),
-                                    const Center(
-                                      child: Text(
-                                          'Há produtos de outro vendedor ou de outra feira em seu carrinho!',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                    ),
-                                    const Divider(height: 8),
-                                    const Center(
-                                      child: SizedBox(
-                                        width: 180,
-                                        child: Flexible(
-                                          child: Text(
-                                            'Você pode concluir ou cancelar o pedido',
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    const Divider(height: 8),
-                                    Container(
-                                        height: 1, color: ColorSet.grayLine),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.of(dialogContext)
-                                                  .pop();
-                                              context
-                                                  .read<BuyerMenuBloc>()
-                                                  .add(const BuyerMenuEvent
-                                                      .onCartTapped());
-                                            },
-                                            child: const Text(
-                                                'Ir para o carrinho',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold,
-                                                    color:
-                                                        ColorSet.grayDark)))
-                                      ],
-                                    )
-                                  ],
+                      anotherSellerInCart: (anotherSellerInCart) =>
+                          showDialog<String>(
+                        context: context,
+                        builder: (BuildContext dialogContext) => Dialog(
+                          child: ListView(
+                            shrinkWrap: true,
+                            children: [
+                              const Divider(),
+                              CircleAvatar(
+                                radius: 35,
+                                backgroundColor: Colors.amber[400],
+                                child: const Text(
+                                  '!',
+                                  style: TextStyle(
+                                      fontSize: 40,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
-                            ),
-                            errorInsertingInCart: (errorInsertingInCart) =>
-                                EasyLoading.showError(
-                                    'Erro ao inserir produto no carrinho',
-                                    duration: const Duration(seconds: 1)),
-                            orElse: () {});
-                      }
-                    }, (r) => null));
+                              const Divider(),
+                              const Center(
+                                child: Text(
+                                    'Há produtos de outro vendedor ou de outra feira em seu carrinho!',
+                                    textAlign: TextAlign.center,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                              ),
+                              const Divider(height: 8),
+                              const Center(
+                                child: SizedBox(
+                                  width: 180,
+                                  child: Flexible(
+                                    child: Text(
+                                      'Você pode concluir ou cancelar o pedido',
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const Divider(height: 8),
+                              Container(height: 1, color: ColorSet.grayLine),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(dialogContext).pop();
+                                      context.read<BuyerMenuBloc>().add(
+                                            const BuyerMenuEvent.onCartTapped(),
+                                          );
+                                    },
+                                    child: const Text(
+                                      'Ir para o carrinho',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: ColorSet.grayDark,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      errorInsertingInCart: (errorInsertingInCart) =>
+                          EasyLoading.showError(
+                              'Erro ao inserir produto no carrinho',
+                              duration: const Duration(seconds: 1)),
+                      orElse: () {},
+                    );
+                  }
+                }, (r) => null));
 
         if (state.showInserted) {
           EasyLoading.showSuccess('Produto inserido com sucesso!',
@@ -222,16 +224,18 @@ class ProductPage extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.all(2),
                               decoration: const BoxDecoration(
-                                  color: ColorSet.grayRoundedBackground,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(2.0),
-                                  ),),
+                                color: ColorSet.grayRoundedBackground,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(2.0),
+                                ),
+                              ),
                               child: Text(
                                 _product.kind,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 12,
-                                  color: ColorSet.gray2,),
+                                  color: ColorSet.gray2,
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -267,7 +271,8 @@ class ProductPage extends StatelessWidget {
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 12,
-                                  color: ColorSet.gray2,),
+                                  color: ColorSet.gray2,
+                                ),
                               ),
                             )
                           ],
@@ -275,15 +280,53 @@ class ProductPage extends StatelessWidget {
                         const SizedBox(
                           height: 15,
                         ),
-                        ClipRRect(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(8)),
-                          child: Image.network(
-                            _product.images.first.originalAvatar.getOrCrash(),
-                            fit: BoxFit.cover,
+                        CarouselSlider(
+                          options: CarouselOptions(
                             height: 170,
-                            width: double.infinity,
+                            aspectRatio: 16 / 9,
+                            viewportFraction: 0.8,
+                            initialPage: 0,
+                            enableInfiniteScroll: true,
+                            reverse: false,
+                            autoPlay: true,
+                            autoPlayInterval: Duration(seconds: 3),
+                            autoPlayAnimationDuration:
+                                Duration(milliseconds: 800),
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            enlargeCenterPage: true,
+                            scrollDirection: Axis.horizontal,
                           ),
+                          items: _product.images.map((i) {
+                            return Builder(
+                              builder: (BuildContext context) {
+                                return Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 5.0),
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(8),
+                                      ),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context,
+                                                  rootNavigator: true)
+                                              .push(MaterialPageRoute(
+                                            builder: (context) => PhotoViewer(
+                                                i.originalAvatar.getOrCrash()),
+                                          ));
+                                        },
+                                        child: Image.network(
+                                          i.originalAvatar.getOrCrash(),
+                                          fit: BoxFit.cover,
+                                          height: 170,
+                                          width: double.infinity,
+                                        ),
+                                      ),
+                                    ));
+                              },
+                            );
+                          }).toList(),
                         ),
                         const SizedBox(
                           height: 10,
@@ -346,7 +389,7 @@ class ProductPage extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                               child: ClipRRect(
                                 borderRadius:
-                                    const BorderRadius.all(Radius.circular(8)),
+                                const BorderRadius.all(Radius.circular(8)),
                                 child: Container(
                                     color: ColorSet.grayRoundedBackground,
                                     child: Center(
@@ -393,13 +436,13 @@ class ProductPage extends StatelessWidget {
                             onPressed: () {},
                             child: ClipRRect(
                                 borderRadius:
-                                    const BorderRadius.all(Radius.circular(8)),
+                                const BorderRadius.all(Radius.circular(8)),
                                 child: Container(
                                   padding: const EdgeInsets.all(8),
                                   color: ColorSet.green1,
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       const Flexible(
                                         child: Text(
@@ -436,14 +479,14 @@ class ProductPage extends StatelessWidget {
                             },
                             child: ClipRRect(
                                 borderRadius:
-                                    const BorderRadius.all(Radius.circular(8)),
+                                const BorderRadius.all(Radius.circular(8)),
                                 child: Container(
                                   padding: const EdgeInsets.all(16),
                                   color: context
-                                          .read<ProductPageBloc>()
-                                          .state
-                                          .reservationQuantity
-                                          .isValid()
+                                      .read<ProductPageBloc>()
+                                      .state
+                                      .reservationQuantity
+                                      .isValid()
                                       ? ColorSet.green1
                                       : ColorSet.gray2,
                                   child: const Center(
@@ -476,7 +519,7 @@ class ProductPage extends StatelessWidget {
                             children: [
                               TextSpan(
                                   text:
-                                      ' Converse com o vendedor e combinem o horário para retirar sua compra.',
+                                  ' Converse com o vendedor e combinem o horário para retirar sua compra.',
                                   style: TextStyle(
                                       fontWeight: FontWeight.normal,
                                       color: Colors.black))
@@ -492,7 +535,7 @@ class ProductPage extends StatelessWidget {
                             children: [
                               TextSpan(
                                   text:
-                                      'Você vai escolher o horário para retirar a compra com o vendedor',
+                                  'Você vai escolher o horário para retirar a compra com o vendedor',
                                   style: TextStyle(
                                       fontWeight: FontWeight.normal,
                                       color: Colors.black))
@@ -526,7 +569,7 @@ class ProductPage extends StatelessWidget {
                                 physics: const ClampingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount:
-                                    _product.advertisement?.products.length,
+                                _product.advertisement?.products.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
@@ -559,16 +602,18 @@ class ProductPage extends StatelessWidget {
                       physics: const ClampingScrollPhysics(),
                       children: [
                         if (_product.observation != null &&
-                            _product.observation!.isNotEmpty) const Text(
-                          'O que você precisa saber sobre esse produto:',
-                          style: TextStyle(
+                            _product.observation!.isNotEmpty)
+                          const Text(
+                            'O que você precisa saber sobre esse produto:',
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: ColorSet.gray2,),
-                        ),
+                              color: ColorSet.gray2,
+                            ),
+                          ),
                         const SizedBox(height: 20),
-
                         if (_product.observation != null &&
-                            _product.observation!.isNotEmpty) Text(_product.observation!),
+                            _product.observation!.isNotEmpty)
+                          Text(_product.observation!),
                         if (_product.advertisement != null)
                           Visibility(
                               child: ListView(
@@ -576,63 +621,63 @@ class ProductPage extends StatelessWidget {
                             physics: const ClampingScrollPhysics(),
                             children: [
                               const SizedBox(height: 20),
-                              const Text(
-                                'Informações sobre o vendedor:',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: ColorSet.gray2),
-                              ),
-                              const SizedBox(height: 10),
-                              Advertiser(
-                                  isSearch: true,
-                                  seller: _product.advertisement!.seller),
-                              const SizedBox(height: 10),
-                              MaterialButton(
-                                onPressed: () {
-                                  openWhatsapp(_product
-                                      .advertisement!.seller.phoneNumber
-                                      .getOrCrash());
-                                },
-                                child: ClipRRect(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(8)),
-                                    child: Container(
-                                      padding: const EdgeInsets.all(8),
-                                      color: ColorSet.green1,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const Flexible(
-                                            child: Text(
-                                              'Se preferir, fale direto com o vendedor',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(width: 10),
-                                          SvgPicture.asset(
-                                            'assets/whatsapp.svg',
-                                            color: Colors.white,
-                                          )
-                                        ],
-                                      ),
-                                    )),
-                              ),
-                              TextButton(
-                                  onPressed: () {},
-                                  child: const Text(
-                                    'Entrar no grupo do vendedor',
+                                  const Text(
+                                    'Informações sobre o vendedor:',
                                     style: TextStyle(
-                                        color: ColorSet.green2,
-                                        decoration: TextDecoration.underline),
-                                  ))
-                            ],
-                          )),
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: ColorSet.gray2),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Advertiser(
+                                      isSearch: true,
+                                      seller: _product.advertisement!.seller),
+                                  const SizedBox(height: 10),
+                                  MaterialButton(
+                                    onPressed: () {
+                                      openWhatsapp(_product
+                                          .advertisement!.seller.phoneNumber
+                                          .getOrCrash());
+                                    },
+                                    child: ClipRRect(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(8)),
+                                        child: Container(
+                                          padding: const EdgeInsets.all(8),
+                                          color: ColorSet.green1,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              const Flexible(
+                                                child: Text(
+                                                  'Se preferir, fale direto com o vendedor',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(width: 10),
+                                              SvgPicture.asset(
+                                                'assets/whatsapp.svg',
+                                                color: Colors.white,
+                                              )
+                                            ],
+                                          ),
+                                        )),
+                                  ),
+                                  TextButton(
+                                      onPressed: () {},
+                                      child: const Text(
+                                        'Entrar no grupo do vendedor',
+                                        style: TextStyle(
+                                            color: ColorSet.green2,
+                                            decoration: TextDecoration.underline),
+                                      ))
+                                ],
+                              )),
                         const SizedBox(height: 50)
                       ],
                     ),

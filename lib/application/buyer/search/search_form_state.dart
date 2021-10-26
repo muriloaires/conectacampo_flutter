@@ -19,6 +19,7 @@ class SearchFormState with _$SearchFormState {
     required Option<Product> optionOfSelectedProduct,
     required Option<DateTime> optionOfDateSelected,
     required String quantity,
+    required List<Product> filteredProducts,
   }) = _SearchFormState;
 
   factory SearchFormState.initial() => SearchFormState(
@@ -35,5 +36,6 @@ class SearchFormState with _$SearchFormState {
         optionOfSelectedProduct: none(),
         optionOfDateSelected: none(),
         quantity: '',
+        filteredProducts: [],
       );
 }
