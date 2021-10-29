@@ -138,7 +138,7 @@ class SignUpForm extends StatelessWidget {
                               invalidNickname: (_) => 'Apelido ausente',
                               orElse: () => null),
                           (_) => null),
-                  keyboardType: TextInputType.name,
+                  keyboardType:  TextInputType.name,
                   decoration: const InputDecoration(
                       hintStyle: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
                       hintText: 'Como gostaria de ser chamado no app?'),

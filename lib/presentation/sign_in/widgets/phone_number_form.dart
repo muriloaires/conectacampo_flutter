@@ -56,7 +56,8 @@ class PhoneNumberForm extends StatelessWidget {
                         invalidVerificationId: (_) =>
                             'A verificação falhou. Tente novamente',
                         applicationError: (_) => 'A aplicação falhou',
-                        orElse: () => '');
+                        unknownError: (error) =>  error.exception.code + (error.exception.message ?? ''),
+                        orElse: () => 'Algum error');
                     if (errorText.isEmpty == false) {
                       final snackBar = SnackBar(content: Text(errorText));
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);

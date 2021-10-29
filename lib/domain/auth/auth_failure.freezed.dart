@@ -28,6 +28,16 @@ class _$AuthFailureTearOff {
     return const InvalidPhoneNumber();
   }
 
+  UnknownError unknownError(FirebaseAuthException exception) {
+    return UnknownError(
+      exception,
+    );
+  }
+
+  CodeAutoRetrievalTimeout codeAutoRetrievalTimeout() {
+    return const CodeAutoRetrievalTimeout();
+  }
+
   InvalidFullName invalidFullName() {
     return const InvalidFullName();
   }
@@ -67,6 +77,8 @@ mixin _$AuthFailure {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -81,6 +93,8 @@ mixin _$AuthFailure {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -96,6 +110,9 @@ mixin _$AuthFailure {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -111,6 +128,8 @@ mixin _$AuthFailure {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -181,6 +200,8 @@ class _$ServerError implements ServerError {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -198,6 +219,8 @@ class _$ServerError implements ServerError {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -219,6 +242,9 @@ class _$ServerError implements ServerError {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -237,6 +263,8 @@ class _$ServerError implements ServerError {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -299,6 +327,8 @@ class _$InvalidSmsCode implements InvalidSmsCode {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -316,6 +346,8 @@ class _$InvalidSmsCode implements InvalidSmsCode {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -337,6 +369,9 @@ class _$InvalidSmsCode implements InvalidSmsCode {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -355,6 +390,8 @@ class _$InvalidSmsCode implements InvalidSmsCode {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -418,6 +455,8 @@ class _$InvalidPhoneNumber implements InvalidPhoneNumber {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -435,6 +474,8 @@ class _$InvalidPhoneNumber implements InvalidPhoneNumber {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -456,6 +497,9 @@ class _$InvalidPhoneNumber implements InvalidPhoneNumber {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -474,6 +518,8 @@ class _$InvalidPhoneNumber implements InvalidPhoneNumber {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -492,6 +538,293 @@ class _$InvalidPhoneNumber implements InvalidPhoneNumber {
 
 abstract class InvalidPhoneNumber implements AuthFailure {
   const factory InvalidPhoneNumber() = _$InvalidPhoneNumber;
+}
+
+/// @nodoc
+abstract class $UnknownErrorCopyWith<$Res> {
+  factory $UnknownErrorCopyWith(
+          UnknownError value, $Res Function(UnknownError) then) =
+      _$UnknownErrorCopyWithImpl<$Res>;
+  $Res call({FirebaseAuthException exception});
+}
+
+/// @nodoc
+class _$UnknownErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements $UnknownErrorCopyWith<$Res> {
+  _$UnknownErrorCopyWithImpl(
+      UnknownError _value, $Res Function(UnknownError) _then)
+      : super(_value, (v) => _then(v as UnknownError));
+
+  @override
+  UnknownError get _value => super._value as UnknownError;
+
+  @override
+  $Res call({
+    Object? exception = freezed,
+  }) {
+    return _then(UnknownError(
+      exception == freezed
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as FirebaseAuthException,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnknownError implements UnknownError {
+  const _$UnknownError(this.exception);
+
+  @override
+  final FirebaseAuthException exception;
+
+  @override
+  String toString() {
+    return 'AuthFailure.unknownError(exception: $exception)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is UnknownError &&
+            (identical(other.exception, exception) ||
+                const DeepCollectionEquality()
+                    .equals(other.exception, exception)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exception);
+
+  @JsonKey(ignore: true)
+  @override
+  $UnknownErrorCopyWith<UnknownError> get copyWith =>
+      _$UnknownErrorCopyWithImpl<UnknownError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
+  }) {
+    return unknownError(exception);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
+  }) {
+    if (unknownError != null) {
+      return unknownError(exception);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
+  }) {
+    return unknownError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
+  }) {
+    if (unknownError != null) {
+      return unknownError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnknownError implements AuthFailure {
+  const factory UnknownError(FirebaseAuthException exception) = _$UnknownError;
+
+  FirebaseAuthException get exception => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UnknownErrorCopyWith<UnknownError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CodeAutoRetrievalTimeoutCopyWith<$Res> {
+  factory $CodeAutoRetrievalTimeoutCopyWith(CodeAutoRetrievalTimeout value,
+          $Res Function(CodeAutoRetrievalTimeout) then) =
+      _$CodeAutoRetrievalTimeoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CodeAutoRetrievalTimeoutCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $CodeAutoRetrievalTimeoutCopyWith<$Res> {
+  _$CodeAutoRetrievalTimeoutCopyWithImpl(CodeAutoRetrievalTimeout _value,
+      $Res Function(CodeAutoRetrievalTimeout) _then)
+      : super(_value, (v) => _then(v as CodeAutoRetrievalTimeout));
+
+  @override
+  CodeAutoRetrievalTimeout get _value =>
+      super._value as CodeAutoRetrievalTimeout;
+}
+
+/// @nodoc
+
+class _$CodeAutoRetrievalTimeout implements CodeAutoRetrievalTimeout {
+  const _$CodeAutoRetrievalTimeout();
+
+  @override
+  String toString() {
+    return 'AuthFailure.codeAutoRetrievalTimeout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is CodeAutoRetrievalTimeout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() invalidSmsCode,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
+    required TResult Function() invalidFullName,
+    required TResult Function() invalidNickname,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() userNotFound,
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() phoneAlreadyUsed,
+  }) {
+    return codeAutoRetrievalTimeout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? invalidSmsCode,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
+    TResult Function()? invalidFullName,
+    TResult Function()? invalidNickname,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? userNotFound,
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? phoneAlreadyUsed,
+    required TResult orElse(),
+  }) {
+    if (codeAutoRetrievalTimeout != null) {
+      return codeAutoRetrievalTimeout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidSmsCode value) invalidSmsCode,
+    required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
+    required TResult Function(InvalidFullName value) invalidFullName,
+    required TResult Function(InvalidNickname value) invalidNickname,
+    required TResult Function(InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(UserNotFound value) userNotFound,
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(PhoneAlreadyUsed value) phoneAlreadyUsed,
+  }) {
+    return codeAutoRetrievalTimeout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidSmsCode value)? invalidSmsCode,
+    TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
+    TResult Function(InvalidFullName value)? invalidFullName,
+    TResult Function(InvalidNickname value)? invalidNickname,
+    TResult Function(InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(UserNotFound value)? userNotFound,
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(PhoneAlreadyUsed value)? phoneAlreadyUsed,
+    required TResult orElse(),
+  }) {
+    if (codeAutoRetrievalTimeout != null) {
+      return codeAutoRetrievalTimeout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CodeAutoRetrievalTimeout implements AuthFailure {
+  const factory CodeAutoRetrievalTimeout() = _$CodeAutoRetrievalTimeout;
 }
 
 /// @nodoc
@@ -537,6 +870,8 @@ class _$InvalidFullName implements InvalidFullName {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -554,6 +889,8 @@ class _$InvalidFullName implements InvalidFullName {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -575,6 +912,9 @@ class _$InvalidFullName implements InvalidFullName {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -593,6 +933,8 @@ class _$InvalidFullName implements InvalidFullName {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -656,6 +998,8 @@ class _$InvalidNickname implements InvalidNickname {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -673,6 +1017,8 @@ class _$InvalidNickname implements InvalidNickname {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -694,6 +1040,9 @@ class _$InvalidNickname implements InvalidNickname {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -712,6 +1061,8 @@ class _$InvalidNickname implements InvalidNickname {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -775,6 +1126,8 @@ class _$InvalidVerificationId implements InvalidVerificationId {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -792,6 +1145,8 @@ class _$InvalidVerificationId implements InvalidVerificationId {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -813,6 +1168,9 @@ class _$InvalidVerificationId implements InvalidVerificationId {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -831,6 +1189,8 @@ class _$InvalidVerificationId implements InvalidVerificationId {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -893,6 +1253,8 @@ class _$UserNotFound implements UserNotFound {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -910,6 +1272,8 @@ class _$UserNotFound implements UserNotFound {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -931,6 +1295,9 @@ class _$UserNotFound implements UserNotFound {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -949,6 +1316,8 @@ class _$UserNotFound implements UserNotFound {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -1011,6 +1380,8 @@ class _$Unauthorized implements Unauthorized {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -1028,6 +1399,8 @@ class _$Unauthorized implements Unauthorized {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -1049,6 +1422,9 @@ class _$Unauthorized implements Unauthorized {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -1067,6 +1443,8 @@ class _$Unauthorized implements Unauthorized {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -1130,6 +1508,8 @@ class _$ApplicationError implements ApplicationError {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -1147,6 +1527,8 @@ class _$ApplicationError implements ApplicationError {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -1168,6 +1550,9 @@ class _$ApplicationError implements ApplicationError {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -1186,6 +1571,8 @@ class _$ApplicationError implements ApplicationError {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,
@@ -1249,6 +1636,8 @@ class _$PhoneAlreadyUsed implements PhoneAlreadyUsed {
     required TResult Function() serverError,
     required TResult Function() invalidSmsCode,
     required TResult Function() invalidPhoneNumber,
+    required TResult Function(FirebaseAuthException exception) unknownError,
+    required TResult Function() codeAutoRetrievalTimeout,
     required TResult Function() invalidFullName,
     required TResult Function() invalidNickname,
     required TResult Function() invalidVerificationId,
@@ -1266,6 +1655,8 @@ class _$PhoneAlreadyUsed implements PhoneAlreadyUsed {
     TResult Function()? serverError,
     TResult Function()? invalidSmsCode,
     TResult Function()? invalidPhoneNumber,
+    TResult Function(FirebaseAuthException exception)? unknownError,
+    TResult Function()? codeAutoRetrievalTimeout,
     TResult Function()? invalidFullName,
     TResult Function()? invalidNickname,
     TResult Function()? invalidVerificationId,
@@ -1287,6 +1678,9 @@ class _$PhoneAlreadyUsed implements PhoneAlreadyUsed {
     required TResult Function(ServerError value) serverError,
     required TResult Function(InvalidSmsCode value) invalidSmsCode,
     required TResult Function(InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(CodeAutoRetrievalTimeout value)
+        codeAutoRetrievalTimeout,
     required TResult Function(InvalidFullName value) invalidFullName,
     required TResult Function(InvalidNickname value) invalidNickname,
     required TResult Function(InvalidVerificationId value)
@@ -1305,6 +1699,8 @@ class _$PhoneAlreadyUsed implements PhoneAlreadyUsed {
     TResult Function(ServerError value)? serverError,
     TResult Function(InvalidSmsCode value)? invalidSmsCode,
     TResult Function(InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(CodeAutoRetrievalTimeout value)? codeAutoRetrievalTimeout,
     TResult Function(InvalidFullName value)? invalidFullName,
     TResult Function(InvalidNickname value)? invalidNickname,
     TResult Function(InvalidVerificationId value)? invalidVerificationId,

@@ -33,26 +33,34 @@ class AuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> requestSmsCode(
-      PhoneNumber phoneNumber) async {
+      PhoneNumber phoneNumber,
+      ) async {
     final Completer<Either<AuthFailure, Unit>> completer = Completer();
 
     final phoneNumberString = phoneNumber.getOrCrash();
     await _firebaseAuth.verifyPhoneNumber(
-        phoneNumber: '+55$phoneNumberString',
-        verificationCompleted:
-            (PhoneAuthCredential phoneAuthCredential) async {},
-        verificationFailed: (FirebaseAuthException authException) {
-          if (authException.code == 'invalid-phone-number') {
-            completer
-                .completeError(left(const AuthFailure.invalidPhoneNumber()));
-          }
-        },
-        codeSent: (String verificationId, int? forceResendingToken) async {
-          _verificationId = verificationId;
-          _phoneNumber = phoneNumber.getOrCrash();
-          completer.complete(right(unit));
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {});
+      phoneNumber: '+55$phoneNumberString',
+      verificationCompleted: (PhoneAuthCredential phoneAuthCredential) async {
+        completer.complete(right(unit));
+      },
+      verificationFailed: (FirebaseAuthException authException) {
+        if (authException.code == 'invalid-phone-number') {
+          completer.completeError(left(const AuthFailure.invalidPhoneNumber()));
+        } else {
+          completer
+              .completeError(left(AuthFailure.unknownError(authException)));
+        }
+      },
+      codeSent: (String verificationId, int? forceResendingToken) async {
+        _verificationId = verificationId;
+        _phoneNumber = phoneNumber.getOrCrash();
+        completer.complete(right(unit));
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        completer
+            .completeError(left(const AuthFailure.codeAutoRetrievalTimeout()));
+      },
+    );
 
     return completer.future;
   }
