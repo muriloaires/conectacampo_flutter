@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Políticas de Privacidade e Termos & Responsabilidade Conecta Campo
 
 You can use the [editor on GitHub](https://github.com/muriloaires/conectacampo_flutter/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
