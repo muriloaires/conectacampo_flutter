@@ -74,7 +74,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
       params.addAll({'name': productName});
     }
     if (quantity != null) {
-      params.addAll({'quantity': quantity});
+      params.addAll({'quantity': quantity.toString()});
     }
     if (rating != null) {
       params.addAll({'rating': rating});

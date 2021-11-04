@@ -49,7 +49,7 @@ class SingleAdvertisement extends StatelessWidget {
                           .add(const BuyerMenuEvent.produtDetailsClosed());
                     },
                     child:
-                        ProductAdvertisement(_advertisement.products[index]));
+                    ProductAdvertisement(_advertisement.products[index]));
               }),
         ),
         const Divider(),

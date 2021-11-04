@@ -43,10 +43,12 @@ class SearchAdvertisement extends StatelessWidget {
                     height: 74,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(4.0),
-                      child: Image.network(
-                        product.images.first.mediumAvatar.getOrCrash(),
-                        fit: BoxFit.fill,
-                      ),
+                      child: product.images.isNotEmpty
+                          ? Image.network(
+                              product.images.first.mediumAvatar.getOrCrash(),
+                              fit: BoxFit.fill,
+                            )
+                          : Container(),
                     ),
                   ),
                   const SizedBox(width: 20),
