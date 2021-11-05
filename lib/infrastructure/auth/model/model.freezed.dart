@@ -22,6 +22,7 @@ class _$UserResponseTearOff {
 
   _UserResponse call(
       @JsonKey(name: 'id') int id,
+      @JsonKey(name: 'full_name') String? fullName,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
       @JsonKey(name: 'nickname') String nickname,
@@ -33,6 +34,7 @@ class _$UserResponseTearOff {
       @JsonKey(name: 'email') String? email) {
     return _UserResponse(
       id,
+      fullName,
       firstName,
       lastName,
       nickname,
@@ -57,6 +59,8 @@ const $UserResponse = _$UserResponseTearOff();
 mixin _$UserResponse {
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'full_name')
+  String? get fullName => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
   String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
@@ -89,6 +93,7 @@ abstract class $UserResponseCopyWith<$Res> {
       _$UserResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'full_name') String? fullName,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
       @JsonKey(name: 'nickname') String nickname,
@@ -113,6 +118,7 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? fullName = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? nickname = freezed,
@@ -128,6 +134,10 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      fullName: fullName == freezed
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
       firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -188,6 +198,7 @@ abstract class _$UserResponseCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'full_name') String? fullName,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
       @JsonKey(name: 'nickname') String nickname,
@@ -215,6 +226,7 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? fullName = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? nickname = freezed,
@@ -230,6 +242,10 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      fullName == freezed
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
       firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -275,6 +291,7 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
 class _$_UserResponse implements _UserResponse {
   const _$_UserResponse(
       @JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'full_name') this.fullName,
       @JsonKey(name: 'first_name') this.firstName,
       @JsonKey(name: 'last_name') this.lastName,
       @JsonKey(name: 'nickname') this.nickname,
@@ -291,6 +308,9 @@ class _$_UserResponse implements _UserResponse {
   @override
   @JsonKey(name: 'id')
   final int id;
+  @override
+  @JsonKey(name: 'full_name')
+  final String? fullName;
   @override
   @JsonKey(name: 'first_name')
   final String firstName;
@@ -321,7 +341,7 @@ class _$_UserResponse implements _UserResponse {
 
   @override
   String toString() {
-    return 'UserResponse(id: $id, firstName: $firstName, lastName: $lastName, nickname: $nickname, phoneNumber: $phoneNumber, vehicleLicensePlate: $vehicleLicensePlate, avatar: $avatar, accessToken: $accessToken, refreshToken: $refreshToken, email: $email)';
+    return 'UserResponse(id: $id, fullName: $fullName, firstName: $firstName, lastName: $lastName, nickname: $nickname, phoneNumber: $phoneNumber, vehicleLicensePlate: $vehicleLicensePlate, avatar: $avatar, accessToken: $accessToken, refreshToken: $refreshToken, email: $email)';
   }
 
   @override
@@ -330,6 +350,9 @@ class _$_UserResponse implements _UserResponse {
         (other is _UserResponse &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.fullName, fullName) ||
+                const DeepCollectionEquality()
+                    .equals(other.fullName, fullName)) &&
             (identical(other.firstName, firstName) ||
                 const DeepCollectionEquality()
                     .equals(other.firstName, firstName)) &&
@@ -361,6 +384,7 @@ class _$_UserResponse implements _UserResponse {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(fullName) ^
       const DeepCollectionEquality().hash(firstName) ^
       const DeepCollectionEquality().hash(lastName) ^
       const DeepCollectionEquality().hash(nickname) ^
@@ -385,6 +409,7 @@ class _$_UserResponse implements _UserResponse {
 abstract class _UserResponse implements UserResponse {
   const factory _UserResponse(
       @JsonKey(name: 'id') int id,
+      @JsonKey(name: 'full_name') String? fullName,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
       @JsonKey(name: 'nickname') String nickname,
@@ -401,6 +426,9 @@ abstract class _UserResponse implements UserResponse {
   @override
   @JsonKey(name: 'id')
   int get id => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'full_name')
+  String? get fullName => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'first_name')
   String get firstName => throw _privateConstructorUsedError;

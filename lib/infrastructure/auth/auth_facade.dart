@@ -135,6 +135,7 @@ class AuthFacade implements IAuthFacade {
     );
     request.headers.addAll(getApiHeader());
     request.files.add(await http.MultipartFile.fromPath('avatar', avatar));
+    request.fields['full_name'] = fullName.getOrCrash();
     request.fields['first_name'] = firstName;
     request.fields['last_name'] = lastName;
     request.fields['nickname'] = nickname.getOrCrash();
@@ -194,9 +195,11 @@ class AuthFacade implements IAuthFacade {
       url,
       headers: getApiHeader(),
       body: jsonEncode({
+        'full_name': name,
         'first_name': firstName,
         'last_name': lastName,
         'nickname': nickname,
+        'email': email
       }),
     );
     final code = response.statusCode;

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:conectacampo/domain/auth/user.dart' as LocalUser;
 import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/infrastructure/auth/model/model.dart';
@@ -16,7 +18,7 @@ extension LocalUserDomainX on UserResponse {
 
     return LocalUser.User(
       UniqueId.fromUniqueString(id.toString()),
-      FullName('$firstName $lastName'),
+      FullName(fullName ?? 'Mude seu nome'),
       Nickname(nickname),
       vehicleLicensePlate,
       PhoneNumber(phoneNumber),
@@ -24,7 +26,7 @@ extension LocalUserDomainX on UserResponse {
       medium,
       original,
       null,
-      null,
+      email,
     );
   }
 }

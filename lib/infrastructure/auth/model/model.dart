@@ -1,12 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'model.freezed.dart';
+
 part 'model.g.dart';
 
 @freezed
 class UserResponse with _$UserResponse {
   const factory UserResponse(
     @JsonKey(name: 'id') int id,
+    @JsonKey(name: 'full_name') String? fullName,
     @JsonKey(name: 'first_name') String firstName,
     @JsonKey(name: 'last_name') String lastName,
     @JsonKey(name: 'nickname') String nickname,
@@ -15,8 +17,9 @@ class UserResponse with _$UserResponse {
     @JsonKey(name: 'avatar') AvatarResponse? avatar,
     @JsonKey(name: 'access_token') String? accessToken,
     @JsonKey(name: 'refresh_token') String? refreshToken,
-      @JsonKey(name: 'email') String? email,
+    @JsonKey(name: 'email') String? email,
   ) = _UserResponse;
+
   factory UserResponse.fromJson(Map<String, dynamic> json) =>
       _$UserResponseFromJson(json);
 }
@@ -28,6 +31,7 @@ class AvatarResponse with _$AvatarResponse {
     @JsonKey(name: 'medium') MediumResponse medium,
     @JsonKey(name: 'original') ThumbnailResponse original,
   ) = _AvatarResponse;
+
   factory AvatarResponse.fromJson(Map<String, dynamic> json) =>
       _$AvatarResponseFromJson(json);
 }
@@ -38,6 +42,7 @@ class ThumbnailResponse with _$ThumbnailResponse {
     @JsonKey(name: 'id') int id,
     @JsonKey(name: 'url') String url,
   ) = _ThumbnailResponse;
+
   factory ThumbnailResponse.fromJson(Map<String, dynamic> json) =>
       _$ThumbnailResponseFromJson(json);
 }
@@ -48,6 +53,7 @@ class MediumResponse with _$MediumResponse {
     @JsonKey(name: 'id') int id,
     @JsonKey(name: 'url') String url,
   ) = _MediumResponse;
+
   factory MediumResponse.fromJson(Map<String, dynamic> json) =>
       _$MediumResponseFromJson(json);
 }
@@ -58,6 +64,7 @@ class OriginalResponse with _$OriginalResponse {
     @JsonKey(name: 'id') int id,
     @JsonKey(name: 'url') String url,
   ) = _OriginalResponse;
+
   factory OriginalResponse.fromJson(Map<String, dynamic> json) =>
       _$OriginalResponseFromJson(json);
 }
@@ -67,6 +74,7 @@ class UserRequest with _$UserRequest {
   const factory UserRequest(
     @JsonKey(name: 'phone_number') String phoneNumber,
   ) = _UserRequest;
+
   factory UserRequest.fromJson(Map<String, dynamic> json) =>
       _$UserRequestFromJson(json);
 }
@@ -79,6 +87,7 @@ class UserRegister with _$UserRegister {
     @JsonKey(name: 'nickname') String nickname,
     @JsonKey(name: 'phone_number') String phoneNumber,
   ) = _UserRegister;
+
   factory UserRegister.fromJson(Map<String, dynamic> json) =>
       _$UserRegisterFromJson(json);
 }
@@ -86,5 +95,6 @@ class UserRegister with _$UserRegister {
 @freezed
 class Errors with _$Errors {
   const factory Errors(@JsonKey(name: 'errors') List<String> errors) = _Errors;
+
   factory Errors.fromJson(Map<String, dynamic> json) => _$ErrorsFromJson(json);
 }
