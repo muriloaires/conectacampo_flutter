@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:conectacampo/domain/auth/auth_failure.dart';
 import 'package:conectacampo/domain/auth/i_auth_facade.dart';
@@ -10,6 +11,7 @@ import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/infrastructure/core/http_constants.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
@@ -33,8 +35,8 @@ class AuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> requestSmsCode(
-      PhoneNumber phoneNumber,
-      ) async {
+    PhoneNumber phoneNumber,
+  ) async {
     final Completer<Either<AuthFailure, Unit>> completer = Completer();
 
     final phoneNumberString = phoneNumber.getOrCrash();
@@ -135,6 +137,9 @@ class AuthFacade implements IAuthFacade {
     );
     request.headers.addAll(getApiHeader());
     request.files.add(await http.MultipartFile.fromPath('avatar', avatar));
+    request.fields['device_token'] =
+        await FirebaseMessaging.instance.getToken() ?? '';
+    request.fields['device_type'] = Platform.isIOS ? 'ios' : 'android';
     request.fields['full_name'] = fullName.getOrCrash();
     request.fields['first_name'] = firstName;
     request.fields['last_name'] = lastName;

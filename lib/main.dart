@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/app_widget.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
@@ -12,6 +15,18 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await setUpDB();
+  final messaging = FirebaseMessaging.instance;
+  final tooken = await messaging.getToken();
+  if (Platform.isIOS) {
+    final settings = await messaging.requestPermission(
+        alert: true,
+        announcement: false,
+        badge: true,
+        carPlay: false,
+        criticalAlert: false,
+        provisional: false,
+        sound: true);
+  }
   runApp(const AppWidget());
   configLoading();
 }
