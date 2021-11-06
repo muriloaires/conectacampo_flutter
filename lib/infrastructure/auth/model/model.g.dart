@@ -98,12 +98,16 @@ Map<String, dynamic> _$_$_OriginalResponseToJson(
 _$_UserRequest _$_$_UserRequestFromJson(Map<String, dynamic> json) {
   return _$_UserRequest(
     json['phone_number'] as String,
+    json['device_type'] as String,
+    json['device_token'] as String,
   );
 }
 
 Map<String, dynamic> _$_$_UserRequestToJson(_$_UserRequest instance) =>
     <String, dynamic>{
       'phone_number': instance.phoneNumber,
+      'device_type': instance.deviceType,
+      'device_token': instance.deviceToken,
     };
 
 _$_UserRegister _$_$_UserRegisterFromJson(Map<String, dynamic> json) {

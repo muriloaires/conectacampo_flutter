@@ -16,7 +16,10 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await setUpDB();
   final messaging = FirebaseMessaging.instance;
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   final tooken = await messaging.getToken();
+  print(tooken);
+  setUpDB();
   if (Platform.isIOS) {
     final settings = await messaging.requestPermission(
         alert: true,
@@ -50,4 +53,14 @@ void configLoading() {
     ..maskColor = Colors.blue.withOpacity(0.5)
     ..userInteractions = true
     ..dismissOnTap = false;
+}
+
+
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  await Firebase.initializeApp();
+
+  print("Handling a background message: ${message.messageId}");
 }

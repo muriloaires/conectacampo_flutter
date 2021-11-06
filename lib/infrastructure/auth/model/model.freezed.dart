@@ -1254,9 +1254,14 @@ UserRequest _$UserRequestFromJson(Map<String, dynamic> json) {
 class _$UserRequestTearOff {
   const _$UserRequestTearOff();
 
-  _UserRequest call(@JsonKey(name: 'phone_number') String phoneNumber) {
+  _UserRequest call(
+      @JsonKey(name: 'phone_number') String phoneNumber,
+      @JsonKey(name: 'device_type') String deviceType,
+      @JsonKey(name: 'device_token') String deviceToken) {
     return _UserRequest(
       phoneNumber,
+      deviceType,
+      deviceToken,
     );
   }
 
@@ -1272,6 +1277,10 @@ const $UserRequest = _$UserRequestTearOff();
 mixin _$UserRequest {
   @JsonKey(name: 'phone_number')
   String get phoneNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: 'device_type')
+  String get deviceType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'device_token')
+  String get deviceToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1284,7 +1293,10 @@ abstract class $UserRequestCopyWith<$Res> {
   factory $UserRequestCopyWith(
           UserRequest value, $Res Function(UserRequest) then) =
       _$UserRequestCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'phone_number') String phoneNumber});
+  $Res call(
+      {@JsonKey(name: 'phone_number') String phoneNumber,
+      @JsonKey(name: 'device_type') String deviceType,
+      @JsonKey(name: 'device_token') String deviceToken});
 }
 
 /// @nodoc
@@ -1298,11 +1310,21 @@ class _$UserRequestCopyWithImpl<$Res> implements $UserRequestCopyWith<$Res> {
   @override
   $Res call({
     Object? phoneNumber = freezed,
+    Object? deviceType = freezed,
+    Object? deviceToken = freezed,
   }) {
     return _then(_value.copyWith(
       phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceType: deviceType == freezed
+          ? _value.deviceType
+          : deviceType // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceToken: deviceToken == freezed
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1315,7 +1337,10 @@ abstract class _$UserRequestCopyWith<$Res>
           _UserRequest value, $Res Function(_UserRequest) then) =
       __$UserRequestCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'phone_number') String phoneNumber});
+  $Res call(
+      {@JsonKey(name: 'phone_number') String phoneNumber,
+      @JsonKey(name: 'device_type') String deviceType,
+      @JsonKey(name: 'device_token') String deviceToken});
 }
 
 /// @nodoc
@@ -1331,11 +1356,21 @@ class __$UserRequestCopyWithImpl<$Res> extends _$UserRequestCopyWithImpl<$Res>
   @override
   $Res call({
     Object? phoneNumber = freezed,
+    Object? deviceType = freezed,
+    Object? deviceToken = freezed,
   }) {
     return _then(_UserRequest(
       phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceType == freezed
+          ? _value.deviceType
+          : deviceType // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceToken == freezed
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1344,7 +1379,10 @@ class __$UserRequestCopyWithImpl<$Res> extends _$UserRequestCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserRequest implements _UserRequest {
-  const _$_UserRequest(@JsonKey(name: 'phone_number') this.phoneNumber);
+  const _$_UserRequest(
+      @JsonKey(name: 'phone_number') this.phoneNumber,
+      @JsonKey(name: 'device_type') this.deviceType,
+      @JsonKey(name: 'device_token') this.deviceToken);
 
   factory _$_UserRequest.fromJson(Map<String, dynamic> json) =>
       _$_$_UserRequestFromJson(json);
@@ -1352,10 +1390,16 @@ class _$_UserRequest implements _UserRequest {
   @override
   @JsonKey(name: 'phone_number')
   final String phoneNumber;
+  @override
+  @JsonKey(name: 'device_type')
+  final String deviceType;
+  @override
+  @JsonKey(name: 'device_token')
+  final String deviceToken;
 
   @override
   String toString() {
-    return 'UserRequest(phoneNumber: $phoneNumber)';
+    return 'UserRequest(phoneNumber: $phoneNumber, deviceType: $deviceType, deviceToken: $deviceToken)';
   }
 
   @override
@@ -1364,12 +1408,21 @@ class _$_UserRequest implements _UserRequest {
         (other is _UserRequest &&
             (identical(other.phoneNumber, phoneNumber) ||
                 const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)));
+                    .equals(other.phoneNumber, phoneNumber)) &&
+            (identical(other.deviceType, deviceType) ||
+                const DeepCollectionEquality()
+                    .equals(other.deviceType, deviceType)) &&
+            (identical(other.deviceToken, deviceToken) ||
+                const DeepCollectionEquality()
+                    .equals(other.deviceToken, deviceToken)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(phoneNumber);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(phoneNumber) ^
+      const DeepCollectionEquality().hash(deviceType) ^
+      const DeepCollectionEquality().hash(deviceToken);
 
   @JsonKey(ignore: true)
   @override
@@ -1384,7 +1437,9 @@ class _$_UserRequest implements _UserRequest {
 
 abstract class _UserRequest implements UserRequest {
   const factory _UserRequest(
-      @JsonKey(name: 'phone_number') String phoneNumber) = _$_UserRequest;
+      @JsonKey(name: 'phone_number') String phoneNumber,
+      @JsonKey(name: 'device_type') String deviceType,
+      @JsonKey(name: 'device_token') String deviceToken) = _$_UserRequest;
 
   factory _UserRequest.fromJson(Map<String, dynamic> json) =
       _$_UserRequest.fromJson;
@@ -1392,6 +1447,12 @@ abstract class _UserRequest implements UserRequest {
   @override
   @JsonKey(name: 'phone_number')
   String get phoneNumber => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'device_type')
+  String get deviceType => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'device_token')
+  String get deviceToken => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserRequestCopyWith<_UserRequest> get copyWith =>

@@ -92,8 +92,11 @@ class AuthFacade implements IAuthFacade {
   Future<Either<AuthFailure, UserResponse>> restSignIn(
       String phoneNumber) async {
     final url = Uri.https(baseUrl, '$apiVersion$routeSessions');
+    final token = await FirebaseMessaging.instance.getToken() ?? '';
+    final type = Platform.isIOS ? 'ios' : 'android';
     final response = await http.post(url,
-        body: UserRequest('+55${phoneNumber.replaceAll(RegExp(r'-'), '')}')
+        body: UserRequest(
+                '+55${phoneNumber.replaceAll(RegExp(r'-'), '')}', type, token)
             .toJson(),
         headers: getApiHeader());
     final code = response.statusCode;

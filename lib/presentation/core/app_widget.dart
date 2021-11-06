@@ -7,20 +7,23 @@ import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:conectacampo/presentation/sign_in/user_type.dart';
 import 'package:conectacampo/presentation/sign_in/widgets/select_avatar_page.dart';
 import 'package:conectacampo/presentation/splash_screen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:another_flushbar/flushbar.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       routes: {
         '/onboarding': (context) => Tutorial(),
         '/sign_in': (context) => PhoneNumberPage(),
@@ -47,4 +50,6 @@ class AppWidget extends StatelessWidget {
       ],
     );
   }
+
+
 }

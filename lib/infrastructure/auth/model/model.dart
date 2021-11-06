@@ -73,6 +73,8 @@ class OriginalResponse with _$OriginalResponse {
 class UserRequest with _$UserRequest {
   const factory UserRequest(
     @JsonKey(name: 'phone_number') String phoneNumber,
+    @JsonKey(name: 'device_type') String deviceType,
+    @JsonKey(name: 'device_token') String deviceToken,
   ) = _UserRequest;
 
   factory UserRequest.fromJson(Map<String, dynamic> json) =>

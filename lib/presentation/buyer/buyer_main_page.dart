@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
@@ -14,6 +15,7 @@ import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/seller_main_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -88,20 +90,20 @@ class BuyerMainPage extends StatelessWidget {
                         radius: 35,
                         backgroundColor: ColorSet.green1,
                         child: Icon(
-                              Icons.check,
-                              size: 48,
-                              color: Colors.white,
-                            ),
-                          ),
-                          const Divider(),
-                          const Center(
-                            child: Text('Pedido efetuado com sucesso!',
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                          ),
-                          const Divider(height: 8),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
+                          Icons.check,
+                          size: 48,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const Divider(),
+                      const Center(
+                        child: Text('Pedido efetuado com sucesso!',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                      const Divider(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
                           TextButton(
                               onPressed: () => Navigator.pop(context),
                               child: const Text('Ok',
@@ -109,16 +111,17 @@ class BuyerMainPage extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       color: ColorSet.grayDark)))
                         ],
-                          )
-                        ],
-                      ),
-                    ),
+                      )
+                    ],
+                  ),
+                ),
               );
             }
             context.read<BuyerMenuBloc>().add(const BuyerMenuEvent.started());
           }
         },
         builder: (context, state) {
+          setupNotifications(context);
           return Stack(
             children: [
               Scaffold(
@@ -210,7 +213,11 @@ class BuyerMainPage extends StatelessWidget {
             height: 45,
             child: Row(
               children: [
-                const Icon(Icons.shopping_cart_outlined, size: 24, color: Colors.white,),
+                const Icon(
+                  Icons.shopping_cart_outlined,
+                  size: 24,
+                  color: Colors.white,
+                ),
                 const Expanded(child: SizedBox()),
                 Text(
                   '${state.itemsInCart.length} ${state.itemsInCart.length > 1 ? 'itens' : 'item'}',
@@ -306,6 +313,17 @@ class BuyerMainPage extends StatelessWidget {
       )
     ]);
   }
+
+  void setupNotifications(BuildContext context) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      Flushbar(
+        flushbarPosition: FlushbarPosition.TOP,
+        title: message.notification?.title,
+        message: message.notification?.body,
+        duration: const Duration(seconds: 3),
+      ).show(context);
+    });
+  }
 }
 
 class SearchWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -361,61 +379,59 @@ class SearchWidget extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             const SizedBox(height: 24),
-            BlocBuilder<SummaryBloc,SummaryState>(
-
-              builder: (context, state) {
-                return GestureDetector(
-                  onTap: () async {
-                    final success = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PlacesPage(),
-                        ));
-                    context
-                        .read<AdvertisementsBloc>()
-                        .add(const AdvertisementsEvent.placeChanged());
-                    context
-                        .read<SummaryBloc>()
-                        .add(const SummaryEvent.onPlaceChanged());
-                  },
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/location_outline.svg',
-                        width: 16,
-                        height: 16,
-                        color: ColorSet.grayLine,
+            BlocBuilder<SummaryBloc, SummaryState>(builder: (context, state) {
+              return GestureDetector(
+                onTap: () async {
+                  final success = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PlacesPage(),
+                      ));
+                  context
+                      .read<AdvertisementsBloc>()
+                      .add(const AdvertisementsEvent.placeChanged());
+                  context
+                      .read<SummaryBloc>()
+                      .add(const SummaryEvent.onPlaceChanged());
+                },
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/location_outline.svg',
+                      width: 16,
+                      height: 16,
+                      color: ColorSet.grayLine,
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Flexible(
+                      child: Text.rich(
+                        TextSpan(children: [
+                          const TextSpan(
+                            text: 'Produtos e Retirada em: ',
+                            style:
+                                TextStyle(color: ColorSet.gray2, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: context
+                                .read<SummaryBloc>()
+                                .state
+                                .selectedPlace
+                                .name,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorSet.gray2,
+                                fontSize: 13),
+                          ),
+                        ]),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      Flexible(
-                        child: Text.rich(
-                          TextSpan(children: [
-                            const TextSpan(
-                              text: 'Produtos e Retirada em: ',
-                              style: TextStyle(color: ColorSet.gray2, fontSize: 13),
-                            ),
-                            TextSpan(
-                              text: context
-                                  .read<SummaryBloc>()
-                                  .state
-                                  .selectedPlace
-                                  .name,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorSet.gray2,
-                                  fontSize: 13),
-                            ),
-                          ]),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      )
-                    ],
-                  ),
-                );
-              }
-            )
+                    )
+                  ],
+                ),
+              );
+            })
           ],
         ),
       ),
