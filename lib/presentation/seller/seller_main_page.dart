@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/profile/profile_bloc.dart';
 import 'package:conectacampo/application/seller/adveretisements/seller_advertisements_bloc.dart';
@@ -15,6 +16,7 @@ import 'package:conectacampo/presentation/seller/reservation/edit_reservation.da
 import 'package:conectacampo/presentation/seller/reservations_summary/reservations_sumarry_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -96,6 +98,7 @@ class SellerMainPage extends StatelessWidget {
           }
         },
         builder: (context, state) {
+          setupNotifications(context);
           return Stack(
             children: [
               Scaffold(
@@ -171,6 +174,17 @@ class SellerMainPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void setupNotifications(BuildContext context) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      Flushbar(
+        flushbarPosition: FlushbarPosition.TOP,
+        title: message.notification?.title,
+        message: message.notification?.body,
+        duration: const Duration(seconds: 3),
+      ).show(context);
+    });
   }
 }
 
