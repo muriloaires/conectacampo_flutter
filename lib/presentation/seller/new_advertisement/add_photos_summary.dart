@@ -9,7 +9,6 @@ import 'package:conectacampo/presentation/seller/new_advertisement/add_photo_pag
 import 'package:conectacampo/presentation/seller/new_advertisement/new_ad_summary_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class AddPhotosSummaryPage extends StatelessWidget {
   final NewAdvertisement newAdvertisement;

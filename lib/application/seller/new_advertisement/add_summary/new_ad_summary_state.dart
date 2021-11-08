@@ -13,7 +13,8 @@ class NewAdSummaryState with _$NewAdSummaryState {
 
   factory NewAdSummaryState.initial() => NewAdSummaryState(
         newAdvertisement: NewAdvertisement(
-            date: NewAdvertisementDate(DateTime.now().add(Duration(days: 1))),
+            date: NewAdvertisementDate(
+                DateTime.now().add(const Duration(days: 1))),
             newAdDeliveryDescription:
                 NewAdvertisementDeliveryDescription('Des'),
             newAdDeliveryPlace: null,

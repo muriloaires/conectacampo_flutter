@@ -10,7 +10,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'new_advertisement_bloc.freezed.dart';
+
 part 'new_advertisement_event.dart';
+
 part 'new_advertisement_state.dart';
 
 @injectable
@@ -71,7 +73,11 @@ class NewAdvertisementBloc
                       NewAdvertisementDeliveryDescription(value.where)),
               isBtnContinueEnabled: setIsBtnConinueEnabled(state));
         },
-        onContinueTap: (OnContinueTap value) async* {});
+        onContinueTap: (OnContinueTap value) async* {},
+        onResetProducts: (OnResetProducts value) async* {
+          yield state.copyWith(
+              newAdvertisement: state.newAdvertisement.copyWith(products: [NewAdProduct()]));
+        });
   }
 
   bool setIsBtnConinueEnabled(NewAdvertisementState state) {

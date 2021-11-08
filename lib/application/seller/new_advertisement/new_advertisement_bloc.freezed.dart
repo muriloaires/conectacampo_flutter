@@ -49,6 +49,10 @@ class _$NewAdvertisementEventTearOff {
       where,
     );
   }
+
+  OnResetProducts onResetProducts() {
+    return const OnResetProducts();
+  }
 }
 
 /// @nodoc
@@ -65,6 +69,7 @@ mixin _$NewAdvertisementEvent {
     required TResult Function(DateTime? dateTime) onDateSelected,
     required TResult Function(String? where) onDeliveryPlaceSelected,
     required TResult Function(String where) onDeliveryDescriptionChanged,
+    required TResult Function() onResetProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +81,7 @@ mixin _$NewAdvertisementEvent {
     TResult Function(DateTime? dateTime)? onDateSelected,
     TResult Function(String? where)? onDeliveryPlaceSelected,
     TResult Function(String where)? onDeliveryDescriptionChanged,
+    TResult Function()? onResetProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,6 +96,7 @@ mixin _$NewAdvertisementEvent {
         onDeliveryPlaceSelected,
     required TResult Function(OnDeliveryDescriptionChanged value)
         onDeliveryDescriptionChanged,
+    required TResult Function(OnResetProducts value) onResetProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -102,6 +109,7 @@ mixin _$NewAdvertisementEvent {
     TResult Function(OnDeliveryPlaceSelected value)? onDeliveryPlaceSelected,
     TResult Function(OnDeliveryDescriptionChanged value)?
         onDeliveryDescriptionChanged,
+    TResult Function(OnResetProducts value)? onResetProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -169,6 +177,7 @@ class _$_Started implements _Started {
     required TResult Function(DateTime? dateTime) onDateSelected,
     required TResult Function(String? where) onDeliveryPlaceSelected,
     required TResult Function(String where) onDeliveryDescriptionChanged,
+    required TResult Function() onResetProducts,
   }) {
     return started();
   }
@@ -183,6 +192,7 @@ class _$_Started implements _Started {
     TResult Function(DateTime? dateTime)? onDateSelected,
     TResult Function(String? where)? onDeliveryPlaceSelected,
     TResult Function(String where)? onDeliveryDescriptionChanged,
+    TResult Function()? onResetProducts,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -203,6 +213,7 @@ class _$_Started implements _Started {
         onDeliveryPlaceSelected,
     required TResult Function(OnDeliveryDescriptionChanged value)
         onDeliveryDescriptionChanged,
+    required TResult Function(OnResetProducts value) onResetProducts,
   }) {
     return started(this);
   }
@@ -218,6 +229,7 @@ class _$_Started implements _Started {
     TResult Function(OnDeliveryPlaceSelected value)? onDeliveryPlaceSelected,
     TResult Function(OnDeliveryDescriptionChanged value)?
         onDeliveryDescriptionChanged,
+    TResult Function(OnResetProducts value)? onResetProducts,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -277,6 +289,7 @@ class _$OnPlaceTap implements OnPlaceTap {
     required TResult Function(DateTime? dateTime) onDateSelected,
     required TResult Function(String? where) onDeliveryPlaceSelected,
     required TResult Function(String where) onDeliveryDescriptionChanged,
+    required TResult Function() onResetProducts,
   }) {
     return onPlaceTap();
   }
@@ -291,6 +304,7 @@ class _$OnPlaceTap implements OnPlaceTap {
     TResult Function(DateTime? dateTime)? onDateSelected,
     TResult Function(String? where)? onDeliveryPlaceSelected,
     TResult Function(String where)? onDeliveryDescriptionChanged,
+    TResult Function()? onResetProducts,
     required TResult orElse(),
   }) {
     if (onPlaceTap != null) {
@@ -311,6 +325,7 @@ class _$OnPlaceTap implements OnPlaceTap {
         onDeliveryPlaceSelected,
     required TResult Function(OnDeliveryDescriptionChanged value)
         onDeliveryDescriptionChanged,
+    required TResult Function(OnResetProducts value) onResetProducts,
   }) {
     return onPlaceTap(this);
   }
@@ -326,6 +341,7 @@ class _$OnPlaceTap implements OnPlaceTap {
     TResult Function(OnDeliveryPlaceSelected value)? onDeliveryPlaceSelected,
     TResult Function(OnDeliveryDescriptionChanged value)?
         onDeliveryDescriptionChanged,
+    TResult Function(OnResetProducts value)? onResetProducts,
     required TResult orElse(),
   }) {
     if (onPlaceTap != null) {
@@ -386,6 +402,7 @@ class _$OnPlaceSelected implements OnPlaceSelected {
     required TResult Function(DateTime? dateTime) onDateSelected,
     required TResult Function(String? where) onDeliveryPlaceSelected,
     required TResult Function(String where) onDeliveryDescriptionChanged,
+    required TResult Function() onResetProducts,
   }) {
     return onPlaceSelected();
   }
@@ -400,6 +417,7 @@ class _$OnPlaceSelected implements OnPlaceSelected {
     TResult Function(DateTime? dateTime)? onDateSelected,
     TResult Function(String? where)? onDeliveryPlaceSelected,
     TResult Function(String where)? onDeliveryDescriptionChanged,
+    TResult Function()? onResetProducts,
     required TResult orElse(),
   }) {
     if (onPlaceSelected != null) {
@@ -420,6 +438,7 @@ class _$OnPlaceSelected implements OnPlaceSelected {
         onDeliveryPlaceSelected,
     required TResult Function(OnDeliveryDescriptionChanged value)
         onDeliveryDescriptionChanged,
+    required TResult Function(OnResetProducts value) onResetProducts,
   }) {
     return onPlaceSelected(this);
   }
@@ -435,6 +454,7 @@ class _$OnPlaceSelected implements OnPlaceSelected {
     TResult Function(OnDeliveryPlaceSelected value)? onDeliveryPlaceSelected,
     TResult Function(OnDeliveryDescriptionChanged value)?
         onDeliveryDescriptionChanged,
+    TResult Function(OnResetProducts value)? onResetProducts,
     required TResult orElse(),
   }) {
     if (onPlaceSelected != null) {
@@ -495,6 +515,7 @@ class _$OnContinueTap implements OnContinueTap {
     required TResult Function(DateTime? dateTime) onDateSelected,
     required TResult Function(String? where) onDeliveryPlaceSelected,
     required TResult Function(String where) onDeliveryDescriptionChanged,
+    required TResult Function() onResetProducts,
   }) {
     return onContinueTap();
   }
@@ -509,6 +530,7 @@ class _$OnContinueTap implements OnContinueTap {
     TResult Function(DateTime? dateTime)? onDateSelected,
     TResult Function(String? where)? onDeliveryPlaceSelected,
     TResult Function(String where)? onDeliveryDescriptionChanged,
+    TResult Function()? onResetProducts,
     required TResult orElse(),
   }) {
     if (onContinueTap != null) {
@@ -529,6 +551,7 @@ class _$OnContinueTap implements OnContinueTap {
         onDeliveryPlaceSelected,
     required TResult Function(OnDeliveryDescriptionChanged value)
         onDeliveryDescriptionChanged,
+    required TResult Function(OnResetProducts value) onResetProducts,
   }) {
     return onContinueTap(this);
   }
@@ -544,6 +567,7 @@ class _$OnContinueTap implements OnContinueTap {
     TResult Function(OnDeliveryPlaceSelected value)? onDeliveryPlaceSelected,
     TResult Function(OnDeliveryDescriptionChanged value)?
         onDeliveryDescriptionChanged,
+    TResult Function(OnResetProducts value)? onResetProducts,
     required TResult orElse(),
   }) {
     if (onContinueTap != null) {
@@ -630,6 +654,7 @@ class _$OnDateSelected implements OnDateSelected {
     required TResult Function(DateTime? dateTime) onDateSelected,
     required TResult Function(String? where) onDeliveryPlaceSelected,
     required TResult Function(String where) onDeliveryDescriptionChanged,
+    required TResult Function() onResetProducts,
   }) {
     return onDateSelected(dateTime);
   }
@@ -644,6 +669,7 @@ class _$OnDateSelected implements OnDateSelected {
     TResult Function(DateTime? dateTime)? onDateSelected,
     TResult Function(String? where)? onDeliveryPlaceSelected,
     TResult Function(String where)? onDeliveryDescriptionChanged,
+    TResult Function()? onResetProducts,
     required TResult orElse(),
   }) {
     if (onDateSelected != null) {
@@ -664,6 +690,7 @@ class _$OnDateSelected implements OnDateSelected {
         onDeliveryPlaceSelected,
     required TResult Function(OnDeliveryDescriptionChanged value)
         onDeliveryDescriptionChanged,
+    required TResult Function(OnResetProducts value) onResetProducts,
   }) {
     return onDateSelected(this);
   }
@@ -679,6 +706,7 @@ class _$OnDateSelected implements OnDateSelected {
     TResult Function(OnDeliveryPlaceSelected value)? onDeliveryPlaceSelected,
     TResult Function(OnDeliveryDescriptionChanged value)?
         onDeliveryDescriptionChanged,
+    TResult Function(OnResetProducts value)? onResetProducts,
     required TResult orElse(),
   }) {
     if (onDateSelected != null) {
@@ -770,6 +798,7 @@ class _$OnDeliveryPlaceSelected implements OnDeliveryPlaceSelected {
     required TResult Function(DateTime? dateTime) onDateSelected,
     required TResult Function(String? where) onDeliveryPlaceSelected,
     required TResult Function(String where) onDeliveryDescriptionChanged,
+    required TResult Function() onResetProducts,
   }) {
     return onDeliveryPlaceSelected(where);
   }
@@ -784,6 +813,7 @@ class _$OnDeliveryPlaceSelected implements OnDeliveryPlaceSelected {
     TResult Function(DateTime? dateTime)? onDateSelected,
     TResult Function(String? where)? onDeliveryPlaceSelected,
     TResult Function(String where)? onDeliveryDescriptionChanged,
+    TResult Function()? onResetProducts,
     required TResult orElse(),
   }) {
     if (onDeliveryPlaceSelected != null) {
@@ -804,6 +834,7 @@ class _$OnDeliveryPlaceSelected implements OnDeliveryPlaceSelected {
         onDeliveryPlaceSelected,
     required TResult Function(OnDeliveryDescriptionChanged value)
         onDeliveryDescriptionChanged,
+    required TResult Function(OnResetProducts value) onResetProducts,
   }) {
     return onDeliveryPlaceSelected(this);
   }
@@ -819,6 +850,7 @@ class _$OnDeliveryPlaceSelected implements OnDeliveryPlaceSelected {
     TResult Function(OnDeliveryPlaceSelected value)? onDeliveryPlaceSelected,
     TResult Function(OnDeliveryDescriptionChanged value)?
         onDeliveryDescriptionChanged,
+    TResult Function(OnResetProducts value)? onResetProducts,
     required TResult orElse(),
   }) {
     if (onDeliveryPlaceSelected != null) {
@@ -914,6 +946,7 @@ class _$OnDeliveryDescriptionChanged implements OnDeliveryDescriptionChanged {
     required TResult Function(DateTime? dateTime) onDateSelected,
     required TResult Function(String? where) onDeliveryPlaceSelected,
     required TResult Function(String where) onDeliveryDescriptionChanged,
+    required TResult Function() onResetProducts,
   }) {
     return onDeliveryDescriptionChanged(where);
   }
@@ -928,6 +961,7 @@ class _$OnDeliveryDescriptionChanged implements OnDeliveryDescriptionChanged {
     TResult Function(DateTime? dateTime)? onDateSelected,
     TResult Function(String? where)? onDeliveryPlaceSelected,
     TResult Function(String where)? onDeliveryDescriptionChanged,
+    TResult Function()? onResetProducts,
     required TResult orElse(),
   }) {
     if (onDeliveryDescriptionChanged != null) {
@@ -948,6 +982,7 @@ class _$OnDeliveryDescriptionChanged implements OnDeliveryDescriptionChanged {
         onDeliveryPlaceSelected,
     required TResult Function(OnDeliveryDescriptionChanged value)
         onDeliveryDescriptionChanged,
+    required TResult Function(OnResetProducts value) onResetProducts,
   }) {
     return onDeliveryDescriptionChanged(this);
   }
@@ -963,6 +998,7 @@ class _$OnDeliveryDescriptionChanged implements OnDeliveryDescriptionChanged {
     TResult Function(OnDeliveryPlaceSelected value)? onDeliveryPlaceSelected,
     TResult Function(OnDeliveryDescriptionChanged value)?
         onDeliveryDescriptionChanged,
+    TResult Function(OnResetProducts value)? onResetProducts,
     required TResult orElse(),
   }) {
     if (onDeliveryDescriptionChanged != null) {
@@ -980,6 +1016,119 @@ abstract class OnDeliveryDescriptionChanged implements NewAdvertisementEvent {
   @JsonKey(ignore: true)
   $OnDeliveryDescriptionChangedCopyWith<OnDeliveryDescriptionChanged>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OnResetProductsCopyWith<$Res> {
+  factory $OnResetProductsCopyWith(
+          OnResetProducts value, $Res Function(OnResetProducts) then) =
+      _$OnResetProductsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$OnResetProductsCopyWithImpl<$Res>
+    extends _$NewAdvertisementEventCopyWithImpl<$Res>
+    implements $OnResetProductsCopyWith<$Res> {
+  _$OnResetProductsCopyWithImpl(
+      OnResetProducts _value, $Res Function(OnResetProducts) _then)
+      : super(_value, (v) => _then(v as OnResetProducts));
+
+  @override
+  OnResetProducts get _value => super._value as OnResetProducts;
+}
+
+/// @nodoc
+
+class _$OnResetProducts implements OnResetProducts {
+  const _$OnResetProducts();
+
+  @override
+  String toString() {
+    return 'NewAdvertisementEvent.onResetProducts()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is OnResetProducts);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onPlaceTap,
+    required TResult Function() onPlaceSelected,
+    required TResult Function() onContinueTap,
+    required TResult Function(DateTime? dateTime) onDateSelected,
+    required TResult Function(String? where) onDeliveryPlaceSelected,
+    required TResult Function(String where) onDeliveryDescriptionChanged,
+    required TResult Function() onResetProducts,
+  }) {
+    return onResetProducts();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onPlaceTap,
+    TResult Function()? onPlaceSelected,
+    TResult Function()? onContinueTap,
+    TResult Function(DateTime? dateTime)? onDateSelected,
+    TResult Function(String? where)? onDeliveryPlaceSelected,
+    TResult Function(String where)? onDeliveryDescriptionChanged,
+    TResult Function()? onResetProducts,
+    required TResult orElse(),
+  }) {
+    if (onResetProducts != null) {
+      return onResetProducts();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnPlaceTap value) onPlaceTap,
+    required TResult Function(OnPlaceSelected value) onPlaceSelected,
+    required TResult Function(OnContinueTap value) onContinueTap,
+    required TResult Function(OnDateSelected value) onDateSelected,
+    required TResult Function(OnDeliveryPlaceSelected value)
+        onDeliveryPlaceSelected,
+    required TResult Function(OnDeliveryDescriptionChanged value)
+        onDeliveryDescriptionChanged,
+    required TResult Function(OnResetProducts value) onResetProducts,
+  }) {
+    return onResetProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnPlaceTap value)? onPlaceTap,
+    TResult Function(OnPlaceSelected value)? onPlaceSelected,
+    TResult Function(OnContinueTap value)? onContinueTap,
+    TResult Function(OnDateSelected value)? onDateSelected,
+    TResult Function(OnDeliveryPlaceSelected value)? onDeliveryPlaceSelected,
+    TResult Function(OnDeliveryDescriptionChanged value)?
+        onDeliveryDescriptionChanged,
+    TResult Function(OnResetProducts value)? onResetProducts,
+    required TResult orElse(),
+  }) {
+    if (onResetProducts != null) {
+      return onResetProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnResetProducts implements NewAdvertisementEvent {
+  const factory OnResetProducts() = _$OnResetProducts;
 }
 
 /// @nodoc

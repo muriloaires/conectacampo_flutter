@@ -11,7 +11,7 @@ class NewAdvertisementState with _$NewAdvertisementState {
 
   factory NewAdvertisementState.initial() => NewAdvertisementState(
         newAdvertisement: NewAdvertisement(
-          date: NewAdvertisementDate(DateTime.now().add(Duration(days: 1))),
+          date: NewAdvertisementDate(DateTime.now().add(const Duration(days: 1))),
           newAdDeliveryPlace: null,
           newAdDeliveryDescription: NewAdvertisementDeliveryDescription(''),
           products: [NewAdProduct()],
