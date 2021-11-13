@@ -8,6 +8,8 @@ class PhoneNumberPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => getIt<SignInFormBloc>(), child: PhoneNumberForm());
+        create: (context) =>
+            getIt<SignInFormBloc>()..add(SignInFormEvent.started()),
+        child: PhoneNumberForm());
   }
 }

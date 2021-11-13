@@ -9,7 +9,18 @@ extension StringDateExtension on String {
     final month = parsedDate.month.getMonthName();
     return '$day de $month';
   }
+
+  String getHourDateAndMonthName() {
+    final parsedDate = DateTime.parse(this);
+    final day = parsedDate.day;
+    final month = parsedDate.month.getMonthName();
+    final hours = parsedDate.hour;
+    final minutes = parsedDate.minute;
+    return '$day de $month às $hours:$minutes';
+  }
 }
+
+
 
 extension DateTimeExtensions on DateTime {
   String getDayMonthYear() {

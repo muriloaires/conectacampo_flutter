@@ -2249,7 +2249,8 @@ class _$BuyerMenuStateTearOff {
       required List<ReservationItem> itemsInCart,
       required bool openCart,
       required bool navToLogin,
-      required bool showToolBar}) {
+      required bool showToolBar,
+      required ReservationToOpen? reservationToOpen}) {
     return _BuyerMenuState(
       currentIndex: currentIndex,
       navToRoot: navToRoot,
@@ -2258,6 +2259,7 @@ class _$BuyerMenuStateTearOff {
       openCart: openCart,
       navToLogin: navToLogin,
       showToolBar: showToolBar,
+      reservationToOpen: reservationToOpen,
     );
   }
 }
@@ -2274,6 +2276,8 @@ mixin _$BuyerMenuState {
   bool get openCart => throw _privateConstructorUsedError;
   bool get navToLogin => throw _privateConstructorUsedError;
   bool get showToolBar => throw _privateConstructorUsedError;
+  ReservationToOpen? get reservationToOpen =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BuyerMenuStateCopyWith<BuyerMenuState> get copyWith =>
@@ -2292,7 +2296,8 @@ abstract class $BuyerMenuStateCopyWith<$Res> {
       List<ReservationItem> itemsInCart,
       bool openCart,
       bool navToLogin,
-      bool showToolBar});
+      bool showToolBar,
+      ReservationToOpen? reservationToOpen});
 }
 
 /// @nodoc
@@ -2313,6 +2318,7 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
     Object? openCart = freezed,
     Object? navToLogin = freezed,
     Object? showToolBar = freezed,
+    Object? reservationToOpen = freezed,
   }) {
     return _then(_value.copyWith(
       currentIndex: currentIndex == freezed
@@ -2343,6 +2349,10 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.showToolBar
           : showToolBar // ignore: cast_nullable_to_non_nullable
               as bool,
+      reservationToOpen: reservationToOpen == freezed
+          ? _value.reservationToOpen
+          : reservationToOpen // ignore: cast_nullable_to_non_nullable
+              as ReservationToOpen?,
     ));
   }
 }
@@ -2361,7 +2371,8 @@ abstract class _$BuyerMenuStateCopyWith<$Res>
       List<ReservationItem> itemsInCart,
       bool openCart,
       bool navToLogin,
-      bool showToolBar});
+      bool showToolBar,
+      ReservationToOpen? reservationToOpen});
 }
 
 /// @nodoc
@@ -2384,6 +2395,7 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
     Object? openCart = freezed,
     Object? navToLogin = freezed,
     Object? showToolBar = freezed,
+    Object? reservationToOpen = freezed,
   }) {
     return _then(_BuyerMenuState(
       currentIndex: currentIndex == freezed
@@ -2414,6 +2426,10 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.showToolBar
           : showToolBar // ignore: cast_nullable_to_non_nullable
               as bool,
+      reservationToOpen: reservationToOpen == freezed
+          ? _value.reservationToOpen
+          : reservationToOpen // ignore: cast_nullable_to_non_nullable
+              as ReservationToOpen?,
     ));
   }
 }
@@ -2428,7 +2444,8 @@ class _$_BuyerMenuState implements _BuyerMenuState {
       required this.itemsInCart,
       required this.openCart,
       required this.navToLogin,
-      required this.showToolBar});
+      required this.showToolBar,
+      required this.reservationToOpen});
 
   @override
   final int currentIndex;
@@ -2444,10 +2461,12 @@ class _$_BuyerMenuState implements _BuyerMenuState {
   final bool navToLogin;
   @override
   final bool showToolBar;
+  @override
+  final ReservationToOpen? reservationToOpen;
 
   @override
   String toString() {
-    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller, itemsInCart: $itemsInCart, openCart: $openCart, navToLogin: $navToLogin, showToolBar: $showToolBar)';
+    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller, itemsInCart: $itemsInCart, openCart: $openCart, navToLogin: $navToLogin, showToolBar: $showToolBar, reservationToOpen: $reservationToOpen)';
   }
 
   @override
@@ -2474,7 +2493,10 @@ class _$_BuyerMenuState implements _BuyerMenuState {
                     .equals(other.navToLogin, navToLogin)) &&
             (identical(other.showToolBar, showToolBar) ||
                 const DeepCollectionEquality()
-                    .equals(other.showToolBar, showToolBar)));
+                    .equals(other.showToolBar, showToolBar)) &&
+            (identical(other.reservationToOpen, reservationToOpen) ||
+                const DeepCollectionEquality()
+                    .equals(other.reservationToOpen, reservationToOpen)));
   }
 
   @override
@@ -2486,7 +2508,8 @@ class _$_BuyerMenuState implements _BuyerMenuState {
       const DeepCollectionEquality().hash(itemsInCart) ^
       const DeepCollectionEquality().hash(openCart) ^
       const DeepCollectionEquality().hash(navToLogin) ^
-      const DeepCollectionEquality().hash(showToolBar);
+      const DeepCollectionEquality().hash(showToolBar) ^
+      const DeepCollectionEquality().hash(reservationToOpen);
 
   @JsonKey(ignore: true)
   @override
@@ -2502,7 +2525,8 @@ abstract class _BuyerMenuState implements BuyerMenuState {
       required List<ReservationItem> itemsInCart,
       required bool openCart,
       required bool navToLogin,
-      required bool showToolBar}) = _$_BuyerMenuState;
+      required bool showToolBar,
+      required ReservationToOpen? reservationToOpen}) = _$_BuyerMenuState;
 
   @override
   int get currentIndex => throw _privateConstructorUsedError;
@@ -2518,6 +2542,9 @@ abstract class _BuyerMenuState implements BuyerMenuState {
   bool get navToLogin => throw _privateConstructorUsedError;
   @override
   bool get showToolBar => throw _privateConstructorUsedError;
+  @override
+  ReservationToOpen? get reservationToOpen =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BuyerMenuStateCopyWith<_BuyerMenuState> get copyWith =>

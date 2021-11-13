@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:conectacampo/infrastructure/notification/model.dart';
+import 'package:conectacampo/infrastructure/notification/notification_controller.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/app_widget.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
@@ -8,6 +11,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
 Future<void> main() async {
@@ -17,8 +21,8 @@ Future<void> main() async {
   await setUpDB();
   final messaging = FirebaseMessaging.instance;
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  final tooken = await messaging.getToken();
-  print(tooken);
+  final token = await messaging.getToken();
+  print('token: $token');
   setUpDB();
   if (Platform.isIOS) {
     final settings = await messaging.requestPermission(
@@ -55,12 +59,13 @@ void configLoading() {
     ..dismissOnTap = false;
 }
 
-
-
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
+  await sharedPreferences.setString(
+      'teste_notification', message.notification?.title ?? 'deu ruim');
+
   await Firebase.initializeApp();
 
-  print("Handling a background message: ${message.messageId}");
+  persistNotificationReservation(message.data);
 }

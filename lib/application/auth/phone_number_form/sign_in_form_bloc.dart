@@ -8,6 +8,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'sign_in_form_bloc.freezed.dart';
 part 'sign_in_form_event.dart';
@@ -41,6 +42,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         showErrorMessages: true,
         authFailureOrSuccessOption: optionOf(failureOrSuccess),
       );
+    }, started: (Started value) async* {
+      final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
+
+      final notificationJson = sharedPreferences.getString('teste_notification');
+      print('Ih rapa oia so: $notificationJson');
     });
   }
 }

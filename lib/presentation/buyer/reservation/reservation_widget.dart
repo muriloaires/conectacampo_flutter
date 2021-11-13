@@ -433,6 +433,10 @@ class ReservationWidget extends StatelessWidget {
         text = 'Pago';
         iconText = '✓';
         break;
+      case ReservationItemStatus.sellerCanceled:
+        text = 'Cancelado';
+        iconText = 'x';
+        break;
       default:
         text = 'Pendente';
         iconText = '?';
@@ -471,7 +475,7 @@ class ReservationWidget extends StatelessWidget {
       case ReservationItemStatus.buyerCanceled:
         return ColorSet.orange2;
       case ReservationItemStatus.sellerCanceled:
-        return ColorSet.gray2;
+        return ColorSet.orange2;
       case ReservationItemStatus.confirmed:
         return ColorSet.green1;
       case ReservationItemStatus.paid:

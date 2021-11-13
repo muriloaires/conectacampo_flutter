@@ -2,6 +2,7 @@ import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/profile/profile_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/notification/notifications_page.dart';
 import 'package:conectacampo/presentation/profile/edit_name_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +32,11 @@ class ProfilePage extends StatelessWidget {
                 title: Row(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => NotificationsPage(context.read<ProfileBloc>().state.isBuyer),
+                        ));
+                      },
                       child: SvgPicture.asset(
                         'assets/notification_outline_dot.svg',
                         height: 24,
@@ -141,7 +146,6 @@ class ProfilePage extends StatelessWidget {
                     ),
                     trailing: const Icon(Icons.chevron_right),
                   ),
-
                   ListTile(
                     onTap: () async {
                       await Navigator.of(context, rootNavigator: true).push(

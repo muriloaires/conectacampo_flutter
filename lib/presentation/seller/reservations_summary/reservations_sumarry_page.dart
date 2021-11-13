@@ -3,6 +3,7 @@ import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/reservation/seller_reservation_widget.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +16,7 @@ class ReservationsSummaryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    setupNotifications(context);
     return Navigator(
       key: navigatorKey,
       onGenerateRoute: (settings) => MaterialPageRoute(
@@ -56,20 +58,17 @@ class ReservationsSummaryPage extends StatelessWidget {
                                     const Card(
                                       child: Padding(
                                         padding: EdgeInsets.all(20.0),
-                                        child: Text.rich(
-                                            TextSpan(
-
-                                            children: [
-                                                TextSpan(
-                                                text: 'Sem reservas',
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold)),
-                                              TextSpan(
-                                                text:
-                                                    '\nAguarde contato do cliente',
-                                              )
-                                            ])),
+                                        child: Text.rich(TextSpan(children: [
+                                          TextSpan(
+                                              text: 'Sem reservas',
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold)),
+                                          TextSpan(
+                                            text:
+                                                '\nAguarde contato do cliente',
+                                          )
+                                        ])),
                                       ),
                                     )
                                   else
@@ -83,12 +82,20 @@ class ReservationsSummaryPage extends StatelessWidget {
                                             const Divider(),
                                         itemCount: list.length)
                                 ],
-                        ),
-                      ),
+                              ),
+                            ),
                     );
                   },
                 ),
               )),
     );
+  }
+
+  void setupNotifications(BuildContext context) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      context
+          .read<SummaryReservationsBloc>()
+          .add(const SummaryReservationsEvent.started());
+    });
   }
 }

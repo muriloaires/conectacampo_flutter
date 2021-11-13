@@ -310,10 +310,10 @@ class _TutorialState extends State<Tutorial> {
                           visible: _showBtnRegister,
                           child: MaterialButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
+                              Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
-                                      builder: (context) => UserType()));
+                                      builder: (context) => UserType()),
+                                  (route) => false);
                             },
                             color: ColorSet.colorPrimaryGreen,
                             child: const Text(

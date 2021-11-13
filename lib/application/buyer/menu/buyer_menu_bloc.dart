@@ -2,13 +2,19 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
+import 'package:conectacampo/infrastructure/notification/model.dart';
+import 'package:conectacampo/infrastructure/notification/notification_controller.dart';
+import 'package:conectacampo/infrastructure/reservation/model/model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'buyer_menu_bloc.freezed.dart';
+
 part 'buyer_menu_event.dart';
+
 part 'buyer_menu_state.dart';
 
 @injectable
@@ -56,8 +62,22 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
           yield state.copyWith(navToSeller: true);
         },
         started: (Started value) async* {
+          ReservationToOpen? reservationToOpen;
+          final reservationToOpenMap = await getReservationIdToOpen();
+          if (reservationToOpenMap != null) {
+            final reservationId = reservationToOpenMap["notificableId"] as int;
+            final kind = reservationToOpenMap["kind"] as String;
+            final reservation =
+                await reservationFacade.getReservation(reservationId);
+            reservation.fold((l) => null, (r) {
+              reservationToOpen = ReservationToOpen(kind, r);
+            });
+          }
           final itemsInCart = await reservationFacade.getItemsInCart();
-          yield state.copyWith(itemsInCart: itemsInCart);
+          yield state.copyWith(
+              itemsInCart: itemsInCart, reservationToOpen: reservationToOpen);
+          yield state.copyWith(
+              itemsInCart: itemsInCart, reservationToOpen: null);
         },
         onCartTapped: (OnCartTapped value) async* {
           yield state.copyWith(openCart: true);
@@ -74,4 +94,6 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
           yield state.copyWith(showToolBar: true);
         });
   }
+
+  Future<void> checkReservationToOpen() async {}
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:another_flushbar/flushbar.dart';
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
@@ -5,17 +7,24 @@ import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 import 'package:conectacampo/application/profile/profile_bloc.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
+import 'package:conectacampo/infrastructure/auth/user_repository.dart';
+import 'package:conectacampo/infrastructure/reservation/reservation_facade.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/cart/cart_page.dart';
 import 'package:conectacampo/presentation/buyer/group/group_page.dart';
 import 'package:conectacampo/presentation/buyer/menu/buyer_summary.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_page.dart';
+import 'package:conectacampo/presentation/buyer/reservation/single_reservation_page.dart';
 import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/notification/notification_helper.dart';
 import 'package:conectacampo/presentation/profile/profile_page.dart';
+import 'package:conectacampo/presentation/seller/reservation/single_reservation_seller_page.dart';
 import 'package:conectacampo/presentation/seller/seller_main_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:conectacampo/infrastructure/reservation/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,6 +60,9 @@ class BuyerMainPage extends StatelessWidget {
       ],
       child: BlocConsumer<BuyerMenuBloc, BuyerMenuState>(
         listener: (context, state) async {
+          if (state.reservationToOpen != null) {
+            await openNotification(context, state.reservationToOpen!);
+          }
           if (state.navToSeller) {
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
@@ -321,6 +333,23 @@ class BuyerMainPage extends StatelessWidget {
         title: message.notification?.title,
         message: message.notification?.body,
         duration: const Duration(seconds: 3),
+        mainButton: TextButton(
+          onPressed: () async {
+            final notificable = message.data["notificable"] as String;
+
+            final reservationId = jsonDecode(notificable)["id"] as int;
+            final reservation =
+                await ReservationFacade().getReservation(reservationId);
+            final kind = message.data["kind"] as String;
+            reservation.fold((l) => null, (r) {
+              openNotification(context, ReservationToOpen(kind, r));
+            });
+          },
+          child: const Text(
+            'Vizualizar',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
       ).show(context);
     });
   }
@@ -330,7 +359,6 @@ class SearchWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(0),
       shape: BeveledRectangleBorder(
         borderRadius: BorderRadius.circular(0.0),
       ),

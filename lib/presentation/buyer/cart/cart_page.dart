@@ -6,6 +6,7 @@ import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -57,8 +58,10 @@ class CartPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     const Center(
-                      child: Text('Reserva não efetuada',
-                          style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text(
+                        'Reserva não efetuada',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
                     const SizedBox(height: 8),
                     Center(
@@ -73,16 +76,20 @@ class CartPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: const Text('Ajustar pedido',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: ColorSet.grayDark,),),)
-                          ],
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text(
+                            'Ajustar pedido',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: ColorSet.grayDark,
+                            ),
+                          ),
                         )
                       ],
-                    ),
-                  ),
+                    )
+                  ],
+                ),
+              ),
             );
           });
 
@@ -247,6 +254,7 @@ class CartBottomMenu extends StatelessWidget {
 class ReservationItemWidget extends StatelessWidget {
   const ReservationItemWidget(
       this.reservationItem, this.remoteProduct, this.showError);
+
   final ReservationItem reservationItem;
   final AdProduct? remoteProduct;
   final bool showError;
@@ -329,7 +337,11 @@ class ReservationItemWidget extends StatelessWidget {
                       height: 40,
                       child: TextField(
                         textAlign: TextAlign.center,
-                        keyboardType: TextInputType.number,
+                        keyboardType:
+                            const TextInputType.numberWithOptions(signed: true),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
                         controller: textController,
                         onChanged: (value) => context.read<CartBloc>().add(
                             CartEvent.quantityChanged(reservationItem, value)),
@@ -373,11 +385,9 @@ class ReservationItemWidget extends StatelessWidget {
                           const Center(
                             child: SizedBox(
                               width: 180,
-                              child: Flexible(
-                                child: Text(
-                                  'Tem certeza que você deseja excluir o item?',
-                                  textAlign: TextAlign.center,
-                                ),
+                              child: Text(
+                                'Tem certeza que você deseja excluir o item?',
+                                textAlign: TextAlign.center,
                               ),
                             ),
                           ),

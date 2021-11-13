@@ -13,7 +13,7 @@ Future<Unit> persistUser(UserResponse user) async {
       await SharedPreferences.getInstance();
 
   final json = jsonEncode(user.toJson());
-  sharedPreferences.setString('logged_user', json);
+  await sharedPreferences.setString('logged_user', json);
   await saveTokens(user.accessToken, user.refreshToken);
   return unit;
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:another_flushbar/flushbar.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/profile/profile_bloc.dart';
@@ -5,14 +7,20 @@ import 'package:conectacampo/application/seller/adveretisements/seller_advertise
 import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
+import 'package:conectacampo/domain/reservation/reservation.dart';
+import 'package:conectacampo/infrastructure/auth/user_repository.dart';
+import 'package:conectacampo/infrastructure/reservation/reservation_facade.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/buyer_main_page.dart';
+import 'package:conectacampo/presentation/buyer/reservation/single_reservation_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/notification/notification_helper.dart';
 import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/menu/seller_summary.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_bottom_menu.dart';
 import 'package:conectacampo/presentation/seller/new_advertisement/new_advertisement_page.dart';
 import 'package:conectacampo/presentation/seller/reservation/edit_reservation.dart';
+import 'package:conectacampo/presentation/seller/reservation/single_reservation_seller_page.dart';
 import 'package:conectacampo/presentation/seller/reservations_summary/reservations_sumarry_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:dartz/dartz.dart';
@@ -57,6 +65,9 @@ class SellerMainPage extends StatelessWidget {
       ],
       child: BlocConsumer<SellerMenuBloc, SellerMenuState>(
         listener: (context, state) async {
+          if (state.reservationToOpen != null) {
+            await openNotification(context, state.reservationToOpen!);
+          }
           if (state.openEditReservation) {
             state.optionOfResevationToEdit.fold(() => null, (a) async {
               final result = await Navigator.of(context).push(MaterialPageRoute(
@@ -107,9 +118,9 @@ class SellerMainPage extends StatelessWidget {
                 body: WillPopScope(
                   onWillPop: () async {
                     final key = navigatorKeys[
-                    context.read<SellerMenuBloc>().state.currentIndex]!;
+                        context.read<SellerMenuBloc>().state.currentIndex]!;
                     final popped =
-                    await Navigator.maybePop(key.currentState!.context);
+                        await Navigator.maybePop(key.currentState!.context);
                     if (!popped) {
                       if (state.currentIndex != 0) {
                         context
@@ -146,8 +157,11 @@ class SellerMainPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => NewAdvertisementPage(),),);
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => NewAdvertisementPage(),
+                            ),
+                          );
                         },
                         child: Container(
                           width: 68.0,
@@ -183,6 +197,23 @@ class SellerMainPage extends StatelessWidget {
         title: message.notification?.title,
         message: message.notification?.body,
         duration: const Duration(seconds: 3),
+        mainButton: TextButton(
+          onPressed: () async {
+            final notificable = message.data["notificable"] as String;
+
+            final reservationId = jsonDecode(notificable)["id"] as int;
+            final reservation =
+                await ReservationFacade().getReservation(reservationId);
+            final kind = message.data["kind"] as String;
+            reservation.fold((l) => null, (r) {
+              openNotification(context, ReservationToOpen(kind, r));
+            });
+          },
+          child: const Text(
+            'Vizualizar',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
       ).show(context);
     });
   }

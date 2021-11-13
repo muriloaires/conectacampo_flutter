@@ -77,11 +77,9 @@ class ProductPage extends StatelessWidget {
                               const Center(
                                 child: SizedBox(
                                   width: 180,
-                                  child: Flexible(
-                                    child: Text(
-                                      'Você pode concluir ou cancelar o pedido',
-                                      textAlign: TextAlign.center,
-                                    ),
+                                  child: Text(
+                                    'Você pode concluir ou cancelar o pedido',
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                               ),

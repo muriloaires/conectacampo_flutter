@@ -16,6 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SignInFormEventTearOff {
   const _$SignInFormEventTearOff();
 
+  Started started() {
+    return const Started();
+  }
+
   PhoneNumberChanged phoneNumberChanged(String phoneString) {
     return PhoneNumberChanged(
       phoneString,
@@ -34,12 +38,14 @@ const $SignInFormEvent = _$SignInFormEventTearOff();
 mixin _$SignInFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function(String phoneString) phoneNumberChanged,
     required TResult Function() verifyPhoneNumberPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function(String phoneString)? phoneNumberChanged,
     TResult Function()? verifyPhoneNumberPressed,
     required TResult orElse(),
@@ -47,6 +53,7 @@ mixin _$SignInFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(VerifyPhoneNumberPressed value)
         verifyPhoneNumberPressed,
@@ -54,6 +61,7 @@ mixin _$SignInFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(VerifyPhoneNumberPressed value)? verifyPhoneNumberPressed,
     required TResult orElse(),
@@ -76,6 +84,94 @@ class _$SignInFormEventCopyWithImpl<$Res>
   final SignInFormEvent _value;
   // ignore: unused_field
   final $Res Function(SignInFormEvent) _then;
+}
+
+/// @nodoc
+abstract class $StartedCopyWith<$Res> {
+  factory $StartedCopyWith(Started value, $Res Function(Started) then) =
+      _$StartedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$StartedCopyWithImpl<$Res> extends _$SignInFormEventCopyWithImpl<$Res>
+    implements $StartedCopyWith<$Res> {
+  _$StartedCopyWithImpl(Started _value, $Res Function(Started) _then)
+      : super(_value, (v) => _then(v as Started));
+
+  @override
+  Started get _value => super._value as Started;
+}
+
+/// @nodoc
+
+class _$Started implements Started {
+  const _$Started();
+
+  @override
+  String toString() {
+    return 'SignInFormEvent.started()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Started);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String phoneString) phoneNumberChanged,
+    required TResult Function() verifyPhoneNumberPressed,
+  }) {
+    return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String phoneString)? phoneNumberChanged,
+    TResult Function()? verifyPhoneNumberPressed,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(VerifyPhoneNumberPressed value)
+        verifyPhoneNumberPressed,
+  }) {
+    return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(VerifyPhoneNumberPressed value)? verifyPhoneNumberPressed,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Started implements SignInFormEvent {
+  const factory Started() = _$Started;
 }
 
 /// @nodoc
@@ -144,6 +240,7 @@ class _$PhoneNumberChanged implements PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function(String phoneString) phoneNumberChanged,
     required TResult Function() verifyPhoneNumberPressed,
   }) {
@@ -153,6 +250,7 @@ class _$PhoneNumberChanged implements PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function(String phoneString)? phoneNumberChanged,
     TResult Function()? verifyPhoneNumberPressed,
     required TResult orElse(),
@@ -166,6 +264,7 @@ class _$PhoneNumberChanged implements PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(VerifyPhoneNumberPressed value)
         verifyPhoneNumberPressed,
@@ -176,6 +275,7 @@ class _$PhoneNumberChanged implements PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(VerifyPhoneNumberPressed value)? verifyPhoneNumberPressed,
     required TResult orElse(),
@@ -237,6 +337,7 @@ class _$VerifyPhoneNumberPressed implements VerifyPhoneNumberPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function(String phoneString) phoneNumberChanged,
     required TResult Function() verifyPhoneNumberPressed,
   }) {
@@ -246,6 +347,7 @@ class _$VerifyPhoneNumberPressed implements VerifyPhoneNumberPressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function(String phoneString)? phoneNumberChanged,
     TResult Function()? verifyPhoneNumberPressed,
     required TResult orElse(),
@@ -259,6 +361,7 @@ class _$VerifyPhoneNumberPressed implements VerifyPhoneNumberPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
     required TResult Function(PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(VerifyPhoneNumberPressed value)
         verifyPhoneNumberPressed,
@@ -269,6 +372,7 @@ class _$VerifyPhoneNumberPressed implements VerifyPhoneNumberPressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
     TResult Function(PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(VerifyPhoneNumberPressed value)? verifyPhoneNumberPressed,
     required TResult orElse(),

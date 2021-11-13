@@ -5,6 +5,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'reservation.freezed.dart';
 
+class ReservationToOpen {
+  final String kind;
+  final Reservation reservation;
+
+  ReservationToOpen(this.kind, this.reservation);
+}
+
 @freezed
 class Reservation with _$Reservation {
   const factory Reservation(
@@ -43,6 +50,6 @@ extension ReservationExt on Reservation {
       }
     }
 
-    return ReservationItemStatus.awaitingBuyer;
+    return ReservationItemStatus.sellerCanceled;
   }
 }

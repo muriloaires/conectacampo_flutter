@@ -3,6 +3,7 @@ import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
 import 'package:conectacampo/presentation/buyer/search/search_page.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,8 +14,10 @@ class BuyerReservationsPage extends StatelessWidget {
   final GlobalKey navigatorKey;
 
   const BuyerReservationsPage(this.navigatorKey);
+
   @override
   Widget build(BuildContext context) {
+    setupNotifications(context);
     return Navigator(
       key: navigatorKey,
       onGenerateRoute: (settings) => MaterialPageRoute(
@@ -26,12 +29,7 @@ class BuyerReservationsPage extends StatelessWidget {
               final List<Reservation> list = state
                   .optionOfReservationListFailureOrSuccess
                   .fold(() => [], (a) => a.fold((l) => [], (r) => r));
-              int size = 0;
-              if (list.length > 3) {
-                size = 3;
-              } else {
-                size = list.length;
-              }
+
               return Scaffold(
                   appBar: SearchWidget(),
                   body: list.isEmpty
@@ -89,12 +87,18 @@ class BuyerReservationsPage extends StatelessWidget {
                                   ReservationWidget(list[index]),
                               separatorBuilder: (context, index) =>
                                   const Divider(),
-                              itemCount: size),
+                              itemCount: list.length),
                         ));
             },
           ),
         ),
       ),
     );
+  }
+
+  void setupNotifications(BuildContext context) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      context.read<ReservationBloc>().add(const ReservationEvent.started());
+    });
   }
 }
