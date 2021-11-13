@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -66,10 +68,27 @@ extension IntDateExtensions on int {
 }
 
 Future openWhatsapp(String phone) async {
-  final whatsappUrl = "whatsapp://send?phone=$phone";
-  await canLaunch(whatsappUrl)
-      ? launch(whatsappUrl)
-      : EasyLoading.showError(
-          "open whatsapp app link or do a snackbar with notification that there is no whatsapp installed",
+  var editedPhone = phone;
+  if(!phone.contains('+55')){
+    editedPhone = '+55$phone';
+  }
+  if(Platform.isAndroid){
+    var whatsappUrl = "whatsapp://send?phone=$editedPhone";
+
+    await canLaunch(whatsappUrl)
+        ? launch(whatsappUrl)
+        : EasyLoading.showError(
+        "Whatsapp não instalado",
+        duration: const Duration(seconds: 2));
+  } else {
+    var whatappURL_ios ="https://wa.me/$editedPhone";
+    if( await canLaunch(whatappURL_ios)){
+      await launch(whatappURL_ios, forceSafariVC: false);
+    }else{
+      EasyLoading.showError(
+          "Whatsapp não instalado",
           duration: const Duration(seconds: 2));
+
+    }
+
 }

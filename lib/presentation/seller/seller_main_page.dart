@@ -15,6 +15,7 @@ import 'package:conectacampo/presentation/buyer/buyer_main_page.dart';
 import 'package:conectacampo/presentation/buyer/reservation/single_reservation_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/notification/notification_helper.dart';
+import 'package:conectacampo/presentation/notification/notifications_page.dart';
 import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/menu/seller_summary.dart';
 import 'package:conectacampo/presentation/seller/menu/widgets/seller_bottom_menu.dart';
@@ -238,7 +239,11 @@ class SellerDefaultAppBar extends StatelessWidget
                 Row(
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => NotificationsPage(context.read<ProfileBloc>().state.isBuyer),
+                          ));
+                        },
                         icon: const Icon(Icons.notifications_none_outlined)),
                     const SizedBox(width: 24),
                     Expanded(

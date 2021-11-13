@@ -18,6 +18,7 @@ class ReservationFacade extends IReservationFacade {
   static const routeCurrentUserReservations = '/me/reservations';
   static const routeReservations = '/reservations';
   static const routeProductReservations = '/product_reservations';
+  static const groupMemberships = '/group_memberships';
 
   @override
   Future<List<ReservationItem>> getItemsInCart() async {
@@ -67,6 +68,26 @@ class ReservationFacade extends IReservationFacade {
       } catch (e) {}
 
       return left(ReservationFailure.unavailableItems(responseObj));
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ReservationFailure, Unit>> removeFromGroup(
+      {required int userId}) async {
+    final url = Uri.https(baseUrl, '$apiVersion$groupMemberships/$userId');
+    final response = await getAuthenticatedDeleteRequest(
+      url,
+      getApiHeader(),
+    );
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
     } else if (code >= 400 && code < 500) {
       return left(const ReservationFailure.requestError());
     } else {

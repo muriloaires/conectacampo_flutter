@@ -329,10 +329,12 @@ class BuyerMainPage extends StatelessWidget {
   void setupNotifications(BuildContext context) {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       Flushbar(
+
         flushbarPosition: FlushbarPosition.TOP,
+        titleSize: 16,
         title: message.notification?.title,
         message: message.notification?.body,
-        duration: const Duration(seconds: 3),
+        duration: const Duration(seconds: 10),
         mainButton: TextButton(
           onPressed: () async {
             final notificable = message.data["notificable"] as String;
@@ -347,7 +349,7 @@ class BuyerMainPage extends StatelessWidget {
           },
           child: const Text(
             'Vizualizar',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontSize: 16),
           ),
         ),
       ).show(context);

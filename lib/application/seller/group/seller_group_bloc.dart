@@ -10,7 +10,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'seller_group_event.dart';
+
 part 'seller_group_state.dart';
+
 part 'seller_group_bloc.freezed.dart';
 
 @injectable
@@ -27,6 +29,15 @@ class SellerGroupBloc extends Bloc<SellerGroupEvent, SellerGroupState> {
       //load reservations
       final reservations = await reservationFacade.getSellerGroupReservations();
       yield state.copyWith(groupReservations: reservations);
+    }, onBtnDeleteTap: (OnBtnDeleteTap value) async* {
+      yield state.copyWith(loading: true);
+      final success = await reservationFacade.removeFromGroup(
+          userId: int.parse(value.buyerGroup.user.id.getOrCrash()));
+      final reservations = await reservationFacade.getSellerGroupReservations();
+      yield state.copyWith(
+          loading: false,
+          groupRemoval: success,
+          groupReservations: reservations);
     });
   }
 }
@@ -34,12 +45,14 @@ class SellerGroupBloc extends Bloc<SellerGroupEvent, SellerGroupState> {
 class BuyerReservations {
   final User user;
   final List<Reservation> reservations;
+
   BuyerReservations(this.user, this.reservations);
 }
 
 List<BuyerReservations> createBuyerReservations(
     List<Reservation> reservations) {
-  reservations.sort((a, b) => a.id!.compareTo(b.id!));
+  reservations.sort((a, b) => int.parse(a.buyer.id.getOrCrash())
+      .compareTo(int.parse(b.buyer.id.getOrCrash())));
   var id = '';
   final List<List<Reservation>> listOfLists = [];
   List<Reservation> aux = [];

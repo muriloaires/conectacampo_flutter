@@ -109,13 +109,12 @@ class NewAdvertisementForm extends StatelessWidget {
                           .isBtnContinueEnabled) {
                         return;
                       }
-                      final result = await Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => AddProductPage(
                           newAdvertisement: state.newAdvertisement,
                         ),
                       ));
 
-                      context.read<NewAdvertisementBloc>().add(const NewAdvertisementEvent.onResetProducts());
                     },
                     child: ClipRRect(
                         borderRadius:

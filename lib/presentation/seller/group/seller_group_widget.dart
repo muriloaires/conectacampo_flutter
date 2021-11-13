@@ -15,6 +15,7 @@ class SellerGroupWidget extends StatefulWidget {
 
 class _SellerGroupWidgetState extends State<SellerGroupWidget> {
   bool expanded = false;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -35,8 +36,8 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: NetworkImage(widget.buyerReservations.user
-                                      .mediumAvatar?.value
+                              image: NetworkImage(widget.buyerReservations
+                                      .user.mediumAvatar?.value
                                       .fold((l) => '', (r) => r) ??
                                   '')))),
                   const SizedBox(
@@ -46,11 +47,10 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.buyerReservations.user.name.getOrCrash(),
+                        widget.buyerReservations.user.nickname.getOrCrash(),
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
-
                     ],
                   )
                 ],
@@ -123,7 +123,8 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                                   ),
                                 );
                               },
-                              itemCount: reservation.productReservations.length,
+                              itemCount:
+                                  reservation.productReservations.length,
                             ),
                             const SizedBox(height: 10),
                           ],

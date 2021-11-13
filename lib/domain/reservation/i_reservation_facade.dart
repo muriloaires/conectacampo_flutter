@@ -20,6 +20,9 @@ abstract class IReservationFacade {
   Future<Either<ReservationFailure, Unit>> requestReservation(
       {required ReservationObjRequest reservationObj});
 
+  Future<Either<ReservationFailure, Unit>> removeFromGroup(
+      {required int userId});
+
   Future<Unit> clearCart();
 
   Future<Either<ReservationFailure, List<Reservation>>>

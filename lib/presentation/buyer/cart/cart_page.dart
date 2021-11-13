@@ -3,6 +3,7 @@ import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/infrastructure/advertisement/advertisement_mapper.dart';
 import 'package:conectacampo/infrastructure/core/core_extensions.dart';
+import 'package:conectacampo/infrastructure/reservation/model/model.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
@@ -28,23 +29,30 @@ class CartPage extends StatelessWidget {
 
           state.optionOfReservationResponse.fold(() => null, (a) {
             String errorMessage = '';
-            a.errors?.forEach((element) {
-              errorMessage += element.messsage;
-              errorMessage += '\n';
-            });
+            for(final error in a.errors ?? List<ErrorResponse>.empty()){
+              if (error.key.contains('product_reservations.quantity_not_enough')){
+                errorMessage = 'Quantidade insuficiente';
+              }
+            }
+            // a.errors?.forEach((element) {
+            //
+            //   errorMessage += element.messsage;
+            //   errorMessage += '\n';
+            // });
 
-            a.productReservations.forEach((element) {
-              element.errors?.forEach((element) {
-                errorMessage += element.messsage;
-                errorMessage += '\n';
-              });
-            });
+            // a.productReservations.forEach((element) {
+            //   element.errors?.forEach((element) {
+            //     errorMessage += element.messsage;
+            //     errorMessage += '\n';
+            //   });
+            // });
 
             showDialog<String>(
               context: context,
               builder: (BuildContext dialogContext) => Dialog(
                 child: ListView(
                   shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
                   children: [
                     const SizedBox(),
                     CircleAvatar(
@@ -120,6 +128,7 @@ class CartPage extends StatelessWidget {
                   children: [
                     ListView.separated(
                       shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
                       separatorBuilder: (context, index) => Container(
                         height: 1,
                         color: ColorSet.grayLine,
@@ -265,6 +274,8 @@ class ReservationItemWidget extends StatelessWidget {
     final availability = available > 1 ? 'Disponíveis' : 'Disponível';
     final TextEditingController textController =
         TextEditingController(text: reservationItem.quantity.toString());
+    textController.selection = TextSelection.fromPosition(
+        TextPosition(offset: textController.text.length));
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.all(20),
