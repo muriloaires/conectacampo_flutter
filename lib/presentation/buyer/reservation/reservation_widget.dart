@@ -119,8 +119,8 @@ class ReservationWidget extends StatelessWidget {
                 ),
               ),
               MaterialButton(
-                onPressed: () {
-                  openWhatsapp(
+                onPressed: () async {
+                  await openWhatsapp(
                       reservation.seller?.phoneNumber.getOrCrash() ?? '');
                 },
                 child: Container(

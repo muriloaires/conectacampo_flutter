@@ -476,7 +476,8 @@ class _$ProductPageStateTearOff {
       required bool setInitialQuantity,
       required bool back,
       required bool showInserted,
-      required bool showErrorMsg}) {
+      required bool showErrorMsg,
+      required Place? place}) {
     return _ProductPageState(
       reservationQuantity: reservationQuantity,
       showErrorsMessage: showErrorsMessage,
@@ -486,6 +487,7 @@ class _$ProductPageStateTearOff {
       back: back,
       showInserted: showInserted,
       showErrorMsg: showErrorMsg,
+      place: place,
     );
   }
 }
@@ -505,6 +507,7 @@ mixin _$ProductPageState {
   bool get back => throw _privateConstructorUsedError;
   bool get showInserted => throw _privateConstructorUsedError;
   bool get showErrorMsg => throw _privateConstructorUsedError;
+  Place? get place => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductPageStateCopyWith<ProductPageState> get copyWith =>
@@ -524,7 +527,10 @@ abstract class $ProductPageStateCopyWith<$Res> {
       bool setInitialQuantity,
       bool back,
       bool showInserted,
-      bool showErrorMsg});
+      bool showErrorMsg,
+      Place? place});
+
+  $PlaceCopyWith<$Res>? get place;
 }
 
 /// @nodoc
@@ -545,6 +551,7 @@ class _$ProductPageStateCopyWithImpl<$Res>
     Object? back = freezed,
     Object? showInserted = freezed,
     Object? showErrorMsg = freezed,
+    Object? place = freezed,
   }) {
     return _then(_value.copyWith(
       reservationQuantity: reservationQuantity == freezed
@@ -576,7 +583,22 @@ class _$ProductPageStateCopyWithImpl<$Res>
           ? _value.showErrorMsg
           : showErrorMsg // ignore: cast_nullable_to_non_nullable
               as bool,
+      place: place == freezed
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as Place?,
     ));
+  }
+
+  @override
+  $PlaceCopyWith<$Res>? get place {
+    if (_value.place == null) {
+      return null;
+    }
+
+    return $PlaceCopyWith<$Res>(_value.place!, (value) {
+      return _then(_value.copyWith(place: value));
+    });
   }
 }
 
@@ -595,7 +617,11 @@ abstract class _$ProductPageStateCopyWith<$Res>
       bool setInitialQuantity,
       bool back,
       bool showInserted,
-      bool showErrorMsg});
+      bool showErrorMsg,
+      Place? place});
+
+  @override
+  $PlaceCopyWith<$Res>? get place;
 }
 
 /// @nodoc
@@ -618,6 +644,7 @@ class __$ProductPageStateCopyWithImpl<$Res>
     Object? back = freezed,
     Object? showInserted = freezed,
     Object? showErrorMsg = freezed,
+    Object? place = freezed,
   }) {
     return _then(_ProductPageState(
       reservationQuantity: reservationQuantity == freezed
@@ -649,6 +676,10 @@ class __$ProductPageStateCopyWithImpl<$Res>
           ? _value.showErrorMsg
           : showErrorMsg // ignore: cast_nullable_to_non_nullable
               as bool,
+      place: place == freezed
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as Place?,
     ));
   }
 }
@@ -663,7 +694,8 @@ class _$_ProductPageState implements _ProductPageState {
       required this.setInitialQuantity,
       required this.back,
       required this.showInserted,
-      required this.showErrorMsg});
+      required this.showErrorMsg,
+      required this.place});
 
   @override
   final ReservationQuantity reservationQuantity;
@@ -680,10 +712,12 @@ class _$_ProductPageState implements _ProductPageState {
   final bool showInserted;
   @override
   final bool showErrorMsg;
+  @override
+  final Place? place;
 
   @override
   String toString() {
-    return 'ProductPageState(reservationQuantity: $reservationQuantity, showErrorsMessage: $showErrorsMessage, optionOfReservatiomItemFailureOrSuccess: $optionOfReservatiomItemFailureOrSuccess, setInitialQuantity: $setInitialQuantity, back: $back, showInserted: $showInserted, showErrorMsg: $showErrorMsg)';
+    return 'ProductPageState(reservationQuantity: $reservationQuantity, showErrorsMessage: $showErrorsMessage, optionOfReservatiomItemFailureOrSuccess: $optionOfReservatiomItemFailureOrSuccess, setInitialQuantity: $setInitialQuantity, back: $back, showInserted: $showInserted, showErrorMsg: $showErrorMsg, place: $place)';
   }
 
   @override
@@ -711,7 +745,9 @@ class _$_ProductPageState implements _ProductPageState {
                     .equals(other.showInserted, showInserted)) &&
             (identical(other.showErrorMsg, showErrorMsg) ||
                 const DeepCollectionEquality()
-                    .equals(other.showErrorMsg, showErrorMsg)));
+                    .equals(other.showErrorMsg, showErrorMsg)) &&
+            (identical(other.place, place) ||
+                const DeepCollectionEquality().equals(other.place, place)));
   }
 
   @override
@@ -724,7 +760,8 @@ class _$_ProductPageState implements _ProductPageState {
       const DeepCollectionEquality().hash(setInitialQuantity) ^
       const DeepCollectionEquality().hash(back) ^
       const DeepCollectionEquality().hash(showInserted) ^
-      const DeepCollectionEquality().hash(showErrorMsg);
+      const DeepCollectionEquality().hash(showErrorMsg) ^
+      const DeepCollectionEquality().hash(place);
 
   @JsonKey(ignore: true)
   @override
@@ -741,7 +778,8 @@ abstract class _ProductPageState implements ProductPageState {
       required bool setInitialQuantity,
       required bool back,
       required bool showInserted,
-      required bool showErrorMsg}) = _$_ProductPageState;
+      required bool showErrorMsg,
+      required Place? place}) = _$_ProductPageState;
 
   @override
   ReservationQuantity get reservationQuantity =>
@@ -760,6 +798,8 @@ abstract class _ProductPageState implements ProductPageState {
   bool get showInserted => throw _privateConstructorUsedError;
   @override
   bool get showErrorMsg => throw _privateConstructorUsedError;
+  @override
+  Place? get place => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductPageStateCopyWith<_ProductPageState> get copyWith =>

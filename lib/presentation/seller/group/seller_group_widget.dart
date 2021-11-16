@@ -36,8 +36,8 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: NetworkImage(widget.buyerReservations
-                                      .user.mediumAvatar?.value
+                              image: NetworkImage(widget.buyerReservations.user
+                                      .mediumAvatar?.value
                                       .fold((l) => '', (r) => r) ??
                                   '')))),
                   const SizedBox(
@@ -57,7 +57,10 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () async {
+                await openWhatsapp(
+                    widget.buyerReservations.user.phoneNumber.getOrCrash());
+              },
               child: Container(
                   decoration: const BoxDecoration(
                     color: ColorSet.gray10,
@@ -123,8 +126,7 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                                   ),
                                 );
                               },
-                              itemCount:
-                                  reservation.productReservations.length,
+                              itemCount: reservation.productReservations.length,
                             ),
                             const SizedBox(height: 10),
                           ],

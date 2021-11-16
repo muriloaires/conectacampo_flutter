@@ -2,8 +2,10 @@ import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/reservation/seller_reservation_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
+import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +14,7 @@ class SellerReservationWidget extends StatelessWidget {
   final Reservation reservation;
 
   const SellerReservationWidget(this.reservation);
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -81,7 +84,10 @@ class SellerReservationWidget extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () async {
+                      await openWhatsapp(
+                          reservation.buyer.phoneNumber.getOrCrash());
+                    },
                     child: Container(
                         decoration: const BoxDecoration(
                           color: ColorSet.gray10,

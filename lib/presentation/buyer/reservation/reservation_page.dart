@@ -80,14 +80,21 @@ class BuyerReservationsPage extends StatelessWidget {
                         )
                       : Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: ListView.separated(
-                              shrinkWrap: true,
-                              physics: const ClampingScrollPhysics(),
-                              itemBuilder: (context, index) =>
-                                  ReservationWidget(list[index]),
-                              separatorBuilder: (context, index) =>
-                                  const Divider(),
-                              itemCount: list.length),
+                          child: RefreshIndicator(
+                            onRefresh: () async {
+                              context
+                                  .read<ReservationBloc>()
+                                  .add(const ReservationEvent.started());
+                            },
+                            child: ListView.separated(
+                                shrinkWrap: true,
+                                physics: const ClampingScrollPhysics(),
+                                itemBuilder: (context, index) =>
+                                    ReservationWidget(list[index]),
+                                separatorBuilder: (context, index) =>
+                                    const Divider(),
+                                itemCount: list.length),
+                          ),
                         ));
             },
           ),

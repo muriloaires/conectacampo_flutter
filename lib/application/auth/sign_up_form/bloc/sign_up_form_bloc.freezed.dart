@@ -823,10 +823,9 @@ class _$SignUpFormBlocStateTearOff {
 
   _SignUpFormBlocState call(
       {required bool isSubmitting,
-      required FullName fullName,
-      required Nickname nickname,
+      required FullName? fullName,
+      required Nickname? nickname,
       required bool showErrorMessages,
-      required bool navigateNext,
       required Option<String> optionOfAvatar,
       required bool authSuccess,
       required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
@@ -835,7 +834,6 @@ class _$SignUpFormBlocStateTearOff {
       fullName: fullName,
       nickname: nickname,
       showErrorMessages: showErrorMessages,
-      navigateNext: navigateNext,
       optionOfAvatar: optionOfAvatar,
       authSuccess: authSuccess,
       authFailureOrSuccessOption: authFailureOrSuccessOption,
@@ -849,10 +847,9 @@ const $SignUpFormBlocState = _$SignUpFormBlocStateTearOff();
 /// @nodoc
 mixin _$SignUpFormBlocState {
   bool get isSubmitting => throw _privateConstructorUsedError;
-  FullName get fullName => throw _privateConstructorUsedError;
-  Nickname get nickname => throw _privateConstructorUsedError;
+  FullName? get fullName => throw _privateConstructorUsedError;
+  Nickname? get nickname => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
-  bool get navigateNext => throw _privateConstructorUsedError;
   Option<String> get optionOfAvatar => throw _privateConstructorUsedError;
   bool get authSuccess => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
@@ -870,10 +867,9 @@ abstract class $SignUpFormBlocStateCopyWith<$Res> {
       _$SignUpFormBlocStateCopyWithImpl<$Res>;
   $Res call(
       {bool isSubmitting,
-      FullName fullName,
-      Nickname nickname,
+      FullName? fullName,
+      Nickname? nickname,
       bool showErrorMessages,
-      bool navigateNext,
       Option<String> optionOfAvatar,
       bool authSuccess,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
@@ -894,7 +890,6 @@ class _$SignUpFormBlocStateCopyWithImpl<$Res>
     Object? fullName = freezed,
     Object? nickname = freezed,
     Object? showErrorMessages = freezed,
-    Object? navigateNext = freezed,
     Object? optionOfAvatar = freezed,
     Object? authSuccess = freezed,
     Object? authFailureOrSuccessOption = freezed,
@@ -907,18 +902,14 @@ class _$SignUpFormBlocStateCopyWithImpl<$Res>
       fullName: fullName == freezed
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as FullName,
+              as FullName?,
       nickname: nickname == freezed
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as Nickname,
+              as Nickname?,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
-      navigateNext: navigateNext == freezed
-          ? _value.navigateNext
-          : navigateNext // ignore: cast_nullable_to_non_nullable
               as bool,
       optionOfAvatar: optionOfAvatar == freezed
           ? _value.optionOfAvatar
@@ -945,10 +936,9 @@ abstract class _$SignUpFormBlocStateCopyWith<$Res>
   @override
   $Res call(
       {bool isSubmitting,
-      FullName fullName,
-      Nickname nickname,
+      FullName? fullName,
+      Nickname? nickname,
       bool showErrorMessages,
-      bool navigateNext,
       Option<String> optionOfAvatar,
       bool authSuccess,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
@@ -971,7 +961,6 @@ class __$SignUpFormBlocStateCopyWithImpl<$Res>
     Object? fullName = freezed,
     Object? nickname = freezed,
     Object? showErrorMessages = freezed,
-    Object? navigateNext = freezed,
     Object? optionOfAvatar = freezed,
     Object? authSuccess = freezed,
     Object? authFailureOrSuccessOption = freezed,
@@ -984,18 +973,14 @@ class __$SignUpFormBlocStateCopyWithImpl<$Res>
       fullName: fullName == freezed
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
-              as FullName,
+              as FullName?,
       nickname: nickname == freezed
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as Nickname,
+              as Nickname?,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
-      navigateNext: navigateNext == freezed
-          ? _value.navigateNext
-          : navigateNext // ignore: cast_nullable_to_non_nullable
               as bool,
       optionOfAvatar: optionOfAvatar == freezed
           ? _value.optionOfAvatar
@@ -1021,7 +1006,6 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
       required this.fullName,
       required this.nickname,
       required this.showErrorMessages,
-      required this.navigateNext,
       required this.optionOfAvatar,
       required this.authSuccess,
       required this.authFailureOrSuccessOption});
@@ -1029,13 +1013,11 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
   @override
   final bool isSubmitting;
   @override
-  final FullName fullName;
+  final FullName? fullName;
   @override
-  final Nickname nickname;
+  final Nickname? nickname;
   @override
   final bool showErrorMessages;
-  @override
-  final bool navigateNext;
   @override
   final Option<String> optionOfAvatar;
   @override
@@ -1045,7 +1027,7 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
 
   @override
   String toString() {
-    return 'SignUpFormBlocState(isSubmitting: $isSubmitting, fullName: $fullName, nickname: $nickname, showErrorMessages: $showErrorMessages, navigateNext: $navigateNext, optionOfAvatar: $optionOfAvatar, authSuccess: $authSuccess, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'SignUpFormBlocState(isSubmitting: $isSubmitting, fullName: $fullName, nickname: $nickname, showErrorMessages: $showErrorMessages, optionOfAvatar: $optionOfAvatar, authSuccess: $authSuccess, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -1064,9 +1046,6 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
-            (identical(other.navigateNext, navigateNext) ||
-                const DeepCollectionEquality()
-                    .equals(other.navigateNext, navigateNext)) &&
             (identical(other.optionOfAvatar, optionOfAvatar) ||
                 const DeepCollectionEquality()
                     .equals(other.optionOfAvatar, optionOfAvatar)) &&
@@ -1087,7 +1066,6 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
       const DeepCollectionEquality().hash(fullName) ^
       const DeepCollectionEquality().hash(nickname) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
-      const DeepCollectionEquality().hash(navigateNext) ^
       const DeepCollectionEquality().hash(optionOfAvatar) ^
       const DeepCollectionEquality().hash(authSuccess) ^
       const DeepCollectionEquality().hash(authFailureOrSuccessOption);
@@ -1102,10 +1080,9 @@ class _$_SignUpFormBlocState implements _SignUpFormBlocState {
 abstract class _SignUpFormBlocState implements SignUpFormBlocState {
   const factory _SignUpFormBlocState(
       {required bool isSubmitting,
-      required FullName fullName,
-      required Nickname nickname,
+      required FullName? fullName,
+      required Nickname? nickname,
       required bool showErrorMessages,
-      required bool navigateNext,
       required Option<String> optionOfAvatar,
       required bool authSuccess,
       required Option<Either<AuthFailure, Unit>>
@@ -1114,13 +1091,11 @@ abstract class _SignUpFormBlocState implements SignUpFormBlocState {
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
   @override
-  FullName get fullName => throw _privateConstructorUsedError;
+  FullName? get fullName => throw _privateConstructorUsedError;
   @override
-  Nickname get nickname => throw _privateConstructorUsedError;
+  Nickname? get nickname => throw _privateConstructorUsedError;
   @override
   bool get showErrorMessages => throw _privateConstructorUsedError;
-  @override
-  bool get navigateNext => throw _privateConstructorUsedError;
   @override
   Option<String> get optionOfAvatar => throw _privateConstructorUsedError;
   @override

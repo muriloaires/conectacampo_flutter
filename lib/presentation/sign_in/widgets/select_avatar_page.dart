@@ -72,7 +72,7 @@ class SelectAvatarPage extends StatelessWidget {
               child: ListView(
                 children: [
                   Text(
-                    state.fullName.getOrCrash(),
+                    state.fullName?.getOrCrash() ?? '',
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: ColorSet.colorPrimaryGreen,

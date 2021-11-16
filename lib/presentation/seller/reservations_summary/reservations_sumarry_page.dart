@@ -43,45 +43,53 @@ class ReservationsSummaryPage extends StatelessWidget {
                           : Padding(
                               padding:
                                   const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                              child: ListView(
-                                children: [
-                                  const Text(
-                                    'Administrar Reservas',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: ColorSet.brown1,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  if (list.isEmpty)
-                                    const Card(
-                                      child: Padding(
-                                        padding: EdgeInsets.all(20.0),
-                                        child: Text.rich(TextSpan(children: [
-                                          TextSpan(
-                                              text: 'Sem reservas',
-                                              style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold)),
-                                          TextSpan(
-                                            text:
-                                                '\nAguarde contato do cliente',
-                                          )
-                                        ])),
+                              child: RefreshIndicator(
+                                onRefresh: () async {
+                                  context.read<SummaryReservationsBloc>().add(
+                                      const SummaryReservationsEvent.started());
+                                },
+                                child: ListView(
+                                  children: [
+                                    const Text(
+                                      'Administrar Reservas',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: ColorSet.brown1,
                                       ),
-                                    )
-                                  else
-                                    ListView.separated(
-                                        shrinkWrap: true,
-                                        physics: const ClampingScrollPhysics(),
-                                        itemBuilder: (context, index) =>
-                                            SellerReservationWidget(
-                                                list[index].copyWith()),
-                                        separatorBuilder: (context, index) =>
-                                            const Divider(),
-                                        itemCount: list.length)
-                                ],
+                                    ),
+                                    const SizedBox(height: 20),
+                                    if (list.isEmpty)
+                                      const Card(
+                                        child: Padding(
+                                          padding: EdgeInsets.all(20.0),
+                                          child: Text.rich(TextSpan(children: [
+                                            TextSpan(
+                                                text: 'Sem reservas',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            TextSpan(
+                                              text:
+                                                  '\nAguarde contato do cliente',
+                                            )
+                                          ])),
+                                        ),
+                                      )
+                                    else
+                                      ListView.separated(
+                                          shrinkWrap: true,
+                                          physics:
+                                              const ClampingScrollPhysics(),
+                                          itemBuilder: (context, index) =>
+                                              SellerReservationWidget(
+                                                  list[index].copyWith()),
+                                          separatorBuilder: (context, index) =>
+                                              const Divider(),
+                                          itemCount: list.length)
+                                  ],
+                                ),
                               ),
                             ),
                     );

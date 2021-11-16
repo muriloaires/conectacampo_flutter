@@ -7,6 +7,7 @@ import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/advertisements/advertisement_widget.dart';
 import 'package:conectacampo/presentation/seller/new_advertisement/new_advertisement_page.dart';
 import 'package:conectacampo/presentation/seller/seller_main_page.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -19,12 +20,13 @@ class SellerSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    setupNotifications(context);
     return Navigator(
       key: navigatorKey,
       onGenerateRoute: (settings) => MaterialPageRoute(
           settings: settings,
           builder: (context) => Scaffold(
-            appBar: SellerDefaultAppBar(),
+                appBar: SellerDefaultAppBar(),
                 body: BlocConsumer<SellerSummaryBloc, SellerSummaryState>(
                   listener: (context, state) async {
                     if (state.cancellingReservation) {
@@ -140,9 +142,15 @@ class SellerSummary extends StatelessWidget {
                       ],
                     ),
                   ),
-            ),
+                ),
               )),
     );
+  }
+
+  void setupNotifications(BuildContext context) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      context.read<SellerSummaryBloc>().add(const SellerSummaryEvent.started());
+    });
   }
 }
 
@@ -211,7 +219,7 @@ class SellerAdvertisements extends StatelessWidget {
           return Container();
         },
             (a) => a.fold(
-                    (l) => const Center(
+                (l) => const Center(
                       child: Text('Erro ao carregar suas feiras'),
                     ),
                 (r) => r.isEmpty

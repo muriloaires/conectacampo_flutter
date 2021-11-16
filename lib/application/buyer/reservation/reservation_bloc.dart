@@ -24,7 +24,7 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
   ) async* {
     yield* event.map(
       started: (started) async* {
-        yield state.copyWith(loading: true);
+        yield state.copyWith(loading: true, optionOfReservationListFailureOrSuccess: some(right([])));
         final successOrFailure =
             await reservationFacade.getCurrentUserReservations();
         yield state.copyWith(

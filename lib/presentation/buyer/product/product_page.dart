@@ -26,8 +26,8 @@ class ProductPage extends StatelessWidget {
       create: (context) => getIt()..add(ProductPageEvent.started(_product)),
       child: BlocConsumer<ProductPageBloc, ProductPageState>(
           listener: (context, state) {
-            if (context.read<ProductPageBloc>().state.setInitialQuantity) {
-              context
+        if (context.read<ProductPageBloc>().state.setInitialQuantity) {
+          context
               .read<ProductPageBloc>()
               .state
               .optionOfReservatiomItemFailureOrSuccess
@@ -178,16 +178,16 @@ class ProductPage extends StatelessWidget {
                                 height: 16,
                                 color: Colors.white,
                               ),
-                              const Text.rich(TextSpan(
+                              Text.rich(TextSpan(
                                   text: 'Produtos e Retirada em: ',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 12,
                                   ),
                                   children: [
                                     TextSpan(
-                                      text: 'Ceasa Goiânia',
-                                      style: TextStyle(
+                                      text: state.place?.name ?? '',
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold),
                                     )
                                   ]))
@@ -245,13 +245,15 @@ class ProductPage extends StatelessWidget {
                                 color: ColorSet.grayRoundedBackground,
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(2.0),
-                                ),),
+                                ),
+                              ),
                               child: Text(
                                 _product.rating,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 12,
-                                  color: ColorSet.gray2,),
+                                  color: ColorSet.gray2,
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -387,7 +389,7 @@ class ProductPage extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                               child: ClipRRect(
                                 borderRadius:
-                                const BorderRadius.all(Radius.circular(8)),
+                                    const BorderRadius.all(Radius.circular(8)),
                                 child: Container(
                                     color: ColorSet.grayRoundedBackground,
                                     child: Center(
@@ -431,16 +433,21 @@ class ProductPage extends StatelessWidget {
                             height: 16,
                           ),
                           MaterialButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              await openWhatsapp(_product
+                                      .advertisement?.seller.phoneNumber
+                                      .getOrCrash() ??
+                                  '');
+                            },
                             child: ClipRRect(
                                 borderRadius:
-                                const BorderRadius.all(Radius.circular(8)),
+                                    const BorderRadius.all(Radius.circular(8)),
                                 child: Container(
                                   padding: const EdgeInsets.all(8),
                                   color: ColorSet.green1,
                                   child: Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       const Flexible(
                                         child: Text(
@@ -477,14 +484,14 @@ class ProductPage extends StatelessWidget {
                             },
                             child: ClipRRect(
                                 borderRadius:
-                                const BorderRadius.all(Radius.circular(8)),
+                                    const BorderRadius.all(Radius.circular(8)),
                                 child: Container(
                                   padding: const EdgeInsets.all(16),
                                   color: context
-                                      .read<ProductPageBloc>()
-                                      .state
-                                      .reservationQuantity
-                                      .isValid()
+                                          .read<ProductPageBloc>()
+                                          .state
+                                          .reservationQuantity
+                                          .isValid()
                                       ? ColorSet.green1
                                       : ColorSet.gray2,
                                   child: const Center(
@@ -517,7 +524,7 @@ class ProductPage extends StatelessWidget {
                             children: [
                               TextSpan(
                                   text:
-                                  ' Converse com o vendedor e combinem o horário para retirar sua compra.',
+                                      ' Converse com o vendedor e combinem o horário para retirar sua compra.',
                                   style: TextStyle(
                                       fontWeight: FontWeight.normal,
                                       color: Colors.black))
@@ -533,7 +540,7 @@ class ProductPage extends StatelessWidget {
                             children: [
                               TextSpan(
                                   text:
-                                  'Você vai escolher o horário para retirar a compra com o vendedor',
+                                      'Você vai escolher o horário para retirar a compra com o vendedor',
                                   style: TextStyle(
                                       fontWeight: FontWeight.normal,
                                       color: Colors.black))
@@ -567,7 +574,7 @@ class ProductPage extends StatelessWidget {
                                 physics: const ClampingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount:
-                                _product.advertisement?.products.length,
+                                    _product.advertisement?.products.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
@@ -619,63 +626,63 @@ class ProductPage extends StatelessWidget {
                             physics: const ClampingScrollPhysics(),
                             children: [
                               const SizedBox(height: 20),
-                                  const Text(
-                                    'Informações sobre o vendedor:',
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorSet.gray2),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Advertiser(
-                                      isSearch: true,
-                                      seller: _product.advertisement!.seller),
-                                  const SizedBox(height: 10),
-                                  MaterialButton(
-                                    onPressed: () {
-                                      openWhatsapp(_product
-                                          .advertisement!.seller.phoneNumber
-                                          .getOrCrash());
-                                    },
-                                    child: ClipRRect(
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(8)),
-                                        child: Container(
-                                          padding: const EdgeInsets.all(8),
-                                          color: ColorSet.green1,
-                                          child: Row(
-                                            mainAxisAlignment:
+                              const Text(
+                                'Informações sobre o vendedor:',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: ColorSet.gray2),
+                              ),
+                              const SizedBox(height: 10),
+                              Advertiser(
+                                  isSearch: true,
+                                  seller: _product.advertisement!.seller),
+                              const SizedBox(height: 10),
+                              MaterialButton(
+                                onPressed: () async {
+                                  await openWhatsapp(_product
+                                      .advertisement!.seller.phoneNumber
+                                      .getOrCrash());
+                                },
+                                child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(8)),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(8),
+                                      color: ColorSet.green1,
+                                      child: Row(
+                                        mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              const Flexible(
-                                                child: Text(
-                                                  'Se preferir, fale direto com o vendedor',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              SvgPicture.asset(
-                                                'assets/whatsapp.svg',
+                                        children: [
+                                          const Flexible(
+                                            child: Text(
+                                              'Se preferir, fale direto com o vendedor',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
                                                 color: Colors.white,
-                                              )
-                                            ],
+                                              ),
+                                            ),
                                           ),
-                                        )),
-                                  ),
-                                  TextButton(
-                                      onPressed: () {},
-                                      child: const Text(
-                                        'Entrar no grupo do vendedor',
-                                        style: TextStyle(
-                                            color: ColorSet.green2,
-                                            decoration: TextDecoration.underline),
-                                      ))
-                                ],
-                              )),
+                                          const SizedBox(width: 10),
+                                          SvgPicture.asset(
+                                            'assets/whatsapp.svg',
+                                            color: Colors.white,
+                                          )
+                                        ],
+                                      ),
+                                    )),
+                              ),
+                              TextButton(
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'Entrar no grupo do vendedor',
+                                    style: TextStyle(
+                                        color: ColorSet.green2,
+                                        decoration: TextDecoration.underline),
+                                  ))
+                            ],
+                          )),
                         const SizedBox(height: 50)
                       ],
                     ),

@@ -29,8 +29,9 @@ class CartPage extends StatelessWidget {
 
           state.optionOfReservationResponse.fold(() => null, (a) {
             String errorMessage = '';
-            for(final error in a.errors ?? List<ErrorResponse>.empty()){
-              if (error.key.contains('product_reservations.quantity_not_enough')){
+            for (final error in a.errors ?? List<ErrorResponse>.empty()) {
+              if (error.key
+                  .contains('product_reservations.quantity_not_enough')) {
                 errorMessage = 'Quantidade insuficiente';
               }
             }
@@ -104,7 +105,49 @@ class CartPage extends StatelessWidget {
           state.optionOfreservationResultSuccessOrFailure.fold(
               () => null,
               (a) => a.fold((l) => null, (r) {
-                    Navigator.of(context).pop(true);
+                    showDialog<String>(
+                      context: context,
+                      builder: (BuildContext dialogContext) => Dialog(
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: [
+                            const Divider(),
+                            const CircleAvatar(
+                              radius: 35,
+                              backgroundColor: ColorSet.green1,
+                              child: Icon(
+                                Icons.check,
+                                size: 48,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const Divider(),
+                            const Center(
+                              child: Text('Pedido efetuado com sucesso!',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                            ),
+                            const Divider(height: 8),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(dialogContext);
+                                      Navigator.of(context)
+                                          .pushNamedAndRemoveUntil(
+                                              '/buyer_main', (route) => false);
+                                    },
+                                    child: const Text('Ok',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: ColorSet.grayDark)))
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    );
                   }));
         },
         builder: (context, state) => Scaffold(

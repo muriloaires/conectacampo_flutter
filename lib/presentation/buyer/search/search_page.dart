@@ -23,7 +23,7 @@ class SearchForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SearchFormBloc, SearchFormState>(
-        listener: (context, state) {
+      listener: (context, state) {
         if (state.searching) {
           EasyLoading.show(status: 'Carregando', dismissOnTap: true);
         } else {
@@ -48,7 +48,9 @@ class SearchForm extends StatelessWidget {
                   .optionOfAdsProductsFailureOrSuccess
                   .fold(
                     () => Container(),
-                    (a) => a.fold((l) => const Text('Error'), (r) {
+                    (a) => a.fold(
+                        (l) => const Center(child: Text('Algum erro ocorreu')),
+                        (r) {
                       if (r.isEmpty) {
                         return const Center(
                           child: Padding(
@@ -130,10 +132,18 @@ class SearchAppBar extends StatelessWidget {
                   child: BlocConsumer<SearchFormBloc, SearchFormState>(
                     listener: (context, state) {},
                     builder: (context, state) {
-                      textController.text = context.read<SearchFormBloc>().state.optionOfSelectedProduct.fold(() => '', (a) => a.name);
+                      textController.text = context
+                          .read<SearchFormBloc>()
+                          .state
+                          .optionOfSelectedProduct
+                          .fold(() => '', (a) => a.name);
                       return TextField(
                         autofocus: true,
-                        controller: context.read<SearchFormBloc>().state.optionOfSelectedProduct.fold(() => null, (a) => textController),
+                        controller: context
+                            .read<SearchFormBloc>()
+                            .state
+                            .optionOfSelectedProduct
+                            .fold(() => null, (a) => textController),
                         onChanged: (newValue) {
                           context
                               .read<SearchFormBloc>()
@@ -221,6 +231,7 @@ class SearchAppBar extends StatelessWidget {
     );
   }
 }
+
 //
 class SearchFilters extends StatelessWidget {
   @override
@@ -242,9 +253,9 @@ class SearchFilters extends StatelessWidget {
           children: [
             const ListTile(
                 title: Text(
-                  'Filtrar por:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                )),
+              'Filtrar por:',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )),
             ListTile(
               title: const Text('Tipo'),
               subtitle: Text(
@@ -275,7 +286,6 @@ class SearchFilters extends StatelessWidget {
                 itemCount: kinds.length,
               ),
             ),
-
             ListTile(
               title: const Text('Classificação'),
               subtitle: Text(
@@ -299,7 +309,7 @@ class SearchFilters extends StatelessWidget {
                   ),
                   value: index,
                   groupValue:
-                  context.read<SearchFormBloc>().state.ratingRadioValue,
+                      context.read<SearchFormBloc>().state.ratingRadioValue,
                   onChanged: (value) => context
                       .read<SearchFormBloc>()
                       .add(SearchFormEvent.onRadioRatingTap(index)),
@@ -374,7 +384,9 @@ class SearchFilters extends StatelessWidget {
                     ),
                   )),
             ),
-            const SizedBox(height: 40,)
+            const SizedBox(
+              height: 40,
+            )
           ],
         );
       },

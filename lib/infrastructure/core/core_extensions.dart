@@ -22,8 +22,6 @@ extension StringDateExtension on String {
   }
 }
 
-
-
 extension DateTimeExtensions on DateTime {
   String getDayMonthYear() {
     return DateFormat('dd-MM-yyyy').format(this);
@@ -69,26 +67,23 @@ extension IntDateExtensions on int {
 
 Future openWhatsapp(String phone) async {
   var editedPhone = phone;
-  if(!phone.contains('+55')){
+  if (!phone.contains('+55')) {
     editedPhone = '+55$phone';
   }
-  if(Platform.isAndroid){
+  if (Platform.isAndroid) {
     var whatsappUrl = "whatsapp://send?phone=$editedPhone";
 
-    await canLaunch(whatsappUrl)
-        ? launch(whatsappUrl)
-        : EasyLoading.showError(
-        "Whatsapp não instalado",
-        duration: const Duration(seconds: 2));
+    // await canLaunch(whatsappUrl)
+    //     ? launch(whatsappUrl)
+    //     : EasyLoading.showError("Whatsapp não instalado",
+    //         duration: const Duration(seconds: 2));
   } else {
-    var whatappURL_ios ="https://wa.me/$editedPhone";
-    if( await canLaunch(whatappURL_ios)){
+    var whatappURL_ios = "https://wa.me/$editedPhone";
+    if (await canLaunch(whatappURL_ios)) {
       await launch(whatappURL_ios, forceSafariVC: false);
-    }else{
-      EasyLoading.showError(
-          "Whatsapp não instalado",
+    } else {
+      EasyLoading.showError("Whatsapp não instalado",
           duration: const Duration(seconds: 2));
-
     }
-
+  }
 }

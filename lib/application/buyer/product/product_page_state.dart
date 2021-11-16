@@ -10,7 +10,9 @@ class ProductPageState with _$ProductPageState {
       required bool setInitialQuantity,
       required bool back,
       required bool showInserted,
-      required bool showErrorMsg}) = _ProductPageState;
+      required bool showErrorMsg,
+      required Place? place}) = _ProductPageState;
+
   factory ProductPageState.initial() => ProductPageState(
       reservationQuantity: ReservationQuantity(''),
       showErrorsMessage: false,
@@ -18,5 +20,6 @@ class ProductPageState with _$ProductPageState {
       setInitialQuantity: true,
       back: false,
       showInserted: false,
-      showErrorMsg: false);
+      showErrorMsg: false,
+      place: null);
 }

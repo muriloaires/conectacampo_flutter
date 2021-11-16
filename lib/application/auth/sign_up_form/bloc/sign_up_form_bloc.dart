@@ -8,7 +8,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'sign_up_form_bloc_event.dart';
+
 part 'sign_up_form_bloc_state.dart';
+
 part 'sign_up_form_bloc.freezed.dart';
 
 @injectable
@@ -31,19 +33,21 @@ class SignUpFormBloc extends Bloc<SignUpFormBlocEvent, SignUpFormBlocState> {
       Either<AuthFailure, Unit> failureOrSuccess =
           left(const AuthFailure.applicationError());
 
-      if (!state.fullName.isValid()) {
+      if (!(state.fullName?.isValid() ?? false)) {
         failureOrSuccess = left(const AuthFailure.invalidFullName());
-      } else if (!state.nickname.isValid()) {
+      } else if (!(state.nickname?.isValid() ?? false)) {
         failureOrSuccess = left(const AuthFailure.invalidNickname());
       } else {
         failureOrSuccess = right(unit);
       }
 
-      if (state.fullName.isValid() && state.nickname.isValid()) {
+      if ((state.fullName?.isValid() ?? false) &&
+          (state.nickname?.isValid() ?? false)) {
         yield state.copyWith(authFailureOrSuccessOption: none());
 
         _authFacade.onNameAndNicknameSelected(
-            state.fullName.getOrCrash(), state.nickname.getOrCrash());
+            state.fullName?.getOrCrash() ?? '',
+            state.nickname?.getOrCrash() ?? '');
       }
 
       yield state.copyWith(
@@ -61,11 +65,12 @@ class SignUpFormBloc extends Bloc<SignUpFormBlocEvent, SignUpFormBlocState> {
       Either<AuthFailure, Unit> failureOrSuccess =
           left(const AuthFailure.applicationError());
 
-      if (state.fullName.isValid() && state.nickname.isValid()) {
+      if ((state.fullName?.isValid() ?? false) &&
+          (state.nickname?.isValid() ?? false)) {
         yield state.copyWith(
             isSubmitting: true, authFailureOrSuccessOption: none());
-        failureOrSuccess = await _authFacade.signUp(state.fullName,
-            state.nickname, state.optionOfAvatar.fold(() => '', (a) => a));
+        failureOrSuccess = await _authFacade.signUp(state.fullName!,
+            state.nickname!, state.optionOfAvatar.fold(() => '', (a) => a));
       }
 
       yield state.copyWith(

@@ -20,53 +20,60 @@ class SignUpForm extends StatelessWidget {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorSet.colorPrimaryGreenButton,
-        onPressed: () {
-          context
-              .read<SignUpFormBloc>()
-              .add(const SignUpFormBlocEvent.btnSignUpPressed());
+      floatingActionButton: BlocBuilder<SignUpFormBloc, SignUpFormBlocState>(
+        builder: (context, state) {
+          return Visibility(
+            visible:
+                (context.read<SignUpFormBloc>().state.fullName?.isValid() ??
+                        false) &&
+                    (context.read<SignUpFormBloc>().state.nickname?.isValid() ??
+                        false),
+            child: FloatingActionButton(
+              backgroundColor: ColorSet.colorPrimaryGreenButton,
+              onPressed: () {
+                context
+                    .read<SignUpFormBloc>()
+                    .add(const SignUpFormBlocEvent.btnSignUpPressed());
+              },
+              child: const Icon(Icons.chevron_right),
+            ),
+          );
         },
-        child: const Icon(Icons.chevron_right),
       ),
       body: Padding(
         padding: const EdgeInsets.all(32.0),
         child: BlocConsumer<SignUpFormBloc, SignUpFormBlocState>(
             listener: (context, state) {
-          if (state.navigateNext) {
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil('/buyer_main', (route) => false);
-          } else {
-            state.authFailureOrSuccessOption.fold(
-                () => {},
-                (either) => either.fold((failure) {
-                      final String errorText = failure.maybeMap(
-                          serverError: (_) => 'Erro interno',
-                          invalidPhoneNumber: (_) =>
-                              'Número de telefone inválido',
-                          invalidVerificationId: (_) =>
-                              'A verificação falhou. Tente novamente',
-                          applicationError: (_) => 'A aplicação falhou',
-                          orElse: () => '');
-                      if (errorText.isEmpty == false) {
-                        final snackBar = SnackBar(content: Text(errorText));
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      }
-                    }, (_) async {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/avatar_page', (route) => false);
-                      // final userType = await loadLoggedUserType();
-                      // if (userType != null) {
-                      //   if (userType == 'buyer') {
-                      //     Navigator.of(context).pushNamedAndRemoveUntil(
-                      //         '/buyer_main', (route) => false);
-                      //   } else {
-                      //     Navigator.of(context).pushNamedAndRemoveUntil(
-                      //         '/seller_main', (route) => false);
-                      //   }
-                      // }
-                    }));
-          }
+          state.authFailureOrSuccessOption.fold(
+              () => {},
+              (either) => either.fold((failure) {
+                    final String errorText = failure.maybeMap(
+                        serverError: (_) => 'Erro interno',
+                        invalidPhoneNumber: (_) =>
+                            'Número de telefone inválido',
+                        invalidVerificationId: (_) =>
+                            'A verificação falhou. Tente novamente',
+                        applicationError: (_) => 'A aplicação falhou',
+                        orElse: () => '');
+                    if (errorText.isEmpty == false) {
+                      final snackBar = SnackBar(content: Text(errorText));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                  }, (_) async {
+                    Navigator.of(context).pushNamed(
+                      '/avatar_page',
+                    );
+                    // final userType = await loadLoggedUserType();
+                    // if (userType != null) {
+                    //   if (userType == 'buyer') {
+                    //     Navigator.of(context).pushNamedAndRemoveUntil(
+                    //         '/buyer_main', (route) => false);
+                    //   } else {
+                    //     Navigator.of(context).pushNamedAndRemoveUntil(
+                    //         '/seller_main', (route) => false);
+                    //   }
+                    // }
+                  }));
         }, builder: (context, state) {
           return Form(
             autovalidate: state.showErrorMessages,
@@ -100,7 +107,7 @@ class SignUpForm extends StatelessWidget {
                       .read<SignUpFormBloc>()
                       .state
                       .fullName
-                      .value
+                      ?.value
                       .fold(
                           (l) => l.maybeMap(
                               invalidFullName: (_) => 'Nome inválido',
@@ -132,13 +139,13 @@ class SignUpForm extends StatelessWidget {
                       .read<SignUpFormBloc>()
                       .state
                       .nickname
-                      .value
+                      ?.value
                       .fold(
                           (l) => l.maybeMap(
                               invalidNickname: (_) => 'Apelido ausente',
                               orElse: () => null),
                           (_) => null),
-                  keyboardType:  TextInputType.name,
+                  keyboardType: TextInputType.name,
                   decoration: const InputDecoration(
                       hintStyle: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
                       hintText: 'Como gostaria de ser chamado no app?'),

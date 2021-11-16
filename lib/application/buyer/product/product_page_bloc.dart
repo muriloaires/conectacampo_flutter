@@ -2,18 +2,22 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_failure.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 
 import 'package:conectacampo/domain/reservation/value_objects.dart';
+import 'package:conectacampo/infrastructure/places/place_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'product_page_event.dart';
+
 part 'product_page_state.dart';
+
 part 'product_page_bloc.freezed.dart';
 
 @injectable
@@ -29,10 +33,13 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
     yield* event.map(started: (started) async* {
       final reservation =
           await reservationFacade.getReservationItemByProduct(started.product);
+
+      final place = await loadSelectedPlace();
       yield state.copyWith(
           setInitialQuantity: true,
           optionOfReservatiomItemFailureOrSuccess:
-              reservation.fold(() => none(), (a) => some(right(a))));
+              reservation.fold(() => none(), (a) => some(right(a))),
+          place: place);
     }, ammountChanged: (ammountChanged) async* {
       yield state.copyWith(
           reservationQuantity: ReservationQuantity(ammountChanged.ammount),

@@ -83,53 +83,9 @@ class BuyerMainPage extends StatelessWidget {
           }
 
           if (state.openCart) {
-            final success = await Navigator.of(context).push(MaterialPageRoute(
+            Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => const CartPage(),
-            )) as bool?;
-            if (success != null && success) {
-              context.read<GroupBloc>().add(const GroupEvent.started());
-              context
-                  .read<ReservationBloc>()
-                  .add(const ReservationEvent.started());
-              showDialog<String>(
-                context: context,
-                builder: (BuildContext dialogContext) => Dialog(
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: [
-                      const Divider(),
-                      const CircleAvatar(
-                        radius: 35,
-                        backgroundColor: ColorSet.green1,
-                        child: Icon(
-                          Icons.check,
-                          size: 48,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const Divider(),
-                      const Center(
-                        child: Text('Pedido efetuado com sucesso!',
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      ),
-                      const Divider(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text('Ok',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: ColorSet.grayDark)))
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              );
-            }
-            context.read<BuyerMenuBloc>().add(const BuyerMenuEvent.started());
+            ));
           }
         },
         builder: (context, state) {
@@ -329,7 +285,6 @@ class BuyerMainPage extends StatelessWidget {
   void setupNotifications(BuildContext context) {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       Flushbar(
-
         flushbarPosition: FlushbarPosition.TOP,
         titleSize: 16,
         title: message.notification?.title,
