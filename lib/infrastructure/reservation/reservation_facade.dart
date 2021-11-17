@@ -8,6 +8,7 @@ import 'package:conectacampo/domain/reservation/reservation_failure.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/infrastructure/core/database/database_provider.dart';
 import 'package:conectacampo/infrastructure/core/http_constants.dart';
+import 'package:conectacampo/infrastructure/places/place_repository.dart';
 import 'package:conectacampo/infrastructure/reservation/model/model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -103,8 +104,9 @@ class ReservationFacade extends IReservationFacade {
   @override
   Future<Either<ReservationFailure, List<Reservation>>>
       getCurrentUserReservations() async {
-    final url = Uri.https(
-        baseUrl, '$apiVersion$routeCurrentUserReservations', {'as': 'buyer'});
+    final place = await loadSelectedPlace();
+    final url = Uri.https(baseUrl, '$apiVersion$routeCurrentUserReservations',
+        {'as': 'buyer', 'future_delivery': 'true', 'place_id': place?.id});
     final response = await getAuthenticatedRequest(url, getApiHeader());
 
     final code = response.statusCode;
@@ -125,8 +127,9 @@ class ReservationFacade extends IReservationFacade {
   @override
   Future<Either<ReservationFailure, List<Reservation>>>
       getSellerReservations() async {
-    final url = Uri.https(
-        baseUrl, '$apiVersion$routeCurrentUserReservations', {'as': 'seller'});
+    final place = await loadSelectedPlace();
+    final url = Uri.https(baseUrl, '$apiVersion$routeCurrentUserReservations',
+        {'as': 'seller', 'future_delivery': 'true', 'place_id': place?.id});
     final response = await getAuthenticatedRequest(url, getApiHeader());
 
     final code = response.statusCode;

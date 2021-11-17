@@ -28,7 +28,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   Future<Either<AdvertisementFailure, List<Advertisement>>> getAdvertisements(
       Place place) async {
     final url = Uri.https(baseUrl, '$apiVersion$routeAdvertisements',
-        {'place_id': place.id.toString()});
+        {'place_id': place.id.toString(), 'future_delivery': 'true'});
     final response = await getAuthenticatedRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
