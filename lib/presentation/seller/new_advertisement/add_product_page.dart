@@ -331,7 +331,7 @@ class NewProductWidget extends StatelessWidget {
                   maxLines: 10,
                   decoration: const InputDecoration(
                       hintText:
-                          'Descreva aqui informações complementares e relevantes que não constam nos campos acima”')),
+                          'Descreva aqui informações complementares e relevantes que não constam nos campos acima')),
             ))
           ],
         );
