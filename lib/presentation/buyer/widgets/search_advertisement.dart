@@ -37,6 +37,7 @@ class SearchAdvertisement extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(32, 18, 32, 18),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
                     width: 74,
@@ -96,7 +97,9 @@ class SearchAdvertisement extends StatelessWidget {
                         ],
                       )
                     ],
-                  )
+                  ),
+
+                  IconButton(onPressed: (){}, icon: Icon(Icons.ac_unit))
                 ],
               ),
             ),

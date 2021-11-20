@@ -4,6 +4,7 @@ import 'package:conectacampo/application/buyer/product/product_page_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/injection.dart';
+import 'package:conectacampo/presentation/buyer/cart/cart_page.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertiser.dart';
 import 'package:conectacampo/presentation/buyer/widgets/product_advertisement.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
@@ -25,109 +26,94 @@ class ProductPage extends StatelessWidget {
     return BlocProvider<ProductPageBloc>(
       create: (context) => getIt()..add(ProductPageEvent.started(_product)),
       child: BlocConsumer<ProductPageBloc, ProductPageState>(
-          listener: (context, state) {
-        if (context.read<ProductPageBloc>().state.setInitialQuantity) {
-          context
-              .read<ProductPageBloc>()
-              .state
-              .optionOfReservatiomItemFailureOrSuccess
-              .fold(() => null, (a) {
-            a.fold((l) => null, (r) {
-              context
-                  .read<ProductPageBloc>()
-                  .add(ProductPageEvent.ammountChanged(r.quantity.toString()));
-              textController.text = r.quantity.toString();
-            });
-          });
+          listener: (context, state) async {
+        final productPageBloc = context.read<ProductPageBloc>();
+        final buyerMenuBloc = context.read<BuyerMenuBloc>();
+        if (state.openCart) {
+          await Navigator.of(context, rootNavigator: true)
+              .push(MaterialPageRoute(
+            builder: (context) => const CartPage(),
+          ));
+          buyerMenuBloc.add(const BuyerMenuEvent.started());
+          productPageBloc.add(ProductPageEvent.started(_product));
         }
 
-        state.optionOfReservatiomItemFailureOrSuccess.fold(
-            () => null,
-            (a) => a.fold((l) {
-                  if (state.showErrorMsg) {
-                    l.maybeMap(
-                      anotherSellerInCart: (anotherSellerInCart) =>
-                          showDialog<String>(
-                        context: context,
-                        builder: (BuildContext dialogContext) => Dialog(
-                          child: ListView(
-                            shrinkWrap: true,
-                            children: [
-                              const Divider(),
-                              CircleAvatar(
-                                radius: 35,
-                                backgroundColor: Colors.amber[400],
-                                child: const Text(
-                                  '!',
-                                  style: TextStyle(
-                                      fontSize: 40,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              const Divider(),
-                              const Center(
-                                child: Text(
-                                    'Há produtos de outro vendedor ou de outra feira em seu carrinho!',
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                              const Divider(height: 8),
-                              const Center(
-                                child: SizedBox(
-                                  width: 180,
-                                  child: Text(
-                                    'Você pode concluir ou cancelar o pedido',
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ),
-                              const Divider(height: 8),
-                              Container(height: 1, color: ColorSet.grayLine),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(dialogContext).pop();
-                                      context.read<BuyerMenuBloc>().add(
-                                            const BuyerMenuEvent.onCartTapped(),
-                                          );
-                                    },
-                                    child: const Text(
-                                      'Ir para o carrinho',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorSet.grayDark,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
+        productPageBloc.state.reservationItemFailureOrSuccess?.fold((l) => null,
+            (r) {
+          textController.text = r.quantity.toString();
+        });
+
+        state.reservationItemFailureOrSuccess?.fold((l) {
+          if (state.showErrorMsg) {
+            l.maybeMap(
+              anotherSellerInCart: (anotherSellerInCart) => showDialog<String>(
+                context: context,
+                builder: (BuildContext dialogContext) => Dialog(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      const Divider(),
+                      CircleAvatar(
+                        radius: 35,
+                        backgroundColor: Colors.amber[400],
+                        child: const Text(
+                          '!',
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      const Divider(),
+                      const Center(
+                        child: Text(
+                            'Há produtos de outro vendedor ou de outra feira em seu carrinho!',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                      const Divider(height: 8),
+                      const Center(
+                        child: SizedBox(
+                          width: 180,
+                          child: Text(
+                            'Você pode concluir ou cancelar o pedido',
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),
-                      errorInsertingInCart: (errorInsertingInCart) =>
-                          EasyLoading.showError(
-                              'Erro ao inserir produto no carrinho',
-                              duration: const Duration(seconds: 1)),
-                      orElse: () {},
-                    );
-                  }
-                }, (r) => null));
-
-        if (state.showInserted) {
-          EasyLoading.showSuccess('Produto inserido com sucesso!',
-              duration: const Duration(seconds: 2));
-        }
-
-        if (state.back) {
-          context.read<BuyerMenuBloc>().add(const BuyerMenuEvent.started());
-          Navigator.of(context).pop();
-        }
+                      const Divider(height: 8),
+                      Container(height: 1, color: ColorSet.grayLine),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(dialogContext).pop();
+                              context.read<BuyerMenuBloc>().add(
+                                    const BuyerMenuEvent.onCartTapped(),
+                                  );
+                            },
+                            child: const Text(
+                              'Ir para o carrinho',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorSet.grayDark,
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              errorInsertingInCart: (errorInsertingInCart) =>
+                  EasyLoading.showError('Erro ao inserir produto no carrinho',
+                      duration: const Duration(seconds: 1)),
+              orElse: () {},
+            );
+          }
+        }, (r) => null);
       }, builder: (context, state) {
         return Scaffold(
             appBar: AppBar(
@@ -409,7 +395,7 @@ class ProductPage extends StatelessWidget {
                                                 (r) => null),
                                         onChanged: (value) {
                                           context.read<ProductPageBloc>().add(
-                                              ProductPageEvent.ammountChanged(
+                                              ProductPageEvent.amountChanged(
                                                   value));
                                         },
                                         textAlign: TextAlign.center,

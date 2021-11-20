@@ -26,7 +26,7 @@ class _TutorialState extends State<Tutorial> {
               onPageChanged: (page) {
                 setState(() {
                   _showArrowLeft = page != 0;
-                  _showBtnRegister = page == 4;
+                  _showBtnRegister = page == 3;
                 });
               },
               controller: _pageController,
@@ -38,7 +38,7 @@ class _TutorialState extends State<Tutorial> {
                         const SizedBox(
                           width: double.infinity,
                           child: Text(
-                            'Quem somos!',
+                            'Quem somos',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: ColorSet.colorPrimaryGreen,
@@ -51,7 +51,7 @@ class _TutorialState extends State<Tutorial> {
                         const SizedBox(
                           height: 180,
                           child: Text(
-                            'Somos uma plataforma que conecta Compradores e Vendedores de hortaliças frutas e legumes na sua região de maneira fácil e prática.',
+                            'Somos uma plataforma que conecta Compradores e Vendedores de hortaliças, frutas e legumes na sua região de maneira fácil e prática.',
                             style: TextStyle(height: 2),
                           ),
                         ),
@@ -73,7 +73,7 @@ class _TutorialState extends State<Tutorial> {
                           const SizedBox(
                             width: double.infinity,
                             child: Text(
-                              'Procure!',
+                              'Procure',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: ColorSet.colorPrimaryGreen,
@@ -122,7 +122,7 @@ class _TutorialState extends State<Tutorial> {
                             width: double.infinity,
                             // ignore: prefer_const_constructors
                             child: Text(
-                              'Encontre!',
+                              'Encontre',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: ColorSet.colorPrimaryGreen,
@@ -149,40 +149,6 @@ class _TutorialState extends State<Tutorial> {
                           )
                         ],
                       ),
-                    )),
-                Padding(
-                    padding: const EdgeInsets.fromLTRB(32, 60, 32, 0),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            'Facilidade',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorSet.colorPrimaryGreen,
-                                fontSize: 40),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const SizedBox(
-                          height: 180,
-                          child: Text(
-                            'Com o nosso sistema de conexão, compradores e vendedores.',
-                            style: TextStyle(height: 2),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Image.asset(
-                          'assets/onboarding_1.png',
-                          height: 250,
-                          width: 250,
-                        )
-                      ],
                     )),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(32, 60, 32, 0),
@@ -244,7 +210,7 @@ class _TutorialState extends State<Tutorial> {
                       children: [
                         SmoothPageIndicator(
                             controller: _pageController, // PageController
-                            count: 5,
+                            count: 4,
                             effect: const JumpingDotEffect(
                                 activeDotColor: ColorSet.colorPrimaryGreen,
                                 dotColor: ColorSet.colorPrimaryGreenDisabled,

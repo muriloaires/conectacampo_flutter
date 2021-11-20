@@ -36,28 +36,28 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
 
       final place = await loadSelectedPlace();
       yield state.copyWith(
-          setInitialQuantity: true,
-          optionOfReservatiomItemFailureOrSuccess:
-              reservation.fold(() => none(), (a) => some(right(a))),
+          reservationItemFailureOrSuccess:
+              reservation.fold(() => null, (a) => right(a)),
           place: place);
-    }, ammountChanged: (ammountChanged) async* {
+    }, amountChanged: (amountChanged) async* {
       yield state.copyWith(
-          reservationQuantity: ReservationQuantity(ammountChanged.ammount),
-          setInitialQuantity: false,
-          showErrorMsg: false);
+          reservationQuantity: ReservationQuantity(amountChanged.amount),
+          showErrorMsg: false,
+          reservationItemFailureOrSuccess: null);
     }, onBtnReservationTap: (onBtnReservationTap) async* {
-      final reservatiomItem =
+      final reservationItem =
           ReservationItem.fromAdProduct(onBtnReservationTap.product);
 
       final result = await reservationFacade.insertReservationItemToCart(
-          reservatiomItem.copyWith(
+          reservationItem.copyWith(
               quantity: int.parse(state.reservationQuantity.getOrCrash())));
 
       yield state.copyWith(
-          optionOfReservatiomItemFailureOrSuccess: some(result),
-          back: result.isRight(),
-          showInserted: result.isRight(),
-          showErrorMsg: true);
+          reservationItemFailureOrSuccess: result,
+          showErrorMsg: true,
+          openCart: true);
+
+      yield state.copyWith(openCart: false);
     });
   }
 }

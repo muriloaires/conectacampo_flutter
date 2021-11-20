@@ -83,9 +83,10 @@ class BuyerMainPage extends StatelessWidget {
           }
 
           if (state.openCart) {
-            Navigator.of(context).push(MaterialPageRoute(
+            await Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => const CartPage(),
             ));
+            context.read<BuyerMenuBloc>().add(const BuyerMenuEvent.started());
           }
         },
         builder: (context, state) {

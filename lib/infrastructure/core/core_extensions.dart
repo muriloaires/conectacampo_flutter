@@ -73,10 +73,10 @@ Future openWhatsapp(String phone) async {
   if (Platform.isAndroid) {
     var whatsappUrl = "whatsapp://send?phone=$editedPhone";
 
-    // await canLaunch(whatsappUrl)
-    //     ? launch(whatsappUrl)
-    //     : EasyLoading.showError("Whatsapp não instalado",
-    //         duration: const Duration(seconds: 2));
+    await canLaunch(whatsappUrl)
+        ? launch(whatsappUrl)
+        : EasyLoading.showError("Whatsapp não instalado",
+            duration: const Duration(seconds: 2));
   } else {
     var whatappURL_ios = "https://wa.me/$editedPhone";
     if (await canLaunch(whatappURL_ios)) {

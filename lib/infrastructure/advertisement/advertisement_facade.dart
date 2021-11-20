@@ -11,6 +11,7 @@ import 'package:conectacampo/infrastructure/advertisement/model/model.dart';
 import 'package:conectacampo/infrastructure/auth/token_repository.dart';
 import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/infrastructure/core/http_constants.dart';
+import 'package:conectacampo/infrastructure/places/place_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
@@ -236,7 +237,8 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   @override
   Future<Either<AdvertisementFailure, List<Advertisement>>>
       getGroupsAds() async {
-    final url = Uri.https(baseUrl, '$apiVersion$routeGroupsAds');
+    final place = await loadSelectedPlace();
+    final url = Uri.https(baseUrl, '$apiVersion$routeGroupsAds', {'place_id': place?.id});
     final response = await getAuthenticatedRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
