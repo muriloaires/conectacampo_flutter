@@ -130,6 +130,7 @@ class ReservationProductWidget extends StatelessWidget {
   final int index;
 
   const ReservationProductWidget({required this.product, required this.index});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SellerReservationBloc, SellerReservationState>(
@@ -170,8 +171,9 @@ class ReservationProductWidget extends StatelessWidget {
                                 child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                if (state.reservation.productReservations
-                                        .length >
+                                if ((state.reservation?.productReservations
+                                            .length ??
+                                        0) >
                                     1)
                                   IconButton(
                                       onPressed: () {

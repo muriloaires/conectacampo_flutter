@@ -16,6 +16,7 @@ import 'package:injectable/injectable.dart';
 part 'single_reservation_bloc.freezed.dart';
 
 part 'single_reservation_event.dart';
+
 part 'single_reservation_state.dart';
 
 @injectable
@@ -39,44 +40,50 @@ class SingleReservationBloc
       }
       yield state.copyWith(
           reservation: started.resservation,
-          optionOfAdFailureOrSuccess: optionOf(adFailureOrSuccess));
+          adFailureOrSuccess: adFailureOrSuccess);
     }, onAcceptPressed: (OnAcceptPressed value) async* {
-      final product = state.reservation.productReservations
+      final product = state.reservation?.productReservations
           .where((element) =>
               element.status == ReservationItemStatus.awaitingBuyer)
           .toList()[value.index];
-      final result = await reservationFacade.confirmProductReservation(product);
+      if (product != null) {
+        final result =
+            await reservationFacade.confirmProductReservation(product);
 
-      if (result.isLeft()) {
-        yield state.copyWith(showAcceptError: true);
-      } else {
-        final newReservation =
-            await reservationFacade.getReservation(state.reservation.id!);
-        if (newReservation.isRight()) {
-          yield state.copyWith(
-              reservation: newReservation.foldRight(
-                  state.reservation, (r, previous) => r));
+        if (result.isLeft()) {
+          yield state.copyWith(showAcceptError: true);
+        } else {
+          final newReservation =
+              await reservationFacade.getReservation(state.reservation!.id!);
+          if (newReservation.isRight()) {
+            yield state.copyWith(
+                reservation: newReservation.foldRight(
+                    state.reservation, (r, previous) => r));
+          }
         }
       }
     }, onAcceptErrorDisplayed: (OnAcceptErrorDisplayed value) async* {
       yield state.copyWith(showAcceptError: false);
     }, onCancelPressed: (OnCancelPressed value) async* {
-      final product = state.reservation.productReservations
+      final product = state.reservation?.productReservations
           .where((element) =>
               element.status == ReservationItemStatus.awaitingBuyer)
           .toList()[value.index];
-      final result = await reservationFacade.deleteProductReservation(product);
+      if (product != null) {
+        final result =
+            await reservationFacade.deleteProductReservation(product);
 
-      if (result.isLeft()) {
-        yield state.copyWith(showCancelItemError: true);
-      } else {
-        final list = state.reservation.productReservations;
-        list.remove(product);
-
-        yield state.copyWith(
-            reservation: state.reservation.copyWith(productReservations: []));
-        yield state.copyWith(
-            reservation: state.reservation.copyWith(productReservations: list));
+        if (result.isLeft()) {
+          yield state.copyWith(showCancelItemError: true);
+        } else {
+          final list = state.reservation?.productReservations ?? [];
+          list.remove(product);
+          yield state.copyWith(
+              reservation: state.reservation?.copyWith(productReservations: []));
+          yield state.copyWith(
+              reservation:
+                  state.reservation?.copyWith(productReservations: list));
+        }
       }
     }, onCancelErrorDisplayed: (OnCancelErrorDisplayed value) async* {
       yield state.copyWith(showCancelItemError: false);

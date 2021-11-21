@@ -54,7 +54,7 @@ class SellerReservationWidget extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
                                     fit: BoxFit.fill,
-                                    image: NetworkImage(state.reservation.buyer
+                                    image: NetworkImage(state.reservation?.buyer
                                             .mediumAvatar?.value
                                             .fold((l) => '', (r) => r) ??
                                         '')))),
@@ -65,14 +65,14 @@ class SellerReservationWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              state.reservation.buyer.name.getOrCrash(),
+                              state.reservation?.buyer.name ?? '',
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             const SizedBox(height: 8),
                             Text.rich(TextSpan(text: 'Placa: ', children: [
                               TextSpan(
-                                  text: state.reservation.buyer
+                                  text: state.reservation?.buyer
                                           .vehicleLicensePlate ??
                                       '',
                                   style: const TextStyle(
@@ -85,8 +85,7 @@ class SellerReservationWidget extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await openWhatsapp(
-                          reservation.buyer.phoneNumber.getOrCrash());
+                      await openWhatsapp(reservation.buyer.phoneNumber ?? '');
                     },
                     child: Container(
                         decoration: const BoxDecoration(
@@ -140,13 +139,13 @@ class SellerReservationWidget extends StatelessWidget {
                                   return Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      '${state.reservation.productReservations[index].adProduct.name} • ${state.reservation.productReservations[index].quantity} ${state.reservation.productReservations[index].adProduct.unitMeasure}',
+                                      '${state.reservation?.productReservations[index].adProduct.name} • ${state.reservation?.productReservations[index].quantity} ${state.reservation?.productReservations[index].adProduct.unitMeasure}',
                                       style: const TextStyle(fontSize: 12),
                                     ),
                                   );
                                 },
                                 itemCount: state
-                                    .reservation.productReservations.length,
+                                    .reservation?.productReservations.length,
                               ),
                               const SizedBox(
                                 height: 4,
@@ -164,9 +163,9 @@ class SellerReservationWidget extends StatelessWidget {
                                           decoration:
                                               TextDecoration.underline))),
                               const SizedBox(height: 20),
-                              if (state.reservation.getStatusFromItems() !=
+                              if (state.reservation?.getStatusFromItems() !=
                                       ReservationItemStatus.buyerCanceled &&
-                                  state.reservation.getStatusFromItems() !=
+                                  state.reservation?.getStatusFromItems() !=
                                       ReservationItemStatus.sellerCanceled)
                                 MaterialButton(
                                   onPressed: () {
@@ -189,7 +188,7 @@ class SellerReservationWidget extends StatelessWidget {
                                             color: Colors.white)),
                                   ),
                                 ),
-                              if (state.reservation.getStatusFromItems() ==
+                              if (state.reservation?.getStatusFromItems() ==
                                   ReservationItemStatus.pendingSeller)
                                 MaterialButton(
                                   onPressed: () {
@@ -212,7 +211,7 @@ class SellerReservationWidget extends StatelessWidget {
                                             color: Colors.white)),
                                   ),
                                 ),
-                              if (state.reservation.getStatusFromItems() ==
+                              if (state.reservation?.getStatusFromItems() ==
                                   ReservationItemStatus.confirmed)
                                 MaterialButton(
                                   onPressed: () {
@@ -281,30 +280,36 @@ class SellerReservationWidget extends StatelessWidget {
     );
   }
 
-  Widget _getStatusText(Reservation reservation) {
+  Widget _getStatusText(Reservation? reservation) {
     final String text;
-    switch (reservation.getStatusFromItems()) {
-      case ReservationItemStatus.pendingSeller:
-        text = '? Pendente';
-        break;
-      case ReservationItemStatus.buyerCanceled:
-        text = 'x Cancelado pelo comprador';
-        break;
-      case ReservationItemStatus.sellerCanceled:
-        text = 'x Cancelado';
-        break;
-      case ReservationItemStatus.awaitingBuyer:
-        text = '! Aguardando confirmação';
-        break;
-      case ReservationItemStatus.confirmed:
-        text = '✓ Confirmado';
-        break;
-      case ReservationItemStatus.paid:
-        text = '✓ Pago';
-        break;
-      default:
-        text = '? Pendente';
+
+    if (reservation != null) {
+      switch (reservation.getStatusFromItems()) {
+        case ReservationItemStatus.pendingSeller:
+          text = '? Pendente';
+          break;
+        case ReservationItemStatus.buyerCanceled:
+          text = 'x Cancelado pelo comprador';
+          break;
+        case ReservationItemStatus.sellerCanceled:
+          text = 'x Cancelado';
+          break;
+        case ReservationItemStatus.awaitingBuyer:
+          text = '! Aguardando confirmação';
+          break;
+        case ReservationItemStatus.confirmed:
+          text = '✓ Confirmado';
+          break;
+        case ReservationItemStatus.paid:
+          text = '✓ Pago';
+          break;
+        default:
+          text = '? Pendente';
+      }
+    } else {
+      text = 'Carregando';
     }
+
     return Text.rich(TextSpan(
         text: 'Status do pedido ',
         style: const TextStyle(color: Colors.white, fontSize: 12),
@@ -314,20 +319,24 @@ class SellerReservationWidget extends StatelessWidget {
         ]));
   }
 
-  Color _getStatusColor(Reservation reservation) {
-    switch (reservation.getStatusFromItems()) {
-      case ReservationItemStatus.awaitingBuyer:
-        return ColorSet.yellow2;
-      case ReservationItemStatus.pendingSeller:
-        return ColorSet.gray2;
-      case ReservationItemStatus.buyerCanceled:
-        return ColorSet.orange2;
-      case ReservationItemStatus.sellerCanceled:
-        return ColorSet.orange2;
-      case ReservationItemStatus.confirmed:
-        return ColorSet.green1;
-      case ReservationItemStatus.paid:
-        return ColorSet.blue1;
+  Color _getStatusColor(Reservation? reservation) {
+    if (reservation != null) {
+      switch (reservation.getStatusFromItems()) {
+        case ReservationItemStatus.awaitingBuyer:
+          return ColorSet.yellow2;
+        case ReservationItemStatus.pendingSeller:
+          return ColorSet.gray2;
+        case ReservationItemStatus.buyerCanceled:
+          return ColorSet.orange2;
+        case ReservationItemStatus.sellerCanceled:
+          return ColorSet.orange2;
+        case ReservationItemStatus.confirmed:
+          return ColorSet.green1;
+        case ReservationItemStatus.paid:
+          return ColorSet.blue1;
+      }
+    } else {
+      return ColorSet.gray2;
     }
   }
 }

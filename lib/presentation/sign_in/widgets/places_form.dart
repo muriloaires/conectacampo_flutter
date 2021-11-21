@@ -47,7 +47,7 @@ class PlacesForm extends StatelessWidget {
                         context.read<PlacesFormBloc>().state.loggedUser.fold(
                             () => '',
                             (a) => a.fold(
-                                (l) => '', (r) => r.nickname.getOrCrash())),
+                                (l) => '', (r) => r.nickname ?? '')),
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: ColorSet.colorPrimaryGreen,

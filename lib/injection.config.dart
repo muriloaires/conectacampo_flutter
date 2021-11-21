@@ -89,8 +89,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i20.NotificationsBloc(get<_i10.INotificationFacade>()));
   gh.factory<_i21.PlacesFormBloc>(
       () => _i21.PlacesFormBloc(get<_i12.IPlacesFacade>()));
-  gh.factory<_i22.ProductPageBloc>(
-      () => _i22.ProductPageBloc(get<_i16.IReservationFacade>()));
+  gh.factory<_i22.ProductPageBloc>(() => _i22.ProductPageBloc(
+      get<_i16.IReservationFacade>(), get<_i6.IAdvertisementsFacade>()));
   gh.factory<_i23.ProfileBloc>(() => _i23.ProfileBloc());
   gh.factory<_i24.ReservationBloc>(
       () => _i24.ReservationBloc(get<_i16.IReservationFacade>()));

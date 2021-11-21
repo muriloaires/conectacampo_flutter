@@ -149,7 +149,7 @@ abstract class _Started implements ProfileEvent {
 class _$ProfileStateTearOff {
   const _$ProfileStateTearOff();
 
-  _ProfileState call({required User user, required bool isBuyer}) {
+  _ProfileState call({required User? user, required bool isBuyer}) {
     return _ProfileState(
       user: user,
       isBuyer: isBuyer,
@@ -162,7 +162,7 @@ const $ProfileState = _$ProfileStateTearOff();
 
 /// @nodoc
 mixin _$ProfileState {
-  User get user => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   bool get isBuyer => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -175,9 +175,9 @@ abstract class $ProfileStateCopyWith<$Res> {
   factory $ProfileStateCopyWith(
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res>;
-  $Res call({User user, bool isBuyer});
+  $Res call({User? user, bool isBuyer});
 
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -197,7 +197,7 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
       isBuyer: isBuyer == freezed
           ? _value.isBuyer
           : isBuyer // ignore: cast_nullable_to_non_nullable
@@ -206,8 +206,12 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
   }
 
   @override
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value));
     });
   }
@@ -220,10 +224,10 @@ abstract class _$ProfileStateCopyWith<$Res>
           _ProfileState value, $Res Function(_ProfileState) then) =
       __$ProfileStateCopyWithImpl<$Res>;
   @override
-  $Res call({User user, bool isBuyer});
+  $Res call({User? user, bool isBuyer});
 
   @override
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -245,7 +249,7 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
       isBuyer: isBuyer == freezed
           ? _value.isBuyer
           : isBuyer // ignore: cast_nullable_to_non_nullable
@@ -260,7 +264,7 @@ class _$_ProfileState implements _ProfileState {
   const _$_ProfileState({required this.user, required this.isBuyer});
 
   @override
-  final User user;
+  final User? user;
   @override
   final bool isBuyer;
 
@@ -292,11 +296,11 @@ class _$_ProfileState implements _ProfileState {
 }
 
 abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState({required User user, required bool isBuyer}) =
+  const factory _ProfileState({required User? user, required bool isBuyer}) =
       _$_ProfileState;
 
   @override
-  User get user => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   @override
   bool get isBuyer => throw _privateConstructorUsedError;
   @override

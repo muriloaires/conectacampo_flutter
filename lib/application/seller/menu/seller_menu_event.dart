@@ -17,7 +17,7 @@ class SellerMenuEvent with _$SellerMenuEvent {
   const factory SellerMenuEvent.profileRetapped() = ProfileRetapped;
   const factory SellerMenuEvent.navToBuyerTapped() = NavToBuyerTapped;
   const factory SellerMenuEvent.reservationEditItemsTap(
-      Reservation reservation) = EditReservation;
+      Reservation? reservation) = EditReservation;
 
   const factory SellerMenuEvent.editingEnd() = EditingEnd;
   const factory SellerMenuEvent.logout() = Logout;

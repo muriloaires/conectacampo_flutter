@@ -17,11 +17,11 @@ extension LocalUserDomainX on UserResponse {
     }
 
     return LocalUser.User(
-      UniqueId.fromUniqueString(id.toString()),
-      FullName(fullName ?? 'Mude seu nome'),
-      Nickname(nickname),
+      id,
+      fullName ?? 'Mude seu nome',
+      nickname,
       vehicleLicensePlate,
-      PhoneNumber(phoneNumber),
+      phoneNumber,
       thumb,
       medium,
       original,

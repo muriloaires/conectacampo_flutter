@@ -38,7 +38,7 @@ abstract class IAdvertisementsFacade {
       List<int> ids);
 
   Future<Either<AdvertisementFailure, Unit>> leaveGroup(
-      {required UniqueId sellerId});
+      {required int sellerId});
 
   Future<Either<AdvertisementFailure, Unit>> deleteAd(
       Advertisement advertisement);

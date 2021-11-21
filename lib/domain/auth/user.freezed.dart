@@ -17,11 +17,11 @@ class _$UserTearOff {
   const _$UserTearOff();
 
   _User call(
-      UniqueId id,
-      FullName name,
-      Nickname nickname,
+      int id,
+      String? name,
+      String? nickname,
       String? vehicleLicensePlate,
-      PhoneNumber phoneNumber,
+      String? phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
       OriginalAvatar? originalAvatar,
@@ -47,11 +47,11 @@ const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
-  UniqueId get id => throw _privateConstructorUsedError;
-  FullName get name => throw _privateConstructorUsedError;
-  Nickname get nickname => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get nickname => throw _privateConstructorUsedError;
   String? get vehicleLicensePlate => throw _privateConstructorUsedError;
-  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
   ThumbAvatar? get thumbAvatar => throw _privateConstructorUsedError;
   MediumAvatar? get mediumAvatar => throw _privateConstructorUsedError;
   OriginalAvatar? get originalAvatar => throw _privateConstructorUsedError;
@@ -67,11 +67,11 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {UniqueId id,
-      FullName name,
-      Nickname nickname,
+      {int id,
+      String? name,
+      String? nickname,
       String? vehicleLicensePlate,
-      PhoneNumber phoneNumber,
+      String? phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
       OriginalAvatar? originalAvatar,
@@ -106,15 +106,15 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as FullName,
+              as String?,
       nickname: nickname == freezed
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as Nickname,
+              as String?,
       vehicleLicensePlate: vehicleLicensePlate == freezed
           ? _value.vehicleLicensePlate
           : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as PhoneNumber,
+              as String?,
       thumbAvatar: thumbAvatar == freezed
           ? _value.thumbAvatar
           : thumbAvatar // ignore: cast_nullable_to_non_nullable
@@ -164,11 +164,11 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UniqueId id,
-      FullName name,
-      Nickname nickname,
+      {int id,
+      String? name,
+      String? nickname,
       String? vehicleLicensePlate,
-      PhoneNumber phoneNumber,
+      String? phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
       OriginalAvatar? originalAvatar,
@@ -205,15 +205,15 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as int,
       name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as FullName,
+              as String?,
       nickname == freezed
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as Nickname,
+              as String?,
       vehicleLicensePlate == freezed
           ? _value.vehicleLicensePlate
           : vehicleLicensePlate // ignore: cast_nullable_to_non_nullable
@@ -221,7 +221,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as PhoneNumber,
+              as String?,
       thumbAvatar == freezed
           ? _value.thumbAvatar
           : thumbAvatar // ignore: cast_nullable_to_non_nullable
@@ -262,15 +262,15 @@ class _$_User implements _User {
       this.email);
 
   @override
-  final UniqueId id;
+  final int id;
   @override
-  final FullName name;
+  final String? name;
   @override
-  final Nickname nickname;
+  final String? nickname;
   @override
   final String? vehicleLicensePlate;
   @override
-  final PhoneNumber phoneNumber;
+  final String? phoneNumber;
   @override
   final ThumbAvatar? thumbAvatar;
   @override
@@ -342,11 +342,11 @@ class _$_User implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      UniqueId id,
-      FullName name,
-      Nickname nickname,
+      int id,
+      String? name,
+      String? nickname,
       String? vehicleLicensePlate,
-      PhoneNumber phoneNumber,
+      String? phoneNumber,
       ThumbAvatar? thumbAvatar,
       MediumAvatar? mediumAvatar,
       OriginalAvatar? originalAvatar,
@@ -354,15 +354,15 @@ abstract class _User implements User {
       String? email) = _$_User;
 
   @override
-  UniqueId get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @override
-  FullName get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  Nickname get nickname => throw _privateConstructorUsedError;
+  String? get nickname => throw _privateConstructorUsedError;
   @override
   String? get vehicleLicensePlate => throw _privateConstructorUsedError;
   @override
-  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
   @override
   ThumbAvatar? get thumbAvatar => throw _privateConstructorUsedError;
   @override

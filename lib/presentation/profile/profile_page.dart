@@ -92,7 +92,7 @@ class ProfilePage extends StatelessWidget {
                                 .read<ProfileBloc>()
                                 .state
                                 .user
-                                .mediumAvatar
+                                ?.mediumAvatar
                                 ?.value
                                 .getOrElse(() => '') ??
                             '',
@@ -107,8 +107,7 @@ class ProfilePage extends StatelessWidget {
                                 .read<ProfileBloc>()
                                 .state
                                 .user
-                                .nickname
-                                .getOrCrash(),
+                                ?.nickname,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
@@ -142,7 +141,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     subtitle: Text(
-                      context.read<ProfileBloc>().state.user.name.getOrCrash(),
+                      context.read<ProfileBloc>().state.user?.name ?? '',
                     ),
                     trailing: const Icon(Icons.chevron_right),
                   ),
@@ -171,7 +170,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     subtitle: Text(
-                      context.read<ProfileBloc>().state.user.email ??
+                      context.read<ProfileBloc>().state.user?.email ??
                           'Nenhum cadastrado',
                     ),
                     trailing: const Icon(Icons.chevron_right),

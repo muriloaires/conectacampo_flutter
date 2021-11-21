@@ -32,8 +32,8 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
 
         if (user != null) {
           yield state.copyWith(
-            fullName: user.name,
-            nickname: user.nickname,
+            fullName: FullName(user.name ?? ''),
+            nickname: Nickname(user.nickname ?? ''),
             email: Email(user.email ?? ''),
           );
         }

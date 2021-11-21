@@ -843,17 +843,17 @@ class _$SingleReservationStateTearOff {
 
   _SingleReservationState call(
       {required bool isItemVisible,
-      required Reservation reservation,
+      required Reservation? reservation,
       required bool showAcceptError,
       required bool showCancelItemError,
-      required Option<Either<AdvertisementFailure, Advertisement>>
-          optionOfAdFailureOrSuccess}) {
+      required Either<AdvertisementFailure, Advertisement>?
+          adFailureOrSuccess}) {
     return _SingleReservationState(
       isItemVisible: isItemVisible,
       reservation: reservation,
       showAcceptError: showAcceptError,
       showCancelItemError: showCancelItemError,
-      optionOfAdFailureOrSuccess: optionOfAdFailureOrSuccess,
+      adFailureOrSuccess: adFailureOrSuccess,
     );
   }
 }
@@ -864,11 +864,11 @@ const $SingleReservationState = _$SingleReservationStateTearOff();
 /// @nodoc
 mixin _$SingleReservationState {
   bool get isItemVisible => throw _privateConstructorUsedError;
-  Reservation get reservation => throw _privateConstructorUsedError;
+  Reservation? get reservation => throw _privateConstructorUsedError;
   bool get showAcceptError => throw _privateConstructorUsedError;
   bool get showCancelItemError => throw _privateConstructorUsedError;
-  Option<Either<AdvertisementFailure, Advertisement>>
-      get optionOfAdFailureOrSuccess => throw _privateConstructorUsedError;
+  Either<AdvertisementFailure, Advertisement>? get adFailureOrSuccess =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SingleReservationStateCopyWith<SingleReservationState> get copyWith =>
@@ -882,13 +882,12 @@ abstract class $SingleReservationStateCopyWith<$Res> {
       _$SingleReservationStateCopyWithImpl<$Res>;
   $Res call(
       {bool isItemVisible,
-      Reservation reservation,
+      Reservation? reservation,
       bool showAcceptError,
       bool showCancelItemError,
-      Option<Either<AdvertisementFailure, Advertisement>>
-          optionOfAdFailureOrSuccess});
+      Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess});
 
-  $ReservationCopyWith<$Res> get reservation;
+  $ReservationCopyWith<$Res>? get reservation;
 }
 
 /// @nodoc
@@ -906,7 +905,7 @@ class _$SingleReservationStateCopyWithImpl<$Res>
     Object? reservation = freezed,
     Object? showAcceptError = freezed,
     Object? showCancelItemError = freezed,
-    Object? optionOfAdFailureOrSuccess = freezed,
+    Object? adFailureOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       isItemVisible: isItemVisible == freezed
@@ -916,7 +915,7 @@ class _$SingleReservationStateCopyWithImpl<$Res>
       reservation: reservation == freezed
           ? _value.reservation
           : reservation // ignore: cast_nullable_to_non_nullable
-              as Reservation,
+              as Reservation?,
       showAcceptError: showAcceptError == freezed
           ? _value.showAcceptError
           : showAcceptError // ignore: cast_nullable_to_non_nullable
@@ -925,16 +924,20 @@ class _$SingleReservationStateCopyWithImpl<$Res>
           ? _value.showCancelItemError
           : showCancelItemError // ignore: cast_nullable_to_non_nullable
               as bool,
-      optionOfAdFailureOrSuccess: optionOfAdFailureOrSuccess == freezed
-          ? _value.optionOfAdFailureOrSuccess
-          : optionOfAdFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AdvertisementFailure, Advertisement>>,
+      adFailureOrSuccess: adFailureOrSuccess == freezed
+          ? _value.adFailureOrSuccess
+          : adFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, Advertisement>?,
     ));
   }
 
   @override
-  $ReservationCopyWith<$Res> get reservation {
-    return $ReservationCopyWith<$Res>(_value.reservation, (value) {
+  $ReservationCopyWith<$Res>? get reservation {
+    if (_value.reservation == null) {
+      return null;
+    }
+
+    return $ReservationCopyWith<$Res>(_value.reservation!, (value) {
       return _then(_value.copyWith(reservation: value));
     });
   }
@@ -949,14 +952,13 @@ abstract class _$SingleReservationStateCopyWith<$Res>
   @override
   $Res call(
       {bool isItemVisible,
-      Reservation reservation,
+      Reservation? reservation,
       bool showAcceptError,
       bool showCancelItemError,
-      Option<Either<AdvertisementFailure, Advertisement>>
-          optionOfAdFailureOrSuccess});
+      Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess});
 
   @override
-  $ReservationCopyWith<$Res> get reservation;
+  $ReservationCopyWith<$Res>? get reservation;
 }
 
 /// @nodoc
@@ -976,7 +978,7 @@ class __$SingleReservationStateCopyWithImpl<$Res>
     Object? reservation = freezed,
     Object? showAcceptError = freezed,
     Object? showCancelItemError = freezed,
-    Object? optionOfAdFailureOrSuccess = freezed,
+    Object? adFailureOrSuccess = freezed,
   }) {
     return _then(_SingleReservationState(
       isItemVisible: isItemVisible == freezed
@@ -986,7 +988,7 @@ class __$SingleReservationStateCopyWithImpl<$Res>
       reservation: reservation == freezed
           ? _value.reservation
           : reservation // ignore: cast_nullable_to_non_nullable
-              as Reservation,
+              as Reservation?,
       showAcceptError: showAcceptError == freezed
           ? _value.showAcceptError
           : showAcceptError // ignore: cast_nullable_to_non_nullable
@@ -995,10 +997,10 @@ class __$SingleReservationStateCopyWithImpl<$Res>
           ? _value.showCancelItemError
           : showCancelItemError // ignore: cast_nullable_to_non_nullable
               as bool,
-      optionOfAdFailureOrSuccess: optionOfAdFailureOrSuccess == freezed
-          ? _value.optionOfAdFailureOrSuccess
-          : optionOfAdFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AdvertisementFailure, Advertisement>>,
+      adFailureOrSuccess: adFailureOrSuccess == freezed
+          ? _value.adFailureOrSuccess
+          : adFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, Advertisement>?,
     ));
   }
 }
@@ -1011,23 +1013,22 @@ class _$_SingleReservationState implements _SingleReservationState {
       required this.reservation,
       required this.showAcceptError,
       required this.showCancelItemError,
-      required this.optionOfAdFailureOrSuccess});
+      required this.adFailureOrSuccess});
 
   @override
   final bool isItemVisible;
   @override
-  final Reservation reservation;
+  final Reservation? reservation;
   @override
   final bool showAcceptError;
   @override
   final bool showCancelItemError;
   @override
-  final Option<Either<AdvertisementFailure, Advertisement>>
-      optionOfAdFailureOrSuccess;
+  final Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess;
 
   @override
   String toString() {
-    return 'SingleReservationState(isItemVisible: $isItemVisible, reservation: $reservation, showAcceptError: $showAcceptError, showCancelItemError: $showCancelItemError, optionOfAdFailureOrSuccess: $optionOfAdFailureOrSuccess)';
+    return 'SingleReservationState(isItemVisible: $isItemVisible, reservation: $reservation, showAcceptError: $showAcceptError, showCancelItemError: $showCancelItemError, adFailureOrSuccess: $adFailureOrSuccess)';
   }
 
   @override
@@ -1046,11 +1047,9 @@ class _$_SingleReservationState implements _SingleReservationState {
             (identical(other.showCancelItemError, showCancelItemError) ||
                 const DeepCollectionEquality()
                     .equals(other.showCancelItemError, showCancelItemError)) &&
-            (identical(other.optionOfAdFailureOrSuccess,
-                    optionOfAdFailureOrSuccess) ||
-                const DeepCollectionEquality().equals(
-                    other.optionOfAdFailureOrSuccess,
-                    optionOfAdFailureOrSuccess)));
+            (identical(other.adFailureOrSuccess, adFailureOrSuccess) ||
+                const DeepCollectionEquality()
+                    .equals(other.adFailureOrSuccess, adFailureOrSuccess)));
   }
 
   @override
@@ -1060,7 +1059,7 @@ class _$_SingleReservationState implements _SingleReservationState {
       const DeepCollectionEquality().hash(reservation) ^
       const DeepCollectionEquality().hash(showAcceptError) ^
       const DeepCollectionEquality().hash(showCancelItemError) ^
-      const DeepCollectionEquality().hash(optionOfAdFailureOrSuccess);
+      const DeepCollectionEquality().hash(adFailureOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -1072,23 +1071,23 @@ class _$_SingleReservationState implements _SingleReservationState {
 abstract class _SingleReservationState implements SingleReservationState {
   const factory _SingleReservationState(
       {required bool isItemVisible,
-      required Reservation reservation,
+      required Reservation? reservation,
       required bool showAcceptError,
       required bool showCancelItemError,
-      required Option<Either<AdvertisementFailure, Advertisement>>
-          optionOfAdFailureOrSuccess}) = _$_SingleReservationState;
+      required Either<AdvertisementFailure, Advertisement>?
+          adFailureOrSuccess}) = _$_SingleReservationState;
 
   @override
   bool get isItemVisible => throw _privateConstructorUsedError;
   @override
-  Reservation get reservation => throw _privateConstructorUsedError;
+  Reservation? get reservation => throw _privateConstructorUsedError;
   @override
   bool get showAcceptError => throw _privateConstructorUsedError;
   @override
   bool get showCancelItemError => throw _privateConstructorUsedError;
   @override
-  Option<Either<AdvertisementFailure, Advertisement>>
-      get optionOfAdFailureOrSuccess => throw _privateConstructorUsedError;
+  Either<AdvertisementFailure, Advertisement>? get adFailureOrSuccess =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SingleReservationStateCopyWith<_SingleReservationState> get copyWith =>

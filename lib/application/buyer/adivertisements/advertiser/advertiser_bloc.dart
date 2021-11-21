@@ -35,7 +35,7 @@ class AdvertiserBloc extends Bloc<AdvertiserEvent, AdvertiserState> {
         yield* advertisementFailureOrSuccess.fold((l) async* {}, (r) async* {
           yield state.copyWith(
               seller: state.seller
-                  .copyWith(lastAdvertisement: r.isEmpty ? null : r.first));
+                  ?.copyWith(lastAdvertisement: r.isEmpty ? null : r.first));
         });
       }
     });

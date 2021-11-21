@@ -11,7 +11,7 @@ class SingleAdvertisement extends StatelessWidget {
   const SingleAdvertisement(this._advertisement);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

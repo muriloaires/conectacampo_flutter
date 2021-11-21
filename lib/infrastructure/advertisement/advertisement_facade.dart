@@ -62,7 +62,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
     String? rating,
     String? date
   }) async {
-    final Map<String, dynamic> params = {'place_id': place.id};
+    final Map<String, dynamic> params = {'place_id': place.id, 'future_delivery': 'true'};
 
     if (productName != null) {
       params.addAll({'name': productName});
@@ -288,9 +288,9 @@ class AdvertisementFacade extends IAdvertisementsFacade {
 
   @override
   Future<Either<AdvertisementFailure, Unit>> leaveGroup(
-      {required UniqueId sellerId}) async {
+      {required int sellerId}) async {
     final url = Uri.https(
-        baseUrl, '$apiVersion/me$routeGroups/${sellerId.getOrCrash()}');
+        baseUrl, '$apiVersion/me$routeGroups/$sellerId');
     final response = await getAuthenticatedDeleteRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {

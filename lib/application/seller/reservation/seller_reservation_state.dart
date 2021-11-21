@@ -3,40 +3,15 @@ part of 'seller_reservation_bloc.dart';
 @freezed
 class SellerReservationState with _$SellerReservationState {
   const factory SellerReservationState(
-      {required Reservation reservation,
+      {required Reservation? reservation,
       required bool update,
       required List<ProductReservation> deletedItems,
       required bool isItemsVisible,
       required bool finishing,
       required bool finished}) = _SellerReservationState;
 
-  factory SellerReservationState.initial() => SellerReservationState(
-      reservation: Reservation(
-          id: -1,
-          createdAt: '',
-          buyer: User(
-              UniqueId.fromUniqueString('as'),
-              FullName('Full name'),
-              Nickname('nickname'),
-              'vehicleLicensePlate',
-              PhoneNumber('62999999999'),
-              null,
-              null,
-              null,
-              null,
-              null),
-          seller: User(
-              UniqueId.fromUniqueString('as'),
-              FullName('Full name'),
-              Nickname('nickname'),
-              'vehicleLicensePlate',
-              PhoneNumber('62999999999'),
-              null,
-              null,
-              null,
-              null,
-              null),
-          productReservations: []),
+  factory SellerReservationState.initial() => const SellerReservationState(
+      reservation: null,
       update: false,
       deletedItems: [],
       finishing: false,

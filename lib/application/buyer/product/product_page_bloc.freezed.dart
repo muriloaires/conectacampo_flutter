@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ProductPageEventTearOff {
   const _$ProductPageEventTearOff();
 
-  _Started started(AdProduct product) {
+  _Started started(AdProduct? product) {
     return _Started(
       product,
     );
@@ -28,10 +28,8 @@ class _$ProductPageEventTearOff {
     );
   }
 
-  OnBtnReservationTap onBtnReservationTap(AdProduct product) {
-    return OnBtnReservationTap(
-      product,
-    );
+  OnBtnReservationTap onBtnReservationTap() {
+    return const OnBtnReservationTap();
   }
 }
 
@@ -42,16 +40,16 @@ const $ProductPageEvent = _$ProductPageEventTearOff();
 mixin _$ProductPageEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AdProduct product) started,
+    required TResult Function(AdProduct? product) started,
     required TResult Function(String amount) amountChanged,
-    required TResult Function(AdProduct product) onBtnReservationTap,
+    required TResult Function() onBtnReservationTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AdProduct product)? started,
+    TResult Function(AdProduct? product)? started,
     TResult Function(String amount)? amountChanged,
-    TResult Function(AdProduct product)? onBtnReservationTap,
+    TResult Function()? onBtnReservationTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -93,9 +91,9 @@ class _$ProductPageEventCopyWithImpl<$Res>
 abstract class _$StartedCopyWith<$Res> {
   factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
       __$StartedCopyWithImpl<$Res>;
-  $Res call({AdProduct product});
+  $Res call({AdProduct? product});
 
-  $AdProductCopyWith<$Res> get product;
+  $AdProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -115,13 +113,17 @@ class __$StartedCopyWithImpl<$Res> extends _$ProductPageEventCopyWithImpl<$Res>
       product == freezed
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as AdProduct,
+              as AdProduct?,
     ));
   }
 
   @override
-  $AdProductCopyWith<$Res> get product {
-    return $AdProductCopyWith<$Res>(_value.product, (value) {
+  $AdProductCopyWith<$Res>? get product {
+    if (_value.product == null) {
+      return null;
+    }
+
+    return $AdProductCopyWith<$Res>(_value.product!, (value) {
       return _then(_value.copyWith(product: value));
     });
   }
@@ -133,7 +135,7 @@ class _$_Started implements _Started {
   const _$_Started(this.product);
 
   @override
-  final AdProduct product;
+  final AdProduct? product;
 
   @override
   String toString() {
@@ -160,9 +162,9 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AdProduct product) started,
+    required TResult Function(AdProduct? product) started,
     required TResult Function(String amount) amountChanged,
-    required TResult Function(AdProduct product) onBtnReservationTap,
+    required TResult Function() onBtnReservationTap,
   }) {
     return started(product);
   }
@@ -170,9 +172,9 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AdProduct product)? started,
+    TResult Function(AdProduct? product)? started,
     TResult Function(String amount)? amountChanged,
-    TResult Function(AdProduct product)? onBtnReservationTap,
+    TResult Function()? onBtnReservationTap,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -207,9 +209,9 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements ProductPageEvent {
-  const factory _Started(AdProduct product) = _$_Started;
+  const factory _Started(AdProduct? product) = _$_Started;
 
-  AdProduct get product => throw _privateConstructorUsedError;
+  AdProduct? get product => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$StartedCopyWith<_Started> get copyWith =>
       throw _privateConstructorUsedError;
@@ -280,9 +282,9 @@ class _$AmountChanged implements AmountChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AdProduct product) started,
+    required TResult Function(AdProduct? product) started,
     required TResult Function(String amount) amountChanged,
-    required TResult Function(AdProduct product) onBtnReservationTap,
+    required TResult Function() onBtnReservationTap,
   }) {
     return amountChanged(amount);
   }
@@ -290,9 +292,9 @@ class _$AmountChanged implements AmountChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AdProduct product)? started,
+    TResult Function(AdProduct? product)? started,
     TResult Function(String amount)? amountChanged,
-    TResult Function(AdProduct product)? onBtnReservationTap,
+    TResult Function()? onBtnReservationTap,
     required TResult orElse(),
   }) {
     if (amountChanged != null) {
@@ -340,9 +342,6 @@ abstract class $OnBtnReservationTapCopyWith<$Res> {
   factory $OnBtnReservationTapCopyWith(
           OnBtnReservationTap value, $Res Function(OnBtnReservationTap) then) =
       _$OnBtnReservationTapCopyWithImpl<$Res>;
-  $Res call({AdProduct product});
-
-  $AdProductCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -355,77 +354,46 @@ class _$OnBtnReservationTapCopyWithImpl<$Res>
 
   @override
   OnBtnReservationTap get _value => super._value as OnBtnReservationTap;
-
-  @override
-  $Res call({
-    Object? product = freezed,
-  }) {
-    return _then(OnBtnReservationTap(
-      product == freezed
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
-              as AdProduct,
-    ));
-  }
-
-  @override
-  $AdProductCopyWith<$Res> get product {
-    return $AdProductCopyWith<$Res>(_value.product, (value) {
-      return _then(_value.copyWith(product: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$OnBtnReservationTap implements OnBtnReservationTap {
-  const _$OnBtnReservationTap(this.product);
-
-  @override
-  final AdProduct product;
+  const _$OnBtnReservationTap();
 
   @override
   String toString() {
-    return 'ProductPageEvent.onBtnReservationTap(product: $product)';
+    return 'ProductPageEvent.onBtnReservationTap()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is OnBtnReservationTap &&
-            (identical(other.product, product) ||
-                const DeepCollectionEquality().equals(other.product, product)));
+    return identical(this, other) || (other is OnBtnReservationTap);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(product);
-
-  @JsonKey(ignore: true)
-  @override
-  $OnBtnReservationTapCopyWith<OnBtnReservationTap> get copyWith =>
-      _$OnBtnReservationTapCopyWithImpl<OnBtnReservationTap>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AdProduct product) started,
+    required TResult Function(AdProduct? product) started,
     required TResult Function(String amount) amountChanged,
-    required TResult Function(AdProduct product) onBtnReservationTap,
+    required TResult Function() onBtnReservationTap,
   }) {
-    return onBtnReservationTap(product);
+    return onBtnReservationTap();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AdProduct product)? started,
+    TResult Function(AdProduct? product)? started,
     TResult Function(String amount)? amountChanged,
-    TResult Function(AdProduct product)? onBtnReservationTap,
+    TResult Function()? onBtnReservationTap,
     required TResult orElse(),
   }) {
     if (onBtnReservationTap != null) {
-      return onBtnReservationTap(product);
+      return onBtnReservationTap();
     }
     return orElse();
   }
@@ -456,12 +424,7 @@ class _$OnBtnReservationTap implements OnBtnReservationTap {
 }
 
 abstract class OnBtnReservationTap implements ProductPageEvent {
-  const factory OnBtnReservationTap(AdProduct product) = _$OnBtnReservationTap;
-
-  AdProduct get product => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $OnBtnReservationTapCopyWith<OnBtnReservationTap> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory OnBtnReservationTap() = _$OnBtnReservationTap;
 }
 
 /// @nodoc
@@ -471,6 +434,7 @@ class _$ProductPageStateTearOff {
   _ProductPageState call(
       {required ReservationQuantity reservationQuantity,
       required bool showErrorsMessage,
+      required AdProduct? product,
       required Either<ReservationFailure, ReservationItem>?
           reservationItemFailureOrSuccess,
       required bool showErrorMsg,
@@ -479,6 +443,7 @@ class _$ProductPageStateTearOff {
     return _ProductPageState(
       reservationQuantity: reservationQuantity,
       showErrorsMessage: showErrorsMessage,
+      product: product,
       reservationItemFailureOrSuccess: reservationItemFailureOrSuccess,
       showErrorMsg: showErrorMsg,
       place: place,
@@ -495,6 +460,7 @@ mixin _$ProductPageState {
   ReservationQuantity get reservationQuantity =>
       throw _privateConstructorUsedError;
   bool get showErrorsMessage => throw _privateConstructorUsedError;
+  AdProduct? get product => throw _privateConstructorUsedError;
   Either<ReservationFailure, ReservationItem>?
       get reservationItemFailureOrSuccess => throw _privateConstructorUsedError;
   bool get showErrorMsg => throw _privateConstructorUsedError;
@@ -514,12 +480,14 @@ abstract class $ProductPageStateCopyWith<$Res> {
   $Res call(
       {ReservationQuantity reservationQuantity,
       bool showErrorsMessage,
+      AdProduct? product,
       Either<ReservationFailure, ReservationItem>?
           reservationItemFailureOrSuccess,
       bool showErrorMsg,
       Place? place,
       bool openCart});
 
+  $AdProductCopyWith<$Res>? get product;
   $PlaceCopyWith<$Res>? get place;
 }
 
@@ -536,6 +504,7 @@ class _$ProductPageStateCopyWithImpl<$Res>
   $Res call({
     Object? reservationQuantity = freezed,
     Object? showErrorsMessage = freezed,
+    Object? product = freezed,
     Object? reservationItemFailureOrSuccess = freezed,
     Object? showErrorMsg = freezed,
     Object? place = freezed,
@@ -550,6 +519,10 @@ class _$ProductPageStateCopyWithImpl<$Res>
           ? _value.showErrorsMessage
           : showErrorsMessage // ignore: cast_nullable_to_non_nullable
               as bool,
+      product: product == freezed
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as AdProduct?,
       reservationItemFailureOrSuccess: reservationItemFailureOrSuccess ==
               freezed
           ? _value.reservationItemFailureOrSuccess
@@ -568,6 +541,17 @@ class _$ProductPageStateCopyWithImpl<$Res>
           : openCart // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
+  }
+
+  @override
+  $AdProductCopyWith<$Res>? get product {
+    if (_value.product == null) {
+      return null;
+    }
+
+    return $AdProductCopyWith<$Res>(_value.product!, (value) {
+      return _then(_value.copyWith(product: value));
+    });
   }
 
   @override
@@ -592,12 +576,15 @@ abstract class _$ProductPageStateCopyWith<$Res>
   $Res call(
       {ReservationQuantity reservationQuantity,
       bool showErrorsMessage,
+      AdProduct? product,
       Either<ReservationFailure, ReservationItem>?
           reservationItemFailureOrSuccess,
       bool showErrorMsg,
       Place? place,
       bool openCart});
 
+  @override
+  $AdProductCopyWith<$Res>? get product;
   @override
   $PlaceCopyWith<$Res>? get place;
 }
@@ -617,6 +604,7 @@ class __$ProductPageStateCopyWithImpl<$Res>
   $Res call({
     Object? reservationQuantity = freezed,
     Object? showErrorsMessage = freezed,
+    Object? product = freezed,
     Object? reservationItemFailureOrSuccess = freezed,
     Object? showErrorMsg = freezed,
     Object? place = freezed,
@@ -631,6 +619,10 @@ class __$ProductPageStateCopyWithImpl<$Res>
           ? _value.showErrorsMessage
           : showErrorsMessage // ignore: cast_nullable_to_non_nullable
               as bool,
+      product: product == freezed
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as AdProduct?,
       reservationItemFailureOrSuccess: reservationItemFailureOrSuccess ==
               freezed
           ? _value.reservationItemFailureOrSuccess
@@ -658,6 +650,7 @@ class _$_ProductPageState implements _ProductPageState {
   const _$_ProductPageState(
       {required this.reservationQuantity,
       required this.showErrorsMessage,
+      required this.product,
       required this.reservationItemFailureOrSuccess,
       required this.showErrorMsg,
       required this.place,
@@ -667,6 +660,8 @@ class _$_ProductPageState implements _ProductPageState {
   final ReservationQuantity reservationQuantity;
   @override
   final bool showErrorsMessage;
+  @override
+  final AdProduct? product;
   @override
   final Either<ReservationFailure, ReservationItem>?
       reservationItemFailureOrSuccess;
@@ -679,7 +674,7 @@ class _$_ProductPageState implements _ProductPageState {
 
   @override
   String toString() {
-    return 'ProductPageState(reservationQuantity: $reservationQuantity, showErrorsMessage: $showErrorsMessage, reservationItemFailureOrSuccess: $reservationItemFailureOrSuccess, showErrorMsg: $showErrorMsg, place: $place, openCart: $openCart)';
+    return 'ProductPageState(reservationQuantity: $reservationQuantity, showErrorsMessage: $showErrorsMessage, product: $product, reservationItemFailureOrSuccess: $reservationItemFailureOrSuccess, showErrorMsg: $showErrorMsg, place: $place, openCart: $openCart)';
   }
 
   @override
@@ -692,6 +687,9 @@ class _$_ProductPageState implements _ProductPageState {
             (identical(other.showErrorsMessage, showErrorsMessage) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorsMessage, showErrorsMessage)) &&
+            (identical(other.product, product) ||
+                const DeepCollectionEquality()
+                    .equals(other.product, product)) &&
             (identical(other.reservationItemFailureOrSuccess,
                     reservationItemFailureOrSuccess) ||
                 const DeepCollectionEquality().equals(
@@ -712,6 +710,7 @@ class _$_ProductPageState implements _ProductPageState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(reservationQuantity) ^
       const DeepCollectionEquality().hash(showErrorsMessage) ^
+      const DeepCollectionEquality().hash(product) ^
       const DeepCollectionEquality().hash(reservationItemFailureOrSuccess) ^
       const DeepCollectionEquality().hash(showErrorMsg) ^
       const DeepCollectionEquality().hash(place) ^
@@ -727,6 +726,7 @@ abstract class _ProductPageState implements ProductPageState {
   const factory _ProductPageState(
       {required ReservationQuantity reservationQuantity,
       required bool showErrorsMessage,
+      required AdProduct? product,
       required Either<ReservationFailure, ReservationItem>?
           reservationItemFailureOrSuccess,
       required bool showErrorMsg,
@@ -738,6 +738,8 @@ abstract class _ProductPageState implements ProductPageState {
       throw _privateConstructorUsedError;
   @override
   bool get showErrorsMessage => throw _privateConstructorUsedError;
+  @override
+  AdProduct? get product => throw _privateConstructorUsedError;
   @override
   Either<ReservationFailure, ReservationItem>?
       get reservationItemFailureOrSuccess => throw _privateConstructorUsedError;

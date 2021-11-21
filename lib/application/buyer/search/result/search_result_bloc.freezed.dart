@@ -217,7 +217,7 @@ abstract class _Started implements SearchResultEvent {
 class _$SearchResultStateTearOff {
   const _$SearchResultStateTearOff();
 
-  _SearchResultState call({required Advertisement advertisement}) {
+  _SearchResultState call({required Advertisement? advertisement}) {
     return _SearchResultState(
       advertisement: advertisement,
     );
@@ -229,7 +229,7 @@ const $SearchResultState = _$SearchResultStateTearOff();
 
 /// @nodoc
 mixin _$SearchResultState {
-  Advertisement get advertisement => throw _privateConstructorUsedError;
+  Advertisement? get advertisement => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchResultStateCopyWith<SearchResultState> get copyWith =>
@@ -241,9 +241,9 @@ abstract class $SearchResultStateCopyWith<$Res> {
   factory $SearchResultStateCopyWith(
           SearchResultState value, $Res Function(SearchResultState) then) =
       _$SearchResultStateCopyWithImpl<$Res>;
-  $Res call({Advertisement advertisement});
+  $Res call({Advertisement? advertisement});
 
-  $AdvertisementCopyWith<$Res> get advertisement;
+  $AdvertisementCopyWith<$Res>? get advertisement;
 }
 
 /// @nodoc
@@ -263,13 +263,17 @@ class _$SearchResultStateCopyWithImpl<$Res>
       advertisement: advertisement == freezed
           ? _value.advertisement
           : advertisement // ignore: cast_nullable_to_non_nullable
-              as Advertisement,
+              as Advertisement?,
     ));
   }
 
   @override
-  $AdvertisementCopyWith<$Res> get advertisement {
-    return $AdvertisementCopyWith<$Res>(_value.advertisement, (value) {
+  $AdvertisementCopyWith<$Res>? get advertisement {
+    if (_value.advertisement == null) {
+      return null;
+    }
+
+    return $AdvertisementCopyWith<$Res>(_value.advertisement!, (value) {
       return _then(_value.copyWith(advertisement: value));
     });
   }
@@ -282,10 +286,10 @@ abstract class _$SearchResultStateCopyWith<$Res>
           _SearchResultState value, $Res Function(_SearchResultState) then) =
       __$SearchResultStateCopyWithImpl<$Res>;
   @override
-  $Res call({Advertisement advertisement});
+  $Res call({Advertisement? advertisement});
 
   @override
-  $AdvertisementCopyWith<$Res> get advertisement;
+  $AdvertisementCopyWith<$Res>? get advertisement;
 }
 
 /// @nodoc
@@ -307,7 +311,7 @@ class __$SearchResultStateCopyWithImpl<$Res>
       advertisement: advertisement == freezed
           ? _value.advertisement
           : advertisement // ignore: cast_nullable_to_non_nullable
-              as Advertisement,
+              as Advertisement?,
     ));
   }
 }
@@ -318,7 +322,7 @@ class _$_SearchResultState implements _SearchResultState {
   const _$_SearchResultState({required this.advertisement});
 
   @override
-  final Advertisement advertisement;
+  final Advertisement? advertisement;
 
   @override
   String toString() {
@@ -345,11 +349,11 @@ class _$_SearchResultState implements _SearchResultState {
 }
 
 abstract class _SearchResultState implements SearchResultState {
-  const factory _SearchResultState({required Advertisement advertisement}) =
+  const factory _SearchResultState({required Advertisement? advertisement}) =
       _$_SearchResultState;
 
   @override
-  Advertisement get advertisement => throw _privateConstructorUsedError;
+  Advertisement? get advertisement => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SearchResultStateCopyWith<_SearchResultState> get copyWith =>

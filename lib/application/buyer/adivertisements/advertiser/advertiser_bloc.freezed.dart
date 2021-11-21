@@ -217,7 +217,7 @@ abstract class _Started implements AdvertiserEvent {
 class _$AdvertiserStateTearOff {
   const _$AdvertiserStateTearOff();
 
-  _AdvertiserState call({required User seller}) {
+  _AdvertiserState call({required User? seller}) {
     return _AdvertiserState(
       seller: seller,
     );
@@ -229,7 +229,7 @@ const $AdvertiserState = _$AdvertiserStateTearOff();
 
 /// @nodoc
 mixin _$AdvertiserState {
-  User get seller => throw _privateConstructorUsedError;
+  User? get seller => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AdvertiserStateCopyWith<AdvertiserState> get copyWith =>
@@ -241,9 +241,9 @@ abstract class $AdvertiserStateCopyWith<$Res> {
   factory $AdvertiserStateCopyWith(
           AdvertiserState value, $Res Function(AdvertiserState) then) =
       _$AdvertiserStateCopyWithImpl<$Res>;
-  $Res call({User seller});
+  $Res call({User? seller});
 
-  $UserCopyWith<$Res> get seller;
+  $UserCopyWith<$Res>? get seller;
 }
 
 /// @nodoc
@@ -263,13 +263,17 @@ class _$AdvertiserStateCopyWithImpl<$Res>
       seller: seller == freezed
           ? _value.seller
           : seller // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
     ));
   }
 
   @override
-  $UserCopyWith<$Res> get seller {
-    return $UserCopyWith<$Res>(_value.seller, (value) {
+  $UserCopyWith<$Res>? get seller {
+    if (_value.seller == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.seller!, (value) {
       return _then(_value.copyWith(seller: value));
     });
   }
@@ -282,10 +286,10 @@ abstract class _$AdvertiserStateCopyWith<$Res>
           _AdvertiserState value, $Res Function(_AdvertiserState) then) =
       __$AdvertiserStateCopyWithImpl<$Res>;
   @override
-  $Res call({User seller});
+  $Res call({User? seller});
 
   @override
-  $UserCopyWith<$Res> get seller;
+  $UserCopyWith<$Res>? get seller;
 }
 
 /// @nodoc
@@ -307,7 +311,7 @@ class __$AdvertiserStateCopyWithImpl<$Res>
       seller: seller == freezed
           ? _value.seller
           : seller // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
     ));
   }
 }
@@ -318,7 +322,7 @@ class _$_AdvertiserState implements _AdvertiserState {
   const _$_AdvertiserState({required this.seller});
 
   @override
-  final User seller;
+  final User? seller;
 
   @override
   String toString() {
@@ -344,10 +348,10 @@ class _$_AdvertiserState implements _AdvertiserState {
 }
 
 abstract class _AdvertiserState implements AdvertiserState {
-  const factory _AdvertiserState({required User seller}) = _$_AdvertiserState;
+  const factory _AdvertiserState({required User? seller}) = _$_AdvertiserState;
 
   @override
-  User get seller => throw _privateConstructorUsedError;
+  User? get seller => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AdvertiserStateCopyWith<_AdvertiserState> get copyWith =>

@@ -6,10 +6,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 extension StringDateExtension on String {
   String getDateAndMonthName() {
-    var parsedDate = DateTime.parse(this);
-    final day = parsedDate.day;
-    final month = parsedDate.month.getMonthName();
-    return '$day de $month';
+    try {
+      var parsedDate = DateTime.parse(this);
+      final day = parsedDate.day;
+      final month = parsedDate.month.getMonthName();
+      return '$day de $month';
+    } on Exception catch (e) {
+      return '';
+    }
   }
 
   String getHourDateAndMonthName() {

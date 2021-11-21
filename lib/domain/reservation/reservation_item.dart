@@ -27,9 +27,9 @@ class ReservationItem with _$ReservationItem {
       quantity: 0,
       rating: product.rating,
       kind: product.kind,
-      sellerName: product.advertisement?.seller.name.getOrCrash() ?? '',
-      sellerId: product.advertisement?.seller.id.getOrCrash() ?? '',
-      sellerPhone: product.advertisement?.seller.phoneNumber.getOrCrash() ?? '',
+      sellerName: product.advertisement?.seller.name ?? '',
+      sellerId: product.advertisement?.seller.id.toString() ?? '',
+      sellerPhone: product.advertisement?.seller.phoneNumber ?? '',
       advertisementId: product.advertisementId);
 
   factory ReservationItem.fromJson(Map<String, dynamic> json) =>

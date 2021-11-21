@@ -11,7 +11,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'summary_event.dart';
+
 part 'summary_state.dart';
+
 part 'summary_bloc.freezed.dart';
 
 @injectable
@@ -30,17 +32,22 @@ class SummaryBloc extends Bloc<SummaryEvent, SummaryState> {
         yield state.copyWith(selectedPlace: selectedPlace);
       }
     }, onCancelReservationPressed: (onCancelReservationPressed) async* {
-      yield state.copyWith(cancellingReservation: true);
-      final cancelResult = await reservationFacade
-          .cancelReservation(onCancelReservationPressed.reservation);
-      yield state.copyWith(
-          cancellingReservation: false,
-          optionOfReservationCancelFailureOrSuccess: some(cancelResult));
-      state.copyWith(optionOfReservationCancelFailureOrSuccess: none());
+      final reservation = onCancelReservationPressed.reservation;
+      if (reservation != null) {
+        yield state.copyWith(cancellingReservation: true);
+        final cancelResult =
+            await reservationFacade.cancelReservation(reservation);
+        yield state.copyWith(
+            cancellingReservation: false,
+            optionOfReservationCancelFailureOrSuccess: some(cancelResult));
+        yield state.copyWith(optionOfReservationCancelFailureOrSuccess: none());
+      }
     }, onPlaceChanged: (OnPlaceChanged value) async* {
       final selectedPlace = await loadSelectedPlace();
       if (selectedPlace != null) {
-        yield state.copyWith(selectedPlace: selectedPlace, );
+        yield state.copyWith(
+          selectedPlace: selectedPlace,
+        );
       }
     });
   }

@@ -65,48 +65,39 @@ class ReservationWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(24.0),
                 child: Row(
                   children: [
-                    Container(
-                        width: 72.0,
-                        height: 72.0,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                fit: BoxFit.fill,
-                                    image: NetworkImage(state.reservation.seller
-                                            ?.mediumAvatar?.value
-                                            .fold((l) => '', (r) => r) ??
-                                        '')))),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              state.reservation.seller?.nickname.getOrCrash() ?? '',
+                    CircleAvatar(
+                      radius: 36,
+                      foregroundImage: NetworkImage(state
+                              .reservation?.seller?.mediumAvatar?.value
+                              .fold((l) => '', (r) => r) ??
+                          ''),
+                      backgroundColor: ColorSet.green1,
+                    ),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          state.reservation?.seller?.nickname ?? '',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
                         ),
-                            const SizedBox(height: 8),
-                            Text.rich(TextSpan(
-                                text: state.optionOfAdFailureOrSuccess.fold(
-                              () => '',
-                              (a) => a.fold(
-                                (l) => '',
-                                (r) => r.meetingType,
-                              ),
+                        const SizedBox(height: 8),
+                        Text.rich(TextSpan(
+                            text: state.adFailureOrSuccess?.fold(
+                              (l) => '',
+                              (r) => r.meetingType,
                             ),
                             children: [
                               const TextSpan(text: ' '),
                               TextSpan(
-                                text: state.optionOfAdFailureOrSuccess.fold(
-                                  () => '',
-                                  (a) => a.fold(
-                                    (l) => '',
-                                    (r) => r.meetingTypeDescription,
-                                  ),
+                                text: state.adFailureOrSuccess?.fold(
+                                  (l) => '',
+                                  (r) => r.meetingTypeDescription,
                                 ),
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -118,10 +109,18 @@ class ReservationWidget extends StatelessWidget {
                   ],
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Feira do dia: ${state.adFailureOrSuccess?.fold((l) => '--', (r) => r.deliveryAt.getDateAndMonthName()) ?? '--'}',
+                  style: const TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
               MaterialButton(
                 onPressed: () async {
-                  await openWhatsapp(
-                      reservation.seller?.phoneNumber.getOrCrash() ?? '');
+                  await openWhatsapp(reservation.seller?.phoneNumber ?? '');
                 },
                 child: Container(
                     decoration: const BoxDecoration(
@@ -179,13 +178,13 @@ class ReservationWidget extends StatelessWidget {
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  '${state.reservation.productReservations[index].adProduct.name} ${state.reservation.productReservations[index].adProduct.kind} ${state.reservation.productReservations[index].adProduct.rating} • ${state.reservation.productReservations[index].quantity} ${state.reservation.productReservations[index].adProduct.unitMeasure}(s)',
+                                  '${state.reservation?.productReservations[index].adProduct.name} ${state.reservation?.productReservations[index].adProduct.kind} ${state.reservation?.productReservations[index].adProduct.rating} • ${state.reservation?.productReservations[index].quantity} ${state.reservation?.productReservations[index].adProduct.unitMeasure}(s)',
                                   style: const TextStyle(fontSize: 12),
                                 ),
                               );
                             },
                             itemCount:
-                                state.reservation.productReservations.length,
+                                state.reservation?.productReservations.length,
                           ),
                           const SizedBox(height: 4),
                           const Text('Alterar itens',
@@ -195,7 +194,7 @@ class ReservationWidget extends StatelessWidget {
                                   decoration: TextDecoration.underline)),
                           const SizedBox(height: 30),
                           Visibility(
-                              visible: state.reservation.getStatusFromItems() ==
+                              visible: state.reservation?.getStatusFromItems() ==
                                   ReservationItemStatus.awaitingBuyer,
                               child: ListView(
                                 shrinkWrap: true,
@@ -204,102 +203,58 @@ class ReservationWidget extends StatelessWidget {
                                   const Center(
                                     child: Text('❗ Atenção!',
                                         style: TextStyle(
-                                                color: ColorSet.yellow2,
-                                                fontSize: 14)),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      ListView.separated(
-                                        separatorBuilder: (context, index) =>
-                                            const SizedBox(height: 8),
-                                        physics: const ClampingScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemBuilder: (itemBuilder, index) {
-                                          final list = state
-                                              .reservation.productReservations
-                                              .where((element) =>
-                                                  element.status ==
-                                                  ReservationItemStatus
-                                                      .awaitingBuyer)
-                                              .toList();
-                                          return Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            color: ColorSet.yellow2,
+                                            fontSize: 14)),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  ListView.separated(
+                                    separatorBuilder: (context, index) =>
+                                        const SizedBox(height: 8),
+                                    physics: const ClampingScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (itemBuilder, index) {
+                                      final list = state
+                                          .reservation?.productReservations
+                                          .where((element) =>
+                                              element.status ==
+                                              ReservationItemStatus
+                                                  .awaitingBuyer)
+                                          .toList();
+                                      return Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            list?[index].adProduct.name ?? '',
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            'Só tem ${list?[index].quantity} ${list?[index].adProduct.unitMeasure} disponível(eis). Aceitar?',
+                                            style: const TextStyle(),
+                                          ),
+                                          Row(
                                             children: [
-                                              Text(
-                                                list[index].adProduct.name ??
-                                                    '',
-                                                style: const TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Text(
-                                                'Só tem ${list[index].quantity} ${list[index].adProduct.unitMeasure} disponível(eis). Aceitar?',
-                                                style: const TextStyle(),
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: MaterialButton(
-                                                        onPressed: () {},
-                                                        child: Container(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .fromLTRB(
-                                                                  0, 8, 0, 8),
-                                                          width:
-                                                              double.infinity,
-                                                          decoration: const BoxDecoration(
-                                                              color: ColorSet
-                                                                  .red1Alpha,
-                                                              borderRadius: BorderRadius
-                                                                  .all(Radius
+                                              Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: MaterialButton(
+                                                    onPressed: () {},
+                                                    child: Container(
+                                                      padding: const EdgeInsets
+                                                          .fromLTRB(0, 8, 0, 8),
+                                                      width: double.infinity,
+                                                      decoration: const BoxDecoration(
+                                                          color: ColorSet
+                                                              .red1Alpha,
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
                                                                       .circular(
                                                                           20))),
-                                                          child: const Text(
-                                                              'Cancelar',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  color: ColorSet
-                                                                      .red1)),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: MaterialButton(
-                                                      onPressed: () {
-                                                        context
-                                                            .read<
-                                                                SingleReservationBloc>()
-                                                            .add(SingleReservationEvent
-                                                                .onAcceptPressed(
-                                                                    index));
-                                                      },
-                                                      child: Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .fromLTRB(
-                                                                0, 8, 0, 8),
-                                                        width: double.infinity,
-                                                        decoration: const BoxDecoration(
-                                                            color: ColorSet
-                                                                .green1Alpha,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .all(Radius
-                                                                        .circular(
-                                                                            20))),
-                                                        child: const Text(
-                                                          'Aceitar',
+                                                      child: const Text(
+                                                          'Cancelar',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: TextStyle(
@@ -307,43 +262,76 @@ class ReservationWidget extends StatelessWidget {
                                                                   FontWeight
                                                                       .bold,
                                                               color: ColorSet
-                                                                  .green1),
-                                                        ),
-                                                      ),
+                                                                  .red1)),
                                                     ),
-                                                  )
-                                                ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: MaterialButton(
+                                                  onPressed: () {
+                                                    context
+                                                        .read<
+                                                            SingleReservationBloc>()
+                                                        .add(SingleReservationEvent
+                                                            .onAcceptPressed(
+                                                                index));
+                                                  },
+                                                  child: Container(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 8, 0, 8),
+                                                    width: double.infinity,
+                                                    decoration: const BoxDecoration(
+                                                        color: ColorSet
+                                                            .green1Alpha,
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    20))),
+                                                    child: const Text(
+                                                      'Aceitar',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              ColorSet.green1),
+                                                    ),
+                                                  ),
+                                                ),
                                               )
                                             ],
-                                          );
-                                        },
-                                        itemCount: state
-                                            .reservation.productReservations
-                                            .where((element) =>
-                                                element.status ==
-                                                ReservationItemStatus
-                                                    .awaitingBuyer)
-                                            .toList()
-                                            .length,
-                                      ),
-                                      const SizedBox(height: 40),
-                                    ],
-                                  )),
-                              const Divider(),
-                              if (state.reservation.getStatusFromItems() !=
-                                      ReservationItemStatus.buyerCanceled &&
-                                  state.reservation.getStatusFromItems() !=
-                                      ReservationItemStatus.sellerCanceled)
-                                MaterialButton(
-                                  onPressed: () {
-                                    context.read<SummaryBloc>().add(
-                                        SummaryEvent.onCancelReservationPressed(
-                                            state.reservation));
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        50, 10, 50, 10),
-                                    decoration: const BoxDecoration(
+                                          )
+                                        ],
+                                      );
+                                    },
+                                    itemCount: state
+                                        .reservation?.productReservations
+                                        .where((element) =>
+                                            element.status ==
+                                            ReservationItemStatus.awaitingBuyer)
+                                        .toList()
+                                        .length ?? 0,
+                                  ),
+                                  const SizedBox(height: 40),
+                                ],
+                              )),
+                          const Divider(),
+                          if (state.reservation?.getStatusFromItems() !=
+                                  ReservationItemStatus.buyerCanceled &&
+                              state.reservation?.getStatusFromItems() !=
+                                  ReservationItemStatus.sellerCanceled)
+                            MaterialButton(
+                              onPressed: () {
+                                context.read<SummaryBloc>().add(
+                                    SummaryEvent.onCancelReservationPressed(
+                                        state.reservation));
+                              },
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                                decoration: const BoxDecoration(
                                     color: ColorSet.red1Alpha,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(20))),
@@ -409,77 +397,96 @@ class ReservationWidget extends StatelessWidget {
     );
   }
 
-  Widget _getStatusText(Reservation reservation) {
+  Widget _getStatusText(Reservation? reservation) {
     final String text;
     String iconText;
-    switch (reservation.getStatusFromItems()) {
-      case ReservationItemStatus.pendingSeller:
-        text = 'Pendente';
-        iconText = '?';
-        break;
-      case ReservationItemStatus.buyerCanceled:
-        text = 'Cancelado';
-        iconText = 'x';
-        break;
-      case ReservationItemStatus.awaitingBuyer:
-        text = 'Aguardando confirmação';
-        iconText = '!';
-        break;
-      case ReservationItemStatus.confirmed:
-        text = 'Confirmado';
-        iconText = '✓';
-        break;
-      case ReservationItemStatus.paid:
-        text = 'Pago';
-        iconText = '✓';
-        break;
-      case ReservationItemStatus.sellerCanceled:
-        text = 'Cancelado';
-        iconText = 'x';
-        break;
-      default:
-        text = 'Pendente';
-        iconText = '?';
+
+    if (reservation != null) {
+      switch (reservation.getStatusFromItems()) {
+        case ReservationItemStatus.pendingSeller:
+          text = 'Pendente';
+          iconText = '?';
+          break;
+        case ReservationItemStatus.buyerCanceled:
+          text = 'Cancelado';
+          iconText = 'x';
+          break;
+        case ReservationItemStatus.awaitingBuyer:
+          text = 'Aguardando confirmação';
+          iconText = '!';
+          break;
+        case ReservationItemStatus.confirmed:
+          text = 'Confirmado';
+          iconText = '✓';
+          break;
+        case ReservationItemStatus.paid:
+          text = 'Pago';
+          iconText = '✓';
+          break;
+        case ReservationItemStatus.sellerCanceled:
+          text = 'Cancelado';
+          iconText = 'x';
+          break;
+        default:
+          text = 'Pendente';
+          iconText = '?';
+      }
+    } else {
+      text = 'Carregando';
+      iconText = '';
     }
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text('Status do pedido',
-            style: TextStyle(color: Colors.white, fontSize: 12),),
+        const Text(
+          'Status do pedido',
+          style: TextStyle(color: Colors.white, fontSize: 12),
+        ),
         const SizedBox(
           width: 2,
         ),
         CircleAvatar(
           backgroundColor: Colors.white,
           radius: 8,
-          child: Text(iconText, style: TextStyle(fontSize: 12, color: _getStatusColor(reservation), fontWeight: FontWeight.bold),),
+          child: Text(
+            iconText,
+            style: TextStyle(
+                fontSize: 12,
+                color: _getStatusColor(reservation),
+                fontWeight: FontWeight.bold),
+          ),
         ),
         const SizedBox(
           width: 2,
         ),
         Text(
           text,
-          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12),
+          style: const TextStyle(
+              fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12),
         ),
       ],
     );
   }
 
-  Color _getStatusColor(Reservation reservation) {
-    switch (reservation.getStatusFromItems()) {
-      case ReservationItemStatus.awaitingBuyer:
-        return ColorSet.yellow2;
-      case ReservationItemStatus.pendingSeller:
-        return ColorSet.gray2;
-      case ReservationItemStatus.buyerCanceled:
-        return ColorSet.orange2;
-      case ReservationItemStatus.sellerCanceled:
-        return ColorSet.orange2;
-      case ReservationItemStatus.confirmed:
-        return ColorSet.green1;
-      case ReservationItemStatus.paid:
-        return ColorSet.blue1;
+  Color _getStatusColor(Reservation? reservation) {
+    if (reservation != null) {
+      switch (reservation.getStatusFromItems()) {
+        case ReservationItemStatus.awaitingBuyer:
+          return ColorSet.yellow2;
+        case ReservationItemStatus.pendingSeller:
+          return ColorSet.gray2;
+        case ReservationItemStatus.buyerCanceled:
+          return ColorSet.orange2;
+        case ReservationItemStatus.sellerCanceled:
+          return ColorSet.orange2;
+        case ReservationItemStatus.confirmed:
+          return ColorSet.green1;
+        case ReservationItemStatus.paid:
+          return ColorSet.blue1;
+      }
+    } else {
+      return ColorSet.gray2;
     }
   }
 }

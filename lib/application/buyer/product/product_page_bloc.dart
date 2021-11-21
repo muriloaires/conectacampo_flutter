@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/advertisements/i_advertisements_facade.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
@@ -22,42 +23,52 @@ part 'product_page_bloc.freezed.dart';
 
 @injectable
 class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
-  ProductPageBloc(this.reservationFacade) : super(ProductPageState.initial());
+  ProductPageBloc(this.reservationFacade, this.advertisementsFacade)
+      : super(ProductPageState.initial());
 
   final IReservationFacade reservationFacade;
+  final IAdvertisementsFacade advertisementsFacade;
 
   @override
   Stream<ProductPageState> mapEventToState(
     ProductPageEvent event,
   ) async* {
     yield* event.map(started: (started) async* {
-      final reservation =
-          await reservationFacade.getReservationItemByProduct(started.product);
-
-      final place = await loadSelectedPlace();
-      yield state.copyWith(
-          reservationItemFailureOrSuccess:
-              reservation.fold(() => null, (a) => right(a)),
-          place: place);
+      final product = started.product;
+      if (product != null) {
+        final reservation =
+            await reservationFacade.getReservationItemByProduct(product);
+        final adv = await advertisementsFacade
+            .getAdvertisement(product.advertisementId);
+        final place = await loadSelectedPlace();
+        yield state.copyWith(
+            product: product.copyWith(
+                advertisement: adv.fold((l) => null, (r) => r)),
+            reservationItemFailureOrSuccess:
+                reservation.fold(() => null, (a) => right(a)),
+            place: place);
+      }
     }, amountChanged: (amountChanged) async* {
       yield state.copyWith(
           reservationQuantity: ReservationQuantity(amountChanged.amount),
           showErrorMsg: false,
           reservationItemFailureOrSuccess: null);
     }, onBtnReservationTap: (onBtnReservationTap) async* {
-      final reservationItem =
-          ReservationItem.fromAdProduct(onBtnReservationTap.product);
+      final product = state.product;
+      if (product != null) {
+        final reservationItem = ReservationItem.fromAdProduct(product);
 
-      final result = await reservationFacade.insertReservationItemToCart(
-          reservationItem.copyWith(
-              quantity: int.parse(state.reservationQuantity.getOrCrash())));
+        final result = await reservationFacade.insertReservationItemToCart(
+            reservationItem.copyWith(
+                quantity: int.parse(state.reservationQuantity.getOrCrash())));
 
-      yield state.copyWith(
-          reservationItemFailureOrSuccess: result,
-          showErrorMsg: true,
-          openCart: true);
+        yield state.copyWith(
+            reservationItemFailureOrSuccess: result,
+            showErrorMsg: true,
+            openCart: true);
 
-      yield state.copyWith(openCart: false);
+        yield state.copyWith(openCart: false);
+      }
     });
   }
 }

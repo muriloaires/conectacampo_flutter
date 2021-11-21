@@ -21,7 +21,7 @@ class _$SummaryEventTearOff {
   }
 
   OnCancelReservationPressed onCancelReservationPressed(
-      Reservation reservation) {
+      Reservation? reservation) {
     return OnCancelReservationPressed(
       reservation,
     );
@@ -40,7 +40,7 @@ mixin _$SummaryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Reservation reservation)
+    required TResult Function(Reservation? reservation)
         onCancelReservationPressed,
     required TResult Function() onPlaceChanged,
   }) =>
@@ -48,7 +48,7 @@ mixin _$SummaryEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Reservation reservation)? onCancelReservationPressed,
+    TResult Function(Reservation? reservation)? onCancelReservationPressed,
     TResult Function()? onPlaceChanged,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Reservation reservation)
+    required TResult Function(Reservation? reservation)
         onCancelReservationPressed,
     required TResult Function() onPlaceChanged,
   }) {
@@ -137,7 +137,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Reservation reservation)? onCancelReservationPressed,
+    TResult Function(Reservation? reservation)? onCancelReservationPressed,
     TResult Function()? onPlaceChanged,
     required TResult orElse(),
   }) {
@@ -183,9 +183,9 @@ abstract class $OnCancelReservationPressedCopyWith<$Res> {
   factory $OnCancelReservationPressedCopyWith(OnCancelReservationPressed value,
           $Res Function(OnCancelReservationPressed) then) =
       _$OnCancelReservationPressedCopyWithImpl<$Res>;
-  $Res call({Reservation reservation});
+  $Res call({Reservation? reservation});
 
-  $ReservationCopyWith<$Res> get reservation;
+  $ReservationCopyWith<$Res>? get reservation;
 }
 
 /// @nodoc
@@ -208,13 +208,17 @@ class _$OnCancelReservationPressedCopyWithImpl<$Res>
       reservation == freezed
           ? _value.reservation
           : reservation // ignore: cast_nullable_to_non_nullable
-              as Reservation,
+              as Reservation?,
     ));
   }
 
   @override
-  $ReservationCopyWith<$Res> get reservation {
-    return $ReservationCopyWith<$Res>(_value.reservation, (value) {
+  $ReservationCopyWith<$Res>? get reservation {
+    if (_value.reservation == null) {
+      return null;
+    }
+
+    return $ReservationCopyWith<$Res>(_value.reservation!, (value) {
       return _then(_value.copyWith(reservation: value));
     });
   }
@@ -226,7 +230,7 @@ class _$OnCancelReservationPressed implements OnCancelReservationPressed {
   const _$OnCancelReservationPressed(this.reservation);
 
   @override
-  final Reservation reservation;
+  final Reservation? reservation;
 
   @override
   String toString() {
@@ -257,7 +261,7 @@ class _$OnCancelReservationPressed implements OnCancelReservationPressed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Reservation reservation)
+    required TResult Function(Reservation? reservation)
         onCancelReservationPressed,
     required TResult Function() onPlaceChanged,
   }) {
@@ -268,7 +272,7 @@ class _$OnCancelReservationPressed implements OnCancelReservationPressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Reservation reservation)? onCancelReservationPressed,
+    TResult Function(Reservation? reservation)? onCancelReservationPressed,
     TResult Function()? onPlaceChanged,
     required TResult orElse(),
   }) {
@@ -306,10 +310,10 @@ class _$OnCancelReservationPressed implements OnCancelReservationPressed {
 }
 
 abstract class OnCancelReservationPressed implements SummaryEvent {
-  const factory OnCancelReservationPressed(Reservation reservation) =
+  const factory OnCancelReservationPressed(Reservation? reservation) =
       _$OnCancelReservationPressed;
 
-  Reservation get reservation => throw _privateConstructorUsedError;
+  Reservation? get reservation => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OnCancelReservationPressedCopyWith<OnCancelReservationPressed>
       get copyWith => throw _privateConstructorUsedError;
@@ -356,7 +360,7 @@ class _$OnPlaceChanged implements OnPlaceChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Reservation reservation)
+    required TResult Function(Reservation? reservation)
         onCancelReservationPressed,
     required TResult Function() onPlaceChanged,
   }) {
@@ -367,7 +371,7 @@ class _$OnPlaceChanged implements OnPlaceChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Reservation reservation)? onCancelReservationPressed,
+    TResult Function(Reservation? reservation)? onCancelReservationPressed,
     TResult Function()? onPlaceChanged,
     required TResult orElse(),
   }) {

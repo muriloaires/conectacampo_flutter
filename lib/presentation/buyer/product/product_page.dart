@@ -16,15 +16,15 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatelessWidget {
-  final AdProduct _product;
+  final AdProduct _adProduct;
 
-  const ProductPage(this._product);
+  const ProductPage(this._adProduct);
 
   @override
   Widget build(BuildContext context) {
     final textController = TextEditingController();
     return BlocProvider<ProductPageBloc>(
-      create: (context) => getIt()..add(ProductPageEvent.started(_product)),
+      create: (context) => getIt()..add(ProductPageEvent.started(_adProduct)),
       child: BlocConsumer<ProductPageBloc, ProductPageState>(
           listener: (context, state) async {
         final productPageBloc = context.read<ProductPageBloc>();
@@ -35,7 +35,7 @@ class ProductPage extends StatelessWidget {
             builder: (context) => const CartPage(),
           ));
           buyerMenuBloc.add(const BuyerMenuEvent.started());
-          productPageBloc.add(ProductPageEvent.started(_product));
+          productPageBloc.add(ProductPageEvent.started(state.product));
         }
 
         productPageBloc.state.reservationItemFailureOrSuccess?.fold((l) => null,
@@ -142,7 +142,8 @@ class ProductPage extends StatelessWidget {
                             Expanded(
                               child: Container(
                                 padding: const EdgeInsets.all(8),
-                                child: Center(child: Text(_product.name ?? '')),
+                                child: Center(
+                                    child: Text(state.product?.name ?? '')),
                               ),
                             ),
                           ],
@@ -191,12 +192,12 @@ class ProductPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50, 44, 50, 0),
+                    padding: const EdgeInsets.fromLTRB(16, 44, 16, 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          _product.name ?? '',
+                          state.product?.name ?? '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
@@ -214,7 +215,7 @@ class ProductPage extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                _product.kind,
+                                state.product?.kind ?? '',
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 12,
@@ -234,7 +235,7 @@ class ProductPage extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                _product.rating,
+                                state.product?.rating ?? '',
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 12,
@@ -253,7 +254,7 @@ class ProductPage extends StatelessWidget {
                                     Radius.circular(2.0),
                                   )),
                               child: Text(
-                                _product.unitMeasure,
+                                state.product?.unitMeasure ?? '',
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 12,
@@ -282,7 +283,7 @@ class ProductPage extends StatelessWidget {
                             enlargeCenterPage: true,
                             scrollDirection: Axis.horizontal,
                           ),
-                          items: _product.images.map((i) {
+                          items: state.product?.images.map((i) {
                             return Builder(
                               builder: (BuildContext context) {
                                 return Container(
@@ -318,12 +319,12 @@ class ProductPage extends StatelessWidget {
                           height: 10,
                         ),
                         Text.rich(TextSpan(
-                            text: 'Disponível: ',
+                            text: 'Disponível(is): ',
                             style: const TextStyle(fontWeight: FontWeight.bold),
                             children: [
                               TextSpan(
                                   text:
-                                      '${_product.quantity} ${_product.unitMeasure}(s)',
+                                      '${state.product?.quantity ?? ''} ${state.product?.unitMeasure ?? ''}(s)',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.normal))
                             ])),
@@ -332,7 +333,7 @@ class ProductPage extends StatelessWidget {
                             style: const TextStyle(fontWeight: FontWeight.bold),
                             children: [
                               TextSpan(
-                                  text: _product.unitMeasure,
+                                  text: state.product?.unitMeasure ?? '' + '(s)',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.normal))
                             ])),
@@ -343,7 +344,7 @@ class ProductPage extends StatelessWidget {
                   Container(height: 1, color: ColorSet.grayLine),
                   const SizedBox(height: 32),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -352,7 +353,7 @@ class ProductPage extends StatelessWidget {
                             style: const TextStyle(fontWeight: FontWeight.bold),
                             children: [
                               TextSpan(
-                                  text: _product.advertisement?.deliveryAt
+                                  text: state.product?.advertisement?.deliveryAt
                                       .getDateAndMonthName(),
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -365,135 +366,131 @@ class ProductPage extends StatelessWidget {
                   const SizedBox(
                     height: 35,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: Form(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      child: Column(
-                        children: [
-                          Padding(
-                              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                              child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(8)),
-                                child: Container(
-                                    color: ColorSet.grayRoundedBackground,
-                                    child: Center(
-                                      child: TextFormField(
-                                        controller: textController,
-                                        validator: (_) => context
-                                            .read<ProductPageBloc>()
-                                            .state
-                                            .reservationQuantity
-                                            .value
-                                            .fold(
-                                                (l) => l.maybeMap(
-                                                    invalidReservationQuantity:
-                                                        (_) =>
-                                                            'Quantidade inválida',
-                                                    orElse: () => null),
-                                                (r) => null),
-                                        onChanged: (value) {
-                                          context.read<ProductPageBloc>().add(
-                                              ProductPageEvent.amountChanged(
-                                                  value));
-                                        },
-                                        textAlign: TextAlign.center,
-                                        keyboardType: TextInputType.number,
-                                        inputFormatters: <TextInputFormatter>[
-                                          FilteringTextInputFormatter.digitsOnly
-                                        ],
-                                        decoration: const InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: 'Quantidade: -',
-                                            hintStyle: TextStyle(
-                                                color: ColorSet.gray2)),
-                                        style: const TextStyle(
-                                          fontSize: 20,
-                                          color: ColorSet.green1,
-                                        ),
-                                      ),
-                                    )),
-                              )),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                          MaterialButton(
-                            onPressed: () async {
-                              await openWhatsapp(_product
-                                      .advertisement?.seller.phoneNumber
-                                      .getOrCrash() ??
-                                  '');
-                            },
-                            child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(8)),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  color: ColorSet.green1,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const Flexible(
-                                        child: Text(
-                                          'Horário para entrega: Combinar com o vendedor',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      SvgPicture.asset(
-                                        'assets/whatsapp.svg',
-                                        color: Colors.white,
-                                      )
+                  Form(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                          child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8)),
+                            child: Container(
+                                color: ColorSet.grayRoundedBackground,
+                                child: Center(
+                                  child: TextFormField(
+                                    controller: textController,
+                                    validator: (_) => context
+                                        .read<ProductPageBloc>()
+                                        .state
+                                        .reservationQuantity
+                                        .value
+                                        .fold(
+                                            (l) => l.maybeMap(
+                                                invalidReservationQuantity:
+                                                    (_) =>
+                                                        'Quantidade inválida',
+                                                orElse: () => null),
+                                            (r) => null),
+                                    onChanged: (value) {
+                                      context.read<ProductPageBloc>().add(
+                                          ProductPageEvent.amountChanged(
+                                              value));
+                                    },
+                                    textAlign: TextAlign.center,
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.digitsOnly
                                     ],
-                                  ),
-                                )),
-                          ),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                          MaterialButton(
-                            onPressed: () {
-                              if (context
-                                  .read<ProductPageBloc>()
-                                  .state
-                                  .reservationQuantity
-                                  .isValid()) {
-                                context.read<ProductPageBloc>().add(
-                                    ProductPageEvent.onBtnReservationTap(
-                                        _product));
-                              }
-                            },
-                            child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(8)),
-                                child: Container(
-                                  padding: const EdgeInsets.all(16),
-                                  color: context
-                                          .read<ProductPageBloc>()
-                                          .state
-                                          .reservationQuantity
-                                          .isValid()
-                                      ? ColorSet.green1
-                                      : ColorSet.gray2,
-                                  child: const Center(
-                                    child: Text(
-                                      'Reservar agora',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                    decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: 'Quantidade: -',
+                                        hintStyle:
+                                            TextStyle(color: ColorSet.gray2)),
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      color: ColorSet.green1,
                                     ),
                                   ),
                                 )),
-                          )
-                        ],
-                      ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        MaterialButton(
+                          onPressed: () async {
+                            await openWhatsapp(state.product?.advertisement
+                                    ?.seller.phoneNumber ??
+                                '');
+                          },
+                          child: ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              child: Container(
+                                padding: const EdgeInsets.all(8),
+                                color: ColorSet.green1,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Flexible(
+                                      child: Text(
+                                        'Horário para entrega: Combinar com o vendedor',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    SvgPicture.asset(
+                                      'assets/whatsapp.svg',
+                                      color: Colors.white,
+                                    )
+                                  ],
+                                ),
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        MaterialButton(
+                          onPressed: () {
+                            if (context
+                                .read<ProductPageBloc>()
+                                .state
+                                .reservationQuantity
+                                .isValid()) {
+                              context.read<ProductPageBloc>().add(
+                                  const ProductPageEvent.onBtnReservationTap());
+                            }
+                          },
+                          child: ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              child: Container(
+                                padding: const EdgeInsets.all(16),
+                                color: context
+                                        .read<ProductPageBloc>()
+                                        .state
+                                        .reservationQuantity
+                                        .isValid()
+                                    ? ColorSet.green1
+                                    : ColorSet.gray2,
+                                child: const Center(
+                                  child: Text(
+                                    'Reservar agora',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              )),
+                        )
+                      ],
                     ),
                   ),
                   const SizedBox(height: 35),
@@ -540,7 +537,7 @@ class ProductPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Visibility(
-                      visible: _product.advertisement != null,
+                      visible: state.product?.advertisement != null,
                       child: ListView(
                         shrinkWrap: true,
                         physics: const ClampingScrollPhysics(),
@@ -559,23 +556,26 @@ class ProductPage extends StatelessWidget {
                             child: ListView.builder(
                                 physics: const ClampingScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount:
-                                    _product.advertisement?.products.length,
+                                itemCount: state
+                                    .product?.advertisement?.products.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                       onTap: () async {
-                                        await Navigator.of(context)
-                                            .push(MaterialPageRoute(
-                                          builder: (context) => ProductPage(
-                                              _product.advertisement!
-                                                  .products[index]),
-                                        ));
-                                        context.read<BuyerMenuBloc>().add(
-                                            const BuyerMenuEvent
-                                                .produtDetailsClosed());
+                                        final product = state.product;
+                                        if (product != null) {
+                                          await Navigator.of(context)
+                                              .push(MaterialPageRoute(
+                                            builder: (context) => ProductPage(
+                                                product.advertisement!
+                                                    .products[index]),
+                                          ));
+                                          context.read<BuyerMenuBloc>().add(
+                                              const BuyerMenuEvent
+                                                  .produtDetailsClosed());
+                                        }
                                       },
-                                      child: ProductAdvertisement(_product
+                                      child: ProductAdvertisement(state.product!
                                           .advertisement!.products[index]));
                                 }),
                           )
@@ -592,8 +592,8 @@ class ProductPage extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: [
-                        if (_product.observation != null &&
-                            _product.observation!.isNotEmpty)
+                        if (state.product?.observation != null &&
+                            state.product!.observation!.isNotEmpty)
                           const Text(
                             'O que você precisa saber sobre esse produto:',
                             style: TextStyle(
@@ -602,10 +602,10 @@ class ProductPage extends StatelessWidget {
                             ),
                           ),
                         const SizedBox(height: 20),
-                        if (_product.observation != null &&
-                            _product.observation!.isNotEmpty)
-                          Text(_product.observation!),
-                        if (_product.advertisement != null)
+                        if (state.product?.observation != null &&
+                            state.product!.observation!.isNotEmpty)
+                          Text(state.product!.observation!),
+                        if (state.product?.advertisement != null)
                           Visibility(
                               child: ListView(
                             shrinkWrap: true,
@@ -622,13 +622,13 @@ class ProductPage extends StatelessWidget {
                               const SizedBox(height: 10),
                               Advertiser(
                                   isSearch: true,
-                                  seller: _product.advertisement!.seller),
+                                  seller: state.product!.advertisement!.seller),
                               const SizedBox(height: 10),
                               MaterialButton(
                                 onPressed: () async {
-                                  await openWhatsapp(_product
-                                      .advertisement!.seller.phoneNumber
-                                      .getOrCrash());
+                                  await openWhatsapp(state.product!
+                                          .advertisement!.seller.phoneNumber ??
+                                      '');
                                 },
                                 child: ClipRRect(
                                     borderRadius: const BorderRadius.all(

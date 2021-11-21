@@ -8,7 +8,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'profile_bloc.freezed.dart';
+
 part 'profile_event.dart';
+
 part 'profile_state.dart';
 
 @injectable
@@ -24,19 +26,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       final isBuyer = await loadLoggedUserType();
 
       yield state.copyWith(
-          user: user.foldRight(
-              User(
-                  UniqueId.fromUniqueString('id'),
-                  FullName('Full name'),
-                  Nickname('Nickname'),
-                  '',
-                  PhoneNumber('+5562999999999'),
-                  null,
-                  null,
-                  null,
-                  null,
-                  null),
-              (r, previous) => r),
+          user: user.foldRight(null, (r, previous) => r),
           isBuyer: isBuyer == 'buyer');
     });
   }

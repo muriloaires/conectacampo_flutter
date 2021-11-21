@@ -5,6 +5,7 @@ import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/product/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 
 class SearchAdvertisement extends StatelessWidget {
   final AdProduct product;
@@ -36,70 +37,85 @@ class SearchAdvertisement extends StatelessWidget {
             },
             child: Padding(
               padding: const EdgeInsets.fromLTRB(32, 18, 32, 18),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: ListView(
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
                 children: [
-                  SizedBox(
-                    width: 74,
-                    height: 74,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(4.0),
-                      child: product.images.isNotEmpty
-                          ? Image.network(
-                              product.images.first.mediumAvatar.getOrCrash(),
-                              fit: BoxFit.fill,
-                            )
-                          : Container(),
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+
                     children: [
-                      Text.rich(
-                        TextSpan(children: [
-                          TextSpan(
-                            text: '${product.name} ',
-                            style: textStyle,
-                          ),
-                          TextSpan(text: product.kind)
-                        ]),
+                      SizedBox(
+                        width: 74,
+                        height: 74,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4.0),
+                          child: product.images.isNotEmpty
+                              ? Image.network(
+                                  product.images.first.mediumAvatar
+                                      .getOrCrash(),
+                                  fit: BoxFit.fill,
+                                )
+                              : Container(),
+                        ),
                       ),
-                      const SizedBox(height: 12),
-                      Row(
+                      const SizedBox(width: 20),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            width: 33.0,
-                            height: 33.0,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: NetworkImage(
-                                  adv.seller.thumbAvatar?.getOrCrash() ?? '',
-                                ),
+                          Text.rich(
+                            TextSpan(children: [
+                              TextSpan(
+                                text: '${product.name} ',
+                                style: textStyle,
                               ),
-                            ),
+                              TextSpan(text: product.kind)
+                            ]),
                           ),
-                          const SizedBox(width: 8),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          const SizedBox(height: 12),
+                          Row(
                             children: [
-                              const Text('Vendedor'),
-                              Text(
-                                adv.seller.name.getOrCrash(),
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                              Container(
+                                width: 33.0,
+                                height: 33.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(
+                                      adv?.seller.thumbAvatar?.getOrCrash() ??
+                                          '',
+                                    ),
+                                  ),
                                 ),
                               ),
+                              const SizedBox(width: 8),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text('Vendedor'),
+                                  Text(
+                                    adv?.seller.name ?? '',
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              )
                             ],
                           )
                         ],
-                      )
+                      ),
                     ],
                   ),
-
-                  IconButton(onPressed: (){}, icon: Icon(Icons.ac_unit))
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,8,0,0),
+                    child: Text(
+                      'Feira do dia: ${state.advertisement?.deliveryAt.getDateAndMonthName()}',
+                      style: const TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

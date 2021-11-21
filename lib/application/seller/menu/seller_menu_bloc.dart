@@ -71,9 +71,12 @@ class SellerMenuBloc extends Bloc<SellerMenuEvent, SellerMenuState> {
           yield state.copyWith(navToBuyer: true);
         },
         reservationEditItemsTap: (EditReservation value) async* {
-          yield state.copyWith(
-              openEditReservation: true,
-              optionOfResevationToEdit: some(value.reservation));
+          final reservation = value.reservation;
+          if (reservation != null) {
+            yield state.copyWith(
+                openEditReservation: true,
+                optionOfResevationToEdit: some(reservation));
+          }
         },
         editingEnd: (EditingEnd value) async* {
           yield state.copyWith(
@@ -110,7 +113,6 @@ class SellerMenuBloc extends Bloc<SellerMenuEvent, SellerMenuState> {
               optionOfPlace: optionOf(place),
               optionOfUser: some(user),
               reservationToOpen: null);
-
         });
   }
 }

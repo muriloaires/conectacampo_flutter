@@ -32,7 +32,7 @@ class SellerGroupBloc extends Bloc<SellerGroupEvent, SellerGroupState> {
     }, onBtnDeleteTap: (OnBtnDeleteTap value) async* {
       yield state.copyWith(loading: true);
       final success = await reservationFacade.removeFromGroup(
-          userId: int.parse(value.buyerGroup.user.id.getOrCrash()));
+          userId: value.buyerGroup.user.id);
       final reservations = await reservationFacade.getSellerGroupReservations();
       yield state.copyWith(
           loading: false,
@@ -51,21 +51,20 @@ class BuyerReservations {
 
 List<BuyerReservations> createBuyerReservations(
     List<Reservation> reservations) {
-  reservations.sort((a, b) => int.parse(a.buyer.id.getOrCrash())
-      .compareTo(int.parse(b.buyer.id.getOrCrash())));
-  var id = '';
+  reservations.sort((a, b) => a.buyer.id.compareTo(b.buyer.id));
+  var id = -1;
   final List<List<Reservation>> listOfLists = [];
   List<Reservation> aux = [];
 
   for (final element in reservations) {
-    if (element.buyer.id.getOrCrash() == id) {
+    if (element.buyer.id == id) {
       aux.add(element);
     } else {
       if (aux.isNotEmpty) {
         listOfLists.add(aux);
       }
       aux = [];
-      id = element.buyer.id.getOrCrash();
+      id = element.buyer.id;
       aux.add(element);
     }
   }

@@ -19,8 +19,8 @@ class Advertiser extends StatelessWidget {
       child: BlocBuilder<AdvertiserBloc, AdvertiserState>(
           builder: (context, state) {
         String lastProducts = '';
-        if (state.seller.lastAdvertisement != null) {
-          for (final element in state.seller.lastAdvertisement!.products) {
+        if (state.seller?.lastAdvertisement != null) {
+          for (final element in state.seller?.lastAdvertisement!.products ?? []) {
             lastProducts += '${element.name}, ';
           }
         }
@@ -29,7 +29,7 @@ class Advertiser extends StatelessWidget {
         } catch (a) {}
 
         return Padding(
-          padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+          padding: const EdgeInsets.fromLTRB(8, 16, 8, 16),
           child: ListView(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
@@ -40,7 +40,7 @@ class Advertiser extends StatelessWidget {
                       radius: 30.0,
                       backgroundColor: ColorSet.green1,
                       foregroundImage: NetworkImage(
-                          state.seller.thumbAvatar?.getOrCrash() ?? '')),
+                          state.seller?.thumbAvatar?.getOrCrash() ?? '')),
                   const SizedBox(width: 8),
                   Expanded(
                     child: ListView(
@@ -48,14 +48,14 @@ class Advertiser extends StatelessWidget {
                       physics: const ClampingScrollPhysics(),
                       children: [
                         Text(
-                          state.seller.name.getOrCrash(),
+                          state.seller?.nickname ?? '',
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Visibility(
                           visible: isSearch &&
-                              state.seller.lastAdvertisement != null,
+                              state.seller?.lastAdvertisement != null,
                           child: Text.rich(TextSpan(children: [
                             const TextSpan(
                               text: 'Último anúncio: ',

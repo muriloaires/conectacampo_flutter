@@ -7,30 +7,30 @@ import 'package:flutter/material.dart';
 
 Future<void> openNotification(
     BuildContext context, ReservationToOpen reservationToOpen) async {
-  if (reservationToOpen?.kind == 'reservation_confirmed' ||
-      reservationToOpen?.kind == 'payment_confirmed') {
+  if (reservationToOpen.kind == 'reservation_confirmed' ||
+      reservationToOpen.kind == 'payment_confirmed') {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) =>
-          SingleReservationBuyer(reservationToOpen!.reservation),
+          SingleReservationBuyer(reservationToOpen.reservation),
     ));
-  } else if (reservationToOpen?.kind == "reservation_created") {
+  } else if (reservationToOpen.kind == "reservation_created") {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) =>
-          SingleReservationSeller(reservationToOpen!.reservation),
+          SingleReservationSeller(reservationToOpen.reservation),
     ));
-  } else if (reservationToOpen?.kind == "reservation_canceled") {
+  } else if (reservationToOpen.kind == "reservation_canceled") {
     final loggedIDFailureOrSuccess = await loadLoggedUser();
     final id =
-        loggedIDFailureOrSuccess.fold((l) => null, (r) => r.id.getOrCrash());
-    if (reservationToOpen!.reservation.buyer.id.toString() == id) {
+        loggedIDFailureOrSuccess.fold((l) => null, (r) => r.id);
+    if (reservationToOpen.reservation.buyer.id == id) {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) =>
-            SingleReservationBuyer(reservationToOpen!.reservation),
+            SingleReservationBuyer(reservationToOpen.reservation),
       ));
     } else {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) =>
-            SingleReservationSeller(reservationToOpen!.reservation),
+            SingleReservationSeller(reservationToOpen.reservation),
       ));
     }
   }

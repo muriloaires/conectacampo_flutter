@@ -1120,7 +1120,7 @@ class _$SellerReservationStateTearOff {
   const _$SellerReservationStateTearOff();
 
   _SellerReservationState call(
-      {required Reservation reservation,
+      {required Reservation? reservation,
       required bool update,
       required List<ProductReservation> deletedItems,
       required bool isItemsVisible,
@@ -1142,7 +1142,7 @@ const $SellerReservationState = _$SellerReservationStateTearOff();
 
 /// @nodoc
 mixin _$SellerReservationState {
-  Reservation get reservation => throw _privateConstructorUsedError;
+  Reservation? get reservation => throw _privateConstructorUsedError;
   bool get update => throw _privateConstructorUsedError;
   List<ProductReservation> get deletedItems =>
       throw _privateConstructorUsedError;
@@ -1161,14 +1161,14 @@ abstract class $SellerReservationStateCopyWith<$Res> {
           $Res Function(SellerReservationState) then) =
       _$SellerReservationStateCopyWithImpl<$Res>;
   $Res call(
-      {Reservation reservation,
+      {Reservation? reservation,
       bool update,
       List<ProductReservation> deletedItems,
       bool isItemsVisible,
       bool finishing,
       bool finished});
 
-  $ReservationCopyWith<$Res> get reservation;
+  $ReservationCopyWith<$Res>? get reservation;
 }
 
 /// @nodoc
@@ -1193,7 +1193,7 @@ class _$SellerReservationStateCopyWithImpl<$Res>
       reservation: reservation == freezed
           ? _value.reservation
           : reservation // ignore: cast_nullable_to_non_nullable
-              as Reservation,
+              as Reservation?,
       update: update == freezed
           ? _value.update
           : update // ignore: cast_nullable_to_non_nullable
@@ -1218,8 +1218,12 @@ class _$SellerReservationStateCopyWithImpl<$Res>
   }
 
   @override
-  $ReservationCopyWith<$Res> get reservation {
-    return $ReservationCopyWith<$Res>(_value.reservation, (value) {
+  $ReservationCopyWith<$Res>? get reservation {
+    if (_value.reservation == null) {
+      return null;
+    }
+
+    return $ReservationCopyWith<$Res>(_value.reservation!, (value) {
       return _then(_value.copyWith(reservation: value));
     });
   }
@@ -1233,7 +1237,7 @@ abstract class _$SellerReservationStateCopyWith<$Res>
       __$SellerReservationStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Reservation reservation,
+      {Reservation? reservation,
       bool update,
       List<ProductReservation> deletedItems,
       bool isItemsVisible,
@@ -1241,7 +1245,7 @@ abstract class _$SellerReservationStateCopyWith<$Res>
       bool finished});
 
   @override
-  $ReservationCopyWith<$Res> get reservation;
+  $ReservationCopyWith<$Res>? get reservation;
 }
 
 /// @nodoc
@@ -1268,7 +1272,7 @@ class __$SellerReservationStateCopyWithImpl<$Res>
       reservation: reservation == freezed
           ? _value.reservation
           : reservation // ignore: cast_nullable_to_non_nullable
-              as Reservation,
+              as Reservation?,
       update: update == freezed
           ? _value.update
           : update // ignore: cast_nullable_to_non_nullable
@@ -1305,7 +1309,7 @@ class _$_SellerReservationState implements _SellerReservationState {
       required this.finished});
 
   @override
-  final Reservation reservation;
+  final Reservation? reservation;
   @override
   final bool update;
   @override
@@ -1364,7 +1368,7 @@ class _$_SellerReservationState implements _SellerReservationState {
 
 abstract class _SellerReservationState implements SellerReservationState {
   const factory _SellerReservationState(
-      {required Reservation reservation,
+      {required Reservation? reservation,
       required bool update,
       required List<ProductReservation> deletedItems,
       required bool isItemsVisible,
@@ -1372,7 +1376,7 @@ abstract class _SellerReservationState implements SellerReservationState {
       required bool finished}) = _$_SellerReservationState;
 
   @override
-  Reservation get reservation => throw _privateConstructorUsedError;
+  Reservation? get reservation => throw _privateConstructorUsedError;
   @override
   bool get update => throw _privateConstructorUsedError;
   @override

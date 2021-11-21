@@ -47,7 +47,7 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.buyerReservations.user.nickname.getOrCrash(),
+                        widget.buyerReservations.user.nickname ?? '',
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -59,7 +59,7 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
             GestureDetector(
               onTap: () async {
                 await openWhatsapp(
-                    widget.buyerReservations.user.phoneNumber.getOrCrash());
+                    widget.buyerReservations.user.phoneNumber ?? '');
               },
               child: Container(
                   decoration: const BoxDecoration(

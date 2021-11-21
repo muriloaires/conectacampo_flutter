@@ -255,8 +255,7 @@ class SellerDefaultAppBar extends StatelessWidget
                                   () => '',
                                   (a) => a.fold(
                                       (l) => '',
-                                      (r) => r.nickname.value
-                                          .getOrElse(() => ''))),
+                                      (r) => r.nickname ?? '')),
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           const SizedBox(width: 24),

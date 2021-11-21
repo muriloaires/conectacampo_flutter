@@ -35,18 +35,6 @@ class CartPage extends StatelessWidget {
                 errorMessage = 'Quantidade insuficiente';
               }
             }
-            // a.errors?.forEach((element) {
-            //
-            //   errorMessage += element.messsage;
-            //   errorMessage += '\n';
-            // });
-
-            // a.productReservations.forEach((element) {
-            //   element.errors?.forEach((element) {
-            //     errorMessage += element.messsage;
-            //     errorMessage += '\n';
-            //   });
-            // });
 
             showDialog<String>(
               context: context,
@@ -199,7 +187,10 @@ class CartPage extends StatelessWidget {
                                 .fold(
                                     () => null,
                                     (a) =>
-                                        a.fold((l) => null, (r) => r[index]));
+                                        a.fold((l) => null, (r){
+                                          final invertedList = r.reversed.toList();
+                                          return invertedList[index];
+                                        } ));
                           }
                         } catch (e) {}
                         return ReservationItemWidget(
@@ -370,7 +361,7 @@ class ReservationItemWidget extends StatelessWidget {
               )
             ],
           ),
-          Divider(),
+          const Divider(),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -504,7 +495,6 @@ class ReservationItemWidget extends StatelessWidget {
                     Text(
                       reservationItem.sellerName,
                       style: const TextStyle(
-                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     )
