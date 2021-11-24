@@ -53,16 +53,18 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   }
 
   @override
-  Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProducts({
-    required Place place,
-    String? productName,
-    String? kind,
-    int? productId,
-    int? quantity,
-    String? rating,
-    String? date
-  }) async {
-    final Map<String, dynamic> params = {'place_id': place.id, 'future_delivery': 'true'};
+  Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProducts(
+      {required Place place,
+      String? productName,
+      String? kind,
+      int? productId,
+      int? quantity,
+      String? rating,
+      String? date}) async {
+    final Map<String, dynamic> params = {
+      'place_id': place.id,
+      'future_delivery': 'true'
+    };
 
     if (productName != null) {
       params.addAll({'name': productName});
@@ -238,7 +240,8 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   Future<Either<AdvertisementFailure, List<Advertisement>>>
       getGroupsAds() async {
     final place = await loadSelectedPlace();
-    final url = Uri.https(baseUrl, '$apiVersion$routeGroupsAds', {'place_id': place?.id});
+    final url = Uri.https(baseUrl, '$apiVersion$routeGroupsAds',
+        {'place_id': place?.id, 'future_delivery': 'true'});
     final response = await getAuthenticatedRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
@@ -289,8 +292,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
   @override
   Future<Either<AdvertisementFailure, Unit>> leaveGroup(
       {required int sellerId}) async {
-    final url = Uri.https(
-        baseUrl, '$apiVersion/me$routeGroups/$sellerId');
+    final url = Uri.https(baseUrl, '$apiVersion/me$routeGroups/$sellerId');
     final response = await getAuthenticatedDeleteRequest(url, getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {

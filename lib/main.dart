@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:conectacampo/infrastructure/notification/model.dart';
 import 'package:conectacampo/infrastructure/notification/notification_controller.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/app_widget.dart';
@@ -21,18 +19,9 @@ Future<void> main() async {
   await setUpDB();
   final messaging = FirebaseMessaging.instance;
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  final token = await messaging.getToken();
-  print('token: $token');
   setUpDB();
   if (Platform.isIOS) {
-    final settings = await messaging.requestPermission(
-        alert: true,
-        announcement: false,
-        badge: true,
-        carPlay: false,
-        criticalAlert: false,
-        provisional: false,
-        sound: true);
+    await messaging.requestPermission();
   }
   runApp(const AppWidget());
   configLoading();

@@ -6,10 +6,12 @@ class SummaryState with _$SummaryState {
       {required bool cancellingReservation,
       required Option<Either<ReservationFailure, Unit>>
           optionOfReservationCancelFailureOrSuccess,
-      required Place selectedPlace}) = _SummaryState;
+      required Place selectedPlace,
+      required bool openSearch}) = _SummaryState;
 
   factory SummaryState.initial() => SummaryState(
       cancellingReservation: false,
       optionOfReservationCancelFailureOrSuccess: none(),
-      selectedPlace: const Place(address: '', id: '', name: '', state: ''));
+      selectedPlace: const Place(address: '', id: '', name: '', state: ''),
+      openSearch: false);
 }

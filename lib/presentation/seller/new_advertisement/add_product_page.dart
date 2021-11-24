@@ -111,6 +111,7 @@ class AddProductForm extends StatelessWidget {
                   height: 20,
                 ),
                 MaterialButton(
+                  color: ColorSet.brown1,
                   onPressed: () {
                     if (!state.showBtnProceed) {
                       return;
@@ -125,7 +126,7 @@ class AddProductForm extends StatelessWidget {
                       'Já adicionei tudo',
                       style: TextStyle(
                           color: state.showBtnProceed
-                              ? ColorSet.brown1
+                              ? Colors.white
                               : ColorSet.gray10,
                           fontWeight: FontWeight.bold),
                     ),

@@ -201,7 +201,7 @@ class CartPage extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: const Text('Comprar mais produtos',
+                        child: const Text('Comprar mais produtos do mesmo vendedor',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: ColorSet.colorPrimaryGreen,

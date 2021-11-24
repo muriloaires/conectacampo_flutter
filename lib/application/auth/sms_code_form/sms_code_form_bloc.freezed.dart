@@ -391,12 +391,14 @@ class _$SmsCodeFormStateTearOff {
       SmsCode smsCode,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) {
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
+      bool resetCodeVisible) {
     return _SmsCodeFormState(
       smsCode,
       isSubmitting,
       showErrorMessages,
       authFailureOrSuccessOption,
+      resetCodeVisible,
     );
   }
 }
@@ -411,6 +413,7 @@ mixin _$SmsCodeFormState {
   bool get showErrorMessages => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
+  bool get resetCodeVisible => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SmsCodeFormStateCopyWith<SmsCodeFormState> get copyWith =>
@@ -426,7 +429,8 @@ abstract class $SmsCodeFormStateCopyWith<$Res> {
       {SmsCode smsCode,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
+      bool resetCodeVisible});
 }
 
 /// @nodoc
@@ -444,6 +448,7 @@ class _$SmsCodeFormStateCopyWithImpl<$Res>
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
     Object? authFailureOrSuccessOption = freezed,
+    Object? resetCodeVisible = freezed,
   }) {
     return _then(_value.copyWith(
       smsCode: smsCode == freezed
@@ -462,6 +467,10 @@ class _$SmsCodeFormStateCopyWithImpl<$Res>
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      resetCodeVisible: resetCodeVisible == freezed
+          ? _value.resetCodeVisible
+          : resetCodeVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -477,7 +486,8 @@ abstract class _$SmsCodeFormStateCopyWith<$Res>
       {SmsCode smsCode,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
+      bool resetCodeVisible});
 }
 
 /// @nodoc
@@ -497,6 +507,7 @@ class __$SmsCodeFormStateCopyWithImpl<$Res>
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
     Object? authFailureOrSuccessOption = freezed,
+    Object? resetCodeVisible = freezed,
   }) {
     return _then(_SmsCodeFormState(
       smsCode == freezed
@@ -515,6 +526,10 @@ class __$SmsCodeFormStateCopyWithImpl<$Res>
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      resetCodeVisible == freezed
+          ? _value.resetCodeVisible
+          : resetCodeVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -522,8 +537,12 @@ class __$SmsCodeFormStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SmsCodeFormState implements _SmsCodeFormState {
-  const _$_SmsCodeFormState(this.smsCode, this.isSubmitting,
-      this.showErrorMessages, this.authFailureOrSuccessOption);
+  const _$_SmsCodeFormState(
+      this.smsCode,
+      this.isSubmitting,
+      this.showErrorMessages,
+      this.authFailureOrSuccessOption,
+      this.resetCodeVisible);
 
   @override
   final SmsCode smsCode;
@@ -533,10 +552,12 @@ class _$_SmsCodeFormState implements _SmsCodeFormState {
   final bool showErrorMessages;
   @override
   final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
+  @override
+  final bool resetCodeVisible;
 
   @override
   String toString() {
-    return 'SmsCodeFormState(smsCode: $smsCode, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'SmsCodeFormState(smsCode: $smsCode, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, authFailureOrSuccessOption: $authFailureOrSuccessOption, resetCodeVisible: $resetCodeVisible)';
   }
 
   @override
@@ -556,7 +577,10 @@ class _$_SmsCodeFormState implements _SmsCodeFormState {
                     authFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
                     other.authFailureOrSuccessOption,
-                    authFailureOrSuccessOption)));
+                    authFailureOrSuccessOption)) &&
+            (identical(other.resetCodeVisible, resetCodeVisible) ||
+                const DeepCollectionEquality()
+                    .equals(other.resetCodeVisible, resetCodeVisible)));
   }
 
   @override
@@ -565,7 +589,8 @@ class _$_SmsCodeFormState implements _SmsCodeFormState {
       const DeepCollectionEquality().hash(smsCode) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
-      const DeepCollectionEquality().hash(authFailureOrSuccessOption);
+      const DeepCollectionEquality().hash(authFailureOrSuccessOption) ^
+      const DeepCollectionEquality().hash(resetCodeVisible);
 
   @JsonKey(ignore: true)
   @override
@@ -575,11 +600,11 @@ class _$_SmsCodeFormState implements _SmsCodeFormState {
 
 abstract class _SmsCodeFormState implements SmsCodeFormState {
   const factory _SmsCodeFormState(
-          SmsCode smsCode,
-          bool isSubmitting,
-          bool showErrorMessages,
-          Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption) =
-      _$_SmsCodeFormState;
+      SmsCode smsCode,
+      bool isSubmitting,
+      bool showErrorMessages,
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
+      bool resetCodeVisible) = _$_SmsCodeFormState;
 
   @override
   SmsCode get smsCode => throw _privateConstructorUsedError;
@@ -590,6 +615,8 @@ abstract class _SmsCodeFormState implements SmsCodeFormState {
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
+  @override
+  bool get resetCodeVisible => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SmsCodeFormStateCopyWith<_SmsCodeFormState> get copyWith =>

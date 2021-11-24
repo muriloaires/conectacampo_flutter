@@ -242,7 +242,7 @@ class SellerReservationWidget extends StatelessWidget {
                     height: 1,
                     color: ColorSet.gray10,
                   ),
-                  GestureDetector(
+                  InkWell(
                     onTap: () {
                       context
                           .read<SellerReservationBloc>()

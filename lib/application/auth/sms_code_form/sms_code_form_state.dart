@@ -7,11 +7,13 @@ class SmsCodeFormState with _$SmsCodeFormState {
    bool isSubmitting,
    bool showErrorMessages,
    Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
+  bool resetCodeVisible,
   ) = _SmsCodeFormState;
 
   factory SmsCodeFormState.initial() =>
       SmsCodeFormState( SmsCode(''),
           false,
            false,
-           none());
+           none(),
+      false);
 }

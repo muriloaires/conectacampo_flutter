@@ -31,11 +31,14 @@ class BuyerSummary extends StatelessWidget {
                 appBar: SearchWidget(),
                 body: BlocConsumer<SummaryBloc, SummaryState>(
                   listener: (context, state) {
-                    if (context
-                        .read<SummaryBloc>()
-                        .state
-                        .cancellingReservation) {
-                      EasyLoading.show(status: 'Cancelando Reserva');
+
+                    if(state.openSearch){
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (builder) => SearchPage()));
+                    }
+
+                    if (state.cancellingReservation) {
+                      EasyLoading.show(status: 'Cancelando Reserva', dismissOnTap: true);
                     } else {
                       EasyLoading.dismiss();
                     }

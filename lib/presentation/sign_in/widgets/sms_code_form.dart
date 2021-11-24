@@ -51,10 +51,10 @@ class SmsCodeForm extends StatelessWidget {
                     failure.maybeMap(
                         userNotFound: (_) async {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUpPage()),
-                            );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUpPage()),
+                          );
                         },
                         orElse: () {});
                     final String errorText = failure.maybeMap(
@@ -140,7 +140,7 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController2,
                               (value) {
-                                context.read<SmsCodeFormBloc>().add(
+                            context.read<SmsCodeFormBloc>().add(
                                 SmsCodeFormEvent.smsCodeChanged(
                                     _textSmsCodeController2.text));
                             if (_textSmsCodeController2.text.length == 1) {
@@ -159,7 +159,7 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController3,
                               (value) {
-                                context.read<SmsCodeFormBloc>().add(
+                            context.read<SmsCodeFormBloc>().add(
                                 SmsCodeFormEvent.smsCodeChanged(
                                     _textSmsCodeController3.text));
                             if (_textSmsCodeController3.text.length == 1) {
@@ -178,7 +178,7 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController4,
                               (value) {
-                                context.read<SmsCodeFormBloc>().add(
+                            context.read<SmsCodeFormBloc>().add(
                                 SmsCodeFormEvent.smsCodeChanged(
                                     _textSmsCodeController4.text));
                             if (_textSmsCodeController4.text.length == 1) {
@@ -197,7 +197,7 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController5,
                               (value) {
-                                context.read<SmsCodeFormBloc>().add(
+                            context.read<SmsCodeFormBloc>().add(
                                 SmsCodeFormEvent.smsCodeChanged(
                                     _textSmsCodeController5.text));
                             if (_textSmsCodeController5.text.length == 1) {
@@ -248,7 +248,22 @@ class SmsCodeForm extends StatelessWidget {
                       valueColor: AlwaysStoppedAnimation<Color>(
                           ColorSet.colorPrimaryGreenButton),
                     ),
-                  )
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        context
+                            .read<SmsCodeFormBloc>()
+                            .add(const SmsCodeFormEvent.resendCode());
+                      },
+                      child: const Text(
+                        'Não recebeu o código SMS? Toque aqui para reenviar',
+                        style: TextStyle(
+                          color: ColorSet.green1,
+                        ),
+                      ))
                 ],
               ));
         }),

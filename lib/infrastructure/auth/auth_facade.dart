@@ -68,6 +68,11 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
+  Future<Either<AuthFailure, Unit>> resentCode() {
+    return requestSmsCode(PhoneNumber(_phoneNumber));
+  }
+
+  @override
   Future<Either<AuthFailure, Unit>> signIn(SmsCode smsCode) async {
     final smsCodeString = smsCode.getOrCrash();
 
@@ -225,4 +230,6 @@ class AuthFacade implements IAuthFacade {
       return left(const AuthFailure.serverError());
     }
   }
+
+
 }

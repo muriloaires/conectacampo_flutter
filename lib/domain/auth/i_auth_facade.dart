@@ -15,6 +15,8 @@ abstract class IAuthFacade {
     PhoneNumber phoneNumber,
   );
 
+  Future<Either<AuthFailure, Unit>> resentCode();
+
   Future<Either<AuthFailure, Unit>> signIn(
     SmsCode smsCode,
   );
@@ -25,5 +27,6 @@ abstract class IAuthFacade {
       FullName fullName, Nickname nickname, String avatarPath);
 
   String getSelectedName();
+
   String getSelectedNickname();
 }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/buyer/product/product_page_bloc.dart';
@@ -41,6 +42,8 @@ class ProductPage extends StatelessWidget {
         productPageBloc.state.reservationItemFailureOrSuccess?.fold((l) => null,
             (r) {
           textController.text = r.quantity.toString();
+          textController.selection = TextSelection.fromPosition(
+              TextPosition(offset: textController.text.length));
         });
 
         state.reservationItemFailureOrSuccess?.fold((l) {
@@ -52,7 +55,9 @@ class ProductPage extends StatelessWidget {
                   child: ListView(
                     shrinkWrap: true,
                     children: [
-                      const Divider(),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       CircleAvatar(
                         radius: 35,
                         backgroundColor: Colors.amber[400],
@@ -64,14 +69,18 @@ class ProductPage extends StatelessWidget {
                               fontWeight: FontWeight.bold),
                         ),
                       ),
-                      const Divider(),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       const Center(
                         child: Text(
                             'Há produtos de outro vendedor ou de outra feira em seu carrinho!',
                             textAlign: TextAlign.center,
                             style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
-                      const Divider(height: 8),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       const Center(
                         child: SizedBox(
                           width: 180,
@@ -81,7 +90,9 @@ class ProductPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const Divider(height: 8),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       Container(height: 1, color: ColorSet.grayLine),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -283,7 +294,7 @@ class ProductPage extends StatelessWidget {
                             enlargeCenterPage: true,
                             scrollDirection: Axis.horizontal,
                           ),
-                          items: state.product?.images.map((i) {
+                          items: _adProduct.images.map((i) {
                             return Builder(
                               builder: (BuildContext context) {
                                 return Container(
@@ -303,8 +314,9 @@ class ProductPage extends StatelessWidget {
                                                 i.originalAvatar.getOrCrash()),
                                           ));
                                         },
-                                        child: Image.network(
-                                          i.originalAvatar.getOrCrash(),
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              i.mediumAvatar.getOrCrash(),
                                           fit: BoxFit.cover,
                                           height: 170,
                                           width: double.infinity,
@@ -333,7 +345,8 @@ class ProductPage extends StatelessWidget {
                             style: const TextStyle(fontWeight: FontWeight.bold),
                             children: [
                               TextSpan(
-                                  text: state.product?.unitMeasure ?? '' + '(s)',
+                                  text:
+                                      state.product?.unitMeasure ?? '' + '(s)',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.normal))
                             ])),
@@ -378,40 +391,46 @@ class ProductPage extends StatelessWidget {
                             child: Container(
                                 color: ColorSet.grayRoundedBackground,
                                 child: Center(
-                                  child: TextFormField(
-                                    controller: textController,
-                                    validator: (_) => context
-                                        .read<ProductPageBloc>()
-                                        .state
-                                        .reservationQuantity
-                                        .value
-                                        .fold(
-                                            (l) => l.maybeMap(
-                                                invalidReservationQuantity:
-                                                    (_) =>
-                                                        'Quantidade inválida',
-                                                orElse: () => null),
-                                            (r) => null),
-                                    onChanged: (value) {
-                                      context.read<ProductPageBloc>().add(
-                                          ProductPageEvent.amountChanged(
-                                              value));
-                                    },
-                                    textAlign: TextAlign.center,
-                                    keyboardType: TextInputType.number,
-                                    inputFormatters: <TextInputFormatter>[
-                                      FilteringTextInputFormatter.digitsOnly
-                                    ],
-                                    decoration: const InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: 'Quantidade: -',
-                                        hintStyle:
-                                            TextStyle(color: ColorSet.gray2)),
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                      color: ColorSet.green1,
-                                    ),
-                                  ),
+                                  child: (state.product?.quantity ?? 0) <= 0
+                                      ? const Padding(
+                                        padding:  EdgeInsets.all(8.0),
+                                        child:  Text('Produto indisponível'),
+                                      )
+                                      : TextFormField(
+                                          controller: textController,
+                                          validator: (_) => context
+                                              .read<ProductPageBloc>()
+                                              .state
+                                              .reservationQuantity
+                                              .value
+                                              .fold(
+                                                  (l) => l.maybeMap(
+                                                      invalidReservationQuantity:
+                                                          (_) =>
+                                                              'Quantidade inválida',
+                                                      orElse: () => null),
+                                                  (r) => null),
+                                          onChanged: (value) {
+                                            context.read<ProductPageBloc>().add(
+                                                ProductPageEvent.amountChanged(
+                                                    value));
+                                          },
+                                          textAlign: TextAlign.center,
+                                          keyboardType: TextInputType.number,
+                                          inputFormatters: <TextInputFormatter>[
+                                            FilteringTextInputFormatter
+                                                .digitsOnly
+                                          ],
+                                          decoration: const InputDecoration(
+                                              border: InputBorder.none,
+                                              hintText: 'Quantidade: -',
+                                              hintStyle: TextStyle(
+                                                  color: ColorSet.gray2)),
+                                          style: const TextStyle(
+                                            fontSize: 20,
+                                            color: ColorSet.green1,
+                                          ),
+                                        ),
                                 )),
                           ),
                         ),

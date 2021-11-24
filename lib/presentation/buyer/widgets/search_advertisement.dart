@@ -24,7 +24,7 @@ class SearchAdvertisement extends StatelessWidget {
       child: BlocBuilder<SearchResultBloc, SearchResultState>(
         builder: (BuildContext context, state) {
           final adv = context.read<SearchResultBloc>().state.advertisement;
-          return GestureDetector(
+          return InkWell(
             onTap: () async {
               context
                   .read<BuyerMenuBloc>()

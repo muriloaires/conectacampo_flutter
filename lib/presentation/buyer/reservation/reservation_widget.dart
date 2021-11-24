@@ -186,12 +186,6 @@ class ReservationWidget extends StatelessWidget {
                             itemCount:
                                 state.reservation?.productReservations.length,
                           ),
-                          const SizedBox(height: 4),
-                          const Text('Alterar itens',
-                              style: TextStyle(
-                                  color: ColorSet.colorPrimaryGreen,
-                                  fontSize: 12,
-                                  decoration: TextDecoration.underline)),
                           const SizedBox(height: 30),
                           Visibility(
                               visible: state.reservation?.getStatusFromItems() ==
@@ -350,44 +344,47 @@ class ReservationWidget extends StatelessWidget {
                 height: 1,
                 color: ColorSet.gray10,
               ),
-              GestureDetector(
-                onTap: () {
-                  context
-                      .read<SingleReservationBloc>()
-                      .add(const SingleReservationEvent.onExpandPressed());
-                },
-                child: SizedBox(
-                  height: 40,
-                  child: Stack(
-                    children: [
-                      Align(
-                        child: Text(
-                          context
-                                  .read<SingleReservationBloc>()
-                                  .state
-                                  .isItemVisible
-                              ? 'Itens'
-                              : 'Ver itens',
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Icon(
+              SizedBox(
+                height: 40,
+                child: Stack(
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        context
+                            .read<SingleReservationBloc>()
+                            .add(const SingleReservationEvent.onExpandPressed());
+                      },
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Center(
+                          child: Text(
                             context
                                     .read<SingleReservationBloc>()
                                     .state
                                     .isItemVisible
-                                ? Icons.expand_less
-                                : Icons.expand_more,
-                            size: 32,
+                                ? 'Itens'
+                                : 'Ver itens',
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Icon(
+                          context
+                                  .read<SingleReservationBloc>()
+                                  .state
+                                  .isItemVisible
+                              ? Icons.expand_less
+                              : Icons.expand_more,
+                          size: 32,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ],

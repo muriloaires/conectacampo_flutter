@@ -6,4 +6,6 @@ class SummaryEvent with _$SummaryEvent {
   const factory SummaryEvent.onCancelReservationPressed(
       Reservation? reservation) = OnCancelReservationPressed;
   const factory SummaryEvent.onPlaceChanged() = OnPlaceChanged;
+  const factory SummaryEvent.onBuyTapped() = OnBuyTapped;
+
 }

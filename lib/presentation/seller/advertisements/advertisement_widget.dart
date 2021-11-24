@@ -266,7 +266,7 @@ class AdvertisementWidget extends StatelessWidget {
                     height: 1,
                     color: ColorSet.gray10,
                   ),
-                  GestureDetector(
+                  InkWell(
                     onTap: () {
                       context.read<SingleAdvertisementBloc>().add(
                           const SingleAdvertisementEvent

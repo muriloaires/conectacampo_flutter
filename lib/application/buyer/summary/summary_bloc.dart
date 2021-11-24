@@ -49,6 +49,9 @@ class SummaryBloc extends Bloc<SummaryEvent, SummaryState> {
           selectedPlace: selectedPlace,
         );
       }
+    }, onBuyTapped: (OnBuyTapped value) async* {
+      yield state.copyWith(openSearch: true);
+      yield state.copyWith(openSearch: false);
     });
   }
 }

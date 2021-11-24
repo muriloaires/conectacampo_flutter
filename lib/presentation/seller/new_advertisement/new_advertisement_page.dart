@@ -5,6 +5,7 @@ import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/new_advertisement/add_product_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -335,6 +336,11 @@ class NewAdMeetPlace extends StatelessWidget {
                     }
                   },
                   child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
+                    onFieldSubmitted: (s){
+                      SystemChannels.textInput.invokeMethod('TextInput.hide');
+                    },
                     focusNode: focusNode,
                     onChanged: (value) => context
                         .read<NewAdvertisementBloc>()

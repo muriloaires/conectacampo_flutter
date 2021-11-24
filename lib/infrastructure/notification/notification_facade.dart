@@ -21,7 +21,7 @@ class NotificationFacade extends INotificationFacade {
       final Iterable iterable = jsonDecode(response.body) as Iterable;
       final notificationsResponse = iterable
           .map((e) => NotificationResponse.fromJson(e as Map<String, dynamic>));
-      return right(notificationsResponse.toList());
+      return right(notificationsResponse.toList().reversed.toList());
     } else if (code == 401) {
       return left(const NotificationsFailure.unauthorized());
     } else if (code >= 400 && code < 500) {

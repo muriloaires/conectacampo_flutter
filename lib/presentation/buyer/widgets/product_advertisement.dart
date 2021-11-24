@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +17,8 @@ class ProductAdvertisement extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(
-              _product.images.first.mediumAvatar.getOrCrash(),
+            child: CachedNetworkImage(
+              imageUrl: _product.images.first.mediumAvatar.getOrCrash(),
               height: 134.0,
               width: 166.0,
               fit: BoxFit.cover,

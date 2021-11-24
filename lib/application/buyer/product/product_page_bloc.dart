@@ -65,7 +65,7 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
         yield state.copyWith(
             reservationItemFailureOrSuccess: result,
             showErrorMsg: true,
-            openCart: true);
+            openCart: result.isRight());
 
         yield state.copyWith(openCart: false);
       }

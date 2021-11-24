@@ -27,9 +27,11 @@ class SmsCodeFormBloc extends Bloc<SmsCodeFormEvent, SmsCodeFormState> {
     yield* event.map(
         smsCodeChanged: (e) async* {
           yield state.copyWith(
-              smsCode: SmsCode(e.smsCode), authFailureOrSuccessOption: none());
+              smsCode: SmsCode(e.smsCode), authFailureOrSuccessOption: none(), );
         },
-        resendCode: (e) async* {},
+        resendCode: (e) async* {
+          _authFacade.resentCode();
+        },
         verifyCodePressed: (VerifyCode value) async* {
           Either<AuthFailure, Unit> failureOrSuccess =
               left(const AuthFailure.applicationError());

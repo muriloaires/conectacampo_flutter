@@ -136,8 +136,7 @@ class BuyerMainPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (builder) => SearchPage()));
+                          context.read<SummaryBloc>().add(const SummaryEvent.onBuyTapped());
                         },
                         child: Container(
                           width: 68.0,
