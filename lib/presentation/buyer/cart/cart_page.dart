@@ -199,7 +199,7 @@ class CartPage extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          Navigator.of(context).pop(true);
                         },
                         child: const Text('Comprar mais produtos do mesmo vendedor',
                             style: TextStyle(

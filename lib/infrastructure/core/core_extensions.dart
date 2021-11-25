@@ -18,7 +18,7 @@ extension StringDateExtension on String {
 
   String getHourDateAndMonthName() {
     final parsedDate = DateTime.parse(this);
-    final f = DateFormat('dd/MM/YYYY');
+    final f = DateFormat('dd/MM/yyyy');
     final f2 = DateFormat('kk:mm');
     return '${f.format(parsedDate)} às ${f2.format(parsedDate)}';
   }

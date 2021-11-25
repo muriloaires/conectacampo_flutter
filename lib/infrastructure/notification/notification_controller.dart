@@ -41,3 +41,17 @@ Future<void> clearReservationToOpen() async {
       await SharedPreferences.getInstance();
   await sharedPreferences.remove('open_reservation');
 }
+
+Future<Unit> persistDisplayNotifications({required bool display}) async {
+  final SharedPreferences sharedPreferences =
+  await SharedPreferences.getInstance();
+  await sharedPreferences.setBool('display_notifications', display);
+  return unit;
+}
+
+Future<bool> displayNotifications() async {
+  final SharedPreferences sharedPreferences =
+  await SharedPreferences.getInstance();
+  final displayNotifications = sharedPreferences.getBool('display_notifications');
+  return displayNotifications ?? true;
+}

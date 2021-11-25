@@ -49,8 +49,9 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
             place: place);
       }
     }, amountChanged: (amountChanged) async* {
+      final amount = state.product?.quantity;
       yield state.copyWith(
-          reservationQuantity: ReservationQuantity(amountChanged.amount),
+          reservationQuantity: ReservationQuantity(amountChanged.amount, current: amount),
           showErrorMsg: false,
           reservationItemFailureOrSuccess: null);
     }, onBtnReservationTap: (onBtnReservationTap) async* {

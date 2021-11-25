@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
@@ -18,12 +19,15 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await setUpDB();
   final messaging = FirebaseMessaging.instance;
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  final displayNotification = await displayNotifications();
+  if (displayNotification) {
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  }
   setUpDB();
   if (Platform.isIOS) {
     await messaging.requestPermission();
   }
-  runApp(const AppWidget());
+  runApp(Phoenix(child: const AppWidget()));
   configLoading();
 }
 

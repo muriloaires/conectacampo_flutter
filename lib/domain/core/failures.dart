@@ -87,4 +87,8 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidReservationQuantity(
     String failedValue,
   ) = InvalidReservationQuantity<T>;
+
+  const factory ValueFailure.currentHigherThenAvailable(
+      String failedValue,
+      ) = CurrentHigherThenAvailable<T>;
 }

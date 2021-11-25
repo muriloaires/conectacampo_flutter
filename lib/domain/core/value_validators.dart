@@ -171,11 +171,14 @@ Either<ValueFailure<String>, String> validateNewAdProductObservation(
   }
 }
 
-Either<ValueFailure<String>, String> validateReservationQuantity(String input) {
+Either<ValueFailure<String>, String> validateReservationQuantity(String input, {int? current}) {
   final intValue = int.tryParse(input);
   if (intValue == null || intValue <= 0) {
     return left(ValueFailure.invalidReservationQuantity(input));
   } else {
+    if(current != null && intValue > current) {
+      return left(ValueFailure.currentHigherThenAvailable(input));
+    }
     return right(input);
   }
 }

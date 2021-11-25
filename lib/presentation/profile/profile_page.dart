@@ -6,6 +6,7 @@ import 'package:conectacampo/presentation/notification/notifications_page.dart';
 import 'package:conectacampo/presentation/profile/edit_name_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'edit_email_page.dart';
@@ -22,7 +23,11 @@ class ProfilePage extends StatelessWidget {
       onGenerateRoute: (settings) => MaterialPageRoute(
         settings: settings,
         builder: (context) => BlocConsumer<ProfileBloc, ProfileState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state.restartApplication) {
+              Phoenix.rebirth(context);
+            }
+          },
           builder: (context, state) {
             final bloc = context.read<ProfileBloc>();
             return Scaffold(
@@ -34,7 +39,8 @@ class ProfilePage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => NotificationsPage(context.read<ProfileBloc>().state.isBuyer),
+                          builder: (context) => NotificationsPage(
+                              context.read<ProfileBloc>().state.isBuyer),
                         ));
                       },
                       child: SvgPicture.asset(
@@ -192,8 +198,82 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     trailing: Switch(
-                      value: true,
-                      onChanged: (value) {},
+                      value: state.displayNotifications,
+                      onChanged: (value) {
+                        showDialog<String>(
+                          context: context,
+                          builder: (BuildContext dialogContext) => Dialog(
+                            child: ListView(
+                              shrinkWrap: true,
+                              children: [
+                                const Divider(),
+                                CircleAvatar(
+                                  radius: 35,
+                                  backgroundColor: Colors.amber[400],
+                                  child: const Text(
+                                    '!',
+                                    style: TextStyle(
+                                        fontSize: 40,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                const Divider(),
+                                const Center(
+                                  child: Text('A aplicação será reiniciada',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                                const Divider(height: 8),
+                                const Center(
+                                  child: SizedBox(
+                                    width: 180,
+                                    child: Text(
+                                      'Deseja continuar?',
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                                const Divider(height: 8),
+                                Container(height: 1, color: ColorSet.grayLine),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: const Text(
+                                        'Voltar',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: ColorSet.grayDark,
+                                        ),
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(dialogContext);
+                                        context.read<ProfileBloc>().add(
+                                              ProfileEvent
+                                                  .onNotificationSwitchTapped(
+                                                      value),
+                                            );
+                                      },
+                                      child: const Text(
+                                        'Sim',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: ColorSet.grayDark,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   Container(

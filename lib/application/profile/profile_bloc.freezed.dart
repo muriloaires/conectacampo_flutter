@@ -19,6 +19,12 @@ class _$ProfileEventTearOff {
   _Started started() {
     return const _Started();
   }
+
+  OnNotificationSwitchTapped onNotificationSwitchTapped(bool value) {
+    return OnNotificationSwitchTapped(
+      value,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +35,28 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool value) onNotificationSwitchTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool value)? onNotificationSwitchTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(OnNotificationSwitchTapped value)
+        onNotificationSwitchTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(OnNotificationSwitchTapped value)?
+        onNotificationSwitchTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -104,6 +116,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool value) onNotificationSwitchTapped,
   }) {
     return started();
   }
@@ -112,6 +125,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool value)? onNotificationSwitchTapped,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -124,6 +138,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(OnNotificationSwitchTapped value)
+        onNotificationSwitchTapped,
   }) {
     return started(this);
   }
@@ -132,6 +148,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(OnNotificationSwitchTapped value)?
+        onNotificationSwitchTapped,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -146,13 +164,141 @@ abstract class _Started implements ProfileEvent {
 }
 
 /// @nodoc
+abstract class $OnNotificationSwitchTappedCopyWith<$Res> {
+  factory $OnNotificationSwitchTappedCopyWith(OnNotificationSwitchTapped value,
+          $Res Function(OnNotificationSwitchTapped) then) =
+      _$OnNotificationSwitchTappedCopyWithImpl<$Res>;
+  $Res call({bool value});
+}
+
+/// @nodoc
+class _$OnNotificationSwitchTappedCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res>
+    implements $OnNotificationSwitchTappedCopyWith<$Res> {
+  _$OnNotificationSwitchTappedCopyWithImpl(OnNotificationSwitchTapped _value,
+      $Res Function(OnNotificationSwitchTapped) _then)
+      : super(_value, (v) => _then(v as OnNotificationSwitchTapped));
+
+  @override
+  OnNotificationSwitchTapped get _value =>
+      super._value as OnNotificationSwitchTapped;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(OnNotificationSwitchTapped(
+      value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnNotificationSwitchTapped implements OnNotificationSwitchTapped {
+  const _$OnNotificationSwitchTapped(this.value);
+
+  @override
+  final bool value;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.onNotificationSwitchTapped(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnNotificationSwitchTapped &&
+            (identical(other.value, value) ||
+                const DeepCollectionEquality().equals(other.value, value)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnNotificationSwitchTappedCopyWith<OnNotificationSwitchTapped>
+      get copyWith =>
+          _$OnNotificationSwitchTappedCopyWithImpl<OnNotificationSwitchTapped>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool value) onNotificationSwitchTapped,
+  }) {
+    return onNotificationSwitchTapped(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool value)? onNotificationSwitchTapped,
+    required TResult orElse(),
+  }) {
+    if (onNotificationSwitchTapped != null) {
+      return onNotificationSwitchTapped(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnNotificationSwitchTapped value)
+        onNotificationSwitchTapped,
+  }) {
+    return onNotificationSwitchTapped(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnNotificationSwitchTapped value)?
+        onNotificationSwitchTapped,
+    required TResult orElse(),
+  }) {
+    if (onNotificationSwitchTapped != null) {
+      return onNotificationSwitchTapped(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnNotificationSwitchTapped implements ProfileEvent {
+  const factory OnNotificationSwitchTapped(bool value) =
+      _$OnNotificationSwitchTapped;
+
+  bool get value => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnNotificationSwitchTappedCopyWith<OnNotificationSwitchTapped>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$ProfileStateTearOff {
   const _$ProfileStateTearOff();
 
-  _ProfileState call({required User? user, required bool isBuyer}) {
+  _ProfileState call(
+      {required User? user,
+      required bool isBuyer,
+      required bool restartApplication,
+      required bool displayNotifications}) {
     return _ProfileState(
       user: user,
       isBuyer: isBuyer,
+      restartApplication: restartApplication,
+      displayNotifications: displayNotifications,
     );
   }
 }
@@ -164,6 +310,8 @@ const $ProfileState = _$ProfileStateTearOff();
 mixin _$ProfileState {
   User? get user => throw _privateConstructorUsedError;
   bool get isBuyer => throw _privateConstructorUsedError;
+  bool get restartApplication => throw _privateConstructorUsedError;
+  bool get displayNotifications => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -175,7 +323,11 @@ abstract class $ProfileStateCopyWith<$Res> {
   factory $ProfileStateCopyWith(
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res>;
-  $Res call({User? user, bool isBuyer});
+  $Res call(
+      {User? user,
+      bool isBuyer,
+      bool restartApplication,
+      bool displayNotifications});
 
   $UserCopyWith<$Res>? get user;
 }
@@ -192,6 +344,8 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
   $Res call({
     Object? user = freezed,
     Object? isBuyer = freezed,
+    Object? restartApplication = freezed,
+    Object? displayNotifications = freezed,
   }) {
     return _then(_value.copyWith(
       user: user == freezed
@@ -201,6 +355,14 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
       isBuyer: isBuyer == freezed
           ? _value.isBuyer
           : isBuyer // ignore: cast_nullable_to_non_nullable
+              as bool,
+      restartApplication: restartApplication == freezed
+          ? _value.restartApplication
+          : restartApplication // ignore: cast_nullable_to_non_nullable
+              as bool,
+      displayNotifications: displayNotifications == freezed
+          ? _value.displayNotifications
+          : displayNotifications // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -224,7 +386,11 @@ abstract class _$ProfileStateCopyWith<$Res>
           _ProfileState value, $Res Function(_ProfileState) then) =
       __$ProfileStateCopyWithImpl<$Res>;
   @override
-  $Res call({User? user, bool isBuyer});
+  $Res call(
+      {User? user,
+      bool isBuyer,
+      bool restartApplication,
+      bool displayNotifications});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -244,6 +410,8 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? isBuyer = freezed,
+    Object? restartApplication = freezed,
+    Object? displayNotifications = freezed,
   }) {
     return _then(_ProfileState(
       user: user == freezed
@@ -254,6 +422,14 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
           ? _value.isBuyer
           : isBuyer // ignore: cast_nullable_to_non_nullable
               as bool,
+      restartApplication: restartApplication == freezed
+          ? _value.restartApplication
+          : restartApplication // ignore: cast_nullable_to_non_nullable
+              as bool,
+      displayNotifications: displayNotifications == freezed
+          ? _value.displayNotifications
+          : displayNotifications // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -261,16 +437,24 @@ class __$ProfileStateCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ProfileState implements _ProfileState {
-  const _$_ProfileState({required this.user, required this.isBuyer});
+  const _$_ProfileState(
+      {required this.user,
+      required this.isBuyer,
+      required this.restartApplication,
+      required this.displayNotifications});
 
   @override
   final User? user;
   @override
   final bool isBuyer;
+  @override
+  final bool restartApplication;
+  @override
+  final bool displayNotifications;
 
   @override
   String toString() {
-    return 'ProfileState(user: $user, isBuyer: $isBuyer)';
+    return 'ProfileState(user: $user, isBuyer: $isBuyer, restartApplication: $restartApplication, displayNotifications: $displayNotifications)';
   }
 
   @override
@@ -280,14 +464,23 @@ class _$_ProfileState implements _ProfileState {
             (identical(other.user, user) ||
                 const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.isBuyer, isBuyer) ||
-                const DeepCollectionEquality().equals(other.isBuyer, isBuyer)));
+                const DeepCollectionEquality()
+                    .equals(other.isBuyer, isBuyer)) &&
+            (identical(other.restartApplication, restartApplication) ||
+                const DeepCollectionEquality()
+                    .equals(other.restartApplication, restartApplication)) &&
+            (identical(other.displayNotifications, displayNotifications) ||
+                const DeepCollectionEquality()
+                    .equals(other.displayNotifications, displayNotifications)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(user) ^
-      const DeepCollectionEquality().hash(isBuyer);
+      const DeepCollectionEquality().hash(isBuyer) ^
+      const DeepCollectionEquality().hash(restartApplication) ^
+      const DeepCollectionEquality().hash(displayNotifications);
 
   @JsonKey(ignore: true)
   @override
@@ -296,13 +489,20 @@ class _$_ProfileState implements _ProfileState {
 }
 
 abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState({required User? user, required bool isBuyer}) =
-      _$_ProfileState;
+  const factory _ProfileState(
+      {required User? user,
+      required bool isBuyer,
+      required bool restartApplication,
+      required bool displayNotifications}) = _$_ProfileState;
 
   @override
   User? get user => throw _privateConstructorUsedError;
   @override
   bool get isBuyer => throw _privateConstructorUsedError;
+  @override
+  bool get restartApplication => throw _privateConstructorUsedError;
+  @override
+  bool get displayNotifications => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProfileStateCopyWith<_ProfileState> get copyWith =>

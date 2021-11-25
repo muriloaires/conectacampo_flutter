@@ -136,7 +136,9 @@ class BuyerMainPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          context.read<SummaryBloc>().add(const SummaryEvent.onBuyTapped());
+                          context
+                              .read<SummaryBloc>()
+                              .add(const SummaryEvent.onBuyTapped());
                         },
                         child: Container(
                           width: 68.0,
@@ -372,12 +374,11 @@ class SearchWidget extends StatelessWidget implements PreferredSizeWidget {
                       MaterialPageRoute(
                         builder: (context) => PlacesPage(),
                       ));
-                  context
-                      .read<AdvertisementsBloc>()
-                      .add(const AdvertisementsEvent.placeChanged());
-                  context
-                      .read<SummaryBloc>()
-                      .add(const SummaryEvent.onPlaceChanged());
+                  if (success != null) {
+                    Navigator.of(context, rootNavigator: true)
+                        .pushNamedAndRemoveUntil(
+                            '/buyer_main', (route) => false);
+                  }
                 },
                 child: Row(
                   children: [
