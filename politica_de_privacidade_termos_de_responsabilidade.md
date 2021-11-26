@@ -61,10 +61,7 @@ Os dados eventualmente informados pelo usuário que utilizar o formulário de co
 Em atendimento às disposições do art. 15, caput e parágrafos, da Lei Federal n. 12.965/2014 (Marco Civil da Internet), os registros de acesso do usuário serão coletados e armazenados por, pelo menos, seis meses.
 ### 4.1.4. Newsletter
 O endereço de e-mail cadastrado pelo usuário que optar por se inscrever em nossa Newsletter será coletado e armazenado até que o usuário solicite seu descadastro.
-### 4.1.5. Dados sensíveis
-O aplicativo poderá coletar os seguintes dados sensíveis dos usuários:
-- dados bancários
-### 4.1.6. Coleta de dados não previstos expressamente
+### 4.1.5. Coleta de dados não previstos expressamente
 Eventualmente, outros tipos de dados não previstos expressamente nesta Política de Privacidade poderão ser coletados, desde que sejam fornecidos com o consentimento do usuário ou, ainda, que a coleta seja permitida ou imposta por lei.
 
 ### 4.2. Fundamento jurídico para o tratamento dos dados pessoais
