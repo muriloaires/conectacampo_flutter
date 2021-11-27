@@ -45,6 +45,10 @@ class _$SingleReservationEventTearOff {
   OnExpandPressed onExpandPressed() {
     return const OnExpandPressed();
   }
+
+  OnCancelReservationPressed onCancelReservationPressed() {
+    return const OnCancelReservationPressed();
+  }
 }
 
 /// @nodoc
@@ -60,6 +64,7 @@ mixin _$SingleReservationEvent {
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
     required TResult Function() onExpandPressed,
+    required TResult Function() onCancelReservationPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +75,7 @@ mixin _$SingleReservationEvent {
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
     TResult Function()? onExpandPressed,
+    TResult Function()? onCancelReservationPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +89,8 @@ mixin _$SingleReservationEvent {
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
     required TResult Function(OnExpandPressed value) onExpandPressed,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +101,8 @@ mixin _$SingleReservationEvent {
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
     TResult Function(OnExpandPressed value)? onExpandPressed,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -194,6 +204,7 @@ class _$_Started implements _Started {
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
     required TResult Function() onExpandPressed,
+    required TResult Function() onCancelReservationPressed,
   }) {
     return started(resservation);
   }
@@ -207,6 +218,7 @@ class _$_Started implements _Started {
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
     TResult Function()? onExpandPressed,
+    TResult Function()? onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -226,6 +238,8 @@ class _$_Started implements _Started {
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
     required TResult Function(OnExpandPressed value) onExpandPressed,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
   }) {
     return started(this);
   }
@@ -239,6 +253,8 @@ class _$_Started implements _Started {
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
     TResult Function(OnExpandPressed value)? onExpandPressed,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -328,6 +344,7 @@ class _$OnAcceptPressed implements OnAcceptPressed {
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
     required TResult Function() onExpandPressed,
+    required TResult Function() onCancelReservationPressed,
   }) {
     return onAcceptPressed(index);
   }
@@ -341,6 +358,7 @@ class _$OnAcceptPressed implements OnAcceptPressed {
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
     TResult Function()? onExpandPressed,
+    TResult Function()? onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onAcceptPressed != null) {
@@ -360,6 +378,8 @@ class _$OnAcceptPressed implements OnAcceptPressed {
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
     required TResult Function(OnExpandPressed value) onExpandPressed,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
   }) {
     return onAcceptPressed(this);
   }
@@ -373,6 +393,8 @@ class _$OnAcceptPressed implements OnAcceptPressed {
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
     TResult Function(OnExpandPressed value)? onExpandPressed,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onAcceptPressed != null) {
@@ -462,6 +484,7 @@ class _$OnCancelPressed implements OnCancelPressed {
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
     required TResult Function() onExpandPressed,
+    required TResult Function() onCancelReservationPressed,
   }) {
     return onCancelPressed(index);
   }
@@ -475,6 +498,7 @@ class _$OnCancelPressed implements OnCancelPressed {
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
     TResult Function()? onExpandPressed,
+    TResult Function()? onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onCancelPressed != null) {
@@ -494,6 +518,8 @@ class _$OnCancelPressed implements OnCancelPressed {
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
     required TResult Function(OnExpandPressed value) onExpandPressed,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
   }) {
     return onCancelPressed(this);
   }
@@ -507,6 +533,8 @@ class _$OnCancelPressed implements OnCancelPressed {
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
     TResult Function(OnExpandPressed value)? onExpandPressed,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onCancelPressed != null) {
@@ -571,6 +599,7 @@ class _$OnAcceptErrorDisplayed implements OnAcceptErrorDisplayed {
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
     required TResult Function() onExpandPressed,
+    required TResult Function() onCancelReservationPressed,
   }) {
     return onAcceptErrorDisplayed();
   }
@@ -584,6 +613,7 @@ class _$OnAcceptErrorDisplayed implements OnAcceptErrorDisplayed {
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
     TResult Function()? onExpandPressed,
+    TResult Function()? onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onAcceptErrorDisplayed != null) {
@@ -603,6 +633,8 @@ class _$OnAcceptErrorDisplayed implements OnAcceptErrorDisplayed {
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
     required TResult Function(OnExpandPressed value) onExpandPressed,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
   }) {
     return onAcceptErrorDisplayed(this);
   }
@@ -616,6 +648,8 @@ class _$OnAcceptErrorDisplayed implements OnAcceptErrorDisplayed {
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
     TResult Function(OnExpandPressed value)? onExpandPressed,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onAcceptErrorDisplayed != null) {
@@ -675,6 +709,7 @@ class _$OnCancelErrorDisplayed implements OnCancelErrorDisplayed {
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
     required TResult Function() onExpandPressed,
+    required TResult Function() onCancelReservationPressed,
   }) {
     return onCancelErrorDisplayed();
   }
@@ -688,6 +723,7 @@ class _$OnCancelErrorDisplayed implements OnCancelErrorDisplayed {
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
     TResult Function()? onExpandPressed,
+    TResult Function()? onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onCancelErrorDisplayed != null) {
@@ -707,6 +743,8 @@ class _$OnCancelErrorDisplayed implements OnCancelErrorDisplayed {
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
     required TResult Function(OnExpandPressed value) onExpandPressed,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
   }) {
     return onCancelErrorDisplayed(this);
   }
@@ -720,6 +758,8 @@ class _$OnCancelErrorDisplayed implements OnCancelErrorDisplayed {
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
     TResult Function(OnExpandPressed value)? onExpandPressed,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onCancelErrorDisplayed != null) {
@@ -779,6 +819,7 @@ class _$OnExpandPressed implements OnExpandPressed {
     required TResult Function() onAcceptErrorDisplayed,
     required TResult Function() onCancelErrorDisplayed,
     required TResult Function() onExpandPressed,
+    required TResult Function() onCancelReservationPressed,
   }) {
     return onExpandPressed();
   }
@@ -792,6 +833,7 @@ class _$OnExpandPressed implements OnExpandPressed {
     TResult Function()? onAcceptErrorDisplayed,
     TResult Function()? onCancelErrorDisplayed,
     TResult Function()? onExpandPressed,
+    TResult Function()? onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onExpandPressed != null) {
@@ -811,6 +853,8 @@ class _$OnExpandPressed implements OnExpandPressed {
     required TResult Function(OnCancelErrorDisplayed value)
         onCancelErrorDisplayed,
     required TResult Function(OnExpandPressed value) onExpandPressed,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
   }) {
     return onExpandPressed(this);
   }
@@ -824,6 +868,8 @@ class _$OnExpandPressed implements OnExpandPressed {
     TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
     TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
     TResult Function(OnExpandPressed value)? onExpandPressed,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
     required TResult orElse(),
   }) {
     if (onExpandPressed != null) {
@@ -838,6 +884,117 @@ abstract class OnExpandPressed implements SingleReservationEvent {
 }
 
 /// @nodoc
+abstract class $OnCancelReservationPressedCopyWith<$Res> {
+  factory $OnCancelReservationPressedCopyWith(OnCancelReservationPressed value,
+          $Res Function(OnCancelReservationPressed) then) =
+      _$OnCancelReservationPressedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$OnCancelReservationPressedCopyWithImpl<$Res>
+    extends _$SingleReservationEventCopyWithImpl<$Res>
+    implements $OnCancelReservationPressedCopyWith<$Res> {
+  _$OnCancelReservationPressedCopyWithImpl(OnCancelReservationPressed _value,
+      $Res Function(OnCancelReservationPressed) _then)
+      : super(_value, (v) => _then(v as OnCancelReservationPressed));
+
+  @override
+  OnCancelReservationPressed get _value =>
+      super._value as OnCancelReservationPressed;
+}
+
+/// @nodoc
+
+class _$OnCancelReservationPressed implements OnCancelReservationPressed {
+  const _$OnCancelReservationPressed();
+
+  @override
+  String toString() {
+    return 'SingleReservationEvent.onCancelReservationPressed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is OnCancelReservationPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Reservation resservation) started,
+    required TResult Function(int index) onAcceptPressed,
+    required TResult Function(int index) onCancelPressed,
+    required TResult Function() onAcceptErrorDisplayed,
+    required TResult Function() onCancelErrorDisplayed,
+    required TResult Function() onExpandPressed,
+    required TResult Function() onCancelReservationPressed,
+  }) {
+    return onCancelReservationPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Reservation resservation)? started,
+    TResult Function(int index)? onAcceptPressed,
+    TResult Function(int index)? onCancelPressed,
+    TResult Function()? onAcceptErrorDisplayed,
+    TResult Function()? onCancelErrorDisplayed,
+    TResult Function()? onExpandPressed,
+    TResult Function()? onCancelReservationPressed,
+    required TResult orElse(),
+  }) {
+    if (onCancelReservationPressed != null) {
+      return onCancelReservationPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnAcceptPressed value) onAcceptPressed,
+    required TResult Function(OnCancelPressed value) onCancelPressed,
+    required TResult Function(OnAcceptErrorDisplayed value)
+        onAcceptErrorDisplayed,
+    required TResult Function(OnCancelErrorDisplayed value)
+        onCancelErrorDisplayed,
+    required TResult Function(OnExpandPressed value) onExpandPressed,
+    required TResult Function(OnCancelReservationPressed value)
+        onCancelReservationPressed,
+  }) {
+    return onCancelReservationPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnAcceptPressed value)? onAcceptPressed,
+    TResult Function(OnCancelPressed value)? onCancelPressed,
+    TResult Function(OnAcceptErrorDisplayed value)? onAcceptErrorDisplayed,
+    TResult Function(OnCancelErrorDisplayed value)? onCancelErrorDisplayed,
+    TResult Function(OnExpandPressed value)? onExpandPressed,
+    TResult Function(OnCancelReservationPressed value)?
+        onCancelReservationPressed,
+    required TResult orElse(),
+  }) {
+    if (onCancelReservationPressed != null) {
+      return onCancelReservationPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnCancelReservationPressed implements SingleReservationEvent {
+  const factory OnCancelReservationPressed() = _$OnCancelReservationPressed;
+}
+
+/// @nodoc
 class _$SingleReservationStateTearOff {
   const _$SingleReservationStateTearOff();
 
@@ -846,14 +1003,17 @@ class _$SingleReservationStateTearOff {
       required Reservation? reservation,
       required bool showAcceptError,
       required bool showCancelItemError,
-      required Either<AdvertisementFailure, Advertisement>?
-          adFailureOrSuccess}) {
+      required bool canceling,
+      required Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess,
+      required Either<ReservationFailure, Unit>? cancelFailureOrSuccess}) {
     return _SingleReservationState(
       isItemVisible: isItemVisible,
       reservation: reservation,
       showAcceptError: showAcceptError,
       showCancelItemError: showCancelItemError,
+      canceling: canceling,
       adFailureOrSuccess: adFailureOrSuccess,
+      cancelFailureOrSuccess: cancelFailureOrSuccess,
     );
   }
 }
@@ -867,7 +1027,10 @@ mixin _$SingleReservationState {
   Reservation? get reservation => throw _privateConstructorUsedError;
   bool get showAcceptError => throw _privateConstructorUsedError;
   bool get showCancelItemError => throw _privateConstructorUsedError;
+  bool get canceling => throw _privateConstructorUsedError;
   Either<AdvertisementFailure, Advertisement>? get adFailureOrSuccess =>
+      throw _privateConstructorUsedError;
+  Either<ReservationFailure, Unit>? get cancelFailureOrSuccess =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -885,7 +1048,9 @@ abstract class $SingleReservationStateCopyWith<$Res> {
       Reservation? reservation,
       bool showAcceptError,
       bool showCancelItemError,
-      Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess});
+      bool canceling,
+      Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess,
+      Either<ReservationFailure, Unit>? cancelFailureOrSuccess});
 
   $ReservationCopyWith<$Res>? get reservation;
 }
@@ -905,7 +1070,9 @@ class _$SingleReservationStateCopyWithImpl<$Res>
     Object? reservation = freezed,
     Object? showAcceptError = freezed,
     Object? showCancelItemError = freezed,
+    Object? canceling = freezed,
     Object? adFailureOrSuccess = freezed,
+    Object? cancelFailureOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       isItemVisible: isItemVisible == freezed
@@ -924,10 +1091,18 @@ class _$SingleReservationStateCopyWithImpl<$Res>
           ? _value.showCancelItemError
           : showCancelItemError // ignore: cast_nullable_to_non_nullable
               as bool,
+      canceling: canceling == freezed
+          ? _value.canceling
+          : canceling // ignore: cast_nullable_to_non_nullable
+              as bool,
       adFailureOrSuccess: adFailureOrSuccess == freezed
           ? _value.adFailureOrSuccess
           : adFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Either<AdvertisementFailure, Advertisement>?,
+      cancelFailureOrSuccess: cancelFailureOrSuccess == freezed
+          ? _value.cancelFailureOrSuccess
+          : cancelFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<ReservationFailure, Unit>?,
     ));
   }
 
@@ -955,7 +1130,9 @@ abstract class _$SingleReservationStateCopyWith<$Res>
       Reservation? reservation,
       bool showAcceptError,
       bool showCancelItemError,
-      Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess});
+      bool canceling,
+      Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess,
+      Either<ReservationFailure, Unit>? cancelFailureOrSuccess});
 
   @override
   $ReservationCopyWith<$Res>? get reservation;
@@ -978,7 +1155,9 @@ class __$SingleReservationStateCopyWithImpl<$Res>
     Object? reservation = freezed,
     Object? showAcceptError = freezed,
     Object? showCancelItemError = freezed,
+    Object? canceling = freezed,
     Object? adFailureOrSuccess = freezed,
+    Object? cancelFailureOrSuccess = freezed,
   }) {
     return _then(_SingleReservationState(
       isItemVisible: isItemVisible == freezed
@@ -997,10 +1176,18 @@ class __$SingleReservationStateCopyWithImpl<$Res>
           ? _value.showCancelItemError
           : showCancelItemError // ignore: cast_nullable_to_non_nullable
               as bool,
+      canceling: canceling == freezed
+          ? _value.canceling
+          : canceling // ignore: cast_nullable_to_non_nullable
+              as bool,
       adFailureOrSuccess: adFailureOrSuccess == freezed
           ? _value.adFailureOrSuccess
           : adFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Either<AdvertisementFailure, Advertisement>?,
+      cancelFailureOrSuccess: cancelFailureOrSuccess == freezed
+          ? _value.cancelFailureOrSuccess
+          : cancelFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<ReservationFailure, Unit>?,
     ));
   }
 }
@@ -1013,7 +1200,9 @@ class _$_SingleReservationState implements _SingleReservationState {
       required this.reservation,
       required this.showAcceptError,
       required this.showCancelItemError,
-      required this.adFailureOrSuccess});
+      required this.canceling,
+      required this.adFailureOrSuccess,
+      required this.cancelFailureOrSuccess});
 
   @override
   final bool isItemVisible;
@@ -1024,11 +1213,15 @@ class _$_SingleReservationState implements _SingleReservationState {
   @override
   final bool showCancelItemError;
   @override
+  final bool canceling;
+  @override
   final Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess;
+  @override
+  final Either<ReservationFailure, Unit>? cancelFailureOrSuccess;
 
   @override
   String toString() {
-    return 'SingleReservationState(isItemVisible: $isItemVisible, reservation: $reservation, showAcceptError: $showAcceptError, showCancelItemError: $showCancelItemError, adFailureOrSuccess: $adFailureOrSuccess)';
+    return 'SingleReservationState(isItemVisible: $isItemVisible, reservation: $reservation, showAcceptError: $showAcceptError, showCancelItemError: $showCancelItemError, canceling: $canceling, adFailureOrSuccess: $adFailureOrSuccess, cancelFailureOrSuccess: $cancelFailureOrSuccess)';
   }
 
   @override
@@ -1047,9 +1240,15 @@ class _$_SingleReservationState implements _SingleReservationState {
             (identical(other.showCancelItemError, showCancelItemError) ||
                 const DeepCollectionEquality()
                     .equals(other.showCancelItemError, showCancelItemError)) &&
+            (identical(other.canceling, canceling) ||
+                const DeepCollectionEquality()
+                    .equals(other.canceling, canceling)) &&
             (identical(other.adFailureOrSuccess, adFailureOrSuccess) ||
                 const DeepCollectionEquality()
-                    .equals(other.adFailureOrSuccess, adFailureOrSuccess)));
+                    .equals(other.adFailureOrSuccess, adFailureOrSuccess)) &&
+            (identical(other.cancelFailureOrSuccess, cancelFailureOrSuccess) ||
+                const DeepCollectionEquality().equals(
+                    other.cancelFailureOrSuccess, cancelFailureOrSuccess)));
   }
 
   @override
@@ -1059,7 +1258,9 @@ class _$_SingleReservationState implements _SingleReservationState {
       const DeepCollectionEquality().hash(reservation) ^
       const DeepCollectionEquality().hash(showAcceptError) ^
       const DeepCollectionEquality().hash(showCancelItemError) ^
-      const DeepCollectionEquality().hash(adFailureOrSuccess);
+      const DeepCollectionEquality().hash(canceling) ^
+      const DeepCollectionEquality().hash(adFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(cancelFailureOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -1074,8 +1275,10 @@ abstract class _SingleReservationState implements SingleReservationState {
       required Reservation? reservation,
       required bool showAcceptError,
       required bool showCancelItemError,
-      required Either<AdvertisementFailure, Advertisement>?
-          adFailureOrSuccess}) = _$_SingleReservationState;
+      required bool canceling,
+      required Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess,
+      required Either<ReservationFailure, Unit>?
+          cancelFailureOrSuccess}) = _$_SingleReservationState;
 
   @override
   bool get isItemVisible => throw _privateConstructorUsedError;
@@ -1086,7 +1289,12 @@ abstract class _SingleReservationState implements SingleReservationState {
   @override
   bool get showCancelItemError => throw _privateConstructorUsedError;
   @override
+  bool get canceling => throw _privateConstructorUsedError;
+  @override
   Either<AdvertisementFailure, Advertisement>? get adFailureOrSuccess =>
+      throw _privateConstructorUsedError;
+  @override
+  Either<ReservationFailure, Unit>? get cancelFailureOrSuccess =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

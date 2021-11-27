@@ -24,7 +24,12 @@ class BuyerReservationsPage extends StatelessWidget {
         settings: settings,
         builder: (context) => Scaffold(
           body: BlocConsumer<ReservationBloc, ReservationState>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              if(state.openSearch) {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (builder) => SearchPage()));
+              }
+            },
             builder: (context, state) {
               final List<Reservation> list = state
                   .optionOfReservationListFailureOrSuccess
@@ -46,32 +51,36 @@ class BuyerReservationsPage extends StatelessWidget {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (builder) => SearchPage()));
                               },
-                              child: Card(
-                                margin: const EdgeInsets.all(0),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(32),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: const [
-                                          Text(
-                                            'Sem itens na sua feira!',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text('Fazer novo pedido')
-                                        ],
-                                      ),
-                                      SvgPicture.asset(
-                                        'assets/coolicon.svg',
-                                        width: 21,
-                                        height: 21,
-                                      ),
-                                    ],
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Card(
+
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: const [
+                                            Text(
+                                              'Sem itens na sua feira!',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text('Fazer novo pedido')
+                                          ],
+                                        ),
+                                        SvgPicture.asset(
+                                          'assets/coolicon.svg',
+                                          width: 21,
+                                          height: 21,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

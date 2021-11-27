@@ -6,7 +6,8 @@ import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
-const baseUrl = 'conecta-campo-staging.herokuapp.com';
+const baseUrl = 'backend.conectacampo.com.br';
+const baseUrlHomolog = 'conecta-campo-staging.herokuapp.com';
 const apiVersion = 'api/v1';
 
 String getCurrentApiUrl() => '$baseUrl$apiVersion';

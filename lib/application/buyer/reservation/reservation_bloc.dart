@@ -9,7 +9,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'reservation_event.dart';
+
 part 'reservation_state.dart';
+
 part 'reservation_bloc.freezed.dart';
 
 @injectable
@@ -24,7 +26,9 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
   ) async* {
     yield* event.map(
       started: (started) async* {
-        yield state.copyWith(loading: true, optionOfReservationListFailureOrSuccess: some(right([])));
+        yield state.copyWith(
+            loading: true,
+            optionOfReservationListFailureOrSuccess: some(right([])));
         final successOrFailure =
             await reservationFacade.getCurrentUserReservations();
         yield state.copyWith(
@@ -33,6 +37,10 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
       },
       showItemsTapped: (showItemsTapped) async* {
         yield state.copyWith(isItemsVisible: !state.isItemsVisible);
+      },
+      searchTapped: (SearchTapped value) async* {
+        yield state.copyWith(openSearch: true);
+        yield state.copyWith(openSearch: false);
       },
     );
   }

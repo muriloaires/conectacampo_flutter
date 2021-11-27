@@ -2,6 +2,7 @@ import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart
 import 'package:conectacampo/application/seller/adveretisements/seller_advertisements_bloc.dart';
 import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
+import 'package:conectacampo/application/seller/reservation_summary/summary_reservations_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/advertisements/advertisement_widget.dart';
@@ -42,8 +43,8 @@ class SellerSummary extends StatelessWidget {
                           .add(const SellerSummaryEvent.started());
 
                       context
-                          .read<ReservationBloc>()
-                          .add(const ReservationEvent.started());
+                          .read<SummaryReservationsBloc>()
+                          .add(const SummaryReservationsEvent.started());
                     },
                     child: ListView(
                       shrinkWrap: true,

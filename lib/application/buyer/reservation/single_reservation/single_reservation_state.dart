@@ -7,13 +7,17 @@ class SingleReservationState with _$SingleReservationState {
       required Reservation? reservation,
       required bool showAcceptError,
       required bool showCancelItemError,
-      required Either<AdvertisementFailure, Advertisement>?
-          adFailureOrSuccess}) = _SingleReservationState;
+      required bool canceling,
+      required Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess,
+      required Either<ReservationFailure, Unit>?
+          cancelFailureOrSuccess}) = _SingleReservationState;
 
   factory SingleReservationState.initial() => const SingleReservationState(
       isItemVisible: false,
       reservation: null,
       showAcceptError: false,
       showCancelItemError: false,
-      adFailureOrSuccess: null);
+      canceling: false,
+      adFailureOrSuccess: null,
+      cancelFailureOrSuccess: null);
 }

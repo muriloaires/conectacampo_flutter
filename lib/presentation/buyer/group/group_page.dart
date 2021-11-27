@@ -1,5 +1,6 @@
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
+import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
@@ -34,9 +35,14 @@ class GroupPage extends StatelessWidget {
                       }
                     },
                     child: BlocConsumer<GroupBloc, GroupState>(
-                      listener: (context, state) {},
+                      listener: (context, state) {
+                        if (state.openSearch) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (builder) => SearchPage()));
+                        }
+                      },
                       builder: (context, state) =>
-                          state.optionOfGrousAdsSuccessOrFailure.fold(
+                          state.optionOfGroupsAdsSuccessOrFailure.fold(
                               () => Container(),
                               (a) => a.fold(
                                   (l) => const Text('Erro'),

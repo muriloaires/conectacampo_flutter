@@ -10,7 +10,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'group_event.dart';
+
 part 'group_state.dart';
+
 part 'group_bloc.freezed.dart';
 
 @injectable
@@ -28,7 +30,10 @@ class GroupBloc extends Bloc<GroupEvent, GroupState> {
       final successOrFailure = await iAdvertisementsFacade.getGroupsAds();
       yield state.copyWith(
           loading: false,
-          optionOfGrousAdsSuccessOrFailure: some(successOrFailure));
+          optionOfGroupsAdsSuccessOrFailure: some(successOrFailure));
+    }, onSearchTapped: (OnSearchTapped value) async* {
+      yield state.copyWith(openSearch: true);
+      yield state.copyWith(openSearch: false);
     });
   }
 }

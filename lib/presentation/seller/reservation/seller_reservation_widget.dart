@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/reservation/seller_reservation_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
@@ -47,17 +48,11 @@ class SellerReservationWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(24.0),
                     child: Row(
                       children: [
-                        Container(
-                            width: 72.0,
-                            height: 72.0,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(state.reservation?.buyer
-                                            .mediumAvatar?.value
-                                            .fold((l) => '', (r) => r) ??
-                                        '')))),
+                        CircleAvatar(
+                          radius: 36,
+                          backgroundColor: ColorSet.green1,
+                          foregroundImage: CachedNetworkImageProvider(state.reservation?.buyer.thumbAvatar?.getOrCrash() ?? ''),
+                        ),
                         const SizedBox(
                           width: 12,
                         ),
@@ -65,22 +60,22 @@ class SellerReservationWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              state.reservation?.buyer.name ?? '',
+                              state.reservation?.buyer.nickname ?? '',
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
-                            const SizedBox(height: 8),
-                            Text.rich(TextSpan(text: 'Placa: ', children: [
-                              TextSpan(
-                                  text: state.reservation?.buyer
-                                          .vehicleLicensePlate ??
-                                      '',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold))
-                            ]))
+
                           ],
                         )
                       ],
+                    ),
+                  ),Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Feira do dia: ${state.advertisement?.deliveryAt.getDateAndMonthName() ?? '--'}',
+                      style: const TextStyle(
+                        fontSize: 12,
+                      ),
                     ),
                   ),
                   GestureDetector(

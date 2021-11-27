@@ -8,6 +8,7 @@ import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
+import 'package:conectacampo/domain/reservation/reservation_failure.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -79,7 +80,8 @@ class SingleReservationBloc
           final list = state.reservation?.productReservations ?? [];
           list.remove(product);
           yield state.copyWith(
-              reservation: state.reservation?.copyWith(productReservations: []));
+              reservation:
+                  state.reservation?.copyWith(productReservations: []));
           yield state.copyWith(
               reservation:
                   state.reservation?.copyWith(productReservations: list));
@@ -89,6 +91,15 @@ class SingleReservationBloc
       yield state.copyWith(showCancelItemError: false);
     }, onExpandPressed: (OnExpandPressed value) async* {
       yield state.copyWith(isItemVisible: !state.isItemVisible);
+    }, onCancelReservationPressed: (OnCancelReservationPressed value) async* {
+      final result = state.reservation;
+      if (result != null) {
+        yield state.copyWith(canceling: true);
+        final resultCancelation =
+            await reservationFacade.cancelReservation(result);
+        yield state.copyWith(
+            cancelFailureOrSuccess: resultCancelation, canceling: false);
+      }
     });
   }
 }

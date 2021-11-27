@@ -7,6 +7,7 @@ import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 import 'package:conectacampo/application/profile/profile_bloc.dart';
+import 'package:conectacampo/application/seller/reservation_summary/summary_reservations_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/infrastructure/reservation/reservation_facade.dart';
@@ -56,7 +57,10 @@ class BuyerMainPage extends StatelessWidget {
             create: (context) => getIt()..add(const SummaryEvent.started())),
         BlocProvider(
             create: (context) =>
-                getIt<ProfileBloc>()..add(const ProfileEvent.started()))
+                getIt<ProfileBloc>()..add(const ProfileEvent.started())),
+        BlocProvider(
+            create: (context) => getIt<SummaryReservationsBloc>()
+              ..add(const SummaryReservationsEvent.started())),
       ],
       child: BlocConsumer<BuyerMenuBloc, BuyerMenuState>(
         listener: (context, state) async {
@@ -136,9 +140,19 @@ class BuyerMainPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          context
-                              .read<SummaryBloc>()
-                              .add(const SummaryEvent.onBuyTapped());
+                          if (state.currentIndex == 0) {
+                            context
+                                .read<SummaryBloc>()
+                                .add(const SummaryEvent.onBuyTapped());
+                          } else if (state.currentIndex == 1) {
+                            context
+                                .read<GroupBloc>()
+                                .add(const GroupEvent.onSearchTapped());
+                          } else if (state.currentIndex == 3) {
+                            context
+                                .read<ReservationBloc>()
+                                .add(const ReservationEvent.searchTapped());
+                          }
                         },
                         child: Container(
                           width: 68.0,

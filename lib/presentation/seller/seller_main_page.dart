@@ -6,6 +6,7 @@ import 'package:conectacampo/application/profile/profile_bloc.dart';
 import 'package:conectacampo/application/seller/adveretisements/seller_advertisements_bloc.dart';
 import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
+import 'package:conectacampo/application/seller/reservation_summary/summary_reservations_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
@@ -54,9 +55,9 @@ class SellerMainPage extends StatelessWidget {
         BlocProvider<SellerSummaryBloc>(
             create: (BuildContext context) =>
                 getIt()..add(const SellerSummaryEvent.started())),
-        BlocProvider<ReservationBloc>(
+        BlocProvider<SummaryReservationsBloc>(
             create: (context) =>
-                getIt()..add(const ReservationEvent.started())),
+                getIt()..add(const SummaryReservationsEvent.started())),
         BlocProvider<SellerAdvertisementsBloc>(
             create: (context) =>
                 getIt()..add(const SellerAdvertisementsEvent.started())),

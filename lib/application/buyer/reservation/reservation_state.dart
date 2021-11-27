@@ -7,11 +7,13 @@ class ReservationState with _$ReservationState {
     required Option<Either<ReservationFailure, List<Reservation>>>
         optionOfReservationListFailureOrSuccess,
     required bool isItemsVisible,
+    required bool openSearch,
   }) = _ReservationState;
 
   factory ReservationState.initial() => ReservationState(
         loading: false,
         optionOfReservationListFailureOrSuccess: none(),
         isItemsVisible: false,
+    openSearch: false,
       );
 }

@@ -1,3 +1,5 @@
+import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
+import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/single_reservation/single_reservation_bloc.dart';
 import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
@@ -22,6 +24,21 @@ class ReservationWidget extends StatelessWidget {
           getIt()..add(SingleReservationEvent.started(reservation)),
       child: BlocConsumer<SingleReservationBloc, SingleReservationState>(
         listener: (context, state) {
+          if (state.canceling) {
+            EasyLoading.show(status: 'Cancelando Reserva', dismissOnTap: true);
+          } else {
+            EasyLoading.dismiss();
+          }
+
+          state.cancelFailureOrSuccess?.fold(
+              (l) => EasyLoading.showError(
+                  'Não foi possível cancelar a reserva, tente novamente mais tarde.',
+                  duration: const Duration(seconds: 3),
+                  dismissOnTap: true),
+              (r) => context
+                  .read<ReservationBloc>()
+                  .add(const ReservationEvent.started()));
+
           if (state.showAcceptError) {
             EasyLoading.showError("Erro ao aceitar produto",
                 duration: const Duration(seconds: 2));
@@ -188,8 +205,9 @@ class ReservationWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 30),
                           Visibility(
-                              visible: state.reservation?.getStatusFromItems() ==
-                                  ReservationItemStatus.awaitingBuyer,
+                              visible:
+                                  state.reservation?.getStatusFromItems() ==
+                                      ReservationItemStatus.awaitingBuyer,
                               child: ListView(
                                 shrinkWrap: true,
                                 physics: const ClampingScrollPhysics(),
@@ -301,12 +319,14 @@ class ReservationWidget extends StatelessWidget {
                                       );
                                     },
                                     itemCount: state
-                                        .reservation?.productReservations
-                                        .where((element) =>
-                                            element.status ==
-                                            ReservationItemStatus.awaitingBuyer)
-                                        .toList()
-                                        .length ?? 0,
+                                            .reservation?.productReservations
+                                            .where((element) =>
+                                                element.status ==
+                                                ReservationItemStatus
+                                                    .awaitingBuyer)
+                                            .toList()
+                                            .length ??
+                                        0,
                                   ),
                                   const SizedBox(height: 40),
                                 ],
@@ -318,9 +338,9 @@ class ReservationWidget extends StatelessWidget {
                                   ReservationItemStatus.sellerCanceled)
                             MaterialButton(
                               onPressed: () {
-                                context.read<SummaryBloc>().add(
-                                    SummaryEvent.onCancelReservationPressed(
-                                        state.reservation));
+                                context.read<SingleReservationBloc>().add(
+                                    const SingleReservationEvent
+                                        .onCancelReservationPressed());
                               },
                               child: Container(
                                 padding:
@@ -349,10 +369,9 @@ class ReservationWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     InkWell(
-                      onTap: (){
-                        context
-                            .read<SingleReservationBloc>()
-                            .add(const SingleReservationEvent.onExpandPressed());
+                      onTap: () {
+                        context.read<SingleReservationBloc>().add(
+                            const SingleReservationEvent.onExpandPressed());
                       },
                       child: SizedBox(
                         width: double.infinity,

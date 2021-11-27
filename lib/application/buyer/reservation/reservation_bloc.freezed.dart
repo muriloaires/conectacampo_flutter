@@ -23,6 +23,10 @@ class _$ReservationEventTearOff {
   ShowItemsTapped showItemsTapped() {
     return const ShowItemsTapped();
   }
+
+  SearchTapped searchTapped() {
+    return const SearchTapped();
+  }
 }
 
 /// @nodoc
@@ -34,12 +38,14 @@ mixin _$ReservationEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() showItemsTapped,
+    required TResult Function() searchTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? showItemsTapped,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,12 +53,14 @@ mixin _$ReservationEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(SearchTapped value) searchTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +122,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() showItemsTapped,
+    required TResult Function() searchTapped,
   }) {
     return started();
   }
@@ -123,6 +132,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? showItemsTapped,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -136,6 +146,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return started(this);
   }
@@ -145,6 +156,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -200,6 +212,7 @@ class _$ShowItemsTapped implements ShowItemsTapped {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() showItemsTapped,
+    required TResult Function() searchTapped,
   }) {
     return showItemsTapped();
   }
@@ -209,6 +222,7 @@ class _$ShowItemsTapped implements ShowItemsTapped {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? showItemsTapped,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (showItemsTapped != null) {
@@ -222,6 +236,7 @@ class _$ShowItemsTapped implements ShowItemsTapped {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return showItemsTapped(this);
   }
@@ -231,6 +246,7 @@ class _$ShowItemsTapped implements ShowItemsTapped {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (showItemsTapped != null) {
@@ -245,6 +261,96 @@ abstract class ShowItemsTapped implements ReservationEvent {
 }
 
 /// @nodoc
+abstract class $SearchTappedCopyWith<$Res> {
+  factory $SearchTappedCopyWith(
+          SearchTapped value, $Res Function(SearchTapped) then) =
+      _$SearchTappedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$SearchTappedCopyWithImpl<$Res>
+    extends _$ReservationEventCopyWithImpl<$Res>
+    implements $SearchTappedCopyWith<$Res> {
+  _$SearchTappedCopyWithImpl(
+      SearchTapped _value, $Res Function(SearchTapped) _then)
+      : super(_value, (v) => _then(v as SearchTapped));
+
+  @override
+  SearchTapped get _value => super._value as SearchTapped;
+}
+
+/// @nodoc
+
+class _$SearchTapped implements SearchTapped {
+  const _$SearchTapped();
+
+  @override
+  String toString() {
+    return 'ReservationEvent.searchTapped()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is SearchTapped);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() showItemsTapped,
+    required TResult Function() searchTapped,
+  }) {
+    return searchTapped();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? showItemsTapped,
+    TResult Function()? searchTapped,
+    required TResult orElse(),
+  }) {
+    if (searchTapped != null) {
+      return searchTapped();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(SearchTapped value) searchTapped,
+  }) {
+    return searchTapped(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(SearchTapped value)? searchTapped,
+    required TResult orElse(),
+  }) {
+    if (searchTapped != null) {
+      return searchTapped(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchTapped implements ReservationEvent {
+  const factory SearchTapped() = _$SearchTapped;
+}
+
+/// @nodoc
 class _$ReservationStateTearOff {
   const _$ReservationStateTearOff();
 
@@ -252,12 +358,14 @@ class _$ReservationStateTearOff {
       {required bool loading,
       required Option<Either<ReservationFailure, List<Reservation>>>
           optionOfReservationListFailureOrSuccess,
-      required bool isItemsVisible}) {
+      required bool isItemsVisible,
+      required bool openSearch}) {
     return _ReservationState(
       loading: loading,
       optionOfReservationListFailureOrSuccess:
           optionOfReservationListFailureOrSuccess,
       isItemsVisible: isItemsVisible,
+      openSearch: openSearch,
     );
   }
 }
@@ -272,6 +380,7 @@ mixin _$ReservationState {
       get optionOfReservationListFailureOrSuccess =>
           throw _privateConstructorUsedError;
   bool get isItemsVisible => throw _privateConstructorUsedError;
+  bool get openSearch => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReservationStateCopyWith<ReservationState> get copyWith =>
@@ -287,7 +396,8 @@ abstract class $ReservationStateCopyWith<$Res> {
       {bool loading,
       Option<Either<ReservationFailure, List<Reservation>>>
           optionOfReservationListFailureOrSuccess,
-      bool isItemsVisible});
+      bool isItemsVisible,
+      bool openSearch});
 }
 
 /// @nodoc
@@ -304,6 +414,7 @@ class _$ReservationStateCopyWithImpl<$Res>
     Object? loading = freezed,
     Object? optionOfReservationListFailureOrSuccess = freezed,
     Object? isItemsVisible = freezed,
+    Object? openSearch = freezed,
   }) {
     return _then(_value.copyWith(
       loading: loading == freezed
@@ -318,6 +429,10 @@ class _$ReservationStateCopyWithImpl<$Res>
       isItemsVisible: isItemsVisible == freezed
           ? _value.isItemsVisible
           : isItemsVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      openSearch: openSearch == freezed
+          ? _value.openSearch
+          : openSearch // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -334,7 +449,8 @@ abstract class _$ReservationStateCopyWith<$Res>
       {bool loading,
       Option<Either<ReservationFailure, List<Reservation>>>
           optionOfReservationListFailureOrSuccess,
-      bool isItemsVisible});
+      bool isItemsVisible,
+      bool openSearch});
 }
 
 /// @nodoc
@@ -353,6 +469,7 @@ class __$ReservationStateCopyWithImpl<$Res>
     Object? loading = freezed,
     Object? optionOfReservationListFailureOrSuccess = freezed,
     Object? isItemsVisible = freezed,
+    Object? openSearch = freezed,
   }) {
     return _then(_ReservationState(
       loading: loading == freezed
@@ -368,6 +485,10 @@ class __$ReservationStateCopyWithImpl<$Res>
           ? _value.isItemsVisible
           : isItemsVisible // ignore: cast_nullable_to_non_nullable
               as bool,
+      openSearch: openSearch == freezed
+          ? _value.openSearch
+          : openSearch // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -378,7 +499,8 @@ class _$_ReservationState implements _ReservationState {
   const _$_ReservationState(
       {required this.loading,
       required this.optionOfReservationListFailureOrSuccess,
-      required this.isItemsVisible});
+      required this.isItemsVisible,
+      required this.openSearch});
 
   @override
   final bool loading;
@@ -387,10 +509,12 @@ class _$_ReservationState implements _ReservationState {
       optionOfReservationListFailureOrSuccess;
   @override
   final bool isItemsVisible;
+  @override
+  final bool openSearch;
 
   @override
   String toString() {
-    return 'ReservationState(loading: $loading, optionOfReservationListFailureOrSuccess: $optionOfReservationListFailureOrSuccess, isItemsVisible: $isItemsVisible)';
+    return 'ReservationState(loading: $loading, optionOfReservationListFailureOrSuccess: $optionOfReservationListFailureOrSuccess, isItemsVisible: $isItemsVisible, openSearch: $openSearch)';
   }
 
   @override
@@ -407,7 +531,10 @@ class _$_ReservationState implements _ReservationState {
                     optionOfReservationListFailureOrSuccess)) &&
             (identical(other.isItemsVisible, isItemsVisible) ||
                 const DeepCollectionEquality()
-                    .equals(other.isItemsVisible, isItemsVisible)));
+                    .equals(other.isItemsVisible, isItemsVisible)) &&
+            (identical(other.openSearch, openSearch) ||
+                const DeepCollectionEquality()
+                    .equals(other.openSearch, openSearch)));
   }
 
   @override
@@ -416,7 +543,8 @@ class _$_ReservationState implements _ReservationState {
       const DeepCollectionEquality().hash(loading) ^
       const DeepCollectionEquality()
           .hash(optionOfReservationListFailureOrSuccess) ^
-      const DeepCollectionEquality().hash(isItemsVisible);
+      const DeepCollectionEquality().hash(isItemsVisible) ^
+      const DeepCollectionEquality().hash(openSearch);
 
   @JsonKey(ignore: true)
   @override
@@ -429,7 +557,8 @@ abstract class _ReservationState implements ReservationState {
       {required bool loading,
       required Option<Either<ReservationFailure, List<Reservation>>>
           optionOfReservationListFailureOrSuccess,
-      required bool isItemsVisible}) = _$_ReservationState;
+      required bool isItemsVisible,
+      required bool openSearch}) = _$_ReservationState;
 
   @override
   bool get loading => throw _privateConstructorUsedError;
@@ -439,6 +568,8 @@ abstract class _ReservationState implements ReservationState {
           throw _privateConstructorUsedError;
   @override
   bool get isItemsVisible => throw _privateConstructorUsedError;
+  @override
+  bool get openSearch => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ReservationStateCopyWith<_ReservationState> get copyWith =>

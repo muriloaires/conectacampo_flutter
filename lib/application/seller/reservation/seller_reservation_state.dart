@@ -8,7 +8,8 @@ class SellerReservationState with _$SellerReservationState {
       required List<ProductReservation> deletedItems,
       required bool isItemsVisible,
       required bool finishing,
-      required bool finished}) = _SellerReservationState;
+      required bool finished,
+      required Advertisement? advertisement}) = _SellerReservationState;
 
   factory SellerReservationState.initial() => const SellerReservationState(
       reservation: null,
@@ -16,5 +17,6 @@ class SellerReservationState with _$SellerReservationState {
       deletedItems: [],
       finishing: false,
       finished: false,
-      isItemsVisible: false);
+      isItemsVisible: false,
+      advertisement: null);
 }

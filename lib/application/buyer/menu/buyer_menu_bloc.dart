@@ -92,6 +92,10 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
         },
         produtDetailsClosed: (ProdutDetailsClosed value) async* {
           yield state.copyWith(showToolBar: true);
+        },
+        searchTapped: (SearchTapped value) async* {
+          yield state.copyWith(openSearch: true);
+          yield state.copyWith(openSearch: false);
         });
   }
 

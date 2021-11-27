@@ -31,14 +31,14 @@ class BuyerSummary extends StatelessWidget {
                 appBar: SearchWidget(),
                 body: BlocConsumer<SummaryBloc, SummaryState>(
                   listener: (context, state) {
-
-                    if(state.openSearch){
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (builder) => SearchPage()));
+                    if (state.openSearch) {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (builder) => SearchPage()));
                     }
 
                     if (state.cancellingReservation) {
-                      EasyLoading.show(status: 'Cancelando Reserva', dismissOnTap: true);
+                      EasyLoading.show(
+                          status: 'Cancelando Reserva', dismissOnTap: true);
                     } else {
                       EasyLoading.dismiss();
                     }
@@ -156,24 +156,35 @@ class BuyerSummary extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          height: 32,
+                          height: 20,
                         ),
                         BlocBuilder<AdvertisementsBloc, AdvertisementsState>(
                           builder: (context, state) {
-                            return Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                              child: state.adsFailureOrSuccess.fold(
-                                  (l) => const Text('Erro'),
-                                  (r) => AdvertisementList(
-                                      isSearch: false,
-                                      isGroup: false,
-                                      advertisements: r
-                                          .map((e) => UIAdvertisement(false, e))
-                                          .toList()))
-
-                              /**/
-                              ,
-                            );
+                            return state.adsFailureOrSuccess.fold(
+                                (l) => const Text('Erro'),
+                                (r) => r.isEmpty
+                                    ? const Padding(
+                                        padding: EdgeInsets.all(20),
+                                        child: Card(
+                                          child: Padding(
+                                            padding: EdgeInsets.all(32.0),
+                                            child: Text(
+                                              'Nenhuma feira encontrada',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : AdvertisementList(
+                                        isSearch: false,
+                                        isGroup: false,
+                                        advertisements: r
+                                            .map((e) =>
+                                                UIAdvertisement(false, e))
+                                            .toList()));
                           },
                         ),
                         const SizedBox(

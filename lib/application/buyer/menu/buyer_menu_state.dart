@@ -10,6 +10,7 @@ class BuyerMenuState with _$BuyerMenuState {
       required bool openCart,
       required bool navToLogin,
       required bool showToolBar,
+        required bool openSearch,
       required ReservationToOpen? reservationToOpen}) = _BuyerMenuState;
 
   factory BuyerMenuState.initial() => BuyerMenuState(
@@ -20,5 +21,6 @@ class BuyerMenuState with _$BuyerMenuState {
       openCart: false,
       navToLogin: false,
       showToolBar: true,
+      openSearch: false,
       reservationToOpen: null);
 }

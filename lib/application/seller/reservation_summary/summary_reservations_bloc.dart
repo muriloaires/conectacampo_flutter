@@ -9,7 +9,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'summary_reservations_event.dart';
+
 part 'summary_reservations_state.dart';
+
 part 'summary_reservations_bloc.freezed.dart';
 
 @injectable

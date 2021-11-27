@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/advertisements/i_advertisements_facade.dart';
 import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
@@ -18,10 +20,11 @@ part 'seller_reservation_bloc.freezed.dart';
 @injectable
 class SellerReservationBloc
     extends Bloc<SellerReservationEvent, SellerReservationState> {
-  SellerReservationBloc(this.reservationFacade)
+  SellerReservationBloc(this.reservationFacade, this.advertisementsFacade)
       : super(SellerReservationState.initial());
 
   final IReservationFacade reservationFacade;
+  final IAdvertisementsFacade advertisementsFacade;
 
   @override
   Stream<SellerReservationState> mapEventToState(
@@ -29,6 +32,13 @@ class SellerReservationBloc
   ) async* {
     yield* event.map(started: (started) async* {
       yield state.copyWith(reservation: started.reservation);
+      final adId = started.reservation.productReservations.firstOrNull?.adProduct.advertisementId;
+      if (adId != null){
+        final ad = await advertisementsFacade.getAdvertisement(adId);
+        yield* ad.fold((l) async* {}, (r) async* {
+          yield state.copyWith(advertisement: r);
+        });
+      }
     }, finish: (Finish value) async* {
       yield state.copyWith(finishing: true);
 

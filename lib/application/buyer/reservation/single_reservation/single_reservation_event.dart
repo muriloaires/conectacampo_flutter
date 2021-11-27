@@ -18,4 +18,6 @@ class SingleReservationEvent with _$SingleReservationEvent {
       OnCancelErrorDisplayed;
 
   const factory SingleReservationEvent.onExpandPressed() = OnExpandPressed;
+
+  const factory SingleReservationEvent.onCancelReservationPressed() = OnCancelReservationPressed;
 }

@@ -105,8 +105,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i29.SellerGroupBloc(get<_i16.IReservationFacade>()));
   gh.factory<_i30.SellerMenuBloc>(
       () => _i30.SellerMenuBloc(get<_i16.IReservationFacade>()));
-  gh.factory<_i31.SellerReservationBloc>(
-      () => _i31.SellerReservationBloc(get<_i16.IReservationFacade>()));
+  gh.factory<_i31.SellerReservationBloc>(() => _i31.SellerReservationBloc(
+      get<_i16.IReservationFacade>(), get<_i6.IAdvertisementsFacade>()));
   gh.factory<_i32.SellerSummaryBloc>(() => _i32.SellerSummaryBloc(
       get<_i6.IAdvertisementsFacade>(), get<_i16.IReservationFacade>()));
   gh.factory<_i33.SignInFormBloc>(

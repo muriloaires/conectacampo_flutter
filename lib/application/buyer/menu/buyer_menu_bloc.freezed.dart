@@ -75,6 +75,10 @@ class _$BuyerMenuEventTearOff {
   Logout logout() {
     return const Logout();
   }
+
+  SearchTapped searchTapped() {
+    return const SearchTapped();
+  }
 }
 
 /// @nodoc
@@ -99,6 +103,7 @@ mixin _$BuyerMenuEvent {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -118,6 +123,7 @@ mixin _$BuyerMenuEvent {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,6 +144,7 @@ mixin _$BuyerMenuEvent {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -157,6 +164,7 @@ mixin _$BuyerMenuEvent {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -231,6 +239,7 @@ class _$Started implements Started {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return started();
   }
@@ -253,6 +262,7 @@ class _$Started implements Started {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -279,6 +289,7 @@ class _$Started implements Started {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return started(this);
   }
@@ -301,6 +312,7 @@ class _$Started implements Started {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -369,6 +381,7 @@ class _$OnCartTapped implements OnCartTapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return onCartTapped();
   }
@@ -391,6 +404,7 @@ class _$OnCartTapped implements OnCartTapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (onCartTapped != null) {
@@ -417,6 +431,7 @@ class _$OnCartTapped implements OnCartTapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return onCartTapped(this);
   }
@@ -439,6 +454,7 @@ class _$OnCartTapped implements OnCartTapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (onCartTapped != null) {
@@ -504,6 +520,7 @@ class _$BuyTapped implements BuyTapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return buyTapped();
   }
@@ -526,6 +543,7 @@ class _$BuyTapped implements BuyTapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (buyTapped != null) {
@@ -552,6 +570,7 @@ class _$BuyTapped implements BuyTapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return buyTapped(this);
   }
@@ -574,6 +593,7 @@ class _$BuyTapped implements BuyTapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (buyTapped != null) {
@@ -640,6 +660,7 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return homeTapped();
   }
@@ -662,6 +683,7 @@ class _$HomeTapped implements HomeTapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (homeTapped != null) {
@@ -688,6 +710,7 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return homeTapped(this);
   }
@@ -710,6 +733,7 @@ class _$HomeTapped implements HomeTapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (homeTapped != null) {
@@ -778,6 +802,7 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return groupsTapped();
   }
@@ -800,6 +825,7 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (groupsTapped != null) {
@@ -826,6 +852,7 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return groupsTapped(this);
   }
@@ -848,6 +875,7 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (groupsTapped != null) {
@@ -916,6 +944,7 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return reservationTapped();
   }
@@ -938,6 +967,7 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (reservationTapped != null) {
@@ -964,6 +994,7 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return reservationTapped(this);
   }
@@ -986,6 +1017,7 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (reservationTapped != null) {
@@ -1054,6 +1086,7 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return profileTapped();
   }
@@ -1076,6 +1109,7 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (profileTapped != null) {
@@ -1102,6 +1136,7 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return profileTapped(this);
   }
@@ -1124,6 +1159,7 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (profileTapped != null) {
@@ -1192,6 +1228,7 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return homeRetapped();
   }
@@ -1214,6 +1251,7 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (homeRetapped != null) {
@@ -1240,6 +1278,7 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return homeRetapped(this);
   }
@@ -1262,6 +1301,7 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (homeRetapped != null) {
@@ -1330,6 +1370,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return groupsRetapped();
   }
@@ -1352,6 +1393,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (groupsRetapped != null) {
@@ -1378,6 +1420,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return groupsRetapped(this);
   }
@@ -1400,6 +1443,7 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (groupsRetapped != null) {
@@ -1468,6 +1512,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return reservationRetapped();
   }
@@ -1490,6 +1535,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (reservationRetapped != null) {
@@ -1516,6 +1562,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return reservationRetapped(this);
   }
@@ -1538,6 +1585,7 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (reservationRetapped != null) {
@@ -1606,6 +1654,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return profileRetapped();
   }
@@ -1628,6 +1677,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (profileRetapped != null) {
@@ -1654,6 +1704,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return profileRetapped(this);
   }
@@ -1676,6 +1727,7 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (profileRetapped != null) {
@@ -1744,6 +1796,7 @@ class _$ProdutDetailsOpen implements ProdutDetailsOpen {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return produtDetailsOpen();
   }
@@ -1766,6 +1819,7 @@ class _$ProdutDetailsOpen implements ProdutDetailsOpen {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (produtDetailsOpen != null) {
@@ -1792,6 +1846,7 @@ class _$ProdutDetailsOpen implements ProdutDetailsOpen {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return produtDetailsOpen(this);
   }
@@ -1814,6 +1869,7 @@ class _$ProdutDetailsOpen implements ProdutDetailsOpen {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (produtDetailsOpen != null) {
@@ -1882,6 +1938,7 @@ class _$ProdutDetailsClosed implements ProdutDetailsClosed {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return produtDetailsClosed();
   }
@@ -1904,6 +1961,7 @@ class _$ProdutDetailsClosed implements ProdutDetailsClosed {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (produtDetailsClosed != null) {
@@ -1930,6 +1988,7 @@ class _$ProdutDetailsClosed implements ProdutDetailsClosed {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return produtDetailsClosed(this);
   }
@@ -1952,6 +2011,7 @@ class _$ProdutDetailsClosed implements ProdutDetailsClosed {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (produtDetailsClosed != null) {
@@ -2020,6 +2080,7 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return navToSellerTapped();
   }
@@ -2042,6 +2103,7 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (navToSellerTapped != null) {
@@ -2068,6 +2130,7 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return navToSellerTapped(this);
   }
@@ -2090,6 +2153,7 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (navToSellerTapped != null) {
@@ -2155,6 +2219,7 @@ class _$Logout implements Logout {
     required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
+    required TResult Function() searchTapped,
   }) {
     return logout();
   }
@@ -2177,6 +2242,7 @@ class _$Logout implements Logout {
     TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
+    TResult Function()? searchTapped,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -2203,6 +2269,7 @@ class _$Logout implements Logout {
     required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
   }) {
     return logout(this);
   }
@@ -2225,6 +2292,7 @@ class _$Logout implements Logout {
     TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -2239,6 +2307,148 @@ abstract class Logout implements BuyerMenuEvent {
 }
 
 /// @nodoc
+abstract class $SearchTappedCopyWith<$Res> {
+  factory $SearchTappedCopyWith(
+          SearchTapped value, $Res Function(SearchTapped) then) =
+      _$SearchTappedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$SearchTappedCopyWithImpl<$Res>
+    extends _$BuyerMenuEventCopyWithImpl<$Res>
+    implements $SearchTappedCopyWith<$Res> {
+  _$SearchTappedCopyWithImpl(
+      SearchTapped _value, $Res Function(SearchTapped) _then)
+      : super(_value, (v) => _then(v as SearchTapped));
+
+  @override
+  SearchTapped get _value => super._value as SearchTapped;
+}
+
+/// @nodoc
+
+class _$SearchTapped implements SearchTapped {
+  const _$SearchTapped();
+
+  @override
+  String toString() {
+    return 'BuyerMenuEvent.searchTapped()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is SearchTapped);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() onCartTapped,
+    required TResult Function() buyTapped,
+    required TResult Function() homeTapped,
+    required TResult Function() groupsTapped,
+    required TResult Function() reservationTapped,
+    required TResult Function() profileTapped,
+    required TResult Function() homeRetapped,
+    required TResult Function() groupsRetapped,
+    required TResult Function() reservationRetapped,
+    required TResult Function() profileRetapped,
+    required TResult Function() produtDetailsOpen,
+    required TResult Function() produtDetailsClosed,
+    required TResult Function() navToSellerTapped,
+    required TResult Function() logout,
+    required TResult Function() searchTapped,
+  }) {
+    return searchTapped();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? onCartTapped,
+    TResult Function()? buyTapped,
+    TResult Function()? homeTapped,
+    TResult Function()? groupsTapped,
+    TResult Function()? reservationTapped,
+    TResult Function()? profileTapped,
+    TResult Function()? homeRetapped,
+    TResult Function()? groupsRetapped,
+    TResult Function()? reservationRetapped,
+    TResult Function()? profileRetapped,
+    TResult Function()? produtDetailsOpen,
+    TResult Function()? produtDetailsClosed,
+    TResult Function()? navToSellerTapped,
+    TResult Function()? logout,
+    TResult Function()? searchTapped,
+    required TResult orElse(),
+  }) {
+    if (searchTapped != null) {
+      return searchTapped();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(OnCartTapped value) onCartTapped,
+    required TResult Function(BuyTapped value) buyTapped,
+    required TResult Function(HomeTapped value) homeTapped,
+    required TResult Function(GroupsTapped value) groupsTapped,
+    required TResult Function(ReservationTapped value) reservationTapped,
+    required TResult Function(ProfileTapped value) profileTapped,
+    required TResult Function(HomeRetapped value) homeRetapped,
+    required TResult Function(GroupsRetapped value) groupsRetapped,
+    required TResult Function(ReservationRetapped value) reservationRetapped,
+    required TResult Function(ProfileRetapped value) profileRetapped,
+    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
+    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
+    required TResult Function(NavToSellerTapped value) navToSellerTapped,
+    required TResult Function(Logout value) logout,
+    required TResult Function(SearchTapped value) searchTapped,
+  }) {
+    return searchTapped(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(OnCartTapped value)? onCartTapped,
+    TResult Function(BuyTapped value)? buyTapped,
+    TResult Function(HomeTapped value)? homeTapped,
+    TResult Function(GroupsTapped value)? groupsTapped,
+    TResult Function(ReservationTapped value)? reservationTapped,
+    TResult Function(ProfileTapped value)? profileTapped,
+    TResult Function(HomeRetapped value)? homeRetapped,
+    TResult Function(GroupsRetapped value)? groupsRetapped,
+    TResult Function(ReservationRetapped value)? reservationRetapped,
+    TResult Function(ProfileRetapped value)? profileRetapped,
+    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
+    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
+    TResult Function(NavToSellerTapped value)? navToSellerTapped,
+    TResult Function(Logout value)? logout,
+    TResult Function(SearchTapped value)? searchTapped,
+    required TResult orElse(),
+  }) {
+    if (searchTapped != null) {
+      return searchTapped(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchTapped implements BuyerMenuEvent {
+  const factory SearchTapped() = _$SearchTapped;
+}
+
+/// @nodoc
 class _$BuyerMenuStateTearOff {
   const _$BuyerMenuStateTearOff();
 
@@ -2250,6 +2460,7 @@ class _$BuyerMenuStateTearOff {
       required bool openCart,
       required bool navToLogin,
       required bool showToolBar,
+      required bool openSearch,
       required ReservationToOpen? reservationToOpen}) {
     return _BuyerMenuState(
       currentIndex: currentIndex,
@@ -2259,6 +2470,7 @@ class _$BuyerMenuStateTearOff {
       openCart: openCart,
       navToLogin: navToLogin,
       showToolBar: showToolBar,
+      openSearch: openSearch,
       reservationToOpen: reservationToOpen,
     );
   }
@@ -2276,6 +2488,7 @@ mixin _$BuyerMenuState {
   bool get openCart => throw _privateConstructorUsedError;
   bool get navToLogin => throw _privateConstructorUsedError;
   bool get showToolBar => throw _privateConstructorUsedError;
+  bool get openSearch => throw _privateConstructorUsedError;
   ReservationToOpen? get reservationToOpen =>
       throw _privateConstructorUsedError;
 
@@ -2297,6 +2510,7 @@ abstract class $BuyerMenuStateCopyWith<$Res> {
       bool openCart,
       bool navToLogin,
       bool showToolBar,
+      bool openSearch,
       ReservationToOpen? reservationToOpen});
 }
 
@@ -2318,6 +2532,7 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
     Object? openCart = freezed,
     Object? navToLogin = freezed,
     Object? showToolBar = freezed,
+    Object? openSearch = freezed,
     Object? reservationToOpen = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2349,6 +2564,10 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.showToolBar
           : showToolBar // ignore: cast_nullable_to_non_nullable
               as bool,
+      openSearch: openSearch == freezed
+          ? _value.openSearch
+          : openSearch // ignore: cast_nullable_to_non_nullable
+              as bool,
       reservationToOpen: reservationToOpen == freezed
           ? _value.reservationToOpen
           : reservationToOpen // ignore: cast_nullable_to_non_nullable
@@ -2372,6 +2591,7 @@ abstract class _$BuyerMenuStateCopyWith<$Res>
       bool openCart,
       bool navToLogin,
       bool showToolBar,
+      bool openSearch,
       ReservationToOpen? reservationToOpen});
 }
 
@@ -2395,6 +2615,7 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
     Object? openCart = freezed,
     Object? navToLogin = freezed,
     Object? showToolBar = freezed,
+    Object? openSearch = freezed,
     Object? reservationToOpen = freezed,
   }) {
     return _then(_BuyerMenuState(
@@ -2426,6 +2647,10 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.showToolBar
           : showToolBar // ignore: cast_nullable_to_non_nullable
               as bool,
+      openSearch: openSearch == freezed
+          ? _value.openSearch
+          : openSearch // ignore: cast_nullable_to_non_nullable
+              as bool,
       reservationToOpen: reservationToOpen == freezed
           ? _value.reservationToOpen
           : reservationToOpen // ignore: cast_nullable_to_non_nullable
@@ -2445,6 +2670,7 @@ class _$_BuyerMenuState implements _BuyerMenuState {
       required this.openCart,
       required this.navToLogin,
       required this.showToolBar,
+      required this.openSearch,
       required this.reservationToOpen});
 
   @override
@@ -2462,11 +2688,13 @@ class _$_BuyerMenuState implements _BuyerMenuState {
   @override
   final bool showToolBar;
   @override
+  final bool openSearch;
+  @override
   final ReservationToOpen? reservationToOpen;
 
   @override
   String toString() {
-    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller, itemsInCart: $itemsInCart, openCart: $openCart, navToLogin: $navToLogin, showToolBar: $showToolBar, reservationToOpen: $reservationToOpen)';
+    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller, itemsInCart: $itemsInCart, openCart: $openCart, navToLogin: $navToLogin, showToolBar: $showToolBar, openSearch: $openSearch, reservationToOpen: $reservationToOpen)';
   }
 
   @override
@@ -2494,6 +2722,9 @@ class _$_BuyerMenuState implements _BuyerMenuState {
             (identical(other.showToolBar, showToolBar) ||
                 const DeepCollectionEquality()
                     .equals(other.showToolBar, showToolBar)) &&
+            (identical(other.openSearch, openSearch) ||
+                const DeepCollectionEquality()
+                    .equals(other.openSearch, openSearch)) &&
             (identical(other.reservationToOpen, reservationToOpen) ||
                 const DeepCollectionEquality()
                     .equals(other.reservationToOpen, reservationToOpen)));
@@ -2509,6 +2740,7 @@ class _$_BuyerMenuState implements _BuyerMenuState {
       const DeepCollectionEquality().hash(openCart) ^
       const DeepCollectionEquality().hash(navToLogin) ^
       const DeepCollectionEquality().hash(showToolBar) ^
+      const DeepCollectionEquality().hash(openSearch) ^
       const DeepCollectionEquality().hash(reservationToOpen);
 
   @JsonKey(ignore: true)
@@ -2526,6 +2758,7 @@ abstract class _BuyerMenuState implements BuyerMenuState {
       required bool openCart,
       required bool navToLogin,
       required bool showToolBar,
+      required bool openSearch,
       required ReservationToOpen? reservationToOpen}) = _$_BuyerMenuState;
 
   @override
@@ -2542,6 +2775,8 @@ abstract class _BuyerMenuState implements BuyerMenuState {
   bool get navToLogin => throw _privateConstructorUsedError;
   @override
   bool get showToolBar => throw _privateConstructorUsedError;
+  @override
+  bool get openSearch => throw _privateConstructorUsedError;
   @override
   ReservationToOpen? get reservationToOpen =>
       throw _privateConstructorUsedError;
