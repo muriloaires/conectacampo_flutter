@@ -7,7 +7,7 @@ import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
 const baseUrl = 'backend.conectacampo.com.br';
-const baseUrlHomolog = 'conecta-campo-staging.herokuapp.com';
+// const baseUrl = 'conecta-campo-staging.herokuapp.com';
 const apiVersion = 'api/v1';
 
 String getCurrentApiUrl() => '$baseUrl$apiVersion';

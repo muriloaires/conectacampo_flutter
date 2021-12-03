@@ -241,7 +241,7 @@ class ProfilePage extends StatelessWidget {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     TextButton(
-                                      onPressed: () => Navigator.pop(context),
+                                      onPressed: () => Navigator.pop(dialogContext),
                                       child: const Text(
                                         'Voltar',
                                         style: TextStyle(

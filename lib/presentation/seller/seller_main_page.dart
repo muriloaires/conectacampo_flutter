@@ -67,6 +67,9 @@ class SellerMainPage extends StatelessWidget {
       ],
       child: BlocConsumer<SellerMenuBloc, SellerMenuState>(
         listener: (context, state) async {
+
+
+
           if (state.reservationToOpen != null) {
             await openNotification(context, state.reservationToOpen!);
           }
@@ -78,6 +81,9 @@ class SellerMainPage extends StatelessWidget {
               context
                   .read<SellerSummaryBloc>()
                   .add(const SellerSummaryEvent.started());
+              context
+                  .read<SummaryReservationsBloc>()
+                  .add(const SummaryReservationsEvent.started());
 
               context
                   .read<SellerMenuBloc>()
@@ -242,7 +248,8 @@ class SellerDefaultAppBar extends StatelessWidget
                     IconButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => NotificationsPage(context.read<ProfileBloc>().state.isBuyer),
+                            builder: (context) => NotificationsPage(
+                                context.read<ProfileBloc>().state.isBuyer),
                           ));
                         },
                         icon: const Icon(Icons.notifications_none_outlined)),
@@ -255,8 +262,7 @@ class SellerDefaultAppBar extends StatelessWidget
                               state.optionOfUser.fold(
                                   () => '',
                                   (a) => a.fold(
-                                      (l) => '',
-                                      (r) => r.nickname ?? '')),
+                                      (l) => '', (r) => r.nickname ?? '')),
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           const SizedBox(width: 24),
@@ -285,9 +291,9 @@ class SellerDefaultAppBar extends StatelessWidget
                           builder: (context) => PlacesPage(),
                         ));
                     if (success != null) {
-                      context
-                          .read<SellerMenuBloc>()
-                          .add(const SellerMenuEvent.placeChanged());
+                      Navigator.of(context, rootNavigator: true)
+                          .pushNamedAndRemoveUntil(
+                          '/seller_main', (route) => false);
                     }
                   },
                   child: Row(

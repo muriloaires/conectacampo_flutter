@@ -35,7 +35,7 @@ class NewAdvertisementBloc
         },
         onPlaceTap: (onPlaceTap) async* {
           yield state.copyWith(openPlace: true);
-          state.copyWith(openPlace: false);
+          yield state.copyWith(openPlace: false);
         },
         onPlaceSelected: (onPlaceSelected) async* {
           final place = await loadSelectedPlace();

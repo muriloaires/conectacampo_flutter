@@ -27,6 +27,8 @@ class SummaryReservationsBloc
     SummaryReservationsEvent event,
   ) async* {
     yield* event.map(started: (started) async* {
+      yield state.copyWith(loading: true, optionOfReservationsFailureOrSuccess: none());
+
       final reservationsSuccessOrFailure =
           await reservationFacade.getSellerReservations();
       yield state.copyWith(

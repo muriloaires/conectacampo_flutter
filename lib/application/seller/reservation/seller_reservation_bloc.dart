@@ -32,8 +32,9 @@ class SellerReservationBloc
   ) async* {
     yield* event.map(started: (started) async* {
       yield state.copyWith(reservation: started.reservation);
-      final adId = started.reservation.productReservations.firstOrNull?.adProduct.advertisementId;
-      if (adId != null){
+      final adId = started.reservation.productReservations.firstOrNull
+          ?.adProduct.advertisementId;
+      if (adId != null) {
         final ad = await advertisementsFacade.getAdvertisement(adId);
         yield* ad.fold((l) async* {}, (r) async* {
           yield state.copyWith(advertisement: r);
@@ -55,25 +56,26 @@ class SellerReservationBloc
     }, quantityEdited: (QuantityEdited value) async* {
       final product = state.reservation?.productReservations[value.index]
           .copyWith(quantity: value.newQuantity);
-      if(product != null){
+      if (product != null) {
         state.reservation?.productReservations[value.index] = product;
         yield state.copyWith(reservation: state.reservation, update: true);
       }
     }, itemRemoved: (ItemRemoved value) async* {
       if (state.reservation != null) {
-        state.deletedItems
-            .add(state.reservation!.productReservations[value.index]);
+        var deletedItems = List<ProductReservation>.from(state.deletedItems);
+        deletedItems.add(state.reservation!.productReservations[value.index]);
 
-        final newDeletedItems = state.deletedItems;
-        final newReservation = state.reservation;
-
-        state.reservation!.productReservations.removeAt(value.index);
+        var normalItems = List<ProductReservation>.from(
+            state.reservation!.productReservations);
+        normalItems.removeAt(value.index);
 
         yield state.copyWith(
             reservation: state.reservation!.copyWith(productReservations: []),
             deletedItems: []);
         yield state.copyWith(
-            reservation: newReservation, deletedItems: newDeletedItems);
+            reservation:
+                state.reservation!.copyWith(productReservations: normalItems),
+            deletedItems: deletedItems);
       }
     }, onCancel: (OnCancel value) async* {
       final reservation = state.reservation;

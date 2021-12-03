@@ -130,7 +130,7 @@ class SellerGroupPage extends StatelessWidget {
                                                             TextButton(
                                                               onPressed: () =>
                                                                   Navigator.pop(
-                                                                      context),
+                                                                      dialogContext),
                                                               child: const Text(
                                                                 'Voltar',
                                                                 style:

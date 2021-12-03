@@ -94,7 +94,7 @@ class UserType extends StatelessWidget {
                                           color: ColorSet
                                               .colorPrimaryGreenButton)))),
                       child: const Text(
-                        'Sou vendedor',
+                        'Sou Vendedor',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),

@@ -133,9 +133,16 @@ class AddPhotoForm extends StatelessWidget {
               Center(
                 child: TextButton(
                     onPressed: () async {
-                      final PickedFile? pickedFile =
-                          await _picker.getImage(source: ImageSource.gallery);
+                      final XFile? pickedFile = await _picker.pickImage(
+                        source: ImageSource.gallery,
+                        imageQuality: 70,
+                        maxWidth: 1200,
+                        maxHeight: 1200,
+                      );
+
                       if (pickedFile != null) {
+                        final legth = await pickedFile.length();
+
                         context
                             .read<AddPhotoBloc>()
                             .add(AddPhotoEvent.photoSelected(pickedFile.path));
@@ -153,8 +160,12 @@ class AddPhotoForm extends StatelessWidget {
               const SizedBox(height: 10),
               TextButton(
                   onPressed: () async {
-                    final PickedFile? pickedFile =
-                        await _picker.getImage(source: ImageSource.camera);
+                    final XFile? pickedFile = await _picker.pickImage(
+                      source: ImageSource.camera,
+                      imageQuality: 70,
+                      maxWidth: 1200,
+                      maxHeight: 1200,
+                    );
                     if (pickedFile != null) {
                       context
                           .read<AddPhotoBloc>()
@@ -268,8 +279,12 @@ class AddPhotoForm extends StatelessWidget {
               Center(
                 child: TextButton(
                     onPressed: () async {
-                      final PickedFile? pickedFile =
-                          await _picker.getImage(source: ImageSource.gallery);
+                      final XFile? pickedFile = await _picker.pickImage(
+                        source: ImageSource.gallery,
+                        imageQuality: 70,
+                        maxWidth: 1200,
+                        maxHeight: 1200,
+                      );
                       if (pickedFile != null) {
                         context
                             .read<AddPhotoBloc>()
@@ -287,8 +302,12 @@ class AddPhotoForm extends StatelessWidget {
               ),
               MaterialButton(
                 onPressed: () async {
-                  final PickedFile? pickedFile =
-                      await _picker.getImage(source: ImageSource.camera);
+                  final XFile? pickedFile = await _picker.pickImage(
+                    source: ImageSource.camera,
+                    imageQuality: 70,
+                    maxWidth: 1200,
+                    maxHeight: 1200,
+                  );
                   if (pickedFile != null) {
                     context
                         .read<AddPhotoBloc>()
@@ -296,8 +315,7 @@ class AddPhotoForm extends StatelessWidget {
                   }
                 },
                 child: ClipRRect(
-                    borderRadius:
-                    const BorderRadius.all(Radius.circular(8)),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
                     child: Container(
                       padding: const EdgeInsets.all(16),
                       color: ColorSet.brown1,

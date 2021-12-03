@@ -12,15 +12,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class EditReservationPage extends StatelessWidget {
-  final Reservation reservation;
+  final Reservation reservationn;
 
-  const EditReservationPage(this.reservation);
+  const EditReservationPage(this.reservationn);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<SellerReservationBloc>()
-        ..add(SellerReservationEvent.started(reservation)),
+        ..add(SellerReservationEvent.started(reservationn)),
       child: BlocConsumer<SellerReservationBloc, SellerReservationState>(
           listener: (context, state) {
         if (state.finishing) {
@@ -56,26 +56,26 @@ class EditReservationPage extends StatelessWidget {
                           color: ColorSet.brown1, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  if (reservation.productReservations.isEmpty)
+                  if (state.reservation?.productReservations.isEmpty ?? true)
                     const Center(child: Text('Você removeu todos os produtos'))
                   else
                     ListView.separated(
                         itemBuilder: (context, index) =>
                             ReservationProductWidget(
-                                product: reservation.productReservations[index],
+                                product: state.reservation!.productReservations[index],
                                 index: index),
                         separatorBuilder: (context, index) => Container(
                               height: 1,
                               color: ColorSet.grayLine,
                             ),
-                        itemCount: reservation.productReservations.length,
+                        itemCount: state.reservation!.productReservations.length,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics()),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 4),
                     child: Text.rich(TextSpan(text: 'Entrega dia: ', children: [
                       TextSpan(
-                          text: reservation.createdAt?.getDateAndMonthName(),
+                          text: state.reservation!.createdAt?.getDateAndMonthName(),
                           style: const TextStyle(
                               color: ColorSet.brown1,
                               fontWeight: FontWeight.bold))
@@ -182,7 +182,7 @@ class ReservationProductWidget extends StatelessWidget {
                                             .add(SellerReservationEvent
                                                 .itemRemoved(index));
                                       },
-                                      icon: const Icon(Icons.delete_outline)),
+                                      icon: const Icon(Icons.delete)),
                                 IconButton(
                                     onPressed: () async {
                                       final result = await Navigator.of(context)

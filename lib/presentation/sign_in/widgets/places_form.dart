@@ -58,7 +58,7 @@ class PlacesForm extends StatelessWidget {
                       height: 16,
                     ),
                     const Text(
-                      'Qual local você quer retirar os produtos? Fique tranquilo que você pod alterar a qualquer momento!',
+                      'Qual local você quer retirar os produtos? Fique tranquilo que você pode alterar a qualquer momento!',
                       style: TextStyle(height: 2),
                     ),
                     const SizedBox(
