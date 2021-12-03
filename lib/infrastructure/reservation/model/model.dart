@@ -8,6 +8,7 @@ import 'package:conectacampo/infrastructure/auth/user_mapper.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'model.freezed.dart';
+
 part 'model.g.dart';
 
 @freezed
@@ -57,6 +58,7 @@ class ReservationObjRequest with _$ReservationObjRequest {
   const factory ReservationObjRequest(
       {@JsonKey(name: 'reservation')
           required ReservationRequest reservation}) = _ReservationObjRequest;
+
   factory ReservationObjRequest.fromJson(Map<String, dynamic> json) =>
       _$ReservationObjRequestFromJson(json);
 }
@@ -69,6 +71,7 @@ class ReservationResponse with _$ReservationResponse {
     @JsonKey(name: 'errors') required List<ErrorResponse>? errors,
     @JsonKey(name: 'buyer') required UserResponse buyer,
     @JsonKey(name: 'seller') required UserResponse? seller,
+    @JsonKey(name: 'status') required String? status,
     @JsonKey(name: 'product_reservations')
         required List<ProductReservationResponse> productReservations,
   }) = _ReservationResponse;
@@ -145,8 +148,25 @@ extension ReservationExt on ReservationResponse {
         createdAt: createdAt ?? "",
         buyer: buyer.toDomain(),
         seller: seller?.toDomain(),
+        status: getStatusReservation(status ?? 'pending_seller'),
         productReservations:
             productReservations.map((e) => e.toDomain()).toList());
+  }
+}
+
+ReservationStatus getStatusReservation(String status) {
+  if (status == 'awaiting_buyer') {
+    return ReservationStatus.awaitingBuyer;
+  } else if (status == 'pending_seller') {
+    return ReservationStatus.pendingSeller;
+  } else if (status == 'buyer_canceled') {
+    return ReservationStatus.buyerCanceled;
+  } else if (status == 'seller_canceled') {
+    return ReservationStatus.sellerCanceled;
+  } else if (status == 'confirmed') {
+    return ReservationStatus.confirmed;
+  } else {
+    return ReservationStatus.paid;
   }
 }
 

@@ -72,7 +72,7 @@ class SingleReservationBloc
           .toList()[value.index];
       if (product != null) {
         final result =
-            await reservationFacade.deleteProductReservation(product);
+            await reservationFacade.cancelProductReservation(product);
 
         if (result.isLeft()) {
           yield state.copyWith(showCancelItemError: true);

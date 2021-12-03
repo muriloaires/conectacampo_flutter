@@ -44,3 +44,12 @@ enum ReservationItemStatus {
   confirmed,
   paid,
 }
+
+enum ReservationStatus {
+  awaitingBuyer,
+  pendingSeller,
+  buyerCanceled,
+  sellerCanceled,
+  confirmed,
+  paid,
+}

@@ -998,6 +998,8 @@ class _$ReservationResponseTearOff {
           required UserResponse buyer,
       @JsonKey(name: 'seller')
           required UserResponse? seller,
+      @JsonKey(name: 'status')
+          required String? status,
       @JsonKey(name: 'product_reservations')
           required List<ProductReservationResponse> productReservations}) {
     return _ReservationResponse(
@@ -1006,6 +1008,7 @@ class _$ReservationResponseTearOff {
       errors: errors,
       buyer: buyer,
       seller: seller,
+      status: status,
       productReservations: productReservations,
     );
   }
@@ -1030,6 +1033,8 @@ mixin _$ReservationResponse {
   UserResponse get buyer => throw _privateConstructorUsedError;
   @JsonKey(name: 'seller')
   UserResponse? get seller => throw _privateConstructorUsedError;
+  @JsonKey(name: 'status')
+  String? get status => throw _privateConstructorUsedError;
   @JsonKey(name: 'product_reservations')
   List<ProductReservationResponse> get productReservations =>
       throw _privateConstructorUsedError;
@@ -1056,6 +1061,8 @@ abstract class $ReservationResponseCopyWith<$Res> {
           UserResponse buyer,
       @JsonKey(name: 'seller')
           UserResponse? seller,
+      @JsonKey(name: 'status')
+          String? status,
       @JsonKey(name: 'product_reservations')
           List<ProductReservationResponse> productReservations});
 
@@ -1079,6 +1086,7 @@ class _$ReservationResponseCopyWithImpl<$Res>
     Object? errors = freezed,
     Object? buyer = freezed,
     Object? seller = freezed,
+    Object? status = freezed,
     Object? productReservations = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1102,6 +1110,10 @@ class _$ReservationResponseCopyWithImpl<$Res>
           ? _value.seller
           : seller // ignore: cast_nullable_to_non_nullable
               as UserResponse?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
       productReservations: productReservations == freezed
           ? _value.productReservations
           : productReservations // ignore: cast_nullable_to_non_nullable
@@ -1146,6 +1158,8 @@ abstract class _$ReservationResponseCopyWith<$Res>
           UserResponse buyer,
       @JsonKey(name: 'seller')
           UserResponse? seller,
+      @JsonKey(name: 'status')
+          String? status,
       @JsonKey(name: 'product_reservations')
           List<ProductReservationResponse> productReservations});
 
@@ -1173,6 +1187,7 @@ class __$ReservationResponseCopyWithImpl<$Res>
     Object? errors = freezed,
     Object? buyer = freezed,
     Object? seller = freezed,
+    Object? status = freezed,
     Object? productReservations = freezed,
   }) {
     return _then(_ReservationResponse(
@@ -1196,6 +1211,10 @@ class __$ReservationResponseCopyWithImpl<$Res>
           ? _value.seller
           : seller // ignore: cast_nullable_to_non_nullable
               as UserResponse?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
       productReservations: productReservations == freezed
           ? _value.productReservations
           : productReservations // ignore: cast_nullable_to_non_nullable
@@ -1218,6 +1237,8 @@ class _$_ReservationResponse implements _ReservationResponse {
           required this.buyer,
       @JsonKey(name: 'seller')
           required this.seller,
+      @JsonKey(name: 'status')
+          required this.status,
       @JsonKey(name: 'product_reservations')
           required this.productReservations});
 
@@ -1240,12 +1261,15 @@ class _$_ReservationResponse implements _ReservationResponse {
   @JsonKey(name: 'seller')
   final UserResponse? seller;
   @override
+  @JsonKey(name: 'status')
+  final String? status;
+  @override
   @JsonKey(name: 'product_reservations')
   final List<ProductReservationResponse> productReservations;
 
   @override
   String toString() {
-    return 'ReservationResponse(id: $id, createdAt: $createdAt, errors: $errors, buyer: $buyer, seller: $seller, productReservations: $productReservations)';
+    return 'ReservationResponse(id: $id, createdAt: $createdAt, errors: $errors, buyer: $buyer, seller: $seller, status: $status, productReservations: $productReservations)';
   }
 
   @override
@@ -1263,6 +1287,8 @@ class _$_ReservationResponse implements _ReservationResponse {
                 const DeepCollectionEquality().equals(other.buyer, buyer)) &&
             (identical(other.seller, seller) ||
                 const DeepCollectionEquality().equals(other.seller, seller)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.productReservations, productReservations) ||
                 const DeepCollectionEquality()
                     .equals(other.productReservations, productReservations)));
@@ -1276,6 +1302,7 @@ class _$_ReservationResponse implements _ReservationResponse {
       const DeepCollectionEquality().hash(errors) ^
       const DeepCollectionEquality().hash(buyer) ^
       const DeepCollectionEquality().hash(seller) ^
+      const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(productReservations);
 
   @JsonKey(ignore: true)
@@ -1302,6 +1329,8 @@ abstract class _ReservationResponse implements ReservationResponse {
               required UserResponse buyer,
           @JsonKey(name: 'seller')
               required UserResponse? seller,
+          @JsonKey(name: 'status')
+              required String? status,
           @JsonKey(name: 'product_reservations')
               required List<ProductReservationResponse> productReservations}) =
       _$_ReservationResponse;
@@ -1324,6 +1353,9 @@ abstract class _ReservationResponse implements ReservationResponse {
   @override
   @JsonKey(name: 'seller')
   UserResponse? get seller => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'status')
+  String? get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'product_reservations')
   List<ProductReservationResponse> get productReservations =>

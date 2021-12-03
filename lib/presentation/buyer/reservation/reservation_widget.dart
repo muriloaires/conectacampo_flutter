@@ -206,8 +206,8 @@ class ReservationWidget extends StatelessWidget {
                           const SizedBox(height: 30),
                           Visibility(
                               visible:
-                                  state.reservation?.getStatusFromItems() ==
-                                      ReservationItemStatus.awaitingBuyer,
+                                  state.reservation?.status ==
+                                      ReservationStatus.awaitingBuyer,
                               child: ListView(
                                 shrinkWrap: true,
                                 physics: const ClampingScrollPhysics(),
@@ -252,7 +252,14 @@ class ReservationWidget extends StatelessWidget {
                                                   padding:
                                                       const EdgeInsets.all(8.0),
                                                   child: MaterialButton(
-                                                    onPressed: () {},
+                                                    onPressed: () {
+                                                      context
+                                                          .read<
+                                                          SingleReservationBloc>()
+                                                          .add(SingleReservationEvent
+                                                          .onCancelPressed(
+                                                          index));
+                                                    },
                                                     child: Container(
                                                       padding: const EdgeInsets
                                                           .fromLTRB(0, 8, 0, 8),
@@ -332,10 +339,10 @@ class ReservationWidget extends StatelessWidget {
                                 ],
                               )),
                           const Divider(),
-                          if (state.reservation?.getStatusFromItems() !=
-                                  ReservationItemStatus.buyerCanceled &&
-                              state.reservation?.getStatusFromItems() !=
-                                  ReservationItemStatus.sellerCanceled)
+                          if (state.reservation?.status !=
+                                  ReservationStatus.buyerCanceled &&
+                              state.reservation?.status !=
+                                  ReservationStatus.sellerCanceled)
                             MaterialButton(
                               onPressed: () {
                                 context.read<SingleReservationBloc>().add(
@@ -418,28 +425,28 @@ class ReservationWidget extends StatelessWidget {
     String iconText;
 
     if (reservation != null) {
-      switch (reservation.getStatusFromItems()) {
-        case ReservationItemStatus.pendingSeller:
+      switch (reservation.status) {
+        case ReservationStatus.pendingSeller:
           text = 'Pendente';
           iconText = '?';
           break;
-        case ReservationItemStatus.buyerCanceled:
+        case ReservationStatus.buyerCanceled:
           text = 'Cancelado';
           iconText = 'x';
           break;
-        case ReservationItemStatus.awaitingBuyer:
+        case ReservationStatus.awaitingBuyer:
           text = 'Aguardando confirmação';
           iconText = '!';
           break;
-        case ReservationItemStatus.confirmed:
+        case ReservationStatus.confirmed:
           text = 'Confirmado';
           iconText = '✓';
           break;
-        case ReservationItemStatus.paid:
+        case ReservationStatus.paid:
           text = 'Pago';
           iconText = '✓';
           break;
-        case ReservationItemStatus.sellerCanceled:
+        case ReservationStatus.sellerCanceled:
           text = 'Cancelado';
           iconText = 'x';
           break;
@@ -487,18 +494,18 @@ class ReservationWidget extends StatelessWidget {
 
   Color _getStatusColor(Reservation? reservation) {
     if (reservation != null) {
-      switch (reservation.getStatusFromItems()) {
-        case ReservationItemStatus.awaitingBuyer:
+      switch (reservation.status) {
+        case ReservationStatus.awaitingBuyer:
           return ColorSet.yellow2;
-        case ReservationItemStatus.pendingSeller:
+        case ReservationStatus.pendingSeller:
           return ColorSet.gray2;
-        case ReservationItemStatus.buyerCanceled:
+        case ReservationStatus.buyerCanceled:
           return ColorSet.orange2;
-        case ReservationItemStatus.sellerCanceled:
+        case ReservationStatus.sellerCanceled:
           return ColorSet.orange2;
-        case ReservationItemStatus.confirmed:
+        case ReservationStatus.confirmed:
           return ColorSet.green1;
-        case ReservationItemStatus.paid:
+        case ReservationStatus.paid:
           return ColorSet.blue1;
       }
     } else {

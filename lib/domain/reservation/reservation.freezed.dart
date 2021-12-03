@@ -21,12 +21,14 @@ class _$ReservationTearOff {
       required String? createdAt,
       required User buyer,
       required User? seller,
+      required ReservationStatus status,
       required List<ProductReservation> productReservations}) {
     return _Reservation(
       id: id,
       createdAt: createdAt,
       buyer: buyer,
       seller: seller,
+      status: status,
       productReservations: productReservations,
     );
   }
@@ -41,6 +43,7 @@ mixin _$Reservation {
   String? get createdAt => throw _privateConstructorUsedError;
   User get buyer => throw _privateConstructorUsedError;
   User? get seller => throw _privateConstructorUsedError;
+  ReservationStatus get status => throw _privateConstructorUsedError;
   List<ProductReservation> get productReservations =>
       throw _privateConstructorUsedError;
 
@@ -59,6 +62,7 @@ abstract class $ReservationCopyWith<$Res> {
       String? createdAt,
       User buyer,
       User? seller,
+      ReservationStatus status,
       List<ProductReservation> productReservations});
 
   $UserCopyWith<$Res> get buyer;
@@ -79,6 +83,7 @@ class _$ReservationCopyWithImpl<$Res> implements $ReservationCopyWith<$Res> {
     Object? createdAt = freezed,
     Object? buyer = freezed,
     Object? seller = freezed,
+    Object? status = freezed,
     Object? productReservations = freezed,
   }) {
     return _then(_value.copyWith(
@@ -98,6 +103,10 @@ class _$ReservationCopyWithImpl<$Res> implements $ReservationCopyWith<$Res> {
           ? _value.seller
           : seller // ignore: cast_nullable_to_non_nullable
               as User?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ReservationStatus,
       productReservations: productReservations == freezed
           ? _value.productReservations
           : productReservations // ignore: cast_nullable_to_non_nullable
@@ -136,6 +145,7 @@ abstract class _$ReservationCopyWith<$Res>
       String? createdAt,
       User buyer,
       User? seller,
+      ReservationStatus status,
       List<ProductReservation> productReservations});
 
   @override
@@ -160,6 +170,7 @@ class __$ReservationCopyWithImpl<$Res> extends _$ReservationCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? buyer = freezed,
     Object? seller = freezed,
+    Object? status = freezed,
     Object? productReservations = freezed,
   }) {
     return _then(_Reservation(
@@ -179,6 +190,10 @@ class __$ReservationCopyWithImpl<$Res> extends _$ReservationCopyWithImpl<$Res>
           ? _value.seller
           : seller // ignore: cast_nullable_to_non_nullable
               as User?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ReservationStatus,
       productReservations: productReservations == freezed
           ? _value.productReservations
           : productReservations // ignore: cast_nullable_to_non_nullable
@@ -195,6 +210,7 @@ class _$_Reservation implements _Reservation {
       required this.createdAt,
       required this.buyer,
       required this.seller,
+      required this.status,
       required this.productReservations});
 
   @override
@@ -206,11 +222,13 @@ class _$_Reservation implements _Reservation {
   @override
   final User? seller;
   @override
+  final ReservationStatus status;
+  @override
   final List<ProductReservation> productReservations;
 
   @override
   String toString() {
-    return 'Reservation(id: $id, createdAt: $createdAt, buyer: $buyer, seller: $seller, productReservations: $productReservations)';
+    return 'Reservation(id: $id, createdAt: $createdAt, buyer: $buyer, seller: $seller, status: $status, productReservations: $productReservations)';
   }
 
   @override
@@ -226,6 +244,8 @@ class _$_Reservation implements _Reservation {
                 const DeepCollectionEquality().equals(other.buyer, buyer)) &&
             (identical(other.seller, seller) ||
                 const DeepCollectionEquality().equals(other.seller, seller)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.productReservations, productReservations) ||
                 const DeepCollectionEquality()
                     .equals(other.productReservations, productReservations)));
@@ -238,6 +258,7 @@ class _$_Reservation implements _Reservation {
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(buyer) ^
       const DeepCollectionEquality().hash(seller) ^
+      const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(productReservations);
 
   @JsonKey(ignore: true)
@@ -252,6 +273,7 @@ abstract class _Reservation implements Reservation {
       required String? createdAt,
       required User buyer,
       required User? seller,
+      required ReservationStatus status,
       required List<ProductReservation> productReservations}) = _$_Reservation;
 
   @override
@@ -262,6 +284,8 @@ abstract class _Reservation implements Reservation {
   User get buyer => throw _privateConstructorUsedError;
   @override
   User? get seller => throw _privateConstructorUsedError;
+  @override
+  ReservationStatus get status => throw _privateConstructorUsedError;
   @override
   List<ProductReservation> get productReservations =>
       throw _privateConstructorUsedError;

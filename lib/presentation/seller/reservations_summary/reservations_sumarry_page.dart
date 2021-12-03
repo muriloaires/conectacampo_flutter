@@ -93,7 +93,8 @@ class ReservationsSummaryPage extends StatelessWidget {
     );
   }
 
-  void setupNotifications(BuildContext context) {
+  void setupNotifications(BuildContext context) async {
+    await FirebaseMessaging.instance.getToken();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       context
           .read<SummaryReservationsBloc>()

@@ -44,6 +44,7 @@ class SellerMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<SellerMenuBloc>(
@@ -67,9 +68,6 @@ class SellerMainPage extends StatelessWidget {
       ],
       child: BlocConsumer<SellerMenuBloc, SellerMenuState>(
         listener: (context, state) async {
-
-
-
           if (state.reservationToOpen != null) {
             await openNotification(context, state.reservationToOpen!);
           }
@@ -198,13 +196,14 @@ class SellerMainPage extends StatelessWidget {
     );
   }
 
-  void setupNotifications(BuildContext context) {
+  void setupNotifications(BuildContext context) async {
+    await FirebaseMessaging.instance.getToken();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       Flushbar(
         flushbarPosition: FlushbarPosition.TOP,
         title: message.notification?.title,
         message: message.notification?.body,
-        duration: const Duration(seconds: 3),
+        duration: const Duration(seconds: 10),
         mainButton: TextButton(
           onPressed: () async {
             final notificable = message.data["notificable"] as String;
@@ -293,7 +292,7 @@ class SellerDefaultAppBar extends StatelessWidget
                     if (success != null) {
                       Navigator.of(context, rootNavigator: true)
                           .pushNamedAndRemoveUntil(
-                          '/seller_main', (route) => false);
+                              '/seller_main', (route) => false);
                     }
                   },
                   child: Row(

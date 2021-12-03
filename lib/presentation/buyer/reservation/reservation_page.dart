@@ -25,7 +25,7 @@ class BuyerReservationsPage extends StatelessWidget {
         builder: (context) => Scaffold(
           body: BlocConsumer<ReservationBloc, ReservationState>(
             listener: (context, state) {
-              if(state.openSearch) {
+              if (state.openSearch) {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (builder) => SearchPage()));
               }
@@ -54,7 +54,6 @@ class BuyerReservationsPage extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(20.0),
                                 child: Card(
-
                                   child: Padding(
                                     padding: const EdgeInsets.all(20),
                                     child: Row(
@@ -63,7 +62,8 @@ class BuyerReservationsPage extends StatelessWidget {
                                       children: [
                                         Column(
                                           mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: const [
                                             Text(
                                               'Sem itens na sua feira!',
@@ -112,7 +112,8 @@ class BuyerReservationsPage extends StatelessWidget {
     );
   }
 
-  void setupNotifications(BuildContext context) {
+  void setupNotifications(BuildContext context) async {
+    await FirebaseMessaging.instance.getToken();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       context.read<ReservationBloc>().add(const ReservationEvent.started());
     });

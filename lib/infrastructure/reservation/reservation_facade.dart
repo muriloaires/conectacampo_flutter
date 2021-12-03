@@ -186,6 +186,24 @@ class ReservationFacade extends IReservationFacade {
   }
 
   @override
+  Future<Either<ReservationFailure, Unit>> cancelProductReservation(
+      ProductReservation productReservation) async {
+    final url = Uri.https(baseUrl,
+        '$apiVersion$routeProductReservations/${productReservation.id}/cancel');
+    final response = await getAuthenticatedPatchRequest(url, headers: getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const ReservationFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ReservationFailure.requestError());
+    } else {
+      return left(const ReservationFailure.serverError());
+    }
+  }
+
+  @override
   Future<Either<ReservationFailure, Unit>> cancelReservation(
       Reservation reservation) async {
     final url = Uri.https(

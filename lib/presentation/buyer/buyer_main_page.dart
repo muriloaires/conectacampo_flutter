@@ -9,23 +9,19 @@ import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 import 'package:conectacampo/application/profile/profile_bloc.dart';
 import 'package:conectacampo/application/seller/reservation_summary/summary_reservations_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
-import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/infrastructure/reservation/reservation_facade.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/cart/cart_page.dart';
 import 'package:conectacampo/presentation/buyer/group/group_page.dart';
 import 'package:conectacampo/presentation/buyer/menu/buyer_summary.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_page.dart';
-import 'package:conectacampo/presentation/buyer/reservation/single_reservation_page.dart';
 import 'package:conectacampo/presentation/buyer/search/search_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/notification/notification_helper.dart';
 import 'package:conectacampo/presentation/profile/profile_page.dart';
-import 'package:conectacampo/presentation/seller/reservation/single_reservation_seller_page.dart';
 import 'package:conectacampo/presentation/seller/seller_main_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:conectacampo/infrastructure/reservation/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -298,7 +294,8 @@ class BuyerMainPage extends StatelessWidget {
     ]);
   }
 
-  void setupNotifications(BuildContext context) {
+  void setupNotifications(BuildContext context) async {
+    await FirebaseMessaging.instance.getToken();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       Flushbar(
         flushbarPosition: FlushbarPosition.TOP,

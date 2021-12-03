@@ -95,6 +95,7 @@ _$_ReservationResponse _$_$_ReservationResponseFromJson(
     seller: json['seller'] == null
         ? null
         : UserResponse.fromJson(json['seller'] as Map<String, dynamic>),
+    status: json['status'] as String?,
     productReservations: (json['product_reservations'] as List<dynamic>)
         .map((e) =>
             ProductReservationResponse.fromJson(e as Map<String, dynamic>))
@@ -110,6 +111,7 @@ Map<String, dynamic> _$_$_ReservationResponseToJson(
       'errors': instance.errors,
       'buyer': instance.buyer,
       'seller': instance.seller,
+      'status': instance.status,
       'product_reservations': instance.productReservations,
     };
 

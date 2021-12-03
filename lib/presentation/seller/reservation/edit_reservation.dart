@@ -75,7 +75,7 @@ class EditReservationPage extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 4),
                     child: Text.rich(TextSpan(text: 'Entrega dia: ', children: [
                       TextSpan(
-                          text: state.reservation!.createdAt?.getDateAndMonthName(),
+                          text: state.reservation?.createdAt?.getDateAndMonthName(),
                           style: const TextStyle(
                               color: ColorSet.brown1,
                               fontWeight: FontWeight.bold))

@@ -51,7 +51,10 @@ class SellerReservationWidget extends StatelessWidget {
                         CircleAvatar(
                           radius: 36,
                           backgroundColor: ColorSet.green1,
-                          foregroundImage: CachedNetworkImageProvider(state.reservation?.buyer.thumbAvatar?.getOrCrash() ?? ''),
+                          foregroundImage: CachedNetworkImageProvider(state
+                                  .reservation?.buyer.thumbAvatar
+                                  ?.getOrCrash() ??
+                              ''),
                         ),
                         const SizedBox(
                           width: 12,
@@ -64,12 +67,12 @@ class SellerReservationWidget extends StatelessWidget {
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
-
                           ],
                         )
                       ],
                     ),
-                  ),Padding(
+                  ),
+                  Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'Feira do dia: ${state.advertisement?.deliveryAt.getDateAndMonthName() ?? '--'}',
@@ -158,10 +161,10 @@ class SellerReservationWidget extends StatelessWidget {
                                           decoration:
                                               TextDecoration.underline))),
                               const SizedBox(height: 20),
-                              if (state.reservation?.getStatusFromItems() !=
-                                      ReservationItemStatus.buyerCanceled &&
-                                  state.reservation?.getStatusFromItems() !=
-                                      ReservationItemStatus.sellerCanceled)
+                              if (state.reservation?.status !=
+                                      ReservationStatus.buyerCanceled &&
+                                  state.reservation?.status !=
+                                      ReservationStatus.sellerCanceled)
                                 MaterialButton(
                                   onPressed: () {
                                     context.read<SellerReservationBloc>().add(
@@ -183,8 +186,8 @@ class SellerReservationWidget extends StatelessWidget {
                                             color: Colors.white)),
                                   ),
                                 ),
-                              if (state.reservation?.getStatusFromItems() ==
-                                  ReservationItemStatus.pendingSeller)
+                              if (state.reservation?.status ==
+                                  ReservationStatus.pendingSeller)
                                 MaterialButton(
                                   onPressed: () {
                                     context.read<SellerReservationBloc>().add(
@@ -206,8 +209,8 @@ class SellerReservationWidget extends StatelessWidget {
                                             color: Colors.white)),
                                   ),
                                 ),
-                              if (state.reservation?.getStatusFromItems() ==
-                                  ReservationItemStatus.confirmed)
+                              if (state.reservation?.status ==
+                                  ReservationStatus.confirmed)
                                 MaterialButton(
                                   onPressed: () {
                                     context.read<SellerReservationBloc>().add(
@@ -279,23 +282,23 @@ class SellerReservationWidget extends StatelessWidget {
     final String text;
 
     if (reservation != null) {
-      switch (reservation.getStatusFromItems()) {
-        case ReservationItemStatus.pendingSeller:
+      switch (reservation.status) {
+        case ReservationStatus.pendingSeller:
           text = '? Pendente';
           break;
-        case ReservationItemStatus.buyerCanceled:
+        case ReservationStatus.buyerCanceled:
           text = 'x Cancelado pelo comprador';
           break;
-        case ReservationItemStatus.sellerCanceled:
+        case ReservationStatus.sellerCanceled:
           text = 'x Cancelado';
           break;
-        case ReservationItemStatus.awaitingBuyer:
+        case ReservationStatus.awaitingBuyer:
           text = '! Aguardando confirmação';
           break;
-        case ReservationItemStatus.confirmed:
+        case ReservationStatus.confirmed:
           text = '✓ Confirmado';
           break;
-        case ReservationItemStatus.paid:
+        case ReservationStatus.paid:
           text = '✓ Pago';
           break;
         default:
@@ -316,18 +319,18 @@ class SellerReservationWidget extends StatelessWidget {
 
   Color _getStatusColor(Reservation? reservation) {
     if (reservation != null) {
-      switch (reservation.getStatusFromItems()) {
-        case ReservationItemStatus.awaitingBuyer:
+      switch (reservation.status) {
+        case ReservationStatus.awaitingBuyer:
           return ColorSet.yellow2;
-        case ReservationItemStatus.pendingSeller:
+        case ReservationStatus.pendingSeller:
           return ColorSet.gray2;
-        case ReservationItemStatus.buyerCanceled:
+        case ReservationStatus.buyerCanceled:
           return ColorSet.orange2;
-        case ReservationItemStatus.sellerCanceled:
+        case ReservationStatus.sellerCanceled:
           return ColorSet.orange2;
-        case ReservationItemStatus.confirmed:
+        case ReservationStatus.confirmed:
           return ColorSet.green1;
-        case ReservationItemStatus.paid:
+        case ReservationStatus.paid:
           return ColorSet.blue1;
       }
     } else {
