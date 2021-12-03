@@ -3,7 +3,7 @@
 
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
    <application
-        android:label="conectacampo"
+        android:label="Conecta Campo"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
