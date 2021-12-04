@@ -161,10 +161,10 @@ class SellerReservationWidget extends StatelessWidget {
                                           decoration:
                                               TextDecoration.underline))),
                               const SizedBox(height: 20),
-                              if (state.reservation?.status !=
-                                      ReservationStatus.buyerCanceled &&
-                                  state.reservation?.status !=
-                                      ReservationStatus.sellerCanceled)
+                              if (state.reservation?.status ==
+                                      ReservationStatus.awaitingBuyer ||
+                                  state.reservation?.status ==
+                                      ReservationStatus.pendingSeller)
                                 MaterialButton(
                                   onPressed: () {
                                     context.read<SellerReservationBloc>().add(

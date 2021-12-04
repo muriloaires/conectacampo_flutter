@@ -205,9 +205,8 @@ class ReservationWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 30),
                           Visibility(
-                              visible:
-                                  state.reservation?.status ==
-                                      ReservationStatus.awaitingBuyer,
+                              visible: state.reservation?.status ==
+                                  ReservationStatus.awaitingBuyer,
                               child: ListView(
                                 shrinkWrap: true,
                                 physics: const ClampingScrollPhysics(),
@@ -255,10 +254,10 @@ class ReservationWidget extends StatelessWidget {
                                                     onPressed: () {
                                                       context
                                                           .read<
-                                                          SingleReservationBloc>()
+                                                              SingleReservationBloc>()
                                                           .add(SingleReservationEvent
-                                                          .onCancelPressed(
-                                                          index));
+                                                              .onCancelPressed(
+                                                                  index));
                                                     },
                                                     child: Container(
                                                       padding: const EdgeInsets
@@ -338,31 +337,36 @@ class ReservationWidget extends StatelessWidget {
                                   const SizedBox(height: 40),
                                 ],
                               )),
-                          const Divider(),
-                          if (state.reservation?.status !=
-                                  ReservationStatus.buyerCanceled &&
-                              state.reservation?.status !=
-                                  ReservationStatus.sellerCanceled)
-                            MaterialButton(
-                              onPressed: () {
-                                context.read<SingleReservationBloc>().add(
-                                    const SingleReservationEvent
-                                        .onCancelReservationPressed());
-                              },
-                              child: Container(
-                                padding:
-                                    const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                                decoration: const BoxDecoration(
-                                    color: ColorSet.red1Alpha,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: const Text('Cancelar Pedido',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorSet.red1)),
-                              ),
-                            ),
+                          Visibility(
+                              visible: state.reservation?.status ==
+                                      ReservationStatus.awaitingBuyer ||
+                                  state.reservation?.status ==
+                                      ReservationStatus.pendingSeller,
+                              child: Column(
+                                children: [
+                                  const Divider(),
+                                  MaterialButton(
+                                    onPressed: () {
+                                      context.read<SingleReservationBloc>().add(
+                                          const SingleReservationEvent
+                                              .onCancelReservationPressed());
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          50, 10, 50, 10),
+                                      decoration: const BoxDecoration(
+                                          color: ColorSet.red1Alpha,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: const Text('Cancelar Pedido',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: ColorSet.red1)),
+                                    ),
+                                  ),
+                                ],
+                              ))
                         ],
                       ),
                     )),
