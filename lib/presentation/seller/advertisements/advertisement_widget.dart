@@ -120,15 +120,15 @@ class AdvertisementWidget extends StatelessWidget {
                                 itemCount: advertisement.products.length,
                               ),
                               const SizedBox(height: 4),
-                              const Text(
-                                'Alterar itens',
-                                style: TextStyle(
-                                  color: ColorSet.colorPrimaryGreen,
-                                  fontSize: 12,
-                                  decoration: TextDecoration.underline,
-                                ),
-                              ),
-                              const SizedBox(height: 30),
+                              // const Text(
+                              //   'Alterar itens',
+                              //   style: TextStyle(
+                              //     color: ColorSet.colorPrimaryGreen,
+                              //     fontSize: 12,
+                              //     decoration: TextDecoration.underline,
+                              //   ),
+                              // ),
+                              // const SizedBox(height: 30),
                               // MaterialButton(
                               //   onPressed: () {
                               //     context.read<SingleAdvertisementBloc>().add(
@@ -204,14 +204,12 @@ class AdvertisementWidget extends StatelessWidget {
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
                                               TextButton(
-                                                onPressed: () =>
-                                                    Navigator.pop(
-                                                        dialogContext),
+                                                onPressed: () => Navigator.pop(
+                                                    dialogContext),
                                                 child: const Text(
                                                   'Voltar',
                                                   style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold,
+                                                    fontWeight: FontWeight.bold,
                                                     color: ColorSet.grayDark,
                                                   ),
                                                 ),
