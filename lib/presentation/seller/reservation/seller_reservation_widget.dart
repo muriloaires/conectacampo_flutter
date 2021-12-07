@@ -148,44 +148,56 @@ class SellerReservationWidget extends StatelessWidget {
                               const SizedBox(
                                 height: 4,
                               ),
-                              GestureDetector(
-                                  onTap: () {
-                                    context.read<SellerMenuBloc>().add(
-                                        SellerMenuEvent.reservationEditItemsTap(
-                                            state.reservation));
-                                  },
-                                  child: const Text('Alterar itens',
-                                      style: TextStyle(
-                                          color: ColorSet.brown1,
-                                          fontSize: 12,
-                                          decoration:
-                                              TextDecoration.underline))),
-                              const SizedBox(height: 20),
-                              if (state.reservation?.status !=
-                                      ReservationStatus.buyerCanceled &&
-                                  state.reservation?.status !=
-                                      ReservationStatus.sellerCanceled)
-                                MaterialButton(
-                                  onPressed: () {
-                                    context.read<SellerReservationBloc>().add(
-                                        const SellerReservationEvent
-                                            .onCancel());
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.fromLTRB(
-                                        50, 10, 50, 10),
-                                    decoration: const BoxDecoration(
-                                        color: ColorSet.red1,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20))),
-                                    child: const Text('Cancelar Pedido',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white)),
-                                  ),
-                                ),
+                              Visibility(
+                                  visible: state.reservation?.status ==
+                                          ReservationStatus.awaitingBuyer ||
+                                      state.reservation?.status ==
+                                          ReservationStatus.pendingSeller ||
+                                      state.reservation?.status ==
+                                          ReservationStatus.confirmed,
+                                  child: Column(
+                                    children: [
+                                      Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: GestureDetector(
+                                              onTap: () {
+                                                context
+                                                    .read<SellerMenuBloc>()
+                                                    .add(SellerMenuEvent
+                                                        .reservationEditItemsTap(
+                                                            state.reservation));
+                                              },
+                                              child: const Text('Alterar itens',
+                                                  style: TextStyle(
+                                                      color: ColorSet.brown1,
+                                                      fontSize: 12,
+                                                      decoration: TextDecoration
+                                                          .underline)))),
+                                      const SizedBox(height: 20),
+                                      MaterialButton(
+                                        onPressed: () {
+                                          context
+                                              .read<SellerReservationBloc>()
+                                              .add(const SellerReservationEvent
+                                                  .onCancel());
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          padding: const EdgeInsets.fromLTRB(
+                                              50, 10, 50, 10),
+                                          decoration: const BoxDecoration(
+                                              color: ColorSet.red1,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20))),
+                                          child: const Text('Cancelar Pedido',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white)),
+                                        ),
+                                      ),
+                                    ],
+                                  )),
                               if (state.reservation?.status ==
                                   ReservationStatus.pendingSeller)
                                 MaterialButton(

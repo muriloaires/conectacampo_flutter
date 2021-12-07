@@ -205,9 +205,8 @@ class ReservationWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 30),
                           Visibility(
-                              visible:
-                                  state.reservation?.status ==
-                                      ReservationStatus.awaitingBuyer,
+                              visible: state.reservation?.status ==
+                                  ReservationStatus.awaitingBuyer,
                               child: ListView(
                                 shrinkWrap: true,
                                 physics: const ClampingScrollPhysics(),
@@ -255,10 +254,10 @@ class ReservationWidget extends StatelessWidget {
                                                     onPressed: () {
                                                       context
                                                           .read<
-                                                          SingleReservationBloc>()
+                                                              SingleReservationBloc>()
                                                           .add(SingleReservationEvent
-                                                          .onCancelPressed(
-                                                          index));
+                                                              .onCancelPressed(
+                                                                  index));
                                                     },
                                                     child: Container(
                                                       padding: const EdgeInsets
@@ -338,31 +337,38 @@ class ReservationWidget extends StatelessWidget {
                                   const SizedBox(height: 40),
                                 ],
                               )),
-                          const Divider(),
-                          if (state.reservation?.status !=
-                                  ReservationStatus.buyerCanceled &&
-                              state.reservation?.status !=
-                                  ReservationStatus.sellerCanceled)
-                            MaterialButton(
-                              onPressed: () {
-                                context.read<SingleReservationBloc>().add(
-                                    const SingleReservationEvent
-                                        .onCancelReservationPressed());
-                              },
-                              child: Container(
-                                padding:
-                                    const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                                decoration: const BoxDecoration(
-                                    color: ColorSet.red1Alpha,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: const Text('Cancelar Pedido',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorSet.red1)),
-                              ),
-                            ),
+                          Visibility(
+                              visible: state.reservation?.status ==
+                                      ReservationStatus.awaitingBuyer ||
+                                  state.reservation?.status ==
+                                      ReservationStatus.pendingSeller ||
+                                  state.reservation?.status ==
+                                      ReservationStatus.confirmed,
+                              child: Column(
+                                children: [
+                                  const Divider(),
+                                  MaterialButton(
+                                    onPressed: () {
+                                      context.read<SingleReservationBloc>().add(
+                                          const SingleReservationEvent
+                                              .onCancelReservationPressed());
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          50, 10, 50, 10),
+                                      decoration: const BoxDecoration(
+                                          color: ColorSet.red1Alpha,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: const Text('Cancelar Pedido',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: ColorSet.red1)),
+                                    ),
+                                  ),
+                                ],
+                              ))
                         ],
                       ),
                     )),
@@ -371,46 +377,44 @@ class ReservationWidget extends StatelessWidget {
                 height: 1,
                 color: ColorSet.gray10,
               ),
-              SizedBox(
-                height: 40,
-                child: Stack(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        context.read<SingleReservationBloc>().add(
-                            const SingleReservationEvent.onExpandPressed());
-                      },
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: Center(
-                          child: Text(
-                            context
-                                    .read<SingleReservationBloc>()
-                                    .state
-                                    .isItemVisible
-                                ? 'Itens'
-                                : 'Ver itens',
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Icon(
+              InkWell(
+                onTap: () {
+                  context
+                      .read<SingleReservationBloc>()
+                      .add(const SingleReservationEvent.onExpandPressed());
+                },
+                child: SizedBox(
+                  height: 40,
+                  child: Stack(
+                    children: [
+                      Align(
+                        child: Text(
                           context
                                   .read<SingleReservationBloc>()
                                   .state
                                   .isItemVisible
-                              ? Icons.expand_less
-                              : Icons.expand_more,
-                          size: 32,
+                              ? 'Itens'
+                              : 'Ver itens',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Icon(
+                            context
+                                    .read<SingleReservationBloc>()
+                                    .state
+                                    .isItemVisible
+                                ? Icons.expand_less
+                                : Icons.expand_more,
+                            size: 32,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

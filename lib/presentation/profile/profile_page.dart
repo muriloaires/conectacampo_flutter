@@ -241,7 +241,8 @@ class ProfilePage extends StatelessWidget {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     TextButton(
-                                      onPressed: () => Navigator.pop(dialogContext),
+                                      onPressed: () =>
+                                          Navigator.pop(dialogContext),
                                       child: const Text(
                                         'Voltar',
                                         style: TextStyle(
@@ -282,6 +283,36 @@ class ProfilePage extends StatelessWidget {
                     color: ColorSet.grayLine,
                   ),
                   ListTile(
+                    onTap: () {
+                      if (context.read<ProfileBloc>().state.isBuyer) {
+                        context.read<BuyerMenuBloc>().add(
+                              const BuyerMenuEvent.navToSellerTapped(),
+                            );
+                      } else {
+                        context.read<SellerMenuBloc>().add(
+                              const SellerMenuEvent.navToBuyerTapped(),
+                            );
+                      }
+                    },
+                    leading: SvgPicture.asset(
+                      'assets/devices.svg',
+                      width: 24,
+                      height: 24,
+                      color: context.read<ProfileBloc>().state.isBuyer
+                          ? ColorSet.colorPrimaryGreen
+                          : ColorSet.brown1,
+                    ),
+                    title: Text(
+                      context.read<ProfileBloc>().state.isBuyer
+                          ? 'Quero vender no app!'
+                          : 'Quero comprar no app!',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  ListTile(
                     leading: SvgPicture.asset(
                       'assets/help.svg',
                       width: 24,
@@ -310,36 +341,6 @@ class ProfilePage extends StatelessWidget {
                     title: const Text(
                       'Termos e Privacidade',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      if (context.read<ProfileBloc>().state.isBuyer) {
-                        context.read<BuyerMenuBloc>().add(
-                              const BuyerMenuEvent.navToSellerTapped(),
-                            );
-                      } else {
-                        context.read<SellerMenuBloc>().add(
-                              const SellerMenuEvent.navToBuyerTapped(),
-                            );
-                      }
-                    },
-                    leading: SvgPicture.asset(
-                      'assets/devices.svg',
-                      width: 24,
-                      height: 24,
-                      color: context.read<ProfileBloc>().state.isBuyer
-                          ? ColorSet.colorPrimaryGreen
-                          : ColorSet.brown1,
-                    ),
-                    title: Text(
-                      context.read<ProfileBloc>().state.isBuyer
-                          ? 'Quero vender no app!'
-                          : 'Quero comprar no app!',
-                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                       ),
