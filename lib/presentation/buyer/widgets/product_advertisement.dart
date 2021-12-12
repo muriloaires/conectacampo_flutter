@@ -34,42 +34,48 @@ class ProductAdvertisement extends StatelessWidget {
           const SizedBox(
             height: 2,
           ),
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(2),
-                decoration: const BoxDecoration(
-                    color: ColorSet.grayRoundedBackground,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(2.0),
-                    )),
-                child: Text(
-                  _product.kind,
-                  style: const TextStyle(
+          SizedBox(
+            width: 180,
+            child: Wrap(
+              runSpacing: 2,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: const BoxDecoration(
+                      color: ColorSet.grayRoundedBackground,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(2.0),
+                      )),
+                  child: Text(
+                    _product.kind,
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
-                      color: ColorSet.gray2,),
+                      color: ColorSet.gray2,
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                width: 2,
-              ),
-              Container(
-                padding: const EdgeInsets.all(2),
-                decoration: const BoxDecoration(
-                    color: ColorSet.grayRoundedBackground,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(2.0),
-                    )),
-                child: Text(
-                  _product.unitMeasure,
-                  style: const TextStyle(
+                const SizedBox(
+                  width: 2,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: const BoxDecoration(
+                      color: ColorSet.grayRoundedBackground,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(2.0),
+                      )),
+                  child: Text(
+                    _product.unitMeasure,
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
-                      color: ColorSet.gray2,),
-                ),
-              )
-            ],
+                      color: ColorSet.gray2,
+                    ),
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

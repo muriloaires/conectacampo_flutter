@@ -21,13 +21,15 @@ class _$ProductReservationTearOff {
       required String? createdAt,
       required ReservationItemStatus status,
       required int quantity,
-      required AdProduct adProduct}) {
+      required AdProduct adProduct,
+      required bool? quantityChanged}) {
     return _ProductReservation(
       id: id,
       createdAt: createdAt,
       status: status,
       quantity: quantity,
       adProduct: adProduct,
+      quantityChanged: quantityChanged,
     );
   }
 }
@@ -42,6 +44,7 @@ mixin _$ProductReservation {
   ReservationItemStatus get status => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   AdProduct get adProduct => throw _privateConstructorUsedError;
+  bool? get quantityChanged => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductReservationCopyWith<ProductReservation> get copyWith =>
@@ -58,7 +61,8 @@ abstract class $ProductReservationCopyWith<$Res> {
       String? createdAt,
       ReservationItemStatus status,
       int quantity,
-      AdProduct adProduct});
+      AdProduct adProduct,
+      bool? quantityChanged});
 
   $AdProductCopyWith<$Res> get adProduct;
 }
@@ -79,6 +83,7 @@ class _$ProductReservationCopyWithImpl<$Res>
     Object? status = freezed,
     Object? quantity = freezed,
     Object? adProduct = freezed,
+    Object? quantityChanged = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -101,6 +106,10 @@ class _$ProductReservationCopyWithImpl<$Res>
           ? _value.adProduct
           : adProduct // ignore: cast_nullable_to_non_nullable
               as AdProduct,
+      quantityChanged: quantityChanged == freezed
+          ? _value.quantityChanged
+          : quantityChanged // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 
@@ -124,7 +133,8 @@ abstract class _$ProductReservationCopyWith<$Res>
       String? createdAt,
       ReservationItemStatus status,
       int quantity,
-      AdProduct adProduct});
+      AdProduct adProduct,
+      bool? quantityChanged});
 
   @override
   $AdProductCopyWith<$Res> get adProduct;
@@ -148,6 +158,7 @@ class __$ProductReservationCopyWithImpl<$Res>
     Object? status = freezed,
     Object? quantity = freezed,
     Object? adProduct = freezed,
+    Object? quantityChanged = freezed,
   }) {
     return _then(_ProductReservation(
       id: id == freezed
@@ -170,6 +181,10 @@ class __$ProductReservationCopyWithImpl<$Res>
           ? _value.adProduct
           : adProduct // ignore: cast_nullable_to_non_nullable
               as AdProduct,
+      quantityChanged: quantityChanged == freezed
+          ? _value.quantityChanged
+          : quantityChanged // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -182,7 +197,8 @@ class _$_ProductReservation implements _ProductReservation {
       required this.createdAt,
       required this.status,
       required this.quantity,
-      required this.adProduct});
+      required this.adProduct,
+      required this.quantityChanged});
 
   @override
   final int? id;
@@ -194,10 +210,12 @@ class _$_ProductReservation implements _ProductReservation {
   final int quantity;
   @override
   final AdProduct adProduct;
+  @override
+  final bool? quantityChanged;
 
   @override
   String toString() {
-    return 'ProductReservation(id: $id, createdAt: $createdAt, status: $status, quantity: $quantity, adProduct: $adProduct)';
+    return 'ProductReservation(id: $id, createdAt: $createdAt, status: $status, quantity: $quantity, adProduct: $adProduct, quantityChanged: $quantityChanged)';
   }
 
   @override
@@ -216,7 +234,10 @@ class _$_ProductReservation implements _ProductReservation {
                     .equals(other.quantity, quantity)) &&
             (identical(other.adProduct, adProduct) ||
                 const DeepCollectionEquality()
-                    .equals(other.adProduct, adProduct)));
+                    .equals(other.adProduct, adProduct)) &&
+            (identical(other.quantityChanged, quantityChanged) ||
+                const DeepCollectionEquality()
+                    .equals(other.quantityChanged, quantityChanged)));
   }
 
   @override
@@ -226,7 +247,8 @@ class _$_ProductReservation implements _ProductReservation {
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(quantity) ^
-      const DeepCollectionEquality().hash(adProduct);
+      const DeepCollectionEquality().hash(adProduct) ^
+      const DeepCollectionEquality().hash(quantityChanged);
 
   @JsonKey(ignore: true)
   @override
@@ -240,7 +262,8 @@ abstract class _ProductReservation implements ProductReservation {
       required String? createdAt,
       required ReservationItemStatus status,
       required int quantity,
-      required AdProduct adProduct}) = _$_ProductReservation;
+      required AdProduct adProduct,
+      required bool? quantityChanged}) = _$_ProductReservation;
 
   @override
   int? get id => throw _privateConstructorUsedError;
@@ -252,6 +275,8 @@ abstract class _ProductReservation implements ProductReservation {
   int get quantity => throw _privateConstructorUsedError;
   @override
   AdProduct get adProduct => throw _privateConstructorUsedError;
+  @override
+  bool? get quantityChanged => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductReservationCopyWith<_ProductReservation> get copyWith =>

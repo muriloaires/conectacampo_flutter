@@ -7,4 +7,7 @@ class ProductPageEvent with _$ProductPageEvent {
       AmountChanged;
   const factory ProductPageEvent.onBtnReservationTap() =
       OnBtnReservationTap;
+  const factory ProductPageEvent.onBtnJoinSellerGroupClick() =
+  OnBtnJoinSellerGroupClick;
+
 }

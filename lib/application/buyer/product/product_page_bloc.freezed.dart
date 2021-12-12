@@ -31,6 +31,10 @@ class _$ProductPageEventTearOff {
   OnBtnReservationTap onBtnReservationTap() {
     return const OnBtnReservationTap();
   }
+
+  OnBtnJoinSellerGroupClick onBtnJoinSellerGroupClick() {
+    return const OnBtnJoinSellerGroupClick();
+  }
 }
 
 /// @nodoc
@@ -43,6 +47,7 @@ mixin _$ProductPageEvent {
     required TResult Function(AdProduct? product) started,
     required TResult Function(String amount) amountChanged,
     required TResult Function() onBtnReservationTap,
+    required TResult Function() onBtnJoinSellerGroupClick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +55,7 @@ mixin _$ProductPageEvent {
     TResult Function(AdProduct? product)? started,
     TResult Function(String amount)? amountChanged,
     TResult Function()? onBtnReservationTap,
+    TResult Function()? onBtnJoinSellerGroupClick,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,6 +64,8 @@ mixin _$ProductPageEvent {
     required TResult Function(_Started value) started,
     required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(OnBtnReservationTap value) onBtnReservationTap,
+    required TResult Function(OnBtnJoinSellerGroupClick value)
+        onBtnJoinSellerGroupClick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +73,8 @@ mixin _$ProductPageEvent {
     TResult Function(_Started value)? started,
     TResult Function(AmountChanged value)? amountChanged,
     TResult Function(OnBtnReservationTap value)? onBtnReservationTap,
+    TResult Function(OnBtnJoinSellerGroupClick value)?
+        onBtnJoinSellerGroupClick,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,6 +175,7 @@ class _$_Started implements _Started {
     required TResult Function(AdProduct? product) started,
     required TResult Function(String amount) amountChanged,
     required TResult Function() onBtnReservationTap,
+    required TResult Function() onBtnJoinSellerGroupClick,
   }) {
     return started(product);
   }
@@ -175,6 +186,7 @@ class _$_Started implements _Started {
     TResult Function(AdProduct? product)? started,
     TResult Function(String amount)? amountChanged,
     TResult Function()? onBtnReservationTap,
+    TResult Function()? onBtnJoinSellerGroupClick,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -189,6 +201,8 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(OnBtnReservationTap value) onBtnReservationTap,
+    required TResult Function(OnBtnJoinSellerGroupClick value)
+        onBtnJoinSellerGroupClick,
   }) {
     return started(this);
   }
@@ -199,6 +213,8 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(AmountChanged value)? amountChanged,
     TResult Function(OnBtnReservationTap value)? onBtnReservationTap,
+    TResult Function(OnBtnJoinSellerGroupClick value)?
+        onBtnJoinSellerGroupClick,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -285,6 +301,7 @@ class _$AmountChanged implements AmountChanged {
     required TResult Function(AdProduct? product) started,
     required TResult Function(String amount) amountChanged,
     required TResult Function() onBtnReservationTap,
+    required TResult Function() onBtnJoinSellerGroupClick,
   }) {
     return amountChanged(amount);
   }
@@ -295,6 +312,7 @@ class _$AmountChanged implements AmountChanged {
     TResult Function(AdProduct? product)? started,
     TResult Function(String amount)? amountChanged,
     TResult Function()? onBtnReservationTap,
+    TResult Function()? onBtnJoinSellerGroupClick,
     required TResult orElse(),
   }) {
     if (amountChanged != null) {
@@ -309,6 +327,8 @@ class _$AmountChanged implements AmountChanged {
     required TResult Function(_Started value) started,
     required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(OnBtnReservationTap value) onBtnReservationTap,
+    required TResult Function(OnBtnJoinSellerGroupClick value)
+        onBtnJoinSellerGroupClick,
   }) {
     return amountChanged(this);
   }
@@ -319,6 +339,8 @@ class _$AmountChanged implements AmountChanged {
     TResult Function(_Started value)? started,
     TResult Function(AmountChanged value)? amountChanged,
     TResult Function(OnBtnReservationTap value)? onBtnReservationTap,
+    TResult Function(OnBtnJoinSellerGroupClick value)?
+        onBtnJoinSellerGroupClick,
     required TResult orElse(),
   }) {
     if (amountChanged != null) {
@@ -380,6 +402,7 @@ class _$OnBtnReservationTap implements OnBtnReservationTap {
     required TResult Function(AdProduct? product) started,
     required TResult Function(String amount) amountChanged,
     required TResult Function() onBtnReservationTap,
+    required TResult Function() onBtnJoinSellerGroupClick,
   }) {
     return onBtnReservationTap();
   }
@@ -390,6 +413,7 @@ class _$OnBtnReservationTap implements OnBtnReservationTap {
     TResult Function(AdProduct? product)? started,
     TResult Function(String amount)? amountChanged,
     TResult Function()? onBtnReservationTap,
+    TResult Function()? onBtnJoinSellerGroupClick,
     required TResult orElse(),
   }) {
     if (onBtnReservationTap != null) {
@@ -404,6 +428,8 @@ class _$OnBtnReservationTap implements OnBtnReservationTap {
     required TResult Function(_Started value) started,
     required TResult Function(AmountChanged value) amountChanged,
     required TResult Function(OnBtnReservationTap value) onBtnReservationTap,
+    required TResult Function(OnBtnJoinSellerGroupClick value)
+        onBtnJoinSellerGroupClick,
   }) {
     return onBtnReservationTap(this);
   }
@@ -414,6 +440,8 @@ class _$OnBtnReservationTap implements OnBtnReservationTap {
     TResult Function(_Started value)? started,
     TResult Function(AmountChanged value)? amountChanged,
     TResult Function(OnBtnReservationTap value)? onBtnReservationTap,
+    TResult Function(OnBtnJoinSellerGroupClick value)?
+        onBtnJoinSellerGroupClick,
     required TResult orElse(),
   }) {
     if (onBtnReservationTap != null) {
@@ -428,6 +456,103 @@ abstract class OnBtnReservationTap implements ProductPageEvent {
 }
 
 /// @nodoc
+abstract class $OnBtnJoinSellerGroupClickCopyWith<$Res> {
+  factory $OnBtnJoinSellerGroupClickCopyWith(OnBtnJoinSellerGroupClick value,
+          $Res Function(OnBtnJoinSellerGroupClick) then) =
+      _$OnBtnJoinSellerGroupClickCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$OnBtnJoinSellerGroupClickCopyWithImpl<$Res>
+    extends _$ProductPageEventCopyWithImpl<$Res>
+    implements $OnBtnJoinSellerGroupClickCopyWith<$Res> {
+  _$OnBtnJoinSellerGroupClickCopyWithImpl(OnBtnJoinSellerGroupClick _value,
+      $Res Function(OnBtnJoinSellerGroupClick) _then)
+      : super(_value, (v) => _then(v as OnBtnJoinSellerGroupClick));
+
+  @override
+  OnBtnJoinSellerGroupClick get _value =>
+      super._value as OnBtnJoinSellerGroupClick;
+}
+
+/// @nodoc
+
+class _$OnBtnJoinSellerGroupClick implements OnBtnJoinSellerGroupClick {
+  const _$OnBtnJoinSellerGroupClick();
+
+  @override
+  String toString() {
+    return 'ProductPageEvent.onBtnJoinSellerGroupClick()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is OnBtnJoinSellerGroupClick);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AdProduct? product) started,
+    required TResult Function(String amount) amountChanged,
+    required TResult Function() onBtnReservationTap,
+    required TResult Function() onBtnJoinSellerGroupClick,
+  }) {
+    return onBtnJoinSellerGroupClick();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AdProduct? product)? started,
+    TResult Function(String amount)? amountChanged,
+    TResult Function()? onBtnReservationTap,
+    TResult Function()? onBtnJoinSellerGroupClick,
+    required TResult orElse(),
+  }) {
+    if (onBtnJoinSellerGroupClick != null) {
+      return onBtnJoinSellerGroupClick();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(AmountChanged value) amountChanged,
+    required TResult Function(OnBtnReservationTap value) onBtnReservationTap,
+    required TResult Function(OnBtnJoinSellerGroupClick value)
+        onBtnJoinSellerGroupClick,
+  }) {
+    return onBtnJoinSellerGroupClick(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(AmountChanged value)? amountChanged,
+    TResult Function(OnBtnReservationTap value)? onBtnReservationTap,
+    TResult Function(OnBtnJoinSellerGroupClick value)?
+        onBtnJoinSellerGroupClick,
+    required TResult orElse(),
+  }) {
+    if (onBtnJoinSellerGroupClick != null) {
+      return onBtnJoinSellerGroupClick(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnBtnJoinSellerGroupClick implements ProductPageEvent {
+  const factory OnBtnJoinSellerGroupClick() = _$OnBtnJoinSellerGroupClick;
+}
+
+/// @nodoc
 class _$ProductPageStateTearOff {
   const _$ProductPageStateTearOff();
 
@@ -439,7 +564,10 @@ class _$ProductPageStateTearOff {
           reservationItemFailureOrSuccess,
       required bool showErrorMsg,
       required Place? place,
-      required bool openCart}) {
+      required bool openCart,
+      required bool joiningSellerGroup,
+      required Either<AdvertisementFailure, Unit>?
+          joinSellerGroupErrorOrSuccess}) {
     return _ProductPageState(
       reservationQuantity: reservationQuantity,
       showErrorsMessage: showErrorsMessage,
@@ -448,6 +576,8 @@ class _$ProductPageStateTearOff {
       showErrorMsg: showErrorMsg,
       place: place,
       openCart: openCart,
+      joiningSellerGroup: joiningSellerGroup,
+      joinSellerGroupErrorOrSuccess: joinSellerGroupErrorOrSuccess,
     );
   }
 }
@@ -466,6 +596,9 @@ mixin _$ProductPageState {
   bool get showErrorMsg => throw _privateConstructorUsedError;
   Place? get place => throw _privateConstructorUsedError;
   bool get openCart => throw _privateConstructorUsedError;
+  bool get joiningSellerGroup => throw _privateConstructorUsedError;
+  Either<AdvertisementFailure, Unit>? get joinSellerGroupErrorOrSuccess =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductPageStateCopyWith<ProductPageState> get copyWith =>
@@ -485,7 +618,9 @@ abstract class $ProductPageStateCopyWith<$Res> {
           reservationItemFailureOrSuccess,
       bool showErrorMsg,
       Place? place,
-      bool openCart});
+      bool openCart,
+      bool joiningSellerGroup,
+      Either<AdvertisementFailure, Unit>? joinSellerGroupErrorOrSuccess});
 
   $AdProductCopyWith<$Res>? get product;
   $PlaceCopyWith<$Res>? get place;
@@ -509,6 +644,8 @@ class _$ProductPageStateCopyWithImpl<$Res>
     Object? showErrorMsg = freezed,
     Object? place = freezed,
     Object? openCart = freezed,
+    Object? joiningSellerGroup = freezed,
+    Object? joinSellerGroupErrorOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       reservationQuantity: reservationQuantity == freezed
@@ -540,6 +677,14 @@ class _$ProductPageStateCopyWithImpl<$Res>
           ? _value.openCart
           : openCart // ignore: cast_nullable_to_non_nullable
               as bool,
+      joiningSellerGroup: joiningSellerGroup == freezed
+          ? _value.joiningSellerGroup
+          : joiningSellerGroup // ignore: cast_nullable_to_non_nullable
+              as bool,
+      joinSellerGroupErrorOrSuccess: joinSellerGroupErrorOrSuccess == freezed
+          ? _value.joinSellerGroupErrorOrSuccess
+          : joinSellerGroupErrorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, Unit>?,
     ));
   }
 
@@ -581,7 +726,9 @@ abstract class _$ProductPageStateCopyWith<$Res>
           reservationItemFailureOrSuccess,
       bool showErrorMsg,
       Place? place,
-      bool openCart});
+      bool openCart,
+      bool joiningSellerGroup,
+      Either<AdvertisementFailure, Unit>? joinSellerGroupErrorOrSuccess});
 
   @override
   $AdProductCopyWith<$Res>? get product;
@@ -609,6 +756,8 @@ class __$ProductPageStateCopyWithImpl<$Res>
     Object? showErrorMsg = freezed,
     Object? place = freezed,
     Object? openCart = freezed,
+    Object? joiningSellerGroup = freezed,
+    Object? joinSellerGroupErrorOrSuccess = freezed,
   }) {
     return _then(_ProductPageState(
       reservationQuantity: reservationQuantity == freezed
@@ -640,6 +789,14 @@ class __$ProductPageStateCopyWithImpl<$Res>
           ? _value.openCart
           : openCart // ignore: cast_nullable_to_non_nullable
               as bool,
+      joiningSellerGroup: joiningSellerGroup == freezed
+          ? _value.joiningSellerGroup
+          : joiningSellerGroup // ignore: cast_nullable_to_non_nullable
+              as bool,
+      joinSellerGroupErrorOrSuccess: joinSellerGroupErrorOrSuccess == freezed
+          ? _value.joinSellerGroupErrorOrSuccess
+          : joinSellerGroupErrorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, Unit>?,
     ));
   }
 }
@@ -654,7 +811,9 @@ class _$_ProductPageState implements _ProductPageState {
       required this.reservationItemFailureOrSuccess,
       required this.showErrorMsg,
       required this.place,
-      required this.openCart});
+      required this.openCart,
+      required this.joiningSellerGroup,
+      required this.joinSellerGroupErrorOrSuccess});
 
   @override
   final ReservationQuantity reservationQuantity;
@@ -671,10 +830,14 @@ class _$_ProductPageState implements _ProductPageState {
   final Place? place;
   @override
   final bool openCart;
+  @override
+  final bool joiningSellerGroup;
+  @override
+  final Either<AdvertisementFailure, Unit>? joinSellerGroupErrorOrSuccess;
 
   @override
   String toString() {
-    return 'ProductPageState(reservationQuantity: $reservationQuantity, showErrorsMessage: $showErrorsMessage, product: $product, reservationItemFailureOrSuccess: $reservationItemFailureOrSuccess, showErrorMsg: $showErrorMsg, place: $place, openCart: $openCart)';
+    return 'ProductPageState(reservationQuantity: $reservationQuantity, showErrorsMessage: $showErrorsMessage, product: $product, reservationItemFailureOrSuccess: $reservationItemFailureOrSuccess, showErrorMsg: $showErrorMsg, place: $place, openCart: $openCart, joiningSellerGroup: $joiningSellerGroup, joinSellerGroupErrorOrSuccess: $joinSellerGroupErrorOrSuccess)';
   }
 
   @override
@@ -702,7 +865,15 @@ class _$_ProductPageState implements _ProductPageState {
                 const DeepCollectionEquality().equals(other.place, place)) &&
             (identical(other.openCart, openCart) ||
                 const DeepCollectionEquality()
-                    .equals(other.openCart, openCart)));
+                    .equals(other.openCart, openCart)) &&
+            (identical(other.joiningSellerGroup, joiningSellerGroup) ||
+                const DeepCollectionEquality()
+                    .equals(other.joiningSellerGroup, joiningSellerGroup)) &&
+            (identical(other.joinSellerGroupErrorOrSuccess,
+                    joinSellerGroupErrorOrSuccess) ||
+                const DeepCollectionEquality().equals(
+                    other.joinSellerGroupErrorOrSuccess,
+                    joinSellerGroupErrorOrSuccess)));
   }
 
   @override
@@ -714,7 +885,9 @@ class _$_ProductPageState implements _ProductPageState {
       const DeepCollectionEquality().hash(reservationItemFailureOrSuccess) ^
       const DeepCollectionEquality().hash(showErrorMsg) ^
       const DeepCollectionEquality().hash(place) ^
-      const DeepCollectionEquality().hash(openCart);
+      const DeepCollectionEquality().hash(openCart) ^
+      const DeepCollectionEquality().hash(joiningSellerGroup) ^
+      const DeepCollectionEquality().hash(joinSellerGroupErrorOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -731,7 +904,10 @@ abstract class _ProductPageState implements ProductPageState {
           reservationItemFailureOrSuccess,
       required bool showErrorMsg,
       required Place? place,
-      required bool openCart}) = _$_ProductPageState;
+      required bool openCart,
+      required bool joiningSellerGroup,
+      required Either<AdvertisementFailure, Unit>?
+          joinSellerGroupErrorOrSuccess}) = _$_ProductPageState;
 
   @override
   ReservationQuantity get reservationQuantity =>
@@ -749,6 +925,11 @@ abstract class _ProductPageState implements ProductPageState {
   Place? get place => throw _privateConstructorUsedError;
   @override
   bool get openCart => throw _privateConstructorUsedError;
+  @override
+  bool get joiningSellerGroup => throw _privateConstructorUsedError;
+  @override
+  Either<AdvertisementFailure, Unit>? get joinSellerGroupErrorOrSuccess =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductPageStateCopyWith<_ProductPageState> get copyWith =>

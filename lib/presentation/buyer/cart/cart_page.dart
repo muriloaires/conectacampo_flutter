@@ -5,6 +5,7 @@ import 'package:conectacampo/infrastructure/advertisement/advertisement_mapper.d
 import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/infrastructure/reservation/model/model.dart';
 import 'package:conectacampo/injection.dart';
+import 'package:conectacampo/presentation/buyer/advertisement/advertisement_detail_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,7 +23,7 @@ class CartPage extends StatelessWidget {
       child: BlocConsumer<CartBloc, CartState>(
         listener: (context, state) {
           if (state.reservating) {
-            EasyLoading.show(status: 'Criando reserva');
+            EasyLoading.show(status: 'Criando reserva', dismissOnTap: true);
           } else {
             EasyLoading.dismiss();
           }
@@ -36,58 +37,60 @@ class CartPage extends StatelessWidget {
               }
             }
 
-            showDialog<String>(
-              context: context,
-              builder: (BuildContext dialogContext) => Dialog(
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: ClampingScrollPhysics(),
-                  children: [
-                    const SizedBox(),
-                    CircleAvatar(
-                      radius: 35,
-                      backgroundColor: Colors.red[400],
-                      child: const Icon(
-                        Icons.close,
-                        size: 48,
-                        color: Colors.white,
+            if (state.showDialogErrorItems) {
+              showDialog<String>(
+                context: context,
+                builder: (BuildContext dialogContext) => Dialog(
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                    children: [
+                      const SizedBox(),
+                      CircleAvatar(
+                        radius: 35,
+                        backgroundColor: Colors.red[400],
+                        child: const Icon(
+                          Icons.close,
+                          size: 48,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    const Center(
-                      child: Text(
-                        'Reserva não efetuada',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      const SizedBox(height: 8),
+                      const Center(
+                        child: Text(
+                          'Reserva não efetuada',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    Center(
-                      child: Text(
-                        errorMessage,
-                        textAlign: TextAlign.center,
+                      const SizedBox(height: 8),
+                      Center(
+                        child: Text(
+                          errorMessage,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    Container(height: 1, color: ColorSet.grayLine),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text(
-                            'Ajustar pedido',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: ColorSet.grayDark,
+                      const SizedBox(height: 8),
+                      Container(height: 1, color: ColorSet.grayLine),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text(
+                              'Ajustar pedido',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorSet.grayDark,
+                              ),
                             ),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            );
+              );
+            }
           });
 
           state.optionOfreservationResultSuccessOrFailure.fold(
@@ -186,11 +189,11 @@ class CartPage extends StatelessWidget {
                                 .optionOfRemoteAdProductsFailureOrSuccess
                                 .fold(
                                     () => null,
-                                    (a) =>
-                                        a.fold((l) => null, (r){
-                                          final invertedList = r.reversed.toList();
+                                    (a) => a.fold((l) => null, (r) {
+                                          final invertedList =
+                                              r.reversed.toList();
                                           return invertedList[index];
-                                        } ));
+                                        }));
                           }
                         } catch (e) {}
                         return ReservationItemWidget(
@@ -198,10 +201,19 @@ class CartPage extends StatelessWidget {
                       },
                     ),
                     TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop(true);
+                        onPressed: () async {
+                          final result = await Navigator.of(context)
+                              .push(MaterialPageRoute(
+                            builder: (context) => AdvertisementDetailPage(
+                              state.itemsInCart.first.advertisementId,
+                            ),
+                          ));
+                          context
+                              .read<CartBloc>()
+                              .add(const CartEvent.started());
                         },
-                        child: const Text('Comprar mais produtos do mesmo vendedor',
+                        child: const Text(
+                            'Comprar mais produtos do mesmo vendedor',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: ColorSet.colorPrimaryGreen,
@@ -233,8 +245,7 @@ class CartBottomMenu extends StatelessWidget {
                 onTap: () async {
                   await openWhatsapp(state.itemsInCart.first.sellerPhone);
                 },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: Wrap(
                   children: [
                     Text(
                         'Combinar entrega com ${state.itemsInCart.first.sellerName}',
@@ -442,7 +453,7 @@ class ReservationItemWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               TextButton(
-                                onPressed: () => Navigator.pop(context),
+                                onPressed: () => Navigator.pop(dialogContext),
                                 child: const Text(
                                   'Voltar',
                                   style: TextStyle(
@@ -453,7 +464,7 @@ class ReservationItemWidget extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Navigator.pop(dialogContext);
                                   context.read<CartBloc>().add(
                                         CartEvent.onBtnDeleteTap(
                                           reservationItem,

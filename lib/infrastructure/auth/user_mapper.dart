@@ -27,6 +27,7 @@ extension LocalUserDomainX on UserResponse {
       original,
       null,
       email,
+      ownGroupId,
     );
   }
 }

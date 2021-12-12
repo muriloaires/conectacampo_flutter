@@ -26,7 +26,8 @@ class _$UserTearOff {
       MediumAvatar? mediumAvatar,
       OriginalAvatar? originalAvatar,
       Advertisement? lastAdvertisement,
-      String? email) {
+      String? email,
+      int? ownGroupId) {
     return _User(
       id,
       name,
@@ -38,6 +39,7 @@ class _$UserTearOff {
       originalAvatar,
       lastAdvertisement,
       email,
+      ownGroupId,
     );
   }
 }
@@ -57,6 +59,7 @@ mixin _$User {
   OriginalAvatar? get originalAvatar => throw _privateConstructorUsedError;
   Advertisement? get lastAdvertisement => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  int? get ownGroupId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -76,7 +79,8 @@ abstract class $UserCopyWith<$Res> {
       MediumAvatar? mediumAvatar,
       OriginalAvatar? originalAvatar,
       Advertisement? lastAdvertisement,
-      String? email});
+      String? email,
+      int? ownGroupId});
 
   $AdvertisementCopyWith<$Res>? get lastAdvertisement;
 }
@@ -101,6 +105,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? originalAvatar = freezed,
     Object? lastAdvertisement = freezed,
     Object? email = freezed,
+    Object? ownGroupId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -143,6 +148,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      ownGroupId: ownGroupId == freezed
+          ? _value.ownGroupId
+          : ownGroupId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 
@@ -173,7 +182,8 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       MediumAvatar? mediumAvatar,
       OriginalAvatar? originalAvatar,
       Advertisement? lastAdvertisement,
-      String? email});
+      String? email,
+      int? ownGroupId});
 
   @override
   $AdvertisementCopyWith<$Res>? get lastAdvertisement;
@@ -200,6 +210,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? originalAvatar = freezed,
     Object? lastAdvertisement = freezed,
     Object? email = freezed,
+    Object? ownGroupId = freezed,
   }) {
     return _then(_User(
       id == freezed
@@ -242,6 +253,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      ownGroupId == freezed
+          ? _value.ownGroupId
+          : ownGroupId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -259,7 +274,8 @@ class _$_User implements _User {
       this.mediumAvatar,
       this.originalAvatar,
       this.lastAdvertisement,
-      this.email);
+      this.email,
+      this.ownGroupId);
 
   @override
   final int id;
@@ -281,10 +297,12 @@ class _$_User implements _User {
   final Advertisement? lastAdvertisement;
   @override
   final String? email;
+  @override
+  final int? ownGroupId;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, nickname: $nickname, vehicleLicensePlate: $vehicleLicensePlate, phoneNumber: $phoneNumber, thumbAvatar: $thumbAvatar, mediumAvatar: $mediumAvatar, originalAvatar: $originalAvatar, lastAdvertisement: $lastAdvertisement, email: $email)';
+    return 'User(id: $id, name: $name, nickname: $nickname, vehicleLicensePlate: $vehicleLicensePlate, phoneNumber: $phoneNumber, thumbAvatar: $thumbAvatar, mediumAvatar: $mediumAvatar, originalAvatar: $originalAvatar, lastAdvertisement: $lastAdvertisement, email: $email, ownGroupId: $ownGroupId)';
   }
 
   @override
@@ -317,7 +335,10 @@ class _$_User implements _User {
                 const DeepCollectionEquality()
                     .equals(other.lastAdvertisement, lastAdvertisement)) &&
             (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)));
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.ownGroupId, ownGroupId) ||
+                const DeepCollectionEquality()
+                    .equals(other.ownGroupId, ownGroupId)));
   }
 
   @override
@@ -332,7 +353,8 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(mediumAvatar) ^
       const DeepCollectionEquality().hash(originalAvatar) ^
       const DeepCollectionEquality().hash(lastAdvertisement) ^
-      const DeepCollectionEquality().hash(email);
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(ownGroupId);
 
   @JsonKey(ignore: true)
   @override
@@ -351,7 +373,8 @@ abstract class _User implements User {
       MediumAvatar? mediumAvatar,
       OriginalAvatar? originalAvatar,
       Advertisement? lastAdvertisement,
-      String? email) = _$_User;
+      String? email,
+      int? ownGroupId) = _$_User;
 
   @override
   int get id => throw _privateConstructorUsedError;
@@ -373,6 +396,8 @@ abstract class _User implements User {
   Advertisement? get lastAdvertisement => throw _privateConstructorUsedError;
   @override
   String? get email => throw _privateConstructorUsedError;
+  @override
+  int? get ownGroupId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

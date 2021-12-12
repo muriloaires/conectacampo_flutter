@@ -10,6 +10,7 @@ class SellerSingleAdvertisement extends StatelessWidget {
   final Advertisement _advertisement;
 
   const SellerSingleAdvertisement(this._advertisement);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -40,16 +41,10 @@ class SellerSingleAdvertisement extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                     onTap: () async {
-                      context
-                          .read<BuyerMenuBloc>()
-                          .add(const BuyerMenuEvent.produtDetailsOpen());
                       await Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
-                            ProductPage(_advertisement.products[index]),
+                            ProductPage(_advertisement.products[index], false),
                       ));
-                      context
-                          .read<BuyerMenuBloc>()
-                          .add(const BuyerMenuEvent.produtDetailsClosed());
                     },
                     child:
                         ProductAdvertisement(_advertisement.products[index]));

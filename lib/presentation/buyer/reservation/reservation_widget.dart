@@ -205,8 +205,9 @@ class ReservationWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 30),
                           Visibility(
-                              visible: state.reservation?.status ==
-                                  ReservationStatus.awaitingBuyer,
+                              visible: state.reservation != null &&
+                                  getReservationStatus(state.reservation!) ==
+                                      ReservationStatus.awaitingBuyer,
                               child: ListView(
                                 shrinkWrap: true,
                                 physics: const ClampingScrollPhysics(),
@@ -424,39 +425,58 @@ class ReservationWidget extends StatelessWidget {
     );
   }
 
+  ReservationStatus getReservationStatus(Reservation reservation) {
+    if (reservation.productReservations
+        .where(
+            (element) => element.status == ReservationItemStatus.awaitingBuyer)
+        .isNotEmpty) {
+      return ReservationStatus.awaitingBuyer;
+    }
+
+    return reservation.status;
+  }
+
   Widget _getStatusText(Reservation? reservation) {
     final String text;
     String iconText;
 
     if (reservation != null) {
-      switch (reservation.status) {
-        case ReservationStatus.pendingSeller:
-          text = 'Pendente';
-          iconText = '?';
-          break;
-        case ReservationStatus.buyerCanceled:
-          text = 'Cancelado';
-          iconText = 'x';
-          break;
-        case ReservationStatus.awaitingBuyer:
-          text = 'Aguardando confirmação';
-          iconText = '!';
-          break;
-        case ReservationStatus.confirmed:
-          text = 'Confirmado';
-          iconText = '✓';
-          break;
-        case ReservationStatus.paid:
-          text = 'Pago';
-          iconText = '✓';
-          break;
-        case ReservationStatus.sellerCanceled:
-          text = 'Cancelado';
-          iconText = 'x';
-          break;
-        default:
-          text = 'Pendente';
-          iconText = '?';
+      if (reservation.productReservations
+          .where((element) =>
+              element.status == ReservationItemStatus.awaitingBuyer)
+          .isNotEmpty) {
+        text = 'Aguardando confirmação';
+        iconText = '!';
+      } else {
+        switch (reservation.status) {
+          case ReservationStatus.pendingSeller:
+            text = 'Pendente';
+            iconText = '?';
+            break;
+          case ReservationStatus.buyerCanceled:
+            text = 'Cancelado';
+            iconText = 'x';
+            break;
+          case ReservationStatus.awaitingBuyer:
+            text = 'Aguardando confirmação';
+            iconText = '!';
+            break;
+          case ReservationStatus.confirmed:
+            text = 'Confirmado';
+            iconText = '✓';
+            break;
+          case ReservationStatus.paid:
+            text = 'Pago';
+            iconText = '✓';
+            break;
+          case ReservationStatus.sellerCanceled:
+            text = 'Cancelado';
+            iconText = 'x';
+            break;
+          default:
+            text = 'Pendente';
+            iconText = '?';
+        }
       }
     } else {
       text = 'Carregando';
@@ -498,6 +518,13 @@ class ReservationWidget extends StatelessWidget {
 
   Color _getStatusColor(Reservation? reservation) {
     if (reservation != null) {
+      if (reservation.productReservations
+          .where((element) =>
+              element.status == ReservationItemStatus.awaitingBuyer)
+          .isNotEmpty) {
+        return ColorSet.yellow2;
+      }
+
       switch (reservation.status) {
         case ReservationStatus.awaitingBuyer:
           return ColorSet.yellow2;

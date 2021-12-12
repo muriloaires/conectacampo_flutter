@@ -173,11 +173,13 @@ ReservationStatus getStatusReservation(String status) {
 extension ProductReservationExt on ProductReservationResponse {
   ProductReservation toDomain() {
     return ProductReservation(
-        id: id,
-        createdAt: createdAt,
-        status: geStatus(status),
-        quantity: quantity,
-        adProduct: adProduct.toDomain());
+      id: id,
+      createdAt: createdAt,
+      status: geStatus(status),
+      quantity: quantity,
+      adProduct: adProduct.toDomain(),
+      quantityChanged: false,
+    );
   }
 
   ReservationItemStatus geStatus(String status) {

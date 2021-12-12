@@ -27,10 +27,10 @@ class AdvertiserBloc extends Bloc<AdvertiserEvent, AdvertiserState> {
   ) async* {
     yield* event.map(started: (started) async* {
       yield state.copyWith(seller: started.user);
-      final place = await loadSelectedPlace();
-      if (place != null) {
+      final sellerId = started.user?.id;
+      if (sellerId != null) {
         final advertisementFailureOrSuccess =
-            await advertisementsFacade.getSellerAds(place);
+            await advertisementsFacade.getSellerAdsBySellerId(sellerId);
 
         yield* advertisementFailureOrSuccess.fold((l) async* {}, (r) async* {
           yield state.copyWith(

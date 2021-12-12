@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AdvertiserEventTearOff {
   const _$AdvertiserEventTearOff();
 
-  _Started started(User user) {
+  _Started started(User? user) {
     return _Started(
       user,
     );
@@ -28,16 +28,16 @@ const $AdvertiserEvent = _$AdvertiserEventTearOff();
 
 /// @nodoc
 mixin _$AdvertiserEvent {
-  User get user => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(User user) started,
+    required TResult Function(User? user) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(User user)? started,
+    TResult Function(User? user)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,9 +63,9 @@ abstract class $AdvertiserEventCopyWith<$Res> {
   factory $AdvertiserEventCopyWith(
           AdvertiserEvent value, $Res Function(AdvertiserEvent) then) =
       _$AdvertiserEventCopyWithImpl<$Res>;
-  $Res call({User user});
+  $Res call({User? user});
 
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -85,13 +85,17 @@ class _$AdvertiserEventCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
     ));
   }
 
   @override
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value));
     });
   }
@@ -103,10 +107,10 @@ abstract class _$StartedCopyWith<$Res>
   factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
       __$StartedCopyWithImpl<$Res>;
   @override
-  $Res call({User user});
+  $Res call({User? user});
 
   @override
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -126,7 +130,7 @@ class __$StartedCopyWithImpl<$Res> extends _$AdvertiserEventCopyWithImpl<$Res>
       user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
     ));
   }
 }
@@ -137,7 +141,7 @@ class _$_Started implements _Started {
   const _$_Started(this.user);
 
   @override
-  final User user;
+  final User? user;
 
   @override
   String toString() {
@@ -164,7 +168,7 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(User user) started,
+    required TResult Function(User? user) started,
   }) {
     return started(user);
   }
@@ -172,7 +176,7 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(User user)? started,
+    TResult Function(User? user)? started,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -203,10 +207,10 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements AdvertiserEvent {
-  const factory _Started(User user) = _$_Started;
+  const factory _Started(User? user) = _$_Started;
 
   @override
-  User get user => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$StartedCopyWith<_Started> get copyWith =>

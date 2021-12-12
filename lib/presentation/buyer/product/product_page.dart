@@ -18,8 +18,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatelessWidget {
   final AdProduct _adProduct;
+  final bool fromCart;
 
-  ProductPage(this._adProduct);
+  ProductPage(this._adProduct, this.fromCart);
 
   final _controller = ScrollController();
 
@@ -30,15 +31,32 @@ class ProductPage extends StatelessWidget {
       create: (context) => getIt()..add(ProductPageEvent.started(_adProduct)),
       child: BlocConsumer<ProductPageBloc, ProductPageState>(
           listener: (context, state) async {
+        if (state.joiningSellerGroup) {
+          EasyLoading.show(
+              status: 'Entrando no grupo do vendedor', dismissOnTap: true);
+        } else {
+          EasyLoading.dismiss();
+        }
+
+        state.joinSellerGroupErrorOrSuccess?.fold((l) => null, (r) {
+          EasyLoading.showSuccess('Você entrou no grupo do vendedor');
+        });
         final productPageBloc = context.read<ProductPageBloc>();
-        final buyerMenuBloc = context.read<BuyerMenuBloc>();
+        BuyerMenuBloc? buyerMenuBloc;
+        try {
+          buyerMenuBloc = context.read<BuyerMenuBloc>();
+        } on Exception catch (e) {}
         if (state.openCart) {
-          await Navigator.of(context, rootNavigator: true)
-              .push(MaterialPageRoute(
-            builder: (context) => const CartPage(),
-          ));
-          buyerMenuBloc.add(const BuyerMenuEvent.started());
-          productPageBloc.add(ProductPageEvent.started(state.product));
+          if (fromCart) {
+            Navigator.of(context).pop(true);
+          } else {
+            await Navigator.of(context, rootNavigator: true)
+                .push(MaterialPageRoute(
+              builder: (context) => const CartPage(),
+            ));
+            buyerMenuBloc?.add(const BuyerMenuEvent.started());
+            productPageBloc.add(ProductPageEvent.started(state.product));
+          }
         }
 
         productPageBloc.state.reservationItemFailureOrSuccess?.fold((l) => null,
@@ -102,9 +120,9 @@ class ProductPage extends StatelessWidget {
                           TextButton(
                             onPressed: () {
                               Navigator.of(dialogContext).pop();
-                              context.read<BuyerMenuBloc>().add(
-                                    const BuyerMenuEvent.onCartTapped(),
-                                  );
+                              Navigator.of(context,rootNavigator: true).push(MaterialPageRoute(
+                                builder: (context) => const CartPage(),
+                              ));
                             },
                             child: const Text(
                               'Ir para o carrinho',
@@ -355,8 +373,7 @@ class ProductPage extends StatelessWidget {
                           style: const TextStyle(fontWeight: FontWeight.bold),
                           children: [
                             TextSpan(
-                                text:
-                                    state.product?.unitMeasure ?? '' + '(s)',
+                                text: state.product?.unitMeasure ?? '' + '(s)',
                                 style: const TextStyle(
                                     fontWeight: FontWeight.normal))
                           ])),
@@ -431,8 +448,7 @@ class ProductPage extends StatelessWidget {
                                         textAlign: TextAlign.center,
                                         keyboardType: TextInputType.number,
                                         inputFormatters: <TextInputFormatter>[
-                                          FilteringTextInputFormatter
-                                              .digitsOnly
+                                          FilteringTextInputFormatter.digitsOnly
                                         ],
                                         decoration: const InputDecoration(
                                             border: InputBorder.none,
@@ -452,8 +468,8 @@ class ProductPage extends StatelessWidget {
                       ),
                       MaterialButton(
                         onPressed: () async {
-                          await openWhatsapp(state.product?.advertisement
-                                  ?.seller.phoneNumber ??
+                          await openWhatsapp(state
+                                  .product?.advertisement?.seller.phoneNumber ??
                               '');
                         },
                         child: ClipRRect(
@@ -558,8 +574,7 @@ class ProductPage extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: [
-                        const Text(
-                            'Outros produtos anunciados pelo vendedor:',
+                        const Text('Outros produtos anunciados pelo vendedor:',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: ColorSet.gray2)),
@@ -567,13 +582,13 @@ class ProductPage extends StatelessWidget {
                           height: 20,
                         ),
                         SizedBox(
-                          height: 230,
+                          height: 235,
                           width: double.infinity,
                           child: ListView.builder(
                               physics: const ClampingScrollPhysics(),
                               shrinkWrap: true,
-                              itemCount: state
-                                  .product?.advertisement?.products.length,
+                              itemCount:
+                                  state.product?.advertisement?.products.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return GestureDetector(
@@ -584,11 +599,9 @@ class ProductPage extends StatelessWidget {
                                             .push(MaterialPageRoute(
                                           builder: (context) => ProductPage(
                                               product.advertisement!
-                                                  .products[index]),
+                                                  .products[index],
+                                              fromCart),
                                         ));
-                                        context.read<BuyerMenuBloc>().add(
-                                            const BuyerMenuEvent
-                                                .produtDetailsClosed());
                                       }
                                     },
                                     child: ProductAdvertisement(state.product!
@@ -642,8 +655,8 @@ class ProductPage extends StatelessWidget {
                             const SizedBox(height: 10),
                             MaterialButton(
                               onPressed: () async {
-                                await openWhatsapp(state.product!
-                                        .advertisement!.seller.phoneNumber ??
+                                await openWhatsapp(state.product!.advertisement!
+                                        .seller.phoneNumber ??
                                     '');
                               },
                               child: ClipRRect(
@@ -676,7 +689,11 @@ class ProductPage extends StatelessWidget {
                                   )),
                             ),
                             TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  context.read<ProductPageBloc>().add(
+                                      const ProductPageEvent
+                                          .onBtnJoinSellerGroupClick());
+                                },
                                 child: const Text(
                                   'Entrar no grupo do vendedor',
                                   style: TextStyle(

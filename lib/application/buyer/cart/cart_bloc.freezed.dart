@@ -581,6 +581,7 @@ class _$CartStateTearOff {
       required bool reservating,
       required Option<Either<ReservationFailure, Unit>>
           optionOfreservationResultSuccessOrFailure,
+      required bool showDialogErrorItems,
       required Option<ReservationResponse> optionOfReservationResponse}) {
     return _CartState(
       itemsInCart: itemsInCart,
@@ -589,6 +590,7 @@ class _$CartStateTearOff {
       reservating: reservating,
       optionOfreservationResultSuccessOrFailure:
           optionOfreservationResultSuccessOrFailure,
+      showDialogErrorItems: showDialogErrorItems,
       optionOfReservationResponse: optionOfReservationResponse,
     );
   }
@@ -607,6 +609,7 @@ mixin _$CartState {
   Option<Either<ReservationFailure, Unit>>
       get optionOfreservationResultSuccessOrFailure =>
           throw _privateConstructorUsedError;
+  bool get showDialogErrorItems => throw _privateConstructorUsedError;
   Option<ReservationResponse> get optionOfReservationResponse =>
       throw _privateConstructorUsedError;
 
@@ -626,6 +629,7 @@ abstract class $CartStateCopyWith<$Res> {
       bool reservating,
       Option<Either<ReservationFailure, Unit>>
           optionOfreservationResultSuccessOrFailure,
+      bool showDialogErrorItems,
       Option<ReservationResponse> optionOfReservationResponse});
 }
 
@@ -643,6 +647,7 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
     Object? optionOfRemoteAdProductsFailureOrSuccess = freezed,
     Object? reservating = freezed,
     Object? optionOfreservationResultSuccessOrFailure = freezed,
+    Object? showDialogErrorItems = freezed,
     Object? optionOfReservationResponse = freezed,
   }) {
     return _then(_value.copyWith(
@@ -664,6 +669,10 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
               ? _value.optionOfreservationResultSuccessOrFailure
               : optionOfreservationResultSuccessOrFailure // ignore: cast_nullable_to_non_nullable
                   as Option<Either<ReservationFailure, Unit>>,
+      showDialogErrorItems: showDialogErrorItems == freezed
+          ? _value.showDialogErrorItems
+          : showDialogErrorItems // ignore: cast_nullable_to_non_nullable
+              as bool,
       optionOfReservationResponse: optionOfReservationResponse == freezed
           ? _value.optionOfReservationResponse
           : optionOfReservationResponse // ignore: cast_nullable_to_non_nullable
@@ -685,6 +694,7 @@ abstract class _$CartStateCopyWith<$Res> implements $CartStateCopyWith<$Res> {
       bool reservating,
       Option<Either<ReservationFailure, Unit>>
           optionOfreservationResultSuccessOrFailure,
+      bool showDialogErrorItems,
       Option<ReservationResponse> optionOfReservationResponse});
 }
 
@@ -703,6 +713,7 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
     Object? optionOfRemoteAdProductsFailureOrSuccess = freezed,
     Object? reservating = freezed,
     Object? optionOfreservationResultSuccessOrFailure = freezed,
+    Object? showDialogErrorItems = freezed,
     Object? optionOfReservationResponse = freezed,
   }) {
     return _then(_CartState(
@@ -724,6 +735,10 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
               ? _value.optionOfreservationResultSuccessOrFailure
               : optionOfreservationResultSuccessOrFailure // ignore: cast_nullable_to_non_nullable
                   as Option<Either<ReservationFailure, Unit>>,
+      showDialogErrorItems: showDialogErrorItems == freezed
+          ? _value.showDialogErrorItems
+          : showDialogErrorItems // ignore: cast_nullable_to_non_nullable
+              as bool,
       optionOfReservationResponse: optionOfReservationResponse == freezed
           ? _value.optionOfReservationResponse
           : optionOfReservationResponse // ignore: cast_nullable_to_non_nullable
@@ -740,6 +755,7 @@ class _$_CartState implements _CartState {
       required this.optionOfRemoteAdProductsFailureOrSuccess,
       required this.reservating,
       required this.optionOfreservationResultSuccessOrFailure,
+      required this.showDialogErrorItems,
       required this.optionOfReservationResponse});
 
   @override
@@ -753,11 +769,13 @@ class _$_CartState implements _CartState {
   final Option<Either<ReservationFailure, Unit>>
       optionOfreservationResultSuccessOrFailure;
   @override
+  final bool showDialogErrorItems;
+  @override
   final Option<ReservationResponse> optionOfReservationResponse;
 
   @override
   String toString() {
-    return 'CartState(itemsInCart: $itemsInCart, optionOfRemoteAdProductsFailureOrSuccess: $optionOfRemoteAdProductsFailureOrSuccess, reservating: $reservating, optionOfreservationResultSuccessOrFailure: $optionOfreservationResultSuccessOrFailure, optionOfReservationResponse: $optionOfReservationResponse)';
+    return 'CartState(itemsInCart: $itemsInCart, optionOfRemoteAdProductsFailureOrSuccess: $optionOfRemoteAdProductsFailureOrSuccess, reservating: $reservating, optionOfreservationResultSuccessOrFailure: $optionOfreservationResultSuccessOrFailure, showDialogErrorItems: $showDialogErrorItems, optionOfReservationResponse: $optionOfReservationResponse)';
   }
 
   @override
@@ -780,6 +798,9 @@ class _$_CartState implements _CartState {
                 const DeepCollectionEquality().equals(
                     other.optionOfreservationResultSuccessOrFailure,
                     optionOfreservationResultSuccessOrFailure)) &&
+            (identical(other.showDialogErrorItems, showDialogErrorItems) ||
+                const DeepCollectionEquality().equals(
+                    other.showDialogErrorItems, showDialogErrorItems)) &&
             (identical(other.optionOfReservationResponse,
                     optionOfReservationResponse) ||
                 const DeepCollectionEquality().equals(
@@ -796,6 +817,7 @@ class _$_CartState implements _CartState {
       const DeepCollectionEquality().hash(reservating) ^
       const DeepCollectionEquality()
           .hash(optionOfreservationResultSuccessOrFailure) ^
+      const DeepCollectionEquality().hash(showDialogErrorItems) ^
       const DeepCollectionEquality().hash(optionOfReservationResponse);
 
   @JsonKey(ignore: true)
@@ -812,6 +834,7 @@ abstract class _CartState implements CartState {
           required bool reservating,
           required Option<Either<ReservationFailure, Unit>>
               optionOfreservationResultSuccessOrFailure,
+          required bool showDialogErrorItems,
           required Option<ReservationResponse> optionOfReservationResponse}) =
       _$_CartState;
 
@@ -827,6 +850,8 @@ abstract class _CartState implements CartState {
   Option<Either<ReservationFailure, Unit>>
       get optionOfreservationResultSuccessOrFailure =>
           throw _privateConstructorUsedError;
+  @override
+  bool get showDialogErrorItems => throw _privateConstructorUsedError;
   @override
   Option<ReservationResponse> get optionOfReservationResponse =>
       throw _privateConstructorUsedError;

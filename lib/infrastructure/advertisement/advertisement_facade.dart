@@ -238,6 +238,34 @@ class AdvertisementFacade extends IAdvertisementsFacade {
 
   @override
   Future<Either<AdvertisementFailure, List<Advertisement>>>
+      getSellerAdsBySellerId(int sellerId) async {
+    final place = await loadSelectedPlace();
+    final url = Uri.https(baseUrl, '$apiVersion$routeAdvertisements',
+        {'place_id': place?.id.toString(), 'seller_id': sellerId.toString()});
+    final response = await getAuthenticatedRequest(url, getApiHeader());
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final Iterable iterable = jsonDecode(response.body) as Iterable;
+      final advertisementsResponse = iterable.map((e) =>
+          AdvertisementResponse.fromJson(e as Map<String, dynamic>).toDomain());
+      final List<Advertisement> finalResult = advertisementsResponse
+          .map((e) => e.copyWith(
+              products:
+                  e.products.map((f) => f.copyWith(advertisement: e)).toList()))
+          .toList();
+
+      return right(finalResult);
+    } else if (code == 401) {
+      return left(const AdvertisementFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const AdvertisementFailure.requestError());
+    } else {
+      return left(const AdvertisementFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AdvertisementFailure, List<Advertisement>>>
       getGroupsAds() async {
     final place = await loadSelectedPlace();
     final url = Uri.https(baseUrl, '$apiVersion$routeGroupsAds',
@@ -338,6 +366,27 @@ class AdvertisementFacade extends IAdvertisementsFacade {
       return left(const AdvertisementFailure.unauthorized());
     } else if (code == 404) {
       return left(const AdvertisementFailure.productsNotFound());
+    } else if (code >= 400 && code < 500) {
+      return left(const AdvertisementFailure.requestError());
+    } else {
+      return left(const AdvertisementFailure.serverError());
+    }
+  }
+
+  Future<Either<AdvertisementFailure, Unit>> joinSellerGroup(
+      int sellerId) async {
+    final url = Uri.https(baseUrl, '$apiVersion$routeGroups');
+    final response = await getAuthenticatedPostRequest(
+        url,
+        getApiHeader(),
+        jsonEncode({
+          'group_membership': {'group_id': sellerId}
+        }));
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      return right(unit);
+    } else if (code == 401) {
+      return left(const AdvertisementFailure.unauthorized());
     } else if (code >= 400 && code < 500) {
       return left(const AdvertisementFailure.requestError());
     } else {

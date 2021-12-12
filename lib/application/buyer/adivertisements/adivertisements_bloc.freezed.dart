@@ -32,7 +32,7 @@ class _$AdvertisementsEventTearOff {
     return const PlaceChanged();
   }
 
-  LeaveGroupTapped leaveGroupTapped(Advertisement advertisement) {
+  LeaveGroupTapped leaveGroupTapped(Advertisement? advertisement) {
     return LeaveGroupTapped(
       advertisement,
     );
@@ -49,7 +49,7 @@ mixin _$AdvertisementsEvent {
     required TResult Function(int index, bool isExpanded) expandedChanged,
     required TResult Function() started,
     required TResult Function() placeChanged,
-    required TResult Function(Advertisement advertisement) leaveGroupTapped,
+    required TResult Function(Advertisement? advertisement) leaveGroupTapped,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,7 +57,7 @@ mixin _$AdvertisementsEvent {
     TResult Function(int index, bool isExpanded)? expandedChanged,
     TResult Function()? started,
     TResult Function()? placeChanged,
-    TResult Function(Advertisement advertisement)? leaveGroupTapped,
+    TResult Function(Advertisement? advertisement)? leaveGroupTapped,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -177,7 +177,7 @@ class _$ExpandedChanged implements ExpandedChanged {
     required TResult Function(int index, bool isExpanded) expandedChanged,
     required TResult Function() started,
     required TResult Function() placeChanged,
-    required TResult Function(Advertisement advertisement) leaveGroupTapped,
+    required TResult Function(Advertisement? advertisement) leaveGroupTapped,
   }) {
     return expandedChanged(index, isExpanded);
   }
@@ -188,7 +188,7 @@ class _$ExpandedChanged implements ExpandedChanged {
     TResult Function(int index, bool isExpanded)? expandedChanged,
     TResult Function()? started,
     TResult Function()? placeChanged,
-    TResult Function(Advertisement advertisement)? leaveGroupTapped,
+    TResult Function(Advertisement? advertisement)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (expandedChanged != null) {
@@ -276,7 +276,7 @@ class _$_Started implements _Started {
     required TResult Function(int index, bool isExpanded) expandedChanged,
     required TResult Function() started,
     required TResult Function() placeChanged,
-    required TResult Function(Advertisement advertisement) leaveGroupTapped,
+    required TResult Function(Advertisement? advertisement) leaveGroupTapped,
   }) {
     return started();
   }
@@ -287,7 +287,7 @@ class _$_Started implements _Started {
     TResult Function(int index, bool isExpanded)? expandedChanged,
     TResult Function()? started,
     TResult Function()? placeChanged,
-    TResult Function(Advertisement advertisement)? leaveGroupTapped,
+    TResult Function(Advertisement? advertisement)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -370,7 +370,7 @@ class _$PlaceChanged implements PlaceChanged {
     required TResult Function(int index, bool isExpanded) expandedChanged,
     required TResult Function() started,
     required TResult Function() placeChanged,
-    required TResult Function(Advertisement advertisement) leaveGroupTapped,
+    required TResult Function(Advertisement? advertisement) leaveGroupTapped,
   }) {
     return placeChanged();
   }
@@ -381,7 +381,7 @@ class _$PlaceChanged implements PlaceChanged {
     TResult Function(int index, bool isExpanded)? expandedChanged,
     TResult Function()? started,
     TResult Function()? placeChanged,
-    TResult Function(Advertisement advertisement)? leaveGroupTapped,
+    TResult Function(Advertisement? advertisement)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (placeChanged != null) {
@@ -426,9 +426,9 @@ abstract class $LeaveGroupTappedCopyWith<$Res> {
   factory $LeaveGroupTappedCopyWith(
           LeaveGroupTapped value, $Res Function(LeaveGroupTapped) then) =
       _$LeaveGroupTappedCopyWithImpl<$Res>;
-  $Res call({Advertisement advertisement});
+  $Res call({Advertisement? advertisement});
 
-  $AdvertisementCopyWith<$Res> get advertisement;
+  $AdvertisementCopyWith<$Res>? get advertisement;
 }
 
 /// @nodoc
@@ -450,13 +450,17 @@ class _$LeaveGroupTappedCopyWithImpl<$Res>
       advertisement == freezed
           ? _value.advertisement
           : advertisement // ignore: cast_nullable_to_non_nullable
-              as Advertisement,
+              as Advertisement?,
     ));
   }
 
   @override
-  $AdvertisementCopyWith<$Res> get advertisement {
-    return $AdvertisementCopyWith<$Res>(_value.advertisement, (value) {
+  $AdvertisementCopyWith<$Res>? get advertisement {
+    if (_value.advertisement == null) {
+      return null;
+    }
+
+    return $AdvertisementCopyWith<$Res>(_value.advertisement!, (value) {
       return _then(_value.copyWith(advertisement: value));
     });
   }
@@ -468,7 +472,7 @@ class _$LeaveGroupTapped implements LeaveGroupTapped {
   const _$LeaveGroupTapped(this.advertisement);
 
   @override
-  final Advertisement advertisement;
+  final Advertisement? advertisement;
 
   @override
   String toString() {
@@ -499,7 +503,7 @@ class _$LeaveGroupTapped implements LeaveGroupTapped {
     required TResult Function(int index, bool isExpanded) expandedChanged,
     required TResult Function() started,
     required TResult Function() placeChanged,
-    required TResult Function(Advertisement advertisement) leaveGroupTapped,
+    required TResult Function(Advertisement? advertisement) leaveGroupTapped,
   }) {
     return leaveGroupTapped(advertisement);
   }
@@ -510,7 +514,7 @@ class _$LeaveGroupTapped implements LeaveGroupTapped {
     TResult Function(int index, bool isExpanded)? expandedChanged,
     TResult Function()? started,
     TResult Function()? placeChanged,
-    TResult Function(Advertisement advertisement)? leaveGroupTapped,
+    TResult Function(Advertisement? advertisement)? leaveGroupTapped,
     required TResult orElse(),
   }) {
     if (leaveGroupTapped != null) {
@@ -547,10 +551,10 @@ class _$LeaveGroupTapped implements LeaveGroupTapped {
 }
 
 abstract class LeaveGroupTapped implements AdvertisementsEvent {
-  const factory LeaveGroupTapped(Advertisement advertisement) =
+  const factory LeaveGroupTapped(Advertisement? advertisement) =
       _$LeaveGroupTapped;
 
-  Advertisement get advertisement => throw _privateConstructorUsedError;
+  Advertisement? get advertisement => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LeaveGroupTappedCopyWith<LeaveGroupTapped> get copyWith =>
       throw _privateConstructorUsedError;

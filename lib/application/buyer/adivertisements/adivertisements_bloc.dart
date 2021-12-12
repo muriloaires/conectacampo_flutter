@@ -11,7 +11,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'adivertisements_event.dart';
+
 part 'adivertisements_state.dart';
+
 part 'adivertisements_bloc.freezed.dart';
 
 @injectable
@@ -51,17 +53,18 @@ class AdvertisementsBloc
             adsFailureOrSuccess: advertisementsFailureOrSuccess);
       }
     }, leaveGroupTapped: (LeaveGroupTapped value) async* {
-      final result =
-          await _adsFacade.leaveGroup(sellerId: value.advertisement.seller.id);
-
-      if (result.isRight()) {
-        final groupAdsFailureOrSuccess = await _adsFacade.getGroupsAds();
-        yield state.copyWith(
-            loading: false,
-            groupsAdsFailureOrSuccess: groupAdsFailureOrSuccess);
-      } else {
-        yield state.copyWith(groupRemovalSuccess: false);
-        state.copyWith(groupRemovalSuccess: true);
+      final sellerId = value.advertisement?.seller.id;
+      if (sellerId != null) {
+        final result = await _adsFacade.leaveGroup(sellerId: sellerId);
+        if (result.isRight()) {
+          final groupAdsFailureOrSuccess = await _adsFacade.getGroupsAds();
+          yield state.copyWith(
+              loading: false,
+              groupsAdsFailureOrSuccess: groupAdsFailureOrSuccess);
+        } else {
+          yield state.copyWith(groupRemovalSuccess: false);
+          state.copyWith(groupRemovalSuccess: true);
+        }
       }
     });
   }

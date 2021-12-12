@@ -29,7 +29,7 @@ class SingleAdvertisement extends StatelessWidget {
           height: 16,
         ),
         SizedBox(
-          height: 230,
+          height: 235,
           width: double.infinity,
           child: ListView.builder(
               physics: const ClampingScrollPhysics(),
@@ -41,12 +41,8 @@ class SingleAdvertisement extends StatelessWidget {
                     onTap: () async {
                       await Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
-                            ProductPage(_advertisement.products[index]),
+                            ProductPage(_advertisement.products[index], false),
                       ));
-
-                      context
-                          .read<BuyerMenuBloc>()
-                          .add(const BuyerMenuEvent.produtDetailsClosed());
                     },
                     child:
                     ProductAdvertisement(_advertisement.products[index]));

@@ -9,13 +9,16 @@ class CartState with _$CartState {
           required bool reservating,
           required Option<Either<ReservationFailure, Unit>>
               optionOfreservationResultSuccessOrFailure,
+          required bool showDialogErrorItems,
           required Option<ReservationResponse> optionOfReservationResponse}) =
       _CartState;
 
   factory CartState.initial() => CartState(
-      itemsInCart: [],
-      optionOfRemoteAdProductsFailureOrSuccess: none(),
-      reservating: false,
-      optionOfreservationResultSuccessOrFailure: none(),
-      optionOfReservationResponse: none());
+        itemsInCart: [],
+        optionOfRemoteAdProductsFailureOrSuccess: none(),
+        reservating: false,
+        optionOfreservationResultSuccessOrFailure: none(),
+        optionOfReservationResponse: none(),
+        showDialogErrorItems: false,
+      );
 }

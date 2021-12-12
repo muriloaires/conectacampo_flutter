@@ -10,5 +10,5 @@ class AdvertisementsEvent with _$AdvertisementsEvent {
   const factory AdvertisementsEvent.started() = _Started;
   const factory AdvertisementsEvent.placeChanged() = PlaceChanged;
   const factory AdvertisementsEvent.leaveGroupTapped(
-      Advertisement advertisement) = LeaveGroupTapped;
+      Advertisement? advertisement) = LeaveGroupTapped;
 }

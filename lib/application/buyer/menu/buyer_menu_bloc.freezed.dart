@@ -60,14 +60,6 @@ class _$BuyerMenuEventTearOff {
     return const ProfileRetapped();
   }
 
-  ProdutDetailsOpen produtDetailsOpen() {
-    return const ProdutDetailsOpen();
-  }
-
-  ProdutDetailsClosed produtDetailsClosed() {
-    return const ProdutDetailsClosed();
-  }
-
   NavToSellerTapped navToSellerTapped() {
     return const NavToSellerTapped();
   }
@@ -99,8 +91,6 @@ mixin _$BuyerMenuEvent {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -119,8 +109,6 @@ mixin _$BuyerMenuEvent {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -140,8 +128,6 @@ mixin _$BuyerMenuEvent {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -160,8 +146,6 @@ mixin _$BuyerMenuEvent {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -235,8 +219,6 @@ class _$Started implements Started {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -258,8 +240,6 @@ class _$Started implements Started {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -285,8 +265,6 @@ class _$Started implements Started {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -308,8 +286,6 @@ class _$Started implements Started {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -377,8 +353,6 @@ class _$OnCartTapped implements OnCartTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -400,8 +374,6 @@ class _$OnCartTapped implements OnCartTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -427,8 +399,6 @@ class _$OnCartTapped implements OnCartTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -450,8 +420,6 @@ class _$OnCartTapped implements OnCartTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -516,8 +484,6 @@ class _$BuyTapped implements BuyTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -539,8 +505,6 @@ class _$BuyTapped implements BuyTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -566,8 +530,6 @@ class _$BuyTapped implements BuyTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -589,8 +551,6 @@ class _$BuyTapped implements BuyTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -656,8 +616,6 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -679,8 +637,6 @@ class _$HomeTapped implements HomeTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -706,8 +662,6 @@ class _$HomeTapped implements HomeTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -729,8 +683,6 @@ class _$HomeTapped implements HomeTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -798,8 +750,6 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -821,8 +771,6 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -848,8 +796,6 @@ class _$GroupsTapped implements GroupsTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -871,8 +817,6 @@ class _$GroupsTapped implements GroupsTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -940,8 +884,6 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -963,8 +905,6 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -990,8 +930,6 @@ class _$ReservationTapped implements ReservationTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -1013,8 +951,6 @@ class _$ReservationTapped implements ReservationTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -1082,8 +1018,6 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -1105,8 +1039,6 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -1132,8 +1064,6 @@ class _$ProfileTapped implements ProfileTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -1155,8 +1085,6 @@ class _$ProfileTapped implements ProfileTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -1224,8 +1152,6 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -1247,8 +1173,6 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -1274,8 +1198,6 @@ class _$HomeRetapped implements HomeRetapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -1297,8 +1219,6 @@ class _$HomeRetapped implements HomeRetapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -1366,8 +1286,6 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -1389,8 +1307,6 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -1416,8 +1332,6 @@ class _$GroupsRetapped implements GroupsRetapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -1439,8 +1353,6 @@ class _$GroupsRetapped implements GroupsRetapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -1508,8 +1420,6 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -1531,8 +1441,6 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -1558,8 +1466,6 @@ class _$ReservationRetapped implements ReservationRetapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -1581,8 +1487,6 @@ class _$ReservationRetapped implements ReservationRetapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -1650,8 +1554,6 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -1673,8 +1575,6 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -1700,8 +1600,6 @@ class _$ProfileRetapped implements ProfileRetapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -1723,8 +1621,6 @@ class _$ProfileRetapped implements ProfileRetapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -1739,290 +1635,6 @@ class _$ProfileRetapped implements ProfileRetapped {
 
 abstract class ProfileRetapped implements BuyerMenuEvent {
   const factory ProfileRetapped() = _$ProfileRetapped;
-}
-
-/// @nodoc
-abstract class $ProdutDetailsOpenCopyWith<$Res> {
-  factory $ProdutDetailsOpenCopyWith(
-          ProdutDetailsOpen value, $Res Function(ProdutDetailsOpen) then) =
-      _$ProdutDetailsOpenCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$ProdutDetailsOpenCopyWithImpl<$Res>
-    extends _$BuyerMenuEventCopyWithImpl<$Res>
-    implements $ProdutDetailsOpenCopyWith<$Res> {
-  _$ProdutDetailsOpenCopyWithImpl(
-      ProdutDetailsOpen _value, $Res Function(ProdutDetailsOpen) _then)
-      : super(_value, (v) => _then(v as ProdutDetailsOpen));
-
-  @override
-  ProdutDetailsOpen get _value => super._value as ProdutDetailsOpen;
-}
-
-/// @nodoc
-
-class _$ProdutDetailsOpen implements ProdutDetailsOpen {
-  const _$ProdutDetailsOpen();
-
-  @override
-  String toString() {
-    return 'BuyerMenuEvent.produtDetailsOpen()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ProdutDetailsOpen);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() onCartTapped,
-    required TResult Function() buyTapped,
-    required TResult Function() homeTapped,
-    required TResult Function() groupsTapped,
-    required TResult Function() reservationTapped,
-    required TResult Function() profileTapped,
-    required TResult Function() homeRetapped,
-    required TResult Function() groupsRetapped,
-    required TResult Function() reservationRetapped,
-    required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
-    required TResult Function() navToSellerTapped,
-    required TResult Function() logout,
-    required TResult Function() searchTapped,
-  }) {
-    return produtDetailsOpen();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? onCartTapped,
-    TResult Function()? buyTapped,
-    TResult Function()? homeTapped,
-    TResult Function()? groupsTapped,
-    TResult Function()? reservationTapped,
-    TResult Function()? profileTapped,
-    TResult Function()? homeRetapped,
-    TResult Function()? groupsRetapped,
-    TResult Function()? reservationRetapped,
-    TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
-    TResult Function()? navToSellerTapped,
-    TResult Function()? logout,
-    TResult Function()? searchTapped,
-    required TResult orElse(),
-  }) {
-    if (produtDetailsOpen != null) {
-      return produtDetailsOpen();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
-    required TResult Function(OnCartTapped value) onCartTapped,
-    required TResult Function(BuyTapped value) buyTapped,
-    required TResult Function(HomeTapped value) homeTapped,
-    required TResult Function(GroupsTapped value) groupsTapped,
-    required TResult Function(ReservationTapped value) reservationTapped,
-    required TResult Function(ProfileTapped value) profileTapped,
-    required TResult Function(HomeRetapped value) homeRetapped,
-    required TResult Function(GroupsRetapped value) groupsRetapped,
-    required TResult Function(ReservationRetapped value) reservationRetapped,
-    required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
-    required TResult Function(NavToSellerTapped value) navToSellerTapped,
-    required TResult Function(Logout value) logout,
-    required TResult Function(SearchTapped value) searchTapped,
-  }) {
-    return produtDetailsOpen(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
-    TResult Function(OnCartTapped value)? onCartTapped,
-    TResult Function(BuyTapped value)? buyTapped,
-    TResult Function(HomeTapped value)? homeTapped,
-    TResult Function(GroupsTapped value)? groupsTapped,
-    TResult Function(ReservationTapped value)? reservationTapped,
-    TResult Function(ProfileTapped value)? profileTapped,
-    TResult Function(HomeRetapped value)? homeRetapped,
-    TResult Function(GroupsRetapped value)? groupsRetapped,
-    TResult Function(ReservationRetapped value)? reservationRetapped,
-    TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
-    TResult Function(NavToSellerTapped value)? navToSellerTapped,
-    TResult Function(Logout value)? logout,
-    TResult Function(SearchTapped value)? searchTapped,
-    required TResult orElse(),
-  }) {
-    if (produtDetailsOpen != null) {
-      return produtDetailsOpen(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ProdutDetailsOpen implements BuyerMenuEvent {
-  const factory ProdutDetailsOpen() = _$ProdutDetailsOpen;
-}
-
-/// @nodoc
-abstract class $ProdutDetailsClosedCopyWith<$Res> {
-  factory $ProdutDetailsClosedCopyWith(
-          ProdutDetailsClosed value, $Res Function(ProdutDetailsClosed) then) =
-      _$ProdutDetailsClosedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$ProdutDetailsClosedCopyWithImpl<$Res>
-    extends _$BuyerMenuEventCopyWithImpl<$Res>
-    implements $ProdutDetailsClosedCopyWith<$Res> {
-  _$ProdutDetailsClosedCopyWithImpl(
-      ProdutDetailsClosed _value, $Res Function(ProdutDetailsClosed) _then)
-      : super(_value, (v) => _then(v as ProdutDetailsClosed));
-
-  @override
-  ProdutDetailsClosed get _value => super._value as ProdutDetailsClosed;
-}
-
-/// @nodoc
-
-class _$ProdutDetailsClosed implements ProdutDetailsClosed {
-  const _$ProdutDetailsClosed();
-
-  @override
-  String toString() {
-    return 'BuyerMenuEvent.produtDetailsClosed()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ProdutDetailsClosed);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() onCartTapped,
-    required TResult Function() buyTapped,
-    required TResult Function() homeTapped,
-    required TResult Function() groupsTapped,
-    required TResult Function() reservationTapped,
-    required TResult Function() profileTapped,
-    required TResult Function() homeRetapped,
-    required TResult Function() groupsRetapped,
-    required TResult Function() reservationRetapped,
-    required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
-    required TResult Function() navToSellerTapped,
-    required TResult Function() logout,
-    required TResult Function() searchTapped,
-  }) {
-    return produtDetailsClosed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? onCartTapped,
-    TResult Function()? buyTapped,
-    TResult Function()? homeTapped,
-    TResult Function()? groupsTapped,
-    TResult Function()? reservationTapped,
-    TResult Function()? profileTapped,
-    TResult Function()? homeRetapped,
-    TResult Function()? groupsRetapped,
-    TResult Function()? reservationRetapped,
-    TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
-    TResult Function()? navToSellerTapped,
-    TResult Function()? logout,
-    TResult Function()? searchTapped,
-    required TResult orElse(),
-  }) {
-    if (produtDetailsClosed != null) {
-      return produtDetailsClosed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
-    required TResult Function(OnCartTapped value) onCartTapped,
-    required TResult Function(BuyTapped value) buyTapped,
-    required TResult Function(HomeTapped value) homeTapped,
-    required TResult Function(GroupsTapped value) groupsTapped,
-    required TResult Function(ReservationTapped value) reservationTapped,
-    required TResult Function(ProfileTapped value) profileTapped,
-    required TResult Function(HomeRetapped value) homeRetapped,
-    required TResult Function(GroupsRetapped value) groupsRetapped,
-    required TResult Function(ReservationRetapped value) reservationRetapped,
-    required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
-    required TResult Function(NavToSellerTapped value) navToSellerTapped,
-    required TResult Function(Logout value) logout,
-    required TResult Function(SearchTapped value) searchTapped,
-  }) {
-    return produtDetailsClosed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
-    TResult Function(OnCartTapped value)? onCartTapped,
-    TResult Function(BuyTapped value)? buyTapped,
-    TResult Function(HomeTapped value)? homeTapped,
-    TResult Function(GroupsTapped value)? groupsTapped,
-    TResult Function(ReservationTapped value)? reservationTapped,
-    TResult Function(ProfileTapped value)? profileTapped,
-    TResult Function(HomeRetapped value)? homeRetapped,
-    TResult Function(GroupsRetapped value)? groupsRetapped,
-    TResult Function(ReservationRetapped value)? reservationRetapped,
-    TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
-    TResult Function(NavToSellerTapped value)? navToSellerTapped,
-    TResult Function(Logout value)? logout,
-    TResult Function(SearchTapped value)? searchTapped,
-    required TResult orElse(),
-  }) {
-    if (produtDetailsClosed != null) {
-      return produtDetailsClosed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ProdutDetailsClosed implements BuyerMenuEvent {
-  const factory ProdutDetailsClosed() = _$ProdutDetailsClosed;
 }
 
 /// @nodoc
@@ -2076,8 +1688,6 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -2099,8 +1709,6 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -2126,8 +1734,6 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -2149,8 +1755,6 @@ class _$NavToSellerTapped implements NavToSellerTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -2215,8 +1819,6 @@ class _$Logout implements Logout {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -2238,8 +1840,6 @@ class _$Logout implements Logout {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -2265,8 +1865,6 @@ class _$Logout implements Logout {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -2288,8 +1886,6 @@ class _$Logout implements Logout {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -2357,8 +1953,6 @@ class _$SearchTapped implements SearchTapped {
     required TResult Function() groupsRetapped,
     required TResult Function() reservationRetapped,
     required TResult Function() profileRetapped,
-    required TResult Function() produtDetailsOpen,
-    required TResult Function() produtDetailsClosed,
     required TResult Function() navToSellerTapped,
     required TResult Function() logout,
     required TResult Function() searchTapped,
@@ -2380,8 +1974,6 @@ class _$SearchTapped implements SearchTapped {
     TResult Function()? groupsRetapped,
     TResult Function()? reservationRetapped,
     TResult Function()? profileRetapped,
-    TResult Function()? produtDetailsOpen,
-    TResult Function()? produtDetailsClosed,
     TResult Function()? navToSellerTapped,
     TResult Function()? logout,
     TResult Function()? searchTapped,
@@ -2407,8 +1999,6 @@ class _$SearchTapped implements SearchTapped {
     required TResult Function(GroupsRetapped value) groupsRetapped,
     required TResult Function(ReservationRetapped value) reservationRetapped,
     required TResult Function(ProfileRetapped value) profileRetapped,
-    required TResult Function(ProdutDetailsOpen value) produtDetailsOpen,
-    required TResult Function(ProdutDetailsClosed value) produtDetailsClosed,
     required TResult Function(NavToSellerTapped value) navToSellerTapped,
     required TResult Function(Logout value) logout,
     required TResult Function(SearchTapped value) searchTapped,
@@ -2430,8 +2020,6 @@ class _$SearchTapped implements SearchTapped {
     TResult Function(GroupsRetapped value)? groupsRetapped,
     TResult Function(ReservationRetapped value)? reservationRetapped,
     TResult Function(ProfileRetapped value)? profileRetapped,
-    TResult Function(ProdutDetailsOpen value)? produtDetailsOpen,
-    TResult Function(ProdutDetailsClosed value)? produtDetailsClosed,
     TResult Function(NavToSellerTapped value)? navToSellerTapped,
     TResult Function(Logout value)? logout,
     TResult Function(SearchTapped value)? searchTapped,
@@ -2459,7 +2047,6 @@ class _$BuyerMenuStateTearOff {
       required List<ReservationItem> itemsInCart,
       required bool openCart,
       required bool navToLogin,
-      required bool showToolBar,
       required bool openSearch,
       required ReservationToOpen? reservationToOpen}) {
     return _BuyerMenuState(
@@ -2469,7 +2056,6 @@ class _$BuyerMenuStateTearOff {
       itemsInCart: itemsInCart,
       openCart: openCart,
       navToLogin: navToLogin,
-      showToolBar: showToolBar,
       openSearch: openSearch,
       reservationToOpen: reservationToOpen,
     );
@@ -2487,7 +2073,6 @@ mixin _$BuyerMenuState {
   List<ReservationItem> get itemsInCart => throw _privateConstructorUsedError;
   bool get openCart => throw _privateConstructorUsedError;
   bool get navToLogin => throw _privateConstructorUsedError;
-  bool get showToolBar => throw _privateConstructorUsedError;
   bool get openSearch => throw _privateConstructorUsedError;
   ReservationToOpen? get reservationToOpen =>
       throw _privateConstructorUsedError;
@@ -2509,7 +2094,6 @@ abstract class $BuyerMenuStateCopyWith<$Res> {
       List<ReservationItem> itemsInCart,
       bool openCart,
       bool navToLogin,
-      bool showToolBar,
       bool openSearch,
       ReservationToOpen? reservationToOpen});
 }
@@ -2531,7 +2115,6 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
     Object? itemsInCart = freezed,
     Object? openCart = freezed,
     Object? navToLogin = freezed,
-    Object? showToolBar = freezed,
     Object? openSearch = freezed,
     Object? reservationToOpen = freezed,
   }) {
@@ -2560,10 +2143,6 @@ class _$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.navToLogin
           : navToLogin // ignore: cast_nullable_to_non_nullable
               as bool,
-      showToolBar: showToolBar == freezed
-          ? _value.showToolBar
-          : showToolBar // ignore: cast_nullable_to_non_nullable
-              as bool,
       openSearch: openSearch == freezed
           ? _value.openSearch
           : openSearch // ignore: cast_nullable_to_non_nullable
@@ -2590,7 +2169,6 @@ abstract class _$BuyerMenuStateCopyWith<$Res>
       List<ReservationItem> itemsInCart,
       bool openCart,
       bool navToLogin,
-      bool showToolBar,
       bool openSearch,
       ReservationToOpen? reservationToOpen});
 }
@@ -2614,7 +2192,6 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
     Object? itemsInCart = freezed,
     Object? openCart = freezed,
     Object? navToLogin = freezed,
-    Object? showToolBar = freezed,
     Object? openSearch = freezed,
     Object? reservationToOpen = freezed,
   }) {
@@ -2643,10 +2220,6 @@ class __$BuyerMenuStateCopyWithImpl<$Res>
           ? _value.navToLogin
           : navToLogin // ignore: cast_nullable_to_non_nullable
               as bool,
-      showToolBar: showToolBar == freezed
-          ? _value.showToolBar
-          : showToolBar // ignore: cast_nullable_to_non_nullable
-              as bool,
       openSearch: openSearch == freezed
           ? _value.openSearch
           : openSearch // ignore: cast_nullable_to_non_nullable
@@ -2669,7 +2242,6 @@ class _$_BuyerMenuState implements _BuyerMenuState {
       required this.itemsInCart,
       required this.openCart,
       required this.navToLogin,
-      required this.showToolBar,
       required this.openSearch,
       required this.reservationToOpen});
 
@@ -2686,15 +2258,13 @@ class _$_BuyerMenuState implements _BuyerMenuState {
   @override
   final bool navToLogin;
   @override
-  final bool showToolBar;
-  @override
   final bool openSearch;
   @override
   final ReservationToOpen? reservationToOpen;
 
   @override
   String toString() {
-    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller, itemsInCart: $itemsInCart, openCart: $openCart, navToLogin: $navToLogin, showToolBar: $showToolBar, openSearch: $openSearch, reservationToOpen: $reservationToOpen)';
+    return 'BuyerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToSeller: $navToSeller, itemsInCart: $itemsInCart, openCart: $openCart, navToLogin: $navToLogin, openSearch: $openSearch, reservationToOpen: $reservationToOpen)';
   }
 
   @override
@@ -2719,9 +2289,6 @@ class _$_BuyerMenuState implements _BuyerMenuState {
             (identical(other.navToLogin, navToLogin) ||
                 const DeepCollectionEquality()
                     .equals(other.navToLogin, navToLogin)) &&
-            (identical(other.showToolBar, showToolBar) ||
-                const DeepCollectionEquality()
-                    .equals(other.showToolBar, showToolBar)) &&
             (identical(other.openSearch, openSearch) ||
                 const DeepCollectionEquality()
                     .equals(other.openSearch, openSearch)) &&
@@ -2739,7 +2306,6 @@ class _$_BuyerMenuState implements _BuyerMenuState {
       const DeepCollectionEquality().hash(itemsInCart) ^
       const DeepCollectionEquality().hash(openCart) ^
       const DeepCollectionEquality().hash(navToLogin) ^
-      const DeepCollectionEquality().hash(showToolBar) ^
       const DeepCollectionEquality().hash(openSearch) ^
       const DeepCollectionEquality().hash(reservationToOpen);
 
@@ -2757,7 +2323,6 @@ abstract class _BuyerMenuState implements BuyerMenuState {
       required List<ReservationItem> itemsInCart,
       required bool openCart,
       required bool navToLogin,
-      required bool showToolBar,
       required bool openSearch,
       required ReservationToOpen? reservationToOpen}) = _$_BuyerMenuState;
 
@@ -2773,8 +2338,6 @@ abstract class _BuyerMenuState implements BuyerMenuState {
   bool get openCart => throw _privateConstructorUsedError;
   @override
   bool get navToLogin => throw _privateConstructorUsedError;
-  @override
-  bool get showToolBar => throw _privateConstructorUsedError;
   @override
   bool get openSearch => throw _privateConstructorUsedError;
   @override

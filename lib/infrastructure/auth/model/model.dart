@@ -18,6 +18,7 @@ class UserResponse with _$UserResponse {
     @JsonKey(name: 'access_token') String? accessToken,
     @JsonKey(name: 'refresh_token') String? refreshToken,
     @JsonKey(name: 'email') String? email,
+    @JsonKey(name: 'own_group_id') int? ownGroupId,
   ) = _UserResponse;
 
   factory UserResponse.fromJson(Map<String, dynamic> json) =>

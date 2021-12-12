@@ -7,14 +7,16 @@ part 'user.freezed.dart';
 @freezed
 class User with _$User {
   const factory User(
-      int id,
-      String? name,
-      String? nickname,
-      String? vehicleLicensePlate,
-      String? phoneNumber,
-      ThumbAvatar? thumbAvatar,
-      MediumAvatar? mediumAvatar,
-      OriginalAvatar? originalAvatar,
-      Advertisement? lastAdvertisement,
-      String? email) = _User;
+    int id,
+    String? name,
+    String? nickname,
+    String? vehicleLicensePlate,
+    String? phoneNumber,
+    ThumbAvatar? thumbAvatar,
+    MediumAvatar? mediumAvatar,
+    OriginalAvatar? originalAvatar,
+    Advertisement? lastAdvertisement,
+    String? email,
+    int? ownGroupId,
+  ) = _User;
 }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
 import 'package:conectacampo/application/buyer/search/result/search_result_bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
@@ -26,12 +27,9 @@ class SearchAdvertisement extends StatelessWidget {
           final adv = context.read<SearchResultBloc>().state.advertisement;
           return InkWell(
             onTap: () async {
-              context
-                  .read<BuyerMenuBloc>()
-                  .add(const BuyerMenuEvent.produtDetailsOpen());
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => ProductPage(product),
+                  builder: (context) => ProductPage(product, false),
                 ),
               );
             },
@@ -42,7 +40,6 @@ class SearchAdvertisement extends StatelessWidget {
                 physics: const ClampingScrollPhysics(),
                 children: [
                   Row(
-
                     children: [
                       SizedBox(
                         width: 74,
@@ -50,10 +47,10 @@ class SearchAdvertisement extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(4.0),
                           child: product.images.isNotEmpty
-                              ? Image.network(
-                                  product.images.first.mediumAvatar
+                              ? CachedNetworkImage(
+                                  imageUrl: product.images.first.mediumAvatar
                                       .getOrCrash(),
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                 )
                               : Container(),
                         ),
@@ -94,7 +91,7 @@ class SearchAdvertisement extends StatelessWidget {
                                 children: [
                                   const Text('Vendedor'),
                                   Text(
-                                    adv?.seller.name ?? '',
+                                    adv?.seller.nickname ?? '',
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -108,7 +105,7 @@ class SearchAdvertisement extends StatelessWidget {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0,8,0,0),
+                    padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                     child: Text(
                       'Feira do dia: ${state.advertisement?.deliveryAt.getDateAndMonthName()}',
                       style: const TextStyle(

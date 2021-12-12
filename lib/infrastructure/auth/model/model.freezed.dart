@@ -31,7 +31,8 @@ class _$UserResponseTearOff {
       @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String? accessToken,
       @JsonKey(name: 'refresh_token') String? refreshToken,
-      @JsonKey(name: 'email') String? email) {
+      @JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'own_group_id') int? ownGroupId) {
     return _UserResponse(
       id,
       fullName,
@@ -44,6 +45,7 @@ class _$UserResponseTearOff {
       accessToken,
       refreshToken,
       email,
+      ownGroupId,
     );
   }
 
@@ -79,6 +81,8 @@ mixin _$UserResponse {
   String? get refreshToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'own_group_id')
+  int? get ownGroupId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -102,7 +106,8 @@ abstract class $UserResponseCopyWith<$Res> {
       @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String? accessToken,
       @JsonKey(name: 'refresh_token') String? refreshToken,
-      @JsonKey(name: 'email') String? email});
+      @JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'own_group_id') int? ownGroupId});
 
   $AvatarResponseCopyWith<$Res>? get avatar;
 }
@@ -128,6 +133,7 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
     Object? email = freezed,
+    Object? ownGroupId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -174,6 +180,10 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      ownGroupId: ownGroupId == freezed
+          ? _value.ownGroupId
+          : ownGroupId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 
@@ -207,7 +217,8 @@ abstract class _$UserResponseCopyWith<$Res>
       @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String? accessToken,
       @JsonKey(name: 'refresh_token') String? refreshToken,
-      @JsonKey(name: 'email') String? email});
+      @JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'own_group_id') int? ownGroupId});
 
   @override
   $AvatarResponseCopyWith<$Res>? get avatar;
@@ -236,6 +247,7 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
     Object? email = freezed,
+    Object? ownGroupId = freezed,
   }) {
     return _then(_UserResponse(
       id == freezed
@@ -282,6 +294,10 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      ownGroupId == freezed
+          ? _value.ownGroupId
+          : ownGroupId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -300,7 +316,8 @@ class _$_UserResponse implements _UserResponse {
       @JsonKey(name: 'avatar') this.avatar,
       @JsonKey(name: 'access_token') this.accessToken,
       @JsonKey(name: 'refresh_token') this.refreshToken,
-      @JsonKey(name: 'email') this.email);
+      @JsonKey(name: 'email') this.email,
+      @JsonKey(name: 'own_group_id') this.ownGroupId);
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_UserResponseFromJson(json);
@@ -338,10 +355,13 @@ class _$_UserResponse implements _UserResponse {
   @override
   @JsonKey(name: 'email')
   final String? email;
+  @override
+  @JsonKey(name: 'own_group_id')
+  final int? ownGroupId;
 
   @override
   String toString() {
-    return 'UserResponse(id: $id, fullName: $fullName, firstName: $firstName, lastName: $lastName, nickname: $nickname, phoneNumber: $phoneNumber, vehicleLicensePlate: $vehicleLicensePlate, avatar: $avatar, accessToken: $accessToken, refreshToken: $refreshToken, email: $email)';
+    return 'UserResponse(id: $id, fullName: $fullName, firstName: $firstName, lastName: $lastName, nickname: $nickname, phoneNumber: $phoneNumber, vehicleLicensePlate: $vehicleLicensePlate, avatar: $avatar, accessToken: $accessToken, refreshToken: $refreshToken, email: $email, ownGroupId: $ownGroupId)';
   }
 
   @override
@@ -377,7 +397,10 @@ class _$_UserResponse implements _UserResponse {
                 const DeepCollectionEquality()
                     .equals(other.refreshToken, refreshToken)) &&
             (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)));
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.ownGroupId, ownGroupId) ||
+                const DeepCollectionEquality()
+                    .equals(other.ownGroupId, ownGroupId)));
   }
 
   @override
@@ -393,7 +416,8 @@ class _$_UserResponse implements _UserResponse {
       const DeepCollectionEquality().hash(avatar) ^
       const DeepCollectionEquality().hash(accessToken) ^
       const DeepCollectionEquality().hash(refreshToken) ^
-      const DeepCollectionEquality().hash(email);
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(ownGroupId);
 
   @JsonKey(ignore: true)
   @override
@@ -418,7 +442,8 @@ abstract class _UserResponse implements UserResponse {
       @JsonKey(name: 'avatar') AvatarResponse? avatar,
       @JsonKey(name: 'access_token') String? accessToken,
       @JsonKey(name: 'refresh_token') String? refreshToken,
-      @JsonKey(name: 'email') String? email) = _$_UserResponse;
+      @JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'own_group_id') int? ownGroupId) = _$_UserResponse;
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
       _$_UserResponse.fromJson;
@@ -456,6 +481,9 @@ abstract class _UserResponse implements UserResponse {
   @override
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'own_group_id')
+  int? get ownGroupId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserResponseCopyWith<_UserResponse> get copyWith =>

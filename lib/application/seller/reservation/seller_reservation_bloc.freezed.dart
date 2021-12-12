@@ -1126,7 +1126,8 @@ class _$SellerReservationStateTearOff {
       required bool isItemsVisible,
       required bool finishing,
       required bool finished,
-      required Advertisement? advertisement}) {
+      required Advertisement? advertisement,
+      required List<ProductReservation> changedProducts}) {
     return _SellerReservationState(
       reservation: reservation,
       update: update,
@@ -1135,6 +1136,7 @@ class _$SellerReservationStateTearOff {
       finishing: finishing,
       finished: finished,
       advertisement: advertisement,
+      changedProducts: changedProducts,
     );
   }
 }
@@ -1152,6 +1154,8 @@ mixin _$SellerReservationState {
   bool get finishing => throw _privateConstructorUsedError;
   bool get finished => throw _privateConstructorUsedError;
   Advertisement? get advertisement => throw _privateConstructorUsedError;
+  List<ProductReservation> get changedProducts =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SellerReservationStateCopyWith<SellerReservationState> get copyWith =>
@@ -1170,7 +1174,8 @@ abstract class $SellerReservationStateCopyWith<$Res> {
       bool isItemsVisible,
       bool finishing,
       bool finished,
-      Advertisement? advertisement});
+      Advertisement? advertisement,
+      List<ProductReservation> changedProducts});
 
   $ReservationCopyWith<$Res>? get reservation;
   $AdvertisementCopyWith<$Res>? get advertisement;
@@ -1194,6 +1199,7 @@ class _$SellerReservationStateCopyWithImpl<$Res>
     Object? finishing = freezed,
     Object? finished = freezed,
     Object? advertisement = freezed,
+    Object? changedProducts = freezed,
   }) {
     return _then(_value.copyWith(
       reservation: reservation == freezed
@@ -1224,6 +1230,10 @@ class _$SellerReservationStateCopyWithImpl<$Res>
           ? _value.advertisement
           : advertisement // ignore: cast_nullable_to_non_nullable
               as Advertisement?,
+      changedProducts: changedProducts == freezed
+          ? _value.changedProducts
+          : changedProducts // ignore: cast_nullable_to_non_nullable
+              as List<ProductReservation>,
     ));
   }
 
@@ -1264,7 +1274,8 @@ abstract class _$SellerReservationStateCopyWith<$Res>
       bool isItemsVisible,
       bool finishing,
       bool finished,
-      Advertisement? advertisement});
+      Advertisement? advertisement,
+      List<ProductReservation> changedProducts});
 
   @override
   $ReservationCopyWith<$Res>? get reservation;
@@ -1292,6 +1303,7 @@ class __$SellerReservationStateCopyWithImpl<$Res>
     Object? finishing = freezed,
     Object? finished = freezed,
     Object? advertisement = freezed,
+    Object? changedProducts = freezed,
   }) {
     return _then(_SellerReservationState(
       reservation: reservation == freezed
@@ -1322,6 +1334,10 @@ class __$SellerReservationStateCopyWithImpl<$Res>
           ? _value.advertisement
           : advertisement // ignore: cast_nullable_to_non_nullable
               as Advertisement?,
+      changedProducts: changedProducts == freezed
+          ? _value.changedProducts
+          : changedProducts // ignore: cast_nullable_to_non_nullable
+              as List<ProductReservation>,
     ));
   }
 }
@@ -1336,7 +1352,8 @@ class _$_SellerReservationState implements _SellerReservationState {
       required this.isItemsVisible,
       required this.finishing,
       required this.finished,
-      required this.advertisement});
+      required this.advertisement,
+      required this.changedProducts});
 
   @override
   final Reservation? reservation;
@@ -1352,10 +1369,12 @@ class _$_SellerReservationState implements _SellerReservationState {
   final bool finished;
   @override
   final Advertisement? advertisement;
+  @override
+  final List<ProductReservation> changedProducts;
 
   @override
   String toString() {
-    return 'SellerReservationState(reservation: $reservation, update: $update, deletedItems: $deletedItems, isItemsVisible: $isItemsVisible, finishing: $finishing, finished: $finished, advertisement: $advertisement)';
+    return 'SellerReservationState(reservation: $reservation, update: $update, deletedItems: $deletedItems, isItemsVisible: $isItemsVisible, finishing: $finishing, finished: $finished, advertisement: $advertisement, changedProducts: $changedProducts)';
   }
 
   @override
@@ -1381,7 +1400,10 @@ class _$_SellerReservationState implements _SellerReservationState {
                     .equals(other.finished, finished)) &&
             (identical(other.advertisement, advertisement) ||
                 const DeepCollectionEquality()
-                    .equals(other.advertisement, advertisement)));
+                    .equals(other.advertisement, advertisement)) &&
+            (identical(other.changedProducts, changedProducts) ||
+                const DeepCollectionEquality()
+                    .equals(other.changedProducts, changedProducts)));
   }
 
   @override
@@ -1393,7 +1415,8 @@ class _$_SellerReservationState implements _SellerReservationState {
       const DeepCollectionEquality().hash(isItemsVisible) ^
       const DeepCollectionEquality().hash(finishing) ^
       const DeepCollectionEquality().hash(finished) ^
-      const DeepCollectionEquality().hash(advertisement);
+      const DeepCollectionEquality().hash(advertisement) ^
+      const DeepCollectionEquality().hash(changedProducts);
 
   @JsonKey(ignore: true)
   @override
@@ -1404,13 +1427,15 @@ class _$_SellerReservationState implements _SellerReservationState {
 
 abstract class _SellerReservationState implements SellerReservationState {
   const factory _SellerReservationState(
-      {required Reservation? reservation,
-      required bool update,
-      required List<ProductReservation> deletedItems,
-      required bool isItemsVisible,
-      required bool finishing,
-      required bool finished,
-      required Advertisement? advertisement}) = _$_SellerReservationState;
+          {required Reservation? reservation,
+          required bool update,
+          required List<ProductReservation> deletedItems,
+          required bool isItemsVisible,
+          required bool finishing,
+          required bool finished,
+          required Advertisement? advertisement,
+          required List<ProductReservation> changedProducts}) =
+      _$_SellerReservationState;
 
   @override
   Reservation? get reservation => throw _privateConstructorUsedError;
@@ -1427,6 +1452,9 @@ abstract class _SellerReservationState implements SellerReservationState {
   bool get finished => throw _privateConstructorUsedError;
   @override
   Advertisement? get advertisement => throw _privateConstructorUsedError;
+  @override
+  List<ProductReservation> get changedProducts =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SellerReservationStateCopyWith<_SellerReservationState> get copyWith =>

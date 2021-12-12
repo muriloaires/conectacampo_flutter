@@ -14,7 +14,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'cart_bloc.freezed.dart';
+
 part 'cart_event.dart';
+
 part 'cart_state.dart';
 
 @injectable
@@ -53,7 +55,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         final itemsInCart = await reservationFacade.getItemsInCart();
         yield state.copyWith(
             itemsInCart: itemsInCart,
-            optionOfReservationResponse: none(),
             optionOfreservationResultSuccessOrFailure: none());
       }
     }, btnFinishPressed: (BtnFinishPressed value) async* {
@@ -78,7 +79,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       yield state.copyWith(
           reservating: false,
           optionOfreservationResultSuccessOrFailure: some(result),
-          optionOfReservationResponse: optionOf(response));
+          optionOfReservationResponse: optionOf(response),
+          showDialogErrorItems: true);
+      await Future.delayed(const Duration(seconds: 2));
+      yield state.copyWith(showDialogErrorItems: false);
     });
   }
 }

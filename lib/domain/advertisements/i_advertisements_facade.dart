@@ -10,15 +10,14 @@ abstract class IAdvertisementsFacade {
   Future<Either<AdvertisementFailure, List<Advertisement>>> getAdvertisements(
       Place place);
 
-  Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProducts({
-    required Place place,
-    String? productName,
-    String? kind,
-    int? productId,
-    int? quantity,
-    String? rating,
-    String? date
-  });
+  Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProducts(
+      {required Place place,
+      String? productName,
+      String? kind,
+      int? productId,
+      int? quantity,
+      String? rating,
+      String? date});
 
   Future<Unit> saveSearchedName(String productName);
 
@@ -27,7 +26,8 @@ abstract class IAdvertisementsFacade {
   Future<Either<AdvertisementFailure, Advertisement>> publishAdvertisement(
       NewAdvertisement newAdvertisement);
 
-  Future<Either<AdvertisementFailure, Advertisement>> getAdvertisement(int adId);
+  Future<Either<AdvertisementFailure, Advertisement>> getAdvertisement(
+      int adId);
 
   Future<Either<AdvertisementFailure, List<Advertisement>>> getSellerAds(
       Place place);
@@ -42,4 +42,9 @@ abstract class IAdvertisementsFacade {
 
   Future<Either<AdvertisementFailure, Unit>> deleteAd(
       Advertisement advertisement);
+
+  Future<Either<AdvertisementFailure, List<Advertisement>>>
+      getSellerAdsBySellerId(int sellerId);
+
+  Future<Either<AdvertisementFailure, Unit>> joinSellerGroup(int sellerId);
 }

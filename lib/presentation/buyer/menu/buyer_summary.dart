@@ -178,13 +178,16 @@ class BuyerSummary extends StatelessWidget {
                                           ),
                                         ),
                                       )
-                                    : AdvertisementList(
-                                        isSearch: false,
-                                        isGroup: false,
-                                        advertisements: r
-                                            .map((e) =>
-                                                UIAdvertisement(false, e))
-                                            .toList()));
+                                    : Padding(
+                                      padding: const EdgeInsets.fromLTRB(20,10,20,0),
+                                      child: AdvertisementList(
+                                          isSearch: false,
+                                          isGroup: false,
+                                          advertisements: r
+                                              .map((e) =>
+                                                  UIAdvertisement(false, e))
+                                              .toList()),
+                                    ));
                           },
                         ),
                         const SizedBox(

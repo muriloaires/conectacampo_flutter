@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conectacampo/application/buyer/adivertisements/advertiser/advertiser_bloc.dart';
 import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/injection.dart';
@@ -7,9 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Advertiser extends StatelessWidget {
   final bool isSearch;
-  final User seller;
+  final User? seller;
 
-  const Advertiser({required this.isSearch, required this.seller}) : super();
+  const Advertiser({required this.isSearch, required this.seller});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,8 @@ class Advertiser extends StatelessWidget {
           builder: (context, state) {
         String lastProducts = '';
         if (state.seller?.lastAdvertisement != null) {
-          for (final element in state.seller?.lastAdvertisement!.products ?? []) {
+          for (final element
+              in state.seller?.lastAdvertisement!.products ?? []) {
             lastProducts += '${element.name}, ';
           }
         }
@@ -39,7 +41,7 @@ class Advertiser extends StatelessWidget {
                   CircleAvatar(
                       radius: 30.0,
                       backgroundColor: ColorSet.green1,
-                      foregroundImage: NetworkImage(
+                      foregroundImage: CachedNetworkImageProvider(
                           state.seller?.thumbAvatar?.getOrCrash() ?? '')),
                   const SizedBox(width: 8),
                   Expanded(

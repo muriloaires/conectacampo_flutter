@@ -30,20 +30,20 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
     yield* event.map(
         homeTapped: (e) async* {
           yield state.copyWith(
-              currentIndex: 0, navToRoot: false, showToolBar: true);
+              currentIndex: 0, navToRoot: false);
         },
         groupsTapped: (e) async* {
           yield state.copyWith(
-              currentIndex: 1, navToRoot: false, showToolBar: true);
+              currentIndex: 1, navToRoot: false);
         },
         buyTapped: (e) async* {},
         reservationTapped: (e) async* {
           yield state.copyWith(
-              currentIndex: 3, navToRoot: false, showToolBar: true);
+              currentIndex: 3, navToRoot: false);
         },
         profileTapped: (e) async* {
           yield state.copyWith(
-              currentIndex: 4, navToRoot: false, showToolBar: false);
+              currentIndex: 4, navToRoot: false);
         },
         groupsRetapped: (value) async* {
           yield state.copyWith(navToRoot: true);
@@ -86,12 +86,6 @@ class BuyerMenuBloc extends Bloc<BuyerMenuEvent, BuyerMenuState> {
         logout: (Logout value) async* {
           await logout();
           yield state.copyWith(navToLogin: true);
-        },
-        produtDetailsOpen: (ProdutDetailsOpen value) async* {
-          yield state.copyWith(showToolBar: false);
-        },
-        produtDetailsClosed: (ProdutDetailsClosed value) async* {
-          yield state.copyWith(showToolBar: true);
         },
         searchTapped: (SearchTapped value) async* {
           yield state.copyWith(openSearch: true);

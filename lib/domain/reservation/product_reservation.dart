@@ -11,5 +11,6 @@ class ProductReservation with _$ProductReservation {
       required String? createdAt,
       required ReservationItemStatus status,
       required int quantity,
-      required AdProduct adProduct}) = _ProductReservation;
+      required AdProduct adProduct,
+      required bool? quantityChanged}) = _ProductReservation;
 }

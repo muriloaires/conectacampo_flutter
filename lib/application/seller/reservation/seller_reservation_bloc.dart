@@ -45,8 +45,10 @@ class SellerReservationBloc
 
       for (final element in state.reservation?.productReservations ??
           List<ProductReservation>.empty()) {
-        await reservationFacade.updateProductReservation(
-            element, element.quantity);
+        if (element.quantityChanged ?? false) {
+          await reservationFacade.updateProductReservation(
+              element, element.quantity);
+        }
       }
 
       for (final element in state.deletedItems) {
@@ -55,7 +57,9 @@ class SellerReservationBloc
       yield state.copyWith(finishing: false, finished: true);
     }, quantityEdited: (QuantityEdited value) async* {
       final product = state.reservation?.productReservations[value.index]
-          .copyWith(quantity: value.newQuantity);
+          .copyWith(quantity: value.newQuantity,
+          quantityChanged: value.newQuantity !=
+              state.reservation?.productReservations[value.index].quantity);
       if (product != null) {
         state.reservation?.productReservations[value.index] = product;
         yield state.copyWith(reservation: state.reservation, update: true);

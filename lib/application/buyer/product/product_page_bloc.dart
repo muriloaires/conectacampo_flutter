@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/advertisements/advertisement_failure.dart';
 import 'package:conectacampo/domain/advertisements/i_advertisements_facade.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
@@ -51,7 +52,8 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
     }, amountChanged: (amountChanged) async* {
       final amount = state.product?.quantity;
       yield state.copyWith(
-          reservationQuantity: ReservationQuantity(amountChanged.amount, current: amount),
+          reservationQuantity:
+              ReservationQuantity(amountChanged.amount, current: amount),
           showErrorMsg: false,
           reservationItemFailureOrSuccess: null);
     }, onBtnReservationTap: (onBtnReservationTap) async* {
@@ -69,6 +71,16 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
             openCart: result.isRight());
 
         yield state.copyWith(openCart: false);
+      }
+    }, onBtnJoinSellerGroupClick: (OnBtnJoinSellerGroupClick value) async* {
+      final sellerId = state.product?.advertisement?.seller.ownGroupId;
+      if (sellerId != null) {
+        yield state.copyWith(joiningSellerGroup: true);
+        final result = await advertisementsFacade.joinSellerGroup(sellerId);
+        yield state.copyWith(
+          joiningSellerGroup: false,
+          joinSellerGroupErrorOrSuccess: result,
+        );
       }
     });
   }
