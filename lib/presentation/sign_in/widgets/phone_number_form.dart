@@ -56,7 +56,9 @@ class PhoneNumberForm extends StatelessWidget {
                         invalidVerificationId: (_) =>
                             'A verificação falhou. Tente novamente',
                         applicationError: (_) => 'A aplicação falhou',
-                        unknownError: (error) =>  error.exception.code + (error.exception.message ?? ''),
+                        unknownError: (error) =>
+                            error.exception.code +
+                            (error.exception.message ?? ''),
                         orElse: () => 'Algum error');
                     if (errorText.isEmpty == false) {
                       final snackBar = SnackBar(content: Text(errorText));
@@ -69,10 +71,12 @@ class PhoneNumberForm extends StatelessWidget {
                     );
                   }));
         }, builder: (context, state) {
-              return Form(
-                autovalidate: state.showErrorMessages,
-                child: ListView(
-                  children: [
+          return Form(
+            autovalidateMode: state.showErrorMessages
+                ? AutovalidateMode.always
+                : AutovalidateMode.disabled,
+            child: ListView(
+              children: [
                 const SizedBox(
                   width: double.infinity,
                   child: Text(

@@ -157,6 +157,22 @@ class SellerReservationWidget extends StatelessWidget {
                                           ReservationStatus.confirmed,
                                   child: Column(
                                     children: [
+                                      Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: GestureDetector(
+                                              onTap: () {
+                                                context
+                                                    .read<SellerMenuBloc>()
+                                                    .add(SellerMenuEvent
+                                                    .reservationEditItemsTap(
+                                                    state.reservation));
+                                              },
+                                              child: const Text('Alterar itens',
+                                                  style: TextStyle(
+                                                      color: ColorSet.brown1,
+                                                      fontSize: 12,
+                                                      decoration: TextDecoration
+                                                          .underline)))),
                                       const SizedBox(height: 20),
                                       MaterialButton(
                                         onPressed: () {

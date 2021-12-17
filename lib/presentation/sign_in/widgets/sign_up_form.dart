@@ -76,7 +76,9 @@ class SignUpForm extends StatelessWidget {
                   }));
         }, builder: (context, state) {
           return Form(
-            autovalidate: state.showErrorMessages,
+            autovalidateMode: state.showErrorMessages
+                ? AutovalidateMode.always
+                : AutovalidateMode.disabled,
             child: ListView(
               children: [
                 const SizedBox(
