@@ -45,6 +45,9 @@ abstract class IReservationFacade {
   Future<Either<ReservationFailure, Unit>> confirmProductReservation(
       ProductReservation productReservation);
 
+  Future<Either<ReservationFailure, Unit>> updateReservation(
+      int? reservationId, ReservationObjRequest reservationObj);
+
   Future<Either<ReservationFailure, Unit>> confirmReservation(
       Reservation reservation);
 

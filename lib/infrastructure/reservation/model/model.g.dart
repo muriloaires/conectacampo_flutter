@@ -41,16 +41,20 @@ Map<String, dynamic> _$_$_ReservationItemDBToJson(
 _$_ProductReservationAttributes _$_$_ProductReservationAttributesFromJson(
     Map<String, dynamic> json) {
   return _$_ProductReservationAttributes(
-    quantity: json['quantity'] as int,
-    adProductId: json['advertisement_product_id'] as int,
+    id: json['id'] as int?,
+    quantity: json['quantity'] as int?,
+    adProductId: json['advertisement_product_id'] as int?,
+    cancel: json['_cancel'] as bool?,
   );
 }
 
 Map<String, dynamic> _$_$_ProductReservationAttributesToJson(
         _$_ProductReservationAttributes instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'quantity': instance.quantity,
       'advertisement_product_id': instance.adProductId,
+      '_cancel': instance.cancel,
     };
 
 _$_ReservationRequest _$_$_ReservationRequestFromJson(

@@ -3,11 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/advertisements/i_advertisements_facade.dart';
-import 'package:conectacampo/domain/auth/user.dart';
-import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/reservation/i_reservation_facade.dart';
 import 'package:conectacampo/domain/reservation/product_reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
+import 'package:conectacampo/infrastructure/reservation/model/model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -41,25 +40,43 @@ class SellerReservationBloc
         });
       }
     }, finish: (Finish value) async* {
-      yield state.copyWith(finishing: true);
+      if (state.reservation != null) {
+        yield state.copyWith(finishing: true);
 
-      for (final element in state.reservation?.productReservations ??
-          List<ProductReservation>.empty()) {
-        if (element.quantityChanged ?? false) {
-          await reservationFacade.updateProductReservation(
-              element, element.quantity);
+        final List<ProductReservationAttributes> productReservations = [];
+
+        for (final element in state.reservation?.productReservations ??
+            List<ProductReservation>.empty()) {
+          if (element.quantityChanged ?? false) {
+            productReservations.add(ProductReservationAttributes(
+                id: element.id,
+                quantity: element.quantity,
+                adProductId: element.adProduct.id));
+          }
         }
-      }
 
-      for (final element in state.deletedItems) {
-        await reservationFacade.deleteProductReservation(element);
+        for (final element in state.deletedItems) {
+          productReservations.add(ProductReservationAttributes(
+              id: element.id,
+              quantity: element.quantity,
+              adProductId: element.adProduct.id,
+              cancel: true));
+        }
+
+        final ReservationObjRequest reservationObj = ReservationObjRequest(
+            reservation: ReservationRequest(adProducts: productReservations));
+
+        await reservationFacade.updateReservation(
+            state.reservation?.id, reservationObj);
+
+        yield state.copyWith(finishing: false, finished: true);
       }
-      yield state.copyWith(finishing: false, finished: true);
     }, quantityEdited: (QuantityEdited value) async* {
       final product = state.reservation?.productReservations[value.index]
-          .copyWith(quantity: value.newQuantity,
-          quantityChanged: value.newQuantity !=
-              state.reservation?.productReservations[value.index].quantity);
+          .copyWith(
+              quantity: value.newQuantity,
+              quantityChanged: value.newQuantity !=
+                  state.reservation?.productReservations[value.index].quantity);
       if (product != null) {
         state.reservation?.productReservations[value.index] = product;
         yield state.copyWith(reservation: state.reservation, update: true);
