@@ -33,10 +33,10 @@ class ReservationItemDB with _$ReservationItemDB {
 @freezed
 class ProductReservationAttributes with _$ProductReservationAttributes {
   const factory ProductReservationAttributes(
-      {@JsonKey(name: 'quantity')
-          required int quantity,
-      @JsonKey(name: 'advertisement_product_id')
-          required int adProductId}) = _ProductReservationAttributes;
+      {@JsonKey(name: 'id') int? id,
+      @JsonKey(name: 'quantity') int? quantity,
+      @JsonKey(name: 'advertisement_product_id') int? adProductId,
+      @JsonKey(name: '_cancel') bool? cancel}) = _ProductReservationAttributes;
 
   factory ProductReservationAttributes.fromJson(Map<String, dynamic> json) =>
       _$ProductReservationAttributesFromJson(json);

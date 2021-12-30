@@ -456,11 +456,15 @@ class _$ProductReservationAttributesTearOff {
   const _$ProductReservationAttributesTearOff();
 
   _ProductReservationAttributes call(
-      {@JsonKey(name: 'quantity') required int quantity,
-      @JsonKey(name: 'advertisement_product_id') required int adProductId}) {
+      {@JsonKey(name: 'id') int? id,
+      @JsonKey(name: 'quantity') int? quantity,
+      @JsonKey(name: 'advertisement_product_id') int? adProductId,
+      @JsonKey(name: '_cancel') bool? cancel}) {
     return _ProductReservationAttributes(
+      id: id,
       quantity: quantity,
       adProductId: adProductId,
+      cancel: cancel,
     );
   }
 
@@ -474,10 +478,14 @@ const $ProductReservationAttributes = _$ProductReservationAttributesTearOff();
 
 /// @nodoc
 mixin _$ProductReservationAttributes {
+  @JsonKey(name: 'id')
+  int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity')
-  int get quantity => throw _privateConstructorUsedError;
+  int? get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'advertisement_product_id')
-  int get adProductId => throw _privateConstructorUsedError;
+  int? get adProductId => throw _privateConstructorUsedError;
+  @JsonKey(name: '_cancel')
+  bool? get cancel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -492,8 +500,10 @@ abstract class $ProductReservationAttributesCopyWith<$Res> {
           $Res Function(ProductReservationAttributes) then) =
       _$ProductReservationAttributesCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'quantity') int quantity,
-      @JsonKey(name: 'advertisement_product_id') int adProductId});
+      {@JsonKey(name: 'id') int? id,
+      @JsonKey(name: 'quantity') int? quantity,
+      @JsonKey(name: 'advertisement_product_id') int? adProductId,
+      @JsonKey(name: '_cancel') bool? cancel});
 }
 
 /// @nodoc
@@ -507,18 +517,28 @@ class _$ProductReservationAttributesCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? quantity = freezed,
     Object? adProductId = freezed,
+    Object? cancel = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       adProductId: adProductId == freezed
           ? _value.adProductId
           : adProductId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      cancel: cancel == freezed
+          ? _value.cancel
+          : cancel // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -532,8 +552,10 @@ abstract class _$ProductReservationAttributesCopyWith<$Res>
       __$ProductReservationAttributesCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'quantity') int quantity,
-      @JsonKey(name: 'advertisement_product_id') int adProductId});
+      {@JsonKey(name: 'id') int? id,
+      @JsonKey(name: 'quantity') int? quantity,
+      @JsonKey(name: 'advertisement_product_id') int? adProductId,
+      @JsonKey(name: '_cancel') bool? cancel});
 }
 
 /// @nodoc
@@ -551,18 +573,28 @@ class __$ProductReservationAttributesCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? quantity = freezed,
     Object? adProductId = freezed,
+    Object? cancel = freezed,
   }) {
     return _then(_ProductReservationAttributes(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       adProductId: adProductId == freezed
           ? _value.adProductId
           : adProductId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      cancel: cancel == freezed
+          ? _value.cancel
+          : cancel // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -571,41 +603,55 @@ class __$ProductReservationAttributesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProductReservationAttributes implements _ProductReservationAttributes {
   const _$_ProductReservationAttributes(
-      {@JsonKey(name: 'quantity') required this.quantity,
-      @JsonKey(name: 'advertisement_product_id') required this.adProductId});
+      {@JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'quantity') this.quantity,
+      @JsonKey(name: 'advertisement_product_id') this.adProductId,
+      @JsonKey(name: '_cancel') this.cancel});
 
   factory _$_ProductReservationAttributes.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductReservationAttributesFromJson(json);
 
   @override
+  @JsonKey(name: 'id')
+  final int? id;
+  @override
   @JsonKey(name: 'quantity')
-  final int quantity;
+  final int? quantity;
   @override
   @JsonKey(name: 'advertisement_product_id')
-  final int adProductId;
+  final int? adProductId;
+  @override
+  @JsonKey(name: '_cancel')
+  final bool? cancel;
 
   @override
   String toString() {
-    return 'ProductReservationAttributes(quantity: $quantity, adProductId: $adProductId)';
+    return 'ProductReservationAttributes(id: $id, quantity: $quantity, adProductId: $adProductId, cancel: $cancel)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ProductReservationAttributes &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.quantity, quantity) ||
                 const DeepCollectionEquality()
                     .equals(other.quantity, quantity)) &&
             (identical(other.adProductId, adProductId) ||
                 const DeepCollectionEquality()
-                    .equals(other.adProductId, adProductId)));
+                    .equals(other.adProductId, adProductId)) &&
+            (identical(other.cancel, cancel) ||
+                const DeepCollectionEquality().equals(other.cancel, cancel)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(quantity) ^
-      const DeepCollectionEquality().hash(adProductId);
+      const DeepCollectionEquality().hash(adProductId) ^
+      const DeepCollectionEquality().hash(cancel);
 
   @JsonKey(ignore: true)
   @override
@@ -622,20 +668,27 @@ class _$_ProductReservationAttributes implements _ProductReservationAttributes {
 abstract class _ProductReservationAttributes
     implements ProductReservationAttributes {
   const factory _ProductReservationAttributes(
-      {@JsonKey(name: 'quantity')
-          required int quantity,
-      @JsonKey(name: 'advertisement_product_id')
-          required int adProductId}) = _$_ProductReservationAttributes;
+          {@JsonKey(name: 'id') int? id,
+          @JsonKey(name: 'quantity') int? quantity,
+          @JsonKey(name: 'advertisement_product_id') int? adProductId,
+          @JsonKey(name: '_cancel') bool? cancel}) =
+      _$_ProductReservationAttributes;
 
   factory _ProductReservationAttributes.fromJson(Map<String, dynamic> json) =
       _$_ProductReservationAttributes.fromJson;
 
   @override
+  @JsonKey(name: 'id')
+  int? get id => throw _privateConstructorUsedError;
+  @override
   @JsonKey(name: 'quantity')
-  int get quantity => throw _privateConstructorUsedError;
+  int? get quantity => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'advertisement_product_id')
-  int get adProductId => throw _privateConstructorUsedError;
+  int? get adProductId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: '_cancel')
+  bool? get cancel => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductReservationAttributesCopyWith<_ProductReservationAttributes>

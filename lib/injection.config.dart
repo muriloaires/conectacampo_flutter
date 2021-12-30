@@ -17,7 +17,7 @@ import 'application/buyer/adivertisements/advertisement_deital/ad_detail_bloc.da
 import 'application/buyer/adivertisements/advertiser/advertiser_bloc.dart'
     as _i45;
 import 'application/buyer/adivertisements/single_advertisement/single_advertisement_bloc.dart'
-    as _i35;
+    as _i36;
 import 'application/buyer/cart/cart_bloc.dart' as _i47;
 import 'application/buyer/group/group_bloc.dart' as _i49;
 import 'application/buyer/menu/buyer_menu_bloc.dart' as _i46;
@@ -35,7 +35,7 @@ import 'application/profile/profile_bloc.dart' as _i23;
 import 'application/seller/adveretisements/seller_advertisements_bloc.dart'
     as _i28;
 import 'application/seller/adveretisements/single_advertisement/bloc/single_advertisement_bloc.dart'
-    as _i36;
+    as _i35;
 import 'application/seller/group/seller_group_bloc.dart' as _i29;
 import 'application/seller/menu/seller_menu_bloc.dart' as _i30;
 import 'application/seller/new_advertisement/add_photo/add_photo_bloc.dart'
