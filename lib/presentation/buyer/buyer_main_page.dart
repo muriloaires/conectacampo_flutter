@@ -90,7 +90,7 @@ class BuyerMainPage extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          setupNotifications(context);
+          // setupNotifications(context);
           return Stack(
             children: [
               Scaffold(

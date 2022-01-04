@@ -47,7 +47,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       await SharedPreferences.getInstance();
 
       final notificationJson = sharedPreferences.getString('teste_notification');
-      print('Ih rapa oia so: $notificationJson');
     });
   }
 }

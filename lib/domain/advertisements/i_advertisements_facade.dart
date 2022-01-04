@@ -8,7 +8,8 @@ import 'package:dartz/dartz.dart';
 
 abstract class IAdvertisementsFacade {
   Future<Either<AdvertisementFailure, List<Advertisement>>> getAdvertisements(
-      Place place);
+    Place place,
+  );
 
   Future<Either<AdvertisementFailure, List<AdProduct>>> getAdProducts(
       {required Place place,

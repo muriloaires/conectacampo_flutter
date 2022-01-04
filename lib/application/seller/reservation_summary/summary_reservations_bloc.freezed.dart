@@ -19,6 +19,12 @@ class _$SummaryReservationsEventTearOff {
   _Started started() {
     return const _Started();
   }
+
+  OnItemExpandTap onItemExpandTap({required bool isExpanded}) {
+    return OnItemExpandTap(
+      isExpanded: isExpanded,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +35,26 @@ mixin _$SummaryReservationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool isExpanded) onItemExpandTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool isExpanded)? onItemExpandTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(OnItemExpandTap value) onItemExpandTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(OnItemExpandTap value)? onItemExpandTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +116,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool isExpanded) onItemExpandTap,
   }) {
     return started();
   }
@@ -114,6 +125,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool isExpanded)? onItemExpandTap,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -126,6 +138,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(OnItemExpandTap value) onItemExpandTap,
   }) {
     return started(this);
   }
@@ -134,6 +147,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(OnItemExpandTap value)? onItemExpandTap,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -148,17 +162,136 @@ abstract class _Started implements SummaryReservationsEvent {
 }
 
 /// @nodoc
+abstract class $OnItemExpandTapCopyWith<$Res> {
+  factory $OnItemExpandTapCopyWith(
+          OnItemExpandTap value, $Res Function(OnItemExpandTap) then) =
+      _$OnItemExpandTapCopyWithImpl<$Res>;
+  $Res call({bool isExpanded});
+}
+
+/// @nodoc
+class _$OnItemExpandTapCopyWithImpl<$Res>
+    extends _$SummaryReservationsEventCopyWithImpl<$Res>
+    implements $OnItemExpandTapCopyWith<$Res> {
+  _$OnItemExpandTapCopyWithImpl(
+      OnItemExpandTap _value, $Res Function(OnItemExpandTap) _then)
+      : super(_value, (v) => _then(v as OnItemExpandTap));
+
+  @override
+  OnItemExpandTap get _value => super._value as OnItemExpandTap;
+
+  @override
+  $Res call({
+    Object? isExpanded = freezed,
+  }) {
+    return _then(OnItemExpandTap(
+      isExpanded: isExpanded == freezed
+          ? _value.isExpanded
+          : isExpanded // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnItemExpandTap implements OnItemExpandTap {
+  const _$OnItemExpandTap({required this.isExpanded});
+
+  @override
+  final bool isExpanded;
+
+  @override
+  String toString() {
+    return 'SummaryReservationsEvent.onItemExpandTap(isExpanded: $isExpanded)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnItemExpandTap &&
+            (identical(other.isExpanded, isExpanded) ||
+                const DeepCollectionEquality()
+                    .equals(other.isExpanded, isExpanded)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isExpanded);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnItemExpandTapCopyWith<OnItemExpandTap> get copyWith =>
+      _$OnItemExpandTapCopyWithImpl<OnItemExpandTap>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool isExpanded) onItemExpandTap,
+  }) {
+    return onItemExpandTap(isExpanded);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool isExpanded)? onItemExpandTap,
+    required TResult orElse(),
+  }) {
+    if (onItemExpandTap != null) {
+      return onItemExpandTap(isExpanded);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnItemExpandTap value) onItemExpandTap,
+  }) {
+    return onItemExpandTap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnItemExpandTap value)? onItemExpandTap,
+    required TResult orElse(),
+  }) {
+    if (onItemExpandTap != null) {
+      return onItemExpandTap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnItemExpandTap implements SummaryReservationsEvent {
+  const factory OnItemExpandTap({required bool isExpanded}) = _$OnItemExpandTap;
+
+  bool get isExpanded => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnItemExpandTapCopyWith<OnItemExpandTap> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$SummaryReservationsStateTearOff {
   const _$SummaryReservationsStateTearOff();
 
   _SummaryReservationsState call(
       {required bool loading,
       required Option<Either<ReservationFailure, List<Reservation>>>
-          optionOfReservationsFailureOrSuccess}) {
+          optionOfReservationsFailureOrSuccess,
+      required bool isItemsVisible}) {
     return _SummaryReservationsState(
       loading: loading,
       optionOfReservationsFailureOrSuccess:
           optionOfReservationsFailureOrSuccess,
+      isItemsVisible: isItemsVisible,
     );
   }
 }
@@ -172,6 +305,7 @@ mixin _$SummaryReservationsState {
   Option<Either<ReservationFailure, List<Reservation>>>
       get optionOfReservationsFailureOrSuccess =>
           throw _privateConstructorUsedError;
+  bool get isItemsVisible => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SummaryReservationsStateCopyWith<SummaryReservationsState> get copyWith =>
@@ -186,7 +320,8 @@ abstract class $SummaryReservationsStateCopyWith<$Res> {
   $Res call(
       {bool loading,
       Option<Either<ReservationFailure, List<Reservation>>>
-          optionOfReservationsFailureOrSuccess});
+          optionOfReservationsFailureOrSuccess,
+      bool isItemsVisible});
 }
 
 /// @nodoc
@@ -202,6 +337,7 @@ class _$SummaryReservationsStateCopyWithImpl<$Res>
   $Res call({
     Object? loading = freezed,
     Object? optionOfReservationsFailureOrSuccess = freezed,
+    Object? isItemsVisible = freezed,
   }) {
     return _then(_value.copyWith(
       loading: loading == freezed
@@ -213,6 +349,10 @@ class _$SummaryReservationsStateCopyWithImpl<$Res>
           ? _value.optionOfReservationsFailureOrSuccess
           : optionOfReservationsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<ReservationFailure, List<Reservation>>>,
+      isItemsVisible: isItemsVisible == freezed
+          ? _value.isItemsVisible
+          : isItemsVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -227,7 +367,8 @@ abstract class _$SummaryReservationsStateCopyWith<$Res>
   $Res call(
       {bool loading,
       Option<Either<ReservationFailure, List<Reservation>>>
-          optionOfReservationsFailureOrSuccess});
+          optionOfReservationsFailureOrSuccess,
+      bool isItemsVisible});
 }
 
 /// @nodoc
@@ -246,6 +387,7 @@ class __$SummaryReservationsStateCopyWithImpl<$Res>
   $Res call({
     Object? loading = freezed,
     Object? optionOfReservationsFailureOrSuccess = freezed,
+    Object? isItemsVisible = freezed,
   }) {
     return _then(_SummaryReservationsState(
       loading: loading == freezed
@@ -257,6 +399,10 @@ class __$SummaryReservationsStateCopyWithImpl<$Res>
           ? _value.optionOfReservationsFailureOrSuccess
           : optionOfReservationsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<ReservationFailure, List<Reservation>>>,
+      isItemsVisible: isItemsVisible == freezed
+          ? _value.isItemsVisible
+          : isItemsVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -266,17 +412,20 @@ class __$SummaryReservationsStateCopyWithImpl<$Res>
 class _$_SummaryReservationsState implements _SummaryReservationsState {
   const _$_SummaryReservationsState(
       {required this.loading,
-      required this.optionOfReservationsFailureOrSuccess});
+      required this.optionOfReservationsFailureOrSuccess,
+      required this.isItemsVisible});
 
   @override
   final bool loading;
   @override
   final Option<Either<ReservationFailure, List<Reservation>>>
       optionOfReservationsFailureOrSuccess;
+  @override
+  final bool isItemsVisible;
 
   @override
   String toString() {
-    return 'SummaryReservationsState(loading: $loading, optionOfReservationsFailureOrSuccess: $optionOfReservationsFailureOrSuccess)';
+    return 'SummaryReservationsState(loading: $loading, optionOfReservationsFailureOrSuccess: $optionOfReservationsFailureOrSuccess, isItemsVisible: $isItemsVisible)';
   }
 
   @override
@@ -290,14 +439,19 @@ class _$_SummaryReservationsState implements _SummaryReservationsState {
                     optionOfReservationsFailureOrSuccess) ||
                 const DeepCollectionEquality().equals(
                     other.optionOfReservationsFailureOrSuccess,
-                    optionOfReservationsFailureOrSuccess)));
+                    optionOfReservationsFailureOrSuccess)) &&
+            (identical(other.isItemsVisible, isItemsVisible) ||
+                const DeepCollectionEquality()
+                    .equals(other.isItemsVisible, isItemsVisible)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(loading) ^
-      const DeepCollectionEquality().hash(optionOfReservationsFailureOrSuccess);
+      const DeepCollectionEquality()
+          .hash(optionOfReservationsFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(isItemsVisible);
 
   @JsonKey(ignore: true)
   @override
@@ -310,7 +464,8 @@ abstract class _SummaryReservationsState implements SummaryReservationsState {
   const factory _SummaryReservationsState(
       {required bool loading,
       required Option<Either<ReservationFailure, List<Reservation>>>
-          optionOfReservationsFailureOrSuccess}) = _$_SummaryReservationsState;
+          optionOfReservationsFailureOrSuccess,
+      required bool isItemsVisible}) = _$_SummaryReservationsState;
 
   @override
   bool get loading => throw _privateConstructorUsedError;
@@ -318,6 +473,8 @@ abstract class _SummaryReservationsState implements SummaryReservationsState {
   Option<Either<ReservationFailure, List<Reservation>>>
       get optionOfReservationsFailureOrSuccess =>
           throw _privateConstructorUsedError;
+  @override
+  bool get isItemsVisible => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SummaryReservationsStateCopyWith<_SummaryReservationsState> get copyWith =>

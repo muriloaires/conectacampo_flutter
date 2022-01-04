@@ -54,6 +54,12 @@ class _$SellerReservationEventTearOff {
   ShowItemsTapped showItemsTapped() {
     return const ShowItemsTapped();
   }
+
+  ReservationEditItemsTap reservationEditItemsTap(Reservation? reservation) {
+    return ReservationEditItemsTap(
+      reservation,
+    );
+  }
 }
 
 /// @nodoc
@@ -71,6 +77,7 @@ mixin _$SellerReservationEvent {
     required TResult Function() onConfirmPayment,
     required TResult Function() onCancel,
     required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +90,7 @@ mixin _$SellerReservationEvent {
     TResult Function()? onConfirmPayment,
     TResult Function()? onCancel,
     TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -96,6 +104,8 @@ mixin _$SellerReservationEvent {
     required TResult Function(OnConfirmPayment value) onConfirmPayment,
     required TResult Function(OnCancel value) onCancel,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -108,6 +118,7 @@ mixin _$SellerReservationEvent {
     TResult Function(OnConfirmPayment value)? onConfirmPayment,
     TResult Function(OnCancel value)? onCancel,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -211,6 +222,7 @@ class _$_Started implements _Started {
     required TResult Function() onConfirmPayment,
     required TResult Function() onCancel,
     required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
   }) {
     return started(reservation);
   }
@@ -226,6 +238,7 @@ class _$_Started implements _Started {
     TResult Function()? onConfirmPayment,
     TResult Function()? onCancel,
     TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -245,6 +258,8 @@ class _$_Started implements _Started {
     required TResult Function(OnConfirmPayment value) onConfirmPayment,
     required TResult Function(OnCancel value) onCancel,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
   }) {
     return started(this);
   }
@@ -260,6 +275,7 @@ class _$_Started implements _Started {
     TResult Function(OnConfirmPayment value)? onConfirmPayment,
     TResult Function(OnCancel value)? onCancel,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -324,6 +340,7 @@ class _$Finish implements Finish {
     required TResult Function() onConfirmPayment,
     required TResult Function() onCancel,
     required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
   }) {
     return finish();
   }
@@ -339,6 +356,7 @@ class _$Finish implements Finish {
     TResult Function()? onConfirmPayment,
     TResult Function()? onCancel,
     TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (finish != null) {
@@ -358,6 +376,8 @@ class _$Finish implements Finish {
     required TResult Function(OnConfirmPayment value) onConfirmPayment,
     required TResult Function(OnCancel value) onCancel,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
   }) {
     return finish(this);
   }
@@ -373,6 +393,7 @@ class _$Finish implements Finish {
     TResult Function(OnConfirmPayment value)? onConfirmPayment,
     TResult Function(OnCancel value)? onCancel,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (finish != null) {
@@ -471,6 +492,7 @@ class _$QuantityEdited implements QuantityEdited {
     required TResult Function() onConfirmPayment,
     required TResult Function() onCancel,
     required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
   }) {
     return quantityEdited(index, newQuantity);
   }
@@ -486,6 +508,7 @@ class _$QuantityEdited implements QuantityEdited {
     TResult Function()? onConfirmPayment,
     TResult Function()? onCancel,
     TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (quantityEdited != null) {
@@ -505,6 +528,8 @@ class _$QuantityEdited implements QuantityEdited {
     required TResult Function(OnConfirmPayment value) onConfirmPayment,
     required TResult Function(OnCancel value) onCancel,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
   }) {
     return quantityEdited(this);
   }
@@ -520,6 +545,7 @@ class _$QuantityEdited implements QuantityEdited {
     TResult Function(OnConfirmPayment value)? onConfirmPayment,
     TResult Function(OnCancel value)? onCancel,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (quantityEdited != null) {
@@ -612,6 +638,7 @@ class _$ItemRemoved implements ItemRemoved {
     required TResult Function() onConfirmPayment,
     required TResult Function() onCancel,
     required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
   }) {
     return itemRemoved(index);
   }
@@ -627,6 +654,7 @@ class _$ItemRemoved implements ItemRemoved {
     TResult Function()? onConfirmPayment,
     TResult Function()? onCancel,
     TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (itemRemoved != null) {
@@ -646,6 +674,8 @@ class _$ItemRemoved implements ItemRemoved {
     required TResult Function(OnConfirmPayment value) onConfirmPayment,
     required TResult Function(OnCancel value) onCancel,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
   }) {
     return itemRemoved(this);
   }
@@ -661,6 +691,7 @@ class _$ItemRemoved implements ItemRemoved {
     TResult Function(OnConfirmPayment value)? onConfirmPayment,
     TResult Function(OnCancel value)? onCancel,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (itemRemoved != null) {
@@ -725,6 +756,7 @@ class _$OnConfirm implements OnConfirm {
     required TResult Function() onConfirmPayment,
     required TResult Function() onCancel,
     required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
   }) {
     return onConfirm();
   }
@@ -740,6 +772,7 @@ class _$OnConfirm implements OnConfirm {
     TResult Function()? onConfirmPayment,
     TResult Function()? onCancel,
     TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (onConfirm != null) {
@@ -759,6 +792,8 @@ class _$OnConfirm implements OnConfirm {
     required TResult Function(OnConfirmPayment value) onConfirmPayment,
     required TResult Function(OnCancel value) onCancel,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
   }) {
     return onConfirm(this);
   }
@@ -774,6 +809,7 @@ class _$OnConfirm implements OnConfirm {
     TResult Function(OnConfirmPayment value)? onConfirmPayment,
     TResult Function(OnCancel value)? onCancel,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (onConfirm != null) {
@@ -835,6 +871,7 @@ class _$OnConfirmPayment implements OnConfirmPayment {
     required TResult Function() onConfirmPayment,
     required TResult Function() onCancel,
     required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
   }) {
     return onConfirmPayment();
   }
@@ -850,6 +887,7 @@ class _$OnConfirmPayment implements OnConfirmPayment {
     TResult Function()? onConfirmPayment,
     TResult Function()? onCancel,
     TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (onConfirmPayment != null) {
@@ -869,6 +907,8 @@ class _$OnConfirmPayment implements OnConfirmPayment {
     required TResult Function(OnConfirmPayment value) onConfirmPayment,
     required TResult Function(OnCancel value) onCancel,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
   }) {
     return onConfirmPayment(this);
   }
@@ -884,6 +924,7 @@ class _$OnConfirmPayment implements OnConfirmPayment {
     TResult Function(OnConfirmPayment value)? onConfirmPayment,
     TResult Function(OnCancel value)? onCancel,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (onConfirmPayment != null) {
@@ -943,6 +984,7 @@ class _$OnCancel implements OnCancel {
     required TResult Function() onConfirmPayment,
     required TResult Function() onCancel,
     required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
   }) {
     return onCancel();
   }
@@ -958,6 +1000,7 @@ class _$OnCancel implements OnCancel {
     TResult Function()? onConfirmPayment,
     TResult Function()? onCancel,
     TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (onCancel != null) {
@@ -977,6 +1020,8 @@ class _$OnCancel implements OnCancel {
     required TResult Function(OnConfirmPayment value) onConfirmPayment,
     required TResult Function(OnCancel value) onCancel,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
   }) {
     return onCancel(this);
   }
@@ -992,6 +1037,7 @@ class _$OnCancel implements OnCancel {
     TResult Function(OnConfirmPayment value)? onConfirmPayment,
     TResult Function(OnCancel value)? onCancel,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (onCancel != null) {
@@ -1053,6 +1099,7 @@ class _$ShowItemsTapped implements ShowItemsTapped {
     required TResult Function() onConfirmPayment,
     required TResult Function() onCancel,
     required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
   }) {
     return showItemsTapped();
   }
@@ -1068,6 +1115,7 @@ class _$ShowItemsTapped implements ShowItemsTapped {
     TResult Function()? onConfirmPayment,
     TResult Function()? onCancel,
     TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (showItemsTapped != null) {
@@ -1087,6 +1135,8 @@ class _$ShowItemsTapped implements ShowItemsTapped {
     required TResult Function(OnConfirmPayment value) onConfirmPayment,
     required TResult Function(OnCancel value) onCancel,
     required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
   }) {
     return showItemsTapped(this);
   }
@@ -1102,6 +1152,7 @@ class _$ShowItemsTapped implements ShowItemsTapped {
     TResult Function(OnConfirmPayment value)? onConfirmPayment,
     TResult Function(OnCancel value)? onCancel,
     TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
     required TResult orElse(),
   }) {
     if (showItemsTapped != null) {
@@ -1116,6 +1167,167 @@ abstract class ShowItemsTapped implements SellerReservationEvent {
 }
 
 /// @nodoc
+abstract class $ReservationEditItemsTapCopyWith<$Res> {
+  factory $ReservationEditItemsTapCopyWith(ReservationEditItemsTap value,
+          $Res Function(ReservationEditItemsTap) then) =
+      _$ReservationEditItemsTapCopyWithImpl<$Res>;
+  $Res call({Reservation? reservation});
+
+  $ReservationCopyWith<$Res>? get reservation;
+}
+
+/// @nodoc
+class _$ReservationEditItemsTapCopyWithImpl<$Res>
+    extends _$SellerReservationEventCopyWithImpl<$Res>
+    implements $ReservationEditItemsTapCopyWith<$Res> {
+  _$ReservationEditItemsTapCopyWithImpl(ReservationEditItemsTap _value,
+      $Res Function(ReservationEditItemsTap) _then)
+      : super(_value, (v) => _then(v as ReservationEditItemsTap));
+
+  @override
+  ReservationEditItemsTap get _value => super._value as ReservationEditItemsTap;
+
+  @override
+  $Res call({
+    Object? reservation = freezed,
+  }) {
+    return _then(ReservationEditItemsTap(
+      reservation == freezed
+          ? _value.reservation
+          : reservation // ignore: cast_nullable_to_non_nullable
+              as Reservation?,
+    ));
+  }
+
+  @override
+  $ReservationCopyWith<$Res>? get reservation {
+    if (_value.reservation == null) {
+      return null;
+    }
+
+    return $ReservationCopyWith<$Res>(_value.reservation!, (value) {
+      return _then(_value.copyWith(reservation: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ReservationEditItemsTap implements ReservationEditItemsTap {
+  const _$ReservationEditItemsTap(this.reservation);
+
+  @override
+  final Reservation? reservation;
+
+  @override
+  String toString() {
+    return 'SellerReservationEvent.reservationEditItemsTap(reservation: $reservation)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ReservationEditItemsTap &&
+            (identical(other.reservation, reservation) ||
+                const DeepCollectionEquality()
+                    .equals(other.reservation, reservation)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(reservation);
+
+  @JsonKey(ignore: true)
+  @override
+  $ReservationEditItemsTapCopyWith<ReservationEditItemsTap> get copyWith =>
+      _$ReservationEditItemsTapCopyWithImpl<ReservationEditItemsTap>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Reservation reservation) started,
+    required TResult Function() finish,
+    required TResult Function(int index, int newQuantity) quantityEdited,
+    required TResult Function(int index) itemRemoved,
+    required TResult Function() onConfirm,
+    required TResult Function() onConfirmPayment,
+    required TResult Function() onCancel,
+    required TResult Function() showItemsTapped,
+    required TResult Function(Reservation? reservation) reservationEditItemsTap,
+  }) {
+    return reservationEditItemsTap(reservation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Reservation reservation)? started,
+    TResult Function()? finish,
+    TResult Function(int index, int newQuantity)? quantityEdited,
+    TResult Function(int index)? itemRemoved,
+    TResult Function()? onConfirm,
+    TResult Function()? onConfirmPayment,
+    TResult Function()? onCancel,
+    TResult Function()? showItemsTapped,
+    TResult Function(Reservation? reservation)? reservationEditItemsTap,
+    required TResult orElse(),
+  }) {
+    if (reservationEditItemsTap != null) {
+      return reservationEditItemsTap(reservation);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(Finish value) finish,
+    required TResult Function(QuantityEdited value) quantityEdited,
+    required TResult Function(ItemRemoved value) itemRemoved,
+    required TResult Function(OnConfirm value) onConfirm,
+    required TResult Function(OnConfirmPayment value) onConfirmPayment,
+    required TResult Function(OnCancel value) onCancel,
+    required TResult Function(ShowItemsTapped value) showItemsTapped,
+    required TResult Function(ReservationEditItemsTap value)
+        reservationEditItemsTap,
+  }) {
+    return reservationEditItemsTap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(Finish value)? finish,
+    TResult Function(QuantityEdited value)? quantityEdited,
+    TResult Function(ItemRemoved value)? itemRemoved,
+    TResult Function(OnConfirm value)? onConfirm,
+    TResult Function(OnConfirmPayment value)? onConfirmPayment,
+    TResult Function(OnCancel value)? onCancel,
+    TResult Function(ShowItemsTapped value)? showItemsTapped,
+    TResult Function(ReservationEditItemsTap value)? reservationEditItemsTap,
+    required TResult orElse(),
+  }) {
+    if (reservationEditItemsTap != null) {
+      return reservationEditItemsTap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReservationEditItemsTap implements SellerReservationEvent {
+  const factory ReservationEditItemsTap(Reservation? reservation) =
+      _$ReservationEditItemsTap;
+
+  Reservation? get reservation => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ReservationEditItemsTapCopyWith<ReservationEditItemsTap> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$SellerReservationStateTearOff {
   const _$SellerReservationStateTearOff();
 
@@ -1123,20 +1335,22 @@ class _$SellerReservationStateTearOff {
       {required Reservation? reservation,
       required bool update,
       required List<ProductReservation> deletedItems,
-      required bool isItemsVisible,
       required bool finishing,
       required bool finished,
       required Advertisement? advertisement,
-      required List<ProductReservation> changedProducts}) {
+      required List<ProductReservation> changedProducts,
+      required bool loading,
+      required Reservation? reservationToEdit}) {
     return _SellerReservationState(
       reservation: reservation,
       update: update,
       deletedItems: deletedItems,
-      isItemsVisible: isItemsVisible,
       finishing: finishing,
       finished: finished,
       advertisement: advertisement,
       changedProducts: changedProducts,
+      loading: loading,
+      reservationToEdit: reservationToEdit,
     );
   }
 }
@@ -1150,12 +1364,13 @@ mixin _$SellerReservationState {
   bool get update => throw _privateConstructorUsedError;
   List<ProductReservation> get deletedItems =>
       throw _privateConstructorUsedError;
-  bool get isItemsVisible => throw _privateConstructorUsedError;
   bool get finishing => throw _privateConstructorUsedError;
   bool get finished => throw _privateConstructorUsedError;
   Advertisement? get advertisement => throw _privateConstructorUsedError;
   List<ProductReservation> get changedProducts =>
       throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
+  Reservation? get reservationToEdit => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SellerReservationStateCopyWith<SellerReservationState> get copyWith =>
@@ -1171,14 +1386,16 @@ abstract class $SellerReservationStateCopyWith<$Res> {
       {Reservation? reservation,
       bool update,
       List<ProductReservation> deletedItems,
-      bool isItemsVisible,
       bool finishing,
       bool finished,
       Advertisement? advertisement,
-      List<ProductReservation> changedProducts});
+      List<ProductReservation> changedProducts,
+      bool loading,
+      Reservation? reservationToEdit});
 
   $ReservationCopyWith<$Res>? get reservation;
   $AdvertisementCopyWith<$Res>? get advertisement;
+  $ReservationCopyWith<$Res>? get reservationToEdit;
 }
 
 /// @nodoc
@@ -1195,11 +1412,12 @@ class _$SellerReservationStateCopyWithImpl<$Res>
     Object? reservation = freezed,
     Object? update = freezed,
     Object? deletedItems = freezed,
-    Object? isItemsVisible = freezed,
     Object? finishing = freezed,
     Object? finished = freezed,
     Object? advertisement = freezed,
     Object? changedProducts = freezed,
+    Object? loading = freezed,
+    Object? reservationToEdit = freezed,
   }) {
     return _then(_value.copyWith(
       reservation: reservation == freezed
@@ -1214,10 +1432,6 @@ class _$SellerReservationStateCopyWithImpl<$Res>
           ? _value.deletedItems
           : deletedItems // ignore: cast_nullable_to_non_nullable
               as List<ProductReservation>,
-      isItemsVisible: isItemsVisible == freezed
-          ? _value.isItemsVisible
-          : isItemsVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
       finishing: finishing == freezed
           ? _value.finishing
           : finishing // ignore: cast_nullable_to_non_nullable
@@ -1234,6 +1448,14 @@ class _$SellerReservationStateCopyWithImpl<$Res>
           ? _value.changedProducts
           : changedProducts // ignore: cast_nullable_to_non_nullable
               as List<ProductReservation>,
+      loading: loading == freezed
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      reservationToEdit: reservationToEdit == freezed
+          ? _value.reservationToEdit
+          : reservationToEdit // ignore: cast_nullable_to_non_nullable
+              as Reservation?,
     ));
   }
 
@@ -1258,6 +1480,17 @@ class _$SellerReservationStateCopyWithImpl<$Res>
       return _then(_value.copyWith(advertisement: value));
     });
   }
+
+  @override
+  $ReservationCopyWith<$Res>? get reservationToEdit {
+    if (_value.reservationToEdit == null) {
+      return null;
+    }
+
+    return $ReservationCopyWith<$Res>(_value.reservationToEdit!, (value) {
+      return _then(_value.copyWith(reservationToEdit: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -1271,16 +1504,19 @@ abstract class _$SellerReservationStateCopyWith<$Res>
       {Reservation? reservation,
       bool update,
       List<ProductReservation> deletedItems,
-      bool isItemsVisible,
       bool finishing,
       bool finished,
       Advertisement? advertisement,
-      List<ProductReservation> changedProducts});
+      List<ProductReservation> changedProducts,
+      bool loading,
+      Reservation? reservationToEdit});
 
   @override
   $ReservationCopyWith<$Res>? get reservation;
   @override
   $AdvertisementCopyWith<$Res>? get advertisement;
+  @override
+  $ReservationCopyWith<$Res>? get reservationToEdit;
 }
 
 /// @nodoc
@@ -1299,11 +1535,12 @@ class __$SellerReservationStateCopyWithImpl<$Res>
     Object? reservation = freezed,
     Object? update = freezed,
     Object? deletedItems = freezed,
-    Object? isItemsVisible = freezed,
     Object? finishing = freezed,
     Object? finished = freezed,
     Object? advertisement = freezed,
     Object? changedProducts = freezed,
+    Object? loading = freezed,
+    Object? reservationToEdit = freezed,
   }) {
     return _then(_SellerReservationState(
       reservation: reservation == freezed
@@ -1318,10 +1555,6 @@ class __$SellerReservationStateCopyWithImpl<$Res>
           ? _value.deletedItems
           : deletedItems // ignore: cast_nullable_to_non_nullable
               as List<ProductReservation>,
-      isItemsVisible: isItemsVisible == freezed
-          ? _value.isItemsVisible
-          : isItemsVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
       finishing: finishing == freezed
           ? _value.finishing
           : finishing // ignore: cast_nullable_to_non_nullable
@@ -1338,6 +1571,14 @@ class __$SellerReservationStateCopyWithImpl<$Res>
           ? _value.changedProducts
           : changedProducts // ignore: cast_nullable_to_non_nullable
               as List<ProductReservation>,
+      loading: loading == freezed
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      reservationToEdit: reservationToEdit == freezed
+          ? _value.reservationToEdit
+          : reservationToEdit // ignore: cast_nullable_to_non_nullable
+              as Reservation?,
     ));
   }
 }
@@ -1349,11 +1590,12 @@ class _$_SellerReservationState implements _SellerReservationState {
       {required this.reservation,
       required this.update,
       required this.deletedItems,
-      required this.isItemsVisible,
       required this.finishing,
       required this.finished,
       required this.advertisement,
-      required this.changedProducts});
+      required this.changedProducts,
+      required this.loading,
+      required this.reservationToEdit});
 
   @override
   final Reservation? reservation;
@@ -1362,8 +1604,6 @@ class _$_SellerReservationState implements _SellerReservationState {
   @override
   final List<ProductReservation> deletedItems;
   @override
-  final bool isItemsVisible;
-  @override
   final bool finishing;
   @override
   final bool finished;
@@ -1371,10 +1611,14 @@ class _$_SellerReservationState implements _SellerReservationState {
   final Advertisement? advertisement;
   @override
   final List<ProductReservation> changedProducts;
+  @override
+  final bool loading;
+  @override
+  final Reservation? reservationToEdit;
 
   @override
   String toString() {
-    return 'SellerReservationState(reservation: $reservation, update: $update, deletedItems: $deletedItems, isItemsVisible: $isItemsVisible, finishing: $finishing, finished: $finished, advertisement: $advertisement, changedProducts: $changedProducts)';
+    return 'SellerReservationState(reservation: $reservation, update: $update, deletedItems: $deletedItems, finishing: $finishing, finished: $finished, advertisement: $advertisement, changedProducts: $changedProducts, loading: $loading, reservationToEdit: $reservationToEdit)';
   }
 
   @override
@@ -1389,9 +1633,6 @@ class _$_SellerReservationState implements _SellerReservationState {
             (identical(other.deletedItems, deletedItems) ||
                 const DeepCollectionEquality()
                     .equals(other.deletedItems, deletedItems)) &&
-            (identical(other.isItemsVisible, isItemsVisible) ||
-                const DeepCollectionEquality()
-                    .equals(other.isItemsVisible, isItemsVisible)) &&
             (identical(other.finishing, finishing) ||
                 const DeepCollectionEquality()
                     .equals(other.finishing, finishing)) &&
@@ -1403,7 +1644,13 @@ class _$_SellerReservationState implements _SellerReservationState {
                     .equals(other.advertisement, advertisement)) &&
             (identical(other.changedProducts, changedProducts) ||
                 const DeepCollectionEquality()
-                    .equals(other.changedProducts, changedProducts)));
+                    .equals(other.changedProducts, changedProducts)) &&
+            (identical(other.loading, loading) ||
+                const DeepCollectionEquality()
+                    .equals(other.loading, loading)) &&
+            (identical(other.reservationToEdit, reservationToEdit) ||
+                const DeepCollectionEquality()
+                    .equals(other.reservationToEdit, reservationToEdit)));
   }
 
   @override
@@ -1412,11 +1659,12 @@ class _$_SellerReservationState implements _SellerReservationState {
       const DeepCollectionEquality().hash(reservation) ^
       const DeepCollectionEquality().hash(update) ^
       const DeepCollectionEquality().hash(deletedItems) ^
-      const DeepCollectionEquality().hash(isItemsVisible) ^
       const DeepCollectionEquality().hash(finishing) ^
       const DeepCollectionEquality().hash(finished) ^
       const DeepCollectionEquality().hash(advertisement) ^
-      const DeepCollectionEquality().hash(changedProducts);
+      const DeepCollectionEquality().hash(changedProducts) ^
+      const DeepCollectionEquality().hash(loading) ^
+      const DeepCollectionEquality().hash(reservationToEdit);
 
   @JsonKey(ignore: true)
   @override
@@ -1427,15 +1675,15 @@ class _$_SellerReservationState implements _SellerReservationState {
 
 abstract class _SellerReservationState implements SellerReservationState {
   const factory _SellerReservationState(
-          {required Reservation? reservation,
-          required bool update,
-          required List<ProductReservation> deletedItems,
-          required bool isItemsVisible,
-          required bool finishing,
-          required bool finished,
-          required Advertisement? advertisement,
-          required List<ProductReservation> changedProducts}) =
-      _$_SellerReservationState;
+      {required Reservation? reservation,
+      required bool update,
+      required List<ProductReservation> deletedItems,
+      required bool finishing,
+      required bool finished,
+      required Advertisement? advertisement,
+      required List<ProductReservation> changedProducts,
+      required bool loading,
+      required Reservation? reservationToEdit}) = _$_SellerReservationState;
 
   @override
   Reservation? get reservation => throw _privateConstructorUsedError;
@@ -1445,8 +1693,6 @@ abstract class _SellerReservationState implements SellerReservationState {
   List<ProductReservation> get deletedItems =>
       throw _privateConstructorUsedError;
   @override
-  bool get isItemsVisible => throw _privateConstructorUsedError;
-  @override
   bool get finishing => throw _privateConstructorUsedError;
   @override
   bool get finished => throw _privateConstructorUsedError;
@@ -1455,6 +1701,10 @@ abstract class _SellerReservationState implements SellerReservationState {
   @override
   List<ProductReservation> get changedProducts =>
       throw _privateConstructorUsedError;
+  @override
+  bool get loading => throw _privateConstructorUsedError;
+  @override
+  Reservation? get reservationToEdit => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SellerReservationStateCopyWith<_SellerReservationState> get copyWith =>

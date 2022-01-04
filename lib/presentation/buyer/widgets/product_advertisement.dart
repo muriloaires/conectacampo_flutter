@@ -17,12 +17,14 @@ class ProductAdvertisement extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: CachedNetworkImage(
-              imageUrl: _product.images.first.mediumAvatar.getOrCrash(),
-              height: 134.0,
-              width: 166.0,
-              fit: BoxFit.cover,
-            ),
+            child: _product.images.first.mediumAvatar.getOrCrash().isNotEmpty
+                ? CachedNetworkImage(
+                    imageUrl: _product.images.first.mediumAvatar.getOrCrash(),
+                    height: 134.0,
+                    width: 166.0,
+                    fit: BoxFit.cover,
+                  )
+                : Container(),
           ),
           const SizedBox(
             height: 8,

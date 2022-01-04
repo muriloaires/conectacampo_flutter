@@ -1,7 +1,5 @@
-import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/single_reservation/single_reservation_bloc.dart';
-import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
 import 'package:conectacampo/domain/reservation/reservation_item.dart';
 import 'package:conectacampo/infrastructure/core/core_extensions.dart';
@@ -14,8 +12,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ReservationWidget extends StatelessWidget {
   final Reservation reservation;
+  final bool isExpanded;
 
-  const ReservationWidget(this.reservation);
+  const ReservationWidget(this.reservation, this.isExpanded);
 
   @override
   Widget build(BuildContext context) {
@@ -31,115 +30,130 @@ class ReservationWidget extends StatelessWidget {
           }
 
           state.cancelFailureOrSuccess?.fold(
-              (l) => EasyLoading.showError(
-                  'Não foi possível cancelar a reserva, tente novamente mais tarde.',
-                  duration: const Duration(seconds: 3),
-                  dismissOnTap: true),
-              (r) => context
-                  .read<ReservationBloc>()
-                  .add(const ReservationEvent.started()));
+            (l) => EasyLoading.showError(
+              'Não foi possível cancelar a reserva, tente novamente mais tarde.',
+              duration: const Duration(seconds: 3),
+              dismissOnTap: true,
+            ),
+            (r) => context
+                .read<ReservationBloc>()
+                .add(const ReservationEvent.started()),
+          );
 
           if (state.showAcceptError) {
-            EasyLoading.showError("Erro ao aceitar produto",
-                duration: const Duration(seconds: 2));
+            EasyLoading.showError(
+              "Erro ao aceitar produto",
+              duration: const Duration(seconds: 2),
+            );
             context
                 .read<SingleReservationBloc>()
                 .add(const SingleReservationEvent.onAcceptErrorDisplayed());
           }
 
           if (state.showAcceptError) {
-            EasyLoading.showError("Erro ao cancelar produto",
-                duration: const Duration(seconds: 2));
+            EasyLoading.showError(
+              "Erro ao cancelar produto",
+              duration: const Duration(seconds: 2),
+            );
             context
                 .read<SingleReservationBloc>()
                 .add(const SingleReservationEvent.onCancelErrorDisplayed());
           }
         },
-        builder: (context, state) => Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: ListView(
-            shrinkWrap: true,
-            physics: const ClampingScrollPhysics(),
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
+        builder: (context, state) => SizedBox(
+          width: 300,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: ListView(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15)),
-                child: Container(
-                  height: 40,
-                  color: _getStatusColor(state.reservation),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-                    child: Center(
-                      child: _getStatusText(state.reservation),
-                    ),
+                    topRight: Radius.circular(15),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 36,
-                      foregroundImage: NetworkImage(state
-                              .reservation?.seller?.mediumAvatar?.value
-                              .fold((l) => '', (r) => r) ??
-                          ''),
-                      backgroundColor: ColorSet.green1,
-                    ),
-                    const SizedBox(
-                      width: 12,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          state.reservation?.seller?.nickname ?? '',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
+                  child: Container(
+                    height: 40,
+                    color: _getStatusColor(state.reservation),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                      child: FittedBox(
+                        child: Center(
+                          child: _getStatusText(state.reservation),
                         ),
-                        const SizedBox(height: 8),
-                        Text.rich(TextSpan(
-                            text: state.adFailureOrSuccess?.fold(
-                              (l) => '',
-                              (r) => r.meetingType,
-                            ),
-                            children: [
-                              const TextSpan(text: ' '),
-                              TextSpan(
-                                text: state.adFailureOrSuccess?.fold(
-                                  (l) => '',
-                                  (r) => r.meetingTypeDescription,
-                                ),
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )
-                            ]))
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Feira do dia: ${state.adFailureOrSuccess?.fold((l) => '--', (r) => r.deliveryAt.getDateAndMonthName()) ?? '--'}',
-                  style: const TextStyle(
-                    fontSize: 12,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              MaterialButton(
-                onPressed: () async {
-                  await openWhatsapp(reservation.seller?.phoneNumber ?? '');
-                },
-                child: Container(
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 36,
+                        foregroundImage: NetworkImage(
+                          state.reservation?.seller?.mediumAvatar?.value
+                                  .fold((l) => '', (r) => r) ??
+                              '',
+                        ),
+                        backgroundColor: ColorSet.green1,
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            state.reservation?.seller?.nickname ?? '',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text.rich(
+                            TextSpan(
+                              text: state.adFailureOrSuccess?.fold(
+                                (l) => '',
+                                (r) => r.meetingType,
+                              ),
+                              children: [
+                                const TextSpan(text: ' '),
+                                TextSpan(
+                                  text: state.adFailureOrSuccess?.fold(
+                                    (l) => '',
+                                    (r) => r.meetingTypeDescription,
+                                  ),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Feira do dia: ${state.adFailureOrSuccess?.fold((l) => '--', (r) => r.deliveryAt.getDateAndMonthName()) ?? '--'}',
+                    style: const TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+                MaterialButton(
+                  onPressed: () async {
+                    await openWhatsapp(reservation.seller?.phoneNumber ?? '');
+                  },
+                  child: Container(
                     decoration: const BoxDecoration(
                       color: ColorSet.gray10,
                       borderRadius: BorderRadius.all(
@@ -154,8 +168,9 @@ class ReservationWidget extends StatelessWidget {
                             const Text(
                               'Fale com o vendedor',
                               style: TextStyle(
-                                  color: ColorSet.green1,
-                                  fontWeight: FontWeight.bold),
+                                color: ColorSet.green1,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             const SizedBox(
                               width: 8,
@@ -168,29 +183,230 @@ class ReservationWidget extends StatelessWidget {
                           ],
                         ),
                       ),
-                    )),
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                child: Visibility(
-                    visible: context
-                        .read<SingleReservationBloc>()
-                        .state
-                        .isItemVisible,
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: isExpanded,
+                  child: SizedBox(
+                    height: 230,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListView(
                         shrinkWrap: true,
                         physics: const ClampingScrollPhysics(),
                         children: [
-                          const Text('Itens',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: ColorSet.colorPrimaryGreen,
-                              )),
+                          Visibility(
+                            visible: state.reservation?.status ==
+                                    ReservationStatus.awaitingBuyer ||
+                                state.reservation?.status ==
+                                    ReservationStatus.pendingSeller ||
+                                state.reservation?.status ==
+                                    ReservationStatus.confirmed,
+                            child: Column(
+                              children: [
+                                MaterialButton(
+                                  onPressed: () {
+                                    context.read<SingleReservationBloc>().add(
+                                          const SingleReservationEvent
+                                              .onCancelReservationPressed(),
+                                        );
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.fromLTRB(
+                                      50,
+                                      10,
+                                      50,
+                                      10,
+                                    ),
+                                    decoration: const BoxDecoration(
+                                      color: ColorSet.red1Alpha,
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: const Text(
+                                      'Cancelar Pedido',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: ColorSet.red1,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Visibility(
+                            visible: state.reservation != null &&
+                                getReservationStatus(state.reservation!) ==
+                                    ReservationStatus.awaitingBuyer,
+                            child: ListView(
+                              shrinkWrap: true,
+                              physics: const ClampingScrollPhysics(),
+                              children: [
+                                const Center(
+                                  child: Text(
+                                    '❗ Atenção!',
+                                    style: TextStyle(
+                                      color: ColorSet.yellow2,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                ListView.separated(
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(height: 8),
+                                  physics: const ClampingScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemBuilder: (itemBuilder, index) {
+                                    final list =
+                                        state.reservation?.productReservations
+                                            .where(
+                                              (element) =>
+                                                  element.status ==
+                                                  ReservationItemStatus
+                                                      .awaitingBuyer,
+                                            )
+                                            .toList();
+                                    return Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          list?[index].adProduct.name ?? '',
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Só tem ${list?[index].quantity} ${list?[index].adProduct.unitMeasure} disponível(eis). Aceitar?',
+                                          style: const TextStyle(),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: MaterialButton(
+                                                onPressed: () {
+                                                  context
+                                                      .read<
+                                                          SingleReservationBloc>()
+                                                      .add(
+                                                        SingleReservationEvent
+                                                            .onCancelPressed(
+                                                          index,
+                                                        ),
+                                                      );
+                                                },
+                                                child: Container(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                    0,
+                                                    8,
+                                                    0,
+                                                    8,
+                                                  ),
+                                                  width: double.infinity,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    color: ColorSet.red1Alpha,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(
+                                                        20,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  child: const Text(
+                                                    'Cancelar',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: ColorSet.red1,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: MaterialButton(
+                                                onPressed: () {
+                                                  context
+                                                      .read<
+                                                          SingleReservationBloc>()
+                                                      .add(
+                                                        SingleReservationEvent
+                                                            .onAcceptPressed(
+                                                          index,
+                                                        ),
+                                                      );
+                                                },
+                                                child: Container(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                    0,
+                                                    8,
+                                                    0,
+                                                    8,
+                                                  ),
+                                                  width: double.infinity,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    color: ColorSet.green1Alpha,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(
+                                                        20,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  child: const Text(
+                                                    'Aceitar',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: ColorSet.green1,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    );
+                                  },
+                                  itemCount:
+                                      state.reservation?.productReservations
+                                              .where(
+                                                (element) =>
+                                                    element.status ==
+                                                    ReservationItemStatus
+                                                        .awaitingBuyer,
+                                              )
+                                              .toList()
+                                              .length ??
+                                          0,
+                                ),
+                                const SizedBox(height: 40),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          const Text(
+                            'Itens',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: ColorSet.colorPrimaryGreen,
+                            ),
+                          ),
                           ListView.builder(
-                            physics: const ClampingScrollPhysics(),
                             shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
                             itemBuilder: (itemBuilder, index) {
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -201,224 +417,52 @@ class ReservationWidget extends StatelessWidget {
                               );
                             },
                             itemCount:
-                                state.reservation?.productReservations.length,
+                                state.reservation?.productReservations.length ??
+                                    0,
                           ),
-                          const SizedBox(height: 30),
-                          Visibility(
-                              visible: state.reservation != null &&
-                                  getReservationStatus(state.reservation!) ==
-                                      ReservationStatus.awaitingBuyer,
-                              child: ListView(
-                                shrinkWrap: true,
-                                physics: const ClampingScrollPhysics(),
-                                children: [
-                                  const Center(
-                                    child: Text('❗ Atenção!',
-                                        style: TextStyle(
-                                            color: ColorSet.yellow2,
-                                            fontSize: 14)),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  ListView.separated(
-                                    separatorBuilder: (context, index) =>
-                                        const SizedBox(height: 8),
-                                    physics: const ClampingScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemBuilder: (itemBuilder, index) {
-                                      final list = state
-                                          .reservation?.productReservations
-                                          .where((element) =>
-                                              element.status ==
-                                              ReservationItemStatus
-                                                  .awaitingBuyer)
-                                          .toList();
-                                      return Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            list?[index].adProduct.name ?? '',
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                            'Só tem ${list?[index].quantity} ${list?[index].adProduct.unitMeasure} disponível(eis). Aceitar?',
-                                            style: const TextStyle(),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: MaterialButton(
-                                                    onPressed: () {
-                                                      context
-                                                          .read<
-                                                              SingleReservationBloc>()
-                                                          .add(SingleReservationEvent
-                                                              .onCancelPressed(
-                                                                  index));
-                                                    },
-                                                    child: Container(
-                                                      padding: const EdgeInsets
-                                                          .fromLTRB(0, 8, 0, 8),
-                                                      width: double.infinity,
-                                                      decoration: const BoxDecoration(
-                                                          color: ColorSet
-                                                              .red1Alpha,
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          20))),
-                                                      child: const Text(
-                                                          'Cancelar',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color: ColorSet
-                                                                  .red1)),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: MaterialButton(
-                                                  onPressed: () {
-                                                    context
-                                                        .read<
-                                                            SingleReservationBloc>()
-                                                        .add(SingleReservationEvent
-                                                            .onAcceptPressed(
-                                                                index));
-                                                  },
-                                                  child: Container(
-                                                    padding: const EdgeInsets
-                                                        .fromLTRB(0, 8, 0, 8),
-                                                    width: double.infinity,
-                                                    decoration: const BoxDecoration(
-                                                        color: ColorSet
-                                                            .green1Alpha,
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    20))),
-                                                    child: const Text(
-                                                      'Aceitar',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color:
-                                                              ColorSet.green1),
-                                                    ),
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      );
-                                    },
-                                    itemCount: state
-                                            .reservation?.productReservations
-                                            .where((element) =>
-                                                element.status ==
-                                                ReservationItemStatus
-                                                    .awaitingBuyer)
-                                            .toList()
-                                            .length ??
-                                        0,
-                                  ),
-                                  const SizedBox(height: 40),
-                                ],
-                              )),
-                          Visibility(
-                              visible: state.reservation?.status ==
-                                      ReservationStatus.awaitingBuyer ||
-                                  state.reservation?.status ==
-                                      ReservationStatus.pendingSeller ||
-                                  state.reservation?.status ==
-                                      ReservationStatus.confirmed,
-                              child: Column(
-                                children: [
-                                  const Divider(),
-                                  MaterialButton(
-                                    onPressed: () {
-                                      context.read<SingleReservationBloc>().add(
-                                          const SingleReservationEvent
-                                              .onCancelReservationPressed());
-                                    },
-                                    child: Container(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          50, 10, 50, 10),
-                                      decoration: const BoxDecoration(
-                                          color: ColorSet.red1Alpha,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20))),
-                                      child: const Text('Cancelar Pedido',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: ColorSet.red1)),
-                                    ),
-                                  ),
-                                ],
-                              ))
                         ],
                       ),
-                    )),
-              ),
-              Container(
-                height: 1,
-                color: ColorSet.gray10,
-              ),
-              InkWell(
-                onTap: () {
-                  context
-                      .read<SingleReservationBloc>()
-                      .add(const SingleReservationEvent.onExpandPressed());
-                },
-                child: SizedBox(
-                  height: 40,
-                  child: Stack(
-                    children: [
-                      Align(
-                        child: Text(
-                          context
-                                  .read<SingleReservationBloc>()
-                                  .state
-                                  .isItemVisible
-                              ? 'Itens'
-                              : 'Ver itens',
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Icon(
-                            context
-                                    .read<SingleReservationBloc>()
-                                    .state
-                                    .isItemVisible
-                                ? Icons.expand_less
-                                : Icons.expand_more,
-                            size: 32,
-                          ),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  height: 1,
+                  color: ColorSet.gray10,
+                ),
+                InkWell(
+                  onTap: () {
+                    context
+                        .read<ReservationBloc>()
+                        .add(const ReservationEvent.showItemsTapped());
+                  },
+                  child: SizedBox(
+                    height: 40,
+                    child: Stack(
+                      children: [
+                        Align(
+                          child: Text(
+                            isExpanded ? 'Itens' : 'Ver itens',
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Icon(
+                              isExpanded
+                                  ? Icons.expand_less
+                                  : Icons.expand_more,
+                              size: 32,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -510,7 +554,10 @@ class ReservationWidget extends StatelessWidget {
         Text(
           text,
           style: const TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12),
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontSize: 12,
+          ),
         ),
       ],
     );
@@ -519,8 +566,9 @@ class ReservationWidget extends StatelessWidget {
   Color _getStatusColor(Reservation? reservation) {
     if (reservation != null) {
       if (reservation.productReservations
-          .where((element) =>
-              element.status == ReservationItemStatus.awaitingBuyer)
+          .where(
+            (element) => element.status == ReservationItemStatus.awaitingBuyer,
+          )
           .isNotEmpty) {
         return ColorSet.yellow2;
       }

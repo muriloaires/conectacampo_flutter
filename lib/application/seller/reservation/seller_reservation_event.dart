@@ -6,6 +6,7 @@ class SellerReservationEvent with _$SellerReservationEvent {
       _Started;
 
   const factory SellerReservationEvent.finish() = Finish;
+
   factory SellerReservationEvent.quantityEdited(int index, int newQuantity) =
       QuantityEdited;
 
@@ -16,5 +17,10 @@ class SellerReservationEvent with _$SellerReservationEvent {
   const factory SellerReservationEvent.onConfirmPayment() = OnConfirmPayment;
 
   const factory SellerReservationEvent.onCancel() = OnCancel;
+
   const factory SellerReservationEvent.showItemsTapped() = ShowItemsTapped;
+
+  const factory SellerReservationEvent.reservationEditItemsTap(
+    Reservation? reservation,
+  ) = ReservationEditItemsTap;
 }

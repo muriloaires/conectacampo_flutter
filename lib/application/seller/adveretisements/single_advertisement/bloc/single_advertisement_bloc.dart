@@ -33,8 +33,8 @@ class SingleAdvertisementBloc
           yield state.copyWith(
               canceling: false, optionOfDeleteAdFailureOrSuccess: some(result));
         },
-        onItemExapandPressed: (onItemExapandPressed) async* {
-          yield state.copyWith(isItemVisible: !state.isItemVisible);
+        onItemExpandedPressed: (onItemExpandedPressed) async* {
+
         });
   }
 }

@@ -70,18 +70,6 @@ class SellerMenuBloc extends Bloc<SellerMenuEvent, SellerMenuState> {
           await persistUserType('buyer');
           yield state.copyWith(navToBuyer: true);
         },
-        reservationEditItemsTap: (EditReservation value) async* {
-          final reservation = value.reservation;
-          if (reservation != null) {
-            yield state.copyWith(
-                openEditReservation: true,
-                optionOfResevationToEdit: some(reservation));
-          }
-        },
-        editingEnd: (EditingEnd value) async* {
-          yield state.copyWith(
-              openEditReservation: false, optionOfResevationToEdit: none());
-        },
         logout: (Logout value) async* {
           await logout();
           yield state.copyWith(navToLogin: true);

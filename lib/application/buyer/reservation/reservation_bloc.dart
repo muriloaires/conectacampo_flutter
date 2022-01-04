@@ -27,13 +27,15 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
     yield* event.map(
       started: (started) async* {
         yield state.copyWith(
-            loading: true,
-            optionOfReservationListFailureOrSuccess: some(right([])));
+          loading: true,
+          optionOfReservationListFailureOrSuccess: some(right([])),
+        );
         final successOrFailure =
             await reservationFacade.getCurrentUserReservations();
         yield state.copyWith(
-            optionOfReservationListFailureOrSuccess: some(successOrFailure),
-            loading: false);
+          optionOfReservationListFailureOrSuccess: some(successOrFailure),
+          loading: false,
+        );
       },
       showItemsTapped: (showItemsTapped) async* {
         yield state.copyWith(isItemsVisible: !state.isItemsVisible);

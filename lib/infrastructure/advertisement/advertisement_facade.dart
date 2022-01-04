@@ -4,7 +4,6 @@ import 'package:conectacampo/domain/advertisements/advertisement.dart';
 import 'package:conectacampo/domain/advertisements/advertisement_failure.dart';
 import 'package:conectacampo/domain/advertisements/i_advertisements_facade.dart';
 import 'package:conectacampo/domain/advertisements/seller/new_advertisement.dart';
-import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/infrastructure/advertisement/advertisement_mapper.dart';
 import 'package:conectacampo/infrastructure/advertisement/model/model.dart';
@@ -27,7 +26,8 @@ class AdvertisementFacade extends IAdvertisementsFacade {
 
   @override
   Future<Either<AdvertisementFailure, List<Advertisement>>> getAdvertisements(
-      Place place) async {
+    Place place,
+  ) async {
     final url = Uri.https(baseUrl, '$apiVersion$routeAdvertisements',
         {'place_id': place.id.toString(), 'future_delivery': 'true'});
     final response = await getAuthenticatedRequest(url, getApiHeader());
@@ -60,7 +60,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
       int? productId,
       int? quantity,
       String? rating,
-      String? date}) async {
+      String? date,}) async {
     final Map<String, dynamic> params = {
       'place_id': place.id,
       'future_delivery': 'true'
@@ -201,6 +201,9 @@ class AdvertisementFacade extends IAdvertisementsFacade {
 
       request.fields['products_attributes[$index][measurement_unit_id]'] =
           product.newAdProductUnitMeasure?.id.toString() ?? '0';
+
+      request.fields['products_attributes[$index][observation]'] =
+          product.newAdProductObservation?.value.fold((l) => '', (r) => r) ?? '';
 
       for (final element in product.picturesPaths) {
         request.files.add(await http.MultipartFile.fromPath(
@@ -360,7 +363,7 @@ class AdvertisementFacade extends IAdvertisementsFacade {
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
       final ad = AdvertisementResponse.fromJson(
-          json.decode(response.body) as Map<String, dynamic>);
+          json.decode(response.body) as Map<String, dynamic>,);
       return right(ad.toDomain());
     } else if (code == 401) {
       return left(const AdvertisementFailure.unauthorized());

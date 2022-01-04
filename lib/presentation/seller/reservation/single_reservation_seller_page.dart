@@ -17,7 +17,7 @@ class SingleReservationSeller extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
-        child: SellerReservationWidget(reservation),
+        child: SellerReservationWidget(reservation, isExpanded: true),
       ),
     );
   }

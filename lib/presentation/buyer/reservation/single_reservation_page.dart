@@ -13,7 +13,7 @@ class SingleReservationBuyer extends StatelessWidget {
       appBar: AppBar(title: Text('Notificação de reserva'),),
       body: Container(
         padding: const EdgeInsets.all(20),
-        child: ReservationWidget(reservation),
+        child: ReservationWidget(reservation, true),
       ),
     );
   }

@@ -95,14 +95,23 @@ class BuyerReservationsPage extends StatelessWidget {
                                   .read<ReservationBloc>()
                                   .add(const ReservationEvent.started());
                             },
-                            child: ListView.separated(
+                            child: SizedBox(
+                              height: state.isItemsVisible ? 530 : 300,
+                              width: double.infinity,
+                              child: ListView.separated(
                                 shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
                                 physics: const ClampingScrollPhysics(),
                                 itemBuilder: (context, index) =>
-                                    ReservationWidget(list[index]),
+                                    ReservationWidget(
+                                  list[index],
+                                  state.isItemsVisible,
+                                ),
                                 separatorBuilder: (context, index) =>
                                     const Divider(),
-                                itemCount: list.length),
+                                itemCount: list.length,
+                              ),
+                            ),
                           ),
                         ));
             },

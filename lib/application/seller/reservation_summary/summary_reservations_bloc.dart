@@ -26,15 +26,22 @@ class SummaryReservationsBloc
   Stream<SummaryReservationsState> mapEventToState(
     SummaryReservationsEvent event,
   ) async* {
-    yield* event.map(started: (started) async* {
-      yield state.copyWith(loading: true, optionOfReservationsFailureOrSuccess: none());
+    yield* event.map(
+      started: (started) async* {
+        yield state.copyWith(
+            loading: true, optionOfReservationsFailureOrSuccess: none());
 
-      final reservationsSuccessOrFailure =
-          await reservationFacade.getSellerReservations();
-      yield state.copyWith(
+        final reservationsSuccessOrFailure =
+            await reservationFacade.getSellerReservations();
+        yield state.copyWith(
           loading: false,
           optionOfReservationsFailureOrSuccess:
-              some(reservationsSuccessOrFailure));
-    });
+              some(reservationsSuccessOrFailure),
+        );
+      },
+      onItemExpandTap: (OnItemExpandTap value) async* {
+        yield state.copyWith(isItemsVisible: value.isExpanded);
+      },
+    );
   }
 }

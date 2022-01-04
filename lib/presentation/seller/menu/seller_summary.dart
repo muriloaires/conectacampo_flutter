@@ -4,6 +4,8 @@ import 'package:conectacampo/application/seller/group/seller_group_bloc.dart';
 import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/application/seller/reservation_summary/summary_reservations_bloc.dart';
 import 'package:conectacampo/application/seller/summary/seller_summary_bloc.dart';
+import 'package:conectacampo/presentation/commom/invite_widget.dart';
+import 'package:conectacampo/presentation/commom/prohort_widget.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/seller/advertisements/advertisement_widget.dart';
 import 'package:conectacampo/presentation/seller/new_advertisement/new_advertisement_page.dart';
@@ -50,7 +52,11 @@ class SellerSummary extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: [
-                        const SizedBox(height: 32),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: InviteWidget(),
+                        ),
+                        const SizedBox(height: 20),
                         const Padding(
                           padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: Text(
@@ -102,42 +108,9 @@ class SellerSummary extends StatelessWidget {
                           child: SellerGroup(),
                         ),
                         const SizedBox(height: 32),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(4)),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topRight,
-                                  end: Alignment.bottomLeft,
-                                  colors: [
-                                    ColorSet.greenRightGradient,
-                                    ColorSet.greenLeftGradient,
-                                  ],
-                                )),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(20, 16, 20, 16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'Dúvidas sobre preço?',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Acesse o PROHORT ou o SIMA!',
-                                    style: TextStyle(color: Colors.white),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: ProhortWidget(),
                         ),
                         const SizedBox(height: 32),
                       ],
@@ -216,67 +189,72 @@ class SellerAdvertisements extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         final state2 = context.read<SellerAdvertisementsBloc>().state;
-        final widgetToRender = state2.optionOfSellerAdsFailureOrSuccess.fold(
-            () {
-          return Container();
-        },
-            (a) => a.fold(
-                (l) => const Center(
-                      child: Text('Erro ao carregar suas feiras'),
-                    ),
-                (r) => r.isEmpty
-                    ? GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => NewAdvertisementPage()));
-                        },
-                        child: Card(
-                          margin: const EdgeInsets.all(0),
-                          child: Padding(
-                            padding: const EdgeInsets.all(32),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Text(
-                                      'Sem anúncios',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text('Anuncie novos produtos!')
-                                  ],
+        final widgetToRender = state2.sellerAdsFailureOrSuccess?.fold(
+            (l) => const Center(
+                  child: Text('Erro ao carregar suas feiras'),
+                ),
+            (r) => r.isEmpty
+                ? GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => NewAdvertisementPage()));
+                    },
+                    child: Card(
+                      margin: const EdgeInsets.all(0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(32),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'Sem anúncios',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                const SizedBox(
-                                  width: 32,
-                                ),
-                                SvgPicture.asset(
-                                  'assets/coolicon.svg',
-                                  color: ColorSet.brown1,
-                                  width: 21,
-                                  height: 21,
-                                ),
+                                Text('Anuncie novos produtos!')
                               ],
                             ),
-                          ),
+                            const SizedBox(
+                              width: 32,
+                            ),
+                            SvgPicture.asset(
+                              'assets/coolicon.svg',
+                              color: ColorSet.brown1,
+                              width: 21,
+                              height: 21,
+                            ),
+                          ],
                         ),
-                      )
-                    : ListView.separated(
+                      ),
+                    ),
+                  )
+                : SizedBox(
+                    height: state2.someExpanded ? 400 : 190,
+                    width: double.infinity,
+                    child: ListView.separated(
                         shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
                         physics: const ClampingScrollPhysics(),
-                        itemBuilder: (context, index) =>
-                            AdvertisementWidget(r[index]),
+                        itemBuilder: (context, index) => AdvertisementWidget(
+                            r[index],
+                            context
+                                .read<SellerAdvertisementsBloc>()
+                                .state
+                                .someExpanded),
                         separatorBuilder: (context, index) => const SizedBox(
                               height: 20,
                             ),
-                        itemCount: r.length)));
+                        itemCount: r.length),
+                  ));
 
         return state.loading
             ? const Center(
                 child: CircularProgressIndicator(color: ColorSet.brown1))
-            : widgetToRender;
+            : widgetToRender ?? Container();
       },
     );
   }

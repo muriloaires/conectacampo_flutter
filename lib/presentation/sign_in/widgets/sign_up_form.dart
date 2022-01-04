@@ -63,16 +63,6 @@ class SignUpForm extends StatelessWidget {
                     Navigator.of(context).pushNamed(
                       '/avatar_page',
                     );
-                    // final userType = await loadLoggedUserType();
-                    // if (userType != null) {
-                    //   if (userType == 'buyer') {
-                    //     Navigator.of(context).pushNamedAndRemoveUntil(
-                    //         '/buyer_main', (route) => false);
-                    //   } else {
-                    //     Navigator.of(context).pushNamedAndRemoveUntil(
-                    //         '/seller_main', (route) => false);
-                    //   }
-                    // }
                   }));
         }, builder: (context, state) {
           return Form(

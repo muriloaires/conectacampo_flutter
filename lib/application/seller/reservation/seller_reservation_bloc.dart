@@ -29,127 +29,159 @@ class SellerReservationBloc
   Stream<SellerReservationState> mapEventToState(
     SellerReservationEvent event,
   ) async* {
-    yield* event.map(started: (started) async* {
-      yield state.copyWith(reservation: started.reservation);
-      final adId = started.reservation.productReservations.firstOrNull
-          ?.adProduct.advertisementId;
-      if (adId != null) {
-        final ad = await advertisementsFacade.getAdvertisement(adId);
-        yield* ad.fold((l) async* {}, (r) async* {
-          yield state.copyWith(advertisement: r);
-        });
-      }
-    }, finish: (Finish value) async* {
-      if (state.reservation != null) {
-        yield state.copyWith(finishing: true);
+    yield* event.map(
+      started: (started) async* {
+        yield state.copyWith(reservation: started.reservation);
+        final adId = started.reservation.productReservations.firstOrNull
+            ?.adProduct.advertisementId;
+        if (adId != null) {
+          final ad = await advertisementsFacade.getAdvertisement(adId);
+          yield* ad.fold((l) async* {}, (r) async* {
+            yield state.copyWith(advertisement: r);
+          });
+        }
+      },
+      finish: (Finish value) async* {
+        if (state.reservation != null) {
+          yield state.copyWith(finishing: true);
 
-        final List<ProductReservationAttributes> productReservations = [];
+          final List<ProductReservationAttributes> productReservations = [];
 
-        for (final element in state.reservation?.productReservations ??
-            List<ProductReservation>.empty()) {
-          if (element.quantityChanged ?? false) {
-            productReservations.add(ProductReservationAttributes(
+          for (final element in state.reservation?.productReservations ??
+              List<ProductReservation>.empty()) {
+            if (element.quantityChanged ?? false) {
+              productReservations.add(
+                ProductReservationAttributes(
+                  id: element.id,
+                  quantity: element.quantity,
+                  adProductId: element.adProduct.id,
+                ),
+              );
+            }
+          }
+
+          for (final element in state.deletedItems) {
+            productReservations.add(
+              ProductReservationAttributes(
                 id: element.id,
                 quantity: element.quantity,
-                adProductId: element.adProduct.id));
+                adProductId: element.adProduct.id,
+                cancel: true,
+              ),
+            );
           }
+
+          final ReservationObjRequest reservationObj = ReservationObjRequest(
+            reservation: ReservationRequest(adProducts: productReservations),
+          );
+
+          await reservationFacade.updateReservation(
+            state.reservation?.id,
+            reservationObj,
+          );
+
+          yield state.copyWith(finishing: false, finished: true);
         }
-
-        for (final element in state.deletedItems) {
-          productReservations.add(ProductReservationAttributes(
-              id: element.id,
-              quantity: element.quantity,
-              adProductId: element.adProduct.id,
-              cancel: true));
+      },
+      quantityEdited: (QuantityEdited value) async* {
+        final product =
+            state.reservation?.productReservations[value.index].copyWith(
+          quantity: value.newQuantity,
+          quantityChanged: value.newQuantity !=
+              state.reservation?.productReservations[value.index].quantity,
+        );
+        if (product != null) {
+          state.reservation?.productReservations[value.index] = product;
+          yield state.copyWith(reservation: state.reservation, update: true);
         }
+      },
+      itemRemoved: (ItemRemoved value) async* {
+        if (state.reservation != null) {
+          var deletedItems = List<ProductReservation>.from(state.deletedItems);
+          deletedItems.add(state.reservation!.productReservations[value.index]);
 
-        final ReservationObjRequest reservationObj = ReservationObjRequest(
-            reservation: ReservationRequest(adProducts: productReservations));
+          var normalItems = List<ProductReservation>.from(
+            state.reservation!.productReservations,
+          );
+          normalItems.removeAt(value.index);
 
-        await reservationFacade.updateReservation(
-            state.reservation?.id, reservationObj);
-
-        yield state.copyWith(finishing: false, finished: true);
-      }
-    }, quantityEdited: (QuantityEdited value) async* {
-      final product = state.reservation?.productReservations[value.index]
-          .copyWith(
-              quantity: value.newQuantity,
-              quantityChanged: value.newQuantity !=
-                  state.reservation?.productReservations[value.index].quantity);
-      if (product != null) {
-        state.reservation?.productReservations[value.index] = product;
-        yield state.copyWith(reservation: state.reservation, update: true);
-      }
-    }, itemRemoved: (ItemRemoved value) async* {
-      if (state.reservation != null) {
-        var deletedItems = List<ProductReservation>.from(state.deletedItems);
-        deletedItems.add(state.reservation!.productReservations[value.index]);
-
-        var normalItems = List<ProductReservation>.from(
-            state.reservation!.productReservations);
-        normalItems.removeAt(value.index);
-
-        yield state.copyWith(
+          yield state.copyWith(
             reservation: state.reservation!.copyWith(productReservations: []),
-            deletedItems: []);
-        yield state.copyWith(
-            reservation:
-                state.reservation!.copyWith(productReservations: normalItems),
-            deletedItems: deletedItems);
-      }
-    }, onCancel: (OnCancel value) async* {
-      final reservation = state.reservation;
-      if (reservation != null) {
-        final cancelResult =
-            await reservationFacade.cancelReservation(reservation);
-        if (cancelResult.isLeft()) {
-        } else {
-          final newReservation =
-              await reservationFacade.getReservation(reservation.id!);
-          if (newReservation.isRight()) {
-            yield state.copyWith(
+            deletedItems: [],
+          );
+          yield state.copyWith(
+              reservation:
+                  state.reservation!.copyWith(productReservations: normalItems),
+              deletedItems: deletedItems);
+        }
+      },
+      onCancel: (OnCancel value) async* {
+        final reservation = state.reservation;
+        if (reservation != null) {
+          yield state.copyWith(loading: true);
+          final cancelResult =
+              await reservationFacade.cancelReservation(reservation);
+          if (cancelResult.isRight()) {
+            final newReservation =
+                await reservationFacade.getReservation(reservation.id!);
+            if (newReservation.isRight()) {
+              yield state.copyWith(
                 reservation: newReservation.foldRight(
-                    state.reservation, (r, previous) => r));
+                  state.reservation,
+                  (r, previous) => r,
+                ),
+                loading: false,
+              );
+            }
           }
         }
-      }
-    }, onConfirm: (OnConfirm value) async* {
-      final reservation = state.reservation;
-      if (reservation != null) {
-        final confirmResult =
-            await reservationFacade.confirmReservation(reservation);
+      },
+      onConfirm: (OnConfirm value) async* {
+        final reservation = state.reservation;
+        if (reservation != null) {
+          yield state.copyWith(loading: true);
+          final confirmResult =
+              await reservationFacade.confirmReservation(reservation);
 
-        if (confirmResult.isLeft()) {
-        } else {
-          final newReservation =
-              await reservationFacade.getReservation(reservation.id!);
-          if (newReservation.isRight()) {
-            yield state.copyWith(
+          if (confirmResult.isRight()) {
+            final newReservation =
+                await reservationFacade.getReservation(reservation.id!);
+            if (newReservation.isRight()) {
+              yield state.copyWith(
                 reservation: newReservation.foldRight(
-                    state.reservation, (r, previous) => r));
+                  state.reservation,
+                  (r, previous) => r,
+                ),
+              );
+            }
           }
         }
-      }
-    }, onConfirmPayment: (OnConfirmPayment value) async* {
-      final reservation = state.reservation;
-      if (reservation != null) {
-        final confirmPaymentResult =
-            await reservationFacade.confirmReservationPayment(reservation);
+      },
+      onConfirmPayment: (OnConfirmPayment value) async* {
+        final reservation = state.reservation;
+        if (reservation != null) {
+          yield state.copyWith(loading: true);
+          final confirmPaymentResult =
+              await reservationFacade.confirmReservationPayment(reservation);
 
-        if (confirmPaymentResult.isLeft()) {
-        } else {
-          final newReservation =
-              await reservationFacade.getReservation(reservation.id!);
-          if (newReservation.isRight()) {
-            yield state.copyWith(
-                reservation: newReservation.foldRight(
-                    state.reservation, (r, previous) => r));
+          if (confirmPaymentResult.isRight()) {
+            final newReservation =
+                await reservationFacade.getReservation(reservation.id!);
+            if (newReservation.isRight()) {
+              yield state.copyWith(
+                  reservation: newReservation.foldRight(
+                      state.reservation, (r, previous) => r));
+            }
           }
         }
-      }
-    }, showItemsTapped: (ShowItemsTapped value) async* {
-      yield state.copyWith(isItemsVisible: !state.isItemsVisible);
-    });
+      },
+      showItemsTapped: (ShowItemsTapped value) async* {
+
+      },
+      reservationEditItemsTap: (ReservationEditItemsTap value) async* {
+        yield state.copyWith(reservationToEdit: value.reservation);
+        yield state.copyWith(reservationToEdit: null);
+      },
+    );
   }
 }

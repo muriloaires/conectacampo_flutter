@@ -44,7 +44,6 @@ class SellerMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<SellerMenuBloc>(
@@ -57,36 +56,25 @@ class SellerMainPage extends StatelessWidget {
             create: (BuildContext context) =>
                 getIt()..add(const SellerSummaryEvent.started())),
         BlocProvider<SummaryReservationsBloc>(
-            create: (context) =>
-                getIt()..add(const SummaryReservationsEvent.started())),
+          create: (context) =>
+              getIt()..add(const SummaryReservationsEvent.started()),
+        ),
         BlocProvider<SellerAdvertisementsBloc>(
-            create: (context) =>
-                getIt()..add(const SellerAdvertisementsEvent.started())),
+          create: (context) =>
+              getIt()..add(const SellerAdvertisementsEvent.started()),
+        ),
         BlocProvider(
-            create: (context) =>
-                getIt<ProfileBloc>()..add(const ProfileEvent.started()))
+          create: (context) =>
+              getIt<ProfileBloc>()..add(const ProfileEvent.started()),
+        )
       ],
       child: BlocConsumer<SellerMenuBloc, SellerMenuState>(
         listener: (context, state) async {
           if (state.reservationToOpen != null) {
             await openNotification(context, state.reservationToOpen!);
-          }
-          if (state.openEditReservation) {
-            state.optionOfResevationToEdit.fold(() => null, (a) async {
-              final result = await Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => EditReservationPage(a),
-              ));
-              context
-                  .read<SellerSummaryBloc>()
-                  .add(const SellerSummaryEvent.started());
-              context
-                  .read<SummaryReservationsBloc>()
-                  .add(const SummaryReservationsEvent.started());
-
-              context
-                  .read<SellerMenuBloc>()
-                  .add(const SellerMenuEvent.editingEnd());
-            });
+            context
+                .read<SummaryReservationsBloc>()
+                .add(const SummaryReservationsEvent.started());
           }
 
           if (context.read<SellerMenuBloc>().state.navToRoot) {

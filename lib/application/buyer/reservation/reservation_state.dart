@@ -13,7 +13,7 @@ class ReservationState with _$ReservationState {
   factory ReservationState.initial() => ReservationState(
         loading: false,
         optionOfReservationListFailureOrSuccess: none(),
-        isItemsVisible: false,
-    openSearch: false,
+        isItemsVisible: true,
+        openSearch: false,
       );
 }

@@ -31,7 +31,8 @@ class AdvertisementDetailPage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: Text(
-                  'Feira do dia ${state.advertisement?.deliveryAt.getDateAndMonthName() ?? '...'}'),
+                'Feira do dia ${state.advertisement?.deliveryAt.getDateAndMonthName() ?? '...'}',
+              ),
             ),
             body: Padding(
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
@@ -68,25 +69,46 @@ class AdvertisementDetailPage extends StatelessWidget {
                           ),
                         ),
                         ListView.separated(
-                            shrinkWrap: true,
-                            physics: const ClampingScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              if (state.advertisement == null) {
-                                return Container();
-                              }
-                              return AdProductWidget(
-                                  product:
-                                      state.advertisement!.products[index]);
-                            },
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                            itemCount:
-                                state.advertisement?.products.length ?? 0)
+                          shrinkWrap: true,
+                          physics: const ClampingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            if (state.advertisement == null) {
+                              return Container();
+                            }
+                            return AdProductWidget(
+                              product: state.advertisement!.products[index],
+                            );
+                          },
+                          separatorBuilder: (context, index) => const SizedBox(
+                            height: 10,
+                          ),
+                          itemCount: state.advertisement?.products.length ?? 0,
+                        )
                       ],
                     ),
                   ),
+                  const SizedBox(height: 10),
+                  TextButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(ColorSet.green1),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0),
+                        ),
+                      ),
+                    ),
+                    child: const Text(
+                      'Voltar para o carrinho',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
                 ],
               ),
             ),
@@ -113,10 +135,12 @@ class AdvertisementHeaderWidget extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                  radius: 30.0,
-                  backgroundColor: ColorSet.green1,
-                  foregroundImage: CachedNetworkImageProvider(
-                      _advertisement?.seller.thumbAvatar?.getOrCrash() ?? '')),
+                radius: 30.0,
+                backgroundColor: ColorSet.green1,
+                foregroundImage: CachedNetworkImageProvider(
+                  _advertisement?.seller.thumbAvatar?.getOrCrash() ?? '',
+                ),
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: ListView(
@@ -127,10 +151,13 @@ class AdvertisementHeaderWidget extends StatelessWidget {
                       _advertisement?.seller.nickname ?? '',
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 8),
-                    Text.rich(TextSpan(
+                    Text.rich(
+                      TextSpan(
                         text: _advertisement?.meetingType ?? '',
                         children: [
                           const TextSpan(text: ' '),
@@ -140,7 +167,9 @@ class AdvertisementHeaderWidget extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           )
-                        ]))
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),

@@ -999,15 +999,13 @@ class _$SingleReservationStateTearOff {
   const _$SingleReservationStateTearOff();
 
   _SingleReservationState call(
-      {required bool isItemVisible,
-      required Reservation? reservation,
+      {required Reservation? reservation,
       required bool showAcceptError,
       required bool showCancelItemError,
       required bool canceling,
       required Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess,
       required Either<ReservationFailure, Unit>? cancelFailureOrSuccess}) {
     return _SingleReservationState(
-      isItemVisible: isItemVisible,
       reservation: reservation,
       showAcceptError: showAcceptError,
       showCancelItemError: showCancelItemError,
@@ -1023,7 +1021,6 @@ const $SingleReservationState = _$SingleReservationStateTearOff();
 
 /// @nodoc
 mixin _$SingleReservationState {
-  bool get isItemVisible => throw _privateConstructorUsedError;
   Reservation? get reservation => throw _privateConstructorUsedError;
   bool get showAcceptError => throw _privateConstructorUsedError;
   bool get showCancelItemError => throw _privateConstructorUsedError;
@@ -1044,8 +1041,7 @@ abstract class $SingleReservationStateCopyWith<$Res> {
           $Res Function(SingleReservationState) then) =
       _$SingleReservationStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isItemVisible,
-      Reservation? reservation,
+      {Reservation? reservation,
       bool showAcceptError,
       bool showCancelItemError,
       bool canceling,
@@ -1066,7 +1062,6 @@ class _$SingleReservationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isItemVisible = freezed,
     Object? reservation = freezed,
     Object? showAcceptError = freezed,
     Object? showCancelItemError = freezed,
@@ -1075,10 +1070,6 @@ class _$SingleReservationStateCopyWithImpl<$Res>
     Object? cancelFailureOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
-      isItemVisible: isItemVisible == freezed
-          ? _value.isItemVisible
-          : isItemVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
       reservation: reservation == freezed
           ? _value.reservation
           : reservation // ignore: cast_nullable_to_non_nullable
@@ -1126,8 +1117,7 @@ abstract class _$SingleReservationStateCopyWith<$Res>
       __$SingleReservationStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isItemVisible,
-      Reservation? reservation,
+      {Reservation? reservation,
       bool showAcceptError,
       bool showCancelItemError,
       bool canceling,
@@ -1151,7 +1141,6 @@ class __$SingleReservationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isItemVisible = freezed,
     Object? reservation = freezed,
     Object? showAcceptError = freezed,
     Object? showCancelItemError = freezed,
@@ -1160,10 +1149,6 @@ class __$SingleReservationStateCopyWithImpl<$Res>
     Object? cancelFailureOrSuccess = freezed,
   }) {
     return _then(_SingleReservationState(
-      isItemVisible: isItemVisible == freezed
-          ? _value.isItemVisible
-          : isItemVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
       reservation: reservation == freezed
           ? _value.reservation
           : reservation // ignore: cast_nullable_to_non_nullable
@@ -1196,16 +1181,13 @@ class __$SingleReservationStateCopyWithImpl<$Res>
 
 class _$_SingleReservationState implements _SingleReservationState {
   const _$_SingleReservationState(
-      {required this.isItemVisible,
-      required this.reservation,
+      {required this.reservation,
       required this.showAcceptError,
       required this.showCancelItemError,
       required this.canceling,
       required this.adFailureOrSuccess,
       required this.cancelFailureOrSuccess});
 
-  @override
-  final bool isItemVisible;
   @override
   final Reservation? reservation;
   @override
@@ -1221,16 +1203,13 @@ class _$_SingleReservationState implements _SingleReservationState {
 
   @override
   String toString() {
-    return 'SingleReservationState(isItemVisible: $isItemVisible, reservation: $reservation, showAcceptError: $showAcceptError, showCancelItemError: $showCancelItemError, canceling: $canceling, adFailureOrSuccess: $adFailureOrSuccess, cancelFailureOrSuccess: $cancelFailureOrSuccess)';
+    return 'SingleReservationState(reservation: $reservation, showAcceptError: $showAcceptError, showCancelItemError: $showCancelItemError, canceling: $canceling, adFailureOrSuccess: $adFailureOrSuccess, cancelFailureOrSuccess: $cancelFailureOrSuccess)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SingleReservationState &&
-            (identical(other.isItemVisible, isItemVisible) ||
-                const DeepCollectionEquality()
-                    .equals(other.isItemVisible, isItemVisible)) &&
             (identical(other.reservation, reservation) ||
                 const DeepCollectionEquality()
                     .equals(other.reservation, reservation)) &&
@@ -1254,7 +1233,6 @@ class _$_SingleReservationState implements _SingleReservationState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isItemVisible) ^
       const DeepCollectionEquality().hash(reservation) ^
       const DeepCollectionEquality().hash(showAcceptError) ^
       const DeepCollectionEquality().hash(showCancelItemError) ^
@@ -1271,8 +1249,7 @@ class _$_SingleReservationState implements _SingleReservationState {
 
 abstract class _SingleReservationState implements SingleReservationState {
   const factory _SingleReservationState(
-      {required bool isItemVisible,
-      required Reservation? reservation,
+      {required Reservation? reservation,
       required bool showAcceptError,
       required bool showCancelItemError,
       required bool canceling,
@@ -1280,8 +1257,6 @@ abstract class _SingleReservationState implements SingleReservationState {
       required Either<ReservationFailure, Unit>?
           cancelFailureOrSuccess}) = _$_SingleReservationState;
 
-  @override
-  bool get isItemVisible => throw _privateConstructorUsedError;
   @override
   Reservation? get reservation => throw _privateConstructorUsedError;
   @override

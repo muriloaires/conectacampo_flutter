@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SingleAdvertisementEventTearOff {
   const _$SingleAdvertisementEventTearOff();
 
-  _Started started(Advertisement advertisement) {
-    return _Started(
+  Started started(Advertisement advertisement, bool isExpanded) {
+    return Started(
       advertisement,
+      isExpanded,
     );
   }
 
@@ -28,8 +29,8 @@ class _$SingleAdvertisementEventTearOff {
     );
   }
 
-  OnItemExapandPressed onItemExapandPressed() {
-    return const OnItemExapandPressed();
+  OnItemExpandedPressed onItemExpandedPressed() {
+    return const OnItemExpandedPressed();
   }
 }
 
@@ -40,31 +41,33 @@ const $SingleAdvertisementEvent = _$SingleAdvertisementEventTearOff();
 mixin _$SingleAdvertisementEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Advertisement advertisement) started,
+    required TResult Function(Advertisement advertisement, bool isExpanded)
+        started,
     required TResult Function(Advertisement advertisement) onCancelAdPressed,
-    required TResult Function() onItemExapandPressed,
+    required TResult Function() onItemExpandedPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Advertisement advertisement)? started,
+    TResult Function(Advertisement advertisement, bool isExpanded)? started,
     TResult Function(Advertisement advertisement)? onCancelAdPressed,
-    TResult Function()? onItemExapandPressed,
+    TResult Function()? onItemExpandedPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Started value) started,
     required TResult Function(OnCancelAdPressed value) onCancelAdPressed,
-    required TResult Function(OnItemExapandPressed value) onItemExapandPressed,
+    required TResult Function(OnItemExpandedPressed value)
+        onItemExpandedPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Started value)? started,
     TResult Function(OnCancelAdPressed value)? onCancelAdPressed,
-    TResult Function(OnItemExapandPressed value)? onItemExapandPressed,
+    TResult Function(OnItemExpandedPressed value)? onItemExpandedPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -88,33 +91,38 @@ class _$SingleAdvertisementEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
-  $Res call({Advertisement advertisement});
+abstract class $StartedCopyWith<$Res> {
+  factory $StartedCopyWith(Started value, $Res Function(Started) then) =
+      _$StartedCopyWithImpl<$Res>;
+  $Res call({Advertisement advertisement, bool isExpanded});
 
   $AdvertisementCopyWith<$Res> get advertisement;
 }
 
 /// @nodoc
-class __$StartedCopyWithImpl<$Res>
+class _$StartedCopyWithImpl<$Res>
     extends _$SingleAdvertisementEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
+    implements $StartedCopyWith<$Res> {
+  _$StartedCopyWithImpl(Started _value, $Res Function(Started) _then)
+      : super(_value, (v) => _then(v as Started));
 
   @override
-  _Started get _value => super._value as _Started;
+  Started get _value => super._value as Started;
 
   @override
   $Res call({
     Object? advertisement = freezed,
+    Object? isExpanded = freezed,
   }) {
-    return _then(_Started(
+    return _then(Started(
       advertisement == freezed
           ? _value.advertisement
           : advertisement // ignore: cast_nullable_to_non_nullable
               as Advertisement,
+      isExpanded == freezed
+          ? _value.isExpanded
+          : isExpanded // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -128,55 +136,63 @@ class __$StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started(this.advertisement);
+class _$Started implements Started {
+  const _$Started(this.advertisement, this.isExpanded);
 
   @override
   final Advertisement advertisement;
+  @override
+  final bool isExpanded;
 
   @override
   String toString() {
-    return 'SingleAdvertisementEvent.started(advertisement: $advertisement)';
+    return 'SingleAdvertisementEvent.started(advertisement: $advertisement, isExpanded: $isExpanded)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Started &&
+        (other is Started &&
             (identical(other.advertisement, advertisement) ||
                 const DeepCollectionEquality()
-                    .equals(other.advertisement, advertisement)));
+                    .equals(other.advertisement, advertisement)) &&
+            (identical(other.isExpanded, isExpanded) ||
+                const DeepCollectionEquality()
+                    .equals(other.isExpanded, isExpanded)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(advertisement);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(advertisement) ^
+      const DeepCollectionEquality().hash(isExpanded);
 
   @JsonKey(ignore: true)
   @override
-  _$StartedCopyWith<_Started> get copyWith =>
-      __$StartedCopyWithImpl<_Started>(this, _$identity);
+  $StartedCopyWith<Started> get copyWith =>
+      _$StartedCopyWithImpl<Started>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Advertisement advertisement) started,
+    required TResult Function(Advertisement advertisement, bool isExpanded)
+        started,
     required TResult Function(Advertisement advertisement) onCancelAdPressed,
-    required TResult Function() onItemExapandPressed,
+    required TResult Function() onItemExpandedPressed,
   }) {
-    return started(advertisement);
+    return started(advertisement, isExpanded);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Advertisement advertisement)? started,
+    TResult Function(Advertisement advertisement, bool isExpanded)? started,
     TResult Function(Advertisement advertisement)? onCancelAdPressed,
-    TResult Function()? onItemExapandPressed,
+    TResult Function()? onItemExpandedPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(advertisement);
+      return started(advertisement, isExpanded);
     }
     return orElse();
   }
@@ -184,9 +200,10 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Started value) started,
     required TResult Function(OnCancelAdPressed value) onCancelAdPressed,
-    required TResult Function(OnItemExapandPressed value) onItemExapandPressed,
+    required TResult Function(OnItemExpandedPressed value)
+        onItemExpandedPressed,
   }) {
     return started(this);
   }
@@ -194,9 +211,9 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Started value)? started,
     TResult Function(OnCancelAdPressed value)? onCancelAdPressed,
-    TResult Function(OnItemExapandPressed value)? onItemExapandPressed,
+    TResult Function(OnItemExpandedPressed value)? onItemExpandedPressed,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -206,13 +223,14 @@ class _$_Started implements _Started {
   }
 }
 
-abstract class _Started implements SingleAdvertisementEvent {
-  const factory _Started(Advertisement advertisement) = _$_Started;
+abstract class Started implements SingleAdvertisementEvent {
+  const factory Started(Advertisement advertisement, bool isExpanded) =
+      _$Started;
 
   Advertisement get advertisement => throw _privateConstructorUsedError;
+  bool get isExpanded => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$StartedCopyWith<_Started> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StartedCopyWith<Started> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -290,9 +308,10 @@ class _$OnCancelAdPressed implements OnCancelAdPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Advertisement advertisement) started,
+    required TResult Function(Advertisement advertisement, bool isExpanded)
+        started,
     required TResult Function(Advertisement advertisement) onCancelAdPressed,
-    required TResult Function() onItemExapandPressed,
+    required TResult Function() onItemExpandedPressed,
   }) {
     return onCancelAdPressed(advertisement);
   }
@@ -300,9 +319,9 @@ class _$OnCancelAdPressed implements OnCancelAdPressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Advertisement advertisement)? started,
+    TResult Function(Advertisement advertisement, bool isExpanded)? started,
     TResult Function(Advertisement advertisement)? onCancelAdPressed,
-    TResult Function()? onItemExapandPressed,
+    TResult Function()? onItemExpandedPressed,
     required TResult orElse(),
   }) {
     if (onCancelAdPressed != null) {
@@ -314,9 +333,10 @@ class _$OnCancelAdPressed implements OnCancelAdPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Started value) started,
     required TResult Function(OnCancelAdPressed value) onCancelAdPressed,
-    required TResult Function(OnItemExapandPressed value) onItemExapandPressed,
+    required TResult Function(OnItemExpandedPressed value)
+        onItemExpandedPressed,
   }) {
     return onCancelAdPressed(this);
   }
@@ -324,9 +344,9 @@ class _$OnCancelAdPressed implements OnCancelAdPressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Started value)? started,
     TResult Function(OnCancelAdPressed value)? onCancelAdPressed,
-    TResult Function(OnItemExapandPressed value)? onItemExapandPressed,
+    TResult Function(OnItemExpandedPressed value)? onItemExpandedPressed,
     required TResult orElse(),
   }) {
     if (onCancelAdPressed != null) {
@@ -347,37 +367,37 @@ abstract class OnCancelAdPressed implements SingleAdvertisementEvent {
 }
 
 /// @nodoc
-abstract class $OnItemExapandPressedCopyWith<$Res> {
-  factory $OnItemExapandPressedCopyWith(OnItemExapandPressed value,
-          $Res Function(OnItemExapandPressed) then) =
-      _$OnItemExapandPressedCopyWithImpl<$Res>;
+abstract class $OnItemExpandedPressedCopyWith<$Res> {
+  factory $OnItemExpandedPressedCopyWith(OnItemExpandedPressed value,
+          $Res Function(OnItemExpandedPressed) then) =
+      _$OnItemExpandedPressedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$OnItemExapandPressedCopyWithImpl<$Res>
+class _$OnItemExpandedPressedCopyWithImpl<$Res>
     extends _$SingleAdvertisementEventCopyWithImpl<$Res>
-    implements $OnItemExapandPressedCopyWith<$Res> {
-  _$OnItemExapandPressedCopyWithImpl(
-      OnItemExapandPressed _value, $Res Function(OnItemExapandPressed) _then)
-      : super(_value, (v) => _then(v as OnItemExapandPressed));
+    implements $OnItemExpandedPressedCopyWith<$Res> {
+  _$OnItemExpandedPressedCopyWithImpl(
+      OnItemExpandedPressed _value, $Res Function(OnItemExpandedPressed) _then)
+      : super(_value, (v) => _then(v as OnItemExpandedPressed));
 
   @override
-  OnItemExapandPressed get _value => super._value as OnItemExapandPressed;
+  OnItemExpandedPressed get _value => super._value as OnItemExpandedPressed;
 }
 
 /// @nodoc
 
-class _$OnItemExapandPressed implements OnItemExapandPressed {
-  const _$OnItemExapandPressed();
+class _$OnItemExpandedPressed implements OnItemExpandedPressed {
+  const _$OnItemExpandedPressed();
 
   @override
   String toString() {
-    return 'SingleAdvertisementEvent.onItemExapandPressed()';
+    return 'SingleAdvertisementEvent.onItemExpandedPressed()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is OnItemExapandPressed);
+    return identical(this, other) || (other is OnItemExpandedPressed);
   }
 
   @override
@@ -386,23 +406,24 @@ class _$OnItemExapandPressed implements OnItemExapandPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Advertisement advertisement) started,
+    required TResult Function(Advertisement advertisement, bool isExpanded)
+        started,
     required TResult Function(Advertisement advertisement) onCancelAdPressed,
-    required TResult Function() onItemExapandPressed,
+    required TResult Function() onItemExpandedPressed,
   }) {
-    return onItemExapandPressed();
+    return onItemExpandedPressed();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Advertisement advertisement)? started,
+    TResult Function(Advertisement advertisement, bool isExpanded)? started,
     TResult Function(Advertisement advertisement)? onCancelAdPressed,
-    TResult Function()? onItemExapandPressed,
+    TResult Function()? onItemExpandedPressed,
     required TResult orElse(),
   }) {
-    if (onItemExapandPressed != null) {
-      return onItemExapandPressed();
+    if (onItemExpandedPressed != null) {
+      return onItemExpandedPressed();
     }
     return orElse();
   }
@@ -410,30 +431,31 @@ class _$OnItemExapandPressed implements OnItemExapandPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Started value) started,
     required TResult Function(OnCancelAdPressed value) onCancelAdPressed,
-    required TResult Function(OnItemExapandPressed value) onItemExapandPressed,
+    required TResult Function(OnItemExpandedPressed value)
+        onItemExpandedPressed,
   }) {
-    return onItemExapandPressed(this);
+    return onItemExpandedPressed(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Started value)? started,
     TResult Function(OnCancelAdPressed value)? onCancelAdPressed,
-    TResult Function(OnItemExapandPressed value)? onItemExapandPressed,
+    TResult Function(OnItemExpandedPressed value)? onItemExpandedPressed,
     required TResult orElse(),
   }) {
-    if (onItemExapandPressed != null) {
-      return onItemExapandPressed(this);
+    if (onItemExpandedPressed != null) {
+      return onItemExpandedPressed(this);
     }
     return orElse();
   }
 }
 
-abstract class OnItemExapandPressed implements SingleAdvertisementEvent {
-  const factory OnItemExapandPressed() = _$OnItemExapandPressed;
+abstract class OnItemExpandedPressed implements SingleAdvertisementEvent {
+  const factory OnItemExpandedPressed() = _$OnItemExpandedPressed;
 }
 
 /// @nodoc
@@ -441,12 +463,10 @@ class _$SingleAdvertisementStateTearOff {
   const _$SingleAdvertisementStateTearOff();
 
   _SingleAdvertisementState call(
-      {required bool isItemVisible,
-      required bool canceling,
+      {required bool canceling,
       required Option<Either<AdvertisementFailure, Unit>>
           optionOfDeleteAdFailureOrSuccess}) {
     return _SingleAdvertisementState(
-      isItemVisible: isItemVisible,
       canceling: canceling,
       optionOfDeleteAdFailureOrSuccess: optionOfDeleteAdFailureOrSuccess,
     );
@@ -458,7 +478,6 @@ const $SingleAdvertisementState = _$SingleAdvertisementStateTearOff();
 
 /// @nodoc
 mixin _$SingleAdvertisementState {
-  bool get isItemVisible => throw _privateConstructorUsedError;
   bool get canceling => throw _privateConstructorUsedError;
   Option<Either<AdvertisementFailure, Unit>>
       get optionOfDeleteAdFailureOrSuccess =>
@@ -475,8 +494,7 @@ abstract class $SingleAdvertisementStateCopyWith<$Res> {
           $Res Function(SingleAdvertisementState) then) =
       _$SingleAdvertisementStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isItemVisible,
-      bool canceling,
+      {bool canceling,
       Option<Either<AdvertisementFailure, Unit>>
           optionOfDeleteAdFailureOrSuccess});
 }
@@ -492,15 +510,10 @@ class _$SingleAdvertisementStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isItemVisible = freezed,
     Object? canceling = freezed,
     Object? optionOfDeleteAdFailureOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
-      isItemVisible: isItemVisible == freezed
-          ? _value.isItemVisible
-          : isItemVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
       canceling: canceling == freezed
           ? _value.canceling
           : canceling // ignore: cast_nullable_to_non_nullable
@@ -522,8 +535,7 @@ abstract class _$SingleAdvertisementStateCopyWith<$Res>
       __$SingleAdvertisementStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isItemVisible,
-      bool canceling,
+      {bool canceling,
       Option<Either<AdvertisementFailure, Unit>>
           optionOfDeleteAdFailureOrSuccess});
 }
@@ -542,15 +554,10 @@ class __$SingleAdvertisementStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isItemVisible = freezed,
     Object? canceling = freezed,
     Object? optionOfDeleteAdFailureOrSuccess = freezed,
   }) {
     return _then(_SingleAdvertisementState(
-      isItemVisible: isItemVisible == freezed
-          ? _value.isItemVisible
-          : isItemVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
       canceling: canceling == freezed
           ? _value.canceling
           : canceling // ignore: cast_nullable_to_non_nullable
@@ -568,12 +575,9 @@ class __$SingleAdvertisementStateCopyWithImpl<$Res>
 
 class _$_SingleAdvertisementState implements _SingleAdvertisementState {
   const _$_SingleAdvertisementState(
-      {required this.isItemVisible,
-      required this.canceling,
+      {required this.canceling,
       required this.optionOfDeleteAdFailureOrSuccess});
 
-  @override
-  final bool isItemVisible;
   @override
   final bool canceling;
   @override
@@ -582,16 +586,13 @@ class _$_SingleAdvertisementState implements _SingleAdvertisementState {
 
   @override
   String toString() {
-    return 'SingleAdvertisementState(isItemVisible: $isItemVisible, canceling: $canceling, optionOfDeleteAdFailureOrSuccess: $optionOfDeleteAdFailureOrSuccess)';
+    return 'SingleAdvertisementState(canceling: $canceling, optionOfDeleteAdFailureOrSuccess: $optionOfDeleteAdFailureOrSuccess)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SingleAdvertisementState &&
-            (identical(other.isItemVisible, isItemVisible) ||
-                const DeepCollectionEquality()
-                    .equals(other.isItemVisible, isItemVisible)) &&
             (identical(other.canceling, canceling) ||
                 const DeepCollectionEquality()
                     .equals(other.canceling, canceling)) &&
@@ -605,7 +606,6 @@ class _$_SingleAdvertisementState implements _SingleAdvertisementState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isItemVisible) ^
       const DeepCollectionEquality().hash(canceling) ^
       const DeepCollectionEquality().hash(optionOfDeleteAdFailureOrSuccess);
 
@@ -618,13 +618,10 @@ class _$_SingleAdvertisementState implements _SingleAdvertisementState {
 
 abstract class _SingleAdvertisementState implements SingleAdvertisementState {
   const factory _SingleAdvertisementState(
-      {required bool isItemVisible,
-      required bool canceling,
+      {required bool canceling,
       required Option<Either<AdvertisementFailure, Unit>>
           optionOfDeleteAdFailureOrSuccess}) = _$_SingleAdvertisementState;
 
-  @override
-  bool get isItemVisible => throw _privateConstructorUsedError;
   @override
   bool get canceling => throw _privateConstructorUsedError;
   @override

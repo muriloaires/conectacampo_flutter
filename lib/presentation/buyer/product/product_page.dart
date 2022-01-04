@@ -120,7 +120,8 @@ class ProductPage extends StatelessWidget {
                           TextButton(
                             onPressed: () {
                               Navigator.of(dialogContext).pop();
-                              Navigator.of(context,rootNavigator: true).push(MaterialPageRoute(
+                              Navigator.of(context, rootNavigator: true)
+                                  .push(MaterialPageRoute(
                                 builder: (context) => const CartPage(),
                               ));
                             },
@@ -229,7 +230,7 @@ class ProductPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Vendedor: ${state.product?.advertisement?.seller.name ?? '-'}',
+                        'Vendedor: ${state.product?.advertisement?.seller.nickname ?? '-'}',
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -307,21 +308,31 @@ class ProductPage extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
+                      Visibility(
+                        visible: _adProduct.observation?.isNotEmpty ?? false,
+                        child: Column(
+                          children: [
+                            Text.rich(
+                              TextSpan(children: [
+                                const TextSpan(
+                                  text: 'Observações sobre o produto: ',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                TextSpan(text: _adProduct.observation ?? '')
+                              ]),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        ),
+                      ),
                       CarouselSlider(
                         options: CarouselOptions(
                           height: 170,
-                          aspectRatio: 16 / 9,
-                          viewportFraction: 0.8,
-                          initialPage: 0,
-                          enableInfiniteScroll: true,
-                          reverse: false,
                           autoPlay: true,
-                          autoPlayInterval: Duration(seconds: 3),
-                          autoPlayAnimationDuration:
-                              Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.fastOutSlowIn,
+                          autoPlayInterval: const Duration(seconds: 3),
                           enlargeCenterPage: true,
-                          scrollDirection: Axis.horizontal,
                         ),
                         items: _adProduct.images.map((i) {
                           return Builder(
@@ -329,7 +340,8 @@ class ProductPage extends StatelessWidget {
                               return Container(
                                   width: MediaQuery.of(context).size.width,
                                   margin: const EdgeInsets.symmetric(
-                                      horizontal: 5.0),
+                                    horizontal: 5.0,
+                                  ),
                                   child: ClipRRect(
                                     borderRadius: const BorderRadius.all(
                                       Radius.circular(8),

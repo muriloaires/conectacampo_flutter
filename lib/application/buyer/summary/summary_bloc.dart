@@ -31,17 +31,6 @@ class SummaryBloc extends Bloc<SummaryEvent, SummaryState> {
       if (selectedPlace != null) {
         yield state.copyWith(selectedPlace: selectedPlace);
       }
-    }, onCancelReservationPressed: (onCancelReservationPressed) async* {
-      final reservation = onCancelReservationPressed.reservation;
-      if (reservation != null) {
-        yield state.copyWith(cancellingReservation: true);
-        final cancelResult =
-            await reservationFacade.cancelReservation(reservation);
-        yield state.copyWith(
-            cancellingReservation: false,
-            optionOfReservationCancelFailureOrSuccess: some(cancelResult));
-        yield state.copyWith(optionOfReservationCancelFailureOrSuccess: none());
-      }
     }, onPlaceChanged: (OnPlaceChanged value) async* {
       final selectedPlace = await loadSelectedPlace();
       if (selectedPlace != null) {

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'edit_email_page.dart';
 
@@ -307,6 +308,26 @@ class ProfilePage extends StatelessWidget {
                           ? 'Quero vender no app!'
                           : 'Quero comprar no app!',
                       style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Share.share(
+                          'Venha participar do Conecta Campo.\n\n Download para iPhone: www.google.com \n\n Download para Android: www.google.com');
+                    },
+                    leading: Icon(
+                      Icons.share,
+                      size: 24,
+                      color: context.read<ProfileBloc>().state.isBuyer
+                          ? ColorSet.colorPrimaryGreen
+                          : ColorSet.brown1,
+                    ),
+                    title: const Text(
+                      'Convidar amigos',
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                       ),

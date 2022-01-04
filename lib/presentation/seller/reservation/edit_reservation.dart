@@ -12,15 +12,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class EditReservationPage extends StatelessWidget {
-  final Reservation reservationn;
+  final Reservation reservation;
 
-  const EditReservationPage(this.reservationn);
+  const EditReservationPage(this.reservation);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<SellerReservationBloc>()
-        ..add(SellerReservationEvent.started(reservationn)),
+        ..add(SellerReservationEvent.started(reservation)),
       child: BlocConsumer<SellerReservationBloc, SellerReservationState>(
           listener: (context, state) {
         if (state.finishing) {
@@ -53,33 +53,44 @@ class EditReservationPage extends StatelessWidget {
                     child: Text(
                       'Resumo do anúncio',
                       style: TextStyle(
-                          color: ColorSet.brown1, fontWeight: FontWeight.bold),
+                        color: ColorSet.brown1,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   if (state.reservation?.productReservations.isEmpty ?? true)
                     const Center(child: Text('Você removeu todos os produtos'))
                   else
                     ListView.separated(
-                        itemBuilder: (context, index) =>
-                            ReservationProductWidget(
-                                product: state.reservation!.productReservations[index],
-                                index: index),
-                        separatorBuilder: (context, index) => Container(
-                              height: 1,
-                              color: ColorSet.grayLine,
-                            ),
-                        itemCount: state.reservation!.productReservations.length,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics()),
+                      itemBuilder: (context, index) => ReservationProductWidget(
+                        product: state.reservation!.productReservations[index],
+                        index: index,
+                      ),
+                      separatorBuilder: (context, index) => Container(
+                        height: 1,
+                        color: ColorSet.grayLine,
+                      ),
+                      itemCount: state.reservation!.productReservations.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                    ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 4),
-                    child: Text.rich(TextSpan(text: 'Entrega dia: ', children: [
+                    child: Text.rich(
                       TextSpan(
-                          text: state.reservation?.createdAt?.getDateAndMonthName(),
-                          style: const TextStyle(
+                        text: 'Entrega dia: ',
+                        children: [
+                          TextSpan(
+                            text: state.advertisement?.deliveryAt
+                                .getDateAndMonthName(),
+                            style: const TextStyle(
                               color: ColorSet.brown1,
-                              fontWeight: FontWeight.bold))
-                    ])),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                   // Padding(
                   //   padding: const EdgeInsets.fromLTRB(20, 4, 0, 0),

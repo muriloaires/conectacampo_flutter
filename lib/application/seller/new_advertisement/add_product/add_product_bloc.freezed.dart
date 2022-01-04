@@ -58,6 +58,13 @@ class _$AddProductEventTearOff {
     );
   }
 
+  ObservationChanged observationChanged(int index, String observation) {
+    return ObservationChanged(
+      index,
+      observation,
+    );
+  }
+
   AddMoreTap addMoreTap() {
     return const AddMoreTap();
   }
@@ -81,6 +88,7 @@ mixin _$AddProductEvent {
     required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
     required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) =>
@@ -94,6 +102,7 @@ mixin _$AddProductEvent {
     TResult Function(int index, UnitMeasure? unitMeasureSelected)?
         unitMeasureSelected,
     TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
     TResult Function()? addMoreTap,
     TResult Function()? btnProceedTap,
     required TResult orElse(),
@@ -107,6 +116,7 @@ mixin _$AddProductEvent {
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
     required TResult Function(AddMoreTap value) addMoreTap,
     required TResult Function(BtnProceedTap value) btnProceedTap,
   }) =>
@@ -119,6 +129,7 @@ mixin _$AddProductEvent {
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
     TResult Function(AddMoreTap value)? addMoreTap,
     TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
@@ -223,6 +234,7 @@ class _$_Started implements _Started {
     required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
     required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) {
@@ -239,6 +251,7 @@ class _$_Started implements _Started {
     TResult Function(int index, UnitMeasure? unitMeasureSelected)?
         unitMeasureSelected,
     TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
     TResult Function()? addMoreTap,
     TResult Function()? btnProceedTap,
     required TResult orElse(),
@@ -258,6 +271,7 @@ class _$_Started implements _Started {
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
     required TResult Function(AddMoreTap value) addMoreTap,
     required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
@@ -273,6 +287,7 @@ class _$_Started implements _Started {
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
     TResult Function(AddMoreTap value)? addMoreTap,
     TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
@@ -389,6 +404,7 @@ class _$ProductSelected implements ProductSelected {
     required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
     required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) {
@@ -405,6 +421,7 @@ class _$ProductSelected implements ProductSelected {
     TResult Function(int index, UnitMeasure? unitMeasureSelected)?
         unitMeasureSelected,
     TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
     TResult Function()? addMoreTap,
     TResult Function()? btnProceedTap,
     required TResult orElse(),
@@ -424,6 +441,7 @@ class _$ProductSelected implements ProductSelected {
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
     required TResult Function(AddMoreTap value) addMoreTap,
     required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
@@ -439,6 +457,7 @@ class _$ProductSelected implements ProductSelected {
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
     TResult Function(AddMoreTap value)? addMoreTap,
     TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
@@ -545,6 +564,7 @@ class _$KindSelected implements KindSelected {
     required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
     required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) {
@@ -561,6 +581,7 @@ class _$KindSelected implements KindSelected {
     TResult Function(int index, UnitMeasure? unitMeasureSelected)?
         unitMeasureSelected,
     TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
     TResult Function()? addMoreTap,
     TResult Function()? btnProceedTap,
     required TResult orElse(),
@@ -580,6 +601,7 @@ class _$KindSelected implements KindSelected {
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
     required TResult Function(AddMoreTap value) addMoreTap,
     required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
@@ -595,6 +617,7 @@ class _$KindSelected implements KindSelected {
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
     TResult Function(AddMoreTap value)? addMoreTap,
     TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
@@ -700,6 +723,7 @@ class _$RatingSelected implements RatingSelected {
     required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
     required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) {
@@ -716,6 +740,7 @@ class _$RatingSelected implements RatingSelected {
     TResult Function(int index, UnitMeasure? unitMeasureSelected)?
         unitMeasureSelected,
     TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
     TResult Function()? addMoreTap,
     TResult Function()? btnProceedTap,
     required TResult orElse(),
@@ -735,6 +760,7 @@ class _$RatingSelected implements RatingSelected {
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
     required TResult Function(AddMoreTap value) addMoreTap,
     required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
@@ -750,6 +776,7 @@ class _$RatingSelected implements RatingSelected {
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
     TResult Function(AddMoreTap value)? addMoreTap,
     TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
@@ -869,6 +896,7 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
     required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
     required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) {
@@ -885,6 +913,7 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
     TResult Function(int index, UnitMeasure? unitMeasureSelected)?
         unitMeasureSelected,
     TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
     TResult Function()? addMoreTap,
     TResult Function()? btnProceedTap,
     required TResult orElse(),
@@ -904,6 +933,7 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
     required TResult Function(AddMoreTap value) addMoreTap,
     required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
@@ -919,6 +949,7 @@ class _$UnitMeasureSelected implements UnitMeasureSelected {
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
     TResult Function(AddMoreTap value)? addMoreTap,
     TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
@@ -1025,6 +1056,7 @@ class _$QuantityChanged implements QuantityChanged {
     required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
     required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) {
@@ -1041,6 +1073,7 @@ class _$QuantityChanged implements QuantityChanged {
     TResult Function(int index, UnitMeasure? unitMeasureSelected)?
         unitMeasureSelected,
     TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
     TResult Function()? addMoreTap,
     TResult Function()? btnProceedTap,
     required TResult orElse(),
@@ -1060,6 +1093,7 @@ class _$QuantityChanged implements QuantityChanged {
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
     required TResult Function(AddMoreTap value) addMoreTap,
     required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
@@ -1075,6 +1109,7 @@ class _$QuantityChanged implements QuantityChanged {
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
     TResult Function(AddMoreTap value)? addMoreTap,
     TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
@@ -1093,6 +1128,166 @@ abstract class QuantityChanged implements AddProductEvent {
   String get quantity => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $QuantityChangedCopyWith<QuantityChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ObservationChangedCopyWith<$Res> {
+  factory $ObservationChangedCopyWith(
+          ObservationChanged value, $Res Function(ObservationChanged) then) =
+      _$ObservationChangedCopyWithImpl<$Res>;
+  $Res call({int index, String observation});
+}
+
+/// @nodoc
+class _$ObservationChangedCopyWithImpl<$Res>
+    extends _$AddProductEventCopyWithImpl<$Res>
+    implements $ObservationChangedCopyWith<$Res> {
+  _$ObservationChangedCopyWithImpl(
+      ObservationChanged _value, $Res Function(ObservationChanged) _then)
+      : super(_value, (v) => _then(v as ObservationChanged));
+
+  @override
+  ObservationChanged get _value => super._value as ObservationChanged;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+    Object? observation = freezed,
+  }) {
+    return _then(ObservationChanged(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      observation == freezed
+          ? _value.observation
+          : observation // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ObservationChanged implements ObservationChanged {
+  const _$ObservationChanged(this.index, this.observation);
+
+  @override
+  final int index;
+  @override
+  final String observation;
+
+  @override
+  String toString() {
+    return 'AddProductEvent.observationChanged(index: $index, observation: $observation)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ObservationChanged &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)) &&
+            (identical(other.observation, observation) ||
+                const DeepCollectionEquality()
+                    .equals(other.observation, observation)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(index) ^
+      const DeepCollectionEquality().hash(observation);
+
+  @JsonKey(ignore: true)
+  @override
+  $ObservationChangedCopyWith<ObservationChanged> get copyWith =>
+      _$ObservationChangedCopyWithImpl<ObservationChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(NewAdvertisement newAdvertisement) started,
+    required TResult Function(int index, Product? product) productSelected,
+    required TResult Function(int index, String? kindSelected) kindSelected,
+    required TResult Function(int index, String? ratingSelected) ratingSelected,
+    required TResult Function(int index, UnitMeasure? unitMeasureSelected)
+        unitMeasureSelected,
+    required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
+    required TResult Function() addMoreTap,
+    required TResult Function() btnProceedTap,
+  }) {
+    return observationChanged(index, observation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(NewAdvertisement newAdvertisement)? started,
+    TResult Function(int index, Product? product)? productSelected,
+    TResult Function(int index, String? kindSelected)? kindSelected,
+    TResult Function(int index, String? ratingSelected)? ratingSelected,
+    TResult Function(int index, UnitMeasure? unitMeasureSelected)?
+        unitMeasureSelected,
+    TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
+    TResult Function()? addMoreTap,
+    TResult Function()? btnProceedTap,
+    required TResult orElse(),
+  }) {
+    if (observationChanged != null) {
+      return observationChanged(index, observation);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(ProductSelected value) productSelected,
+    required TResult Function(KindSelected value) kindSelected,
+    required TResult Function(RatingSelected value) ratingSelected,
+    required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
+    required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
+    required TResult Function(AddMoreTap value) addMoreTap,
+    required TResult Function(BtnProceedTap value) btnProceedTap,
+  }) {
+    return observationChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ProductSelected value)? productSelected,
+    TResult Function(KindSelected value)? kindSelected,
+    TResult Function(RatingSelected value)? ratingSelected,
+    TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
+    TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
+    TResult Function(AddMoreTap value)? addMoreTap,
+    TResult Function(BtnProceedTap value)? btnProceedTap,
+    required TResult orElse(),
+  }) {
+    if (observationChanged != null) {
+      return observationChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ObservationChanged implements AddProductEvent {
+  const factory ObservationChanged(int index, String observation) =
+      _$ObservationChanged;
+
+  int get index => throw _privateConstructorUsedError;
+  String get observation => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ObservationChangedCopyWith<ObservationChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1141,6 +1336,7 @@ class _$AddMoreTap implements AddMoreTap {
     required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
     required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) {
@@ -1157,6 +1353,7 @@ class _$AddMoreTap implements AddMoreTap {
     TResult Function(int index, UnitMeasure? unitMeasureSelected)?
         unitMeasureSelected,
     TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
     TResult Function()? addMoreTap,
     TResult Function()? btnProceedTap,
     required TResult orElse(),
@@ -1176,6 +1373,7 @@ class _$AddMoreTap implements AddMoreTap {
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
     required TResult Function(AddMoreTap value) addMoreTap,
     required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
@@ -1191,6 +1389,7 @@ class _$AddMoreTap implements AddMoreTap {
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
     TResult Function(AddMoreTap value)? addMoreTap,
     TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),
@@ -1253,6 +1452,7 @@ class _$BtnProceedTap implements BtnProceedTap {
     required TResult Function(int index, UnitMeasure? unitMeasureSelected)
         unitMeasureSelected,
     required TResult Function(int index, String quantity) quantityChanged,
+    required TResult Function(int index, String observation) observationChanged,
     required TResult Function() addMoreTap,
     required TResult Function() btnProceedTap,
   }) {
@@ -1269,6 +1469,7 @@ class _$BtnProceedTap implements BtnProceedTap {
     TResult Function(int index, UnitMeasure? unitMeasureSelected)?
         unitMeasureSelected,
     TResult Function(int index, String quantity)? quantityChanged,
+    TResult Function(int index, String observation)? observationChanged,
     TResult Function()? addMoreTap,
     TResult Function()? btnProceedTap,
     required TResult orElse(),
@@ -1288,6 +1489,7 @@ class _$BtnProceedTap implements BtnProceedTap {
     required TResult Function(RatingSelected value) ratingSelected,
     required TResult Function(UnitMeasureSelected value) unitMeasureSelected,
     required TResult Function(QuantityChanged value) quantityChanged,
+    required TResult Function(ObservationChanged value) observationChanged,
     required TResult Function(AddMoreTap value) addMoreTap,
     required TResult Function(BtnProceedTap value) btnProceedTap,
   }) {
@@ -1303,6 +1505,7 @@ class _$BtnProceedTap implements BtnProceedTap {
     TResult Function(RatingSelected value)? ratingSelected,
     TResult Function(UnitMeasureSelected value)? unitMeasureSelected,
     TResult Function(QuantityChanged value)? quantityChanged,
+    TResult Function(ObservationChanged value)? observationChanged,
     TResult Function(AddMoreTap value)? addMoreTap,
     TResult Function(BtnProceedTap value)? btnProceedTap,
     required TResult orElse(),

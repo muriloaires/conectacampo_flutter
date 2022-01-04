@@ -35,28 +35,33 @@ class NotificationsPage extends StatelessWidget {
                       ? const Center(
                           child: Text('Ainda não há nenhuma notificação'))
                       : Padding(
-                        padding: const EdgeInsets.fromLTRB(0,0,0,40),
-                        child: ListView.separated(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                          child: ListView.separated(
                             itemBuilder: (context, index) => ListTile(
                               title: Text(r[index].title),
                               subtitle: Text(
-                                  '${r[index].message}\n\n${r[index].createdAt.getHourDateAndMonthName()}'),
+                                '${r[index].message}\n\n${r[index].createdAt.getHourDateAndMonthName()}',
+                              ),
                               trailing: const Icon(Icons.chevron_right),
                               onTap: () async {
-                                final reservation = await ReservationFacade()
-                                    .getReservation(
-                                        r[index].notificatificable.id);
+                                final reservation =
+                                    await ReservationFacade().getReservation(
+                                  r[index].notificatificable.id,
+                                );
                                 final kind = r[index].kind;
                                 reservation.fold((l) => null, (r) {
                                   openNotification(
-                                      context, ReservationToOpen(kind, r));
+                                    context,
+                                    ReservationToOpen(kind, r),
+                                  );
                                 });
                               },
                             ),
                             itemCount: r.length,
-                            separatorBuilder: (context, index) => const Divider(),
+                            separatorBuilder: (context, index) =>
+                                const Divider(),
                           ),
-                      ),
+                        ),
                 ) ??
                 const Center(
                   child: CircularProgressIndicator(),

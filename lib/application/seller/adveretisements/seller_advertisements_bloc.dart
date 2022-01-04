@@ -10,7 +10,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'seller_advertisements_event.dart';
+
 part 'seller_advertisements_state.dart';
+
 part 'seller_advertisements_bloc.freezed.dart';
 
 @injectable
@@ -20,6 +22,7 @@ class SellerAdvertisementsBloc
       : super(SellerAdvertisementsState.initial());
 
   final IAdvertisementsFacade advertisementsFacade;
+
   @override
   Stream<SellerAdvertisementsState> mapEventToState(
     SellerAdvertisementsEvent event,
@@ -30,8 +33,12 @@ class SellerAdvertisementsBloc
       if (place != null) {
         final result = await advertisementsFacade.getSellerAds(place);
         yield state.copyWith(
-            optionOfSellerAdsFailureOrSuccess: some(result), loading: false);
+          sellerAdsFailureOrSuccess: result,
+          loading: false,
+        );
       }
+    }, someExpandedTap: (SomeExpandedTap value) async* {
+      yield state.copyWith(someExpanded: value.isExpanded);
     });
   }
 }

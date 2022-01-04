@@ -44,7 +44,8 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
         final place = await loadSelectedPlace();
         yield state.copyWith(
             product: product.copyWith(
-                advertisement: adv.fold((l) => null, (r) => r)),
+              advertisement: adv.fold((l) => null, (r) => r),
+            ),
             reservationItemFailureOrSuccess:
                 reservation.fold(() => null, (a) => right(a)),
             place: place);
@@ -62,8 +63,10 @@ class ProductPageBloc extends Bloc<ProductPageEvent, ProductPageState> {
         final reservationItem = ReservationItem.fromAdProduct(product);
 
         final result = await reservationFacade.insertReservationItemToCart(
-            reservationItem.copyWith(
-                quantity: int.parse(state.reservationQuantity.getOrCrash())));
+          reservationItem.copyWith(
+            quantity: int.parse(state.reservationQuantity.getOrCrash()),
+          ),
+        );
 
         yield state.copyWith(
             reservationItemFailureOrSuccess: result,

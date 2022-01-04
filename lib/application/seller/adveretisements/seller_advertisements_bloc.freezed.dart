@@ -19,6 +19,12 @@ class _$SellerAdvertisementsEventTearOff {
   _Started started() {
     return const _Started();
   }
+
+  SomeExpandedTap someExpandedTap(bool isExpanded) {
+    return SomeExpandedTap(
+      isExpanded,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +35,26 @@ mixin _$SellerAdvertisementsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool isExpanded) someExpandedTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool isExpanded)? someExpandedTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(SomeExpandedTap value) someExpandedTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(SomeExpandedTap value)? someExpandedTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +116,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool isExpanded) someExpandedTap,
   }) {
     return started();
   }
@@ -114,6 +125,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool isExpanded)? someExpandedTap,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -126,6 +138,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(SomeExpandedTap value) someExpandedTap,
   }) {
     return started(this);
   }
@@ -134,6 +147,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(SomeExpandedTap value)? someExpandedTap,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -148,16 +162,135 @@ abstract class _Started implements SellerAdvertisementsEvent {
 }
 
 /// @nodoc
+abstract class $SomeExpandedTapCopyWith<$Res> {
+  factory $SomeExpandedTapCopyWith(
+          SomeExpandedTap value, $Res Function(SomeExpandedTap) then) =
+      _$SomeExpandedTapCopyWithImpl<$Res>;
+  $Res call({bool isExpanded});
+}
+
+/// @nodoc
+class _$SomeExpandedTapCopyWithImpl<$Res>
+    extends _$SellerAdvertisementsEventCopyWithImpl<$Res>
+    implements $SomeExpandedTapCopyWith<$Res> {
+  _$SomeExpandedTapCopyWithImpl(
+      SomeExpandedTap _value, $Res Function(SomeExpandedTap) _then)
+      : super(_value, (v) => _then(v as SomeExpandedTap));
+
+  @override
+  SomeExpandedTap get _value => super._value as SomeExpandedTap;
+
+  @override
+  $Res call({
+    Object? isExpanded = freezed,
+  }) {
+    return _then(SomeExpandedTap(
+      isExpanded == freezed
+          ? _value.isExpanded
+          : isExpanded // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SomeExpandedTap implements SomeExpandedTap {
+  const _$SomeExpandedTap(this.isExpanded);
+
+  @override
+  final bool isExpanded;
+
+  @override
+  String toString() {
+    return 'SellerAdvertisementsEvent.someExpandedTap(isExpanded: $isExpanded)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SomeExpandedTap &&
+            (identical(other.isExpanded, isExpanded) ||
+                const DeepCollectionEquality()
+                    .equals(other.isExpanded, isExpanded)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isExpanded);
+
+  @JsonKey(ignore: true)
+  @override
+  $SomeExpandedTapCopyWith<SomeExpandedTap> get copyWith =>
+      _$SomeExpandedTapCopyWithImpl<SomeExpandedTap>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool isExpanded) someExpandedTap,
+  }) {
+    return someExpandedTap(isExpanded);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool isExpanded)? someExpandedTap,
+    required TResult orElse(),
+  }) {
+    if (someExpandedTap != null) {
+      return someExpandedTap(isExpanded);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(SomeExpandedTap value) someExpandedTap,
+  }) {
+    return someExpandedTap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(SomeExpandedTap value)? someExpandedTap,
+    required TResult orElse(),
+  }) {
+    if (someExpandedTap != null) {
+      return someExpandedTap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SomeExpandedTap implements SellerAdvertisementsEvent {
+  const factory SomeExpandedTap(bool isExpanded) = _$SomeExpandedTap;
+
+  bool get isExpanded => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SomeExpandedTapCopyWith<SomeExpandedTap> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$SellerAdvertisementsStateTearOff {
   const _$SellerAdvertisementsStateTearOff();
 
   _SellerAdvertisementsState call(
-      {required Option<Either<AdvertisementFailure, List<Advertisement>>>
-          optionOfSellerAdsFailureOrSuccess,
-      required bool loading}) {
+      {required Either<AdvertisementFailure, List<Advertisement>>?
+          sellerAdsFailureOrSuccess,
+      required bool loading,
+      required bool someExpanded}) {
     return _SellerAdvertisementsState(
-      optionOfSellerAdsFailureOrSuccess: optionOfSellerAdsFailureOrSuccess,
+      sellerAdsFailureOrSuccess: sellerAdsFailureOrSuccess,
       loading: loading,
+      someExpanded: someExpanded,
     );
   }
 }
@@ -167,10 +300,10 @@ const $SellerAdvertisementsState = _$SellerAdvertisementsStateTearOff();
 
 /// @nodoc
 mixin _$SellerAdvertisementsState {
-  Option<Either<AdvertisementFailure, List<Advertisement>>>
-      get optionOfSellerAdsFailureOrSuccess =>
-          throw _privateConstructorUsedError;
+  Either<AdvertisementFailure, List<Advertisement>>?
+      get sellerAdsFailureOrSuccess => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
+  bool get someExpanded => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SellerAdvertisementsStateCopyWith<SellerAdvertisementsState> get copyWith =>
@@ -183,9 +316,10 @@ abstract class $SellerAdvertisementsStateCopyWith<$Res> {
           $Res Function(SellerAdvertisementsState) then) =
       _$SellerAdvertisementsStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<AdvertisementFailure, List<Advertisement>>>
-          optionOfSellerAdsFailureOrSuccess,
-      bool loading});
+      {Either<AdvertisementFailure, List<Advertisement>>?
+          sellerAdsFailureOrSuccess,
+      bool loading,
+      bool someExpanded});
 }
 
 /// @nodoc
@@ -199,18 +333,22 @@ class _$SellerAdvertisementsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? optionOfSellerAdsFailureOrSuccess = freezed,
+    Object? sellerAdsFailureOrSuccess = freezed,
     Object? loading = freezed,
+    Object? someExpanded = freezed,
   }) {
     return _then(_value.copyWith(
-      optionOfSellerAdsFailureOrSuccess: optionOfSellerAdsFailureOrSuccess ==
-              freezed
-          ? _value.optionOfSellerAdsFailureOrSuccess
-          : optionOfSellerAdsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AdvertisementFailure, List<Advertisement>>>,
+      sellerAdsFailureOrSuccess: sellerAdsFailureOrSuccess == freezed
+          ? _value.sellerAdsFailureOrSuccess
+          : sellerAdsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, List<Advertisement>>?,
       loading: loading == freezed
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      someExpanded: someExpanded == freezed
+          ? _value.someExpanded
+          : someExpanded // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -224,9 +362,10 @@ abstract class _$SellerAdvertisementsStateCopyWith<$Res>
       __$SellerAdvertisementsStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<AdvertisementFailure, List<Advertisement>>>
-          optionOfSellerAdsFailureOrSuccess,
-      bool loading});
+      {Either<AdvertisementFailure, List<Advertisement>>?
+          sellerAdsFailureOrSuccess,
+      bool loading,
+      bool someExpanded});
 }
 
 /// @nodoc
@@ -243,18 +382,22 @@ class __$SellerAdvertisementsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? optionOfSellerAdsFailureOrSuccess = freezed,
+    Object? sellerAdsFailureOrSuccess = freezed,
     Object? loading = freezed,
+    Object? someExpanded = freezed,
   }) {
     return _then(_SellerAdvertisementsState(
-      optionOfSellerAdsFailureOrSuccess: optionOfSellerAdsFailureOrSuccess ==
-              freezed
-          ? _value.optionOfSellerAdsFailureOrSuccess
-          : optionOfSellerAdsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AdvertisementFailure, List<Advertisement>>>,
+      sellerAdsFailureOrSuccess: sellerAdsFailureOrSuccess == freezed
+          ? _value.sellerAdsFailureOrSuccess
+          : sellerAdsFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<AdvertisementFailure, List<Advertisement>>?,
       loading: loading == freezed
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      someExpanded: someExpanded == freezed
+          ? _value.someExpanded
+          : someExpanded // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -264,37 +407,46 @@ class __$SellerAdvertisementsStateCopyWithImpl<$Res>
 
 class _$_SellerAdvertisementsState implements _SellerAdvertisementsState {
   const _$_SellerAdvertisementsState(
-      {required this.optionOfSellerAdsFailureOrSuccess, required this.loading});
+      {required this.sellerAdsFailureOrSuccess,
+      required this.loading,
+      required this.someExpanded});
 
   @override
-  final Option<Either<AdvertisementFailure, List<Advertisement>>>
-      optionOfSellerAdsFailureOrSuccess;
+  final Either<AdvertisementFailure, List<Advertisement>>?
+      sellerAdsFailureOrSuccess;
   @override
   final bool loading;
+  @override
+  final bool someExpanded;
 
   @override
   String toString() {
-    return 'SellerAdvertisementsState(optionOfSellerAdsFailureOrSuccess: $optionOfSellerAdsFailureOrSuccess, loading: $loading)';
+    return 'SellerAdvertisementsState(sellerAdsFailureOrSuccess: $sellerAdsFailureOrSuccess, loading: $loading, someExpanded: $someExpanded)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SellerAdvertisementsState &&
-            (identical(other.optionOfSellerAdsFailureOrSuccess,
-                    optionOfSellerAdsFailureOrSuccess) ||
+            (identical(other.sellerAdsFailureOrSuccess,
+                    sellerAdsFailureOrSuccess) ||
                 const DeepCollectionEquality().equals(
-                    other.optionOfSellerAdsFailureOrSuccess,
-                    optionOfSellerAdsFailureOrSuccess)) &&
+                    other.sellerAdsFailureOrSuccess,
+                    sellerAdsFailureOrSuccess)) &&
             (identical(other.loading, loading) ||
-                const DeepCollectionEquality().equals(other.loading, loading)));
+                const DeepCollectionEquality()
+                    .equals(other.loading, loading)) &&
+            (identical(other.someExpanded, someExpanded) ||
+                const DeepCollectionEquality()
+                    .equals(other.someExpanded, someExpanded)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(optionOfSellerAdsFailureOrSuccess) ^
-      const DeepCollectionEquality().hash(loading);
+      const DeepCollectionEquality().hash(sellerAdsFailureOrSuccess) ^
+      const DeepCollectionEquality().hash(loading) ^
+      const DeepCollectionEquality().hash(someExpanded);
 
   @JsonKey(ignore: true)
   @override
@@ -306,16 +458,18 @@ class _$_SellerAdvertisementsState implements _SellerAdvertisementsState {
 
 abstract class _SellerAdvertisementsState implements SellerAdvertisementsState {
   const factory _SellerAdvertisementsState(
-      {required Option<Either<AdvertisementFailure, List<Advertisement>>>
-          optionOfSellerAdsFailureOrSuccess,
-      required bool loading}) = _$_SellerAdvertisementsState;
+      {required Either<AdvertisementFailure, List<Advertisement>>?
+          sellerAdsFailureOrSuccess,
+      required bool loading,
+      required bool someExpanded}) = _$_SellerAdvertisementsState;
 
   @override
-  Option<Either<AdvertisementFailure, List<Advertisement>>>
-      get optionOfSellerAdsFailureOrSuccess =>
-          throw _privateConstructorUsedError;
+  Either<AdvertisementFailure, List<Advertisement>>?
+      get sellerAdsFailureOrSuccess => throw _privateConstructorUsedError;
   @override
   bool get loading => throw _privateConstructorUsedError;
+  @override
+  bool get someExpanded => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SellerAdvertisementsStateCopyWith<_SellerAdvertisementsState>

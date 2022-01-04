@@ -105,8 +105,11 @@ class ReservationFacade extends IReservationFacade {
   Future<Either<ReservationFailure, List<Reservation>>>
       getCurrentUserReservations() async {
     final place = await loadSelectedPlace();
-    final url = Uri.https(baseUrl, '$apiVersion$routeCurrentUserReservations',
-        {'as': 'buyer', 'future_delivery': 'true', 'place_id': place?.id});
+    final url = Uri.https(
+      baseUrl,
+      '$apiVersion$routeCurrentUserReservations',
+      {'as': 'buyer', 'future_delivery': 'true', 'place_id': place?.id},
+    );
     final response = await getAuthenticatedRequest(url, getApiHeader());
 
     final code = response.statusCode;

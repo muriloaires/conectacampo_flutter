@@ -14,9 +14,9 @@ class AdProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        final result = await Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => ProductPage(product, true),
-        ));
+        final result = await Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => ProductPage(product, true)),
+        );
         if (result as bool) {
           Navigator.of(context).pop();
         }
@@ -30,7 +30,9 @@ class AdProductWidget extends StatelessWidget {
             CircleAvatar(
               radius: 38,
               foregroundImage: CachedNetworkImageProvider(
-                  product.images.first.thumbAvatar.getOrCrash()),
+                product.images.first.thumbAvatar.getOrCrash(),
+              ),
+              backgroundColor: Colors.white,
               backgroundImage: const AssetImage('assets/placeholder.png'),
             ),
             const SizedBox(

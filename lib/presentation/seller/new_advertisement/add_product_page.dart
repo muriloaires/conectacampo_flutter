@@ -81,7 +81,11 @@ class AddProductForm extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const ClampingScrollPhysics(),
                     children: [
-                      Text('Produto #${index + 1}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                      Text(
+                        'Produto #${index + 1}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
                       const SizedBox(height: 5),
                       NewProductWidget(index: index),
                     ],
@@ -116,7 +120,6 @@ class AddProductForm extends StatelessWidget {
                     if (!state.showBtnProceed) {
                       return;
                     }
-
                     context
                         .read<AddProductBloc>()
                         .add(const AddProductEvent.btnProceedTap());
@@ -143,6 +146,7 @@ class AddProductForm extends StatelessWidget {
 
 class NewProductWidget extends StatelessWidget {
   final int index;
+
   const NewProductWidget({required this.index, Key? key}) : super(key: key);
 
   @override
@@ -315,7 +319,9 @@ class NewProductWidget extends StatelessWidget {
                           .add(AddProductEvent.quantityChanged(index, value)),
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
-                          border: InputBorder.none, hintText: 'Quantidade*'),
+                        border: InputBorder.none,
+                        hintText: 'Quantidade*',
+                      ),
                     ),
                   ),
                 ],
@@ -328,6 +334,9 @@ class NewProductWidget extends StatelessWidget {
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
+                  onChanged: (value) => context
+                      .read<AddProductBloc>()
+                      .add(AddProductEvent.observationChanged(index, value)),
                   minLines: 5,
                   maxLines: 10,
                   decoration: const InputDecoration(

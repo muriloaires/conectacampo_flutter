@@ -162,7 +162,7 @@ class CartPage extends StatelessWidget {
                   children: [
                     ListView.separated(
                       shrinkWrap: true,
-                      physics: ClampingScrollPhysics(),
+                      physics: const ClampingScrollPhysics(),
                       separatorBuilder: (context, index) => Container(
                         height: 1,
                         color: ColorSet.grayLine,
@@ -201,24 +201,24 @@ class CartPage extends StatelessWidget {
                       },
                     ),
                     TextButton(
-                        onPressed: () async {
-                          final result = await Navigator.of(context)
-                              .push(MaterialPageRoute(
-                            builder: (context) => AdvertisementDetailPage(
-                              state.itemsInCart.first.advertisementId,
-                            ),
-                          ));
-                          context
-                              .read<CartBloc>()
-                              .add(const CartEvent.started());
-                        },
-                        child: const Text(
-                            'Comprar mais produtos do mesmo vendedor',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: ColorSet.colorPrimaryGreen,
-                              decoration: TextDecoration.underline,
-                            )))
+                      onPressed: () async {
+                        final result =
+                            await Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => AdvertisementDetailPage(
+                            state.itemsInCart.first.advertisementId,
+                          ),
+                        ));
+                        context.read<CartBloc>().add(const CartEvent.started());
+                      },
+                      child: const Text(
+                        'Comprar mais produtos',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: ColorSet.orange2,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    )
                   ],
                 ),
         ),
@@ -342,33 +342,35 @@ class ReservationItemWidget extends StatelessWidget {
                         ),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    reservationItem.name,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Tipo: ${reservationItem.kind}',
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                  Text(
-                    'Classificação: ${reservationItem.rating}',
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                  Text(
-                    '${reservationItem.quantity} ${reservationItem.measurementUnit}(s)',
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                  const SizedBox(height: 8),
-                  Container(
-                    height: 1,
-                    color: ColorSet.grayLine,
-                  )
-                ],
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      reservationItem.name,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      'Tipo: ${reservationItem.kind}',
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                    Text(
+                      'Classificação: ${reservationItem.rating}',
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                    Text(
+                      '${reservationItem.quantity} ${reservationItem.measurementUnit}(s)',
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                    const SizedBox(height: 8),
+                    Container(
+                      height: 1,
+                      color: ColorSet.grayLine,
+                    )
+                  ],
+                ),
               )
             ],
           ),

@@ -33,73 +33,82 @@ class SingleReservationBloc
   Stream<SingleReservationState> mapEventToState(
     SingleReservationEvent event,
   ) async* {
-    yield* event.map(started: (started) async* {
-      Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess;
-      if (started.resservation.productReservations.isNotEmpty) {
-        adFailureOrSuccess = await advertisementsFacade.getAdvertisement(started
-            .resservation.productReservations.first.adProduct.advertisementId);
-      }
-      yield state.copyWith(
-          reservation: started.resservation,
-          adFailureOrSuccess: adFailureOrSuccess);
-    }, onAcceptPressed: (OnAcceptPressed value) async* {
-      final product = state.reservation?.productReservations
-          .where((element) =>
-              element.status == ReservationItemStatus.awaitingBuyer)
-          .toList()[value.index];
-      if (product != null) {
-        final result =
-            await reservationFacade.confirmProductReservation(product);
+    yield* event.map(
+      started: (started) async* {
+        Either<AdvertisementFailure, Advertisement>? adFailureOrSuccess;
+        if (started.resservation.productReservations.isNotEmpty) {
+          adFailureOrSuccess = await advertisementsFacade.getAdvertisement(
+              started.resservation.productReservations.first.adProduct
+                  .advertisementId);
+        }
+        yield state.copyWith(
+            reservation: started.resservation,
+            adFailureOrSuccess: adFailureOrSuccess);
+      },
+      onAcceptPressed: (OnAcceptPressed value) async* {
+        final product = state.reservation?.productReservations
+            .where((element) =>
+                element.status == ReservationItemStatus.awaitingBuyer)
+            .toList()[value.index];
+        if (product != null) {
+          final result =
+              await reservationFacade.confirmProductReservation(product);
 
-        if (result.isLeft()) {
-          yield state.copyWith(showAcceptError: true);
-        } else {
-          final newReservation =
-              await reservationFacade.getReservation(state.reservation!.id!);
-          if (newReservation.isRight()) {
-            yield state.copyWith(
-                reservation: newReservation.foldRight(
-                    state.reservation, (r, previous) => r));
+          if (result.isLeft()) {
+            yield state.copyWith(showAcceptError: true);
+          } else {
+            final newReservation =
+                await reservationFacade.getReservation(state.reservation!.id!);
+            if (newReservation.isRight()) {
+              yield state.copyWith(
+                  reservation: newReservation.foldRight(
+                      state.reservation, (r, previous) => r));
+            }
           }
         }
-      }
-    }, onAcceptErrorDisplayed: (OnAcceptErrorDisplayed value) async* {
-      yield state.copyWith(showAcceptError: false);
-    }, onCancelPressed: (OnCancelPressed value) async* {
-      final product = state.reservation?.productReservations
-          .where((element) =>
-              element.status == ReservationItemStatus.awaitingBuyer)
-          .toList()[value.index];
-      if (product != null) {
-        final result =
-            await reservationFacade.cancelProductReservation(product);
+      },
+      onAcceptErrorDisplayed: (OnAcceptErrorDisplayed value) async* {
+        yield state.copyWith(showAcceptError: false);
+      },
+      onCancelPressed: (OnCancelPressed value) async* {
+        final product = state.reservation?.productReservations
+            .where((element) =>
+                element.status == ReservationItemStatus.awaitingBuyer)
+            .toList()[value.index];
+        if (product != null) {
+          final result =
+              await reservationFacade.cancelProductReservation(product);
 
-        if (result.isLeft()) {
-          yield state.copyWith(showCancelItemError: true);
-        } else {
-          final list = state.reservation?.productReservations ?? [];
-          list.remove(product);
-          yield state.copyWith(
-              reservation:
-                  state.reservation?.copyWith(productReservations: []));
-          yield state.copyWith(
-              reservation:
-                  state.reservation?.copyWith(productReservations: list));
+          if (result.isLeft()) {
+            yield state.copyWith(showCancelItemError: true);
+          } else {
+            final list = state.reservation?.productReservations ?? [];
+            list.remove(product);
+            yield state.copyWith(
+                reservation:
+                    state.reservation?.copyWith(productReservations: []));
+            yield state.copyWith(
+                reservation:
+                    state.reservation?.copyWith(productReservations: list));
+          }
         }
-      }
-    }, onCancelErrorDisplayed: (OnCancelErrorDisplayed value) async* {
-      yield state.copyWith(showCancelItemError: false);
-    }, onExpandPressed: (OnExpandPressed value) async* {
-      yield state.copyWith(isItemVisible: !state.isItemVisible);
-    }, onCancelReservationPressed: (OnCancelReservationPressed value) async* {
-      final result = state.reservation;
-      if (result != null) {
-        yield state.copyWith(canceling: true);
-        final resultCancelation =
-            await reservationFacade.cancelReservation(result);
-        yield state.copyWith(
-            cancelFailureOrSuccess: resultCancelation, canceling: false);
-      }
-    });
+      },
+      onCancelErrorDisplayed: (OnCancelErrorDisplayed value) async* {
+        yield state.copyWith(showCancelItemError: false);
+      },
+      onExpandPressed: (OnExpandPressed value) async* {},
+      onCancelReservationPressed: (OnCancelReservationPressed value) async* {
+        final result = state.reservation;
+        if (result != null) {
+          yield state.copyWith(canceling: true);
+          final resultCancelation =
+              await reservationFacade.cancelReservation(result);
+          yield state.copyWith(
+            cancelFailureOrSuccess: resultCancelation,
+            canceling: false,
+          );
+        }
+      },
+    );
   }
 }

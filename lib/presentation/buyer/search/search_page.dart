@@ -327,8 +327,8 @@ class SearchFilters extends StatelessWidget {
               onTap: () async {
                 final dateSelect = await showDatePicker(
                   context: context,
-                  initialDate: DateTime.now().add(const Duration(days: 1)),
-                  firstDate: DateTime.now().add(const Duration(days: 1)),
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime.now(),
                   lastDate: DateTime.now().add(const Duration(days: 60)),
                   builder: (BuildContext context, Widget? child) {
                     return Theme(

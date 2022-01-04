@@ -35,7 +35,7 @@ class AddPhotoForm extends StatelessWidget {
               appBar: AppBar(
                   backgroundColor: ColorSet.brown1,
                   title: const Text('Anunciar',
-                      style: TextStyle(color: Colors.white))),
+                      style: TextStyle(color: Colors.white),),),
               body: Container(
                 padding: const EdgeInsets.all(20),
                 child: ListView(
@@ -218,7 +218,7 @@ class AddPhotoForm extends StatelessWidget {
               const SizedBox(
                 height: 4,
               ),
-              Row(
+              Wrap(
                 children: [
                   Container(
                     padding: const EdgeInsets.all(2),
