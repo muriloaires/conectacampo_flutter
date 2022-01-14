@@ -207,10 +207,7 @@ class ReservationWidget extends StatelessWidget {
                               children: [
                                 MaterialButton(
                                   onPressed: () {
-                                    context.read<SingleReservationBloc>().add(
-                                          const SingleReservationEvent
-                                              .onCancelReservationPressed(),
-                                        );
+                                    showDialogCancelarPedido(context);
                                   },
                                   child: Container(
                                     padding: const EdgeInsets.fromLTRB(
@@ -590,5 +587,87 @@ class ReservationWidget extends StatelessWidget {
     } else {
       return ColorSet.gray2;
     }
+  }
+
+  void showDialogCancelarPedido(BuildContext context) {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext dialogContext) =>
+          Dialog(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                CircleAvatar(
+                  radius: 35,
+                  backgroundColor: Colors.red[800],
+                  child: const Icon(
+                    Icons.close,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Center(
+                  child: Text('Atenção',
+                      style: TextStyle(
+                          fontWeight:
+                          FontWeight.bold)),
+                ),
+                const SizedBox(height: 10),
+                const Center(
+                  child: Text(
+                    'Deseja cancelar o pedido?',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Container(
+                    height: 1,
+                    color: ColorSet.grayLine),
+                Row(
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      onPressed: () =>
+                          Navigator.pop(
+                              dialogContext),
+                      child: const Text(
+                        'Voltar',
+                        style: TextStyle(
+                          fontWeight:
+                          FontWeight.bold,
+                          color: ColorSet.grayDark,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(dialogContext).pop();
+                        context.read<SingleReservationBloc>().add(
+                          const SingleReservationEvent
+                              .onCancelReservationPressed(),
+                        );
+                      },
+                      child: const Text(
+                        'Sim',
+                        style: TextStyle(
+                          fontWeight:
+                          FontWeight.bold,
+                          color: ColorSet.grayDark,
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+    );
   }
 }

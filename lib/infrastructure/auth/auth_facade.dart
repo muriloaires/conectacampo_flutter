@@ -13,6 +13,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:http/http.dart' as http;
+import 'package:conectacampo/infrastructure/auth/token_repository.dart';
 import 'package:injectable/injectable.dart';
 
 import 'user_mapper.dart';
@@ -101,8 +102,10 @@ class AuthFacade implements IAuthFacade {
     final type = Platform.isIOS ? 'ios' : 'android';
     final response = await http.post(url,
         body: UserRequest(
-                '+55${phoneNumber.replaceAll(RegExp(r'-'), '')}', type, token)
-            .toJson(),
+          '+55${phoneNumber.replaceAll(RegExp(r'-'), '')}',
+          type,
+          token,
+        ).toJson(),
         headers: getApiHeader());
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
@@ -159,8 +162,9 @@ class AuthFacade implements IAuthFacade {
     final code = response.statusCode;
     if (code >= 200 && code < 300) {
       final user = UserResponse.fromJson(
-          json.decode(await response.stream.bytesToString())
-              as Map<String, dynamic>);
+        json.decode(await response.stream.bytesToString())
+            as Map<String, dynamic>,
+      );
       await persistUser(user);
       return right(unit);
     } else if (code == 401) {
@@ -231,5 +235,38 @@ class AuthFacade implements IAuthFacade {
     }
   }
 
-
+  @override
+  Future<Either<AuthFailure, Unit>> updateAvatar(String avatarPath) async {
+    final url = Uri.https(baseUrl, '$apiVersion$routeMe');
+    final request = http.MultipartRequest(
+      'PATCH',
+      url,
+    );
+    request.headers.addAll(getApiHeader());
+    request.files.add(await http.MultipartFile.fromPath('avatar', avatarPath));
+    request.headers
+        .addAll({'Authorization': 'Bearer ${await getCurrentAcessToken()}'});
+    final response = await request.send();
+    final code = response.statusCode;
+    if (code >= 200 && code < 300) {
+      final user = UserResponse.fromJson(
+        json.decode(await response.stream.bytesToString())
+            as Map<String, dynamic>,
+      );
+      await persistUser(user);
+      return right(unit);
+    } else if (code == 401) {
+      return left(const AuthFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      final errors = Errors.fromJson(
+          jsonDecode(await response.stream.bytesToString())
+              as Map<String, dynamic>);
+      if (errors.errors.contains('Celular já está em uso')) {
+        return left(const AuthFailure.phoneAlreadyUsed());
+      }
+      return left(const AuthFailure.applicationError());
+    } else {
+      return left(const AuthFailure.serverError());
+    }
+  }
 }

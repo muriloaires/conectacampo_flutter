@@ -31,58 +31,83 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   Stream<CartState> mapEventToState(
     CartEvent event,
   ) async* {
-    yield* event.map(started: (started) async* {
-      final itemsInCart = await reservationFacade.getItemsInCart();
-      yield state.copyWith(itemsInCart: itemsInCart);
-      final remoteAdProducts = await advertisementsFacade
-          .getAdProductsByIds(itemsInCart.map((e) => e.id).toList());
-      yield state.copyWith(
-          optionOfRemoteAdProductsFailureOrSuccess: some(remoteAdProducts));
-    }, onBtnDeleteTap: (OnBtnDeleteTap value) async* {
-      await reservationFacade.removeReservationItem(value.reservationItem);
-      final itemsInCart = await reservationFacade.getItemsInCart();
-      yield state.copyWith(
-          itemsInCart: itemsInCart,
-          optionOfReservationResponse: none(),
-          optionOfreservationResultSuccessOrFailure: none());
-    }, quantityChanged: (QuantityChanged value) async* {
-      final quantity = ReservationQuantity(value.value);
-      if (quantity.isValid()) {
-        await reservationFacade.insertReservationItemToCart(value
-            .reservationItem
-            .copyWith(quantity: int.parse(quantity.getOrCrash())));
-
+    yield* event.map(
+      started: (started) async* {
+        final itemsInCart = await reservationFacade.getItemsInCart();
+        yield state.copyWith(itemsInCart: itemsInCart);
+        final remoteAdProducts = await advertisementsFacade
+            .getAdProductsByIds(itemsInCart.map((e) => e.id).toList());
+        yield state.copyWith(
+          optionOfRemoteAdProductsFailureOrSuccess: some(remoteAdProducts),
+        );
+      },
+      onBtnDeleteTap: (OnBtnDeleteTap value) async* {
+        await reservationFacade.removeReservationItem(value.reservationItem);
         final itemsInCart = await reservationFacade.getItemsInCart();
         yield state.copyWith(
-            itemsInCart: itemsInCart,
-            optionOfreservationResultSuccessOrFailure: none());
-      }
-    }, btnFinishPressed: (BtnFinishPressed value) async* {
-      yield state.copyWith(
-          reservating: true, optionOfReservationResponse: none());
-      final ReservationObjRequest reservationObj = ReservationObjRequest(
-          reservation: ReservationRequest(
-              adProducts: state.itemsInCart
-                  .map((e) => ProductReservationAttributes(
-                      quantity: e.quantity, adProductId: e.id))
-                  .toList()));
-      final result = await reservationFacade.requestReservation(
-          reservationObj: reservationObj);
+          itemsInCart: itemsInCart,
+          optionOfReservationResponse: none(),
+          optionOfreservationResultSuccessOrFailure: none(),
+        );
+      },
+      quantityChanged: (QuantityChanged value) async* {
+        final quantity = ReservationQuantity(value.value);
+        if (quantity.isValid()) {
+          await reservationFacade.insertReservationItemToCart(
+            value.reservationItem
+                .copyWith(quantity: int.parse(quantity.getOrCrash())),
+          );
 
-      if (result.isRight()) {
-        await reservationFacade.clearCart();
-      }
-      final ReservationResponse? response = result.fold(
+          final itemsInCart = await reservationFacade.getItemsInCart();
+          yield state.copyWith(
+            itemsInCart: itemsInCart,
+            optionOfreservationResultSuccessOrFailure: none(),
+          );
+        } else {
+          yield state.copyWith(invalidQuantity: true);
+          yield state.copyWith(invalidQuantity: false);
+        }
+      },
+      btnFinishPressed: (BtnFinishPressed value) async* {
+        yield state.copyWith(
+          reservating: true,
+          optionOfReservationResponse: none(),
+        );
+        final ReservationObjRequest reservationObj = ReservationObjRequest(
+          reservation: ReservationRequest(
+            adProducts: state.itemsInCart
+                .map(
+                  (e) => ProductReservationAttributes(
+                    quantity: e.quantity,
+                    adProductId: e.id,
+                  ),
+                )
+                .toList(),
+          ),
+        );
+        final result = await reservationFacade.requestReservation(
+          reservationObj: reservationObj,
+        );
+
+        if (result.isRight()) {
+          await reservationFacade.clearCart();
+        }
+        final ReservationResponse? response = result.fold(
           (l) => l.maybeMap(
-              orElse: () => null, unavailableItems: (a) => a.response),
-          (r) => null);
-      yield state.copyWith(
+            orElse: () => null,
+            unavailableItems: (a) => a.response,
+          ),
+          (r) => null,
+        );
+        yield state.copyWith(
           reservating: false,
           optionOfreservationResultSuccessOrFailure: some(result),
           optionOfReservationResponse: optionOf(response),
-          showDialogErrorItems: true);
-      await Future.delayed(const Duration(seconds: 2));
-      yield state.copyWith(showDialogErrorItems: false);
-    });
+          showDialogErrorItems: true,
+        );
+        await Future.delayed(const Duration(seconds: 2));
+        yield state.copyWith(showDialogErrorItems: false);
+      },
+    );
   }
 }

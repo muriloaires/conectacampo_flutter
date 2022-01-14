@@ -4,6 +4,7 @@ import 'package:conectacampo/application/seller/menu/seller_menu_bloc.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/notification/notifications_page.dart';
 import 'package:conectacampo/presentation/profile/edit_name_page.dart';
+import 'package:conectacampo/presentation/sign_in/widgets/select_avatar_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -89,20 +90,34 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                   ListTile(
-                    leading: CircleAvatar(
-                      radius: 32,
-                      backgroundColor: context.read<ProfileBloc>().state.isBuyer
-                          ? ColorSet.colorPrimaryGreen
-                          : ColorSet.brown1,
-                      foregroundImage: NetworkImage(
+                    leading: GestureDetector(
+                      onTap: () async {
+                        await Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                SelectAvatarPage(isEdit: true),
+                          ),
+                        );
                         context
-                                .read<ProfileBloc>()
-                                .state
-                                .user
-                                ?.mediumAvatar
-                                ?.value
-                                .getOrElse(() => '') ??
-                            '',
+                            .read<ProfileBloc>()
+                            .add(const ProfileEvent.started());
+                      },
+                      child: CircleAvatar(
+                        radius: 32,
+                        backgroundColor:
+                            context.read<ProfileBloc>().state.isBuyer
+                                ? ColorSet.colorPrimaryGreen
+                                : ColorSet.brown1,
+                        foregroundImage: NetworkImage(
+                          context
+                                  .read<ProfileBloc>()
+                                  .state
+                                  .user
+                                  ?.mediumAvatar
+                                  ?.value
+                                  .getOrElse(() => '') ??
+                              '',
+                        ),
                       ),
                     ),
                     title: Text.rich(
@@ -316,7 +331,8 @@ class ProfilePage extends StatelessWidget {
                   ListTile(
                     onTap: () {
                       Share.share(
-                          'Venha participar do Conecta Campo.\n\n Download para iPhone: www.google.com \n\n Download para Android: www.google.com');
+                        'Você já conhece o Conecta Campo?\nBaixe o app e conheça a novidade que vai mudar a sua forma de comprar e vender frutas e hortaliças!\nTenha o Ceasa na palma da sua mão!\n\nDownload para iPhone: https://apps.apple.com/br/app/conecta-campo-ceasa/id1592013727\n\nDownload para Android: https://play.google.com/store/apps/details?id=br.com.conectacampo',
+                      );
                     },
                     leading: Icon(
                       Icons.share,

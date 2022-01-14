@@ -15,6 +15,9 @@ import '../places_page.dart';
 
 class SelectAvatarPage extends StatelessWidget {
   final ImagePicker _picker = ImagePicker();
+  final bool isEdit;
+
+  SelectAvatarPage({required this.isEdit});
 
   @override
   Widget build(BuildContext context) {
@@ -39,32 +42,52 @@ class SelectAvatarPage extends StatelessWidget {
         child: BlocConsumer<SignUpFormBloc, SignUpFormBlocState>(
           listener: (context, state) {
             if (state.isSubmitting) {
-              EasyLoading.show(status: 'Criando usuário');
+              EasyLoading.show(status: 'Aguarde');
             } else {
               EasyLoading.dismiss();
             }
+            state.updateAvatarSuccess?.fold(
+              (l) => EasyLoading.showError(
+                'Erro ao atualizar avatar',
+                duration: const Duration(seconds: 2),
+              ),
+              (r) {
+                Navigator.of(context).pop();
+              },
+            );
 
             state.authFailureOrSuccessOption.fold(
-                () => null,
-                (a) => a.fold(
-                        (l) => EasyLoading.showError('Erro ${l.toString()}',
-                            duration: const Duration(seconds: 2)), (r) async {
-                      final success = await Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => PlacesPage()));
-                      if (success != null) {
-                        final userType = await loadLoggedUserType();
-                        if (userType != null) {
-                          if (userType == 'buyer') {
-                            Navigator.of(context).pushNamedAndRemoveUntil(
-                                '/buyer_main', (route) => false);
-                          } else {
-                            Navigator.of(context).pushNamedAndRemoveUntil(
-                                '/seller_main', (route) => false);
-                          }
-                        }
-                      }
-                    }));
+              () => null,
+              (a) => a.fold(
+                  (l) => EasyLoading.showError(
+                        'Erro ${l.toString()}',
+                        duration: const Duration(seconds: 2),
+                      ), (r) async {
+                final success = await Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => PlacesPage()),
+                );
+                if (success != null) {
+                  if (isEdit) {
+                    Navigator.of(context).pop();
+                    return;
+                  }
+                  final userType = await loadLoggedUserType();
+                  if (userType != null) {
+                    if (userType == 'buyer') {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/buyer_main',
+                        (route) => false,
+                      );
+                    } else {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/seller_main',
+                        (route) => false,
+                      );
+                    }
+                  }
+                }
+              }),
+            );
           },
           builder: (context, state) {
             return Padding(
@@ -72,33 +95,34 @@ class SelectAvatarPage extends StatelessWidget {
               child: ListView(
                 children: [
                   Text(
-                    state.fullName?.getOrCrash() ?? '',
+                    state.fullName?.value.foldLeft('', (previous, r) => r) ?? '',
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: ColorSet.colorPrimaryGreen,
-                        fontSize: 28),
+                      fontWeight: FontWeight.bold,
+                      color: ColorSet.colorPrimaryGreen,
+                      fontSize: 28,
+                    ),
                   ),
                   const SizedBox(height: 16),
                   const Text(
-                      'Vamos adicionar uma foto para os seus clientes te reconhecerem?',
-                      style: TextStyle(height: 2)),
+                    'Vamos adicionar uma foto para os seus clientes te reconhecerem?',
+                    style: TextStyle(height: 2),
+                  ),
                   const SizedBox(height: 40),
-                  if (state.optionOfAvatar.isNone())
+                  if (state.avatar == null)
                     SvgPicture.asset('assets/placeholder.svg', height: 160)
                   else
                     CircleAvatar(
                       radius: 100,
-                      foregroundImage: FileImage(
-                        state.optionOfAvatar.foldRight(
-                            File(''), (a, previous) => File(a as String)),
-                      ),
+                      foregroundImage: FileImage(File(state.avatar ?? '')),
                     ),
                   const SizedBox(height: 12),
-                  const Text('Selecione as fotos\npara o seu perfil',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        height: 2,
-                      )),
+                  const Text(
+                    'Selecione as fotos\npara o seu perfil',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      height: 2,
+                    ),
+                  ),
                   const SizedBox(height: 40),
                   MaterialButton(
                     onPressed: () async {
@@ -106,7 +130,9 @@ class SelectAvatarPage extends StatelessWidget {
                           await _picker.getImage(source: ImageSource.camera);
                       if (pickedFile != null) {
                         context.read<SignUpFormBloc>().add(
-                            SignUpFormBlocEvent.photoSelected(pickedFile.path));
+                              SignUpFormBlocEvent.photoSelected(
+                                  pickedFile.path),
+                            );
                       }
                     },
                     color: ColorSet.green2,
@@ -126,7 +152,9 @@ class SelectAvatarPage extends StatelessWidget {
                           await _picker.getImage(source: ImageSource.gallery);
                       if (pickedFile != null) {
                         context.read<SignUpFormBloc>().add(
-                            SignUpFormBlocEvent.photoSelected(pickedFile.path));
+                              SignUpFormBlocEvent.photoSelected(
+                                  pickedFile.path),
+                            );
                       }
                     },
                     color: ColorSet.green2,
@@ -134,25 +162,41 @@ class SelectAvatarPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     textColor: Colors.white,
-                    child: const Text('Escolher da galeria',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16)),
+                    child: const Text(
+                      'Escolher da galeria',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
                   Visibility(
-                    visible: state.optionOfAvatar.isSome(),
+                    visible: state.avatar != null,
                     child: MaterialButton(
                       onPressed: () {
-                        context.read<SignUpFormBloc>().add(
-                            const SignUpFormBlocEvent.btnConcluirPressed());
+                        if (isEdit) {
+                          context.read<SignUpFormBloc>().add(
+                                const SignUpFormBlocEvent
+                                    .btnConcluirEditionPressed(),
+                              );
+                        } else {
+                          context.read<SignUpFormBloc>().add(
+                                const SignUpFormBlocEvent.btnConcluirPressed(),
+                              );
+                        }
                       },
                       color: ColorSet.green2,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       ),
                       textColor: Colors.white,
-                      child: const Text('Concluir',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16)),
+                      child: const Text(
+                        'Concluir',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                   )
                 ],

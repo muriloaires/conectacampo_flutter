@@ -37,26 +37,33 @@ class BuyerMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<BuyerMenuBloc>(
-            create: (context) => getIt()..add(const BuyerMenuEvent.started())),
+          create: (context) => getIt()..add(const BuyerMenuEvent.started()),
+        ),
         BlocProvider<AdvertisementsBloc>(
-            create: (context) =>
-                getIt()..add(const AdvertisementsEvent.started())),
+          create: (context) =>
+              getIt()..add(const AdvertisementsEvent.started()),
+        ),
         BlocProvider<GroupBloc>(
-            create: (context) => getIt()..add(const GroupEvent.started())),
+          create: (context) => getIt()..add(const GroupEvent.started()),
+        ),
         BlocProvider<ReservationBloc>(
-            create: (context) =>
-                getIt()..add(const ReservationEvent.started())),
+          create: (context) => getIt()..add(const ReservationEvent.started()),
+        ),
         BlocProvider<SummaryBloc>(
-            create: (context) => getIt()..add(const SummaryEvent.started())),
+          create: (context) => getIt()..add(const SummaryEvent.started()),
+        ),
         BlocProvider(
-            create: (context) =>
-                getIt<ProfileBloc>()..add(const ProfileEvent.started())),
+          create: (context) =>
+              getIt<ProfileBloc>()..add(const ProfileEvent.started()),
+        ),
         BlocProvider(
-            create: (context) => getIt<SummaryReservationsBloc>()
-              ..add(const SummaryReservationsEvent.started())),
+          create: (context) => getIt<SummaryReservationsBloc>()
+            ..add(const SummaryReservationsEvent.started()),
+        ),
       ],
       child: BlocConsumer<BuyerMenuBloc, BuyerMenuState>(
         listener: (context, state) async {
@@ -65,10 +72,11 @@ class BuyerMainPage extends StatelessWidget {
           }
           if (state.navToSeller) {
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                  builder: (context) => SellerMainPage(),
-                ),
-                (route) => false);
+              MaterialPageRoute(
+                builder: (context) => SellerMainPage(),
+              ),
+              (route) => false,
+            );
           }
 
           if (context.read<BuyerMenuBloc>().state.navToRoot) {
@@ -178,151 +186,127 @@ class BuyerMainPage extends StatelessWidget {
   }
 
   Widget _getBottomMenu(BuildContext context, BuyerMenuState state) {
-    return ListView(shrinkWrap: true, children: [
-      Visibility(
-        visible: state.itemsInCart.isNotEmpty,
-        child: GestureDetector(
-          onTap: () {
-            context
-                .read<BuyerMenuBloc>()
-                .add(const BuyerMenuEvent.onCartTapped());
-          },
-          child: Container(
-            padding: const EdgeInsets.all(4),
-            color: ColorSet.green2,
-            height: 45,
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.shopping_cart_outlined,
-                  size: 24,
-                  color: Colors.white,
-                ),
-                const Expanded(child: SizedBox()),
-                Text(
-                  '${state.itemsInCart.length} ${state.itemsInCart.length > 1 ? 'itens' : 'item'}',
-                  style: const TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                )
-              ],
+    return ListView(
+      shrinkWrap: true,
+      children: [
+        Visibility(
+          visible: state.itemsInCart.isNotEmpty,
+          child: GestureDetector(
+            onTap: () {
+              context
+                  .read<BuyerMenuBloc>()
+                  .add(const BuyerMenuEvent.onCartTapped());
+            },
+            child: Container(
+              padding: const EdgeInsets.all(4),
+              color: ColorSet.green2,
+              height: 45,
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.shopping_cart_outlined,
+                    size: 24,
+                    color: Colors.white,
+                  ),
+                  const Expanded(child: SizedBox()),
+                  Text(
+                    '${state.itemsInCart.length} ${state.itemsInCart.length > 1 ? 'itens' : 'item'}',
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
             ),
           ),
         ),
-      ),
-      BottomNavigationBar(
-        elevation: 0,
-        backgroundColor: ColorSet.gray10,
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: true,
-        selectedIconTheme: const IconThemeData(color: ColorSet.greenTextColor),
-        unselectedIconTheme: const IconThemeData(color: Colors.black),
-        unselectedItemColor: Colors.black,
-        selectedItemColor: ColorSet.greenTextColor,
-        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/home.png')),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/grupos.png')),
-            label: 'Grupos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
+        BottomNavigationBar(
+          elevation: 0,
+          backgroundColor: ColorSet.gray10,
+          type: BottomNavigationBarType.fixed,
+          showUnselectedLabels: true,
+          selectedIconTheme:
+              const IconThemeData(color: ColorSet.greenTextColor),
+          unselectedIconTheme: const IconThemeData(color: Colors.black),
+          unselectedItemColor: Colors.black,
+          selectedItemColor: ColorSet.greenTextColor,
+          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/home.png')),
+              label: 'Home',
             ),
-            label: 'Comprar',
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/reservas.png')),
-            label: 'Reservas',
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/user.png')),
-            label: 'Perfil',
-          ),
-        ],
-        currentIndex: state.currentIndex,
-        onTap: (index) {
-          final bool reselect =
-              index == context.read<BuyerMenuBloc>().state.currentIndex;
-          final bloc = context.read<BuyerMenuBloc>();
-          switch (index) {
-            case 0:
-              if (!reselect) {
-                bloc.add(const BuyerMenuEvent.homeTapped());
-              } else {
-                bloc.add(const BuyerMenuEvent.homeRetapped());
-              }
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/grupos.png')),
+              label: 'Grupos',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_outlined,
+              ),
+              label: 'Comprar',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/reservas.png')),
+              label: 'Reservas',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/user.png')),
+              label: 'Perfil',
+            ),
+          ],
+          currentIndex: state.currentIndex,
+          onTap: (index) {
+            final bool reselect =
+                index == context.read<BuyerMenuBloc>().state.currentIndex;
+            final bloc = context.read<BuyerMenuBloc>();
+            switch (index) {
+              case 0:
+                if (!reselect) {
+                  bloc.add(const BuyerMenuEvent.homeTapped());
+                } else {
+                  bloc.add(const BuyerMenuEvent.homeRetapped());
+                }
 
-              break;
-            case 1:
-              if (!reselect) {
-                bloc.add(const BuyerMenuEvent.groupsTapped());
-              } else {
-                bloc.add(const BuyerMenuEvent.groupsRetapped());
-              }
+                break;
+              case 1:
+                if (!reselect) {
+                  bloc.add(const BuyerMenuEvent.groupsTapped());
+                } else {
+                  bloc.add(const BuyerMenuEvent.groupsRetapped());
+                }
 
-              break;
-            case 3:
-              if (!reselect) {
-                bloc.add(const BuyerMenuEvent.reservationTapped());
-              } else {
-                bloc.add(const BuyerMenuEvent.reservationRetapped());
-              }
+                break;
+              case 3:
+                if (!reselect) {
+                  bloc.add(const BuyerMenuEvent.reservationTapped());
+                } else {
+                  bloc.add(const BuyerMenuEvent.reservationRetapped());
+                }
 
-              break;
+                break;
 
-            case 4:
-              if (!reselect) {
-                bloc.add(const BuyerMenuEvent.profileTapped());
-              } else {
-                bloc.add(const BuyerMenuEvent.profileRetapped());
-              }
+              case 4:
+                if (!reselect) {
+                  bloc.add(const BuyerMenuEvent.profileTapped());
+                } else {
+                  bloc.add(const BuyerMenuEvent.profileRetapped());
+                }
 
-              break;
-            default:
-          }
-        },
-      ),
-      Container(
-        color: ColorSet.gray10,
-        height: 30,
-      )
-    ]);
-  }
-
-  void setupNotifications(BuildContext context) async {
-    await FirebaseMessaging.instance.getToken();
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      Flushbar(
-        flushbarPosition: FlushbarPosition.TOP,
-        titleSize: 16,
-        title: message.notification?.title,
-        message: message.notification?.body,
-        duration: const Duration(seconds: 10),
-        mainButton: TextButton(
-          onPressed: () async {
-            final notificable = message.data["notificable"] as String;
-
-            final reservationId = jsonDecode(notificable)["id"] as int;
-            final reservation =
-                await ReservationFacade().getReservation(reservationId);
-            final kind = message.data["kind"] as String;
-            reservation.fold((l) => null, (r) {
-              openNotification(context, ReservationToOpen(kind, r));
-            });
+                break;
+              default:
+            }
           },
-          child: const Text(
-            'Vizualizar',
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
         ),
-      ).show(context);
-    });
+        Container(
+          color: ColorSet.gray10,
+          height: 30,
+        )
+      ],
+    );
   }
+
+
 }
 
 class SearchWidget extends StatelessWidget implements PreferredSizeWidget {

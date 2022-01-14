@@ -7,19 +7,20 @@ class SignUpFormBlocState with _$SignUpFormBlocState {
     required FullName? fullName,
     required Nickname? nickname,
     required bool showErrorMessages,
-    required Option<String> optionOfAvatar,
+    required String? avatar,
     required bool authSuccess,
     required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
+    required Either<AuthFailure, Unit>? updateAvatarSuccess,
   }) = _SignUpFormBlocState;
 
   factory SignUpFormBlocState.initial() => SignUpFormBlocState(
-      isSubmitting: false,
-      fullName: null,
-      nickname: null,
-      showErrorMessages: true,
-
-
-      optionOfAvatar: none(),
-      authFailureOrSuccessOption: none(),
-      authSuccess: false);
+        isSubmitting: false,
+        fullName: null,
+        nickname: null,
+        showErrorMessages: true,
+        avatar: null,
+        authFailureOrSuccessOption: none(),
+        authSuccess: false,
+        updateAvatarSuccess: null,
+      );
 }

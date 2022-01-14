@@ -20,7 +20,7 @@ extension StringDateExtension on String {
     final parsedDate = DateTime.parse(this);
     final f = DateFormat('dd/MM/yyyy');
     final f2 = DateFormat('kk:mm');
-    return '${f.format(parsedDate)} às ${f2.format(parsedDate)}';
+    return '${f.format(parsedDate.toLocal())} às ${f2.format(parsedDate.toLocal())}';
   }
 }
 

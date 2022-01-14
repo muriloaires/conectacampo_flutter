@@ -24,9 +24,14 @@ abstract class IAuthFacade {
   Unit onNameAndNicknameSelected(String name, String nickname);
 
   Future<Either<AuthFailure, Unit>> signUp(
-      FullName fullName, Nickname nickname, String avatarPath);
+    FullName fullName,
+    Nickname nickname,
+    String avatarPath,
+  );
 
   String getSelectedName();
 
   String getSelectedNickname();
+
+  Future<Either<AuthFailure, Unit>> updateAvatar(String avatarPath);
 }

@@ -582,7 +582,8 @@ class _$CartStateTearOff {
       required Option<Either<ReservationFailure, Unit>>
           optionOfreservationResultSuccessOrFailure,
       required bool showDialogErrorItems,
-      required Option<ReservationResponse> optionOfReservationResponse}) {
+      required Option<ReservationResponse> optionOfReservationResponse,
+      required bool invalidQuantity}) {
     return _CartState(
       itemsInCart: itemsInCart,
       optionOfRemoteAdProductsFailureOrSuccess:
@@ -592,6 +593,7 @@ class _$CartStateTearOff {
           optionOfreservationResultSuccessOrFailure,
       showDialogErrorItems: showDialogErrorItems,
       optionOfReservationResponse: optionOfReservationResponse,
+      invalidQuantity: invalidQuantity,
     );
   }
 }
@@ -612,6 +614,7 @@ mixin _$CartState {
   bool get showDialogErrorItems => throw _privateConstructorUsedError;
   Option<ReservationResponse> get optionOfReservationResponse =>
       throw _privateConstructorUsedError;
+  bool get invalidQuantity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartStateCopyWith<CartState> get copyWith =>
@@ -630,7 +633,8 @@ abstract class $CartStateCopyWith<$Res> {
       Option<Either<ReservationFailure, Unit>>
           optionOfreservationResultSuccessOrFailure,
       bool showDialogErrorItems,
-      Option<ReservationResponse> optionOfReservationResponse});
+      Option<ReservationResponse> optionOfReservationResponse,
+      bool invalidQuantity});
 }
 
 /// @nodoc
@@ -649,6 +653,7 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
     Object? optionOfreservationResultSuccessOrFailure = freezed,
     Object? showDialogErrorItems = freezed,
     Object? optionOfReservationResponse = freezed,
+    Object? invalidQuantity = freezed,
   }) {
     return _then(_value.copyWith(
       itemsInCart: itemsInCart == freezed
@@ -677,6 +682,10 @@ class _$CartStateCopyWithImpl<$Res> implements $CartStateCopyWith<$Res> {
           ? _value.optionOfReservationResponse
           : optionOfReservationResponse // ignore: cast_nullable_to_non_nullable
               as Option<ReservationResponse>,
+      invalidQuantity: invalidQuantity == freezed
+          ? _value.invalidQuantity
+          : invalidQuantity // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -695,7 +704,8 @@ abstract class _$CartStateCopyWith<$Res> implements $CartStateCopyWith<$Res> {
       Option<Either<ReservationFailure, Unit>>
           optionOfreservationResultSuccessOrFailure,
       bool showDialogErrorItems,
-      Option<ReservationResponse> optionOfReservationResponse});
+      Option<ReservationResponse> optionOfReservationResponse,
+      bool invalidQuantity});
 }
 
 /// @nodoc
@@ -715,6 +725,7 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
     Object? optionOfreservationResultSuccessOrFailure = freezed,
     Object? showDialogErrorItems = freezed,
     Object? optionOfReservationResponse = freezed,
+    Object? invalidQuantity = freezed,
   }) {
     return _then(_CartState(
       itemsInCart: itemsInCart == freezed
@@ -743,6 +754,10 @@ class __$CartStateCopyWithImpl<$Res> extends _$CartStateCopyWithImpl<$Res>
           ? _value.optionOfReservationResponse
           : optionOfReservationResponse // ignore: cast_nullable_to_non_nullable
               as Option<ReservationResponse>,
+      invalidQuantity: invalidQuantity == freezed
+          ? _value.invalidQuantity
+          : invalidQuantity // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -756,7 +771,8 @@ class _$_CartState implements _CartState {
       required this.reservating,
       required this.optionOfreservationResultSuccessOrFailure,
       required this.showDialogErrorItems,
-      required this.optionOfReservationResponse});
+      required this.optionOfReservationResponse,
+      required this.invalidQuantity});
 
   @override
   final List<ReservationItem> itemsInCart;
@@ -772,10 +788,12 @@ class _$_CartState implements _CartState {
   final bool showDialogErrorItems;
   @override
   final Option<ReservationResponse> optionOfReservationResponse;
+  @override
+  final bool invalidQuantity;
 
   @override
   String toString() {
-    return 'CartState(itemsInCart: $itemsInCart, optionOfRemoteAdProductsFailureOrSuccess: $optionOfRemoteAdProductsFailureOrSuccess, reservating: $reservating, optionOfreservationResultSuccessOrFailure: $optionOfreservationResultSuccessOrFailure, showDialogErrorItems: $showDialogErrorItems, optionOfReservationResponse: $optionOfReservationResponse)';
+    return 'CartState(itemsInCart: $itemsInCart, optionOfRemoteAdProductsFailureOrSuccess: $optionOfRemoteAdProductsFailureOrSuccess, reservating: $reservating, optionOfreservationResultSuccessOrFailure: $optionOfreservationResultSuccessOrFailure, showDialogErrorItems: $showDialogErrorItems, optionOfReservationResponse: $optionOfReservationResponse, invalidQuantity: $invalidQuantity)';
   }
 
   @override
@@ -805,7 +823,10 @@ class _$_CartState implements _CartState {
                     optionOfReservationResponse) ||
                 const DeepCollectionEquality().equals(
                     other.optionOfReservationResponse,
-                    optionOfReservationResponse)));
+                    optionOfReservationResponse)) &&
+            (identical(other.invalidQuantity, invalidQuantity) ||
+                const DeepCollectionEquality()
+                    .equals(other.invalidQuantity, invalidQuantity)));
   }
 
   @override
@@ -818,7 +839,8 @@ class _$_CartState implements _CartState {
       const DeepCollectionEquality()
           .hash(optionOfreservationResultSuccessOrFailure) ^
       const DeepCollectionEquality().hash(showDialogErrorItems) ^
-      const DeepCollectionEquality().hash(optionOfReservationResponse);
+      const DeepCollectionEquality().hash(optionOfReservationResponse) ^
+      const DeepCollectionEquality().hash(invalidQuantity);
 
   @JsonKey(ignore: true)
   @override
@@ -828,15 +850,15 @@ class _$_CartState implements _CartState {
 
 abstract class _CartState implements CartState {
   const factory _CartState(
-          {required List<ReservationItem> itemsInCart,
-          required Option<Either<AdvertisementFailure, List<AdProduct>>>
-              optionOfRemoteAdProductsFailureOrSuccess,
-          required bool reservating,
-          required Option<Either<ReservationFailure, Unit>>
-              optionOfreservationResultSuccessOrFailure,
-          required bool showDialogErrorItems,
-          required Option<ReservationResponse> optionOfReservationResponse}) =
-      _$_CartState;
+      {required List<ReservationItem> itemsInCart,
+      required Option<Either<AdvertisementFailure, List<AdProduct>>>
+          optionOfRemoteAdProductsFailureOrSuccess,
+      required bool reservating,
+      required Option<Either<ReservationFailure, Unit>>
+          optionOfreservationResultSuccessOrFailure,
+      required bool showDialogErrorItems,
+      required Option<ReservationResponse> optionOfReservationResponse,
+      required bool invalidQuantity}) = _$_CartState;
 
   @override
   List<ReservationItem> get itemsInCart => throw _privateConstructorUsedError;
@@ -855,6 +877,8 @@ abstract class _CartState implements CartState {
   @override
   Option<ReservationResponse> get optionOfReservationResponse =>
       throw _privateConstructorUsedError;
+  @override
+  bool get invalidQuantity => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CartStateCopyWith<_CartState> get copyWith =>

@@ -33,7 +33,8 @@ class NotificationsPage extends StatelessWidget {
                   ),
                   (r) => r.isEmpty
                       ? const Center(
-                          child: Text('Ainda não há nenhuma notificação'))
+                          child: Text('Ainda não há nenhuma notificação'),
+                        )
                       : Padding(
                           padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                           child: ListView.separated(
@@ -44,17 +45,21 @@ class NotificationsPage extends StatelessWidget {
                               ),
                               trailing: const Icon(Icons.chevron_right),
                               onTap: () async {
-                                final reservation =
-                                    await ReservationFacade().getReservation(
-                                  r[index].notificatificable.id,
-                                );
-                                final kind = r[index].kind;
-                                reservation.fold((l) => null, (r) {
-                                  openNotification(
-                                    context,
-                                    ReservationToOpen(kind, r),
+                                final reservationId =
+                                    r[index].notificatificable?.id;
+                                if (reservationId != null) {
+                                  final reservation =
+                                      await ReservationFacade().getReservation(
+                                    reservationId,
                                   );
-                                });
+                                  final kind = r[index].kind;
+                                  reservation.fold((l) => null, (r) {
+                                    openNotification(
+                                      context,
+                                      ReservationToOpen(kind, r),
+                                    );
+                                  });
+                                }
                               },
                             ),
                             itemCount: r.length,

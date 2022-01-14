@@ -7,11 +7,9 @@ import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:conectacampo/presentation/sign_in/user_type.dart';
 import 'package:conectacampo/presentation/sign_in/widgets/select_avatar_page.dart';
 import 'package:conectacampo/presentation/splash_screen.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:another_flushbar/flushbar.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget();
@@ -31,7 +29,7 @@ class AppWidget extends StatelessWidget {
         '/seller_main': (context) => SellerMainPage(),
         '/places': (context) => PlacesPage(),
         '/splash': (context) => SplashScreen(),
-        '/avatar_page': (context) => SelectAvatarPage(),
+        '/avatar_page': (context) => SelectAvatarPage(isEdit: false),
         '/user_type': (context) => UserType()
       },
       initialRoute: '/splash',
@@ -40,7 +38,8 @@ class AppWidget extends StatelessWidget {
           fontFamily: 'Montserrat',
           primaryColor: ColorSet.colorPrimaryGreenButton,
           textTheme: const TextTheme(
-              headline6: TextStyle(color: Colors.red, fontFamily: 'Roboto')),
+            headline6: TextStyle(color: Colors.red, fontFamily: 'Roboto'),
+          ),
           appBarTheme: const AppBarTheme(
             color: ColorSet.colorPrimaryGreen,
           )),
@@ -50,6 +49,4 @@ class AppWidget extends StatelessWidget {
       ],
     );
   }
-
-
 }

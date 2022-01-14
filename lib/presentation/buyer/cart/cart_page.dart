@@ -22,8 +22,10 @@ class CartPage extends StatelessWidget {
       create: (context) => getIt()..add(const CartEvent.started()),
       child: BlocConsumer<CartBloc, CartState>(
         listener: (context, state) {
+          if (context.read<CartBloc>().state.invalidQuantity) {}
+
           if (state.reservating) {
-            EasyLoading.show(status: 'Criando reserva', dismissOnTap: true);
+            EasyLoading.show(status: 'Criando reserva', dismissOnTap: false);
           } else {
             EasyLoading.dismiss();
           }
@@ -43,7 +45,7 @@ class CartPage extends StatelessWidget {
                 builder: (BuildContext dialogContext) => Dialog(
                   child: ListView(
                     shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
+                    physics: const ClampingScrollPhysics(),
                     children: [
                       const SizedBox(),
                       CircleAvatar(
@@ -94,52 +96,59 @@ class CartPage extends StatelessWidget {
           });
 
           state.optionOfreservationResultSuccessOrFailure.fold(
-              () => null,
-              (a) => a.fold((l) => null, (r) {
-                    showDialog<String>(
-                      context: context,
-                      builder: (BuildContext dialogContext) => Dialog(
-                        child: ListView(
-                          shrinkWrap: true,
-                          children: [
-                            const Divider(),
-                            const CircleAvatar(
-                              radius: 35,
-                              backgroundColor: ColorSet.green1,
-                              child: Icon(
-                                Icons.check,
-                                size: 48,
-                                color: Colors.white,
-                              ),
-                            ),
-                            const Divider(),
-                            const Center(
-                              child: Text('Pedido efetuado com sucesso!',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                            ),
-                            const Divider(height: 8),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(dialogContext);
-                                      Navigator.of(context)
-                                          .pushNamedAndRemoveUntil(
-                                              '/buyer_main', (route) => false);
-                                    },
-                                    child: const Text('Ok',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: ColorSet.grayDark)))
-                              ],
-                            )
-                          ],
+            () => null,
+            (a) => a.fold((l) => null, (r) {
+              showDialog<String>(
+                context: context,
+                builder: (BuildContext dialogContext) => Dialog(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      const Divider(),
+                      const CircleAvatar(
+                        radius: 35,
+                        backgroundColor: ColorSet.green1,
+                        child: Icon(
+                          Icons.check,
+                          size: 48,
+                          color: Colors.white,
                         ),
                       ),
-                    );
-                  }));
+                      const Divider(),
+                      const Center(
+                        child: Text(
+                          'Pedido efetuado com sucesso!',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      const Divider(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(dialogContext);
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                '/buyer_main',
+                                (route) => false,
+                              );
+                            },
+                            child: const Text(
+                              'Ok',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorSet.grayDark,
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              );
+            }),
+          );
         },
         builder: (context, state) => Scaffold(
           appBar: AppBar(
@@ -154,10 +163,11 @@ class CartPage extends StatelessWidget {
           bottomNavigationBar:
               state.itemsInCart.isEmpty ? null : CartBottomMenu(),
           body: state.itemsInCart.isEmpty
-              ? Container(
+              ? const SizedBox(
                   width: double.infinity,
                   height: double.infinity,
-                  child: const Center(child: Text('Carrinho vazio')))
+                  child: Center(child: Text('Carrinho vazio')),
+                )
               : ListView(
                   children: [
                     ListView.separated(
@@ -178,8 +188,10 @@ class CartPage extends StatelessWidget {
                             product = errorList
                                 .map((e) => e.adProduct)
                                 .toList()
-                                .where((element) =>
-                                    element.id == state.itemsInCart[index].id)
+                                .where(
+                                  (element) =>
+                                      element.id == state.itemsInCart[index].id,
+                                )
                                 .first
                                 .toDomain();
                             showError = product.quantity <
@@ -188,16 +200,19 @@ class CartPage extends StatelessWidget {
                             product = state
                                 .optionOfRemoteAdProductsFailureOrSuccess
                                 .fold(
-                                    () => null,
-                                    (a) => a.fold((l) => null, (r) {
-                                          final invertedList =
-                                              r.reversed.toList();
-                                          return invertedList[index];
-                                        }));
+                              () => null,
+                              (a) => a.fold((l) => null, (r) {
+                                final invertedList = r.reversed.toList();
+                                return invertedList[index];
+                              }),
+                            );
                           }
                         } catch (e) {}
                         return ReservationItemWidget(
-                            state.itemsInCart[index], product, showError);
+                          state.itemsInCart[index],
+                          product,
+                          showError,
+                        );
                       },
                     ),
                     TextButton(
@@ -234,9 +249,12 @@ class CartBottomMenu extends StatelessWidget {
       builder: (context, state) {
         return Container(
           decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8), topRight: Radius.circular(8))),
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(8),
+              topRight: Radius.circular(8),
+            ),
+          ),
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           child: ListView(
             shrinkWrap: true,
@@ -248,10 +266,12 @@ class CartBottomMenu extends StatelessWidget {
                 child: Wrap(
                   children: [
                     Text(
-                        'Combinar entrega com ${state.itemsInCart.first.sellerName}',
-                        style: const TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: ColorSet.green1)),
+                      'Combinar entrega com ${state.itemsInCart.first.sellerName}',
+                      style: const TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: ColorSet.green1,
+                      ),
+                    ),
                     const SizedBox(width: 8),
                     SvgPicture.asset(
                       'assets/whatsapp.svg',
@@ -266,37 +286,51 @@ class CartBottomMenu extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Total de itens',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                  Text(state.itemsInCart.length.toString(),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16))
+                  const Text(
+                    'Total de itens',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  Text(
+                    state.itemsInCart.length.toString(),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  )
                 ],
               ),
-              Divider(),
-              MaterialButton(
-                onPressed: () {
-                  context
-                      .read<CartBloc>()
-                      .add(const CartEvent.btnFinishPressed());
-                },
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
+              const Divider(),
+              if (state.reservating)
+                const Center(
+                  child: CircularProgressIndicator(
                     color: ColorSet.green1,
                   ),
-                  child: const Center(
-                    child: Text(
-                      'Finalizar pedido',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                )
+              else
+                MaterialButton(
+                  onPressed: () {
+                    context
+                        .read<CartBloc>()
+                        .add(const CartEvent.btnFinishPressed());
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: ColorSet.green1,
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Finalizar pedido',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              )
+                )
             ],
           ),
         );
@@ -320,7 +354,8 @@ class ReservationItemWidget extends StatelessWidget {
     final TextEditingController textController =
         TextEditingController(text: reservationItem.quantity.toString());
     textController.selection = TextSelection.fromPosition(
-        TextPosition(offset: textController.text.length));
+      TextPosition(offset: textController.text.length),
+    );
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.all(20),
@@ -349,7 +384,9 @@ class ReservationItemWidget extends StatelessWidget {
                     Text(
                       reservationItem.name,
                       style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
                     ),
                     const SizedBox(height: 5),
                     Text(
@@ -381,37 +418,61 @@ class ReservationItemWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('$available $availability',
-                      style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              showError ? Colors.red : Colors.lightGreen[800])),
+                  Text(
+                    '$available $availability',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: showError ? Colors.red : Colors.lightGreen[800],
+                    ),
+                  ),
                   const SizedBox(
                     height: 4,
                   ),
                   SizedBox(
-                      width: 60,
-                      height: 40,
-                      child: TextField(
-                        textAlign: TextAlign.center,
-                        keyboardType:
-                            const TextInputType.numberWithOptions(signed: true),
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                        controller: textController,
-                        onChanged: (value) => context.read<CartBloc>().add(
-                            CartEvent.quantityChanged(reservationItem, value)),
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: ColorSet.green1),
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.zero,
-                          border: OutlineInputBorder(),
-                        ),
-                      ))
+                    width: 60,
+                    height: 40,
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      keyboardType:
+                          const TextInputType.numberWithOptions(signed: true),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      controller: textController,
+                      onChanged: (value) {
+                        if (value == '0') {
+                          EasyLoading.showError(
+                            'Quantidade inválida',
+                            duration: const Duration(seconds: 3),
+                          );
+                          textController.text =
+                              reservationItem.quantity.toString();
+                          textController.selection = TextSelection.fromPosition(
+                            TextPosition(offset: textController.text.length),
+                          );
+                          return;
+                        }
+                        if (value != '') {
+                          context.read<CartBloc>().add(
+                                CartEvent.quantityChanged(
+                                  reservationItem,
+                                  value,
+                                ),
+                              );
+                        }
+                      },
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: ColorSet.green1,
+                      ),
+                      decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.zero,
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  )
                 ],
               ),
               TextButton(
@@ -429,15 +490,18 @@ class ReservationItemWidget extends StatelessWidget {
                             child: const Text(
                               '!',
                               style: TextStyle(
-                                  fontSize: 40,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                                fontSize: 40,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           const Divider(),
                           const Center(
-                            child: Text('Deseja excluir?',
-                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            child: Text(
+                              'Deseja excluir?',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ),
                           const Divider(height: 8),
                           const Center(

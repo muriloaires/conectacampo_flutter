@@ -52,9 +52,9 @@ class SellerSummary extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: InviteWidget(),
+                         Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: InviteWidget(isBuyer: false),
                         ),
                         const SizedBox(height: 20),
                         const Padding(

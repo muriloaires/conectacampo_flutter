@@ -15,7 +15,10 @@ _$_NotificationResponse _$_$_NotificationResponseFromJson(
     json['message'] as String,
     json['kind'] as String,
     json['user_id'] as int,
-    Notificatificable.fromJson(json['notificable'] as Map<String, dynamic>),
+    json['notificable'] == null
+        ? null
+        : Notificatificable.fromJson(
+            json['notificable'] as Map<String, dynamic>),
   );
 }
 

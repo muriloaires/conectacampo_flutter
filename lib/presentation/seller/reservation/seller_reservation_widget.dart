@@ -115,168 +115,168 @@ class SellerReservationWidget extends StatelessWidget {
                     await openWhatsapp(reservation.buyer.phoneNumber ?? '');
                   },
                   child: Container(
-                      decoration: const BoxDecoration(
-                        color: ColorSet.gray10,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
+                    decoration: const BoxDecoration(
+                      color: ColorSet.gray10,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                      child: FittedBox(
+                        child: Row(
+                          children: [
+                            const Text(
+                              'Fale com o comprador',
+                              style: TextStyle(
+                                color: ColorSet.green1,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            SvgPicture.asset(
+                              'assets/whatsapp.svg',
+                              height: 18,
+                              width: 18,
+                            )
+                          ],
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-                        child: FittedBox(
-                          child: Row(
-                            children: [
-                              const Text(
-                                'Fale com o comprador',
-                                style: TextStyle(
-                                    color: ColorSet.green1,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              SvgPicture.asset(
-                                'assets/whatsapp.svg',
-                                height: 18,
-                                width: 18,
-                              )
-                            ],
-                          ),
-                        ),
-                      )),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
                   child: Visibility(
-                      visible: isExpanded,
-                      child: SizedBox(
-                        height: 214,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListView(
-                            shrinkWrap: true,
-                            physics: const ClampingScrollPhysics(),
-                            children: [
-                              Visibility(
-                                visible: state.reservation?.status ==
-                                        ReservationStatus.awaitingBuyer ||
-                                    state.reservation?.status ==
-                                        ReservationStatus.pendingSeller ||
-                                    state.reservation?.status ==
-                                        ReservationStatus.confirmed,
-                                child: ListView(
-                                  shrinkWrap: true,
-                                  physics: const ClampingScrollPhysics(),
-                                  children: [
-                                    MaterialButton(
-                                      onPressed: () {
-                                        context
-                                            .read<SellerReservationBloc>()
-                                            .add(
-                                              const SellerReservationEvent
-                                                  .onCancel(),
-                                            );
-                                      },
-                                      child: Container(
-                                        width: double.infinity,
-                                        padding: const EdgeInsets.fromLTRB(
-                                          50,
-                                          10,
-                                          50,
-                                          10,
+                    visible: isExpanded,
+                    child: SizedBox(
+                      height: 254,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListView(
+                          shrinkWrap: true,
+                          physics: const ClampingScrollPhysics(),
+                          children: [
+                            Visibility(
+                              visible: state.reservation?.status ==
+                                      ReservationStatus.awaitingBuyer ||
+                                  state.reservation?.status ==
+                                      ReservationStatus.pendingSeller ||
+                                  state.reservation?.status ==
+                                      ReservationStatus.confirmed,
+                              child: ListView(
+                                shrinkWrap: true,
+                                physics: const ClampingScrollPhysics(),
+                                children: [
+                                  MaterialButton(
+                                    onPressed: () {
+                                      showDialogCancelarPedido(context);
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.fromLTRB(
+                                        50,
+                                        10,
+                                        50,
+                                        10,
+                                      ),
+                                      decoration: const BoxDecoration(
+                                        color: ColorSet.red1,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20),
                                         ),
-                                        decoration: const BoxDecoration(
-                                          color: ColorSet.red1,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                        ),
-                                        child: const Text(
-                                          'Cancelar Pedido',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                          ),
+                                      ),
+                                      child: const Text(
+                                        'Cancelar Pedido',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
                                         ),
                                       ),
                                     ),
-                                  ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            if (state.reservation?.status ==
+                                ReservationStatus.pendingSeller)
+                              MaterialButton(
+                                onPressed: () {
+                                  showDialogConfirmarPedido(context);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.fromLTRB(
+                                    10,
+                                    10,
+                                    10,
+                                    10,
+                                  ),
+                                  decoration: const BoxDecoration(
+                                    color: ColorSet.green1,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'Confirmar Pedido',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
                               ),
-                              if (state.reservation?.status ==
-                                  ReservationStatus.pendingSeller)
-                                MaterialButton(
-                                  onPressed: () {
-                                    context.read<SellerReservationBloc>().add(
-                                          const SellerReservationEvent
-                                              .onConfirm(),
-                                        );
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.fromLTRB(
-                                      10,
-                                      10,
-                                      10,
-                                      10,
+                            if (state.reservation?.status ==
+                                ReservationStatus.confirmed)
+                              MaterialButton(
+                                onPressed: () {
+                                  showDialogConfirmarPagamento(context);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.fromLTRB(
+                                    10,
+                                    10,
+                                    10,
+                                    10,
+                                  ),
+                                  decoration: const BoxDecoration(
+                                    color: ColorSet.blue1,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
                                     ),
-                                    decoration: const BoxDecoration(
-                                      color: ColorSet.green1,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                    ),
-                                    child: const Text(
-                                      'Confirmar Pedido',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
+                                  ),
+                                  child: const Text(
+                                    'Confirmar Pagamento',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ),
-                              if (state.reservation?.status ==
-                                  ReservationStatus.confirmed)
-                                MaterialButton(
-                                  onPressed: () {
-                                    context.read<SellerReservationBloc>().add(
-                                          const SellerReservationEvent
-                                              .onConfirmPayment(),
-                                        );
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.fromLTRB(
-                                        10, 10, 10, 10),
-                                    decoration: const BoxDecoration(
-                                      color: ColorSet.blue1,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                    ),
-                                    child: const Text(
-                                      'Confirmar Pagamento',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              const SizedBox(height: 20),
-                              GestureDetector(
+                              ),
+                            const SizedBox(height: 20),
+                            Visibility(
+                              visible: state.reservation?.status ==
+                                      ReservationStatus.awaitingBuyer ||
+                                  state.reservation?.status ==
+                                      ReservationStatus.pendingSeller ||
+                                  state.reservation?.status ==
+                                      ReservationStatus.confirmed,
+                              child: GestureDetector(
                                 onTap: () {
-                                  context
-                                      .read<SellerReservationBloc>()
-                                      .add(
-                                    SellerReservationEvent
-                                        .reservationEditItemsTap(
-                                      state.reservation,
-                                    ),
-                                  );
+                                  context.read<SellerReservationBloc>().add(
+                                        SellerReservationEvent
+                                            .reservationEditItemsTap(
+                                          state.reservation,
+                                        ),
+                                      );
                                 },
                                 child: const Text(
                                   'Alterar itens',
@@ -287,33 +287,37 @@ class SellerReservationWidget extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 20),
-                              const Text('Itens',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: ColorSet.brown1,
-                                  )),
-                              SizedBox(
-                                height: 60,
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  itemBuilder: (itemBuilder, index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '${state.reservation?.productReservations[index].adProduct.name} • ${state.reservation?.productReservations[index].quantity} ${state.reservation?.productReservations[index].adProduct.unitMeasure}',
-                                        style: const TextStyle(fontSize: 12),
-                                      ),
-                                    );
-                                  },
-                                  itemCount: state
-                                      .reservation?.productReservations.length,
-                                ),
+                            ),
+                            const SizedBox(height: 20),
+                            const Text(
+                              'Itens',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorSet.brown1,
                               ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 100,
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemBuilder: (itemBuilder, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      '${state.reservation?.productReservations[index].adProduct.name} • ${state.reservation?.productReservations[index].quantity} ${state.reservation?.productReservations[index].adProduct.unitMeasure}',
+                                      style: const TextStyle(fontSize: 12),
+                                    ),
+                                  );
+                                },
+                                itemCount: state
+                                    .reservation?.productReservations.length,
+                              ),
+                            ),
+                          ],
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                 ),
                 Container(
                   height: 1,
@@ -401,7 +405,9 @@ class SellerReservationWidget extends StatelessWidget {
         style: const TextStyle(color: Colors.white, fontSize: 12),
         children: [
           TextSpan(
-              text: text, style: const TextStyle(fontWeight: FontWeight.bold))
+            text: text,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          )
         ],
       ),
     );
@@ -426,5 +432,230 @@ class SellerReservationWidget extends StatelessWidget {
     } else {
       return ColorSet.gray2;
     }
+  }
+
+  void showDialogConfirmarPagamento(BuildContext context) {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext dialogContext) => Dialog(
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            const CircleAvatar(
+              radius: 35,
+              backgroundColor: ColorSet.green1,
+              child: Icon(
+                Icons.check,
+                size: 48,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Center(
+              child: Text(
+                'Atenção',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Center(
+              child: Text(
+                'Deseja confirmar o pagamento?',
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Container(height: 1, color: ColorSet.grayLine),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(dialogContext);
+                  },
+                  child: const Text(
+                    'Voltar',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: ColorSet.grayDark,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(dialogContext).pop();
+                    context.read<SellerReservationBloc>().add(
+                          const SellerReservationEvent.onConfirmPayment(),
+                        );
+                  },
+                  child: const Text(
+                    'Sim',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: ColorSet.grayDark,
+                    ),
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  void showDialogConfirmarPedido(BuildContext context) {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext dialogContext) => Dialog(
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            const CircleAvatar(
+              radius: 35,
+              backgroundColor: ColorSet.green1,
+              child: Icon(
+                Icons.check,
+                size: 48,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Center(
+              child: Text(
+                'Atenção',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Center(
+              child: Text(
+                'Deseja confirmar o pedido?',
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Container(height: 1, color: ColorSet.grayLine),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(dialogContext);
+                  },
+                  child: const Text(
+                    'Voltar',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: ColorSet.grayDark,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(dialogContext).pop();
+                    context.read<SellerReservationBloc>().add(
+                          const SellerReservationEvent.onConfirm(),
+                        );
+                  },
+                  child: const Text(
+                    'Sim',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: ColorSet.grayDark,
+                    ),
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  void showDialogCancelarPedido(BuildContext context) {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext dialogContext) => Dialog(
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            CircleAvatar(
+              radius: 35,
+              backgroundColor: Colors.red[800],
+              child: const Icon(
+                Icons.close,
+                size: 40,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Center(
+              child: Text(
+                'Atenção',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Center(
+              child: Text(
+                'Deseja cancelar o pedido?',
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Container(height: 1, color: ColorSet.grayLine),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () => Navigator.pop(
+                    dialogContext,
+                  ),
+                  child: const Text(
+                    'Voltar',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: ColorSet.grayDark,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(dialogContext).pop();
+                    context.read<SellerReservationBloc>().add(
+                          const SellerReservationEvent.onCancel(),
+                        );
+                  },
+                  child: const Text(
+                    'Sim',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: ColorSet.grayDark,
+                    ),
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

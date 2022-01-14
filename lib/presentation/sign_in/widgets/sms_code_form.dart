@@ -44,51 +44,60 @@ class SmsCodeForm extends StatelessWidget {
       body: FocusScope(
         node: _node,
         child: BlocConsumer<SmsCodeFormBloc, SmsCodeFormState>(
-            listener: (context, state) {
-          state.authFailureOrSuccessOption.fold(
+          listener: (context, state) {
+            state.authFailureOrSuccessOption.fold(
               () => {},
               (either) => either.fold((failure) {
-                    failure.maybeMap(
-                        userNotFound: (_) async {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpPage()),
-                          );
-                        },
-                        orElse: () {});
-                    final String errorText = failure.maybeMap(
-                        serverError: (_) => 'Erro interno',
-                        invalidSmsCode: (_) =>
-                            'Código inválido. Tente novamente',
-                        invalidVerificationId: (_) =>
-                            'A verificação falhou. Tente novamente',
-                        applicationError: (_) => 'A aplicação falhou',
-                        unauthorized: (_) => 'A aplicação falhou',
-                        orElse: () => '');
-                    if (errorText.isEmpty == false) {
-                      final snackBar = SnackBar(content: Text(errorText));
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }
-                  }, (_) async {
-                    final success = await Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => PlacesPage()));
+                failure.maybeMap(
+                  userNotFound: (_) async {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpPage(),
+                      ),
+                    );
+                  },
+                  orElse: () {},
+                );
+                final String errorText = failure.maybeMap(
+                  serverError: (_) => 'Erro interno',
+                  invalidSmsCode: (_) => 'Código inválido. Tente novamente',
+                  invalidVerificationId: (_) =>
+                      'A verificação falhou. Tente novamente',
+                  applicationError: (_) => 'A aplicação falhou',
+                  unauthorized: (_) => 'A aplicação falhou',
+                  orElse: () => '',
+                );
+                if (errorText.isEmpty == false) {
+                  final snackBar = SnackBar(content: Text(errorText));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              }, (_) async {
+                final success = await Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => PlacesPage()),
+                );
 
-                    if (success != null) {
-                      final userType = await loadLoggedUserType();
-                      if (userType != null) {
-                        if (userType == 'buyer') {
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                              '/buyer_main', (route) => false);
-                        } else {
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                              '/seller_main', (route) => false);
-                        }
-                      }
+                if (success != null) {
+                  final userType = await loadLoggedUserType();
+                  if (userType != null) {
+                    if (userType == 'buyer') {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/buyer_main',
+                        (route) => false,
+                      );
+                    } else {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/seller_main',
+                        (route) => false,
+                      );
                     }
-                  }));
-        }, builder: (context, state) {
-          return Padding(
+                  }
+                }
+              }),
+            );
+          },
+          builder: (context, state) {
+            return Padding(
               padding: const EdgeInsets.all(32),
               child: Column(
                 children: [
@@ -97,9 +106,10 @@ class SmsCodeForm extends StatelessWidget {
                     child: Text(
                       'Qual o código?',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: ColorSet.colorPrimaryGreen,
-                          fontSize: 28),
+                        fontWeight: FontWeight.bold,
+                        color: ColorSet.colorPrimaryGreen,
+                        fontSize: 28,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -123,11 +133,22 @@ class SmsCodeForm extends StatelessWidget {
                           height: 42,
                           child: _getSmsCodeTextField(_textSmsCodeController1,
                               (value) {
-                            context.read<SmsCodeFormBloc>().add(
+                            if (value.length == 6) {
+                              _textSmsCodeController1.text = value[0];
+                              _textSmsCodeController2.text = value[1];
+                              _textSmsCodeController3.text = value[2];
+                              _textSmsCodeController4.text = value[3];
+                              _textSmsCodeController5.text = value[4];
+                              _textSmsCodeController6.text = value[5];
+                            } else {
+                              context.read<SmsCodeFormBloc>().add(
                                 SmsCodeFormEvent.smsCodeChanged(
-                                    _textSmsCodeController1.text));
-                            if (_textSmsCodeController1.text.length == 1) {
-                              _node.nextFocus();
+                                  _textSmsCodeController1.text,
+                                ),
+                              );
+                              if (_textSmsCodeController1.text.length == 1) {
+                                _node.nextFocus();
+                              }
                             }
                             smsCodeChanged(context);
                           }),
@@ -141,8 +162,10 @@ class SmsCodeForm extends StatelessWidget {
                           child: _getSmsCodeTextField(_textSmsCodeController2,
                               (value) {
                             context.read<SmsCodeFormBloc>().add(
-                                SmsCodeFormEvent.smsCodeChanged(
-                                    _textSmsCodeController2.text));
+                                  SmsCodeFormEvent.smsCodeChanged(
+                                    _textSmsCodeController2.text,
+                                  ),
+                                );
                             if (_textSmsCodeController2.text.length == 1) {
                               _node.nextFocus();
                             } else {
@@ -160,8 +183,10 @@ class SmsCodeForm extends StatelessWidget {
                           child: _getSmsCodeTextField(_textSmsCodeController3,
                               (value) {
                             context.read<SmsCodeFormBloc>().add(
-                                SmsCodeFormEvent.smsCodeChanged(
-                                    _textSmsCodeController3.text));
+                                  SmsCodeFormEvent.smsCodeChanged(
+                                    _textSmsCodeController3.text,
+                                  ),
+                                );
                             if (_textSmsCodeController3.text.length == 1) {
                               _node.nextFocus();
                             } else {
@@ -179,8 +204,10 @@ class SmsCodeForm extends StatelessWidget {
                           child: _getSmsCodeTextField(_textSmsCodeController4,
                               (value) {
                             context.read<SmsCodeFormBloc>().add(
-                                SmsCodeFormEvent.smsCodeChanged(
-                                    _textSmsCodeController4.text));
+                                  SmsCodeFormEvent.smsCodeChanged(
+                                    _textSmsCodeController4.text,
+                                  ),
+                                );
                             if (_textSmsCodeController4.text.length == 1) {
                               _node.nextFocus();
                             } else {
@@ -198,8 +225,10 @@ class SmsCodeForm extends StatelessWidget {
                           child: _getSmsCodeTextField(_textSmsCodeController5,
                               (value) {
                             context.read<SmsCodeFormBloc>().add(
-                                SmsCodeFormEvent.smsCodeChanged(
-                                    _textSmsCodeController5.text));
+                                  SmsCodeFormEvent.smsCodeChanged(
+                                    _textSmsCodeController5.text,
+                                  ),
+                                );
                             if (_textSmsCodeController5.text.length == 1) {
                               _node.nextFocus();
                             } else {
@@ -231,48 +260,51 @@ class SmsCodeForm extends StatelessWidget {
                   Visibility(
                     visible:
                         context.read<SmsCodeFormBloc>().state.showErrorMessages,
-                    child: Text(context
-                        .read<SmsCodeFormBloc>()
-                        .state
-                        .smsCode
-                        .value
-                        .fold(
+                    child: Text(
+                      context.read<SmsCodeFormBloc>().state.smsCode.value.fold(
                             (l) => l.maybeMap(
-                                invalidCodeLength: (_) => 'Código Inválido',
-                                orElse: () => ''),
-                            (_) => '')),
+                              invalidCodeLength: (_) => 'Código Inválido',
+                              orElse: () => '',
+                            ),
+                            (_) => '',
+                          ),
+                    ),
                   ),
                   Visibility(
                     visible: context.read<SmsCodeFormBloc>().state.isSubmitting,
                     child: const CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(
-                          ColorSet.colorPrimaryGreenButton),
+                        ColorSet.colorPrimaryGreenButton,
+                      ),
                     ),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   TextButton(
-                      onPressed: () {
-                        context
-                            .read<SmsCodeFormBloc>()
-                            .add(const SmsCodeFormEvent.resendCode());
-                      },
-                      child: const Text(
-                        'Não recebeu o código SMS? Toque aqui para reenviar',
-                        style: TextStyle(
-                          color: ColorSet.green1,
-                        ),
-                      ))
+                    onPressed: () {
+                      context
+                          .read<SmsCodeFormBloc>()
+                          .add(const SmsCodeFormEvent.resendCode());
+                    },
+                    child: const Text(
+                      'Não recebeu o código SMS? Toque aqui para reenviar',
+                      style: TextStyle(
+                        color: ColorSet.green1,
+                      ),
+                    ),
+                  )
                 ],
-              ));
-        }),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 
   void smsCodeChanged(BuildContext context) {
-    String smsCodeValue = _textSmsCodeController1.text +
+    final smsCodeValue = _textSmsCodeController1.text +
         _textSmsCodeController2.text +
         _textSmsCodeController3.text +
         _textSmsCodeController4.text +
@@ -284,14 +316,16 @@ class SmsCodeForm extends StatelessWidget {
         .add(SmsCodeFormEvent.smsCodeChanged(smsCodeValue));
   }
 
-  Widget _getSmsCodeTextField(TextEditingController controller,
-      void Function(String value)? onChanged) {
+  Widget _getSmsCodeTextField(
+    TextEditingController controller,
+    void Function(String value)? onChanged,
+  ) {
     return TextField(
       controller: controller,
       keyboardType: TextInputType.number,
       textInputAction: TextInputAction.next,
       onEditingComplete: _node.nextFocus,
-      maxLength: 1,
+      maxLength: 6,
       style: const TextStyle(fontSize: 24, fontFamily: 'Roboto'),
       textAlign: TextAlign.center,
       onChanged: onChanged ??

@@ -1,8 +1,12 @@
+import 'dart:convert';
+
+import 'package:another_flushbar/flushbar.dart';
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart';
 import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 import 'package:conectacampo/domain/reservation/reservation.dart';
+import 'package:conectacampo/infrastructure/reservation/reservation_facade.dart';
 import 'package:conectacampo/presentation/buyer/buyer_main_page.dart';
 import 'package:conectacampo/presentation/buyer/reservation/reservation_widget.dart';
 import 'package:conectacampo/presentation/buyer/search/search_page.dart';
@@ -10,6 +14,8 @@ import 'package:conectacampo/presentation/buyer/widgets/advertisements.dart';
 import 'package:conectacampo/presentation/commom/invite_widget.dart';
 import 'package:conectacampo/presentation/commom/prohort_widget.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/notification/notification_helper.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -22,6 +28,7 @@ class BuyerSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    setupNotifications(context);
     return Navigator(
       key: navigatorKey,
       onGenerateRoute: (settings) {
@@ -81,7 +88,7 @@ class BuyerSummary extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: [
-                        const InviteWidget(),
+                         InviteWidget(isBuyer: true),
                         const SizedBox(
                           height: 10,
                         ),
@@ -190,6 +197,36 @@ class BuyerSummary extends StatelessWidget {
         );
       },
     );
+  }
+
+  Future<void> setupNotifications(BuildContext context) async {
+    await FirebaseMessaging.instance.getToken();
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      Flushbar(
+        flushbarPosition: FlushbarPosition.TOP,
+        titleSize: 16,
+        title: message.notification?.title,
+        message: message.notification?.body,
+        duration: const Duration(seconds: 10),
+        mainButton: TextButton(
+          onPressed: () async {
+            final notificable = message.data["notificable"] as String;
+
+            final reservationId = jsonDecode(notificable)["id"] as int;
+            final reservation =
+            await ReservationFacade().getReservation(reservationId);
+            final kind = message.data["kind"] as String;
+            reservation.fold((l) => null, (r) {
+              openNotification(context, ReservationToOpen(kind, r));
+            });
+          },
+          child: const Text(
+            'Visualizar',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ),
+      ).show(context);
+    });
   }
 }
 

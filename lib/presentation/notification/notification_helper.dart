@@ -16,10 +16,10 @@ Future<void> openNotification(
       final userType = await loadLoggedUserType();
       if (userType != null) {
         if (userType == 'buyer') {
-          context.read<GroupBloc>().add(const GroupEvent.started());
-          context
-              .read<BuyerMenuBloc>()
-              .add(const BuyerMenuEvent.groupsTapped());
+          final groupBloc = context.read<GroupBloc>();
+          groupBloc.add(const GroupEvent.started());
+          final buyerMainBloc = context.read<BuyerMenuBloc>();
+          buyerMainBloc.add(const BuyerMenuEvent.groupsTapped());
         } else {
           await persistUserType('buyer');
           Navigator.of(context, rootNavigator: true)

@@ -81,7 +81,7 @@ class ReservationsSummaryPage extends StatelessWidget {
                               )
                             else
                               SizedBox(
-                                height: state.isItemsVisible ? 510 : 300,
+                                height: state.isItemsVisible ? 550 : 300,
                                 child: ListView.separated(
                                   scrollDirection: Axis.horizontal,
                                   shrinkWrap: true,

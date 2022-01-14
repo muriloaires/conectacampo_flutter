@@ -15,7 +15,7 @@ class NotificationResponse with _$NotificationResponse {
           @JsonKey(name: 'message') String message,
           @JsonKey(name: 'kind') String kind,
           @JsonKey(name: 'user_id') int userId,
-          @JsonKey(name: 'notificable') Notificatificable notificatificable) =
+          @JsonKey(name: 'notificable') Notificatificable? notificatificable) =
       _NotificationResponse;
 
   factory NotificationResponse.fromJson(Map<String, dynamic> json) =>

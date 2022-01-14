@@ -163,7 +163,8 @@ Either<ValueFailure<int>, int> validateNewAdProductQuantity(int input) {
 }
 
 Either<ValueFailure<String>, String> validateNewAdProductObservation(
-    String input) {
+  String input,
+) {
   if (input.isEmpty) {
     return left(ValueFailure.invalidNewAdProductObservation(input));
   } else {
@@ -171,12 +172,15 @@ Either<ValueFailure<String>, String> validateNewAdProductObservation(
   }
 }
 
-Either<ValueFailure<String>, String> validateReservationQuantity(String input, {int? current}) {
+Either<ValueFailure<String>, String> validateReservationQuantity(
+  String input, {
+  int? current,
+}) {
   final intValue = int.tryParse(input);
   if (intValue == null || intValue <= 0) {
     return left(ValueFailure.invalidReservationQuantity(input));
   } else {
-    if(current != null && intValue > current) {
+    if (current != null && intValue > current) {
       return left(ValueFailure.currentHigherThenAvailable(input));
     }
     return right(input);
@@ -186,7 +190,7 @@ Either<ValueFailure<String>, String> validateReservationQuantity(String input, {
 extension EmailValidator on String {
   bool isValidEmail() {
     return RegExp(
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
         .hasMatch(this);
   }
 }

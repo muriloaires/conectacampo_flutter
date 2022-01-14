@@ -133,6 +133,8 @@ class SellerReservationBloc
                 loading: false,
               );
             }
+          } else {
+            yield state.copyWith(loading: false);
           }
         }
       },
@@ -152,8 +154,11 @@ class SellerReservationBloc
                   state.reservation,
                   (r, previous) => r,
                 ),
+                loading: false,
               );
             }
+          } else {
+            yield state.copyWith(loading: false);
           }
         }
       },
@@ -169,15 +174,19 @@ class SellerReservationBloc
                 await reservationFacade.getReservation(reservation.id!);
             if (newReservation.isRight()) {
               yield state.copyWith(
-                  reservation: newReservation.foldRight(
-                      state.reservation, (r, previous) => r));
+                reservation: newReservation.foldRight(
+                  state.reservation,
+                  (r, previous) => r,
+                ),
+                loading: false,
+              );
             }
+          } else {
+            yield state.copyWith(loading: false);
           }
         }
       },
-      showItemsTapped: (ShowItemsTapped value) async* {
-
-      },
+      showItemsTapped: (ShowItemsTapped value) async* {},
       reservationEditItemsTap: (ReservationEditItemsTap value) async* {
         yield state.copyWith(reservationToEdit: value.reservation);
         yield state.copyWith(reservationToEdit: null);

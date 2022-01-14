@@ -205,7 +205,7 @@ class SellerMainPage extends StatelessWidget {
             });
           },
           child: const Text(
-            'Vizualizar',
+            'Visualizar',
             style: TextStyle(color: Colors.white),
           ),
         ),

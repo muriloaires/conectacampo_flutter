@@ -1,8 +1,11 @@
+import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
 class InviteWidget extends StatelessWidget {
-  const InviteWidget();
+   InviteWidget({required this.isBuyer});
+
+  final bool isBuyer;
 
   @override
   Widget build(BuildContext context) {
@@ -10,22 +13,42 @@ class InviteWidget extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Share.share(
-            'Venha participar do Conecta Campo.\n\n Download para iPhone: https://apps.apple.com/br/app/conecta-campo-ceasa/id1592013727 \n\n Download para Android: https://play.google.com/store/apps/details?id=br.com.conectacampo',
+            'Você já conhece o Conecta Campo?\nBaixe o app e conheça a novidade que vai mudar a sua forma de comprar e vender frutas e hortaliças!\nTenha o Ceasa na palma da sua mão!\n\nDownload para iPhone: https://apps.apple.com/br/app/conecta-campo-ceasa/id1592013727\n\nDownload para Android: https://play.google.com/store/apps/details?id=br.com.conectacampo',
           );
         },
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Row(
-            children: const [
-              Icon(Icons.share),
-              SizedBox(width: 20),
-              Text(
-                'Convide seus amigos',
-                style: TextStyle(fontSize: 16),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(4)),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment(0.0, 0.0),
+                // 10% of the width, so there are ten blinds.
+                colors: <Color>[
+                  if (isBuyer) ColorSet.green1 else ColorSet.brown1,
+                  if (isBuyer) ColorSet.green2 else ColorSet.brown2,
+                ],
+                // red to yellow
+                tileMode: TileMode.clamp,
+                // repeats the gradient over the canvas
               ),
-              Spacer(),
-              Icon(Icons.chevron_right),
-            ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                children: const [
+                  Icon(
+                    Icons.share,
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: 20),
+                  Text(
+                    'Convide seus amigos',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),

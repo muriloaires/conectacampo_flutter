@@ -15,6 +15,7 @@ class ColorSet {
   static const Color greenRightGradient = Color.fromRGBO(8, 127, 91, 1);
 
   static const Color brown1 = Color.fromRGBO(119, 69, 48, 1);
+  static const Color brown2 = Color.fromRGBO(129, 69, 58, 1);
   static const Color gray10 = Color.fromRGBO(241, 241, 241, 1);
   static const Color grayDark = Color.fromRGBO(79, 79, 79, 1);
   static const Color greenIcon = Color.fromRGBO(0, 161, 82, 1);

@@ -27,7 +27,7 @@ class _$NotificationResponseTearOff {
       @JsonKey(name: 'message') String message,
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'user_id') int userId,
-      @JsonKey(name: 'notificable') Notificatificable notificatificable) {
+      @JsonKey(name: 'notificable') Notificatificable? notificatificable) {
     return _NotificationResponse(
       id,
       createdAt,
@@ -62,7 +62,8 @@ mixin _$NotificationResponse {
   @JsonKey(name: 'user_id')
   int get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'notificable')
-  Notificatificable get notificatificable => throw _privateConstructorUsedError;
+  Notificatificable? get notificatificable =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -82,9 +83,9 @@ abstract class $NotificationResponseCopyWith<$Res> {
       @JsonKey(name: 'message') String message,
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'user_id') int userId,
-      @JsonKey(name: 'notificable') Notificatificable notificatificable});
+      @JsonKey(name: 'notificable') Notificatificable? notificatificable});
 
-  $NotificatificableCopyWith<$Res> get notificatificable;
+  $NotificatificableCopyWith<$Res>? get notificatificable;
 }
 
 /// @nodoc
@@ -134,13 +135,17 @@ class _$NotificationResponseCopyWithImpl<$Res>
       notificatificable: notificatificable == freezed
           ? _value.notificatificable
           : notificatificable // ignore: cast_nullable_to_non_nullable
-              as Notificatificable,
+              as Notificatificable?,
     ));
   }
 
   @override
-  $NotificatificableCopyWith<$Res> get notificatificable {
-    return $NotificatificableCopyWith<$Res>(_value.notificatificable, (value) {
+  $NotificatificableCopyWith<$Res>? get notificatificable {
+    if (_value.notificatificable == null) {
+      return null;
+    }
+
+    return $NotificatificableCopyWith<$Res>(_value.notificatificable!, (value) {
       return _then(_value.copyWith(notificatificable: value));
     });
   }
@@ -160,10 +165,10 @@ abstract class _$NotificationResponseCopyWith<$Res>
       @JsonKey(name: 'message') String message,
       @JsonKey(name: 'kind') String kind,
       @JsonKey(name: 'user_id') int userId,
-      @JsonKey(name: 'notificable') Notificatificable notificatificable});
+      @JsonKey(name: 'notificable') Notificatificable? notificatificable});
 
   @override
-  $NotificatificableCopyWith<$Res> get notificatificable;
+  $NotificatificableCopyWith<$Res>? get notificatificable;
 }
 
 /// @nodoc
@@ -215,7 +220,7 @@ class __$NotificationResponseCopyWithImpl<$Res>
       notificatificable == freezed
           ? _value.notificatificable
           : notificatificable // ignore: cast_nullable_to_non_nullable
-              as Notificatificable,
+              as Notificatificable?,
     ));
   }
 }
@@ -255,7 +260,7 @@ class _$_NotificationResponse implements _NotificationResponse {
   final int userId;
   @override
   @JsonKey(name: 'notificable')
-  final Notificatificable notificatificable;
+  final Notificatificable? notificatificable;
 
   @override
   String toString() {
@@ -316,7 +321,7 @@ abstract class _NotificationResponse implements NotificationResponse {
           @JsonKey(name: 'message') String message,
           @JsonKey(name: 'kind') String kind,
           @JsonKey(name: 'user_id') int userId,
-          @JsonKey(name: 'notificable') Notificatificable notificatificable) =
+          @JsonKey(name: 'notificable') Notificatificable? notificatificable) =
       _$_NotificationResponse;
 
   factory _NotificationResponse.fromJson(Map<String, dynamic> json) =
@@ -342,7 +347,8 @@ abstract class _NotificationResponse implements NotificationResponse {
   int get userId => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'notificable')
-  Notificatificable get notificatificable => throw _privateConstructorUsedError;
+  Notificatificable? get notificatificable =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NotificationResponseCopyWith<_NotificationResponse> get copyWith =>
