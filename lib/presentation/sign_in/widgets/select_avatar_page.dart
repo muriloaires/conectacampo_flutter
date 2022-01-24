@@ -5,6 +5,7 @@ import 'package:conectacampo/application/auth/sign_up_form/bloc/sign_up_form_blo
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/util/file_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -129,10 +130,16 @@ class SelectAvatarPage extends StatelessWidget {
                       final PickedFile? pickedFile =
                           await _picker.getImage(source: ImageSource.camera);
                       if (pickedFile != null) {
-                        context.read<SignUpFormBloc>().add(
-                              SignUpFormBlocEvent.photoSelected(
-                                  pickedFile.path),
-                            );
+                        if (hasValidMimeType(pickedFile.path)) {
+                          context.read<SignUpFormBloc>().add(
+                            SignUpFormBlocEvent.photoSelected(
+                                pickedFile.path,),
+                          );
+                        } else {
+                          EasyLoading.showError(
+                            'Formato inválido de imagem. Por favor escolha outra',
+                          );
+                        }
                       }
                     },
                     color: ColorSet.green2,
