@@ -20,9 +20,10 @@ class AddProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => getIt<AddProductBloc>()
-          ..add(AddProductEvent.started(newAdvertisement)),
-        child: AddProductForm());
+      create: (context) => getIt<AddProductBloc>()
+        ..add(AddProductEvent.started(newAdvertisement)),
+      child: AddProductForm(),
+    );
   }
 }
 
