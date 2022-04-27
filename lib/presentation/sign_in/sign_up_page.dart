@@ -8,6 +8,8 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => getIt<SignUpFormBloc>(), child: SignUpForm());
+      create: (context) => getIt<SignUpFormBloc>(),
+      child: SignUpForm(),
+    );
   }
 }

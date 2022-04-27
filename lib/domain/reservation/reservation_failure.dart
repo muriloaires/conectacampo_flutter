@@ -10,7 +10,8 @@ class ReservationFailure with _$ReservationFailure {
       ErrorInsertingInCart;
 
   const factory ReservationFailure.unavailableItems(
-      ReservationResponse? response) = UnavailableItems;
+    ReservationResponse? response,
+  ) = UnavailableItems;
   const factory ReservationFailure.unauthorized() = Unauthorized;
   const factory ReservationFailure.serverError() = ServerError;
   const factory ReservationFailure.requestError() = RequestError;

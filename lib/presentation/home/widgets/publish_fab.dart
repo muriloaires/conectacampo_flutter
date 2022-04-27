@@ -2,8 +2,8 @@ import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 
 class PublishFAB extends StatelessWidget {
-  const PublishFAB({Key? key}) : super(key: key);
-
+  const PublishFAB({required this.onPressed});
+  final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(

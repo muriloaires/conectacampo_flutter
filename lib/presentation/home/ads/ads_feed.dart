@@ -2,13 +2,19 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/home/ads/store_feed_widget.dart';
 import 'package:conectacampo/presentation/home/ads/widgets/categories.dart';
+import 'package:conectacampo/presentation/home/last_partners/last_partners.dart';
+import 'package:conectacampo/presentation/home/sale/sales.dart';
+import 'package:conectacampo/presentation/home/widgets/ads_feed_search_widget.dart';
 import 'package:conectacampo/presentation/home/widgets/publish_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class AdsFeedPage extends StatefulWidget {
-  const AdsFeedPage(GlobalKey<NavigatorState> globalKey);
+  const AdsFeedPage(this.globalKey);
+
+  final GlobalKey globalKey;
 
   @override
   State<AdsFeedPage> createState() => _AdsFeedPageState();
@@ -19,46 +25,121 @@ class _AdsFeedPageState extends State<AdsFeedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: _isFabVisible ? PublishFAB() : null,
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-      body: NotificationListener<UserScrollNotification>(
-        onNotification: (notification) {
-          if (notification.direction == ScrollDirection.forward) {
-            if (!_isFabVisible) {
-              setState(() {
-                _isFabVisible = true;
-              });
-            }
-          } else if (notification.direction == ScrollDirection.reverse) {
-            if (_isFabVisible) {
-              setState(() {
-                _isFabVisible = false;
-              });
-            }
-          }
+    return Navigator(
+      key: widget.globalKey,
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) {
+            return Scaffold(
+              backgroundColor: Colors.white,
+              floatingActionButton:
+                  _isFabVisible ? PublishFAB(onPressed: () {}) : null,
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.miniEndFloat,
+              body: NotificationListener<UserScrollNotification>(
+                onNotification: (notification) {
+                  // if (notification.direction == ScrollDirection.forward) {
+                  //   if (!_isFabVisible) {
+                  //     setState(() {
+                  //       _isFabVisible = true;
+                  //     });
+                  //   }
+                  // } else if (notification.direction == ScrollDirection.reverse) {
+                  //   if (_isFabVisible) {
+                  //     setState(() {
+                  //       _isFabVisible = false;
+                  //     });
+                  //   }
+                  // }
 
-          return true;
-        },
-        child: ListView(
-          shrinkWrap: true,
-          physics: const ClampingScrollPhysics(),
-          children: const [
-            Categories(),
-            Padding(
-              padding: EdgeInsets.all(8),
-              child: Text(
-                'Últimos Anúncios',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: ColorSet.green1,
+                  return true;
+                },
+                child: ListView(
+                  children: [
+                    AppBar(
+                      title: Row(
+                        children: const [
+                          Text(
+                            'Sua Localização',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
+                      backgroundColor: Colors.white,
+                      elevation: 0,
+                      actions: const [
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Icon(
+                            Icons.chat_bubble_outline,
+                            color: ColorSet.green1,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Icon(
+                            Icons.shopping_cart_outlined,
+                            color: ColorSet.green1,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Categories(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: AdsFeedSearchWidget(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        'Promoções',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: ColorSet.green1,
+                            fontSize: 16),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Sales(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        'Parceiros',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: ColorSet.green1,
+                            fontSize: 16),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: LastPartners(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        'Lojas',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: ColorSet.green1,
+                            fontSize: 16),
+                      ),
+                    ),
+                    AdsList(),
+                  ],
                 ),
               ),
-            ),
-            AdsList(),
-          ],
-        ),
-      ),
+            );
+          },
+        );
+      },
     );
   }
 }
@@ -70,9 +151,9 @@ class AdsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
-      physics: const ClampingScrollPhysics(),
-      itemBuilder: (context, index) => AdsCard(),
-      separatorBuilder: (context, index) => const SizedBox(height: 5),
+      physics: ClampingScrollPhysics(),
+      itemBuilder: (context, index) => StoreFeed(),
+      separatorBuilder: (context, index) => const SizedBox(height: 10),
       itemCount: 10,
     );
   }

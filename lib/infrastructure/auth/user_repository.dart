@@ -27,8 +27,14 @@ Future<Either<AuthFailure, User>> loadLoggedUser() async {
     return left(const AuthFailure.userNotFound());
   }
 
-  return right(UserResponse.fromJson(jsonDecode(json) as Map<String, dynamic>)
-      .toDomain());
+  return right(
+    UserResponse.fromJson(jsonDecode(json) as Map<String, dynamic>).toDomain(),
+  );
+}
+
+Future<bool> isUserLogged() async {
+  final loggedUser = await loadLoggedUser();
+  return loggedUser.fold((l) => false, (r) => true);
 }
 
 Future<Unit> logout() async {

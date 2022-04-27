@@ -1,6 +1,6 @@
 import 'package:conectacampo/application/auth/sms_code_form/sms_code_form_bloc.dart';
-import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/home/home_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:conectacampo/presentation/sign_in/sign_up_page.dart';
 import 'package:flutter/material.dart';
@@ -77,22 +77,12 @@ class SmsCodeForm extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => PlacesPage()),
                 );
 
-                if (success != null) {
-                  final userType = await loadLoggedUserType();
-                  if (userType != null) {
-                    if (userType == 'buyer') {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/buyer_main',
-                        (route) => false,
-                      );
-                    } else {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/seller_main',
-                        (route) => false,
-                      );
-                    }
-                  }
-                }
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                  (route) => false,
+                );
               }),
             );
           },
@@ -142,10 +132,10 @@ class SmsCodeForm extends StatelessWidget {
                               _textSmsCodeController6.text = value[5];
                             } else {
                               context.read<SmsCodeFormBloc>().add(
-                                SmsCodeFormEvent.smsCodeChanged(
-                                  _textSmsCodeController1.text,
-                                ),
-                              );
+                                    SmsCodeFormEvent.smsCodeChanged(
+                                      _textSmsCodeController1.text,
+                                    ),
+                                  );
                               if (_textSmsCodeController1.text.length == 1) {
                                 _node.nextFocus();
                               }

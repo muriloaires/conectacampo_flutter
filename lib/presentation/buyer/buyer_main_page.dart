@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:another_flushbar/flushbar.dart';
 import 'package:conectacampo/application/buyer/adivertisements/adivertisements_bloc.dart';
 import 'package:conectacampo/application/buyer/group/group_bloc.dart';
 import 'package:conectacampo/application/buyer/menu/buyer_menu_bloc.dart';
@@ -8,8 +5,6 @@ import 'package:conectacampo/application/buyer/reservation/reservation_bloc.dart
 import 'package:conectacampo/application/buyer/summary/summary_bloc.dart';
 import 'package:conectacampo/application/profile/profile_bloc.dart';
 import 'package:conectacampo/application/seller/reservation_summary/summary_reservations_bloc.dart';
-import 'package:conectacampo/domain/reservation/reservation.dart';
-import 'package:conectacampo/infrastructure/reservation/reservation_facade.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/buyer/cart/cart_page.dart';
 import 'package:conectacampo/presentation/buyer/group/group_page.dart';
@@ -21,7 +16,6 @@ import 'package:conectacampo/presentation/notification/notification_helper.dart'
 import 'package:conectacampo/presentation/profile/profile_page.dart';
 import 'package:conectacampo/presentation/seller/seller_main_page.dart';
 import 'package:conectacampo/presentation/sign_in/places_page.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -37,7 +31,6 @@ class BuyerMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<BuyerMenuBloc>(
@@ -305,8 +298,6 @@ class BuyerMainPage extends StatelessWidget {
       ],
     );
   }
-
-
 }
 
 class SearchWidget extends StatelessWidget implements PreferredSizeWidget {

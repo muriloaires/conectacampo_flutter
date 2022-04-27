@@ -15,10 +15,12 @@ abstract class IReservationFacade {
   Future<Unit> removeReservationItem(ReservationItem reservationItem);
 
   Future<Option<ReservationItem>> getReservationItemByProduct(
-      AdProduct product);
+    AdProduct product,
+  );
 
-  Future<Either<ReservationFailure, Unit>> requestReservation(
-      {required ReservationObjRequest reservationObj});
+  Future<Either<ReservationFailure, Unit>> requestReservation({
+    required ReservationObjRequest reservationObj,
+  });
 
   Future<Either<ReservationFailure, Unit>> removeFromGroup(
       {required int userId});
@@ -31,31 +33,42 @@ abstract class IReservationFacade {
   Future<Either<ReservationFailure, List<Reservation>>> getSellerReservations();
 
   Future<Either<ReservationFailure, Unit>> updateProductReservation(
-      ProductReservation productReservation, int newQuantity);
+    ProductReservation productReservation,
+    int newQuantity,
+  );
 
   Future<Either<ReservationFailure, Unit>> deleteProductReservation(
-      ProductReservation productReservation);
+    ProductReservation productReservation,
+  );
 
   Future<Either<ReservationFailure, Unit>> cancelReservation(
-      Reservation reservation);
+    Reservation reservation,
+  );
 
   Future<Either<ReservationFailure, Unit>> cancelProductReservation(
-      ProductReservation productReservation);
+    ProductReservation productReservation,
+  );
 
   Future<Either<ReservationFailure, Unit>> confirmProductReservation(
-      ProductReservation productReservation);
+    ProductReservation productReservation,
+  );
 
   Future<Either<ReservationFailure, Unit>> updateReservation(
-      int? reservationId, ReservationObjRequest reservationObj);
+    int? reservationId,
+    ReservationObjRequest reservationObj,
+  );
 
   Future<Either<ReservationFailure, Unit>> confirmReservation(
-      Reservation reservation);
+    Reservation reservation,
+  );
 
   Future<Either<ReservationFailure, Unit>> confirmReservationPayment(
-      Reservation reservation);
+    Reservation reservation,
+  );
 
   Future<Either<ReservationFailure, Reservation>> getReservation(
-      int reservationId);
+    int reservationId,
+  );
 
   Future<Either<ReservationFailure, List<Reservation>>>
       getSellerGroupReservations();

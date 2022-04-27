@@ -8,6 +8,8 @@ class SmsCodePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => getIt<SmsCodeFormBloc>(), child: SmsCodeForm());
+      create: (context) => getIt<SmsCodeFormBloc>(),
+      child: SmsCodeForm(),
+    );
   }
 }

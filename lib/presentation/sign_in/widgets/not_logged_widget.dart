@@ -1,4 +1,6 @@
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/sign_in/phone_number_page.dart';
+import 'package:conectacampo/presentation/sign_in/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -30,7 +32,13 @@ class NotLoggedWidget extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true).push(
+                    MaterialPageRoute(
+                      builder: (context) => PhoneNumberPage(),
+                    ),
+                  );
+                },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 ),
