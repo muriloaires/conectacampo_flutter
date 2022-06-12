@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:conectacampo/domain/auth/auth_failure.dart';
 import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/domain/places/i_places_facade.dart';
 import 'package:conectacampo/domain/places/place.dart';
@@ -19,40 +18,55 @@ part 'places_form_bloc.freezed.dart';
 
 @injectable
 class PlacesFormBloc extends Bloc<PlacesFormEvent, PlacesFormState> {
-  PlacesFormBloc(this._placesFacade) : super(PlacesFormState.initial());
+  PlacesFormBloc(this._placesFacade) : super(PlacesFormState.initial()) {
+    on<PlacesFormEvent>(
+      (event, emit) async {
+        await event.map(
+          started: (value) async {
+            final user = await loadLoggedUser();
+            emit(state.copyWith(loggedUser: user, isLoadingStatePlaces: true));
+            final states = await _placesFacade.getAllStates();
+            emit(
+              state.copyWith(
+                states: optionOf(states),
+                isLoadingStatePlaces: false,
+                loadStatePlacesFinish: true,
+              ),
+            );
+          },
+          stateSelected: (value) async {
+            emit(
+              state.copyWith(
+                selectedState: value.state,
+                isLoadingPlaces: true,
+                places: some(right(List.empty())),
+                placeSelected: null,
+                loadPlacesFinish: false,
+              ),
+            );
+            final places = await _placesFacade
+                .getAllPlacesByStateName(value.state?.getOrCrash() ?? '');
+
+            emit(
+              state.copyWith(
+                isLoadingPlaces: false,
+                loadPlacesFinish: true,
+                places: some(places),
+              ),
+            );
+          },
+          placeSelected: (value) async {
+            if (value.place != null) {
+              await persistSelectedPlace(value.place!);
+              emit(
+                state.copyWith(placeSaved: true, placeSelected: value.place),
+              );
+            }
+          },
+        );
+      },
+    );
+  }
 
   final IPlacesFacade _placesFacade;
-
-  @override
-  Stream<PlacesFormState> mapEventToState(
-    PlacesFormEvent event,
-  ) async* {
-    yield* event.map(started: (e) async* {
-      final user = await loadLoggedUser();
-      yield state.copyWith(
-          loggedUser: optionOf(user), isLoadingStatePlaces: true);
-      final states = await _placesFacade.getAllStates();
-      yield state.copyWith(
-          states: optionOf(states),
-          isLoadingStatePlaces: false,
-          loadStatePlacesFinish: true);
-    }, stateSelected: (StateSelected value) async* {
-      yield state.copyWith(
-          selectedState: value.state,
-          isLoadingPlaces: true,
-          places: some(right(List.empty())),
-          placeSelected: null,
-          loadPlacesFinish: false);
-      final places = await _placesFacade
-          .getAllPlacesByStateName(value.state?.getOrCrash() ?? '');
-
-      yield state.copyWith(
-          isLoadingPlaces: false, loadPlacesFinish: true, places: some(places));
-    }, placeSelected: (PlaceSelected value) async* {
-      if (value.place != null) {
-        await persistSelectedPlace(value.place!);
-        yield state.copyWith(placeSaved: true, placeSelected: value.place);
-      }
-    });
-  }
 }

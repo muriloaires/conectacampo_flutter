@@ -1,4 +1,5 @@
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
+import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:conectacampo/infrastructure/advertisement/model/model.dart';
@@ -33,10 +34,13 @@ extension ProductExtension on AdProductResponse {
         kind,
         observation,
         images
-                ?.map((element) => ProductImages(
+                ?.map(
+                  (element) => ProductImages(
                     ThumbAvatar(element.thumbnail.url),
                     MediumAvatar(element.medium.url),
-                    OriginalAvatar(element.original.url)))
+                    OriginalAvatar(element.original.url),
+                  ),
+                )
                 .toList() ??
             List<ProductImages>.empty(),
         createdAt,

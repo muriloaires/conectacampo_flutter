@@ -27,7 +27,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       final isBuyer = await loadLoggedUserType();
       final displayNotification = await displayNotifications();
       yield state.copyWith(
-          user: user.foldRight(null, (r, previous) => r),
+          user: user,
           isBuyer: isBuyer == 'buyer',
           displayNotifications: displayNotification);
     }, onNotificationSwitchTapped: (OnNotificationSwitchTapped value) async* {

@@ -1,4 +1,5 @@
 import 'package:conectacampo/presentation/buyer/buyer_main_page.dart';
+import 'package:conectacampo/presentation/chat/chat_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/home/home_page.dart';
 import 'package:conectacampo/presentation/onboarding/onboarding.dart';
@@ -32,9 +33,10 @@ class AppWidget extends StatelessWidget {
         '/splash': (context) => SplashScreen(),
         '/avatar_page': (context) => SelectAvatarPage(isEdit: false),
         '/user_type': (context) => UserType(),
-        '/home_page': (context) => const HomePage()
+        '/home_page': (context) => const HomePage(),
+        // '/chat_page': (context) => const ChatPage()
       },
-      initialRoute: '/home_page',
+      initialRoute: '/splash',
       title: 'Conecta Campo',
       theme: ThemeData(
           fontFamily: 'Montserrat',

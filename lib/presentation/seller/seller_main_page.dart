@@ -245,25 +245,16 @@ class SellerDefaultAppBar extends StatelessWidget
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                              state.optionOfUser.fold(
-                                  () => '',
-                                  (a) => a.fold(
-                                      (l) => '', (r) => r.nickname ?? '')),
+                          Text(state.user?.nickname ?? '',
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           const SizedBox(width: 24),
                           CircleAvatar(
-                              radius: 16.0,
-                              foregroundImage: NetworkImage(state.optionOfUser
-                                  .fold(
-                                      () => '',
-                                      (a) => a.fold(
-                                          (l) => '',
-                                          (r) =>
-                                              r.thumbAvatar?.value
-                                                  .getOrElse(() => '') ??
-                                              ''))))
+                            radius: 16.0,
+                            foregroundImage: NetworkImage(
+                              state.user?.thumbAvatar?.url ?? '',
+                            ),
+                          )
                         ],
                       ),
                     )
@@ -302,8 +293,7 @@ class SellerDefaultAppBar extends StatelessWidget
                               style: TextStyle(color: ColorSet.gray2),
                             ),
                             TextSpan(
-                              text: state.optionOfPlace
-                                  .fold(() => '', (a) => a.name),
+                              text: state.place?.name ?? '',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: ColorSet.gray2,

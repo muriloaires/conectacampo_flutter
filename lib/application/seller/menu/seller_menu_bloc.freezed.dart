@@ -1852,20 +1852,18 @@ class _$SellerMenuStateTearOff {
       required bool navToRoot,
       required bool navToBuyer,
       required int reTapIndex,
-      required Place? place,
       required bool navToLogin,
-      required Option<Either<AuthFailure, User>> optionOfUser,
-      required Option<Place> optionOfPlace,
+      required User? user,
+      required Place? place,
       required ReservationToOpen? reservationToOpen}) {
     return _SellerMenuState(
       currentIndex: currentIndex,
       navToRoot: navToRoot,
       navToBuyer: navToBuyer,
       reTapIndex: reTapIndex,
-      place: place,
       navToLogin: navToLogin,
-      optionOfUser: optionOfUser,
-      optionOfPlace: optionOfPlace,
+      user: user,
+      place: place,
       reservationToOpen: reservationToOpen,
     );
   }
@@ -1880,11 +1878,9 @@ mixin _$SellerMenuState {
   bool get navToRoot => throw _privateConstructorUsedError;
   bool get navToBuyer => throw _privateConstructorUsedError;
   int get reTapIndex => throw _privateConstructorUsedError;
-  Place? get place => throw _privateConstructorUsedError;
   bool get navToLogin => throw _privateConstructorUsedError;
-  Option<Either<AuthFailure, User>> get optionOfUser =>
-      throw _privateConstructorUsedError;
-  Option<Place> get optionOfPlace => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
+  Place? get place => throw _privateConstructorUsedError;
   ReservationToOpen? get reservationToOpen =>
       throw _privateConstructorUsedError;
 
@@ -1903,12 +1899,12 @@ abstract class $SellerMenuStateCopyWith<$Res> {
       bool navToRoot,
       bool navToBuyer,
       int reTapIndex,
-      Place? place,
       bool navToLogin,
-      Option<Either<AuthFailure, User>> optionOfUser,
-      Option<Place> optionOfPlace,
+      User? user,
+      Place? place,
       ReservationToOpen? reservationToOpen});
 
+  $UserCopyWith<$Res>? get user;
   $PlaceCopyWith<$Res>? get place;
 }
 
@@ -1927,10 +1923,9 @@ class _$SellerMenuStateCopyWithImpl<$Res>
     Object? navToRoot = freezed,
     Object? navToBuyer = freezed,
     Object? reTapIndex = freezed,
-    Object? place = freezed,
     Object? navToLogin = freezed,
-    Object? optionOfUser = freezed,
-    Object? optionOfPlace = freezed,
+    Object? user = freezed,
+    Object? place = freezed,
     Object? reservationToOpen = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1950,27 +1945,34 @@ class _$SellerMenuStateCopyWithImpl<$Res>
           ? _value.reTapIndex
           : reTapIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      place: place == freezed
-          ? _value.place
-          : place // ignore: cast_nullable_to_non_nullable
-              as Place?,
       navToLogin: navToLogin == freezed
           ? _value.navToLogin
           : navToLogin // ignore: cast_nullable_to_non_nullable
               as bool,
-      optionOfUser: optionOfUser == freezed
-          ? _value.optionOfUser
-          : optionOfUser // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
-      optionOfPlace: optionOfPlace == freezed
-          ? _value.optionOfPlace
-          : optionOfPlace // ignore: cast_nullable_to_non_nullable
-              as Option<Place>,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
+      place: place == freezed
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as Place?,
       reservationToOpen: reservationToOpen == freezed
           ? _value.reservationToOpen
           : reservationToOpen // ignore: cast_nullable_to_non_nullable
               as ReservationToOpen?,
     ));
+  }
+
+  @override
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 
   @override
@@ -1997,12 +1999,13 @@ abstract class _$SellerMenuStateCopyWith<$Res>
       bool navToRoot,
       bool navToBuyer,
       int reTapIndex,
-      Place? place,
       bool navToLogin,
-      Option<Either<AuthFailure, User>> optionOfUser,
-      Option<Place> optionOfPlace,
+      User? user,
+      Place? place,
       ReservationToOpen? reservationToOpen});
 
+  @override
+  $UserCopyWith<$Res>? get user;
   @override
   $PlaceCopyWith<$Res>? get place;
 }
@@ -2024,10 +2027,9 @@ class __$SellerMenuStateCopyWithImpl<$Res>
     Object? navToRoot = freezed,
     Object? navToBuyer = freezed,
     Object? reTapIndex = freezed,
-    Object? place = freezed,
     Object? navToLogin = freezed,
-    Object? optionOfUser = freezed,
-    Object? optionOfPlace = freezed,
+    Object? user = freezed,
+    Object? place = freezed,
     Object? reservationToOpen = freezed,
   }) {
     return _then(_SellerMenuState(
@@ -2047,22 +2049,18 @@ class __$SellerMenuStateCopyWithImpl<$Res>
           ? _value.reTapIndex
           : reTapIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      place: place == freezed
-          ? _value.place
-          : place // ignore: cast_nullable_to_non_nullable
-              as Place?,
       navToLogin: navToLogin == freezed
           ? _value.navToLogin
           : navToLogin // ignore: cast_nullable_to_non_nullable
               as bool,
-      optionOfUser: optionOfUser == freezed
-          ? _value.optionOfUser
-          : optionOfUser // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
-      optionOfPlace: optionOfPlace == freezed
-          ? _value.optionOfPlace
-          : optionOfPlace // ignore: cast_nullable_to_non_nullable
-              as Option<Place>,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
+      place: place == freezed
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as Place?,
       reservationToOpen: reservationToOpen == freezed
           ? _value.reservationToOpen
           : reservationToOpen // ignore: cast_nullable_to_non_nullable
@@ -2079,10 +2077,9 @@ class _$_SellerMenuState implements _SellerMenuState {
       required this.navToRoot,
       required this.navToBuyer,
       required this.reTapIndex,
-      required this.place,
       required this.navToLogin,
-      required this.optionOfUser,
-      required this.optionOfPlace,
+      required this.user,
+      required this.place,
       required this.reservationToOpen});
 
   @override
@@ -2094,19 +2091,17 @@ class _$_SellerMenuState implements _SellerMenuState {
   @override
   final int reTapIndex;
   @override
-  final Place? place;
-  @override
   final bool navToLogin;
   @override
-  final Option<Either<AuthFailure, User>> optionOfUser;
+  final User? user;
   @override
-  final Option<Place> optionOfPlace;
+  final Place? place;
   @override
   final ReservationToOpen? reservationToOpen;
 
   @override
   String toString() {
-    return 'SellerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToBuyer: $navToBuyer, reTapIndex: $reTapIndex, place: $place, navToLogin: $navToLogin, optionOfUser: $optionOfUser, optionOfPlace: $optionOfPlace, reservationToOpen: $reservationToOpen)';
+    return 'SellerMenuState(currentIndex: $currentIndex, navToRoot: $navToRoot, navToBuyer: $navToBuyer, reTapIndex: $reTapIndex, navToLogin: $navToLogin, user: $user, place: $place, reservationToOpen: $reservationToOpen)';
   }
 
   @override
@@ -2125,17 +2120,13 @@ class _$_SellerMenuState implements _SellerMenuState {
             (identical(other.reTapIndex, reTapIndex) ||
                 const DeepCollectionEquality()
                     .equals(other.reTapIndex, reTapIndex)) &&
-            (identical(other.place, place) ||
-                const DeepCollectionEquality().equals(other.place, place)) &&
             (identical(other.navToLogin, navToLogin) ||
                 const DeepCollectionEquality()
                     .equals(other.navToLogin, navToLogin)) &&
-            (identical(other.optionOfUser, optionOfUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.optionOfUser, optionOfUser)) &&
-            (identical(other.optionOfPlace, optionOfPlace) ||
-                const DeepCollectionEquality()
-                    .equals(other.optionOfPlace, optionOfPlace)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
+            (identical(other.place, place) ||
+                const DeepCollectionEquality().equals(other.place, place)) &&
             (identical(other.reservationToOpen, reservationToOpen) ||
                 const DeepCollectionEquality()
                     .equals(other.reservationToOpen, reservationToOpen)));
@@ -2148,10 +2139,9 @@ class _$_SellerMenuState implements _SellerMenuState {
       const DeepCollectionEquality().hash(navToRoot) ^
       const DeepCollectionEquality().hash(navToBuyer) ^
       const DeepCollectionEquality().hash(reTapIndex) ^
-      const DeepCollectionEquality().hash(place) ^
       const DeepCollectionEquality().hash(navToLogin) ^
-      const DeepCollectionEquality().hash(optionOfUser) ^
-      const DeepCollectionEquality().hash(optionOfPlace) ^
+      const DeepCollectionEquality().hash(user) ^
+      const DeepCollectionEquality().hash(place) ^
       const DeepCollectionEquality().hash(reservationToOpen);
 
   @JsonKey(ignore: true)
@@ -2166,10 +2156,9 @@ abstract class _SellerMenuState implements SellerMenuState {
       required bool navToRoot,
       required bool navToBuyer,
       required int reTapIndex,
-      required Place? place,
       required bool navToLogin,
-      required Option<Either<AuthFailure, User>> optionOfUser,
-      required Option<Place> optionOfPlace,
+      required User? user,
+      required Place? place,
       required ReservationToOpen? reservationToOpen}) = _$_SellerMenuState;
 
   @override
@@ -2181,14 +2170,11 @@ abstract class _SellerMenuState implements SellerMenuState {
   @override
   int get reTapIndex => throw _privateConstructorUsedError;
   @override
-  Place? get place => throw _privateConstructorUsedError;
-  @override
   bool get navToLogin => throw _privateConstructorUsedError;
   @override
-  Option<Either<AuthFailure, User>> get optionOfUser =>
-      throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   @override
-  Option<Place> get optionOfPlace => throw _privateConstructorUsedError;
+  Place? get place => throw _privateConstructorUsedError;
   @override
   ReservationToOpen? get reservationToOpen =>
       throw _privateConstructorUsedError;

@@ -26,10 +26,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
   Stream<EditProfileState> mapEventToState(EditProfileEvent event) async* {
     yield* event.map(
       started: (started) async* {
-        final userFailureOrSuccess = await loadLoggedUser();
-        final User? user =
-            userFailureOrSuccess.fold((a) => null, (user) => user);
-
+        final user = await loadLoggedUser();
         if (user != null) {
           yield state.copyWith(
             fullName: FullName(user.name ?? ''),
@@ -47,7 +44,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
         );
         yield state.copyWith(
           showProgress: false,
-          optionOfUserUpdateSuccessOrFailure: some(result),
+          userUpdateSuccessOrFailure: result,
         );
       },
       fullNameChanged: (value) async* {

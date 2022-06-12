@@ -7,10 +7,9 @@ class SellerMenuState with _$SellerMenuState {
     required bool navToRoot,
     required bool navToBuyer,
     required int reTapIndex,
-    required Place? place,
     required bool navToLogin,
-    required Option<Either<AuthFailure, User>> optionOfUser,
-    required Option<Place> optionOfPlace,
+    required User? user,
+    required Place? place,
     required ReservationToOpen? reservationToOpen,
   }) = _SellerMenuState;
 
@@ -21,7 +20,6 @@ class SellerMenuState with _$SellerMenuState {
       navToBuyer: false,
       reTapIndex: -1,
       navToLogin: false,
-      optionOfUser: none(),
-      optionOfPlace: none(),
+      user: null,
       reservationToOpen: null);
 }

@@ -96,7 +96,8 @@ class AuthFacade implements IAuthFacade {
   }
 
   Future<Either<AuthFailure, UserResponse>> restSignIn(
-      String phoneNumber) async {
+    String phoneNumber,
+  ) async {
     final url = Uri.https(baseUrl, '$apiVersion$routeSessions');
     final token = await FirebaseMessaging.instance.getToken() ?? '';
     final type = Platform.isIOS ? 'ios' : 'android';
@@ -127,12 +128,6 @@ class AuthFacade implements IAuthFacade {
   @override
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
-  }
-
-  @override
-  Future<Option<Either<AuthFailure, User>>> getSignedUser() async {
-    final localUser = await loadLoggedUser();
-    return Future.value(optionOf(localUser));
   }
 
   @override

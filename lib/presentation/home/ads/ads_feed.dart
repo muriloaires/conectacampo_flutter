@@ -1,6 +1,11 @@
 import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:conectacampo/domain/auth/user.dart';
+import 'package:conectacampo/domain/chat/i_chat_facade.dart';
+import 'package:conectacampo/infrastructure/chat/chat_facade.dart';
+import 'package:conectacampo/presentation/chat/chat_list/chat_list_page.dart';
+import 'package:conectacampo/presentation/chat/chat_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:conectacampo/presentation/home/ads/store_feed_widget.dart';
 import 'package:conectacampo/presentation/home/ads/widgets/categories.dart';
@@ -22,6 +27,7 @@ class AdsFeedPage extends StatefulWidget {
 
 class _AdsFeedPageState extends State<AdsFeedPage> {
   bool _isFabVisible = true;
+  ChatFacade chatFacade = ChatFacade();
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +39,31 @@ class _AdsFeedPageState extends State<AdsFeedPage> {
           builder: (context) {
             return Scaffold(
               backgroundColor: Colors.white,
-              floatingActionButton:
-                  _isFabVisible ? PublishFAB(onPressed: () {}) : null,
+              floatingActionButton: _isFabVisible
+                  ? PublishFAB(
+                      onPressed: () async {
+                        // User otherUser = const User(
+                        //   1,
+                        //   'Murilo Aires',
+                        //   'Micurilo',
+                        //   null,
+                        //   '+5562981323980',
+                        //   null,
+                        //   null,
+                        //   null,
+                        //   null,
+                        //   'muriloaires1@gmail.com',
+                        //   null,
+                        // );
+                        // final chat = await chatFacade.openChat(otherUser);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ChatListPage(),
+                          ),
+                        );
+                      },
+                    )
+                  : null,
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.miniEndFloat,
               body: NotificationListener<UserScrollNotification>(

@@ -26,7 +26,7 @@ class MyStoresBloc extends Bloc<MyStoresEvent, MyStoresState> {
           emit(
             state.copyWith(
               loading: false,
-              loggedUser: loggedUser.fold((l) => null, (r) => r),
+              loggedUser: loggedUser,
               myStoresSuccessOrFailure: myStoresSuccessOrFailure,
             ),
           );

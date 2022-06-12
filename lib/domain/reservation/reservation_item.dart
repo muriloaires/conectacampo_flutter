@@ -22,7 +22,7 @@ class ReservationItem with _$ReservationItem {
   factory ReservationItem.fromAdProduct(AdProduct product) => ReservationItem(
       id: product.id,
       name: product.name ?? '',
-      image: product.images.first.mediumAvatar.getOrCrash(),
+      image: product.images.first.mediumAvatar.url,
       measurementUnit: product.unitMeasure,
       quantity: 0,
       rating: product.rating,

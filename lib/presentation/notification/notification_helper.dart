@@ -41,7 +41,7 @@ Future<void> openNotification(
       ));
     } else if (reservationToOpen.kind == "reservation_canceled") {
       final loggedIDFailureOrSuccess = await loadLoggedUser();
-      final id = loggedIDFailureOrSuccess.fold((l) => null, (r) => r.id);
+      final id = loggedIDFailureOrSuccess?.id;
       if (reservationToOpen.reservation.buyer.id == id) {
         Navigator.of(context).push(
           MaterialPageRoute(

@@ -16,35 +16,44 @@ part 'sms_code_form_state.dart';
 
 @injectable
 class SmsCodeFormBloc extends Bloc<SmsCodeFormEvent, SmsCodeFormState> {
-  SmsCodeFormBloc(this._authFacade) : super(SmsCodeFormState.initial());
-
-  final IAuthFacade _authFacade;
-
-  @override
-  Stream<SmsCodeFormState> mapEventToState(
-    SmsCodeFormEvent event,
-  ) async* {
-    yield* event.map(
-        smsCodeChanged: (e) async* {
-          yield state.copyWith(
-              smsCode: SmsCode(e.smsCode), authFailureOrSuccessOption: none(), );
+  SmsCodeFormBloc(this._authFacade) : super(SmsCodeFormState.initial()) {
+    on<SmsCodeFormEvent>((event, emit) async {
+      await event.map(
+        smsCodeChanged: (value) async {
+          emit(
+            state.copyWith(
+              smsCode: SmsCode(value.smsCode),
+              authFailureOrSuccessOption: none(),
+            ),
+          );
         },
-        resendCode: (e) async* {
+        resendCode: (value) async {
           _authFacade.resentCode();
         },
-        verifyCodePressed: (VerifyCode value) async* {
+        verifyCodePressed: (value) async {
           Either<AuthFailure, Unit> failureOrSuccess =
               left(const AuthFailure.applicationError());
           if (state.smsCode.isValid()) {
-            yield state.copyWith(
-                isSubmitting: true, authFailureOrSuccessOption: none());
+            emit(
+              state.copyWith(
+                isSubmitting: true,
+                authFailureOrSuccessOption: none(),
+              ),
+            );
             failureOrSuccess = await _authFacade.signIn(state.smsCode);
           }
 
-          yield state.copyWith(
+          emit(
+            state.copyWith(
               isSubmitting: false,
               showErrorMessages: true,
-              authFailureOrSuccessOption: optionOf(failureOrSuccess));
-        });
+              authFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          );
+        },
+      );
+    });
   }
+
+  final IAuthFacade _authFacade;
 }

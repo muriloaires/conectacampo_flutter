@@ -1,11 +1,13 @@
 import 'package:conectacampo/domain/advertisements/advertisement.dart';
-import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
 
+part 'user.g.dart';
+
 @freezed
 class User with _$User {
+  @JsonSerializable(explicitToJson: true)
   const factory User(
     int id,
     String? name,
@@ -19,4 +21,36 @@ class User with _$User {
     String? email,
     int? ownGroupId,
   ) = _User;
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+}
+
+@freezed
+class ThumbAvatar with _$ThumbAvatar {
+  const factory ThumbAvatar(
+    String url,
+  ) = _ThumbAvatar;
+
+  factory ThumbAvatar.fromJson(Map<String, dynamic> json) =>
+      _$ThumbAvatarFromJson(json);
+}
+
+@freezed
+class MediumAvatar with _$MediumAvatar {
+  const factory MediumAvatar(
+    String url,
+  ) = _MediumAvatar;
+
+  factory MediumAvatar.fromJson(Map<String, dynamic> json) =>
+      _$MediumAvatarFromJson(json);
+}
+
+@freezed
+class OriginalAvatar with _$OriginalAvatar {
+  const factory OriginalAvatar(
+    String url,
+  ) = _OriginalAvatar;
+
+  factory OriginalAvatar.fromJson(Map<String, dynamic> json) =>
+      _$OriginalAvatarFromJson(json);
 }

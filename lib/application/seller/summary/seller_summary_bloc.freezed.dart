@@ -415,8 +415,8 @@ class _$SellerSummaryStateTearOff {
   const _$SellerSummaryStateTearOff();
 
   _SellerSummaryState call(
-      {required Option<Place> optionOfOPlace,
-      required Option<Either<AuthFailure, User>> optionOfOUser,
+      {required Place? place,
+      required User? user,
       required Option<Either<AdvertisementFailure, List<Advertisement>>>
           optionOfAdvertisementsFailureOrSuccess,
       required Option<Either<ReservationFailure, List<Reservation>>>
@@ -426,8 +426,8 @@ class _$SellerSummaryStateTearOff {
       required Option<Either<ReservationFailure, Unit>>
           optionOfReservationCancelFailureOrSuccess}) {
     return _SellerSummaryState(
-      optionOfOPlace: optionOfOPlace,
-      optionOfOUser: optionOfOUser,
+      place: place,
+      user: user,
       optionOfAdvertisementsFailureOrSuccess:
           optionOfAdvertisementsFailureOrSuccess,
       optionOfReservationFailureOrSuccess: optionOfReservationFailureOrSuccess,
@@ -444,9 +444,8 @@ const $SellerSummaryState = _$SellerSummaryStateTearOff();
 
 /// @nodoc
 mixin _$SellerSummaryState {
-  Option<Place> get optionOfOPlace => throw _privateConstructorUsedError;
-  Option<Either<AuthFailure, User>> get optionOfOUser =>
-      throw _privateConstructorUsedError;
+  Place? get place => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   Option<Either<AdvertisementFailure, List<Advertisement>>>
       get optionOfAdvertisementsFailureOrSuccess =>
           throw _privateConstructorUsedError;
@@ -470,8 +469,8 @@ abstract class $SellerSummaryStateCopyWith<$Res> {
           SellerSummaryState value, $Res Function(SellerSummaryState) then) =
       _$SellerSummaryStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Place> optionOfOPlace,
-      Option<Either<AuthFailure, User>> optionOfOUser,
+      {Place? place,
+      User? user,
       Option<Either<AdvertisementFailure, List<Advertisement>>>
           optionOfAdvertisementsFailureOrSuccess,
       Option<Either<ReservationFailure, List<Reservation>>>
@@ -480,6 +479,9 @@ abstract class $SellerSummaryStateCopyWith<$Res> {
       bool cancellingReservation,
       Option<Either<ReservationFailure, Unit>>
           optionOfReservationCancelFailureOrSuccess});
+
+  $PlaceCopyWith<$Res>? get place;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -493,8 +495,8 @@ class _$SellerSummaryStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? optionOfOPlace = freezed,
-    Object? optionOfOUser = freezed,
+    Object? place = freezed,
+    Object? user = freezed,
     Object? optionOfAdvertisementsFailureOrSuccess = freezed,
     Object? optionOfReservationFailureOrSuccess = freezed,
     Object? loadingReservations = freezed,
@@ -502,14 +504,14 @@ class _$SellerSummaryStateCopyWithImpl<$Res>
     Object? optionOfReservationCancelFailureOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
-      optionOfOPlace: optionOfOPlace == freezed
-          ? _value.optionOfOPlace
-          : optionOfOPlace // ignore: cast_nullable_to_non_nullable
-              as Option<Place>,
-      optionOfOUser: optionOfOUser == freezed
-          ? _value.optionOfOUser
-          : optionOfOUser // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
+      place: place == freezed
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as Place?,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
       optionOfAdvertisementsFailureOrSuccess:
           optionOfAdvertisementsFailureOrSuccess == freezed
               ? _value.optionOfAdvertisementsFailureOrSuccess
@@ -535,6 +537,28 @@ class _$SellerSummaryStateCopyWithImpl<$Res>
                   as Option<Either<ReservationFailure, Unit>>,
     ));
   }
+
+  @override
+  $PlaceCopyWith<$Res>? get place {
+    if (_value.place == null) {
+      return null;
+    }
+
+    return $PlaceCopyWith<$Res>(_value.place!, (value) {
+      return _then(_value.copyWith(place: value));
+    });
+  }
+
+  @override
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -545,8 +569,8 @@ abstract class _$SellerSummaryStateCopyWith<$Res>
       __$SellerSummaryStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Place> optionOfOPlace,
-      Option<Either<AuthFailure, User>> optionOfOUser,
+      {Place? place,
+      User? user,
       Option<Either<AdvertisementFailure, List<Advertisement>>>
           optionOfAdvertisementsFailureOrSuccess,
       Option<Either<ReservationFailure, List<Reservation>>>
@@ -555,6 +579,11 @@ abstract class _$SellerSummaryStateCopyWith<$Res>
       bool cancellingReservation,
       Option<Either<ReservationFailure, Unit>>
           optionOfReservationCancelFailureOrSuccess});
+
+  @override
+  $PlaceCopyWith<$Res>? get place;
+  @override
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -570,8 +599,8 @@ class __$SellerSummaryStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? optionOfOPlace = freezed,
-    Object? optionOfOUser = freezed,
+    Object? place = freezed,
+    Object? user = freezed,
     Object? optionOfAdvertisementsFailureOrSuccess = freezed,
     Object? optionOfReservationFailureOrSuccess = freezed,
     Object? loadingReservations = freezed,
@@ -579,14 +608,14 @@ class __$SellerSummaryStateCopyWithImpl<$Res>
     Object? optionOfReservationCancelFailureOrSuccess = freezed,
   }) {
     return _then(_SellerSummaryState(
-      optionOfOPlace: optionOfOPlace == freezed
-          ? _value.optionOfOPlace
-          : optionOfOPlace // ignore: cast_nullable_to_non_nullable
-              as Option<Place>,
-      optionOfOUser: optionOfOUser == freezed
-          ? _value.optionOfOUser
-          : optionOfOUser // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
+      place: place == freezed
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as Place?,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
       optionOfAdvertisementsFailureOrSuccess:
           optionOfAdvertisementsFailureOrSuccess == freezed
               ? _value.optionOfAdvertisementsFailureOrSuccess
@@ -618,8 +647,8 @@ class __$SellerSummaryStateCopyWithImpl<$Res>
 
 class _$_SellerSummaryState implements _SellerSummaryState {
   const _$_SellerSummaryState(
-      {required this.optionOfOPlace,
-      required this.optionOfOUser,
+      {required this.place,
+      required this.user,
       required this.optionOfAdvertisementsFailureOrSuccess,
       required this.optionOfReservationFailureOrSuccess,
       required this.loadingReservations,
@@ -627,9 +656,9 @@ class _$_SellerSummaryState implements _SellerSummaryState {
       required this.optionOfReservationCancelFailureOrSuccess});
 
   @override
-  final Option<Place> optionOfOPlace;
+  final Place? place;
   @override
-  final Option<Either<AuthFailure, User>> optionOfOUser;
+  final User? user;
   @override
   final Option<Either<AdvertisementFailure, List<Advertisement>>>
       optionOfAdvertisementsFailureOrSuccess;
@@ -646,19 +675,17 @@ class _$_SellerSummaryState implements _SellerSummaryState {
 
   @override
   String toString() {
-    return 'SellerSummaryState(optionOfOPlace: $optionOfOPlace, optionOfOUser: $optionOfOUser, optionOfAdvertisementsFailureOrSuccess: $optionOfAdvertisementsFailureOrSuccess, optionOfReservationFailureOrSuccess: $optionOfReservationFailureOrSuccess, loadingReservations: $loadingReservations, cancellingReservation: $cancellingReservation, optionOfReservationCancelFailureOrSuccess: $optionOfReservationCancelFailureOrSuccess)';
+    return 'SellerSummaryState(place: $place, user: $user, optionOfAdvertisementsFailureOrSuccess: $optionOfAdvertisementsFailureOrSuccess, optionOfReservationFailureOrSuccess: $optionOfReservationFailureOrSuccess, loadingReservations: $loadingReservations, cancellingReservation: $cancellingReservation, optionOfReservationCancelFailureOrSuccess: $optionOfReservationCancelFailureOrSuccess)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SellerSummaryState &&
-            (identical(other.optionOfOPlace, optionOfOPlace) ||
-                const DeepCollectionEquality()
-                    .equals(other.optionOfOPlace, optionOfOPlace)) &&
-            (identical(other.optionOfOUser, optionOfOUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.optionOfOUser, optionOfOUser)) &&
+            (identical(other.place, place) ||
+                const DeepCollectionEquality().equals(other.place, place)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.optionOfAdvertisementsFailureOrSuccess,
                     optionOfAdvertisementsFailureOrSuccess) ||
                 const DeepCollectionEquality().equals(
@@ -685,8 +712,8 @@ class _$_SellerSummaryState implements _SellerSummaryState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(optionOfOPlace) ^
-      const DeepCollectionEquality().hash(optionOfOUser) ^
+      const DeepCollectionEquality().hash(place) ^
+      const DeepCollectionEquality().hash(user) ^
       const DeepCollectionEquality()
           .hash(optionOfAdvertisementsFailureOrSuccess) ^
       const DeepCollectionEquality().hash(optionOfReservationFailureOrSuccess) ^
@@ -703,8 +730,8 @@ class _$_SellerSummaryState implements _SellerSummaryState {
 
 abstract class _SellerSummaryState implements SellerSummaryState {
   const factory _SellerSummaryState(
-      {required Option<Place> optionOfOPlace,
-      required Option<Either<AuthFailure, User>> optionOfOUser,
+      {required Place? place,
+      required User? user,
       required Option<Either<AdvertisementFailure, List<Advertisement>>>
           optionOfAdvertisementsFailureOrSuccess,
       required Option<Either<ReservationFailure, List<Reservation>>>
@@ -715,10 +742,9 @@ abstract class _SellerSummaryState implements SellerSummaryState {
           optionOfReservationCancelFailureOrSuccess}) = _$_SellerSummaryState;
 
   @override
-  Option<Place> get optionOfOPlace => throw _privateConstructorUsedError;
+  Place? get place => throw _privateConstructorUsedError;
   @override
-  Option<Either<AuthFailure, User>> get optionOfOUser =>
-      throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   @override
   Option<Either<AdvertisementFailure, List<Advertisement>>>
       get optionOfAdvertisementsFailureOrSuccess =>

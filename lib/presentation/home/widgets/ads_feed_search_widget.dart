@@ -19,9 +19,9 @@ class AdsFeedSearchWidget extends StatelessWidget {
         child: TextField(
           autofocus: true,
           onChanged: (newValue) {
-            context
-                .read<SearchFormBloc>()
-                .add(SearchFormEvent.nameChanged(newValue));
+            // context
+            //     .read<SearchFormBloc>()
+            //     .add(SearchFormEvent.nameChanged(newValue));
           },
           decoration: const InputDecoration(
             hintText: 'Pesquise por loja ou produto',

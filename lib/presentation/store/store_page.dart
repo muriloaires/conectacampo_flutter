@@ -37,9 +37,10 @@ class StoreMainPage extends StatelessWidget {
                   EasyLoading.dismiss();
                 }
 
-                state.myStoresSuccessOrFailure?.fold((l) => l.map(unauthorized: (value) =>
-                
-                 ,), (r) => null);
+                state.myStoresSuccessOrFailure?.fold(
+                  (l) => l.map(unauthorized: (value) {}),
+                  (r) => null,
+                );
               },
               builder: (context, state) {
                 final personalStore = state.myStoresSuccessOrFailure
@@ -91,7 +92,8 @@ class StoreMainPage extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => SetupPersonalStorePage(personalStore),
+                              builder: (context) =>
+                                  SetupPersonalStorePage(personalStore),
                             ),
                           );
                         },

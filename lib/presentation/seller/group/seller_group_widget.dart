@@ -37,8 +37,7 @@ class _SellerGroupWidgetState extends State<SellerGroupWidget> {
                           image: DecorationImage(
                               fit: BoxFit.fill,
                               image: NetworkImage(widget.buyerReservations.user
-                                      .mediumAvatar?.value
-                                      .fold((l) => '', (r) => r) ??
+                                      .mediumAvatar?.url ??
                                   '')))),
                   const SizedBox(
                     width: 12,

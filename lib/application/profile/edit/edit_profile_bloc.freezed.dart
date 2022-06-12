@@ -707,14 +707,13 @@ class _$EditProfileStateTearOff {
       required Nickname nickname,
       required Email email,
       required bool showProgress,
-      required Option<Either<AuthFailure, User>>
-          optionOfUserUpdateSuccessOrFailure}) {
+      required Either<AuthFailure, User>? userUpdateSuccessOrFailure}) {
     return _EditProfileState(
       fullName: fullName,
       nickname: nickname,
       email: email,
       showProgress: showProgress,
-      optionOfUserUpdateSuccessOrFailure: optionOfUserUpdateSuccessOrFailure,
+      userUpdateSuccessOrFailure: userUpdateSuccessOrFailure,
     );
   }
 }
@@ -728,7 +727,7 @@ mixin _$EditProfileState {
   Nickname get nickname => throw _privateConstructorUsedError;
   Email get email => throw _privateConstructorUsedError;
   bool get showProgress => throw _privateConstructorUsedError;
-  Option<Either<AuthFailure, User>> get optionOfUserUpdateSuccessOrFailure =>
+  Either<AuthFailure, User>? get userUpdateSuccessOrFailure =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -746,7 +745,7 @@ abstract class $EditProfileStateCopyWith<$Res> {
       Nickname nickname,
       Email email,
       bool showProgress,
-      Option<Either<AuthFailure, User>> optionOfUserUpdateSuccessOrFailure});
+      Either<AuthFailure, User>? userUpdateSuccessOrFailure});
 }
 
 /// @nodoc
@@ -764,7 +763,7 @@ class _$EditProfileStateCopyWithImpl<$Res>
     Object? nickname = freezed,
     Object? email = freezed,
     Object? showProgress = freezed,
-    Object? optionOfUserUpdateSuccessOrFailure = freezed,
+    Object? userUpdateSuccessOrFailure = freezed,
   }) {
     return _then(_value.copyWith(
       fullName: fullName == freezed
@@ -783,11 +782,10 @@ class _$EditProfileStateCopyWithImpl<$Res>
           ? _value.showProgress
           : showProgress // ignore: cast_nullable_to_non_nullable
               as bool,
-      optionOfUserUpdateSuccessOrFailure: optionOfUserUpdateSuccessOrFailure ==
-              freezed
-          ? _value.optionOfUserUpdateSuccessOrFailure
-          : optionOfUserUpdateSuccessOrFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
+      userUpdateSuccessOrFailure: userUpdateSuccessOrFailure == freezed
+          ? _value.userUpdateSuccessOrFailure
+          : userUpdateSuccessOrFailure // ignore: cast_nullable_to_non_nullable
+              as Either<AuthFailure, User>?,
     ));
   }
 }
@@ -804,7 +802,7 @@ abstract class _$EditProfileStateCopyWith<$Res>
       Nickname nickname,
       Email email,
       bool showProgress,
-      Option<Either<AuthFailure, User>> optionOfUserUpdateSuccessOrFailure});
+      Either<AuthFailure, User>? userUpdateSuccessOrFailure});
 }
 
 /// @nodoc
@@ -824,7 +822,7 @@ class __$EditProfileStateCopyWithImpl<$Res>
     Object? nickname = freezed,
     Object? email = freezed,
     Object? showProgress = freezed,
-    Object? optionOfUserUpdateSuccessOrFailure = freezed,
+    Object? userUpdateSuccessOrFailure = freezed,
   }) {
     return _then(_EditProfileState(
       fullName: fullName == freezed
@@ -843,11 +841,10 @@ class __$EditProfileStateCopyWithImpl<$Res>
           ? _value.showProgress
           : showProgress // ignore: cast_nullable_to_non_nullable
               as bool,
-      optionOfUserUpdateSuccessOrFailure: optionOfUserUpdateSuccessOrFailure ==
-              freezed
-          ? _value.optionOfUserUpdateSuccessOrFailure
-          : optionOfUserUpdateSuccessOrFailure // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
+      userUpdateSuccessOrFailure: userUpdateSuccessOrFailure == freezed
+          ? _value.userUpdateSuccessOrFailure
+          : userUpdateSuccessOrFailure // ignore: cast_nullable_to_non_nullable
+              as Either<AuthFailure, User>?,
     ));
   }
 }
@@ -860,7 +857,7 @@ class _$_EditProfileState implements _EditProfileState {
       required this.nickname,
       required this.email,
       required this.showProgress,
-      required this.optionOfUserUpdateSuccessOrFailure});
+      required this.userUpdateSuccessOrFailure});
 
   @override
   final FullName fullName;
@@ -871,11 +868,11 @@ class _$_EditProfileState implements _EditProfileState {
   @override
   final bool showProgress;
   @override
-  final Option<Either<AuthFailure, User>> optionOfUserUpdateSuccessOrFailure;
+  final Either<AuthFailure, User>? userUpdateSuccessOrFailure;
 
   @override
   String toString() {
-    return 'EditProfileState(fullName: $fullName, nickname: $nickname, email: $email, showProgress: $showProgress, optionOfUserUpdateSuccessOrFailure: $optionOfUserUpdateSuccessOrFailure)';
+    return 'EditProfileState(fullName: $fullName, nickname: $nickname, email: $email, showProgress: $showProgress, userUpdateSuccessOrFailure: $userUpdateSuccessOrFailure)';
   }
 
   @override
@@ -893,11 +890,11 @@ class _$_EditProfileState implements _EditProfileState {
             (identical(other.showProgress, showProgress) ||
                 const DeepCollectionEquality()
                     .equals(other.showProgress, showProgress)) &&
-            (identical(other.optionOfUserUpdateSuccessOrFailure,
-                    optionOfUserUpdateSuccessOrFailure) ||
+            (identical(other.userUpdateSuccessOrFailure,
+                    userUpdateSuccessOrFailure) ||
                 const DeepCollectionEquality().equals(
-                    other.optionOfUserUpdateSuccessOrFailure,
-                    optionOfUserUpdateSuccessOrFailure)));
+                    other.userUpdateSuccessOrFailure,
+                    userUpdateSuccessOrFailure)));
   }
 
   @override
@@ -907,7 +904,7 @@ class _$_EditProfileState implements _EditProfileState {
       const DeepCollectionEquality().hash(nickname) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(showProgress) ^
-      const DeepCollectionEquality().hash(optionOfUserUpdateSuccessOrFailure);
+      const DeepCollectionEquality().hash(userUpdateSuccessOrFailure);
 
   @JsonKey(ignore: true)
   @override
@@ -917,12 +914,12 @@ class _$_EditProfileState implements _EditProfileState {
 
 abstract class _EditProfileState implements EditProfileState {
   const factory _EditProfileState(
-      {required FullName fullName,
-      required Nickname nickname,
-      required Email email,
-      required bool showProgress,
-      required Option<Either<AuthFailure, User>>
-          optionOfUserUpdateSuccessOrFailure}) = _$_EditProfileState;
+          {required FullName fullName,
+          required Nickname nickname,
+          required Email email,
+          required bool showProgress,
+          required Either<AuthFailure, User>? userUpdateSuccessOrFailure}) =
+      _$_EditProfileState;
 
   @override
   FullName get fullName => throw _privateConstructorUsedError;
@@ -933,7 +930,7 @@ abstract class _EditProfileState implements EditProfileState {
   @override
   bool get showProgress => throw _privateConstructorUsedError;
   @override
-  Option<Either<AuthFailure, User>> get optionOfUserUpdateSuccessOrFailure =>
+  Either<AuthFailure, User>? get userUpdateSuccessOrFailure =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

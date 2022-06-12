@@ -138,7 +138,7 @@ class AdvertisementHeaderWidget extends StatelessWidget {
                 radius: 30.0,
                 backgroundColor: ColorSet.green1,
                 foregroundImage: CachedNetworkImageProvider(
-                  _advertisement?.seller.thumbAvatar?.getOrCrash() ?? '',
+                  _advertisement?.seller.thumbAvatar?.url ?? '',
                 ),
               ),
               const SizedBox(width: 8),

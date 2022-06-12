@@ -7,8 +7,7 @@ class EditProfileState with _$EditProfileState {
     required Nickname nickname,
     required Email email,
     required bool showProgress,
-    required Option<Either<AuthFailure, User>>
-        optionOfUserUpdateSuccessOrFailure,
+    required Either<AuthFailure, User>? userUpdateSuccessOrFailure,
   }) = _EditProfileState;
 
   factory EditProfileState.initial() => EditProfileState(
@@ -16,6 +15,6 @@ class EditProfileState with _$EditProfileState {
         email: Email(''),
         nickname: Nickname(''),
         showProgress: false,
-        optionOfUserUpdateSuccessOrFailure: none(),
+        userUpdateSuccessOrFailure: null,
       );
 }

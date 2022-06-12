@@ -3,7 +3,7 @@ part of 'places_form_bloc.dart';
 @freezed
 class PlacesFormState with _$PlacesFormState {
   const factory PlacesFormState({
-    required Option<Either<AuthFailure, User>> loggedUser,
+    required User? loggedUser,
     required Option<Either<PlacesFailure, List<StatePlace>>> states,
     required Option<Either<PlacesFailure, List<Place>>> places,
     required StatePlace? selectedState,
@@ -18,7 +18,7 @@ class PlacesFormState with _$PlacesFormState {
   }) = _PlacesFormState;
 
   factory PlacesFormState.initial() => PlacesFormState(
-      loggedUser: some(left(const AuthFailure.userNotFound())),
+      loggedUser: null,
       states: some(right(List.empty())),
       places: some(right(List.empty())),
       selectedState: null,

@@ -351,12 +351,12 @@ class ProductPage extends StatelessWidget {
                                         Navigator.of(context,
                                                 rootNavigator: true)
                                             .push(MaterialPageRoute(
-                                          builder: (context) => PhotoViewer(
-                                              i.originalAvatar.getOrCrash()),
+                                          builder: (context) =>
+                                              PhotoViewer(i.originalAvatar.url),
                                         ));
                                       },
                                       child: CachedNetworkImage(
-                                        imageUrl: i.mediumAvatar.getOrCrash(),
+                                        imageUrl: i.mediumAvatar.url,
                                         fit: BoxFit.cover,
                                         height: 170,
                                         width: double.infinity,

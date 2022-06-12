@@ -160,13 +160,11 @@ class ReservationProductWidget extends StatelessWidget {
                       color: ColorSet.backgroundInput,
                       width: 75,
                       height: 75,
-                      child: product.adProduct.images.first.mediumAvatar
-                              .getOrCrash()
-                              .isEmpty
+                      child: product
+                              .adProduct.images.first.mediumAvatar.url.isEmpty
                           ? Image.asset('assets/placeholder.png')
                           : Image.network(
-                              product.adProduct.images.first.mediumAvatar
-                                  .getOrCrash(),
+                              product.adProduct.images.first.mediumAvatar.url,
                               fit: BoxFit.cover),
                     ),
                   ),

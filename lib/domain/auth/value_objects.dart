@@ -71,39 +71,6 @@ class UniqueId extends ValueObject<String> {
   const UniqueId._(this.value);
 }
 
-class MediumAvatar extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  factory MediumAvatar(String input) {
-    return MediumAvatar._(validateAvatar(input));
-  }
-
-  const MediumAvatar._(this.value);
-}
-
-class ThumbAvatar extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  factory ThumbAvatar(String input) {
-    return ThumbAvatar._(validateAvatar(input));
-  }
-
-  const ThumbAvatar._(this.value);
-}
-
-class OriginalAvatar extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  factory OriginalAvatar(String input) {
-    return OriginalAvatar._(validateAvatar(input));
-  }
-
-  const OriginalAvatar._(this.value);
-}
-
 void test() {
   final phoNumber = PhoneNumber('123');
   final String phoneNumberText = phoNumber.value

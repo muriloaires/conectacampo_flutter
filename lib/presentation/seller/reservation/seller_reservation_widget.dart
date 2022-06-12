@@ -79,7 +79,7 @@ class SellerReservationWidget extends StatelessWidget {
                         radius: 36,
                         backgroundColor: ColorSet.green1,
                         foregroundImage: CachedNetworkImageProvider(
-                          state.reservation?.buyer.thumbAvatar?.getOrCrash() ??
+                          state.reservation?.buyer.thumbAvatar?.url ??
                               'https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png',
                         ),
                       ),

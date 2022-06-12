@@ -31,76 +31,76 @@ class SellerMenuBloc extends Bloc<SellerMenuEvent, SellerMenuState> {
     SellerMenuEvent event,
   ) async* {
     yield* event.map(
-        sellTapped: (sellTapped) async* {},
-        homeTapped: (homeTapped) async* {
-          yield state.copyWith(currentIndex: 0, navToRoot: false);
-        },
-        groupsTapped: (groupsTapped) async* {
-          yield state.copyWith(
-            currentIndex: 1,
-            navToRoot: false,
-          );
-        },
-        reservationTapped: (reservationTapped) async* {
-          yield state.copyWith(currentIndex: 3, navToRoot: false);
-        },
-        profileTapped: (profileTapped) async* {
-          yield state.copyWith(
-            currentIndex: 4,
-            navToRoot: false,
-          );
-        },
-        homeRetapped: (homeRetapped) async* {
-          yield state.copyWith(reTapIndex: 0, navToRoot: false);
-          state.copyWith(reTapIndex: -1, navToRoot: false);
-        },
-        groupsRetapped: (groupsRetapped) async* {
-          yield state.copyWith(reTapIndex: 1, navToRoot: false);
-          state.copyWith(reTapIndex: -1, navToRoot: false);
-        },
-        reservationRetapped: (reservationRetapped) async* {
-          yield state.copyWith(reTapIndex: 3, navToRoot: false);
-          state.copyWith(reTapIndex: -1, navToRoot: false);
-        },
-        profileRetapped: (profileRetapped) async* {
-          yield state.copyWith(reTapIndex: 4, navToRoot: false);
-          state.copyWith(reTapIndex: -1, navToRoot: false);
-        },
-        navToBuyerTapped: (navToBuyerTapped) async* {
-          await persistUserType('buyer');
-          yield state.copyWith(navToBuyer: true);
-        },
-        logout: (Logout value) async* {
-          await logout();
-          yield state.copyWith(navToLogin: true);
-        },
-        placeChanged: (PlaceChanged value) async* {
-          final place = await loadSelectedPlace();
-          yield state.copyWith(optionOfPlace: optionOf(place));
-        },
-        started: (Started value) async* {
-          await saveOnboardingCheck();
-          ReservationToOpen? reservationToOpen;
-          final reservationToOpenMap = await getReservationIdToOpen();
-          if (reservationToOpenMap != null) {
-            final reservationId = reservationToOpenMap["notificableId"] as int;
-            final kind = reservationToOpenMap["kind"] as String;
-            final reservation =
-                await reservationFacade.getReservation(reservationId);
-            reservation.fold((l) => null, (r) {
-              reservationToOpen = ReservationToOpen(kind, r);
-            });
-          }
-          final place = await loadSelectedPlace();
-          final user = await loadLoggedUser();
-          yield state.copyWith(
-              optionOfPlace: optionOf(place),
-              optionOfUser: some(user),
-              reservationToOpen: reservationToOpen);
-          yield state.copyWith(
-              optionOfPlace: optionOf(place),
-              optionOfUser: some(user),
-              reservationToOpen: null);
-        });
+      sellTapped: (sellTapped) async* {},
+      homeTapped: (homeTapped) async* {
+        yield state.copyWith(currentIndex: 0, navToRoot: false);
+      },
+      groupsTapped: (groupsTapped) async* {
+        yield state.copyWith(
+          currentIndex: 1,
+          navToRoot: false,
+        );
+      },
+      reservationTapped: (reservationTapped) async* {
+        yield state.copyWith(currentIndex: 3, navToRoot: false);
+      },
+      profileTapped: (profileTapped) async* {
+        yield state.copyWith(
+          currentIndex: 4,
+          navToRoot: false,
+        );
+      },
+      homeRetapped: (homeRetapped) async* {
+        yield state.copyWith(reTapIndex: 0, navToRoot: false);
+        state.copyWith(reTapIndex: -1, navToRoot: false);
+      },
+      groupsRetapped: (groupsRetapped) async* {
+        yield state.copyWith(reTapIndex: 1, navToRoot: false);
+        state.copyWith(reTapIndex: -1, navToRoot: false);
+      },
+      reservationRetapped: (reservationRetapped) async* {
+        yield state.copyWith(reTapIndex: 3, navToRoot: false);
+        state.copyWith(reTapIndex: -1, navToRoot: false);
+      },
+      profileRetapped: (profileRetapped) async* {
+        yield state.copyWith(reTapIndex: 4, navToRoot: false);
+        state.copyWith(reTapIndex: -1, navToRoot: false);
+      },
+      navToBuyerTapped: (navToBuyerTapped) async* {
+        await persistUserType('buyer');
+        yield state.copyWith(navToBuyer: true);
+      },
+      logout: (Logout value) async* {
+        await logout();
+        yield state.copyWith(navToLogin: true);
+      },
+      placeChanged: (PlaceChanged value) async* {
+        final place = await loadSelectedPlace();
+        yield state.copyWith(place: place);
+      },
+      started: (Started value) async* {
+        await saveOnboardingCheck();
+        ReservationToOpen? reservationToOpen;
+        final reservationToOpenMap = await getReservationIdToOpen();
+        if (reservationToOpenMap != null) {
+          final reservationId = reservationToOpenMap["notificableId"] as int;
+          final kind = reservationToOpenMap["kind"] as String;
+          final reservation =
+              await reservationFacade.getReservation(reservationId);
+          reservation.fold((l) => null, (r) {
+            reservationToOpen = ReservationToOpen(kind, r);
+          });
+        }
+        final place = await loadSelectedPlace();
+        final user = await loadLoggedUser();
+        yield state.copyWith(
+            place: place, user: user, reservationToOpen: reservationToOpen);
+        yield state.copyWith(
+          place: place,
+          user: user,
+          reservationToOpen: null,
+        );
+      },
+    );
   }
 }

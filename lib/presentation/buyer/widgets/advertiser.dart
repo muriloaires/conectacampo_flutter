@@ -42,7 +42,7 @@ class Advertiser extends StatelessWidget {
                       radius: 30.0,
                       backgroundColor: ColorSet.green1,
                       foregroundImage: CachedNetworkImageProvider(
-                          state.seller?.thumbAvatar?.getOrCrash() ?? '')),
+                          state.seller?.thumbAvatar?.url ?? '')),
                   const SizedBox(width: 8),
                   Expanded(
                     child: ListView(

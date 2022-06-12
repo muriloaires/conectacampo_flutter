@@ -17,9 +17,9 @@ class ProductAdvertisement extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: _product.images.first.mediumAvatar.getOrCrash().isNotEmpty
+            child: _product.images.first.mediumAvatar.url.isNotEmpty
                 ? CachedNetworkImage(
-                    imageUrl: _product.images.first.mediumAvatar.getOrCrash(),
+                    imageUrl: _product.images.first.mediumAvatar.url,
                     height: 134.0,
                     width: 166.0,
                     fit: BoxFit.cover,

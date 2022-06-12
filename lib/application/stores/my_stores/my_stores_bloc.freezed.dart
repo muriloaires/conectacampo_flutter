@@ -186,6 +186,8 @@ abstract class $MyStoresStateCopyWith<$Res> {
       {bool loading,
       User? loggedUser,
       Either<StoresFailure, MyStores>? myStoresSuccessOrFailure});
+
+  $UserCopyWith<$Res>? get loggedUser;
 }
 
 /// @nodoc
@@ -218,6 +220,17 @@ class _$MyStoresStateCopyWithImpl<$Res>
               as Either<StoresFailure, MyStores>?,
     ));
   }
+
+  @override
+  $UserCopyWith<$Res>? get loggedUser {
+    if (_value.loggedUser == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.loggedUser!, (value) {
+      return _then(_value.copyWith(loggedUser: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -231,6 +244,9 @@ abstract class _$MyStoresStateCopyWith<$Res>
       {bool loading,
       User? loggedUser,
       Either<StoresFailure, MyStores>? myStoresSuccessOrFailure});
+
+  @override
+  $UserCopyWith<$Res>? get loggedUser;
 }
 
 /// @nodoc

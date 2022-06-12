@@ -1,9 +1,9 @@
 import 'package:conectacampo/domain/auth/user.dart';
-import 'package:conectacampo/domain/auth/value_objects.dart';
 import 'package:conectacampo/domain/places/place.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'advertisement.freezed.dart';
+part 'advertisement.g.dart';
 
 @freezed
 class Advertisement with _$Advertisement {
@@ -18,6 +18,9 @@ class Advertisement with _$Advertisement {
     String meetingType,
     String meetingTypeDescription,
   ) = _Advertisement;
+
+  factory Advertisement.fromJson(Map<String, dynamic> json) =>
+      _$AdvertisementFromJson(json);
 }
 
 @freezed
@@ -34,15 +37,23 @@ class AdProduct with _$AdProduct {
     List<ProductImages> images,
     String createdAt,
     Advertisement? advertisement,
-      int advertisementId) = _AdProduct;
+    int advertisementId,
+  ) = _AdProduct;
+
+  factory AdProduct.fromJson(Map<String, dynamic> json) =>
+      _$AdProductFromJson(json);
 }
 
 @freezed
 class ProductImages with _$ProductImages {
   const factory ProductImages(
-      ThumbAvatar thumbAvatar,
-      MediumAvatar mediumAvatar,
-      OriginalAvatar originalAvatar) = _ProductImages;
+    ThumbAvatar thumbAvatar,
+    MediumAvatar mediumAvatar,
+    OriginalAvatar originalAvatar,
+  ) = _ProductImages;
+
+  factory ProductImages.fromJson(Map<String, dynamic> json) =>
+      _$ProductImagesFromJson(json);
 }
 
 @freezed

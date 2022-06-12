@@ -63,7 +63,8 @@ class _HomePageState extends State<HomePage> {
                     const Scaffold(body: Text('Pesquisa')),
                     const Scaffold(body: Text('Reservas')),
                     if (state.isUserLogged)
-                      StoreMainPage(navigatorKeys[3]!)
+                      // StoreMainPage(navigatorKeys[3]!)
+                      const Scaffold(body: Text('Reservas'))
                     else
                       const NotLoggedWidget(),
                     const Scaffold(body: Text('Perfil')),

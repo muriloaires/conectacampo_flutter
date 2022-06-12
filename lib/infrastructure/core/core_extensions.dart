@@ -32,6 +32,10 @@ extension DateTimeExtensions on DateTime {
   String getServerDate() {
     return DateFormat('yyyy-MM-dd hh:mm:ss').format(this);
   }
+
+  String getHourMinute() {
+    return DateFormat('HH:mm').format(this);
+  }
 }
 
 extension IntDateExtensions on int {

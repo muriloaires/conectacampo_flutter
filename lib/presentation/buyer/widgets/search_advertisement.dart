@@ -48,8 +48,8 @@ class SearchAdvertisement extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4.0),
                           child: product.images.isNotEmpty
                               ? CachedNetworkImage(
-                                  imageUrl: product.images.first.mediumAvatar
-                                      .getOrCrash(),
+                                  imageUrl:
+                                      product.images.first.mediumAvatar.url,
                                   fit: BoxFit.cover,
                                 )
                               : Container(),
@@ -79,8 +79,7 @@ class SearchAdvertisement extends StatelessWidget {
                                   image: DecorationImage(
                                     fit: BoxFit.fill,
                                     image: NetworkImage(
-                                      adv?.seller.thumbAvatar?.getOrCrash() ??
-                                          '',
+                                      adv?.seller.thumbAvatar?.url ?? '',
                                     ),
                                   ),
                                 ),

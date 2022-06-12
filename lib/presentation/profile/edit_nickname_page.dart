@@ -114,26 +114,22 @@ class EditNickNameForm extends StatelessWidget {
           EasyLoading.dismiss();
         }
 
-        final String? errorMessage =
-            state.optionOfUserUpdateSuccessOrFailure.fold(
-          () => null,
-          (a) => a.fold(
-            (l) => l.maybeMap(
-              serverError: (serverError) => 'Algo errado ocorreu',
-              invalidFullName: (invalidFullName) => 'Nome inválido',
-              invalidNickname: (invalidNickname) => 'Apelido inválido',
-              applicationError: (applicationError) => 'Algo errado ocorreu',
-              orElse: () => null,
-            ),
-            (r) {
-              EasyLoading.showSuccess(
-                'Dados alterados com sucesso',
-                duration: const Duration(seconds: 2),
-              );
-              Navigator.of(context).pop();
-              return null;
-            },
+        final String? errorMessage = state.userUpdateSuccessOrFailure?.fold(
+          (l) => l.maybeMap(
+            serverError: (serverError) => 'Algo errado ocorreu',
+            invalidFullName: (invalidFullName) => 'Nome inválido',
+            invalidNickname: (invalidNickname) => 'Apelido inválido',
+            applicationError: (applicationError) => 'Algo errado ocorreu',
+            orElse: () => null,
           ),
+          (r) {
+            EasyLoading.showSuccess(
+              'Dados alterados com sucesso',
+              duration: const Duration(seconds: 2),
+            );
+            Navigator.of(context).pop();
+            return null;
+          },
         );
         if (errorMessage != null) {
           EasyLoading.showError(

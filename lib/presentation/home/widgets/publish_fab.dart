@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 class PublishFAB extends StatelessWidget {
   const PublishFAB({required this.onPressed});
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 150,
       height: 50,
       child: FloatingActionButton(
-        onPressed: () {},
+        onPressed: onPressed,
         backgroundColor: ColorSet.green1,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30.0))),

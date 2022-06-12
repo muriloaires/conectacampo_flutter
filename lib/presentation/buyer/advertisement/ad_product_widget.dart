@@ -30,7 +30,7 @@ class AdProductWidget extends StatelessWidget {
             CircleAvatar(
               radius: 38,
               foregroundImage: CachedNetworkImageProvider(
-                product.images.first.thumbAvatar.getOrCrash(),
+                product.images.first.thumbAvatar.url,
               ),
               backgroundColor: Colors.white,
               backgroundImage: const AssetImage('assets/placeholder.png'),

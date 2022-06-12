@@ -95,9 +95,7 @@ class ReservationWidget extends StatelessWidget {
                       CircleAvatar(
                         radius: 36,
                         foregroundImage: NetworkImage(
-                          state.reservation?.seller?.mediumAvatar?.value
-                                  .fold((l) => '', (r) => r) ??
-                              '',
+                          state.reservation?.seller?.mediumAvatar?.url ?? '',
                         ),
                         backgroundColor: ColorSet.green1,
                       ),
@@ -592,82 +590,72 @@ class ReservationWidget extends StatelessWidget {
   void showDialogCancelarPedido(BuildContext context) {
     showDialog<String>(
       context: context,
-      builder: (BuildContext dialogContext) =>
-          Dialog(
-            child: ListView(
-              shrinkWrap: true,
+      builder: (BuildContext dialogContext) => Dialog(
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            CircleAvatar(
+              radius: 35,
+              backgroundColor: Colors.red[800],
+              child: const Icon(
+                Icons.close,
+                size: 40,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Center(
+              child: Text('Atenção',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+            ),
+            const SizedBox(height: 10),
+            const Center(
+              child: Text(
+                'Deseja cancelar o pedido?',
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Container(height: 1, color: ColorSet.grayLine),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                CircleAvatar(
-                  radius: 35,
-                  backgroundColor: Colors.red[800],
-                  child: const Icon(
-                    Icons.close,
-                    size: 40,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Center(
-                  child: Text('Atenção',
-                      style: TextStyle(
-                          fontWeight:
-                          FontWeight.bold)),
-                ),
-                const SizedBox(height: 10),
-                const Center(
-                  child: Text(
-                    'Deseja cancelar o pedido?',
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                    height: 1,
-                    color: ColorSet.grayLine),
-                Row(
-                  mainAxisAlignment:
-                  MainAxisAlignment.spaceEvenly,
-                  children: [
-                    TextButton(
-                      onPressed: () =>
-                          Navigator.pop(
-                              dialogContext),
-                      child: const Text(
-                        'Voltar',
-                        style: TextStyle(
-                          fontWeight:
-                          FontWeight.bold,
-                          color: ColorSet.grayDark,
-                        ),
-                      ),
+                TextButton(
+                  onPressed: () => Navigator.pop(dialogContext),
+                  child: const Text(
+                    'Voltar',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: ColorSet.grayDark,
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(dialogContext).pop();
-                        context.read<SingleReservationBloc>().add(
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(dialogContext).pop();
+                    context.read<SingleReservationBloc>().add(
                           const SingleReservationEvent
                               .onCancelReservationPressed(),
                         );
-                      },
-                      child: const Text(
-                        'Sim',
-                        style: TextStyle(
-                          fontWeight:
-                          FontWeight.bold,
-                          color: ColorSet.grayDark,
-                        ),
-                      ),
-                    )
-                  ],
+                  },
+                  child: const Text(
+                    'Sim',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: ColorSet.grayDark,
+                    ),
+                  ),
                 )
               ],
-            ),
-          ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

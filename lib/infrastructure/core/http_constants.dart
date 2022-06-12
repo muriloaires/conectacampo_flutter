@@ -1,3 +1,5 @@
+// ignore_for_file: parameter_assignments
+
 import 'dart:convert';
 
 import 'package:conectacampo/infrastructure/auth/model/model.dart';
@@ -8,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 const baseUrl = 'backend.conectacampo.com.br';
 // const baseUrl = 'conecta-campo-staging.herokuapp.com';
-const apiVersion = 'api/v1';
+const apiVersion = 'api/v2';
 
 String getCurrentApiUrl() => '$baseUrl$apiVersion';
 
@@ -20,7 +22,9 @@ Map<String, String> getApiHeader() {
 }
 
 Future<Response> getAuthenticatedRequest(
-    Uri url, Map<String, String>? headers) async {
+  Uri url,
+  Map<String, String>? headers,
+) async {
   final accessTokenHeader = {
     'Authorization': 'Bearer ${await getCurrentAcessToken()}'
   };

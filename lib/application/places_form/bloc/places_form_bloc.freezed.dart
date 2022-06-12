@@ -432,7 +432,7 @@ class _$PlacesFormStateTearOff {
   const _$PlacesFormStateTearOff();
 
   _PlacesFormState call(
-      {required Option<Either<AuthFailure, User>> loggedUser,
+      {required User? loggedUser,
       required Option<Either<PlacesFailure, List<StatePlace>>> states,
       required Option<Either<PlacesFailure, List<Place>>> places,
       required StatePlace? selectedState,
@@ -467,8 +467,7 @@ const $PlacesFormState = _$PlacesFormStateTearOff();
 
 /// @nodoc
 mixin _$PlacesFormState {
-  Option<Either<AuthFailure, User>> get loggedUser =>
-      throw _privateConstructorUsedError;
+  User? get loggedUser => throw _privateConstructorUsedError;
   Option<Either<PlacesFailure, List<StatePlace>>> get states =>
       throw _privateConstructorUsedError;
   Option<Either<PlacesFailure, List<Place>>> get places =>
@@ -495,7 +494,7 @@ abstract class $PlacesFormStateCopyWith<$Res> {
           PlacesFormState value, $Res Function(PlacesFormState) then) =
       _$PlacesFormStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<AuthFailure, User>> loggedUser,
+      {User? loggedUser,
       Option<Either<PlacesFailure, List<StatePlace>>> states,
       Option<Either<PlacesFailure, List<Place>>> places,
       StatePlace? selectedState,
@@ -508,6 +507,7 @@ abstract class $PlacesFormStateCopyWith<$Res> {
       bool placeSaved,
       Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption});
 
+  $UserCopyWith<$Res>? get loggedUser;
   $PlaceCopyWith<$Res>? get placeSelected;
 }
 
@@ -539,7 +539,7 @@ class _$PlacesFormStateCopyWithImpl<$Res>
       loggedUser: loggedUser == freezed
           ? _value.loggedUser
           : loggedUser // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
+              as User?,
       states: states == freezed
           ? _value.states
           : states // ignore: cast_nullable_to_non_nullable
@@ -588,6 +588,17 @@ class _$PlacesFormStateCopyWithImpl<$Res>
   }
 
   @override
+  $UserCopyWith<$Res>? get loggedUser {
+    if (_value.loggedUser == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.loggedUser!, (value) {
+      return _then(_value.copyWith(loggedUser: value));
+    });
+  }
+
+  @override
   $PlaceCopyWith<$Res>? get placeSelected {
     if (_value.placeSelected == null) {
       return null;
@@ -607,7 +618,7 @@ abstract class _$PlacesFormStateCopyWith<$Res>
       __$PlacesFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<AuthFailure, User>> loggedUser,
+      {User? loggedUser,
       Option<Either<PlacesFailure, List<StatePlace>>> states,
       Option<Either<PlacesFailure, List<Place>>> places,
       StatePlace? selectedState,
@@ -620,6 +631,8 @@ abstract class _$PlacesFormStateCopyWith<$Res>
       bool placeSaved,
       Option<Either<PlacesFailure, Unit>> placesFailureOrSuccessOption});
 
+  @override
+  $UserCopyWith<$Res>? get loggedUser;
   @override
   $PlaceCopyWith<$Res>? get placeSelected;
 }
@@ -654,7 +667,7 @@ class __$PlacesFormStateCopyWithImpl<$Res>
       loggedUser: loggedUser == freezed
           ? _value.loggedUser
           : loggedUser // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, User>>,
+              as User?,
       states: states == freezed
           ? _value.states
           : states // ignore: cast_nullable_to_non_nullable
@@ -721,7 +734,7 @@ class _$_PlacesFormState implements _PlacesFormState {
       required this.placesFailureOrSuccessOption});
 
   @override
-  final Option<Either<AuthFailure, User>> loggedUser;
+  final User? loggedUser;
   @override
   final Option<Either<PlacesFailure, List<StatePlace>>> states;
   @override
@@ -816,7 +829,7 @@ class _$_PlacesFormState implements _PlacesFormState {
 
 abstract class _PlacesFormState implements PlacesFormState {
   const factory _PlacesFormState(
-      {required Option<Either<AuthFailure, User>> loggedUser,
+      {required User? loggedUser,
       required Option<Either<PlacesFailure, List<StatePlace>>> states,
       required Option<Either<PlacesFailure, List<Place>>> places,
       required StatePlace? selectedState,
@@ -831,8 +844,7 @@ abstract class _PlacesFormState implements PlacesFormState {
           placesFailureOrSuccessOption}) = _$_PlacesFormState;
 
   @override
-  Option<Either<AuthFailure, User>> get loggedUser =>
-      throw _privateConstructorUsedError;
+  User? get loggedUser => throw _privateConstructorUsedError;
   @override
   Option<Either<PlacesFailure, List<StatePlace>>> get states =>
       throw _privateConstructorUsedError;

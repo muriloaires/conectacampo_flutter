@@ -114,8 +114,7 @@ class ProfilePage extends StatelessWidget {
                                   .state
                                   .user
                                   ?.mediumAvatar
-                                  ?.value
-                                  .getOrElse(() => '') ??
+                                  ?.url ??
                               '',
                         ),
                       ),

@@ -44,14 +44,17 @@ class PlacesForm extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: Text(
-                        context.read<PlacesFormBloc>().state.loggedUser.fold(
-                            () => '',
-                            (a) => a.fold(
-                                (l) => '', (r) => r.nickname ?? '')),
+                        context
+                                .read<PlacesFormBloc>()
+                                .state
+                                .loggedUser
+                                ?.nickname ??
+                            '',
                         style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: ColorSet.colorPrimaryGreen,
-                            fontSize: 28),
+                          fontWeight: FontWeight.bold,
+                          color: ColorSet.colorPrimaryGreen,
+                          fontSize: 28,
+                        ),
                       ),
                     ),
                     const SizedBox(

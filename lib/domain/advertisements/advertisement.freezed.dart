@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Advertisement _$AdvertisementFromJson(Map<String, dynamic> json) {
+  return _Advertisement.fromJson(json);
+}
+
 /// @nodoc
 class _$AdvertisementTearOff {
   const _$AdvertisementTearOff();
@@ -38,6 +42,10 @@ class _$AdvertisementTearOff {
       meetingTypeDescription,
     );
   }
+
+  Advertisement fromJson(Map<String, Object> json) {
+    return Advertisement.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -55,6 +63,7 @@ mixin _$Advertisement {
   String get meetingType => throw _privateConstructorUsedError;
   String get meetingTypeDescription => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AdvertisementCopyWith<Advertisement> get copyWith =>
       throw _privateConstructorUsedError;
@@ -245,7 +254,7 @@ class __$AdvertisementCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Advertisement implements _Advertisement {
   const _$_Advertisement(
       this.id,
@@ -257,6 +266,9 @@ class _$_Advertisement implements _Advertisement {
       this.createdAt,
       this.meetingType,
       this.meetingTypeDescription);
+
+  factory _$_Advertisement.fromJson(Map<String, dynamic> json) =>
+      _$_$_AdvertisementFromJson(json);
 
   @override
   final int id;
@@ -329,6 +341,11 @@ class _$_Advertisement implements _Advertisement {
   @override
   _$AdvertisementCopyWith<_Advertisement> get copyWith =>
       __$AdvertisementCopyWithImpl<_Advertisement>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_AdvertisementToJson(this);
+  }
 }
 
 abstract class _Advertisement implements Advertisement {
@@ -342,6 +359,9 @@ abstract class _Advertisement implements Advertisement {
       String createdAt,
       String meetingType,
       String meetingTypeDescription) = _$_Advertisement;
+
+  factory _Advertisement.fromJson(Map<String, dynamic> json) =
+      _$_Advertisement.fromJson;
 
   @override
   int get id => throw _privateConstructorUsedError;
@@ -365,6 +385,10 @@ abstract class _Advertisement implements Advertisement {
   @JsonKey(ignore: true)
   _$AdvertisementCopyWith<_Advertisement> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+AdProduct _$AdProductFromJson(Map<String, dynamic> json) {
+  return _AdProduct.fromJson(json);
 }
 
 /// @nodoc
@@ -399,6 +423,10 @@ class _$AdProductTearOff {
       advertisementId,
     );
   }
+
+  AdProduct fromJson(Map<String, Object> json) {
+    return AdProduct.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -419,6 +447,7 @@ mixin _$AdProduct {
   Advertisement? get advertisement => throw _privateConstructorUsedError;
   int get advertisementId => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AdProductCopyWith<AdProduct> get copyWith =>
       throw _privateConstructorUsedError;
@@ -634,7 +663,7 @@ class __$AdProductCopyWithImpl<$Res> extends _$AdProductCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AdProduct implements _AdProduct {
   const _$_AdProduct(
       this.id,
@@ -649,6 +678,9 @@ class _$_AdProduct implements _AdProduct {
       this.createdAt,
       this.advertisement,
       this.advertisementId);
+
+  factory _$_AdProduct.fromJson(Map<String, dynamic> json) =>
+      _$_$_AdProductFromJson(json);
 
   @override
   final int id;
@@ -737,6 +769,11 @@ class _$_AdProduct implements _AdProduct {
   @override
   _$AdProductCopyWith<_AdProduct> get copyWith =>
       __$AdProductCopyWithImpl<_AdProduct>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_AdProductToJson(this);
+  }
 }
 
 abstract class _AdProduct implements AdProduct {
@@ -753,6 +790,9 @@ abstract class _AdProduct implements AdProduct {
       String createdAt,
       Advertisement? advertisement,
       int advertisementId) = _$_AdProduct;
+
+  factory _AdProduct.fromJson(Map<String, dynamic> json) =
+      _$_AdProduct.fromJson;
 
   @override
   int get id => throw _privateConstructorUsedError;
@@ -784,6 +824,10 @@ abstract class _AdProduct implements AdProduct {
       throw _privateConstructorUsedError;
 }
 
+ProductImages _$ProductImagesFromJson(Map<String, dynamic> json) {
+  return _ProductImages.fromJson(json);
+}
+
 /// @nodoc
 class _$ProductImagesTearOff {
   const _$ProductImagesTearOff();
@@ -796,6 +840,10 @@ class _$ProductImagesTearOff {
       originalAvatar,
     );
   }
+
+  ProductImages fromJson(Map<String, Object> json) {
+    return ProductImages.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -807,6 +855,7 @@ mixin _$ProductImages {
   MediumAvatar get mediumAvatar => throw _privateConstructorUsedError;
   OriginalAvatar get originalAvatar => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProductImagesCopyWith<ProductImages> get copyWith =>
       throw _privateConstructorUsedError;
@@ -821,6 +870,10 @@ abstract class $ProductImagesCopyWith<$Res> {
       {ThumbAvatar thumbAvatar,
       MediumAvatar mediumAvatar,
       OriginalAvatar originalAvatar});
+
+  $ThumbAvatarCopyWith<$Res> get thumbAvatar;
+  $MediumAvatarCopyWith<$Res> get mediumAvatar;
+  $OriginalAvatarCopyWith<$Res> get originalAvatar;
 }
 
 /// @nodoc
@@ -853,6 +906,27 @@ class _$ProductImagesCopyWithImpl<$Res>
               as OriginalAvatar,
     ));
   }
+
+  @override
+  $ThumbAvatarCopyWith<$Res> get thumbAvatar {
+    return $ThumbAvatarCopyWith<$Res>(_value.thumbAvatar, (value) {
+      return _then(_value.copyWith(thumbAvatar: value));
+    });
+  }
+
+  @override
+  $MediumAvatarCopyWith<$Res> get mediumAvatar {
+    return $MediumAvatarCopyWith<$Res>(_value.mediumAvatar, (value) {
+      return _then(_value.copyWith(mediumAvatar: value));
+    });
+  }
+
+  @override
+  $OriginalAvatarCopyWith<$Res> get originalAvatar {
+    return $OriginalAvatarCopyWith<$Res>(_value.originalAvatar, (value) {
+      return _then(_value.copyWith(originalAvatar: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -866,6 +940,13 @@ abstract class _$ProductImagesCopyWith<$Res>
       {ThumbAvatar thumbAvatar,
       MediumAvatar mediumAvatar,
       OriginalAvatar originalAvatar});
+
+  @override
+  $ThumbAvatarCopyWith<$Res> get thumbAvatar;
+  @override
+  $MediumAvatarCopyWith<$Res> get mediumAvatar;
+  @override
+  $OriginalAvatarCopyWith<$Res> get originalAvatar;
 }
 
 /// @nodoc
@@ -903,10 +984,13 @@ class __$ProductImagesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_ProductImages implements _ProductImages {
   const _$_ProductImages(
       this.thumbAvatar, this.mediumAvatar, this.originalAvatar);
+
+  factory _$_ProductImages.fromJson(Map<String, dynamic> json) =>
+      _$_$_ProductImagesFromJson(json);
 
   @override
   final ThumbAvatar thumbAvatar;
@@ -946,6 +1030,11 @@ class _$_ProductImages implements _ProductImages {
   @override
   _$ProductImagesCopyWith<_ProductImages> get copyWith =>
       __$ProductImagesCopyWithImpl<_ProductImages>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ProductImagesToJson(this);
+  }
 }
 
 abstract class _ProductImages implements ProductImages {
@@ -953,6 +1042,9 @@ abstract class _ProductImages implements ProductImages {
       ThumbAvatar thumbAvatar,
       MediumAvatar mediumAvatar,
       OriginalAvatar originalAvatar) = _$_ProductImages;
+
+  factory _ProductImages.fromJson(Map<String, dynamic> json) =
+      _$_ProductImages.fromJson;
 
   @override
   ThumbAvatar get thumbAvatar => throw _privateConstructorUsedError;

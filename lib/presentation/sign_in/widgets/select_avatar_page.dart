@@ -1,18 +1,16 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:conectacampo/application/auth/sign_up_form/bloc/sign_up_form_bloc.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/sign_in/places_page.dart';
 import 'package:conectacampo/presentation/util/file_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../places_page.dart';
 
 class SelectAvatarPage extends StatelessWidget {
   final ImagePicker _picker = ImagePicker();
@@ -96,7 +94,8 @@ class SelectAvatarPage extends StatelessWidget {
               child: ListView(
                 children: [
                   Text(
-                    state.fullName?.value.foldLeft('', (previous, r) => r) ?? '',
+                    state.fullName?.value.foldLeft('', (previous, r) => r) ??
+                        '',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: ColorSet.colorPrimaryGreen,
@@ -132,9 +131,10 @@ class SelectAvatarPage extends StatelessWidget {
                       if (pickedFile != null) {
                         if (hasValidMimeType(pickedFile.path)) {
                           context.read<SignUpFormBloc>().add(
-                            SignUpFormBlocEvent.photoSelected(
-                                pickedFile.path,),
-                          );
+                                SignUpFormBlocEvent.photoSelected(
+                                  pickedFile.path,
+                                ),
+                              );
                         } else {
                           EasyLoading.showError(
                             'Formato inválido de imagem. Por favor escolha outra',

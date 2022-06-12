@@ -13,16 +13,15 @@ part 'splash_state.dart';
 
 @injectable
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
-  SplashBloc() : super(SplashState.initial());
-
-  @override
-  Stream<SplashState> mapEventToState(
-    SplashEvent event,
-  ) async* {
-    yield* event.map(started: (started) async* {
-      await Future.delayed(const Duration(seconds: 2));
-      final initialRoute = await getInitialRoute();
-      yield state.copyWith(firstScreen: some(initialRoute));
+  SplashBloc() : super(SplashState.initial()) {
+    on<SplashEvent>((event, emit) async {
+      await event.map(
+        started: (value) async {
+          await Future.delayed(const Duration(seconds: 2));
+          final initialRoute = await getInitialRoute();
+          emit(state.copyWith(firstScreen: some(initialRoute)));
+        },
+      );
     });
   }
 }
@@ -34,21 +33,18 @@ Future<String> getInitialRoute() async {
   }
   final userFailureOrSuccess = await loadLoggedUser();
 
-  final bool isUserLogged = userFailureOrSuccess.isRight();
   final userType = await loadLoggedUserType();
 
   if (userType == null) {
     return '/user_type';
   }
-  if (!isUserLogged) {
+  if (!await isUserLogged()) {
     return '/sign_in';
   }
 
   if (userType == null) {
     return '/sign_in';
-  } else if (userType == 'seller') {
-    return '/seller_main';
   } else {
-    return '/buyer_main';
+    return '/home_page';
   }
 }

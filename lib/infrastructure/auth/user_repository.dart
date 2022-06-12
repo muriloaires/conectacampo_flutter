@@ -18,23 +18,22 @@ Future<Unit> persistUser(UserResponse user) async {
   return unit;
 }
 
-Future<Either<AuthFailure, User>> loadLoggedUser() async {
+Future<User?> loadLoggedUser() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
 
   final json = sharedPreferences.getString('logged_user');
   if (json == null) {
-    return left(const AuthFailure.userNotFound());
+    return null;
   }
 
-  return right(
-    UserResponse.fromJson(jsonDecode(json) as Map<String, dynamic>).toDomain(),
-  );
+  return UserResponse.fromJson(jsonDecode(json) as Map<String, dynamic>)
+      .toDomain();
 }
 
 Future<bool> isUserLogged() async {
   final loggedUser = await loadLoggedUser();
-  return loggedUser.fold((l) => false, (r) => true);
+  return loggedUser != null;
 }
 
 Future<Unit> logout() async {

@@ -14,6 +14,62 @@
       },
       "oauth_client": [
         {
+          "client_id": "990054144807-3tafomusq8frqcs9rbap16mu5ml7tj2l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.conectacampo",
+            "certificate_hash": "a279289eebad5812d49659811895264dcf43d49f"
+          }
+        },
+        {
+          "client_id": "990054144807-9ulubs6ttnffakpff2oj5tbaln6t2gf9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.conectacampo",
+            "certificate_hash": "7aaa618e30f2108a061746993e40354e028b5110"
+          }
+        },
+        {
+          "client_id": "990054144807-9vch7161u56bqlnujqfj7qplnl5uk4aq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.conectacampo",
+            "certificate_hash": "605ce6c33c16161e4a40a3aab738e6070af5314c"
+          }
+        },
+        {
+          "client_id": "990054144807-a2f5410esbd2q6fbr5qp3bm65dajhdqu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.conectacampo",
+            "certificate_hash": "5f3a1ae4e6d9e9c0a6fc0f062812b61af26e03f3"
+          }
+        },
+        {
+          "client_id": "990054144807-f0u4do5qa2fvhh1qp3oaknd344g3c4b9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.conectacampo",
+            "certificate_hash": "07b89fb51f0f2e0d87f3c38e9975660036cfb143"
+          }
+        },
+        {
+          "client_id": "990054144807-llnb1hvegqloch1hjme0dt6fpi9l2008.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.conectacampo",
+            "certificate_hash": "0b287d014c5c89472b8c716d3f44447f8173bd66"
+          }
+        },
+        {
+          "client_id": "990054144807-sne6506oj4gdm5tbv9rs1lg8nbk8nrfb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.conectacampo",
+            "certificate_hash": "9b856c386a7d382b5e7fd6f1e63fbb09b82cc419"
+          }
+        },
+        {
           "client_id": "990054144807-gf0n5pi3oa9jdj7q80hd2aoi90r7qail.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +85,13 @@
             {
               "client_id": "990054144807-gf0n5pi3oa9jdj7q80hd2aoi90r7qail.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "990054144807-51l470es7dnvppkb3mgtfvtk9bre4s3o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.conectacampo"
+              }
             }
           ]
         }
