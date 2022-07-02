@@ -15,99 +15,110 @@ part 'sign_up_form_bloc.freezed.dart';
 
 @injectable
 class SignUpFormBloc extends Bloc<SignUpFormBlocEvent, SignUpFormBlocState> {
-  SignUpFormBloc(this._authFacade) : super(SignUpFormBlocState.initial());
+  SignUpFormBloc(this._authFacade) : super(SignUpFormBlocState.initial()) {
+    on<SignUpFormBlocEvent>((event, emit) async {
+      await event.map(
+        fullNameChanged: (value) async {
+          emit(
+            state.copyWith(
+              fullName: FullName(value.fullName),
+              authFailureOrSuccessOption: none(),
+            ),
+          );
+        },
+        nicknameChanged: (value) async {
+          emit(
+            state.copyWith(
+              nickname: Nickname(value.nickname),
+              authFailureOrSuccessOption: none(),
+            ),
+          );
+        },
+        btnSignUpPressed: (value) async {
+          Either<AuthFailure, Unit> failureOrSuccess =
+              left(const AuthFailure.applicationError());
+
+          if (!(state.fullName?.isValid() ?? false)) {
+            failureOrSuccess = left(const AuthFailure.invalidFullName());
+          } else if (!(state.nickname?.isValid() ?? false)) {
+            failureOrSuccess = left(const AuthFailure.invalidNickname());
+          } else {
+            failureOrSuccess = right(unit);
+          }
+
+          if ((state.fullName?.isValid() ?? false) &&
+              (state.nickname?.isValid() ?? false)) {
+            emit(state.copyWith(authFailureOrSuccessOption: none()));
+
+            _authFacade.onNameAndNicknameSelected(
+              state.fullName?.getOrCrash() ?? '',
+              state.nickname?.getOrCrash() ?? '',
+            );
+          }
+
+          emit(
+            state.copyWith(
+              isSubmitting: false,
+              showErrorMessages: true,
+              authFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          );
+        },
+        btnConcluirPressed: (value) async {
+          Either<AuthFailure, Unit> failureOrSuccess =
+              left(const AuthFailure.applicationError());
+
+          if ((state.fullName?.isValid() ?? false) &&
+              (state.nickname?.isValid() ?? false)) {
+            emit(
+              state.copyWith(
+                isSubmitting: true,
+                authFailureOrSuccessOption: none(),
+              ),
+            );
+            failureOrSuccess = await _authFacade.signUp(
+              state.fullName!,
+              state.nickname!,
+              state.avatar ?? '',
+            );
+          }
+
+          emit(
+            state.copyWith(
+              isSubmitting: false,
+              showErrorMessages: true,
+              authFailureOrSuccessOption: some(failureOrSuccess),
+            ),
+          );
+        },
+        btnConcluirEditionPressed: (value) async {
+          if (state.avatar != null) {
+            emit(state.copyWith(isSubmitting: true));
+            Either<AuthFailure, Unit> updateAvatarFailureOrSuccess;
+            updateAvatarFailureOrSuccess =
+                await _authFacade.updateAvatar(state.avatar!);
+            emit(
+              state.copyWith(
+                updateAvatarSuccess: updateAvatarFailureOrSuccess,
+                isSubmitting: false,
+              ),
+            );
+          }
+        },
+        startedWithUser: (value) async {
+          emit(
+            state.copyWith(
+              fullName: FullName(_authFacade.getSelectedName()),
+              nickname: Nickname(_authFacade.getSelectedNickname()),
+            ),
+          );
+        },
+        photoSelected: (value) async {
+          emit(state.copyWith(avatar: value.path));
+        },
+      );
+    });
+  }
 
   final IAuthFacade _authFacade;
-
-  @override
-  Stream<SignUpFormBlocState> mapEventToState(
-    SignUpFormBlocEvent event,
-  ) async* {
-    yield* event.map(
-      fullNameChanged: (e) async* {
-        yield state.copyWith(
-          fullName: FullName(e.fullName),
-          authFailureOrSuccessOption: none(),
-        );
-      },
-      nicknameChanged: (e) async* {
-        yield state.copyWith(
-          nickname: Nickname(e.nickname),
-          authFailureOrSuccessOption: none(),
-        );
-      },
-      btnSignUpPressed: (e) async* {
-        Either<AuthFailure, Unit> failureOrSuccess =
-            left(const AuthFailure.applicationError());
-
-        if (!(state.fullName?.isValid() ?? false)) {
-          failureOrSuccess = left(const AuthFailure.invalidFullName());
-        } else if (!(state.nickname?.isValid() ?? false)) {
-          failureOrSuccess = left(const AuthFailure.invalidNickname());
-        } else {
-          failureOrSuccess = right(unit);
-        }
-
-        if ((state.fullName?.isValid() ?? false) &&
-            (state.nickname?.isValid() ?? false)) {
-          yield state.copyWith(authFailureOrSuccessOption: none());
-
-          _authFacade.onNameAndNicknameSelected(
-            state.fullName?.getOrCrash() ?? '',
-            state.nickname?.getOrCrash() ?? '',
-          );
-        }
-
-        yield state.copyWith(
-          isSubmitting: false,
-          showErrorMessages: true,
-          authFailureOrSuccessOption: optionOf(failureOrSuccess),
-        );
-      },
-      startedWithUser: (StartedWithUser value) async* {
-        yield state.copyWith(
-          fullName: FullName(_authFacade.getSelectedName()),
-          nickname: Nickname(_authFacade.getSelectedNickname()),
-        );
-      },
-      photoSelected: (PhotoSelected value) async* {
-        yield state.copyWith(avatar: value.path);
-      },
-      btnConcluirPressed: (BtnConcluirPressed value) async* {
-        Either<AuthFailure, Unit> failureOrSuccess =
-            left(const AuthFailure.applicationError());
-
-        if ((state.fullName?.isValid() ?? false) &&
-            (state.nickname?.isValid() ?? false)) {
-          yield state.copyWith(
-            isSubmitting: true,
-            authFailureOrSuccessOption: none(),
-          );
-          failureOrSuccess = await _authFacade.signUp(
-            state.fullName!,
-            state.nickname!,
-            state.avatar ?? '',
-          );
-        }
-
-        yield state.copyWith(
-          isSubmitting: false,
-          showErrorMessages: true,
-          authFailureOrSuccessOption: some(failureOrSuccess),
-        );
-      },
-      btnConcluirEditionPressed: (BtnConcluirEditionPressed value) async* {
-        if (state.avatar != null) {
-          yield state.copyWith(isSubmitting: true);
-          Either<AuthFailure, Unit> updateAvatarFailureOrSuccess;
-          updateAvatarFailureOrSuccess =
-              await _authFacade.updateAvatar(state.avatar!);
-          yield state.copyWith(
-            updateAvatarSuccess: updateAvatarFailureOrSuccess,
-            isSubmitting: false,
-          );
-        }
-      },
-    );
-  }
 }

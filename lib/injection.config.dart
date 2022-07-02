@@ -19,7 +19,7 @@ import 'application/buyer/adivertisements/advertiser/advertiser_bloc.dart'
 import 'application/buyer/adivertisements/single_advertisement/single_advertisement_bloc.dart'
     as _i42;
 import 'application/buyer/cart/cart_bloc.dart' as _i53;
-import 'application/buyer/group/group_bloc.dart' as _i57;
+import 'application/buyer/group/group_bloc.dart' as _i58;
 import 'application/buyer/menu/buyer_menu_bloc.dart' as _i52;
 import 'application/buyer/product/product_page_bloc.dart' as _i28;
 import 'application/buyer/reservation/reservation_bloc.dart' as _i30;
@@ -30,11 +30,11 @@ import 'application/buyer/search/search_form_bloc.dart' as _i32;
 import 'application/buyer/summary/summary_bloc.dart' as _i46;
 import 'application/chat/chat_bloc.dart' as _i54;
 import 'application/chat/message/message_bloc.dart' as _i21;
-import 'application/chat_list/chat_list_bloc.dart' as _i55;
+import 'application/chat_list/chat_list_bloc.dart' as _i56;
 import 'application/home/home_bloc.dart' as _i6;
 import 'application/notification/notifications_bloc.dart' as _i26;
 import 'application/places_form/bloc/places_form_bloc.dart' as _i27;
-import 'application/profile/edit/edit_profile_bloc.dart' as _i56;
+import 'application/profile/edit/edit_profile_bloc.dart' as _i57;
 import 'application/profile/profile_bloc.dart' as _i29;
 import 'application/seller/adveretisements/seller_advertisements_bloc.dart'
     as _i34;
@@ -60,6 +60,7 @@ import 'application/splash/splash_bloc.dart' as _i45;
 import 'application/stores/my_stores/my_stores_bloc.dart' as _i22;
 import 'domain/advertisements/i_advertisements_facade.dart' as _i7;
 import 'domain/auth/i_auth_facade.dart' as _i9;
+import 'domain/chat/chat.dart' as _i55;
 import 'domain/chat/i_chat_facade.dart' as _i11;
 import 'domain/notification/i_notification_facade.dart' as _i13;
 import 'domain/places/i_places_facade.dart' as _i15;
@@ -70,7 +71,7 @@ import 'infrastructure/advertisement/advertisement_facade.dart' as _i8;
 import 'infrastructure/auth/auth_facade.dart' as _i10;
 import 'infrastructure/auth/rest_auth_facade.dart' as _i31;
 import 'infrastructure/chat/chat_facade.dart' as _i12;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i58;
+import 'infrastructure/core/firebase_injectable_module.dart' as _i59;
 import 'infrastructure/notification/notification_facade.dart' as _i14;
 import 'infrastructure/places/places_facade.dart' as _i16;
 import 'infrastructure/product/product_facade.dart' as _i18;
@@ -155,14 +156,15 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i52.BuyerMenuBloc(get<_i19.IReservationFacade>()));
   gh.factory<_i53.CartBloc>(() => _i53.CartBloc(
       get<_i19.IReservationFacade>(), get<_i7.IAdvertisementsFacade>()));
-  gh.factory<_i54.ChatBloc>(() => _i54.ChatBloc(get<_i11.IChatFacade>()));
-  gh.factory<_i55.ChatListBloc>(
-      () => _i55.ChatListBloc(get<_i11.IChatFacade>()));
-  gh.factory<_i56.EditProfileBloc>(
-      () => _i56.EditProfileBloc(get<_i9.IAuthFacade>()));
-  gh.factory<_i57.GroupBloc>(
-      () => _i57.GroupBloc(get<_i7.IAdvertisementsFacade>()));
+  gh.factory<_i54.ChatBloc>(
+      () => _i54.ChatBloc(get<_i11.IChatFacade>(), get<_i55.Chat>()));
+  gh.factory<_i56.ChatListBloc>(
+      () => _i56.ChatListBloc(get<_i11.IChatFacade>()));
+  gh.factory<_i57.EditProfileBloc>(
+      () => _i57.EditProfileBloc(get<_i9.IAuthFacade>()));
+  gh.factory<_i58.GroupBloc>(
+      () => _i58.GroupBloc(get<_i7.IAdvertisementsFacade>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i58.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i59.FirebaseInjectableModule {}

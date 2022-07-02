@@ -29,6 +29,7 @@ _$_User _$_$_UserFromJson(Map<String, dynamic> json) {
             json['lastAdvertisement'] as Map<String, dynamic>),
     json['email'] as String?,
     json['ownGroupId'] as int?,
+    isOnline: json['isOnline'] as bool?,
   );
 }
 
@@ -44,6 +45,7 @@ Map<String, dynamic> _$_$_UserToJson(_$_User instance) => <String, dynamic>{
       'lastAdvertisement': instance.lastAdvertisement?.toJson(),
       'email': instance.email,
       'ownGroupId': instance.ownGroupId,
+      'isOnline': instance.isOnline,
     };
 
 _$_ThumbAvatar _$_$_ThumbAvatarFromJson(Map<String, dynamic> json) {

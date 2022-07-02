@@ -21,22 +21,28 @@ class _$ChatMessageTearOff {
   const _$ChatMessageTearOff();
 
   _ChatMessage call(
-      String? id,
-      String content,
-      String contentType,
-      String? fileUrl,
-      @ServerTimestampConverter() DateTime? sentAt,
-      User sentBy,
-      {required bool visualized,
+      {required String? id,
+      required String content,
+      required String contentType,
+      required String? fileUrl,
+      required String? fileName,
+      @ServerTimestampConverter() required DateTime? sentAt,
+      required User sentBy,
+      required bool visualized,
+      required bool? audioReproduced,
+      required int? audioDuration,
       required bool? hasPendingWrites}) {
     return _ChatMessage(
-      id,
-      content,
-      contentType,
-      fileUrl,
-      sentAt,
-      sentBy,
+      id: id,
+      content: content,
+      contentType: contentType,
+      fileUrl: fileUrl,
+      fileName: fileName,
+      sentAt: sentAt,
+      sentBy: sentBy,
       visualized: visualized,
+      audioReproduced: audioReproduced,
+      audioDuration: audioDuration,
       hasPendingWrites: hasPendingWrites,
     );
   }
@@ -55,10 +61,13 @@ mixin _$ChatMessage {
   String get content => throw _privateConstructorUsedError;
   String get contentType => throw _privateConstructorUsedError;
   String? get fileUrl => throw _privateConstructorUsedError;
+  String? get fileName => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
   DateTime? get sentAt => throw _privateConstructorUsedError;
   User get sentBy => throw _privateConstructorUsedError;
   bool get visualized => throw _privateConstructorUsedError;
+  bool? get audioReproduced => throw _privateConstructorUsedError;
+  int? get audioDuration => throw _privateConstructorUsedError;
   bool? get hasPendingWrites => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -77,9 +86,12 @@ abstract class $ChatMessageCopyWith<$Res> {
       String content,
       String contentType,
       String? fileUrl,
+      String? fileName,
       @ServerTimestampConverter() DateTime? sentAt,
       User sentBy,
       bool visualized,
+      bool? audioReproduced,
+      int? audioDuration,
       bool? hasPendingWrites});
 
   $UserCopyWith<$Res> get sentBy;
@@ -99,9 +111,12 @@ class _$ChatMessageCopyWithImpl<$Res> implements $ChatMessageCopyWith<$Res> {
     Object? content = freezed,
     Object? contentType = freezed,
     Object? fileUrl = freezed,
+    Object? fileName = freezed,
     Object? sentAt = freezed,
     Object? sentBy = freezed,
     Object? visualized = freezed,
+    Object? audioReproduced = freezed,
+    Object? audioDuration = freezed,
     Object? hasPendingWrites = freezed,
   }) {
     return _then(_value.copyWith(
@@ -121,6 +136,10 @@ class _$ChatMessageCopyWithImpl<$Res> implements $ChatMessageCopyWith<$Res> {
           ? _value.fileUrl
           : fileUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      fileName: fileName == freezed
+          ? _value.fileName
+          : fileName // ignore: cast_nullable_to_non_nullable
+              as String?,
       sentAt: sentAt == freezed
           ? _value.sentAt
           : sentAt // ignore: cast_nullable_to_non_nullable
@@ -133,6 +152,14 @@ class _$ChatMessageCopyWithImpl<$Res> implements $ChatMessageCopyWith<$Res> {
           ? _value.visualized
           : visualized // ignore: cast_nullable_to_non_nullable
               as bool,
+      audioReproduced: audioReproduced == freezed
+          ? _value.audioReproduced
+          : audioReproduced // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      audioDuration: audioDuration == freezed
+          ? _value.audioDuration
+          : audioDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
       hasPendingWrites: hasPendingWrites == freezed
           ? _value.hasPendingWrites
           : hasPendingWrites // ignore: cast_nullable_to_non_nullable
@@ -160,9 +187,12 @@ abstract class _$ChatMessageCopyWith<$Res>
       String content,
       String contentType,
       String? fileUrl,
+      String? fileName,
       @ServerTimestampConverter() DateTime? sentAt,
       User sentBy,
       bool visualized,
+      bool? audioReproduced,
+      int? audioDuration,
       bool? hasPendingWrites});
 
   @override
@@ -185,33 +215,40 @@ class __$ChatMessageCopyWithImpl<$Res> extends _$ChatMessageCopyWithImpl<$Res>
     Object? content = freezed,
     Object? contentType = freezed,
     Object? fileUrl = freezed,
+    Object? fileName = freezed,
     Object? sentAt = freezed,
     Object? sentBy = freezed,
     Object? visualized = freezed,
+    Object? audioReproduced = freezed,
+    Object? audioDuration = freezed,
     Object? hasPendingWrites = freezed,
   }) {
     return _then(_ChatMessage(
-      id == freezed
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      content == freezed
+      content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      contentType == freezed
+      contentType: contentType == freezed
           ? _value.contentType
           : contentType // ignore: cast_nullable_to_non_nullable
               as String,
-      fileUrl == freezed
+      fileUrl: fileUrl == freezed
           ? _value.fileUrl
           : fileUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      sentAt == freezed
+      fileName: fileName == freezed
+          ? _value.fileName
+          : fileName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sentAt: sentAt == freezed
           ? _value.sentAt
           : sentAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      sentBy == freezed
+      sentBy: sentBy == freezed
           ? _value.sentBy
           : sentBy // ignore: cast_nullable_to_non_nullable
               as User,
@@ -219,6 +256,14 @@ class __$ChatMessageCopyWithImpl<$Res> extends _$ChatMessageCopyWithImpl<$Res>
           ? _value.visualized
           : visualized // ignore: cast_nullable_to_non_nullable
               as bool,
+      audioReproduced: audioReproduced == freezed
+          ? _value.audioReproduced
+          : audioReproduced // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      audioDuration: audioDuration == freezed
+          ? _value.audioDuration
+          : audioDuration // ignore: cast_nullable_to_non_nullable
+              as int?,
       hasPendingWrites: hasPendingWrites == freezed
           ? _value.hasPendingWrites
           : hasPendingWrites // ignore: cast_nullable_to_non_nullable
@@ -231,9 +276,18 @@ class __$ChatMessageCopyWithImpl<$Res> extends _$ChatMessageCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_ChatMessage extends _ChatMessage {
-  const _$_ChatMessage(this.id, this.content, this.contentType, this.fileUrl,
-      @ServerTimestampConverter() this.sentAt, this.sentBy,
-      {required this.visualized, required this.hasPendingWrites})
+  const _$_ChatMessage(
+      {required this.id,
+      required this.content,
+      required this.contentType,
+      required this.fileUrl,
+      required this.fileName,
+      @ServerTimestampConverter() required this.sentAt,
+      required this.sentBy,
+      required this.visualized,
+      required this.audioReproduced,
+      required this.audioDuration,
+      required this.hasPendingWrites})
       : super._();
 
   factory _$_ChatMessage.fromJson(Map<String, dynamic> json) =>
@@ -248,6 +302,8 @@ class _$_ChatMessage extends _ChatMessage {
   @override
   final String? fileUrl;
   @override
+  final String? fileName;
+  @override
   @ServerTimestampConverter()
   final DateTime? sentAt;
   @override
@@ -255,11 +311,15 @@ class _$_ChatMessage extends _ChatMessage {
   @override
   final bool visualized;
   @override
+  final bool? audioReproduced;
+  @override
+  final int? audioDuration;
+  @override
   final bool? hasPendingWrites;
 
   @override
   String toString() {
-    return 'ChatMessage(id: $id, content: $content, contentType: $contentType, fileUrl: $fileUrl, sentAt: $sentAt, sentBy: $sentBy, visualized: $visualized, hasPendingWrites: $hasPendingWrites)';
+    return 'ChatMessage(id: $id, content: $content, contentType: $contentType, fileUrl: $fileUrl, fileName: $fileName, sentAt: $sentAt, sentBy: $sentBy, visualized: $visualized, audioReproduced: $audioReproduced, audioDuration: $audioDuration, hasPendingWrites: $hasPendingWrites)';
   }
 
   @override
@@ -277,6 +337,9 @@ class _$_ChatMessage extends _ChatMessage {
             (identical(other.fileUrl, fileUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.fileUrl, fileUrl)) &&
+            (identical(other.fileName, fileName) ||
+                const DeepCollectionEquality()
+                    .equals(other.fileName, fileName)) &&
             (identical(other.sentAt, sentAt) ||
                 const DeepCollectionEquality().equals(other.sentAt, sentAt)) &&
             (identical(other.sentBy, sentBy) ||
@@ -284,6 +347,12 @@ class _$_ChatMessage extends _ChatMessage {
             (identical(other.visualized, visualized) ||
                 const DeepCollectionEquality()
                     .equals(other.visualized, visualized)) &&
+            (identical(other.audioReproduced, audioReproduced) ||
+                const DeepCollectionEquality()
+                    .equals(other.audioReproduced, audioReproduced)) &&
+            (identical(other.audioDuration, audioDuration) ||
+                const DeepCollectionEquality()
+                    .equals(other.audioDuration, audioDuration)) &&
             (identical(other.hasPendingWrites, hasPendingWrites) ||
                 const DeepCollectionEquality()
                     .equals(other.hasPendingWrites, hasPendingWrites)));
@@ -296,9 +365,12 @@ class _$_ChatMessage extends _ChatMessage {
       const DeepCollectionEquality().hash(content) ^
       const DeepCollectionEquality().hash(contentType) ^
       const DeepCollectionEquality().hash(fileUrl) ^
+      const DeepCollectionEquality().hash(fileName) ^
       const DeepCollectionEquality().hash(sentAt) ^
       const DeepCollectionEquality().hash(sentBy) ^
       const DeepCollectionEquality().hash(visualized) ^
+      const DeepCollectionEquality().hash(audioReproduced) ^
+      const DeepCollectionEquality().hash(audioDuration) ^
       const DeepCollectionEquality().hash(hasPendingWrites);
 
   @JsonKey(ignore: true)
@@ -314,13 +386,16 @@ class _$_ChatMessage extends _ChatMessage {
 
 abstract class _ChatMessage extends ChatMessage {
   const factory _ChatMessage(
-      String? id,
-      String content,
-      String contentType,
-      String? fileUrl,
-      @ServerTimestampConverter() DateTime? sentAt,
-      User sentBy,
-      {required bool visualized,
+      {required String? id,
+      required String content,
+      required String contentType,
+      required String? fileUrl,
+      required String? fileName,
+      @ServerTimestampConverter() required DateTime? sentAt,
+      required User sentBy,
+      required bool visualized,
+      required bool? audioReproduced,
+      required int? audioDuration,
       required bool? hasPendingWrites}) = _$_ChatMessage;
   const _ChatMessage._() : super._();
 
@@ -336,12 +411,18 @@ abstract class _ChatMessage extends ChatMessage {
   @override
   String? get fileUrl => throw _privateConstructorUsedError;
   @override
+  String? get fileName => throw _privateConstructorUsedError;
+  @override
   @ServerTimestampConverter()
   DateTime? get sentAt => throw _privateConstructorUsedError;
   @override
   User get sentBy => throw _privateConstructorUsedError;
   @override
   bool get visualized => throw _privateConstructorUsedError;
+  @override
+  bool? get audioReproduced => throw _privateConstructorUsedError;
+  @override
+  int? get audioDuration => throw _privateConstructorUsedError;
   @override
   bool? get hasPendingWrites => throw _privateConstructorUsedError;
   @override

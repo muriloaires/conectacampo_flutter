@@ -30,6 +30,7 @@ class UserChat with _$UserChat {
     required String? id,
     required User otherUser,
     required String chatId,
+    required int? unreadMessages,
     @ServerTimestampConverter() required DateTime? createdAt,
     @ServerTimestampConverter() required DateTime? updatedAt,
     required ChatMessage? lastMessage,

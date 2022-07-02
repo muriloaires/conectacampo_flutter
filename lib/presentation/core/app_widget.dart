@@ -1,3 +1,5 @@
+import 'package:conectacampo/domain/chat/i_chat_facade.dart';
+import 'package:conectacampo/infrastructure/chat/chat_facade.dart';
 import 'package:conectacampo/presentation/buyer/buyer_main_page.dart';
 import 'package:conectacampo/presentation/chat/chat_page.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
@@ -13,8 +15,44 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-class AppWidget extends StatelessWidget {
+class AppWidget extends StatefulWidget {
   const AppWidget();
+
+  @override
+  State<AppWidget> createState() => _AppWidgetState();
+}
+
+class _AppWidgetState extends State<AppWidget> with WidgetsBindingObserver {
+  IChatFacade chatFacade = ChatFacade();
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    chatFacade.setChatStatus(isOnline: true);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.detached ||
+        state == AppLifecycleState.inactive) {
+      return;
+    }
+    final isBackground = state == AppLifecycleState.paused;
+    if (isBackground) {
+      chatFacade.setChatStatus(isOnline: false);
+    }
+
+    if (state == AppLifecycleState.resumed) {
+      chatFacade.setChatStatus(isOnline: true);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

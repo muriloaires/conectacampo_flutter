@@ -34,8 +34,6 @@ class _RecordButtonState extends State<RecordButton>
   final _codec = Codec.aacMP4;
 
   FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
-  bool _mPlayerIsInited = false;
-  bool _mRecorderIsInited = false;
 
   bool cancelAudio = false;
 
@@ -48,9 +46,7 @@ class _RecordButtonState extends State<RecordButton>
     animation = Tween(begin: 1.0, end: 0.0).animate(animationController);
 
     openTheRecorder().then((value) {
-      setState(() {
-        _mRecorderIsInited = true;
-      });
+      setState(() {});
     });
     super.initState();
   }
@@ -83,7 +79,7 @@ class _RecordButtonState extends State<RecordButton>
         stopRecorder();
         setState(() {
           isRecording = false;
-          widget.onEndRecording();
+          widget.onEndRecording(File(path));
         });
       },
       child: Padding(
@@ -102,7 +98,6 @@ class _RecordButtonState extends State<RecordButton>
   @override
   void dispose() {
     animationController.dispose();
-
     _mRecorder!.closeRecorder();
     _mRecorder = null;
     super.dispose();
@@ -117,12 +112,14 @@ class _RecordButtonState extends State<RecordButton>
     );
   }
 
-  Future<void> stopRecorder() async {
+  Future<File?> stopRecorder() async {
     await _mRecorder!.stopRecorder();
     if (cancelAudio) {
       await File(path).delete();
       cancelAudio = false;
+      return null;
     }
+    return File(path);
   }
 
   Future<void> openTheRecorder() async {
@@ -152,8 +149,6 @@ class _RecordButtonState extends State<RecordButton>
         androidWillPauseWhenDucked: true,
       ),
     );
-
-    _mRecorderIsInited = true;
   }
 
   Future<String> getFilePath() async {

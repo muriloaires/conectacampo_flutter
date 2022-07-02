@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:conectacampo/application/chat/chat_bloc.dart';
 import 'package:conectacampo/presentation/chat/widgets/record_button.dart';
@@ -86,12 +87,12 @@ class _ChatBottomMenuState extends State<ChatBottomMenu> {
                       Text(
                         '$minuteStr:$secondStr',
                         style:
-                            const TextStyle(color: Colors.white, fontSize: 18),
+                            const TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       const SizedBox(width: 10),
                       const Text(
                         'Arraste para cancelar',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       const Icon(
                         Icons.chevron_left,
@@ -132,6 +133,7 @@ class _ChatBottomMenuState extends State<ChatBottomMenu> {
                 context
                     .read<ChatBloc>()
                     .add(ChatEvent.onBtnSendPressed(controller.text));
+                controller.text = "";
               },
               icon: const Icon(
                 Icons.send,
@@ -156,7 +158,7 @@ class _ChatBottomMenuState extends State<ChatBottomMenu> {
                   });
                 });
               },
-              onEndRecording: () {
+              onEndRecording: (File file) {
                 timerSubscription?.cancel();
                 timerStream = null;
                 minuteStr = '00';
@@ -164,6 +166,9 @@ class _ChatBottomMenuState extends State<ChatBottomMenu> {
                 setState(() {
                   isRecording = false;
                 });
+                context
+                    .read<ChatBloc>()
+                    .add(ChatEvent.onBtnAudioFinished(file));
               },
             ),
         ],

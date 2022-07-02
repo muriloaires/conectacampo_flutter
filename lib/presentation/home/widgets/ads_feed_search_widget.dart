@@ -17,7 +17,7 @@ class AdsFeedSearchWidget extends StatelessWidget {
           ),
         ),
         child: TextField(
-          autofocus: true,
+          autofocus: false,
           onChanged: (newValue) {
             // context
             //     .read<SearchFormBloc>()

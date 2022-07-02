@@ -6,15 +6,19 @@ import 'package:conectacampo/presentation/chat/message/image_message.dart';
 import 'package:conectacampo/presentation/chat/message/text_message.dart';
 import 'package:flutter/material.dart';
 
-abstract class MessageWidget extends StatelessWidget {
+abstract class MessageWidget extends StatefulWidget {
   const MessageWidget(this.message, this.currentUser);
   final ChatMessage message;
   final User currentUser;
 
-  factory MessageWidget.fromType(ChatMessage message, User currentUser) {
+  factory MessageWidget.fromType(
+    ChatMessage message,
+    User currentUser,
+    ChatMessage? nextAudioMessage,
+  ) {
     switch (message.contentType) {
       case 'audio':
-        return AudioMessage(message, currentUser);
+        return AudioMessage(message, currentUser, nextAudioMessage);
 
       case 'text':
         return TextMessage(message, currentUser);
@@ -32,6 +36,17 @@ abstract class MessageWidget extends StatelessWidget {
         return TextMessage(message, currentUser);
     }
   }
+
+  // @override
+  // State<MessageWidget> createState() => _MessageWidgetState();
+}
+
+class _LocationMessageWidgetState extends State<MessageWidget> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
 }
 
 class LocationMessage extends MessageWidget {
@@ -39,10 +54,7 @@ class LocationMessage extends MessageWidget {
       : super(message, currentUser);
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+  State<MessageWidget> createState() => _LocationMessageWidgetState();
 }
 
 class LoggedUserMessageWidget extends StatelessWidget {

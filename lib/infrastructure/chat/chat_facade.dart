@@ -1,10 +1,21 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/domain/chat/chat.dart';
+import 'package:conectacampo/domain/chat/chat_failure.dart';
 import 'package:conectacampo/domain/chat/chat_message.dart';
 import 'package:conectacampo/domain/chat/i_chat_facade.dart';
+import 'package:conectacampo/infrastructure/auth/token_repository.dart';
 import 'package:conectacampo/infrastructure/auth/user_repository.dart';
+import 'package:conectacampo/infrastructure/core/http_constants.dart';
+import 'package:dartz/dartz.dart';
+import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 @LazySingleton(as: IChatFacade)
 class ChatFacade implements IChatFacade {
@@ -45,6 +56,7 @@ class ChatFacade implements IChatFacade {
       id: null,
       otherUser: otherUser,
       chatId: chatDocRef.id,
+      unreadMessages: 0,
       createdAt: null,
       updatedAt: null,
       lastMessage: null,
@@ -53,6 +65,7 @@ class ChatFacade implements IChatFacade {
       id: null,
       otherUser: loggedUser,
       chatId: chatDocRef.id,
+      unreadMessages: 0,
       createdAt: null,
       updatedAt: null,
       lastMessage: null,
@@ -107,6 +120,7 @@ class ChatFacade implements IChatFacade {
       batch.update(userChat, {
         'updatedAt': FieldValue.serverTimestamp(),
         'lastMessage': message.toJson(),
+        'unreadMessages': FieldValue.increment(1),
       });
     }
   }
@@ -150,38 +164,91 @@ class ChatFacade implements IChatFacade {
     return Chat.fromFirestore(docRef);
   }
 
-  //  @override
-  // Future<Either<AuthFailure, Unit>> updateAvatar(String avatarPath) async {
-  //   final url = Uri.https(baseUrl, '$apiVersion$routeMe');
-  //   final request = http.MultipartRequest(
-  //     'PATCH',
-  //     url,
-  //   );
-  //   request.headers.addAll(getApiHeader());
-  //   request.files.add(await http.MultipartFile.fromPath('avatar', avatarPath));
-  //   request.headers
-  //       .addAll({'Authorization': 'Bearer ${await getCurrentAcessToken()}'});
-  //   final response = await request.send();
-  //   final code = response.statusCode;
-  //   if (code >= 200 && code < 300) {
-  //     final user = UserResponse.fromJson(
-  //       json.decode(await response.stream.bytesToString())
-  //           as Map<String, dynamic>,
-  //     );
-  //     await persistUser(user);
-  //     return right(unit);
-  //   } else if (code == 401) {
-  //     return left(const AuthFailure.unauthorized());
-  //   } else if (code >= 400 && code < 500) {
-  //     final errors = Errors.fromJson(
-  //         jsonDecode(await response.stream.bytesToString())
-  //             as Map<String, dynamic>);
-  //     if (errors.errors.contains('Celular já está em uso')) {
-  //       return left(const AuthFailure.phoneAlreadyUsed());
-  //     }
-  //     return left(const AuthFailure.applicationError());
-  //   } else {
-  //     return left(const AuthFailure.serverError());
-  //   }
-  // }
+  @override
+  Future<Either<ChatFailure, String>> sendFile(File file) async {
+    final url = Uri.https(baseUrl, '$apiVersion2/uploads');
+    final request = http.MultipartRequest(
+      'POST',
+      url,
+    );
+    request.headers.addAll(getApiHeader());
+    request.files.add(await http.MultipartFile.fromPath('file', file.path));
+    request.headers
+        .addAll({'Authorization': 'Bearer ${await getCurrentAcessToken()}'});
+    final response = await request.send();
+    final code = response.statusCode;
+
+    if (code >= 200 && code < 300) {
+      final responseString = await response.stream.bytesToString();
+      return right(jsonDecode(responseString)['url'] as String);
+    } else if (code == 401) {
+      return left(const ChatFailure.unauthorized());
+    } else if (code >= 400 && code < 500) {
+      return left(const ChatFailure.applicationError());
+    } else {
+      return left(const ChatFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ChatFailure, File>> downloadFile(ChatMessage message) async {
+    final fileUrl = message.fileUrl;
+    if (fileUrl == null) {
+      return left(const ChatFailure.fileNotDownloaded());
+    }
+    final response = await http.get(Uri.parse(fileUrl));
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      final dir = (await getApplicationDocumentsDirectory()).path;
+      final file = File('$dir/${message.id}.${extension(message.fileName!)}');
+      file.writeAsBytes(response.bodyBytes);
+      return right(file);
+    }
+    return left(const ChatFailure.fileNotDownloaded());
+  }
+
+  @override
+  Future<void> setChatStatus({required bool isOnline}) async {
+    final user = await loadLoggedUser();
+    if (user == null) {
+      return;
+    }
+    await usersRef
+        .doc(user.phoneNumber!)
+        .set(user.copyWith(isOnline: isOnline).toJson());
+  }
+
+  @override
+  Stream<User>? getUser({required User user}) {
+    return usersRef
+        .doc(user.phoneNumber)
+        .snapshots(includeMetadataChanges: true)
+        .map((event) => User.fromJson(event.data()!));
+  }
+
+  @override
+  Future<void> clearUnreadMessages(Chat chat) async {
+    final user = await loadLoggedUser();
+    final userChatQS = await usersRef
+        .doc(user?.phoneNumber)
+        .collection('chats')
+        .where('chatId', isEqualTo: chat.id)
+        .get();
+
+    for (final document in userChatQS.docs) {
+      await usersRef
+          .doc(user?.phoneNumber)
+          .collection('chats')
+          .doc(document.id)
+          .update({'unreadMessages': 0});
+    }
+  }
+
+  @override
+  Future<void> updateChatMessage(Chat chat, ChatMessage chatMessage) async {
+    await chatsRef
+        .doc(chat.id)
+        .collection('messages')
+        .doc(chatMessage.id)
+        .update({'audioReproduced': true});
+  }
 }

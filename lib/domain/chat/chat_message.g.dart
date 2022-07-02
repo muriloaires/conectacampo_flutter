@@ -8,13 +8,16 @@ part of 'chat_message.dart';
 
 _$_ChatMessage _$_$_ChatMessageFromJson(Map<String, dynamic> json) {
   return _$_ChatMessage(
-    json['id'] as String?,
-    json['content'] as String,
-    json['contentType'] as String,
-    json['fileUrl'] as String?,
-    const ServerTimestampConverter().fromJson(json['sentAt']),
-    User.fromJson(json['sentBy'] as Map<String, dynamic>),
+    id: json['id'] as String?,
+    content: json['content'] as String,
+    contentType: json['contentType'] as String,
+    fileUrl: json['fileUrl'] as String?,
+    fileName: json['fileName'] as String?,
+    sentAt: const ServerTimestampConverter().fromJson(json['sentAt']),
+    sentBy: User.fromJson(json['sentBy'] as Map<String, dynamic>),
     visualized: json['visualized'] as bool,
+    audioReproduced: json['audioReproduced'] as bool?,
+    audioDuration: json['audioDuration'] as int?,
     hasPendingWrites: json['hasPendingWrites'] as bool?,
   );
 }
@@ -25,8 +28,11 @@ Map<String, dynamic> _$_$_ChatMessageToJson(_$_ChatMessage instance) =>
       'content': instance.content,
       'contentType': instance.contentType,
       'fileUrl': instance.fileUrl,
+      'fileName': instance.fileName,
       'sentAt': const ServerTimestampConverter().toJson(instance.sentAt),
       'sentBy': instance.sentBy.toJson(),
       'visualized': instance.visualized,
+      'audioReproduced': instance.audioReproduced,
+      'audioDuration': instance.audioDuration,
       'hasPendingWrites': instance.hasPendingWrites,
     };

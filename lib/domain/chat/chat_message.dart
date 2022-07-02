@@ -1,8 +1,11 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:conectacampo/domain/auth/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:path/path.dart';
 
 part 'chat_message.freezed.dart';
 part 'chat_message.g.dart';
@@ -11,14 +14,17 @@ part 'chat_message.g.dart';
 class ChatMessage with _$ChatMessage {
   const ChatMessage._();
   @JsonSerializable(explicitToJson: true)
-  const factory ChatMessage(
-    String? id,
-    String content,
-    String contentType,
-    String? fileUrl,
-    @ServerTimestampConverter() DateTime? sentAt,
-    User sentBy, {
+  const factory ChatMessage({
+    required String? id,
+    required String content,
+    required String contentType,
+    required String? fileUrl,
+    required String? fileName,
+    @ServerTimestampConverter() required DateTime? sentAt,
+    required User sentBy,
     required bool visualized,
+    required bool? audioReproduced,
+    required int? audioDuration,
     required bool? hasPendingWrites,
   }) = _ChatMessage;
 
@@ -27,13 +33,70 @@ class ChatMessage with _$ChatMessage {
 
   factory ChatMessage.createTextChatMessage(String content, User user) =>
       ChatMessage(
-        null,
-        content,
-        'text',
-        null,
-        null,
-        user,
+        id: null,
+        content: content,
+        contentType: 'text',
+        fileUrl: null,
+        fileName: null,
+        sentAt: null,
+        sentBy: user,
         visualized: false,
+        audioReproduced: null,
+        audioDuration: null,
+        hasPendingWrites: true,
+      );
+
+  factory ChatMessage.createFileChatMessage(File file, String url, User user) =>
+      ChatMessage(
+        id: null,
+        content: '',
+        contentType: 'document',
+        fileUrl: url,
+        fileName: basename(file.path),
+        sentAt: null,
+        sentBy: user,
+        visualized: false,
+        audioReproduced: null,
+        audioDuration: null,
+        hasPendingWrites: true,
+      );
+
+  factory ChatMessage.createImageChatMessage(
+    File file,
+    String url,
+    User user,
+  ) =>
+      ChatMessage(
+        id: null,
+        content: '',
+        contentType: 'image',
+        fileUrl: url,
+        fileName: basename(file.path),
+        sentAt: null,
+        sentBy: user,
+        visualized: false,
+        audioReproduced: null,
+        audioDuration: null,
+        hasPendingWrites: true,
+      );
+
+  factory ChatMessage.createAudioMessage(
+    File file,
+    String url,
+    User user,
+    int audioDuration,
+  ) =>
+      ChatMessage(
+        id: null,
+        content: '',
+        contentType: 'audio',
+        fileUrl: url,
+        fileName: basename(file.path),
+        sentAt: null,
+        sentBy: user,
+        visualized: false,
+        audioReproduced: false,
+        audioDuration: audioDuration,
         hasPendingWrites: true,
       );
 

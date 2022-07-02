@@ -1,12 +1,13 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, empty_catches, require_trailing_commas
 
+import 'dart:async';
 import 'dart:io';
 
 import 'package:conectacampo/application/chat/chat_bloc.dart';
 import 'package:conectacampo/application/chat/message/message_bloc.dart';
 import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/domain/chat/chat.dart';
-import 'package:conectacampo/domain/chat/chat_message.dart';
+import 'package:conectacampo/infrastructure/auth/user_repository.dart';
 import 'package:conectacampo/infrastructure/chat/chat_facade.dart';
 import 'package:conectacampo/injection.dart';
 import 'package:conectacampo/presentation/chat/message/send_file_page.dart';
@@ -15,6 +16,7 @@ import 'package:conectacampo/presentation/chat/widgets/chat_background.dart';
 import 'package:conectacampo/presentation/chat/widgets/chat_bottom_menu.dart';
 import 'package:conectacampo/presentation/chat/widgets/message_widget.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
+import 'package:conectacampo/presentation/splash_screen.dart';
 import 'package:conectacampo/presentation/util/file_utils.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -26,21 +28,47 @@ import 'package:permission_handler/permission_handler.dart';
 class ChatPage extends StatelessWidget {
   ChatPage(this.otherUser, this.chat);
 
-  final ImagePicker _picker = ImagePicker();
   final User otherUser;
   final Chat chat;
+  final _picker = ImagePicker();
+
   final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ChatBloc>(
-      create: (context) => getIt()..add(ChatEvent.started(chat, otherUser)),
+      create: (context) =>
+          ChatBloc(ChatFacade(), chat)..add(ChatEvent.started(chat, otherUser)),
       child: BlocConsumer<ChatBloc, ChatState>(
         listener: (context, state) async {
+          state.uploadFileErrorOrSuccess?.fold(
+            (l) => l.maybeMap(
+              unauthorized: (unauthorized) async {
+                await logout();
+                Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => SplashScreen(),
+                  ),
+                  (route) => false,
+                );
+              },
+              orElse: () {},
+            ),
+            (r) => null,
+          );
           await checkOpenOptions(state, context);
           await checkSendingOptions(state, context);
+          if (state.scrollToEnd) {
+            _scrollController.jumpTo(0.0);
+          }
+          if (state.uploadingFile) {
+            EasyLoading.show(status: 'Enviando arquivo');
+          } else {
+            EasyLoading.dismiss();
+          }
         },
         builder: (context, state) {
+          final messages = context.read<ChatBloc>().state.messages;
           return Scaffold(
             backgroundColor: ColorSet.green1,
             appBar: ChatAppBar(),
@@ -55,35 +83,35 @@ class ChatPage extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: state.currentChat == null
                               ? const CircularProgressIndicator()
-                              : StreamBuilder(
-                                  builder: (
-                                    BuildContext context,
-                                    AsyncSnapshot<List<ChatMessage>> snapshot,
-                                  ) {
-                                    return ListView.separated(
-                                      controller: _scrollController,
-                                      separatorBuilder: (context, index) =>
-                                          const SizedBox(height: 10),
-                                      itemCount: snapshot.data?.length ?? 0,
-                                      itemBuilder: (context, index) =>
-                                          BlocProvider(
-                                        create: (context) =>
-                                            getIt<MessageBloc>()
-                                              ..add(
-                                                MessageEvent.started(
-                                                  snapshot.data![index],
-                                                ),
-                                              ),
-                                        child: MessageWidget.fromType(
-                                          snapshot.data![index],
-                                          state.currentUser!,
+                              : ListView.separated(
+                                  reverse: true,
+                                  controller: _scrollController,
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(height: 10),
+                                  itemCount: messages.length,
+                                  itemBuilder: (context, index) {
+                                    return BlocProvider(
+                                      create: (context) => getIt<MessageBloc>()
+                                        ..add(
+                                          MessageEvent.started(
+                                            chat,
+                                            messages[index],
+                                            context
+                                                .read<ChatBloc>()
+                                                .state
+                                                .nextAudioToPlay,
+                                          ),
                                         ),
+                                      child: MessageWidget.fromType(
+                                        messages[index],
+                                        state.currentUser!,
+                                        context
+                                            .read<ChatBloc>()
+                                            .state
+                                            .nextAudioToPlay,
                                       ),
                                     );
                                   },
-                                  stream: ChatFacade().getChatMessageStream(
-                                    chat: state.currentChat,
-                                  ),
                                 ),
                         )
                       ],
@@ -177,7 +205,9 @@ class ChatPage extends StatelessWidget {
       ),
     );
 
-    if (result != null) {}
+    if (result != null) {
+      context.read<ChatBloc>().add(ChatEvent.onFileConfirmed(result));
+    }
   }
 
   Future<void> openSendImage(
@@ -189,6 +219,9 @@ class ChatPage extends StatelessWidget {
         builder: (context) => SendFilePage('image', imageSelected),
       ),
     );
+    if (result != null) {
+      context.read<ChatBloc>().add(ChatEvent.onPhotoConfirmed(result));
+    }
   }
 
   Future<void> openSendLocation(

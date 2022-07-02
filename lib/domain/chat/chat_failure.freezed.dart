@@ -27,6 +27,10 @@ class _$ChatFailureTearOff {
   ServerError serverError() {
     return const ServerError();
   }
+
+  FileNotDownloaded fileNotDownloaded() {
+    return const FileNotDownloaded();
+  }
 }
 
 /// @nodoc
@@ -39,6 +43,7 @@ mixin _$ChatFailure {
     required TResult Function() unauthorized,
     required TResult Function() applicationError,
     required TResult Function() serverError,
+    required TResult Function() fileNotDownloaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +51,7 @@ mixin _$ChatFailure {
     TResult Function()? unauthorized,
     TResult Function()? applicationError,
     TResult Function()? serverError,
+    TResult Function()? fileNotDownloaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +60,7 @@ mixin _$ChatFailure {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ApplicationError value) applicationError,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(FileNotDownloaded value) fileNotDownloaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +68,7 @@ mixin _$ChatFailure {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ApplicationError value)? applicationError,
     TResult Function(ServerError value)? serverError,
+    TResult Function(FileNotDownloaded value)? fileNotDownloaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,6 +132,7 @@ class _$Unauthorized implements Unauthorized {
     required TResult Function() unauthorized,
     required TResult Function() applicationError,
     required TResult Function() serverError,
+    required TResult Function() fileNotDownloaded,
   }) {
     return unauthorized();
   }
@@ -134,6 +143,7 @@ class _$Unauthorized implements Unauthorized {
     TResult Function()? unauthorized,
     TResult Function()? applicationError,
     TResult Function()? serverError,
+    TResult Function()? fileNotDownloaded,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -148,6 +158,7 @@ class _$Unauthorized implements Unauthorized {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ApplicationError value) applicationError,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(FileNotDownloaded value) fileNotDownloaded,
   }) {
     return unauthorized(this);
   }
@@ -158,6 +169,7 @@ class _$Unauthorized implements Unauthorized {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ApplicationError value)? applicationError,
     TResult Function(ServerError value)? serverError,
+    TResult Function(FileNotDownloaded value)? fileNotDownloaded,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -214,6 +226,7 @@ class _$ApplicationError implements ApplicationError {
     required TResult Function() unauthorized,
     required TResult Function() applicationError,
     required TResult Function() serverError,
+    required TResult Function() fileNotDownloaded,
   }) {
     return applicationError();
   }
@@ -224,6 +237,7 @@ class _$ApplicationError implements ApplicationError {
     TResult Function()? unauthorized,
     TResult Function()? applicationError,
     TResult Function()? serverError,
+    TResult Function()? fileNotDownloaded,
     required TResult orElse(),
   }) {
     if (applicationError != null) {
@@ -238,6 +252,7 @@ class _$ApplicationError implements ApplicationError {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ApplicationError value) applicationError,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(FileNotDownloaded value) fileNotDownloaded,
   }) {
     return applicationError(this);
   }
@@ -248,6 +263,7 @@ class _$ApplicationError implements ApplicationError {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ApplicationError value)? applicationError,
     TResult Function(ServerError value)? serverError,
+    TResult Function(FileNotDownloaded value)? fileNotDownloaded,
     required TResult orElse(),
   }) {
     if (applicationError != null) {
@@ -303,6 +319,7 @@ class _$ServerError implements ServerError {
     required TResult Function() unauthorized,
     required TResult Function() applicationError,
     required TResult Function() serverError,
+    required TResult Function() fileNotDownloaded,
   }) {
     return serverError();
   }
@@ -313,6 +330,7 @@ class _$ServerError implements ServerError {
     TResult Function()? unauthorized,
     TResult Function()? applicationError,
     TResult Function()? serverError,
+    TResult Function()? fileNotDownloaded,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -327,6 +345,7 @@ class _$ServerError implements ServerError {
     required TResult Function(Unauthorized value) unauthorized,
     required TResult Function(ApplicationError value) applicationError,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(FileNotDownloaded value) fileNotDownloaded,
   }) {
     return serverError(this);
   }
@@ -337,6 +356,7 @@ class _$ServerError implements ServerError {
     TResult Function(Unauthorized value)? unauthorized,
     TResult Function(ApplicationError value)? applicationError,
     TResult Function(ServerError value)? serverError,
+    TResult Function(FileNotDownloaded value)? fileNotDownloaded,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -348,4 +368,98 @@ class _$ServerError implements ServerError {
 
 abstract class ServerError implements ChatFailure {
   const factory ServerError() = _$ServerError;
+}
+
+/// @nodoc
+abstract class $FileNotDownloadedCopyWith<$Res> {
+  factory $FileNotDownloadedCopyWith(
+          FileNotDownloaded value, $Res Function(FileNotDownloaded) then) =
+      _$FileNotDownloadedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$FileNotDownloadedCopyWithImpl<$Res>
+    extends _$ChatFailureCopyWithImpl<$Res>
+    implements $FileNotDownloadedCopyWith<$Res> {
+  _$FileNotDownloadedCopyWithImpl(
+      FileNotDownloaded _value, $Res Function(FileNotDownloaded) _then)
+      : super(_value, (v) => _then(v as FileNotDownloaded));
+
+  @override
+  FileNotDownloaded get _value => super._value as FileNotDownloaded;
+}
+
+/// @nodoc
+
+class _$FileNotDownloaded implements FileNotDownloaded {
+  const _$FileNotDownloaded();
+
+  @override
+  String toString() {
+    return 'ChatFailure.fileNotDownloaded()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is FileNotDownloaded);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unauthorized,
+    required TResult Function() applicationError,
+    required TResult Function() serverError,
+    required TResult Function() fileNotDownloaded,
+  }) {
+    return fileNotDownloaded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unauthorized,
+    TResult Function()? applicationError,
+    TResult Function()? serverError,
+    TResult Function()? fileNotDownloaded,
+    required TResult orElse(),
+  }) {
+    if (fileNotDownloaded != null) {
+      return fileNotDownloaded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unauthorized value) unauthorized,
+    required TResult Function(ApplicationError value) applicationError,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(FileNotDownloaded value) fileNotDownloaded,
+  }) {
+    return fileNotDownloaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unauthorized value)? unauthorized,
+    TResult Function(ApplicationError value)? applicationError,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(FileNotDownloaded value)? fileNotDownloaded,
+    required TResult orElse(),
+  }) {
+    if (fileNotDownloaded != null) {
+      return fileNotDownloaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FileNotDownloaded implements ChatFailure {
+  const factory FileNotDownloaded() = _$FileNotDownloaded;
 }

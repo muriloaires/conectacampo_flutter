@@ -223,6 +223,7 @@ class _$UserChatTearOff {
       {required String? id,
       required User otherUser,
       required String chatId,
+      required int? unreadMessages,
       @ServerTimestampConverter() required DateTime? createdAt,
       @ServerTimestampConverter() required DateTime? updatedAt,
       required ChatMessage? lastMessage}) {
@@ -230,6 +231,7 @@ class _$UserChatTearOff {
       id: id,
       otherUser: otherUser,
       chatId: chatId,
+      unreadMessages: unreadMessages,
       createdAt: createdAt,
       updatedAt: updatedAt,
       lastMessage: lastMessage,
@@ -249,6 +251,7 @@ mixin _$UserChat {
   String? get id => throw _privateConstructorUsedError;
   User get otherUser => throw _privateConstructorUsedError;
   String get chatId => throw _privateConstructorUsedError;
+  int? get unreadMessages => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
@@ -269,6 +272,7 @@ abstract class $UserChatCopyWith<$Res> {
       {String? id,
       User otherUser,
       String chatId,
+      int? unreadMessages,
       @ServerTimestampConverter() DateTime? createdAt,
       @ServerTimestampConverter() DateTime? updatedAt,
       ChatMessage? lastMessage});
@@ -290,6 +294,7 @@ class _$UserChatCopyWithImpl<$Res> implements $UserChatCopyWith<$Res> {
     Object? id = freezed,
     Object? otherUser = freezed,
     Object? chatId = freezed,
+    Object? unreadMessages = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? lastMessage = freezed,
@@ -307,6 +312,10 @@ class _$UserChatCopyWithImpl<$Res> implements $UserChatCopyWith<$Res> {
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
               as String,
+      unreadMessages: unreadMessages == freezed
+          ? _value.unreadMessages
+          : unreadMessages // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -350,6 +359,7 @@ abstract class _$UserChatCopyWith<$Res> implements $UserChatCopyWith<$Res> {
       {String? id,
       User otherUser,
       String chatId,
+      int? unreadMessages,
       @ServerTimestampConverter() DateTime? createdAt,
       @ServerTimestampConverter() DateTime? updatedAt,
       ChatMessage? lastMessage});
@@ -374,6 +384,7 @@ class __$UserChatCopyWithImpl<$Res> extends _$UserChatCopyWithImpl<$Res>
     Object? id = freezed,
     Object? otherUser = freezed,
     Object? chatId = freezed,
+    Object? unreadMessages = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? lastMessage = freezed,
@@ -391,6 +402,10 @@ class __$UserChatCopyWithImpl<$Res> extends _$UserChatCopyWithImpl<$Res>
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
               as String,
+      unreadMessages: unreadMessages == freezed
+          ? _value.unreadMessages
+          : unreadMessages // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -415,6 +430,7 @@ class _$_UserChat implements _UserChat {
       {required this.id,
       required this.otherUser,
       required this.chatId,
+      required this.unreadMessages,
       @ServerTimestampConverter() required this.createdAt,
       @ServerTimestampConverter() required this.updatedAt,
       required this.lastMessage});
@@ -429,6 +445,8 @@ class _$_UserChat implements _UserChat {
   @override
   final String chatId;
   @override
+  final int? unreadMessages;
+  @override
   @ServerTimestampConverter()
   final DateTime? createdAt;
   @override
@@ -439,7 +457,7 @@ class _$_UserChat implements _UserChat {
 
   @override
   String toString() {
-    return 'UserChat(id: $id, otherUser: $otherUser, chatId: $chatId, createdAt: $createdAt, updatedAt: $updatedAt, lastMessage: $lastMessage)';
+    return 'UserChat(id: $id, otherUser: $otherUser, chatId: $chatId, unreadMessages: $unreadMessages, createdAt: $createdAt, updatedAt: $updatedAt, lastMessage: $lastMessage)';
   }
 
   @override
@@ -453,6 +471,9 @@ class _$_UserChat implements _UserChat {
                     .equals(other.otherUser, otherUser)) &&
             (identical(other.chatId, chatId) ||
                 const DeepCollectionEquality().equals(other.chatId, chatId)) &&
+            (identical(other.unreadMessages, unreadMessages) ||
+                const DeepCollectionEquality()
+                    .equals(other.unreadMessages, unreadMessages)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)) &&
@@ -470,6 +491,7 @@ class _$_UserChat implements _UserChat {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(otherUser) ^
       const DeepCollectionEquality().hash(chatId) ^
+      const DeepCollectionEquality().hash(unreadMessages) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(updatedAt) ^
       const DeepCollectionEquality().hash(lastMessage);
@@ -490,6 +512,7 @@ abstract class _UserChat implements UserChat {
       {required String? id,
       required User otherUser,
       required String chatId,
+      required int? unreadMessages,
       @ServerTimestampConverter() required DateTime? createdAt,
       @ServerTimestampConverter() required DateTime? updatedAt,
       required ChatMessage? lastMessage}) = _$_UserChat;
@@ -502,6 +525,8 @@ abstract class _UserChat implements UserChat {
   User get otherUser => throw _privateConstructorUsedError;
   @override
   String get chatId => throw _privateConstructorUsedError;
+  @override
+  int? get unreadMessages => throw _privateConstructorUsedError;
   @override
   @ServerTimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;

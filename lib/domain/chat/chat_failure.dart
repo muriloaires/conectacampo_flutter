@@ -7,4 +7,5 @@ class ChatFailure with _$ChatFailure {
   const factory ChatFailure.unauthorized() = Unauthorized;
   const factory ChatFailure.applicationError() = ApplicationError;
   const factory ChatFailure.serverError() = ServerError;
+  const factory ChatFailure.fileNotDownloaded() = FileNotDownloaded;
 }

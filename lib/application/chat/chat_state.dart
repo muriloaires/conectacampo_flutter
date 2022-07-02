@@ -13,6 +13,13 @@ class ChatState with _$ChatState {
     required String? imageSelected,
     required String? fileSelected,
     required String? locationSelected,
+    required bool scrollToEnd,
+    required bool clearText,
+    required Either<ChatFailure, String>? uploadFileErrorOrSuccess,
+    required bool uploadingFile,
+    required ChatMessage? nextAudioToPlay,
+    required String? playingAudio,
+    required bool doTheThing,
   }) = _ChatState;
 
   factory ChatState.initial() => const ChatState(
@@ -26,5 +33,12 @@ class ChatState with _$ChatState {
         imageSelected: null,
         fileSelected: null,
         locationSelected: null,
+        scrollToEnd: false,
+        clearText: false,
+        uploadingFile: false,
+        uploadFileErrorOrSuccess: null,
+        nextAudioToPlay: null,
+        playingAudio: null,
+        doTheThing: false,
       );
 }

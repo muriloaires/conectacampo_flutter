@@ -27,6 +27,7 @@ _$_UserChat _$_$_UserChatFromJson(Map<String, dynamic> json) {
     id: json['id'] as String?,
     otherUser: User.fromJson(json['otherUser'] as Map<String, dynamic>),
     chatId: json['chatId'] as String,
+    unreadMessages: json['unreadMessages'] as int?,
     createdAt: const ServerTimestampConverter().fromJson(json['createdAt']),
     updatedAt: const ServerTimestampConverter().fromJson(json['updatedAt']),
     lastMessage: json['lastMessage'] == null
@@ -40,6 +41,7 @@ Map<String, dynamic> _$_$_UserChatToJson(_$_UserChat instance) =>
       'id': instance.id,
       'otherUser': instance.otherUser.toJson(),
       'chatId': instance.chatId,
+      'unreadMessages': instance.unreadMessages,
       'createdAt': const ServerTimestampConverter().toJson(instance.createdAt),
       'updatedAt': const ServerTimestampConverter().toJson(instance.updatedAt),
       'lastMessage': instance.lastMessage?.toJson(),

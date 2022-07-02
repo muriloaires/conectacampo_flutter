@@ -1,26 +1,28 @@
+import 'package:conectacampo/domain/auth/user.dart';
+import 'package:conectacampo/domain/chat/chat_message.dart';
 import 'package:conectacampo/infrastructure/core/core_extensions.dart';
 import 'package:conectacampo/presentation/core/theme.dart';
 import 'package:flutter/material.dart';
 
 class Baloon extends StatelessWidget {
   final Widget child;
-  final bool isFromLoggedUser;
-  final DateTime? sentAt;
-  final bool hasPendingWrites;
+  final ChatMessage message;
+  final User currentUser;
 
   const Baloon({
     required this.child,
-    required this.isFromLoggedUser,
-    required this.sentAt,
-    required this.hasPendingWrites,
+    required this.message,
+    required this.currentUser,
   });
 
   @override
   Widget build(BuildContext context) {
+    final isFromLoggedUser = message.isFromLoggedUser(currentUser);
     return Align(
       alignment:
           isFromLoggedUser ? Alignment.centerRight : Alignment.centerLeft,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment:
             isFromLoggedUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
@@ -41,20 +43,20 @@ class Baloon extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Wrap(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: child,
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: child,
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(4, 20, 8, 4),
+                    padding: const EdgeInsets.fromLTRB(12, 0, 8, 4),
                     child: Wrap(
                       children: [
                         Text(
-                          sentAt?.getHourMinute() ?? '',
+                          message.sentAt?.getHourMinute() ?? '',
                           style: TextStyle(
                             fontSize: 12,
                             color: isFromLoggedUser
@@ -62,9 +64,12 @@ class Baloon extends StatelessWidget {
                                 : Colors.black54,
                           ),
                         ),
+                        const SizedBox(width: 4),
                         if (isFromLoggedUser)
                           Icon(
-                            hasPendingWrites ? Icons.access_time : Icons.check,
+                            message.hasPendingWrites ?? false
+                                ? Icons.access_time
+                                : Icons.check,
                             size: 14,
                             color: Colors.white,
                           )

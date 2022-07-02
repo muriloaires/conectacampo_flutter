@@ -31,7 +31,8 @@ class _$UserTearOff {
       OriginalAvatar? originalAvatar,
       Advertisement? lastAdvertisement,
       String? email,
-      int? ownGroupId) {
+      int? ownGroupId,
+      {required bool? isOnline}) {
     return _User(
       id,
       name,
@@ -44,6 +45,7 @@ class _$UserTearOff {
       lastAdvertisement,
       email,
       ownGroupId,
+      isOnline: isOnline,
     );
   }
 
@@ -68,6 +70,7 @@ mixin _$User {
   Advertisement? get lastAdvertisement => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   int? get ownGroupId => throw _privateConstructorUsedError;
+  bool? get isOnline => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -89,7 +92,8 @@ abstract class $UserCopyWith<$Res> {
       OriginalAvatar? originalAvatar,
       Advertisement? lastAdvertisement,
       String? email,
-      int? ownGroupId});
+      int? ownGroupId,
+      bool? isOnline});
 
   $ThumbAvatarCopyWith<$Res>? get thumbAvatar;
   $MediumAvatarCopyWith<$Res>? get mediumAvatar;
@@ -118,6 +122,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? lastAdvertisement = freezed,
     Object? email = freezed,
     Object? ownGroupId = freezed,
+    Object? isOnline = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -164,6 +169,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.ownGroupId
           : ownGroupId // ignore: cast_nullable_to_non_nullable
               as int?,
+      isOnline: isOnline == freezed
+          ? _value.isOnline
+          : isOnline // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 
@@ -228,7 +237,8 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       OriginalAvatar? originalAvatar,
       Advertisement? lastAdvertisement,
       String? email,
-      int? ownGroupId});
+      int? ownGroupId,
+      bool? isOnline});
 
   @override
   $ThumbAvatarCopyWith<$Res>? get thumbAvatar;
@@ -262,6 +272,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? lastAdvertisement = freezed,
     Object? email = freezed,
     Object? ownGroupId = freezed,
+    Object? isOnline = freezed,
   }) {
     return _then(_User(
       id == freezed
@@ -308,6 +319,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.ownGroupId
           : ownGroupId // ignore: cast_nullable_to_non_nullable
               as int?,
+      isOnline: isOnline == freezed
+          ? _value.isOnline
+          : isOnline // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -327,7 +342,8 @@ class _$_User implements _User {
       this.originalAvatar,
       this.lastAdvertisement,
       this.email,
-      this.ownGroupId);
+      this.ownGroupId,
+      {required this.isOnline});
 
   factory _$_User.fromJson(Map<String, dynamic> json) =>
       _$_$_UserFromJson(json);
@@ -354,10 +370,12 @@ class _$_User implements _User {
   final String? email;
   @override
   final int? ownGroupId;
+  @override
+  final bool? isOnline;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, nickname: $nickname, vehicleLicensePlate: $vehicleLicensePlate, phoneNumber: $phoneNumber, thumbAvatar: $thumbAvatar, mediumAvatar: $mediumAvatar, originalAvatar: $originalAvatar, lastAdvertisement: $lastAdvertisement, email: $email, ownGroupId: $ownGroupId)';
+    return 'User(id: $id, name: $name, nickname: $nickname, vehicleLicensePlate: $vehicleLicensePlate, phoneNumber: $phoneNumber, thumbAvatar: $thumbAvatar, mediumAvatar: $mediumAvatar, originalAvatar: $originalAvatar, lastAdvertisement: $lastAdvertisement, email: $email, ownGroupId: $ownGroupId, isOnline: $isOnline)';
   }
 
   @override
@@ -393,7 +411,10 @@ class _$_User implements _User {
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.ownGroupId, ownGroupId) ||
                 const DeepCollectionEquality()
-                    .equals(other.ownGroupId, ownGroupId)));
+                    .equals(other.ownGroupId, ownGroupId)) &&
+            (identical(other.isOnline, isOnline) ||
+                const DeepCollectionEquality()
+                    .equals(other.isOnline, isOnline)));
   }
 
   @override
@@ -409,7 +430,8 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(originalAvatar) ^
       const DeepCollectionEquality().hash(lastAdvertisement) ^
       const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(ownGroupId);
+      const DeepCollectionEquality().hash(ownGroupId) ^
+      const DeepCollectionEquality().hash(isOnline);
 
   @JsonKey(ignore: true)
   @override
@@ -434,7 +456,8 @@ abstract class _User implements User {
       OriginalAvatar? originalAvatar,
       Advertisement? lastAdvertisement,
       String? email,
-      int? ownGroupId) = _$_User;
+      int? ownGroupId,
+      {required bool? isOnline}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -460,6 +483,8 @@ abstract class _User implements User {
   String? get email => throw _privateConstructorUsedError;
   @override
   int? get ownGroupId => throw _privateConstructorUsedError;
+  @override
+  bool? get isOnline => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

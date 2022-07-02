@@ -59,9 +59,39 @@ class _$ChatEventTearOff {
     );
   }
 
+  OnPhotoConfirmed onPhotoConfirmed(String path) {
+    return OnPhotoConfirmed(
+      path,
+    );
+  }
+
   OnFileSelected onFileSelected(String path) {
     return OnFileSelected(
       path,
+    );
+  }
+
+  OnFileConfirmed onFileConfirmed(String path) {
+    return OnFileConfirmed(
+      path,
+    );
+  }
+
+  OnBtnAudioFinished onBtnAudioFinished(File file) {
+    return OnBtnAudioFinished(
+      file,
+    );
+  }
+
+  OnAudioPlay onAudioPlay(ChatMessage message) {
+    return OnAudioPlay(
+      message,
+    );
+  }
+
+  OnAudioFinished onAudioFinished(ChatMessage message) {
+    return OnAudioFinished(
+      message,
     );
   }
 }
@@ -82,7 +112,12 @@ mixin _$ChatEvent {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,7 +131,12 @@ mixin _$ChatEvent {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,7 +152,12 @@ mixin _$ChatEvent {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -126,7 +171,12 @@ mixin _$ChatEvent {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -247,7 +297,12 @@ class _$_Started implements _Started {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return started(chat, otherUser);
   }
@@ -264,7 +319,12 @@ class _$_Started implements _Started {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -286,7 +346,12 @@ class _$_Started implements _Started {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return started(this);
   }
@@ -303,7 +368,12 @@ class _$_Started implements _Started {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -396,7 +466,12 @@ class _$OnBtnSendPressed implements OnBtnSendPressed {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return onBtnSendPressed(message);
   }
@@ -413,7 +488,12 @@ class _$OnBtnSendPressed implements OnBtnSendPressed {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onBtnSendPressed != null) {
@@ -435,7 +515,12 @@ class _$OnBtnSendPressed implements OnBtnSendPressed {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return onBtnSendPressed(this);
   }
@@ -452,7 +537,12 @@ class _$OnBtnSendPressed implements OnBtnSendPressed {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onBtnSendPressed != null) {
@@ -520,7 +610,12 @@ class _$OnBtnSendImageTap implements OnBtnSendImageTap {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return onBtnSendImageTap();
   }
@@ -537,7 +632,12 @@ class _$OnBtnSendImageTap implements OnBtnSendImageTap {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onBtnSendImageTap != null) {
@@ -559,7 +659,12 @@ class _$OnBtnSendImageTap implements OnBtnSendImageTap {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return onBtnSendImageTap(this);
   }
@@ -576,7 +681,12 @@ class _$OnBtnSendImageTap implements OnBtnSendImageTap {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onBtnSendImageTap != null) {
@@ -638,7 +748,12 @@ class _$OnBtnSendFileTap implements OnBtnSendFileTap {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return onBtnSendFileTap();
   }
@@ -655,7 +770,12 @@ class _$OnBtnSendFileTap implements OnBtnSendFileTap {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onBtnSendFileTap != null) {
@@ -677,7 +797,12 @@ class _$OnBtnSendFileTap implements OnBtnSendFileTap {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return onBtnSendFileTap(this);
   }
@@ -694,7 +819,12 @@ class _$OnBtnSendFileTap implements OnBtnSendFileTap {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onBtnSendFileTap != null) {
@@ -757,7 +887,12 @@ class _$OnBtnSendLocationTap implements OnBtnSendLocationTap {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return onBtnSendLocationTap();
   }
@@ -774,7 +909,12 @@ class _$OnBtnSendLocationTap implements OnBtnSendLocationTap {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onBtnSendLocationTap != null) {
@@ -796,7 +936,12 @@ class _$OnBtnSendLocationTap implements OnBtnSendLocationTap {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return onBtnSendLocationTap(this);
   }
@@ -813,7 +958,12 @@ class _$OnBtnSendLocationTap implements OnBtnSendLocationTap {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onBtnSendLocationTap != null) {
@@ -876,7 +1026,12 @@ class _$OnFilePickerOpened implements OnFilePickerOpened {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return onFilePickerOpened();
   }
@@ -893,7 +1048,12 @@ class _$OnFilePickerOpened implements OnFilePickerOpened {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onFilePickerOpened != null) {
@@ -915,7 +1075,12 @@ class _$OnFilePickerOpened implements OnFilePickerOpened {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return onFilePickerOpened(this);
   }
@@ -932,7 +1097,12 @@ class _$OnFilePickerOpened implements OnFilePickerOpened {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onFilePickerOpened != null) {
@@ -995,7 +1165,12 @@ class _$OnImagePickerOpened implements OnImagePickerOpened {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return onImagePickerOpened();
   }
@@ -1012,7 +1187,12 @@ class _$OnImagePickerOpened implements OnImagePickerOpened {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onImagePickerOpened != null) {
@@ -1034,7 +1214,12 @@ class _$OnImagePickerOpened implements OnImagePickerOpened {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return onImagePickerOpened(this);
   }
@@ -1051,7 +1236,12 @@ class _$OnImagePickerOpened implements OnImagePickerOpened {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onImagePickerOpened != null) {
@@ -1114,7 +1304,12 @@ class _$OnLocationPickerOpened implements OnLocationPickerOpened {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return onLocationPickerOpened();
   }
@@ -1131,7 +1326,12 @@ class _$OnLocationPickerOpened implements OnLocationPickerOpened {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onLocationPickerOpened != null) {
@@ -1153,7 +1353,12 @@ class _$OnLocationPickerOpened implements OnLocationPickerOpened {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return onLocationPickerOpened(this);
   }
@@ -1170,7 +1375,12 @@ class _$OnLocationPickerOpened implements OnLocationPickerOpened {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onLocationPickerOpened != null) {
@@ -1257,7 +1467,12 @@ class _$OnPhotoSelected implements OnPhotoSelected {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return onPhotoSelected(path);
   }
@@ -1274,7 +1489,12 @@ class _$OnPhotoSelected implements OnPhotoSelected {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onPhotoSelected != null) {
@@ -1296,7 +1516,12 @@ class _$OnPhotoSelected implements OnPhotoSelected {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return onPhotoSelected(this);
   }
@@ -1313,7 +1538,12 @@ class _$OnPhotoSelected implements OnPhotoSelected {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onPhotoSelected != null) {
@@ -1329,6 +1559,174 @@ abstract class OnPhotoSelected implements ChatEvent {
   String get path => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OnPhotoSelectedCopyWith<OnPhotoSelected> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OnPhotoConfirmedCopyWith<$Res> {
+  factory $OnPhotoConfirmedCopyWith(
+          OnPhotoConfirmed value, $Res Function(OnPhotoConfirmed) then) =
+      _$OnPhotoConfirmedCopyWithImpl<$Res>;
+  $Res call({String path});
+}
+
+/// @nodoc
+class _$OnPhotoConfirmedCopyWithImpl<$Res> extends _$ChatEventCopyWithImpl<$Res>
+    implements $OnPhotoConfirmedCopyWith<$Res> {
+  _$OnPhotoConfirmedCopyWithImpl(
+      OnPhotoConfirmed _value, $Res Function(OnPhotoConfirmed) _then)
+      : super(_value, (v) => _then(v as OnPhotoConfirmed));
+
+  @override
+  OnPhotoConfirmed get _value => super._value as OnPhotoConfirmed;
+
+  @override
+  $Res call({
+    Object? path = freezed,
+  }) {
+    return _then(OnPhotoConfirmed(
+      path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnPhotoConfirmed implements OnPhotoConfirmed {
+  const _$OnPhotoConfirmed(this.path);
+
+  @override
+  final String path;
+
+  @override
+  String toString() {
+    return 'ChatEvent.onPhotoConfirmed(path: $path)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnPhotoConfirmed &&
+            (identical(other.path, path) ||
+                const DeepCollectionEquality().equals(other.path, path)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(path);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnPhotoConfirmedCopyWith<OnPhotoConfirmed> get copyWith =>
+      _$OnPhotoConfirmedCopyWithImpl<OnPhotoConfirmed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Chat chat, User otherUser) started,
+    required TResult Function(String message) onBtnSendPressed,
+    required TResult Function() onBtnSendImageTap,
+    required TResult Function() onBtnSendFileTap,
+    required TResult Function() onBtnSendLocationTap,
+    required TResult Function() onFilePickerOpened,
+    required TResult Function() onImagePickerOpened,
+    required TResult Function() onLocationPickerOpened,
+    required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
+    required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
+  }) {
+    return onPhotoConfirmed(path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Chat chat, User otherUser)? started,
+    TResult Function(String message)? onBtnSendPressed,
+    TResult Function()? onBtnSendImageTap,
+    TResult Function()? onBtnSendFileTap,
+    TResult Function()? onBtnSendLocationTap,
+    TResult Function()? onFilePickerOpened,
+    TResult Function()? onImagePickerOpened,
+    TResult Function()? onLocationPickerOpened,
+    TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
+    TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onPhotoConfirmed != null) {
+      return onPhotoConfirmed(path);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnBtnSendPressed value) onBtnSendPressed,
+    required TResult Function(OnBtnSendImageTap value) onBtnSendImageTap,
+    required TResult Function(OnBtnSendFileTap value) onBtnSendFileTap,
+    required TResult Function(OnBtnSendLocationTap value) onBtnSendLocationTap,
+    required TResult Function(OnFilePickerOpened value) onFilePickerOpened,
+    required TResult Function(OnImagePickerOpened value) onImagePickerOpened,
+    required TResult Function(OnLocationPickerOpened value)
+        onLocationPickerOpened,
+    required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
+    required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
+  }) {
+    return onPhotoConfirmed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnBtnSendPressed value)? onBtnSendPressed,
+    TResult Function(OnBtnSendImageTap value)? onBtnSendImageTap,
+    TResult Function(OnBtnSendFileTap value)? onBtnSendFileTap,
+    TResult Function(OnBtnSendLocationTap value)? onBtnSendLocationTap,
+    TResult Function(OnFilePickerOpened value)? onFilePickerOpened,
+    TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
+    TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
+    TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
+    TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onPhotoConfirmed != null) {
+      return onPhotoConfirmed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnPhotoConfirmed implements ChatEvent {
+  const factory OnPhotoConfirmed(String path) = _$OnPhotoConfirmed;
+
+  String get path => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnPhotoConfirmedCopyWith<OnPhotoConfirmed> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1405,7 +1803,12 @@ class _$OnFileSelected implements OnFileSelected {
     required TResult Function() onImagePickerOpened,
     required TResult Function() onLocationPickerOpened,
     required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
     required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
   }) {
     return onFileSelected(path);
   }
@@ -1422,7 +1825,12 @@ class _$OnFileSelected implements OnFileSelected {
     TResult Function()? onImagePickerOpened,
     TResult Function()? onLocationPickerOpened,
     TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
     TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onFileSelected != null) {
@@ -1444,7 +1852,12 @@ class _$OnFileSelected implements OnFileSelected {
     required TResult Function(OnLocationPickerOpened value)
         onLocationPickerOpened,
     required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
     required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
   }) {
     return onFileSelected(this);
   }
@@ -1461,7 +1874,12 @@ class _$OnFileSelected implements OnFileSelected {
     TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
     TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
     TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
     TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
     required TResult orElse(),
   }) {
     if (onFileSelected != null) {
@@ -1481,6 +1899,697 @@ abstract class OnFileSelected implements ChatEvent {
 }
 
 /// @nodoc
+abstract class $OnFileConfirmedCopyWith<$Res> {
+  factory $OnFileConfirmedCopyWith(
+          OnFileConfirmed value, $Res Function(OnFileConfirmed) then) =
+      _$OnFileConfirmedCopyWithImpl<$Res>;
+  $Res call({String path});
+}
+
+/// @nodoc
+class _$OnFileConfirmedCopyWithImpl<$Res> extends _$ChatEventCopyWithImpl<$Res>
+    implements $OnFileConfirmedCopyWith<$Res> {
+  _$OnFileConfirmedCopyWithImpl(
+      OnFileConfirmed _value, $Res Function(OnFileConfirmed) _then)
+      : super(_value, (v) => _then(v as OnFileConfirmed));
+
+  @override
+  OnFileConfirmed get _value => super._value as OnFileConfirmed;
+
+  @override
+  $Res call({
+    Object? path = freezed,
+  }) {
+    return _then(OnFileConfirmed(
+      path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnFileConfirmed implements OnFileConfirmed {
+  const _$OnFileConfirmed(this.path);
+
+  @override
+  final String path;
+
+  @override
+  String toString() {
+    return 'ChatEvent.onFileConfirmed(path: $path)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnFileConfirmed &&
+            (identical(other.path, path) ||
+                const DeepCollectionEquality().equals(other.path, path)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(path);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnFileConfirmedCopyWith<OnFileConfirmed> get copyWith =>
+      _$OnFileConfirmedCopyWithImpl<OnFileConfirmed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Chat chat, User otherUser) started,
+    required TResult Function(String message) onBtnSendPressed,
+    required TResult Function() onBtnSendImageTap,
+    required TResult Function() onBtnSendFileTap,
+    required TResult Function() onBtnSendLocationTap,
+    required TResult Function() onFilePickerOpened,
+    required TResult Function() onImagePickerOpened,
+    required TResult Function() onLocationPickerOpened,
+    required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
+    required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
+  }) {
+    return onFileConfirmed(path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Chat chat, User otherUser)? started,
+    TResult Function(String message)? onBtnSendPressed,
+    TResult Function()? onBtnSendImageTap,
+    TResult Function()? onBtnSendFileTap,
+    TResult Function()? onBtnSendLocationTap,
+    TResult Function()? onFilePickerOpened,
+    TResult Function()? onImagePickerOpened,
+    TResult Function()? onLocationPickerOpened,
+    TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
+    TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onFileConfirmed != null) {
+      return onFileConfirmed(path);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnBtnSendPressed value) onBtnSendPressed,
+    required TResult Function(OnBtnSendImageTap value) onBtnSendImageTap,
+    required TResult Function(OnBtnSendFileTap value) onBtnSendFileTap,
+    required TResult Function(OnBtnSendLocationTap value) onBtnSendLocationTap,
+    required TResult Function(OnFilePickerOpened value) onFilePickerOpened,
+    required TResult Function(OnImagePickerOpened value) onImagePickerOpened,
+    required TResult Function(OnLocationPickerOpened value)
+        onLocationPickerOpened,
+    required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
+    required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
+  }) {
+    return onFileConfirmed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnBtnSendPressed value)? onBtnSendPressed,
+    TResult Function(OnBtnSendImageTap value)? onBtnSendImageTap,
+    TResult Function(OnBtnSendFileTap value)? onBtnSendFileTap,
+    TResult Function(OnBtnSendLocationTap value)? onBtnSendLocationTap,
+    TResult Function(OnFilePickerOpened value)? onFilePickerOpened,
+    TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
+    TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
+    TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
+    TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onFileConfirmed != null) {
+      return onFileConfirmed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnFileConfirmed implements ChatEvent {
+  const factory OnFileConfirmed(String path) = _$OnFileConfirmed;
+
+  String get path => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnFileConfirmedCopyWith<OnFileConfirmed> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OnBtnAudioFinishedCopyWith<$Res> {
+  factory $OnBtnAudioFinishedCopyWith(
+          OnBtnAudioFinished value, $Res Function(OnBtnAudioFinished) then) =
+      _$OnBtnAudioFinishedCopyWithImpl<$Res>;
+  $Res call({File file});
+}
+
+/// @nodoc
+class _$OnBtnAudioFinishedCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res>
+    implements $OnBtnAudioFinishedCopyWith<$Res> {
+  _$OnBtnAudioFinishedCopyWithImpl(
+      OnBtnAudioFinished _value, $Res Function(OnBtnAudioFinished) _then)
+      : super(_value, (v) => _then(v as OnBtnAudioFinished));
+
+  @override
+  OnBtnAudioFinished get _value => super._value as OnBtnAudioFinished;
+
+  @override
+  $Res call({
+    Object? file = freezed,
+  }) {
+    return _then(OnBtnAudioFinished(
+      file == freezed
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnBtnAudioFinished implements OnBtnAudioFinished {
+  const _$OnBtnAudioFinished(this.file);
+
+  @override
+  final File file;
+
+  @override
+  String toString() {
+    return 'ChatEvent.onBtnAudioFinished(file: $file)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnBtnAudioFinished &&
+            (identical(other.file, file) ||
+                const DeepCollectionEquality().equals(other.file, file)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(file);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnBtnAudioFinishedCopyWith<OnBtnAudioFinished> get copyWith =>
+      _$OnBtnAudioFinishedCopyWithImpl<OnBtnAudioFinished>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Chat chat, User otherUser) started,
+    required TResult Function(String message) onBtnSendPressed,
+    required TResult Function() onBtnSendImageTap,
+    required TResult Function() onBtnSendFileTap,
+    required TResult Function() onBtnSendLocationTap,
+    required TResult Function() onFilePickerOpened,
+    required TResult Function() onImagePickerOpened,
+    required TResult Function() onLocationPickerOpened,
+    required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
+    required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
+  }) {
+    return onBtnAudioFinished(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Chat chat, User otherUser)? started,
+    TResult Function(String message)? onBtnSendPressed,
+    TResult Function()? onBtnSendImageTap,
+    TResult Function()? onBtnSendFileTap,
+    TResult Function()? onBtnSendLocationTap,
+    TResult Function()? onFilePickerOpened,
+    TResult Function()? onImagePickerOpened,
+    TResult Function()? onLocationPickerOpened,
+    TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
+    TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onBtnAudioFinished != null) {
+      return onBtnAudioFinished(file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnBtnSendPressed value) onBtnSendPressed,
+    required TResult Function(OnBtnSendImageTap value) onBtnSendImageTap,
+    required TResult Function(OnBtnSendFileTap value) onBtnSendFileTap,
+    required TResult Function(OnBtnSendLocationTap value) onBtnSendLocationTap,
+    required TResult Function(OnFilePickerOpened value) onFilePickerOpened,
+    required TResult Function(OnImagePickerOpened value) onImagePickerOpened,
+    required TResult Function(OnLocationPickerOpened value)
+        onLocationPickerOpened,
+    required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
+    required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
+  }) {
+    return onBtnAudioFinished(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnBtnSendPressed value)? onBtnSendPressed,
+    TResult Function(OnBtnSendImageTap value)? onBtnSendImageTap,
+    TResult Function(OnBtnSendFileTap value)? onBtnSendFileTap,
+    TResult Function(OnBtnSendLocationTap value)? onBtnSendLocationTap,
+    TResult Function(OnFilePickerOpened value)? onFilePickerOpened,
+    TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
+    TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
+    TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
+    TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onBtnAudioFinished != null) {
+      return onBtnAudioFinished(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnBtnAudioFinished implements ChatEvent {
+  const factory OnBtnAudioFinished(File file) = _$OnBtnAudioFinished;
+
+  File get file => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnBtnAudioFinishedCopyWith<OnBtnAudioFinished> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OnAudioPlayCopyWith<$Res> {
+  factory $OnAudioPlayCopyWith(
+          OnAudioPlay value, $Res Function(OnAudioPlay) then) =
+      _$OnAudioPlayCopyWithImpl<$Res>;
+  $Res call({ChatMessage message});
+
+  $ChatMessageCopyWith<$Res> get message;
+}
+
+/// @nodoc
+class _$OnAudioPlayCopyWithImpl<$Res> extends _$ChatEventCopyWithImpl<$Res>
+    implements $OnAudioPlayCopyWith<$Res> {
+  _$OnAudioPlayCopyWithImpl(
+      OnAudioPlay _value, $Res Function(OnAudioPlay) _then)
+      : super(_value, (v) => _then(v as OnAudioPlay));
+
+  @override
+  OnAudioPlay get _value => super._value as OnAudioPlay;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(OnAudioPlay(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as ChatMessage,
+    ));
+  }
+
+  @override
+  $ChatMessageCopyWith<$Res> get message {
+    return $ChatMessageCopyWith<$Res>(_value.message, (value) {
+      return _then(_value.copyWith(message: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$OnAudioPlay implements OnAudioPlay {
+  const _$OnAudioPlay(this.message);
+
+  @override
+  final ChatMessage message;
+
+  @override
+  String toString() {
+    return 'ChatEvent.onAudioPlay(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnAudioPlay &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnAudioPlayCopyWith<OnAudioPlay> get copyWith =>
+      _$OnAudioPlayCopyWithImpl<OnAudioPlay>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Chat chat, User otherUser) started,
+    required TResult Function(String message) onBtnSendPressed,
+    required TResult Function() onBtnSendImageTap,
+    required TResult Function() onBtnSendFileTap,
+    required TResult Function() onBtnSendLocationTap,
+    required TResult Function() onFilePickerOpened,
+    required TResult Function() onImagePickerOpened,
+    required TResult Function() onLocationPickerOpened,
+    required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
+    required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
+  }) {
+    return onAudioPlay(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Chat chat, User otherUser)? started,
+    TResult Function(String message)? onBtnSendPressed,
+    TResult Function()? onBtnSendImageTap,
+    TResult Function()? onBtnSendFileTap,
+    TResult Function()? onBtnSendLocationTap,
+    TResult Function()? onFilePickerOpened,
+    TResult Function()? onImagePickerOpened,
+    TResult Function()? onLocationPickerOpened,
+    TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
+    TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onAudioPlay != null) {
+      return onAudioPlay(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnBtnSendPressed value) onBtnSendPressed,
+    required TResult Function(OnBtnSendImageTap value) onBtnSendImageTap,
+    required TResult Function(OnBtnSendFileTap value) onBtnSendFileTap,
+    required TResult Function(OnBtnSendLocationTap value) onBtnSendLocationTap,
+    required TResult Function(OnFilePickerOpened value) onFilePickerOpened,
+    required TResult Function(OnImagePickerOpened value) onImagePickerOpened,
+    required TResult Function(OnLocationPickerOpened value)
+        onLocationPickerOpened,
+    required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
+    required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
+  }) {
+    return onAudioPlay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnBtnSendPressed value)? onBtnSendPressed,
+    TResult Function(OnBtnSendImageTap value)? onBtnSendImageTap,
+    TResult Function(OnBtnSendFileTap value)? onBtnSendFileTap,
+    TResult Function(OnBtnSendLocationTap value)? onBtnSendLocationTap,
+    TResult Function(OnFilePickerOpened value)? onFilePickerOpened,
+    TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
+    TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
+    TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
+    TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onAudioPlay != null) {
+      return onAudioPlay(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnAudioPlay implements ChatEvent {
+  const factory OnAudioPlay(ChatMessage message) = _$OnAudioPlay;
+
+  ChatMessage get message => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnAudioPlayCopyWith<OnAudioPlay> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OnAudioFinishedCopyWith<$Res> {
+  factory $OnAudioFinishedCopyWith(
+          OnAudioFinished value, $Res Function(OnAudioFinished) then) =
+      _$OnAudioFinishedCopyWithImpl<$Res>;
+  $Res call({ChatMessage message});
+
+  $ChatMessageCopyWith<$Res> get message;
+}
+
+/// @nodoc
+class _$OnAudioFinishedCopyWithImpl<$Res> extends _$ChatEventCopyWithImpl<$Res>
+    implements $OnAudioFinishedCopyWith<$Res> {
+  _$OnAudioFinishedCopyWithImpl(
+      OnAudioFinished _value, $Res Function(OnAudioFinished) _then)
+      : super(_value, (v) => _then(v as OnAudioFinished));
+
+  @override
+  OnAudioFinished get _value => super._value as OnAudioFinished;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(OnAudioFinished(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as ChatMessage,
+    ));
+  }
+
+  @override
+  $ChatMessageCopyWith<$Res> get message {
+    return $ChatMessageCopyWith<$Res>(_value.message, (value) {
+      return _then(_value.copyWith(message: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$OnAudioFinished implements OnAudioFinished {
+  const _$OnAudioFinished(this.message);
+
+  @override
+  final ChatMessage message;
+
+  @override
+  String toString() {
+    return 'ChatEvent.onAudioFinished(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is OnAudioFinished &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  $OnAudioFinishedCopyWith<OnAudioFinished> get copyWith =>
+      _$OnAudioFinishedCopyWithImpl<OnAudioFinished>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Chat chat, User otherUser) started,
+    required TResult Function(String message) onBtnSendPressed,
+    required TResult Function() onBtnSendImageTap,
+    required TResult Function() onBtnSendFileTap,
+    required TResult Function() onBtnSendLocationTap,
+    required TResult Function() onFilePickerOpened,
+    required TResult Function() onImagePickerOpened,
+    required TResult Function() onLocationPickerOpened,
+    required TResult Function(String path) onPhotoSelected,
+    required TResult Function(String path) onPhotoConfirmed,
+    required TResult Function(String path) onFileSelected,
+    required TResult Function(String path) onFileConfirmed,
+    required TResult Function(File file) onBtnAudioFinished,
+    required TResult Function(ChatMessage message) onAudioPlay,
+    required TResult Function(ChatMessage message) onAudioFinished,
+  }) {
+    return onAudioFinished(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Chat chat, User otherUser)? started,
+    TResult Function(String message)? onBtnSendPressed,
+    TResult Function()? onBtnSendImageTap,
+    TResult Function()? onBtnSendFileTap,
+    TResult Function()? onBtnSendLocationTap,
+    TResult Function()? onFilePickerOpened,
+    TResult Function()? onImagePickerOpened,
+    TResult Function()? onLocationPickerOpened,
+    TResult Function(String path)? onPhotoSelected,
+    TResult Function(String path)? onPhotoConfirmed,
+    TResult Function(String path)? onFileSelected,
+    TResult Function(String path)? onFileConfirmed,
+    TResult Function(File file)? onBtnAudioFinished,
+    TResult Function(ChatMessage message)? onAudioPlay,
+    TResult Function(ChatMessage message)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onAudioFinished != null) {
+      return onAudioFinished(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(OnBtnSendPressed value) onBtnSendPressed,
+    required TResult Function(OnBtnSendImageTap value) onBtnSendImageTap,
+    required TResult Function(OnBtnSendFileTap value) onBtnSendFileTap,
+    required TResult Function(OnBtnSendLocationTap value) onBtnSendLocationTap,
+    required TResult Function(OnFilePickerOpened value) onFilePickerOpened,
+    required TResult Function(OnImagePickerOpened value) onImagePickerOpened,
+    required TResult Function(OnLocationPickerOpened value)
+        onLocationPickerOpened,
+    required TResult Function(OnPhotoSelected value) onPhotoSelected,
+    required TResult Function(OnPhotoConfirmed value) onPhotoConfirmed,
+    required TResult Function(OnFileSelected value) onFileSelected,
+    required TResult Function(OnFileConfirmed value) onFileConfirmed,
+    required TResult Function(OnBtnAudioFinished value) onBtnAudioFinished,
+    required TResult Function(OnAudioPlay value) onAudioPlay,
+    required TResult Function(OnAudioFinished value) onAudioFinished,
+  }) {
+    return onAudioFinished(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(OnBtnSendPressed value)? onBtnSendPressed,
+    TResult Function(OnBtnSendImageTap value)? onBtnSendImageTap,
+    TResult Function(OnBtnSendFileTap value)? onBtnSendFileTap,
+    TResult Function(OnBtnSendLocationTap value)? onBtnSendLocationTap,
+    TResult Function(OnFilePickerOpened value)? onFilePickerOpened,
+    TResult Function(OnImagePickerOpened value)? onImagePickerOpened,
+    TResult Function(OnLocationPickerOpened value)? onLocationPickerOpened,
+    TResult Function(OnPhotoSelected value)? onPhotoSelected,
+    TResult Function(OnPhotoConfirmed value)? onPhotoConfirmed,
+    TResult Function(OnFileSelected value)? onFileSelected,
+    TResult Function(OnFileConfirmed value)? onFileConfirmed,
+    TResult Function(OnBtnAudioFinished value)? onBtnAudioFinished,
+    TResult Function(OnAudioPlay value)? onAudioPlay,
+    TResult Function(OnAudioFinished value)? onAudioFinished,
+    required TResult orElse(),
+  }) {
+    if (onAudioFinished != null) {
+      return onAudioFinished(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnAudioFinished implements ChatEvent {
+  const factory OnAudioFinished(ChatMessage message) = _$OnAudioFinished;
+
+  ChatMessage get message => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OnAudioFinishedCopyWith<OnAudioFinished> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$ChatStateTearOff {
   const _$ChatStateTearOff();
 
@@ -1494,7 +2603,14 @@ class _$ChatStateTearOff {
       required bool openLocationPicker,
       required String? imageSelected,
       required String? fileSelected,
-      required String? locationSelected}) {
+      required String? locationSelected,
+      required bool scrollToEnd,
+      required bool clearText,
+      required Either<ChatFailure, String>? uploadFileErrorOrSuccess,
+      required bool uploadingFile,
+      required ChatMessage? nextAudioToPlay,
+      required String? playingAudio,
+      required bool doTheThing}) {
     return _ChatState(
       messages: messages,
       currentChat: currentChat,
@@ -1506,6 +2622,13 @@ class _$ChatStateTearOff {
       imageSelected: imageSelected,
       fileSelected: fileSelected,
       locationSelected: locationSelected,
+      scrollToEnd: scrollToEnd,
+      clearText: clearText,
+      uploadFileErrorOrSuccess: uploadFileErrorOrSuccess,
+      uploadingFile: uploadingFile,
+      nextAudioToPlay: nextAudioToPlay,
+      playingAudio: playingAudio,
+      doTheThing: doTheThing,
     );
   }
 }
@@ -1525,6 +2648,14 @@ mixin _$ChatState {
   String? get imageSelected => throw _privateConstructorUsedError;
   String? get fileSelected => throw _privateConstructorUsedError;
   String? get locationSelected => throw _privateConstructorUsedError;
+  bool get scrollToEnd => throw _privateConstructorUsedError;
+  bool get clearText => throw _privateConstructorUsedError;
+  Either<ChatFailure, String>? get uploadFileErrorOrSuccess =>
+      throw _privateConstructorUsedError;
+  bool get uploadingFile => throw _privateConstructorUsedError;
+  ChatMessage? get nextAudioToPlay => throw _privateConstructorUsedError;
+  String? get playingAudio => throw _privateConstructorUsedError;
+  bool get doTheThing => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatStateCopyWith<ChatState> get copyWith =>
@@ -1545,11 +2676,19 @@ abstract class $ChatStateCopyWith<$Res> {
       bool openLocationPicker,
       String? imageSelected,
       String? fileSelected,
-      String? locationSelected});
+      String? locationSelected,
+      bool scrollToEnd,
+      bool clearText,
+      Either<ChatFailure, String>? uploadFileErrorOrSuccess,
+      bool uploadingFile,
+      ChatMessage? nextAudioToPlay,
+      String? playingAudio,
+      bool doTheThing});
 
   $ChatCopyWith<$Res>? get currentChat;
   $UserCopyWith<$Res>? get currentUser;
   $UserCopyWith<$Res>? get otherUser;
+  $ChatMessageCopyWith<$Res>? get nextAudioToPlay;
 }
 
 /// @nodoc
@@ -1572,6 +2711,13 @@ class _$ChatStateCopyWithImpl<$Res> implements $ChatStateCopyWith<$Res> {
     Object? imageSelected = freezed,
     Object? fileSelected = freezed,
     Object? locationSelected = freezed,
+    Object? scrollToEnd = freezed,
+    Object? clearText = freezed,
+    Object? uploadFileErrorOrSuccess = freezed,
+    Object? uploadingFile = freezed,
+    Object? nextAudioToPlay = freezed,
+    Object? playingAudio = freezed,
+    Object? doTheThing = freezed,
   }) {
     return _then(_value.copyWith(
       messages: messages == freezed
@@ -1614,6 +2760,34 @@ class _$ChatStateCopyWithImpl<$Res> implements $ChatStateCopyWith<$Res> {
           ? _value.locationSelected
           : locationSelected // ignore: cast_nullable_to_non_nullable
               as String?,
+      scrollToEnd: scrollToEnd == freezed
+          ? _value.scrollToEnd
+          : scrollToEnd // ignore: cast_nullable_to_non_nullable
+              as bool,
+      clearText: clearText == freezed
+          ? _value.clearText
+          : clearText // ignore: cast_nullable_to_non_nullable
+              as bool,
+      uploadFileErrorOrSuccess: uploadFileErrorOrSuccess == freezed
+          ? _value.uploadFileErrorOrSuccess
+          : uploadFileErrorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<ChatFailure, String>?,
+      uploadingFile: uploadingFile == freezed
+          ? _value.uploadingFile
+          : uploadingFile // ignore: cast_nullable_to_non_nullable
+              as bool,
+      nextAudioToPlay: nextAudioToPlay == freezed
+          ? _value.nextAudioToPlay
+          : nextAudioToPlay // ignore: cast_nullable_to_non_nullable
+              as ChatMessage?,
+      playingAudio: playingAudio == freezed
+          ? _value.playingAudio
+          : playingAudio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      doTheThing: doTheThing == freezed
+          ? _value.doTheThing
+          : doTheThing // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -1649,6 +2823,17 @@ class _$ChatStateCopyWithImpl<$Res> implements $ChatStateCopyWith<$Res> {
       return _then(_value.copyWith(otherUser: value));
     });
   }
+
+  @override
+  $ChatMessageCopyWith<$Res>? get nextAudioToPlay {
+    if (_value.nextAudioToPlay == null) {
+      return null;
+    }
+
+    return $ChatMessageCopyWith<$Res>(_value.nextAudioToPlay!, (value) {
+      return _then(_value.copyWith(nextAudioToPlay: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -1667,7 +2852,14 @@ abstract class _$ChatStateCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
       bool openLocationPicker,
       String? imageSelected,
       String? fileSelected,
-      String? locationSelected});
+      String? locationSelected,
+      bool scrollToEnd,
+      bool clearText,
+      Either<ChatFailure, String>? uploadFileErrorOrSuccess,
+      bool uploadingFile,
+      ChatMessage? nextAudioToPlay,
+      String? playingAudio,
+      bool doTheThing});
 
   @override
   $ChatCopyWith<$Res>? get currentChat;
@@ -1675,6 +2867,8 @@ abstract class _$ChatStateCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
   $UserCopyWith<$Res>? get currentUser;
   @override
   $UserCopyWith<$Res>? get otherUser;
+  @override
+  $ChatMessageCopyWith<$Res>? get nextAudioToPlay;
 }
 
 /// @nodoc
@@ -1698,6 +2892,13 @@ class __$ChatStateCopyWithImpl<$Res> extends _$ChatStateCopyWithImpl<$Res>
     Object? imageSelected = freezed,
     Object? fileSelected = freezed,
     Object? locationSelected = freezed,
+    Object? scrollToEnd = freezed,
+    Object? clearText = freezed,
+    Object? uploadFileErrorOrSuccess = freezed,
+    Object? uploadingFile = freezed,
+    Object? nextAudioToPlay = freezed,
+    Object? playingAudio = freezed,
+    Object? doTheThing = freezed,
   }) {
     return _then(_ChatState(
       messages: messages == freezed
@@ -1740,6 +2941,34 @@ class __$ChatStateCopyWithImpl<$Res> extends _$ChatStateCopyWithImpl<$Res>
           ? _value.locationSelected
           : locationSelected // ignore: cast_nullable_to_non_nullable
               as String?,
+      scrollToEnd: scrollToEnd == freezed
+          ? _value.scrollToEnd
+          : scrollToEnd // ignore: cast_nullable_to_non_nullable
+              as bool,
+      clearText: clearText == freezed
+          ? _value.clearText
+          : clearText // ignore: cast_nullable_to_non_nullable
+              as bool,
+      uploadFileErrorOrSuccess: uploadFileErrorOrSuccess == freezed
+          ? _value.uploadFileErrorOrSuccess
+          : uploadFileErrorOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<ChatFailure, String>?,
+      uploadingFile: uploadingFile == freezed
+          ? _value.uploadingFile
+          : uploadingFile // ignore: cast_nullable_to_non_nullable
+              as bool,
+      nextAudioToPlay: nextAudioToPlay == freezed
+          ? _value.nextAudioToPlay
+          : nextAudioToPlay // ignore: cast_nullable_to_non_nullable
+              as ChatMessage?,
+      playingAudio: playingAudio == freezed
+          ? _value.playingAudio
+          : playingAudio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      doTheThing: doTheThing == freezed
+          ? _value.doTheThing
+          : doTheThing // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1757,7 +2986,14 @@ class _$_ChatState implements _ChatState {
       required this.openLocationPicker,
       required this.imageSelected,
       required this.fileSelected,
-      required this.locationSelected});
+      required this.locationSelected,
+      required this.scrollToEnd,
+      required this.clearText,
+      required this.uploadFileErrorOrSuccess,
+      required this.uploadingFile,
+      required this.nextAudioToPlay,
+      required this.playingAudio,
+      required this.doTheThing});
 
   @override
   final List<ChatMessage> messages;
@@ -1779,10 +3015,24 @@ class _$_ChatState implements _ChatState {
   final String? fileSelected;
   @override
   final String? locationSelected;
+  @override
+  final bool scrollToEnd;
+  @override
+  final bool clearText;
+  @override
+  final Either<ChatFailure, String>? uploadFileErrorOrSuccess;
+  @override
+  final bool uploadingFile;
+  @override
+  final ChatMessage? nextAudioToPlay;
+  @override
+  final String? playingAudio;
+  @override
+  final bool doTheThing;
 
   @override
   String toString() {
-    return 'ChatState(messages: $messages, currentChat: $currentChat, currentUser: $currentUser, otherUser: $otherUser, openImagePicker: $openImagePicker, openFilePicker: $openFilePicker, openLocationPicker: $openLocationPicker, imageSelected: $imageSelected, fileSelected: $fileSelected, locationSelected: $locationSelected)';
+    return 'ChatState(messages: $messages, currentChat: $currentChat, currentUser: $currentUser, otherUser: $otherUser, openImagePicker: $openImagePicker, openFilePicker: $openFilePicker, openLocationPicker: $openLocationPicker, imageSelected: $imageSelected, fileSelected: $fileSelected, locationSelected: $locationSelected, scrollToEnd: $scrollToEnd, clearText: $clearText, uploadFileErrorOrSuccess: $uploadFileErrorOrSuccess, uploadingFile: $uploadingFile, nextAudioToPlay: $nextAudioToPlay, playingAudio: $playingAudio, doTheThing: $doTheThing)';
   }
 
   @override
@@ -1818,7 +3068,30 @@ class _$_ChatState implements _ChatState {
                     .equals(other.fileSelected, fileSelected)) &&
             (identical(other.locationSelected, locationSelected) ||
                 const DeepCollectionEquality()
-                    .equals(other.locationSelected, locationSelected)));
+                    .equals(other.locationSelected, locationSelected)) &&
+            (identical(other.scrollToEnd, scrollToEnd) ||
+                const DeepCollectionEquality()
+                    .equals(other.scrollToEnd, scrollToEnd)) &&
+            (identical(other.clearText, clearText) ||
+                const DeepCollectionEquality()
+                    .equals(other.clearText, clearText)) &&
+            (identical(
+                    other.uploadFileErrorOrSuccess, uploadFileErrorOrSuccess) ||
+                const DeepCollectionEquality().equals(
+                    other.uploadFileErrorOrSuccess,
+                    uploadFileErrorOrSuccess)) &&
+            (identical(other.uploadingFile, uploadingFile) ||
+                const DeepCollectionEquality()
+                    .equals(other.uploadingFile, uploadingFile)) &&
+            (identical(other.nextAudioToPlay, nextAudioToPlay) ||
+                const DeepCollectionEquality()
+                    .equals(other.nextAudioToPlay, nextAudioToPlay)) &&
+            (identical(other.playingAudio, playingAudio) ||
+                const DeepCollectionEquality()
+                    .equals(other.playingAudio, playingAudio)) &&
+            (identical(other.doTheThing, doTheThing) ||
+                const DeepCollectionEquality()
+                    .equals(other.doTheThing, doTheThing)));
   }
 
   @override
@@ -1833,7 +3106,14 @@ class _$_ChatState implements _ChatState {
       const DeepCollectionEquality().hash(openLocationPicker) ^
       const DeepCollectionEquality().hash(imageSelected) ^
       const DeepCollectionEquality().hash(fileSelected) ^
-      const DeepCollectionEquality().hash(locationSelected);
+      const DeepCollectionEquality().hash(locationSelected) ^
+      const DeepCollectionEquality().hash(scrollToEnd) ^
+      const DeepCollectionEquality().hash(clearText) ^
+      const DeepCollectionEquality().hash(uploadFileErrorOrSuccess) ^
+      const DeepCollectionEquality().hash(uploadingFile) ^
+      const DeepCollectionEquality().hash(nextAudioToPlay) ^
+      const DeepCollectionEquality().hash(playingAudio) ^
+      const DeepCollectionEquality().hash(doTheThing);
 
   @JsonKey(ignore: true)
   @override
@@ -1852,7 +3132,14 @@ abstract class _ChatState implements ChatState {
       required bool openLocationPicker,
       required String? imageSelected,
       required String? fileSelected,
-      required String? locationSelected}) = _$_ChatState;
+      required String? locationSelected,
+      required bool scrollToEnd,
+      required bool clearText,
+      required Either<ChatFailure, String>? uploadFileErrorOrSuccess,
+      required bool uploadingFile,
+      required ChatMessage? nextAudioToPlay,
+      required String? playingAudio,
+      required bool doTheThing}) = _$_ChatState;
 
   @override
   List<ChatMessage> get messages => throw _privateConstructorUsedError;
@@ -1874,6 +3161,21 @@ abstract class _ChatState implements ChatState {
   String? get fileSelected => throw _privateConstructorUsedError;
   @override
   String? get locationSelected => throw _privateConstructorUsedError;
+  @override
+  bool get scrollToEnd => throw _privateConstructorUsedError;
+  @override
+  bool get clearText => throw _privateConstructorUsedError;
+  @override
+  Either<ChatFailure, String>? get uploadFileErrorOrSuccess =>
+      throw _privateConstructorUsedError;
+  @override
+  bool get uploadingFile => throw _privateConstructorUsedError;
+  @override
+  ChatMessage? get nextAudioToPlay => throw _privateConstructorUsedError;
+  @override
+  String? get playingAudio => throw _privateConstructorUsedError;
+  @override
+  bool get doTheThing => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ChatStateCopyWith<_ChatState> get copyWith =>

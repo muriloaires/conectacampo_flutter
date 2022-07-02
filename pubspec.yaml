@@ -91,6 +91,8 @@ dependencies:
   url_launcher: ^6.0.9
   path: ^1.8.1
   file_picker: ^4.6.1
+  open_file: ^3.2.1
+  video_player: ^2.4.5
 
 flutter_icons:
   android: "launcher_icon"

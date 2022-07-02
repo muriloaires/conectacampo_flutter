@@ -19,8 +19,9 @@ class User with _$User {
     OriginalAvatar? originalAvatar,
     Advertisement? lastAdvertisement,
     String? email,
-    int? ownGroupId,
-  ) = _User;
+    int? ownGroupId, {
+    required bool? isOnline,
+  }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }

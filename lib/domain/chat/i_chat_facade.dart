@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:conectacampo/domain/auth/user.dart';
 import 'package:conectacampo/domain/chat/chat.dart';
 import 'package:conectacampo/domain/chat/chat_failure.dart';
@@ -20,7 +22,17 @@ abstract class IChatFacade {
 
   Stream<List<UserChat>>? getUserChats({required User loggedUser});
 
+  Stream<User>? getUser({required User user});
+
   Future<Chat?> getChatById(String chatId);
 
-  Future<Either<ChatFailure, Unit>> sendFile(String avatarPath);
+  Future<Either<ChatFailure, String>> sendFile(File file);
+
+  Future<Either<ChatFailure, File>> downloadFile(ChatMessage message);
+
+  Future<void> setChatStatus({required bool isOnline});
+
+  Future<void> clearUnreadMessages(Chat chat);
+
+  Future<void> updateChatMessage(Chat chat, ChatMessage chatMessage);
 }
